@@ -1,0 +1,22 @@
+{
+  "name": "@robrez/scoped-vaadin-web-components",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "module": "index.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "wds --watch --root-dir=demo --open --node-resolve",
+    "build": "node scripts/build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@web/dev-server": "^0.1.35",
+    "glob": "^8.1.0"
+  }
+}
