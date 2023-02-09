@@ -1,0 +1,34 @@
+{
+  "name": "@scoped-vaadin/vaadin-template-renderer",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin/vaadin-template-renderer"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "vaadin-template-renderer",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/components",
+  "main": "vaadin-template-renderer.js",
+  "module": "vaadin-template-renderer.js",
+  "type": "module",
+  "files": [
+    "vaadin-*.js"
+  ],
+  "keywords": [
+    "Vaadin",
+    "polymer",
+    "template"
+  ],
+  "dependencies": {
+    "@scoped-vaadin/polymer-legacy-adapter": "^0.1.0",
+    "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+  }
+}

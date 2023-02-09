@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Area</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/text-area';
+      import '@scoped-vaadin/tooltip';
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-text-area label="Feedback" required>
+      <vaadin23-tooltip slot="tooltip" text="Help us improve"></vaadin23-tooltip>
+    </vaadin23-text-area>
+  </body>
+</html>

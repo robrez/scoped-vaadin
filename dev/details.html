@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/details';
+      import '@scoped-vaadin/tooltip';
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-details>
+      <div slot="summary">Expandable Details</div>
+      Toggle using mouse, Enter and Space keys.
+      <vaadin23-tooltip slot="tooltip" text="Click to toggle"></vaadin23-tooltip>
+    </vaadin23-details>
+  </body>
+</html>

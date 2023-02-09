@@ -1,0 +1,51 @@
+{
+  "name": "@scoped-vaadin/message-input",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin/message-input"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "vaadin-message-input",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/components",
+  "main": "vaadin-message-input.js",
+  "module": "vaadin-message-input.js",
+  "type": "module",
+  "files": [
+    "src",
+    "theme",
+    "vaadin-*.d.ts",
+    "vaadin-*.js",
+    "web-types.json",
+    "web-types.lit.json"
+  ],
+  "keywords": [
+    "Vaadin",
+    "message-input",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "web-types": [
+    "web-types.json",
+    "web-types.lit.json"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@scoped-vaadin/button": "^0.1.0",
+    "@scoped-vaadin/component-base": "^0.1.0",
+    "@scoped-vaadin/text-area": "^0.1.0",
+    "@scoped-vaadin/vaadin-lumo-styles": "^0.1.0",
+    "@scoped-vaadin/vaadin-material-styles": "^0.1.0",
+    "@scoped-vaadin/vaadin-themable-mixin": "^0.1.0",
+    "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+  }
+}

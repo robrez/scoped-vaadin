@@ -1,0 +1,68 @@
+{
+  "name": "@scoped-vaadin/vaadin-development-mode-detector",
+  "version": "0.1.0",
+  "repository": {
+    "0": "v",
+    "1": "a",
+    "2": "a",
+    "3": "d",
+    "4": "i",
+    "5": "n",
+    "6": "/",
+    "7": "v",
+    "8": "a",
+    "9": "a",
+    "10": "d",
+    "11": "i",
+    "12": "n",
+    "13": "-",
+    "14": "d",
+    "15": "e",
+    "16": "v",
+    "17": "e",
+    "18": "l",
+    "19": "o",
+    "20": "p",
+    "21": "m",
+    "22": "e",
+    "23": "n",
+    "24": "t",
+    "25": "-",
+    "26": "m",
+    "27": "o",
+    "28": "d",
+    "29": "e",
+    "30": "-",
+    "31": "d",
+    "32": "e",
+    "33": "t",
+    "34": "e",
+    "35": "c",
+    "36": "t",
+    "37": "o",
+    "38": "r",
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "description": "Element for detecting that an application using Vaadin Elements is running in development mode",
+  "author": "Vaadin Ltd",
+  "license": "Apache-2.0",
+  "type": "module",
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "main": "vaadin-development-mode-detector.js",
+  "scripts": {
+    "generate-typings": "gen-typescript-declarations --outDir . --verify",
+    "test": "wct --npm"
+  },
+  "dependencies": {
+    "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+  }
+}

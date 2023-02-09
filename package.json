@@ -1,22 +1,27 @@
 {
   "name": "@robrez/scoped-vaadin-web-components",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "type": "module",
   "module": "index.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "wds --watch --root-dir=demo --open --node-resolve",
-    "build": "node scripts/build.js"
+    "start": "web-dev-server --node-resolve --open /dev",
+    "build": "node scripts/build.js",
+    "build-demos": "node scripts/build-demos.js",
+    "build-element-meta": "node scripts/build-element-meta.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "workspaces": [
-    "packages/*"
+    "packages/vendor/*",
+    "packages/vaadin/*"
   ],
   "devDependencies": {
     "@web/dev-server": "^0.1.35",
-    "glob": "^8.1.0"
+    "es-module-lexer": "^1.1.1",
+    "glob": "^8.1.0",
+    "terser": "^5.16.3"
   }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="./common.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      import '@scoped-vaadin/grid/all-imports';
+      import '@scoped-vaadin/tooltip';
+
+      const grid = document.querySelector('vaadin23-grid');
+
+      grid.dataProvider = ({ parentItem, page, pageSize }, cb) => {
+        // Let's have 100 root-level items and 5 items on every child level
+        const levelSize = parentItem ? 5 : 100;
+
+        const pageItems = [...Array(Math.min(levelSize, pageSize))].map((_, i) => {
+          const indexInLevel = page * pageSize + i;
+
+          return {
+            name: `${parentItem ? parentItem.name + '-' : ''}${indexInLevel}`,
+            children: true
+          };
+        });
+
+        cb(pageItems, levelSize);
+      };
+
+      const tooltip = document.querySelector('[slot="tooltip"]');
+      tooltip.generator = ({column, item}) => {
+        return column && column.path && item ? `Tooltip ${column.path} ${item.name}` : '';
+      };
+    </script>
+
+    <vaadin23-grid item-id-path="name">
+      <vaadin23-grid-selection-column auto-select frozen></vaadin23-grid-selection-column>
+      <vaadin23-grid-tree-column frozen path="name" width="200px" flex-shrink="0"></vaadin23-grid-tree-column>
+      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
+      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
+      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
+
+      <vaadin23-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin23-tooltip>
+    </vaadin23-grid>
+  </body>
+</html>

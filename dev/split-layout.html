@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Split Layout</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/split-layout';
+
+      document.querySelector('#first').textContent = new Array(1000).fill('a').join(' ');
+      document.querySelector('#second').textContent = new Array(1000).fill('b').join(' ');
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-split-layout style="width: 400px; height: 200px">
+      <div id="first"></div>
+      <div id="second"></div>
+    </vaadin23-split-layout>
+  </body>
+</html>

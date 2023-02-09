@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Layout</title>
+    <script type="module" src="./common.js"></script>
+
+    <style>
+      h1[slot='navbar'] {
+        font-size: var(--lumo-font-size-l);
+        margin: 0;
+      }
+    </style>
+
+    <script type="module">
+      import '@scoped-vaadin/app-layout';
+      import '@scoped-vaadin/app-layout/vaadin-drawer-toggle';
+      import '@scoped-vaadin/tabs';
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-app-layout>
+      <vaadin23-drawer-toggle slot="navbar"></vaadin23-drawer-toggle>
+      <h1 slot="navbar">MyApp</h1>
+      <vaadin23-tabs slot="drawer" orientation="vertical">
+        <vaadin23-tab>
+          <a>Dashboard</a>
+        </vaadin23-tab>
+        <vaadin23-tab>
+          <a>Orders</a>
+        </vaadin23-tab>
+      </vaadin23-tabs>
+    </vaadin23-app-layout>
+  </body>
+</html>

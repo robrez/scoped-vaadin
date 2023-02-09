@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/checkbox';
+      import '@scoped-vaadin/tooltip';
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-checkbox>
+      <label slot="label">
+        I accept <a href="http://vaadin.com">the terms and conditions</a>
+      </label>
+      <vaadin23-tooltip slot="tooltip" text="Please read first"></vaadin23-tooltip>
+    </vaadin23-checkbox>
+  </body>
+</html>

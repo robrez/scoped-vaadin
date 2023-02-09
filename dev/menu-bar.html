@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu bar</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/menu-bar';
+      import '@scoped-vaadin/tooltip';
+
+      const menuBar = document.querySelector('vaadin23-menu-bar');
+      menuBar.items = [
+        { text: 'View', tooltip: 'Options for how to view the content' },
+        { text: 'Edit' },
+        {
+          text: 'Share',
+          children: [
+            {
+              text: 'On social media',
+              children: [{ text: 'Facebook' }, { text: 'Twitter' }, { text: 'Instagram' }],
+            },
+            { text: 'By email' },
+            { text: 'Get link' },
+          ],
+        },
+        {
+          text: 'Move',
+          tooltip: 'Move to a different folder or trash.',
+          children: [{ text: 'To folder' }, { text: 'To trash' }],
+        },
+        { text: 'Duplicate', tooltip: 'Create a duplicate' },
+      ];
+    </script>
+  </head>
+
+  <body>
+    <vaadin23-menu-bar>
+      <vaadin23-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin23-tooltip>
+    </vaadin23-menu-bar>
+  </body>
+</html>

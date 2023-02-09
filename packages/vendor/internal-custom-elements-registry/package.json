@@ -1,0 +1,19 @@
+{
+  "name": "@scoped-vaadin/internal-custom-elements-registry",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vendor/internal-custom-elements-registry"
+  },
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "files": [
+    "index.js"
+  ]
+}

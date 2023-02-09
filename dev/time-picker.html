@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time picker</title>
+    <script type="module" src="./common.js"></script>
+    <script type="module">
+      import '@scoped-vaadin/time-picker';
+      import '@scoped-vaadin/tooltip';
+    </script>
+  </head>
+  <body>
+    <vaadin23-time-picker value="15:00" clear-button-visible>
+      <vaadin23-tooltip slot="tooltip" text="Evening times are preferred"></vaadin23-tooltip>
+    </vaadin23-time-picker>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "name": "@scoped-vaadin/polymer-legacy-adapter",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin/polymer-legacy-adapter"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "polymer-legacy-adapter",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/elements",
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "files": [
+    "*.d.ts",
+    "*.js",
+    "src"
+  ],
+  "keywords": [
+    "Vaadin",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@scoped-vaadin/vaadin-themable-mixin": "^0.1.0",
+    "lit": "^2.0.0",
+    "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+  }
+}

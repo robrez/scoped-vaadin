@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Layout</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/form-layout';
+      import '@scoped-vaadin/form-layout/vaadin-form-item.js';
+      import '@scoped-vaadin/text-field';
+      import '@scoped-vaadin/password-field';
+    </script>
+
+    <style>
+      vaadin-form-item > *:not(label) {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <vaadin23-form-layout>
+      <vaadin23-form-item>
+        <label slot="label">First name</label>
+        <vaadin23-text-field></vaadin23-text-field>
+      </vaadin23-form-item>
+
+      <vaadin23-form-item>
+        <label slot="label">Last name</label>
+        <vaadin23-text-field></vaadin23-text-field>
+      </vaadin23-form-item>
+
+      <vaadin23-form-item colspan="2">
+        <label slot="label">Username</label>
+        <vaadin23-text-field required></vaadin23-text-field>
+      </vaadin23-form-item>
+
+      <vaadin23-form-item>
+        <label slot="label">Password</label>
+        <vaadin23-password-field></vaadin23-password-field>
+      </vaadin23-form-item>
+
+      <vaadin23-form-item>
+        <label slot="label">Confirm</label>
+        <vaadin23-password-field></vaadin23-password-field>
+      </vaadin23-form-item>
+    </vaadin23-form-layout>
+  </body>
+</html>
