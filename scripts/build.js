@@ -60,14 +60,20 @@ function processPackageJson(content, filePath) {
 
   newDependencies = { ...newDependencies, ...additionalDependencies };
 
+  let oldRepository =
+    repository && typeof repository === "object" ? repository : {};
+
   let newRepository = {
-    ...repository,
+    ...oldRepository,
     ...versionMeta.repository,
   };
-  if (repository.directory) {
+  if (oldRepository.directory) {
     newRepository = {
       ...newRepository,
-      directory: repository.directory.replace("packages/", "packages/vaadin/"),
+      directory: oldRepository.directory.replace(
+        "packages/",
+        "packages/vaadin/"
+      ),
     };
   }
 
