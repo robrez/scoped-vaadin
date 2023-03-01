@@ -52,5 +52,8 @@
   "dependencies": {
     "@scoped-vaadin/vaadin-development-mode-detector": "^0.1.0",
     "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -77,7 +77,7 @@ function processPackageJson(content, filePath) {
     };
   }
 
-  const result = {
+  let result = {
     name: replaceNpmScope(name),
     version: `${versionMeta.version}`,
     repository: newRepository,
@@ -85,6 +85,14 @@ function processPackageJson(content, filePath) {
     ...keep,
     dependencies: newDependencies,
   };
+  if (!result.publishConfig) {
+    result = {
+      ...result,
+      publishConfig: {
+        access: "public",
+      },
+    };
+  }
   return JSON.stringify(result, null, 2);
 }
 
