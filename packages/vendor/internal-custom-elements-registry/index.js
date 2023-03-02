@@ -40,3 +40,5 @@ if (!window[registryKey]) {
 const internalCustomElements = window[registryKey];
 
 export { internalCustomElements };
+
+// TODO convert to typescript or vend d.ts

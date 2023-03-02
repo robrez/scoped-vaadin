@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/field-highlighter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -34,12 +34,12 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/component-base": "^0.1.0",
-    "@scoped-vaadin/overlay": "^0.1.0",
-    "@scoped-vaadin/vaadin-lumo-styles": "^0.1.0",
-    "@scoped-vaadin/vaadin-material-styles": "^0.1.0",
-    "@scoped-vaadin/vaadin-themable-mixin": "^0.1.0",
+    "@scoped-vaadin/component-base": "^0.2.0",
+    "@scoped-vaadin/overlay": "^0.2.0",
+    "@scoped-vaadin/vaadin-lumo-styles": "^0.2.0",
+    "@scoped-vaadin/vaadin-material-styles": "^0.2.0",
+    "@scoped-vaadin/vaadin-themable-mixin": "^0.2.0",
     "lit": "^2.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^0.1.0"
+    "@scoped-vaadin/internal-custom-elements-registry": "^0.2.0"
   }
 }

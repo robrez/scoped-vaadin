@@ -4,7 +4,7 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { setCancelSyntheticClickEvents } from '@polymer/polymer/lib/utils/settings.js';
-import { usageStatistics } from '@scoped-vaadin/vaadin-usage-statistics/vaadin-usage-statistics.js';
+import { usageStatistics } from '@vaadin/vaadin-usage-statistics/vaadin-usage-statistics.js';
 import { idlePeriod } from './async.js';
 import { Debouncer, enqueueDebouncer } from './debounce.js';
 import { DirMixin } from './dir-mixin.js';
@@ -39,7 +39,7 @@ const registered = new Set();
 export const ElementMixin = (superClass) =>
   class VaadinElementMixin extends DirMixin(superClass) {
     static get version() {
-      return '23.3.7';
+      return '23.3.8';
     }
 
     /** @protected */

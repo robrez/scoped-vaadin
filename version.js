@@ -1,5 +1,5 @@
 export const versionMeta = {
-  version: "0.1.0",
+  version: "0.2.0",
   selector: "^",
   repository: {
     type: "git",
@@ -8,4 +8,5 @@ export const versionMeta = {
   bugs: {
     url: "https://github.com/robrez/scoped-vaadin/issues",
   },
+  vaadinVersion: "23",
 };

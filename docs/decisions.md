@@ -78,12 +78,10 @@ const cssSelector =
 
 ## Package Exclusions
 
-It seems reasonable that it should be possible to exclude some packages from transpilation. Some examples which come to mind:
+Decided that some packages ought to be excluded from transpilation and _not_ vended via `@scoped-vaadin`
 
 - vaadin-development-mode-detector
 - vaadin-usage-statistics
-- lit-renderer
-- iconset
 
 ## Other sneaky items
 

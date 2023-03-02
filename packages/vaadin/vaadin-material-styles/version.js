@@ -13,7 +13,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 class Material extends HTMLElement {
   static get version() {
-    return '23.3.7';
+    return '23.3.8';
   }
 }
 

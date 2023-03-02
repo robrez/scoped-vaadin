@@ -1,3 +1,6 @@
+/**
+ * Performs analysis on packages to determine things such as custom element tag names, event names
+ */
 import glob from "glob";
 import Path from "path";
 import fs from "fs";
@@ -23,7 +26,7 @@ function findPackages(dir) {
 }
 
 function findFiles(dir) {
-  const files = glob.sync(dir + "/**/*.js", { dot: true });
+  const files = glob.sync(dir + "/**/{*.js,web-types.json}", { dot: false });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => Path.parse(name));
@@ -91,6 +94,34 @@ async function processJs(content, filePath) {
 
 /**
  *
+ * @param {string} content : ;
+ * @param {Path} filePath
+ * @returns
+ */
+function processWebTypesJson(content, filePath) {
+  const webTypes = JSON.parse(content);
+  let elementNames = [];
+  let eventNames = [];
+  if (webTypes?.contributions?.html?.elements) {
+    const elements = webTypes?.contributions?.html?.elements;
+    elements.forEach((element) => {
+      elementNames = [...elementNames, element.name];
+      if (element?.js?.events) {
+        eventNames = [
+          ...eventNames,
+          ...element.js.events.map((event) => event.name),
+        ];
+      }
+    });
+  }
+  return {
+    elementNames,
+    eventNames,
+  };
+}
+
+/**
+ *
  * @param {Path} filePath
  * @returns {Promise<string[]>}
  */
@@ -108,6 +139,10 @@ async function processFile(filePath) {
   let result = undefined;
   if (filePath.ext.toLowerCase() === ".js") {
     result = await processJs(content, filePath);
+  }
+
+  if (filePath.ext.toLowerCase() === ".json") {
+    result = processWebTypesJson(content, filePath);
   }
   return result;
 }
@@ -127,30 +162,51 @@ async function processPackage(packagePath) {
 const packages = findPackages(nodePackagesRoot);
 
 async function processPackages(packages) {
-  let allElementNames = [];
-  let allEventNames = [];
+  let packagesMeta = [];
   for (const vpackage of packages) {
     const results = await processPackage(vpackage);
+    const packageName = `${vpackage.dir.replace("node_modules/", "")}/${
+      vpackage.name
+    }`;
+    let packageMeta = {
+      package: packageName,
+      elementNames: [],
+      eventNames: [],
+    };
     if (results) {
       results.forEach((result) => {
         if (result.elementNames) {
-          allElementNames = [...allElementNames, ...result.elementNames];
+          packageMeta = {
+            ...packageMeta,
+            elementNames: [...packageMeta.elementNames, ...result.elementNames],
+          };
         }
         if (result.eventNames) {
-          allEventNames = [...allEventNames, ...result.eventNames];
+          packageMeta = {
+            ...packageMeta,
+            eventNames: [...packageMeta.eventNames, ...result.eventNames],
+          };
         }
       });
+      packageMeta = {
+        ...packageMeta,
+        elementNames: [...new Set(packageMeta.elementNames)].sort(),
+        eventNames: [...new Set(packageMeta.eventNames)].sort(),
+      };
+      packagesMeta = [...packagesMeta, packageMeta];
     }
   }
-  // note that CEM/webtypes has some of this same info, but hides "internal" elements
-  const allElementNamesSorted = [...new Set(allElementNames)].sort();
-  const allEventNamesSorted = [...new Set(allEventNames)].sort();
-  const meta = {
-    elementNames: allElementNamesSorted,
-    eventNames: allEventNamesSorted,
-  };
+
+  // const noElements = packagesMeta.filter(p => !p.elementNames.length);
+  // console.log(noElements);
+
+  // TODO should also process CEM/webtypes... same info available, but hides "internal" elements
   const outputFileName = `scripts/element-meta.js`;
-  const tpl = `export const elementMeta = ${JSON.stringify(meta, null, 2)}`;
+  const tpl = `export const elementMeta = ${JSON.stringify(
+    packagesMeta,
+    null,
+    2
+  )}`;
   fs.writeFileSync(outputFileName, tpl);
 }
 

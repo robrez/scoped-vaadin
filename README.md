@@ -80,3 +80,4 @@ Initial releases herein will start w/ version `^0.1.x`. Below, you can find whic
 | local version | vaadin version |
 | ------------- | -------------- |
 | `v0.1.0`      | `^23.3.7`      |
+| `v0.2.0`      | `~23.3.8`      |
