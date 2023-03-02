@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
-  "name": "@vaadin/checkbox",
-  "version": "23.3.8",
+  "name": "@scoped-vaadin/checkbox",
+  "version": "0.2.0",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -15,8 +15,8 @@
     "html": {
       "elements": [
         {
-          "name": "vaadin-checkbox",
-          "description": "`<vaadin-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin-checkbox label=\"I accept the terms and conditions\"></vaadin-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|----------------\n`checkbox`  | The wrapper element that contains slotted <input type=\"checkbox\">.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description | Part name\n----------------|-------------|--------------\n`active`        | Set when the checkbox is pressed down, either with mouse, touch or the keyboard. | `:host`\n`disabled`      | Set when the checkbox is disabled. | `:host`\n`focus-ring`    | Set when the checkbox is focused using the keyboard. | `:host`\n`focused`       | Set when the checkbox is focused. | `:host`\n`indeterminate` | Set when the checkbox is in the indeterminate state. | `:host`\n`checked`       | Set when the checkbox is checked. | `:host`\n`has-label`     | Set when the checkbox has a label. | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin23-checkbox",
+          "description": "`<vaadin23-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin23-checkbox label=\"I accept the terms and conditions\"></vaadin23-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|----------------\n`checkbox`  | The wrapper element that contains slotted <input type=\"checkbox\">.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description | Part name\n----------------|-------------|--------------\n`active`        | Set when the checkbox is pressed down, either with mouse, touch or the keyboard. | `:host`\n`disabled`      | Set when the checkbox is disabled. | `:host`\n`focus-ring`    | Set when the checkbox is focused using the keyboard. | `:host`\n`focused`       | Set when the checkbox is focused. | `:host`\n`indeterminate` | Set when the checkbox is in the indeterminate state. | `:host`\n`checked`       | Set when the checkbox is checked. | `:host`\n`has-label`     | Set when the checkbox has a label. | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "extension": true,
           "attributes": [
             {

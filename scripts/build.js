@@ -314,6 +314,24 @@ function processReadmeMd(content, filePath) {
 }
 
 /**
+ * Replaces tag names, package names, and version numbers in web-types.json
+ *
+ * @param {string} content : ;
+ * @param {Path} filePath
+ * @returns {string}
+ */
+function processWebTypes(content, filePath) {
+  let result = content;
+  result = processTagNames(result, filePath);
+  result = replaceNpmScope(result);
+
+  const webTypesJson = JSON.parse(result);
+  webTypesJson["version"] = versionMeta.version;
+
+  return JSON.stringify(webTypesJson, null, 2);
+}
+
+/**
  *
  * @param {Path} filePath
  * @returns {Promise<void>}
@@ -348,6 +366,13 @@ async function processFile(filePath) {
     content = processReadmeMd(content, filePath);
   }
 
+  if (
+    filePath.ext.toLowerCase() === ".json" &&
+    filePath.name.indexOf("web-types") === 0
+  ) {
+    content = processWebTypes(content, filePath);
+  }
+
   fs.writeFileSync(outputFileName, content);
   // console.log(outputFileName);
 }
@@ -359,9 +384,6 @@ function processPackage(packagePath) {
 
 const packages = findPackages(nodePackagesRoot);
 packages.forEach((vpackage) => processPackage(vpackage));
-
-// TODO  web-types.json
-// TODO  web-types.lit.jon
 
 // TODO need to ensure vendor packages receive the same version number as all of the other packages , eg:
 // - ../package.json
