@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
-  "name": "@vaadin/details",
-  "version": "23.3.8",
+  "name": "@scoped-vaadin/details",
+  "version": "0.2.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin-details",
-          "description": "`<vaadin-details>` is a Web Component which the creates an\nexpandable panel similar to `<details>` HTML element.\n\n```\n<vaadin-details>\n  <div slot=\"summary\">Expandable Details</div>\n  Toggle using mouse, Enter and Space keys.\n</vaadin-details>\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name        | Description\n-----------------|----------------\n`summary`        | The element used to open and close collapsible content.\n`toggle`         | The element used as indicator, can represent an icon.\n`summary-content`| The wrapper for the slotted summary content.\n`content`        | The wrapper for the collapsible details content.\n\nThe following attributes are exposed for styling:\n\nAttribute    | Description\n-------------| -----------\n`opened`     | Set when the collapsible content is expanded and visible.\n`disabled`   | Set when the element is disabled.\n`focus-ring` | Set when the element is focused using the keyboard.\n`focused`    | Set when the element is focused.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin23-details",
+          "description": "`<vaadin23-details>` is a Web Component which the creates an\nexpandable panel similar to `<details>` HTML element.\n\n```\n<vaadin23-details>\n  <div slot=\"summary\">Expandable Details</div>\n  Toggle using mouse, Enter and Space keys.\n</vaadin23-details>\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name        | Description\n-----------------|----------------\n`summary`        | The element used to open and close collapsible content.\n`toggle`         | The element used as indicator, can represent an icon.\n`summary-content`| The wrapper for the slotted summary content.\n`content`        | The wrapper for the collapsible details content.\n\nThe following attributes are exposed for styling:\n\nAttribute    | Description\n-------------| -----------\n`opened`     | Set when the collapsible content is expanded and visible.\n`disabled`   | Set when the element is disabled.\n`focus-ring` | Set when the element is focused using the keyboard.\n`focused`    | Set when the element is focused.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
