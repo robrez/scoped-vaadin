@@ -1,13 +1,15 @@
-# @vaadin/tooltip
+# @scoped-vaadin/tooltip
+
+This component is based on [@vaadin/tooltip](https://www.npmjs.com/package/@vaadin/tooltip)
 
 A web component for creating tooltips.
 
-[![npm version](https://badgen.net/npm/v/@vaadin/tooltip)](https://www.npmjs.com/package/@vaadin/tooltip)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/tooltip)](https://www.npmjs.com/package/@scoped-vaadin/tooltip)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-button id="confirm">Confirm</vaadin-button>
-<vaadin-tooltip text="Click to save changes" for="confirm"></vaadin-tooltip>
+<vaadin23-button id="confirm">Confirm</vaadin23-button>
+<vaadin23-tooltip text="Click to save changes" for="confirm"></vaadin23-tooltip>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tooltip/screenshot.png" width="200" alt="Screenshot of vaadin-tooltip">](https://vaadin.com/docs/latest/components/tooltip)
@@ -17,13 +19,13 @@ A web component for creating tooltips.
 Install the component:
 
 ```sh
-npm i @vaadin/tooltip
+npm i @scoped-vaadin/tooltip
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/tooltip';
+import '@scoped-vaadin/tooltip';
 ```
 
 ## Themes
@@ -34,19 +36,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/tooltip/theme/material/vaadin-tooltip.js';
+import '@scoped-vaadin/tooltip/theme/material/vaadin-tooltip.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/tooltip/theme/lumo/vaadin-tooltip.js';
+import '@scoped-vaadin/tooltip/theme/lumo/vaadin-tooltip.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/tooltip/src/vaadin-tooltip.js';
+import '@scoped-vaadin/tooltip/src/vaadin-tooltip.js';
 ```
 
 ## Contributing

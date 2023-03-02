@@ -1,17 +1,19 @@
-# @vaadin/notification
+# @scoped-vaadin/notification
+
+This component is based on [@vaadin/notification](https://www.npmjs.com/package/@vaadin/notification)
 
 A web component for providing feedback to the user.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/notification)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/notification)](https://www.npmjs.com/package/@vaadin/notification)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/notification)](https://www.npmjs.com/package/@scoped-vaadin/notification)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-notification opened position="middle" duration="-1"></vaadin-notification>
+<vaadin23-notification opened position="middle" duration="-1"></vaadin23-notification>
 
 <script>
-  const notification = document.querySelector('vaadin-notification');
+  const notification = document.querySelector('vaadin23-notification');
 
   notification.renderer = function (root) {
     root.textContent = 'Your work has been saved';
@@ -26,13 +28,13 @@ A web component for providing feedback to the user.
 Install the component:
 
 ```sh
-npm i @vaadin/notification
+npm i @scoped-vaadin/notification
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/notification';
+import '@scoped-vaadin/notification';
 ```
 
 ## Themes
@@ -43,19 +45,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/notification/theme/material/vaadin-notification.js';
+import '@scoped-vaadin/notification/theme/material/vaadin-notification.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/notification/theme/lumo/vaadin-notification.js';
+import '@scoped-vaadin/notification/theme/lumo/vaadin-notification.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/notification/src/vaadin-notification.js';
+import '@scoped-vaadin/notification/src/vaadin-notification.js';
 ```
 
 ## Contributing

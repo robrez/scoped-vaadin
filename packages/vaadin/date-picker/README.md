@@ -1,14 +1,16 @@
-# @vaadin/date-picker
+# @scoped-vaadin/date-picker
+
+This component is based on [@vaadin/date-picker](https://www.npmjs.com/package/@vaadin/date-picker)
 
 A web component that allows to enter a date by typing or by selecting from a calendar overlay.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/date-picker)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/date-picker)](https://www.npmjs.com/package/@vaadin/date-picker)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/date-picker)](https://www.npmjs.com/package/@scoped-vaadin/date-picker)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-date-picker label="Label" value="2018-12-03" clear-button-visible></vaadin-date-picker>
+<vaadin23-date-picker label="Label" value="2018-12-03" clear-button-visible></vaadin23-date-picker>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/date-picker/screenshot.png" width="343" alt="Screenshot of vaadin-date-picker">](https://vaadin.com/docs/latest/components/date-picker)
@@ -18,13 +20,13 @@ A web component that allows to enter a date by typing or by selecting from a cal
 Install the component:
 
 ```sh
-npm i @vaadin/date-picker
+npm i @scoped-vaadin/date-picker
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/date-picker';
+import '@scoped-vaadin/date-picker';
 ```
 
 ## Themes
@@ -35,19 +37,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/date-picker/theme/material/vaadin-date-picker.js';
+import '@scoped-vaadin/date-picker/theme/material/vaadin-date-picker.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
+import '@scoped-vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/date-picker/src/vaadin-date-picker.js';
+import '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
 ```
 
 ## Contributing

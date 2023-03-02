@@ -1,16 +1,18 @@
-# @vaadin/confirm-dialog
+# @scoped-vaadin/confirm-dialog
+
+This component is based on [@vaadin/confirm-dialog](https://www.npmjs.com/package/@vaadin/confirm-dialog)
 
 A modal dialog web component for confirming user actions.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/confirm-dialog)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/confirm-dialog)](https://www.npmjs.com/package/@vaadin/confirm-dialog)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/confirm-dialog)](https://www.npmjs.com/package/@scoped-vaadin/confirm-dialog)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-confirm-dialog header="Unsaved changes" confirm-text="Save" reject-text="Discard" cancel reject>
+<vaadin23-confirm-dialog header="Unsaved changes" confirm-text="Save" reject-text="Discard" cancel reject>
   Do you want to save or discard your changes before navigating away?
-</vaadin-confirm-dialog>
+</vaadin23-confirm-dialog>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/confirm-dialog/screenshot.png" width="200" alt="Screenshot of vaadin-confirm-dialog">](https://vaadin.com/docs/latest/components/confirm-dialog)
@@ -20,13 +22,13 @@ A modal dialog web component for confirming user actions.
 Install the component:
 
 ```sh
-npm i @vaadin/confirm-dialog
+npm i @scoped-vaadin/confirm-dialog
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/confirm-dialog';
+import '@scoped-vaadin/confirm-dialog';
 ```
 
 ## Themes
@@ -37,19 +39,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/confirm-dialog/theme/material/vaadin-confirm-dialog.js';
+import '@scoped-vaadin/confirm-dialog/theme/material/vaadin-confirm-dialog.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/confirm-dialog/theme/lumo/vaadin-confirm-dialog.js';
+import '@scoped-vaadin/confirm-dialog/theme/lumo/vaadin-confirm-dialog.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/confirm-dialog/src/vaadin-confirm-dialog.js';
+import '@scoped-vaadin/confirm-dialog/src/vaadin-confirm-dialog.js';
 ```
 
 ## Contributing

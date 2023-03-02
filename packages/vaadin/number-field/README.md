@@ -1,14 +1,16 @@
-# @vaadin/number-field
+# @scoped-vaadin/number-field
+
+This component is based on [@vaadin/number-field](https://www.npmjs.com/package/@vaadin/number-field)
 
 An input field web component that only accepts numeric input.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/number-field)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/number-field)](https://www.npmjs.com/package/@vaadin/number-field)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/number-field)](https://www.npmjs.com/package/@scoped-vaadin/number-field)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-number-field label="Balance"></vaadin-number-field>
+<vaadin23-number-field label="Balance"></vaadin23-number-field>
 ```
 
 ## Installation
@@ -16,13 +18,13 @@ An input field web component that only accepts numeric input.
 Install the component:
 
 ```sh
-npm i @vaadin/number-field
+npm i @scoped-vaadin/number-field
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/number-field';
+import '@scoped-vaadin/number-field';
 ```
 
 ## Themes
@@ -33,19 +35,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/number-field/theme/material/vaadin-number-field.js';
+import '@scoped-vaadin/number-field/theme/material/vaadin-number-field.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/number-field/theme/lumo/vaadin-number-field.js';
+import '@scoped-vaadin/number-field/theme/lumo/vaadin-number-field.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/number-field/src/vaadin-number-field.js';
+import '@scoped-vaadin/number-field/src/vaadin-number-field.js';
 ```
 
 ## Contributing

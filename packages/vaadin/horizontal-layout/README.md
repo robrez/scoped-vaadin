@@ -1,16 +1,18 @@
-# @vaadin/horizontal-layout
+# @scoped-vaadin/horizontal-layout
+
+This component is based on [@vaadin/horizontal-layout](https://www.npmjs.com/package/@vaadin/horizontal-layout)
 
 A web component that places its content side-by-side in a row.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/basic-layouts/#horizontal-layout)
 
 ```html
-<vaadin-horizontal-layout theme="spacing padding">
+<vaadin23-horizontal-layout theme="spacing padding">
   <div>Item 1</div>
   <div>Item 2</div>
   <div>Item 3</div>
   <div>Item 4</div>
-</vaadin-horizontal-layout>
+</vaadin23-horizontal-layout>
 ```
 
 ## Installation
@@ -18,13 +20,13 @@ A web component that places its content side-by-side in a row.
 Install the component:
 
 ```sh
-npm i @vaadin/horizontal-layout
+npm i @scoped-vaadin/horizontal-layout
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/horizontal-layout';
+import '@scoped-vaadin/horizontal-layout';
 ```
 
 ## Themes
@@ -35,19 +37,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/horizontal-layout/theme/material/vaadin-horizontal-layout.js';
+import '@scoped-vaadin/horizontal-layout/theme/material/vaadin-horizontal-layout.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/horizontal-layout/theme/lumo/vaadin-horizontal-layout.js';
+import '@scoped-vaadin/horizontal-layout/theme/lumo/vaadin-horizontal-layout.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/horizontal-layout/src/vaadin-horizontal-layout.js';
+import '@scoped-vaadin/horizontal-layout/src/vaadin-horizontal-layout.js';
 ```
 
 ## Contributing

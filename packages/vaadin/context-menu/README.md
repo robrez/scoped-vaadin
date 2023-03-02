@@ -1,31 +1,33 @@
-# @vaadin/context-menu
+# @scoped-vaadin/context-menu
+
+This component is based on [@vaadin/context-menu](https://www.npmjs.com/package/@vaadin/context-menu)
 
 A web component that can be attached to any component to display a context menu.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/context-menu)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/context-menu)](https://www.npmjs.com/package/@vaadin/context-menu)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/context-menu)](https://www.npmjs.com/package/@scoped-vaadin/context-menu)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-context-menu>
+<vaadin23-context-menu>
   <span>Open a context menu with <b>right click</b> or with <b>long touch.</b></span>
-</vaadin-context-menu>
+</vaadin23-context-menu>
 
 <script>
-  const contextMenu = document.querySelector('vaadin-context-menu');
+  const contextMenu = document.querySelector('vaadin23-context-menu');
   contextMenu.renderer = function (root) {
     let listBox = root.firstElementChild;
     // Check if there is a list-box generated with the previous renderer call to update its content instead of recreation
     if (listBox) {
       listBox.innerHTML = '';
     } else {
-      listBox = document.createElement('vaadin-list-box');
+      listBox = document.createElement('vaadin23-list-box');
       root.appendChild(listBox);
     }
 
     ['First', 'Second', 'Third'].forEach(function (name) {
-      const item = document.createElement('vaadin-item');
+      const item = document.createElement('vaadin23-item');
       item.textContent = name + ' menu item';
       listBox.appendChild(item);
     });
@@ -35,20 +37,20 @@ A web component that can be attached to any component to display a context menu.
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/context-menu/screenshot.png" width="493" alt="Screenshot of vaadin-context-menu">](https://vaadin.com/docs/latest/components/context-menu)
 
-**Note:** [`<vaadin-list-box>`](https://github.com/vaadin/vaadin-list-box) component used in the above example should be installed and imported separately.
+**Note:** [`<vaadin23-list-box>`](https://github.com/vaadin/vaadin-list-box) component used in the above example should be installed and imported separately.
 
 ## Installation
 
 Install the component:
 
 ```sh
-npm i @vaadin/context-menu
+npm i @scoped-vaadin/context-menu
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/context-menu';
+import '@scoped-vaadin/context-menu';
 ```
 
 ## Themes
@@ -59,19 +61,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/context-menu/theme/material/vaadin-context-menu.js';
+import '@scoped-vaadin/context-menu/theme/material/vaadin-context-menu.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/context-menu/theme/lumo/vaadin-context-menu.js';
+import '@scoped-vaadin/context-menu/theme/lumo/vaadin-context-menu.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/context-menu/src/vaadin-context-menu.js';
+import '@scoped-vaadin/context-menu/src/vaadin-context-menu.js';
 ```
 
 ## License

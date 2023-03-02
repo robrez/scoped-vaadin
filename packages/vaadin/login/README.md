@@ -1,14 +1,16 @@
-# @vaadin/login
+# @scoped-vaadin/login
+
+This component is based on [@vaadin/login](https://www.npmjs.com/package/@vaadin/login)
 
 A web component for displaying a login form, either inline, or as an overlay.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/login)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/login)](https://www.npmjs.com/package/@vaadin/login)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/login)](https://www.npmjs.com/package/@scoped-vaadin/login)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-login-overlay opened></vaadin-login-overlay>
+<vaadin23-login-overlay opened></vaadin23-login-overlay>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/login/screenshot.png" width="456" alt="Screenshot of vaadin-login-overlay">](https://vaadin.com/docs/latest/components/login)
@@ -18,13 +20,13 @@ A web component for displaying a login form, either inline, or as an overlay.
 Install the component:
 
 ```sh
-npm i @vaadin/login
+npm i @scoped-vaadin/login
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/login';
+import '@scoped-vaadin/login';
 ```
 
 ## Themes
@@ -35,22 +37,22 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the components from the `theme/material` folder:
 
 ```js
-import '@vaadin/login/theme/material/vaadin-login-overlay.js';
-import '@vaadin/login/theme/material/vaadin-login-form.js';
+import '@scoped-vaadin/login/theme/material/vaadin-login-overlay.js';
+import '@scoped-vaadin/login/theme/material/vaadin-login-form.js';
 ```
 
 You can also import the Lumo version of the components explicitly:
 
 ```js
-import '@vaadin/login/theme/lumo/vaadin-login-overlay.js';
-import '@vaadin/login/theme/lumo/vaadin-login-form.js';
+import '@scoped-vaadin/login/theme/lumo/vaadin-login-overlay.js';
+import '@scoped-vaadin/login/theme/lumo/vaadin-login-form.js';
 ```
 
 Finally, you can import the un-themed components from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/login/src/vaadin-login-overlay.js';
-import '@vaadin/login/src/vaadin-login-form.js';
+import '@scoped-vaadin/login/src/vaadin-login-overlay.js';
+import '@scoped-vaadin/login/src/vaadin-login-form.js';
 ```
 
 ## Contributing

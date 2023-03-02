@@ -1,22 +1,24 @@
-# @vaadin/combo-box
+# @scoped-vaadin/combo-box
+
+This component is based on [@vaadin/combo-box](https://www.npmjs.com/package/@vaadin/combo-box)
 
 A web component for choosing a value from a filterable list of options presented in an overlay.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/combo-box)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/combo-box)](https://www.npmjs.com/package/@vaadin/combo-box)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/combo-box)](https://www.npmjs.com/package/@scoped-vaadin/combo-box)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-combo-box
+<vaadin23-combo-box
   label="User"
   placeholder="Please select"
   item-value-path="email"
   item-label-path="email"
-></vaadin-combo-box>
+></vaadin23-combo-box>
 
 <script>
-  const comboBox = document.querySelector('vaadin-combo-box');
+  const comboBox = document.querySelector('vaadin23-combo-box');
 
   fetch('https://randomuser.me/api?results=100&inc=name,email')
     .then((res) => res.json())
@@ -31,13 +33,13 @@ A web component for choosing a value from a filterable list of options presented
 Install the component:
 
 ```sh
-npm i @vaadin/combo-box
+npm i @scoped-vaadin/combo-box
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/combo-box';
+import '@scoped-vaadin/combo-box';
 ```
 
 ## Themes
@@ -48,19 +50,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/combo-box/theme/material/vaadin-combo-box.js';
+import '@scoped-vaadin/combo-box/theme/material/vaadin-combo-box.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/combo-box/theme/lumo/vaadin-combo-box.js';
+import '@scoped-vaadin/combo-box/theme/lumo/vaadin-combo-box.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/combo-box/src/vaadin-combo-box.js';
+import '@scoped-vaadin/combo-box/src/vaadin-combo-box.js';
 ```
 
 ## Contributing

@@ -1,4 +1,6 @@
-# @vaadin/field-base
+# @scoped-vaadin/field-base
+
+This component is based on [@vaadin/field-base](https://www.npmjs.com/package/@vaadin/field-base)
 
 A set of mixins and controllers used by Vaadin field components.
 

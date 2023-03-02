@@ -1,4 +1,6 @@
-# @vaadin/field-highlighter
+# @scoped-vaadin/field-highlighter
+
+This component is based on [@vaadin/field-highlighter](https://www.npmjs.com/package/@vaadin/field-highlighter)
 
 A set of field helpers used by [Vaadin Collaboration Engine](https://vaadin.com/collaboration).
 
