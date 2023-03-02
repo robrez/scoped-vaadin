@@ -16,3 +16,15 @@ rimraf node_modules
 rimraf package-lock.json
 npm i
 ```
+
+## Build meta data
+
+The build process above uses some meta data that results from analysis conducted via
+
+```bash
+npm run build-meta-data
+```
+
+## Ignored packages
+
+See [ignore-package.js](../scripts/ignore-packages.js)

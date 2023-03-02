@@ -10,6 +10,7 @@ import './vaadin-select-list-box.js';
 import './vaadin-select-overlay.js';
 import './vaadin-select-value-button.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { addValueToAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
@@ -359,7 +360,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
         this.stateTarget = btn;
 
         btn.setAttribute('aria-haspopup', 'listbox');
-        btn.setAttribute('aria-labelledby', `${this._labelId} ${this._fieldId}`);
+        addValueToAttribute(btn, 'aria-labelledby', this._fieldId);
 
         this._updateAriaExpanded(host.opened);
 

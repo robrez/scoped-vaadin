@@ -5,13 +5,38 @@ import { init, parse } from "es-module-lexer";
 import { transformImports } from "./transformModuleImportsPlugin.js";
 import { elementMeta } from "./element-meta.js";
 import { versionMeta } from "../version.js";
+import { ignorePackages } from "./ignore-packages.js";
 
 const nodePackagesRoot = "node_modules/@vaadin";
 const localPackagesRoot = "packages/vaadin";
-const majorVersion = `23`; // todo resolve this another way
+const majorVersion = versionMeta.vaadinVersion;
+
+function allElementNames() {
+  let accumulator = [];
+  elementMeta.forEach((meta) => {
+    accumulator = [...accumulator, ...meta.elementNames];
+  });
+  return [...new Set(accumulator)].sort();
+}
+
+function allEventNames() {
+  let accumulator = [];
+  elementMeta.forEach((meta) => {
+    accumulator = [...accumulator, ...meta.eventNames];
+  });
+  return [...new Set(accumulator)].sort();
+}
+
+function allPackageNames() {
+  return elementMeta.map((meta) => meta.package);
+}
 
 function findPackages(dir) {
-  const files = glob.sync(dir + "/*", { dot: false });
+  const ignore = new Set(ignorePackages);
+  const files = glob.sync(dir + "/*", { dot: false }).filter((file) => {
+    const packageName = file.replace("node_modules/", "");
+    return !ignore.has(packageName);
+  });
   const paths = files.map((name) => Path.parse(name));
   return paths;
 }
@@ -24,12 +49,24 @@ function findFiles(dir) {
   return paths;
 }
 
-function replaceNpmScope(input) {
-  return input.replaceAll("@vaadin/", "@scoped-vaadin/");
-}
-
 function posixify(pathString) {
   return pathString.split(Path.sep).join(Path.posix.sep);
+}
+
+function computePackagesRe() {
+  const names = allPackageNames()
+    .filter((name) => ignorePackages.indexOf(name) < 0)
+    .join("|");
+  return new RegExp(`(${names})`, "g");
+}
+
+const packagesRe = computePackagesRe();
+
+function replaceNpmScope(input) {
+  const result = input.replace(packagesRe, (matched) => {
+    return matched.replaceAll(`@vaadin/`, `@scoped-vaadin/`);
+  });
+  return result;
 }
 
 function processPackageJson(content, filePath) {
@@ -111,14 +148,14 @@ function computeLiteralRe() {
   // this._setInputElement(this.querySelector("vaadin-text-field,.input"));
   // could technically add optional commas within the quote maches, but will instead just
   // include them where the quotes are matched
-  const names = elementMeta.elementNames.join("|");
+  const names = allElementNames().join("|");
   return new RegExp(`[\`'",](${names})[\`'",]`, "g");
 }
 
 function computeTagRe() {
   // tries to match opening and closing tags in markup
   // eg:  <foo-bar>, </foo-bar>
-  const names = elementMeta.elementNames.join("|");
+  const names = allElementNames().join("|");
   return new RegExp(`([<]|<\\/)(${names})`, "g");
 }
 
@@ -126,8 +163,8 @@ function computeUndoEventsRe() {
   // tries to rename event-name literals that were over-aggressively renamed
   // due to they align with a tagName
   // note: this may nonger be needed
-  const allTags = new Set(elementMeta.elementNames);
-  const names = elementMeta.eventNames
+  const allTags = new Set(allElementNames());
+  const names = allEventNames()
     .filter((value) => value.indexOf("vaadin-") > -1)
     .filter((value) => !allTags.has(value)) // if it _is_ a tag name, use special handling
     .map((value) => value.replace(`vaadin-`, `vaadin${majorVersion}-`))
@@ -138,8 +175,8 @@ function computeUndoEventsRe() {
 // tries to rename events that were renamed because they align with a tagName
 // note: this may nonger be needed
 function computeUndoEventsStrictRe() {
-  const allTags = new Set(elementMeta.elementNames);
-  const names = elementMeta.eventNames
+  const allTags = new Set(allElementNames());
+  const names = allEventNames()
     .filter((value) => value.indexOf("vaadin-") > -1)
     .filter((value) => allTags.has(value))
     .map((value) => value.replace(`vaadin-`, `vaadin${majorVersion}-`))
@@ -268,4 +305,7 @@ packages.forEach((vpackage) => processPackage(vpackage));
 // TODO  web-types.json
 // TODO  web-types.lit.jon
 // TODO  README.md
-// TODO  refine package.json
+
+// TODO need to ensure vendor packages receive the same version number as all of the other packages , eg:
+// - ../package.json
+// - ../packages/vendor/internal-custom-elements-registry
