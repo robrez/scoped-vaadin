@@ -1,16 +1,18 @@
-# @vaadin/avatar
+# @scoped-vaadin/avatar
+
+This component is based on [@vaadin/avatar](https://www.npmjs.com/package/@vaadin/avatar)
 
 A web component for graphical representation of an object or entity, for example a person or an organization.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/avatar)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/avatar)](https://www.npmjs.com/package/@vaadin/avatar)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/avatar)](https://www.npmjs.com/package/@scoped-vaadin/avatar)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-avatar></vaadin-avatar>
-<vaadin-avatar name="Jens Jansson"></vaadin-avatar>
-<vaadin-avatar abbr="SK"></vaadin-avatar>
+<vaadin23-avatar></vaadin23-avatar>
+<vaadin23-avatar name="Jens Jansson"></vaadin23-avatar>
+<vaadin23-avatar abbr="SK"></vaadin23-avatar>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/avatar/screenshot.png" width="132" alt="Screenshot of vaadin-avatar">](https://vaadin.com/docs/latest/components/avatar)
@@ -20,13 +22,13 @@ A web component for graphical representation of an object or entity, for example
 Install the component:
 
 ```sh
-npm i @vaadin/avatar
+npm i @scoped-vaadin/avatar
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/avatar';
+import '@scoped-vaadin/avatar';
 ```
 
 ## Themes
@@ -37,19 +39,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/avatar/theme/material/vaadin-avatar.js';
+import '@scoped-vaadin/avatar/theme/material/vaadin-avatar.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/avatar/theme/lumo/vaadin-avatar.js';
+import '@scoped-vaadin/avatar/theme/lumo/vaadin-avatar.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/avatar/src/vaadin-avatar.js';
+import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
 ```
 
 ## Contributing

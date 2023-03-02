@@ -1,14 +1,16 @@
-# @vaadin/email-field
+# @scoped-vaadin/email-field
 
-An extension of [`<vaadin-text-field>`](https://www.npmjs.com/package/@vaadin/text-field) component that only accepts email addresses as input.
+This component is based on [@vaadin/email-field](https://www.npmjs.com/package/@vaadin/email-field)
+
+An extension of [`<vaadin23-text-field>`](https://www.npmjs.com/package/@scoped-vaadin/text-field) component that only accepts email addresses as input.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/email-field)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/email-field)](https://www.npmjs.com/package/@vaadin/email-field)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/email-field)](https://www.npmjs.com/package/@scoped-vaadin/email-field)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-email-field label="Email"></vaadin-email-field>
+<vaadin23-email-field label="Email"></vaadin23-email-field>
 ```
 
 ## Installation
@@ -16,13 +18,13 @@ An extension of [`<vaadin-text-field>`](https://www.npmjs.com/package/@vaadin/te
 Install the component:
 
 ```sh
-npm i @vaadin/email-field
+npm i @scoped-vaadin/email-field
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/email-field';
+import '@scoped-vaadin/email-field';
 ```
 
 ## Themes
@@ -33,19 +35,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/email-field/theme/material/vaadin-email-field.js';
+import '@scoped-vaadin/email-field/theme/material/vaadin-email-field.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/email-field/theme/lumo/vaadin-email-field.js';
+import '@scoped-vaadin/email-field/theme/lumo/vaadin-email-field.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/email-field/src/vaadin-email-field.js';
+import '@scoped-vaadin/email-field/src/vaadin-email-field.js';
 ```
 
 ## Contributing

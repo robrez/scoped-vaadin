@@ -1,23 +1,25 @@
-# @vaadin/scroller
+# @scoped-vaadin/scroller
+
+This component is based on [@vaadin/scroller](https://www.npmjs.com/package/@vaadin/scroller)
 
 A component container for creating scrollable areas in the UI.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/scroller)
 
 ```html
-<vaadin-scroller scroll-direction="vertical">
+<vaadin23-scroller scroll-direction="vertical">
   <section>
     <h3>Personal information</h3>
-    <vaadin-text-field label="First name"></vaadin-text-field>
-    <vaadin-text-field label="Last name"></vaadin-text-field>
-    <vaadin-date-picker label="Birth date"></vaadin-date-picker>
+    <vaadin23-text-field label="First name"></vaadin23-text-field>
+    <vaadin23-text-field label="Last name"></vaadin23-text-field>
+    <vaadin23-date-picker label="Birth date"></vaadin23-date-picker>
   </section>
   <section>
     <h3>Employment information</h3>
-    <vaadin-text-field label="Position"></vaadin-text-field>
-    <vaadin-text-area label="Additional information"></vaadin-text-area>
+    <vaadin23-text-field label="Position"></vaadin23-text-field>
+    <vaadin23-text-area label="Additional information"></vaadin23-text-area>
   </section>
-</vaadin-scroller>
+</vaadin23-scroller>
 ```
 
 ## Installation
@@ -25,13 +27,13 @@ A component container for creating scrollable areas in the UI.
 Install the component:
 
 ```sh
-npm i @vaadin/scroller
+npm i @scoped-vaadin/scroller
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/scroller';
+import '@scoped-vaadin/scroller';
 ```
 
 ## Themes
@@ -42,19 +44,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/scroller/theme/material/vaadin-scroller.js';
+import '@scoped-vaadin/scroller/theme/material/vaadin-scroller.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/scroller/theme/lumo/vaadin-scroller.js';
+import '@scoped-vaadin/scroller/theme/lumo/vaadin-scroller.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/scroller/src/vaadin-scroller.js';
+import '@scoped-vaadin/scroller/src/vaadin-scroller.js';
 ```
 
 ## Contributing

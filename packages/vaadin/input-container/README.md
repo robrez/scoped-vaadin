@@ -1,4 +1,6 @@
-# @vaadin/input-container
+# @scoped-vaadin/input-container
+
+This component is based on [@vaadin/input-container](https://www.npmjs.com/package/@vaadin/input-container)
 
 A web component used internally by Vaadin field components.
 

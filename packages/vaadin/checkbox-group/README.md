@@ -1,19 +1,21 @@
-# @vaadin/checkbox-group
+# @scoped-vaadin/checkbox-group
+
+This component is based on [@vaadin/checkbox-group](https://www.npmjs.com/package/@vaadin/checkbox-group)
 
 A web component that allows the user to choose several items from a group of binary choices.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/checkbox)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/checkbox-group)](https://www.npmjs.com/package/@vaadin/checkbox-group)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/checkbox-group)](https://www.npmjs.com/package/@scoped-vaadin/checkbox-group)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-checkbox-group label="Export data">
-  <vaadin-checkbox value="0" label="Order ID"></vaadin-checkbox>
-  <vaadin-checkbox value="1" label="Product name"></vaadin-checkbox>
-  <vaadin-checkbox value="2" label="Customer"></vaadin-checkbox>
-  <vaadin-checkbox value="3" label="Status"></vaadin-checkbox>
-</vaadin-checkbox-group>
+<vaadin23-checkbox-group label="Export data">
+  <vaadin23-checkbox value="0" label="Order ID"></vaadin23-checkbox>
+  <vaadin23-checkbox value="1" label="Product name"></vaadin23-checkbox>
+  <vaadin23-checkbox value="2" label="Customer"></vaadin23-checkbox>
+  <vaadin23-checkbox value="3" label="Status"></vaadin23-checkbox>
+</vaadin23-checkbox-group>
 ```
 
 ## Installation
@@ -21,13 +23,13 @@ A web component that allows the user to choose several items from a group of bin
 Install the component:
 
 ```sh
-npm i @vaadin/checkbox-group
+npm i @scoped-vaadin/checkbox-group
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/checkbox-group';
+import '@scoped-vaadin/checkbox-group';
 ```
 
 ## Themes
@@ -38,19 +40,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/checkbox-group/theme/material/vaadin-checkbox-group.js';
+import '@scoped-vaadin/checkbox-group/theme/material/vaadin-checkbox-group.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/checkbox-group/theme/lumo/vaadin-checkbox-group.js';
+import '@scoped-vaadin/checkbox-group/theme/lumo/vaadin-checkbox-group.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/checkbox-group/src/vaadin-checkbox-group.js';
+import '@scoped-vaadin/checkbox-group/src/vaadin-checkbox-group.js';
 ```
 
 ## Contributing

@@ -1,4 +1,6 @@
-# @vaadin/select
+# @scoped-vaadin/select
+
+This component is based on [@vaadin/select](https://www.npmjs.com/package/@vaadin/select)
 
 A web component for selecting a single value from a list of options presented in an overlay.
 
@@ -8,9 +10,9 @@ A web component for selecting a single value from a list of options presented in
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-select label="Sort by"></vaadin-select>
+<vaadin23-select label="Sort by"></vaadin23-select>
 <script>
-  document.querySelector('vaadin-select').renderer = (root) => {
+  document.querySelector('vaadin23-select').renderer = (root) => {
     if (root.firstElementChild) {
       return;
     }
@@ -18,13 +20,13 @@ A web component for selecting a single value from a list of options presented in
     // Note that innerHTML is only used for demo purposes here!
     // Consider using Lit or another template library instead.
     root.innerHTML = `
-      <vaadin-list-box>
-        <vaadin-item value="recent">Most recent first</vaadin-item>
-        <vaadin-item value="rating-desc">Rating: high to low</vaadin-item>
-        <vaadin-item value="rating-asc">Rating: low to high</vaadin-item>
-        <vaadin-item value="price-desc">Price: high to low</vaadin-item>
-        <vaadin-item value="price-asc">Price: low to high</vaadin-item>
-      </vaadin-list-box>
+      <vaadin23-list-box>
+        <vaadin23-item value="recent">Most recent first</vaadin23-item>
+        <vaadin23-item value="rating-desc">Rating: high to low</vaadin23-item>
+        <vaadin23-item value="rating-asc">Rating: low to high</vaadin23-item>
+        <vaadin23-item value="price-desc">Price: high to low</vaadin23-item>
+        <vaadin23-item value="price-asc">Price: low to high</vaadin23-item>
+      </vaadin23-list-box>
     `;
   };
 </script>
@@ -37,13 +39,13 @@ A web component for selecting a single value from a list of options presented in
 Install the component:
 
 ```sh
-npm i @vaadin/select
+npm i @scoped-vaadin/select
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/select';
+import '@scoped-vaadin/select';
 ```
 
 ## Themes
@@ -54,19 +56,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/select/theme/material/vaadin-select.js';
+import '@scoped-vaadin/select/theme/material/vaadin-select.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/select/theme/lumo/vaadin-select.js';
+import '@scoped-vaadin/select/theme/lumo/vaadin-select.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/select/src/vaadin-select.js';
+import '@scoped-vaadin/select/src/vaadin-select.js';
 ```
 
 ## Contributing

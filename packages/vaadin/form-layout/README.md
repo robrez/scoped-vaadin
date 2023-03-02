@@ -1,18 +1,20 @@
-# @vaadin/form-layout
+# @scoped-vaadin/form-layout
+
+This component is based on [@vaadin/form-layout](https://www.npmjs.com/package/@vaadin/form-layout)
 
 A web component for building responsive forms with multiple columns.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/form-layout)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/form-layout)](https://www.npmjs.com/package/@vaadin/form-layout)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/form-layout)](https://www.npmjs.com/package/@scoped-vaadin/form-layout)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-form-layout>
-  <vaadin-text-field label="First Name" value="Jane"></vaadin-text-field>
-  <vaadin-text-field label="Last Name" value="Doe"></vaadin-text-field>
-  <vaadin-text-field label="Email" value="jane.doe@example.com"></vaadin-text-field>
-</vaadin-form-layout>
+<vaadin23-form-layout>
+  <vaadin23-text-field label="First Name" value="Jane"></vaadin23-text-field>
+  <vaadin23-text-field label="Last Name" value="Doe"></vaadin23-text-field>
+  <vaadin23-text-field label="Email" value="jane.doe@example.com"></vaadin23-text-field>
+</vaadin23-form-layout>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/form-layout/screenshot.png" width="880" alt="Screenshot of vaadin-form-layout">](https://vaadin.com/docs/latest/components/form-layout)
@@ -22,13 +24,13 @@ A web component for building responsive forms with multiple columns.
 Install the component:
 
 ```sh
-npm i @vaadin/form-layout
+npm i @scoped-vaadin/form-layout
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/form-layout';
+import '@scoped-vaadin/form-layout';
 ```
 
 ## Themes
@@ -39,19 +41,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/form-layout/theme/material/vaadin-form-layout.js';
+import '@scoped-vaadin/form-layout/theme/material/vaadin-form-layout.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/form-layout/theme/lumo/vaadin-form-layout.js';
+import '@scoped-vaadin/form-layout/theme/lumo/vaadin-form-layout.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/form-layout/src/vaadin-form-layout.js';
+import '@scoped-vaadin/form-layout/src/vaadin-form-layout.js';
 ```
 
 ## Contributing

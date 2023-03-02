@@ -62,6 +62,13 @@ function computePackagesRe() {
 
 const packagesRe = computePackagesRe();
 
+/**
+ * Replaces `@vaadin/` with `@scoped-vaadin/`
+ * except for where a package has been marked as excluded
+ *
+ * @param {string} input
+ * @returns {string}
+ */
 function replaceNpmScope(input) {
   const result = input.replace(packagesRe, (matched) => {
     return matched.replaceAll(`@vaadin/`, `@scoped-vaadin/`);
@@ -69,6 +76,13 @@ function replaceNpmScope(input) {
   return result;
 }
 
+/**
+ * Attempts to perform various mutations on package.json
+ *
+ * @param {string} content : ;
+ * @param {Path} filePath
+ * @returns {string}
+ */
 function processPackageJson(content, filePath) {
   const packageJson = JSON.parse(content);
   const {
@@ -133,6 +147,12 @@ function processPackageJson(content, filePath) {
   return JSON.stringify(result, null, 2);
 }
 
+/**
+ *
+ * @param {string} content : ;
+ * @param {Path} filePath
+ * @returns {string}
+ */
 function processCustomElementsRegistry(content, filePath) {
   let cleaned = content.replaceAll(`customElements`, `internalCustomElements`);
   if (cleaned.length !== content.length) {
@@ -205,6 +225,13 @@ function processLocalName(content) {
 }
 
 /**
+ * Attempts to find HTMLElement tag-names and replace them, eg:
+ *
+ *   "vaadin-button" -> "vaadin23-button"
+ *
+ * This is done using string search-and-replace only. There is no attempt to
+ * parse the input as codeF
+ *
  * @param {string} content : ;
  * @param {Path} filePath
  */
@@ -264,6 +291,33 @@ async function processJs(content, filePath) {
   return cleanedCustomElementsRegistry;
 }
 
+/**
+ * Replaces tag names and package names in README.md
+ *
+ * @param {string} content : ;
+ * @param {Path} filePath
+ * @returns {string}
+ */
+function processReadmeMd(content, filePath) {
+  let result = content;
+  result = processTagNames(result, filePath);
+  result = replaceNpmScope(result);
+
+  const vaadinPackageName = filePath.dir.replace("node_modules/", "");
+  const internalMd = `\nThis component is based on [${vaadinPackageName}](https://www.npmjs.com/package/${vaadinPackageName})`;
+
+  const lines = result.split("\n");
+  const newLines = [...lines.slice(0, 1), internalMd, ...lines.slice(1)];
+  result = newLines.join("\n");
+
+  return result;
+}
+
+/**
+ *
+ * @param {Path} filePath
+ * @returns {Promise<void>}
+ */
 async function processFile(filePath) {
   const destinationDir = filePath.dir.replace(
     nodePackagesRoot,
@@ -290,8 +344,12 @@ async function processFile(filePath) {
     content = await processJs(content, filePath);
   }
 
+  if (filePath.ext.toLowerCase() === ".md" && filePath.name === "README") {
+    content = processReadmeMd(content, filePath);
+  }
+
   fs.writeFileSync(outputFileName, content);
-  console.log(outputFileName);
+  // console.log(outputFileName);
 }
 
 function processPackage(packagePath) {
@@ -304,7 +362,6 @@ packages.forEach((vpackage) => processPackage(vpackage));
 
 // TODO  web-types.json
 // TODO  web-types.lit.jon
-// TODO  README.md
 
 // TODO need to ensure vendor packages receive the same version number as all of the other packages , eg:
 // - ../package.json

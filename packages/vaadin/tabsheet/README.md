@@ -1,24 +1,26 @@
-# @vaadin/tabsheet
+# @scoped-vaadin/tabsheet
+
+This component is based on [@vaadin/tabsheet](https://www.npmjs.com/package/@vaadin/tabsheet)
 
 A web component for organizing and grouping content into sections.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/tabs/#tab-sheet)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/tabsheet)](https://www.npmjs.com/package/@vaadin/tabsheet)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/tabsheet)](https://www.npmjs.com/package/@scoped-vaadin/tabsheet)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-tabsheet>
-  <vaadin-tabs slot="tabs">
-    <vaadin-tab id="tab-1">Tab 1</vaadin-tab>
-    <vaadin-tab id="tab-2">Tab 2</vaadin-tab>
-    <vaadin-tab id="tab-3">Tab 3</vaadin-tab>
-  </vaadin-tabs>
+<vaadin23-tabsheet>
+  <vaadin23-tabs slot="tabs">
+    <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
+    <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
+    <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
+  </vaadin23-tabs>
 
   <div tab="tab-1">Panel 1</div>
   <div tab="tab-2">Panel 2</div>
   <div tab="tab-3">Panel 3</div>
-</vaadin-tabsheet>
+</vaadin23-tabsheet>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tabsheet/screenshot.png" width="735" alt="Screenshot of vaadin-tabsheet">](https://vaadin.com/docs/latest/components/tabs/#tab-sheet)
@@ -28,13 +30,13 @@ A web component for organizing and grouping content into sections.
 Install the component:
 
 ```sh
-npm i @vaadin/tabsheet
+npm i @scoped-vaadin/tabsheet
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/tabsheet';
+import '@scoped-vaadin/tabsheet';
 ```
 
 ## Themes
@@ -45,19 +47,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/tabsheet/theme/material/vaadin-tabsheet.js';
+import '@scoped-vaadin/tabsheet/theme/material/vaadin-tabsheet.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/tabsheet/theme/lumo/vaadin-tabsheet.js';
+import '@scoped-vaadin/tabsheet/theme/lumo/vaadin-tabsheet.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/tabsheet/src/vaadin-tabsheet.js';
+import '@scoped-vaadin/tabsheet/src/vaadin-tabsheet.js';
 ```
 
 ## Contributing

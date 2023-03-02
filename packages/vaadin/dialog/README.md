@@ -1,17 +1,19 @@
-# @vaadin/dialog
+# @scoped-vaadin/dialog
+
+This component is based on [@vaadin/dialog](https://www.npmjs.com/package/@vaadin/dialog)
 
 A web component for presenting information and user interface elements in an overlay.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/dialog)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/dialog)](https://www.npmjs.com/package/@vaadin/dialog)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/dialog)](https://www.npmjs.com/package/@scoped-vaadin/dialog)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-dialog opened></vaadin-dialog>
+<vaadin23-dialog opened></vaadin23-dialog>
 
 <script>
-  const dialog = document.querySelector('vaadin-dialog');
+  const dialog = document.querySelector('vaadin23-dialog');
   dialog.renderer = function (root, dialog) {
     root.textContent = 'Sample dialog';
   };
@@ -25,13 +27,13 @@ A web component for presenting information and user interface elements in an ove
 Install the component:
 
 ```sh
-npm i @vaadin/dialog
+npm i @scoped-vaadin/dialog
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/dialog';
+import '@scoped-vaadin/dialog';
 ```
 
 ## Themes
@@ -42,19 +44,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/dialog/theme/material/vaadin-dialog.js';
+import '@scoped-vaadin/dialog/theme/material/vaadin-dialog.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/dialog/theme/lumo/vaadin-dialog.js';
+import '@scoped-vaadin/dialog/theme/lumo/vaadin-dialog.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/dialog/src/vaadin-dialog.js';
+import '@scoped-vaadin/dialog/src/vaadin-dialog.js';
 ```
 
 ## Contributing

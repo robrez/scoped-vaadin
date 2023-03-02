@@ -1,8 +1,10 @@
 # vaadin-list-mixin
 
+This component is based on [@vaadin/vaadin-list-mixin](https://www.npmjs.com/package/@vaadin/vaadin-list-mixin)
+
 `vaadin-list-mixin` is a mixin for `nav` elements, facilitating navigation and selection of childNodes.
 
-[![npm version](https://badgen.net/npm/v/@vaadin/vaadin-list-mixin)](https://www.npmjs.com/package/@vaadin/vaadin-list-mixin)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/vaadin-list-mixin)](https://www.npmjs.com/package/@scoped-vaadin/vaadin-list-mixin)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ## Contributing

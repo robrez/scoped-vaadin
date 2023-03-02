@@ -1,4 +1,6 @@
-# @vaadin/component-base
+# @scoped-vaadin/component-base
+
+This component is based on [@vaadin/component-base](https://www.npmjs.com/package/@vaadin/component-base)
 
 A set of helpers and mixins used by Vaadin components.
 

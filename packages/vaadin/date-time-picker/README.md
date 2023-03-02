@@ -1,14 +1,16 @@
-# @vaadin/date-time-picker
+# @scoped-vaadin/date-time-picker
+
+This component is based on [@vaadin/date-time-picker](https://www.npmjs.com/package/@vaadin/date-time-picker)
 
 An input field web component for selecting both a date and a time.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/date-time-picker)
 
-[![npm version](https://badgen.net/npm/v/@vaadin/date-time-picker)](https://www.npmjs.com/package/@vaadin/date-time-picker)
+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/date-time-picker)](https://www.npmjs.com/package/@scoped-vaadin/date-time-picker)
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin-date-time-picker></vaadin-date-time-picker>
+<vaadin23-date-time-picker></vaadin23-date-time-picker>
 ```
 
 ## Installation
@@ -16,13 +18,13 @@ An input field web component for selecting both a date and a time.
 Install the component:
 
 ```sh
-npm i @vaadin/date-time-picker
+npm i @scoped-vaadin/date-time-picker
 ```
 
 Once installed, import the component in your application:
 
 ```js
-import '@vaadin/date-time-picker';
+import '@scoped-vaadin/date-time-picker';
 ```
 
 ## Themes
@@ -33,19 +35,19 @@ The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packa
 To use the Material theme, import the component from the `theme/material` folder:
 
 ```js
-import '@vaadin/date-time-picker/theme/material/vaadin-date-time-picker.js';
+import '@scoped-vaadin/date-time-picker/theme/material/vaadin-date-time-picker.js';
 ```
 
 You can also import the Lumo version of the component explicitly:
 
 ```js
-import '@vaadin/date-time-picker/theme/lumo/vaadin-date-time-picker.js';
+import '@scoped-vaadin/date-time-picker/theme/lumo/vaadin-date-time-picker.js';
 ```
 
 Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
 
 ```js
-import '@vaadin/date-time-picker/src/vaadin-date-time-picker.js';
+import '@scoped-vaadin/date-time-picker/src/vaadin-date-time-picker.js';
 ```
 
 ## Contributing
