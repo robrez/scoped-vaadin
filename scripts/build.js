@@ -144,7 +144,7 @@ function processPackageJson(content, filePath) {
       },
     };
   }
-  return JSON.stringify(result, null, 2);
+  return JSON.stringify(result, null, 2) + "\n";
 }
 
 /**
@@ -382,9 +382,64 @@ function processPackage(packagePath) {
   files.forEach((filePath) => processFile(filePath));
 }
 
+/**
+ * Updates versions on internal package.json files
+ * @param {string} content : ;
+ * @returns {string}
+ */
+function processVendorPackageJson(content) {
+  const packageJson = JSON.parse(content);
+  const { version, dependencies, ...keep } = packageJson;
+  let newDependencies = {};
+  const versionMetaSelector = `${versionMeta.selector}${versionMeta.version}`;
+
+  if (dependencies) {
+    Object.keys(dependencies).forEach((dep) => {
+      const originalDepVersion = dependencies[dep];
+      const newDepVersion =
+        dep.indexOf("@scoped-vaadin") <= -1
+          ? originalDepVersion
+          : versionMetaSelector;
+      newDependencies[newDepName] = newDepVersion;
+    });
+  }
+
+  let result = {
+    version: `${versionMeta.version}`,
+    ...keep,
+  };
+
+  if (dependencies) {
+    reult = {
+      ...result,
+      dependencies,
+    };
+  }
+  return JSON.stringify(result, null, 2) + "\n";
+}
+
+/**
+ * Updates internal package.json files
+ */
+function processVendorPackageJsons() {
+  const files = [
+    "package.json",
+    ...glob.sync("packages/vendor/*/package.json", { dot: false }),
+  ];
+  const paths = files
+    .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .map((name) => Path.parse(name));
+  paths.forEach((filePath) => {
+    const inputFileName = posixify(Path.format(filePath));
+    let content = fs.readFileSync(inputFileName, "utf-8");
+    if (filePath.base === "package.json") {
+      content = processVendorPackageJson(content, filePath);
+    }
+    fs.writeFileSync(inputFileName, content);
+  });
+}
+
+processVendorPackageJsons();
+
 const packages = findPackages(nodePackagesRoot);
 packages.forEach((vpackage) => processPackage(vpackage));
-
-// TODO need to ensure vendor packages receive the same version number as all of the other packages , eg:
-// - ../package.json
-// - ../packages/vendor/internal-custom-elements-registry

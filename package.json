@@ -1,6 +1,6 @@
 {
+  "version": "23.0.1",
   "name": "@robrez/scoped-vaadin-web-components",
-  "version": "23.0.0",
   "description": "",
   "type": "module",
   "module": "index.js",

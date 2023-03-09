@@ -1,7 +1,7 @@
 {
+  "version": "23.0.1",
   "name": "@scoped-vaadin/vaadin-all",
   "private": true,
-  "version": "23.0.0",
   "description": "",
   "type": "module",
   "main": "index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/tabsheet",
-  "version": "23.0.0",
+  "version": "23.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -40,13 +40,13 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/component-base": "^23.0.0",
-    "@scoped-vaadin/field-base": "^23.0.0",
-    "@scoped-vaadin/scroller": "^23.0.0",
-    "@scoped-vaadin/tabs": "^23.0.0",
-    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.0",
-    "@scoped-vaadin/vaadin-material-styles": "^23.0.0",
-    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.0"
+    "@scoped-vaadin/component-base": "^23.0.1",
+    "@scoped-vaadin/field-base": "^23.0.1",
+    "@scoped-vaadin/scroller": "^23.0.1",
+    "@scoped-vaadin/tabs": "^23.0.1",
+    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.1",
+    "@scoped-vaadin/vaadin-material-styles": "^23.0.1",
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
   }
 }
