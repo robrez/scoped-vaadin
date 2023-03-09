@@ -1,31 +1,30 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
 import { InputController } from '@scoped-vaadin/field-base/src/input-controller.js';
 import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
 import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-input-controller.js';
-import { SlotTargetController } from '@scoped-vaadin/field-base/src/slot-target-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-radio-button>` is a web component representing a choice in a radio group.
+ * `<vaadin24-radio-button>` is a web component representing a choice in a radio group.
  * Only one radio button in the group can be selected at the same time.
  *
  * ```html
- * <vaadin23-radio-group label="Travel class">
- *   <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
- * </vaadin23-radio-group>
+ * <vaadin24-radio-group label="Travel class">
+ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
+ * </vaadin24-radio-group>
  * ```
  *
  * ### Styling
@@ -63,7 +62,7 @@ class RadioButton extends LabelMixin(
   CheckedMixin(DelegateFocusMixin(ActiveMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement)))))),
 ) {
   static get is() {
-    return 'vaadin23-radio-button';
+    return 'vaadin24-radio-button';
   }
 
   static get template() {
@@ -120,13 +119,9 @@ class RadioButton extends LabelMixin(
         }
       </style>
       <div class="vaadin-radio-button-container">
-        <div part="radio"></div>
+        <div part="radio" aria-hidden="true"></div>
         <slot name="input"></slot>
         <slot name="label"></slot>
-
-        <div style="display: none !important">
-          <slot id="noop"></slot>
-        </div>
       </div>
     `;
   }
@@ -173,21 +168,6 @@ class RadioButton extends LabelMixin(
       }),
     );
     this.addController(new LabelledInputController(this.inputElement, this._labelController));
-    this.addController(
-      new SlotTargetController(
-        this.$.noop,
-        () => this._labelController.node,
-        () => this.__warnDeprecated(),
-      ),
-    );
-  }
-
-  /** @private */
-  __warnDeprecated() {
-    console.warn(
-      `WARNING: Since Vaadin 22, placing the label as a direct child of a <vaadin23-radio-button> is deprecated.
-  Please use <label slot="label"> wrapper or the label property instead.`,
-    );
   }
 }
 

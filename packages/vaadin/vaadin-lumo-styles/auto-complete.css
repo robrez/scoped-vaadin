@@ -1,11 +1,11 @@
-/* This file contains declarations for CSS custom properties and utility 
- * classes of the Lumo theme in order to provide auto-complete support 
+/* This file contains declarations for CSS custom properties and utility
+ * classes of the Lumo theme in order to provide auto-complete support
  * for IDEs.
- * 
+ *
  * NOTE: This file is only intended to provide auto-complete support,
  * do not include it into an HTML page!
  */
- 
+
  /* Custom CSS properties */
 :host {
   --lumo-base-color: #fff;
@@ -89,7 +89,6 @@
   --lumo-border-radius-s: 0.25em;
   --lumo-border-radius-m: var(--lumo-border-radius, 0.25em);
   --lumo-border-radius-l: 0.5em;
-  --lumo-border-radius: 0.25em;
   --lumo-box-shadow-xs: 0 1px 4px -1px var(--lumo-shade-50pct);
   --lumo-box-shadow-s: 0 2px 4px -1px var(--lumo-shade-20pct), 0 3px 12px -1px var(--lumo-shade-30pct);
   --lumo-box-shadow-m: 0 2px 6px -1px var(--lumo-shade-20pct), 0 8px 24px -4px var(--lumo-shade-40pct);
@@ -98,6 +97,7 @@
   --lumo-clickable-cursor: default;
   --vaadin-checkbox-size: calc(var(--lumo-size-m) / 2);
   --vaadin-radio-button-size: calc(var(--lumo-size-m) / 2);
+  --vaadin-input-field-border-radius: var(--lumo-border-radius-m);
   --lumo-font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --lumo-font-size-xxs: 0.75rem;
   --lumo-font-size-xs: 0.8125rem;

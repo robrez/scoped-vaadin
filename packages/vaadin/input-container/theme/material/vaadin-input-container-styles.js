@@ -2,7 +2,7 @@ import '@scoped-vaadin/vaadin-material-styles/color.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-input-container',
+  'vaadin24-input-container',
   css`
     :host {
       position: relative;

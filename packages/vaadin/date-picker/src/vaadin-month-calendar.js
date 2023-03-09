@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@polymer/polymer/lib/elements/dom-repeat.js';
@@ -33,8 +33,12 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
           display: flex;
         }
 
-        [part='date'] {
+        [part~='date'] {
           outline: none;
+        }
+
+        [part~='disabled'] {
+          pointer-events: none;
         }
 
         [part='week-number'][hidden],
@@ -43,7 +47,7 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
         }
 
         [part='weekday'],
-        [part='date'] {
+        [part~='date'] {
           width: calc(100% / 7);
           padding: 0;
           font-weight: normal;
@@ -57,7 +61,7 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
         }
 
         :host([week-numbers]) [part='weekday']:not(:empty),
-        :host([week-numbers]) [part='date'] {
+        :host([week-numbers]) [part~='date'] {
           width: 12.5%;
         }
       </style>
@@ -100,12 +104,9 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
               <template is="dom-repeat" items="[[week]]">
                 <td
                   role="gridcell"
-                  part="date"
+                  part$="[[__getDatePart(item, focusedDate, selectedDate, minDate, maxDate)]]"
                   date="[[item]]"
-                  today$="[[_isToday(item)]]"
-                  focused$="[[__isDayFocused(item, focusedDate)]]"
                   tabindex$="[[__getDayTabindex(item, focusedDate)]]"
-                  selected$="[[__isDaySelected(item, selectedDate)]]"
                   disabled$="[[__isDayDisabled(item, minDate, maxDate)]]"
                   aria-selected$="[[__getDayAriaSelected(item, selectedDate)]]"
                   aria-disabled$="[[__getDayAriaDisabled(item, minDate, maxDate)]]"
@@ -121,7 +122,7 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get is() {
-    return 'vaadin23-month-calendar';
+    return 'vaadin24-month-calendar';
   }
 
   static get properties() {
@@ -205,16 +206,16 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
     ];
   }
 
+  get focusableDateElement() {
+    return [...this.shadowRoot.querySelectorAll('[part~=date]')].find((datePart) => {
+      return dateEquals(datePart.date, this.focusedDate);
+    });
+  }
+
   /** @protected */
   ready() {
     super.ready();
     addListener(this.$.monthGrid, 'tap', this._handleTap.bind(this));
-  }
-
-  get focusableDateElement() {
-    return [...this.shadowRoot.querySelectorAll('[part=date]')].find((datePart) => {
-      return dateEquals(datePart.date, this.focusedDate);
-    });
   }
 
   /* Returns true if all the dates in the month are out of the allowed range */
@@ -368,6 +369,28 @@ class MonthCalendar extends FocusMixin(ThemableMixin(PolymerElement)) {
 
   _preventDefault(e) {
     e.preventDefault();
+  }
+
+  __getDatePart(date, focusedDate, selectedDate, minDate, maxDate) {
+    const result = ['date'];
+
+    if (this.__isDayDisabled(date, minDate, maxDate)) {
+      result.push('disabled');
+    }
+
+    if (this.__isDayFocused(date, focusedDate)) {
+      result.push('focused');
+    }
+
+    if (this.__isDaySelected(date, selectedDate)) {
+      result.push('selected');
+    }
+
+    if (this._isToday(date)) {
+      result.push('today');
+    }
+
+    return result.join(' ');
   }
 
   __getWeekNumber(days) {

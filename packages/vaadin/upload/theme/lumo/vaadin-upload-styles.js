@@ -10,7 +10,7 @@ import { fieldButton } from '@scoped-vaadin/vaadin-lumo-styles/mixins/field-butt
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-upload',
+  'vaadin24-upload',
   css`
     :host {
       line-height: var(--lumo-line-height-m);
@@ -22,11 +22,6 @@ registerStyles(
       border-radius: var(--lumo-border-radius-l);
       padding: var(--lumo-space-m);
       transition: background-color 0.6s, border-color 0.6s;
-    }
-
-    [part='primary-buttons'] > * {
-      display: inline-block;
-      white-space: nowrap;
     }
 
     [part='drop-label'] {
@@ -50,24 +45,32 @@ registerStyles(
     :host([max-files-reached]) [part='drop-label'] {
       color: var(--lumo-disabled-text-color);
     }
+  `,
+  { moduleId: 'lumo-upload' },
+);
 
-    [part='drop-label-icon'] {
-      display: inline-block;
-    }
-
-    [part='drop-label-icon']::before {
+registerStyles(
+  'vaadin24-upload-icon',
+  css`
+    :host::before {
       content: var(--lumo-icons-upload);
       font-family: lumo-icons;
       font-size: var(--lumo-icon-size-m);
       line-height: 1;
       vertical-align: -0.25em;
     }
+  `,
+  { moduleId: 'lumo-upload-icon' },
+);
 
-    [part='file-list'] > *:not(:first-child) > * {
+registerStyles(
+  'vaadin24-upload-file-list',
+  css`
+    ::slotted(li:not(:first-of-type)) {
       border-top: 1px solid var(--lumo-contrast-10pct);
     }
   `,
-  { moduleId: 'lumo-upload' },
+  { moduleId: 'lumo-upload-file-list' },
 );
 
 const uploadFile = css`
@@ -172,16 +175,11 @@ const uploadFile = css`
     color: var(--lumo-error-text-color);
   }
 
-  [part='progress'] {
+  ::slotted([slot='progress']) {
     width: auto;
     margin-left: calc(var(--lumo-icon-size-m) + var(--lumo-space-xs));
     margin-right: calc(var(--lumo-icon-size-m) + var(--lumo-space-xs));
   }
-
-  [part='progress'][complete],
-  [part='progress'][error] {
-    display: none;
-  }
 `;
 
-registerStyles('vaadin23-upload-file', [fieldButton, uploadFile], { moduleId: 'lumo-upload-file' });
+registerStyles('vaadin24-upload-file', [fieldButton, uploadFile], { moduleId: 'lumo-upload-file' });

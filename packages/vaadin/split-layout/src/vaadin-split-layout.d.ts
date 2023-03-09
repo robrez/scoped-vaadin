@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -13,14 +13,14 @@ export interface SplitLayoutCustomEventMap {
 export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCustomEventMap {}
 
 /**
- * `<vaadin23-split-layout>` is a Web Component implementing a split layout for two
+ * `<vaadin24-split-layout>` is a Web Component implementing a split layout for two
  * content elements with a draggable splitter between them.
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div>First content element</div>
  *   <div>Second content element</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Horizontal and Vertical Layouts
@@ -31,10 +31,10 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  * You can change the split mode to vertical by setting the `orientation` attribute to `"vertical"`:
  *
  * ```html
- * <vaadin23-split-layout orientation="vertical">
+ * <vaadin24-split-layout orientation="vertical">
  *   <div>Content on the top</div>
  *   <div>Content on the bottom</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Layouts Combination
@@ -43,17 +43,17 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  * although you can use any other elements as well.
  *
  * For instance, in order to have a nested vertical split layout inside a
- * horizontal one, you can include `<vaadin23-split-layout>` as a content element
+ * horizontal one, you can include `<vaadin24-split-layout>` as a content element
  * inside another split layout:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div>First content element</div>
- *   <vaadin23-split-layout orientation="vertical">
+ *   <vaadin24-split-layout orientation="vertical">
  *     <div>Second content element</div>
  *     <div>Third content element</div>
- *   </vaadin23-split-layout>
- * </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * You can also trigger the vertical mode in JavaScript by setting the property:
@@ -61,7 +61,7 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  *
  * ### Split Layout Element Height
  *
- * `<vaadin23-split-layout>` element itself is a flex container. It does not inherit
+ * `<vaadin24-split-layout>` element itself is a flex container. It does not inherit
  * the parent height by default, but rather sets its height depending on the
  * content.
  *
@@ -69,35 +69,35 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  * block element:
  *
  * ```html
- * <vaadin23-split-layout style="height: 200px;">
+ * <vaadin24-split-layout style="height: 200px;">
  *   <div>First content element</div>
  *   <div>Second content element</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * It is possible to define percentage height as well. Note that you have to set
  * the parent height in order to make percentages work correctly. In the following
  * example, the `<body>` is resized to fill the entire viewport, and the
- * `<vaadin23-split-layout>` element is set to take 100% height of the `<body>`:
+ * `<vaadin24-split-layout>` element is set to take 100% height of the `<body>`:
  *
  * ```html
  * <body style="height: 100vh; margin: 0;">
- *   <vaadin23-split-layout style="height: 100%;">
+ *   <vaadin24-split-layout style="height: 100%;">
  *     <div>First</div>
  *     <div>Second</div>
- *   </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
  * </body>
  * ```
  *
- * Alternatively, you can use a flexbox layout to make `<vaadin23-split-layout>`
+ * Alternatively, you can use a flexbox layout to make `<vaadin24-split-layout>`
  * fill up the parent:
  *
  * ```html
  * <body style="height: 100vh; margin: 0; display: flex;">
- *   <vaadin23-split-layout style="flex: 1;">
+ *   <vaadin24-split-layout style="flex: 1;">
  *     <div>First</div>
  *     <div>Second</div>
- *   </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
  * </body>
  * ```
  *
@@ -115,10 +115,10 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  * recommended to assign the size for both content elements:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div style="width: 75%;">Three fourths</div>
  *   <div style="width: 25%;">One fourth</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Size Limits
@@ -131,10 +131,10 @@ export interface SplitLayoutEventMap extends HTMLElementEventMap, SplitLayoutCus
  * to avoid size conflicts:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div style="min-width: 50px; max-width: 150px;">First</div>
  *   <div>Second</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Styling
@@ -156,12 +156,6 @@ declare class SplitLayout extends ElementMixin(ThemableMixin(HTMLElement)) {
    */
   orientation: 'horizontal' | 'vertical';
 
-  /**
-   * @deprecated Since Vaadin 23, `notifyResize()` is deprecated. The component uses a
-   * ResizeObserver internally and doesn't need to be explicitly notified of resizes.
-   */
-  notifyResize(): void;
-
   addEventListener<K extends keyof SplitLayoutEventMap>(
     type: K,
     listener: (this: SplitLayout, ev: SplitLayoutEventMap[K]) => void,
@@ -177,7 +171,7 @@ declare class SplitLayout extends ElementMixin(ThemableMixin(HTMLElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-split-layout': SplitLayout;
+    'vaadin24-split-layout': SplitLayout;
   }
 }
 

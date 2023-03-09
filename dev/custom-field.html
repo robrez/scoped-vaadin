@@ -9,23 +9,23 @@
   </head>
 
   <body>
-    <vaadin23-custom-field
+    <vaadin24-custom-field
       label="Phone number"
       required
       error-message="This field is required"
       helper-text="Your public phone number"
     >
-      <vaadin23-select style="width: 6rem" value="+358" required></vaadin23-select>
-      <vaadin23-text-field
-        prevent-invalid-input
+      <vaadin24-select style="width: 6rem" value="+358" required></vaadin24-select>
+      <vaadin24-text-field
+        allowed-char-pattern="[0-9]*"
         pattern="[0-9]*"
         maxlength="4"
         style="width: 5rem"
         required
-      ></vaadin23-text-field>
-      <vaadin23-number-field required></vaadin23-number-field>
-      <vaadin23-tooltip slot="tooltip" text="Other users will not see this"></vaadin23-tooltip>
-    </vaadin23-custom-field>
+      ></vaadin24-text-field>
+      <vaadin24-number-field required></vaadin24-number-field>
+      <vaadin24-tooltip slot="tooltip" text="Other users will not see this"></vaadin24-tooltip>
+    </vaadin24-custom-field>
 
     <script type="module">
       import '@scoped-vaadin/custom-field';
@@ -36,17 +36,17 @@
       import '@scoped-vaadin/select';
       import '@scoped-vaadin/tooltip';
 
-      const select = document.querySelector('vaadin23-select');
+      const select = document.querySelector('vaadin24-select');
       select.focusElement.setAttribute('aria-label', 'Country code');
       select.items = ['+358', '+46', '+34', '+380'].map((value) => {
         return {
-          label: value
+          label: value,
         };
       });
 
-      document.querySelector('vaadin23-text-field').focusElement.setAttribute('aria-label', 'Area code');
+      document.querySelector('vaadin24-text-field').focusElement.setAttribute('aria-label', 'Area code');
 
-      document.querySelector('vaadin23-number-field').focusElement.setAttribute('aria-label', 'Number');
+      document.querySelector('vaadin24-number-field').focusElement.setAttribute('aria-label', 'Number');
     </script>
   </body>
 </html>

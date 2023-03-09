@@ -15,12 +15,12 @@
   </head>
 
   <body>
-    <vaadin23-dialog></vaadin23-dialog>
+    <vaadin24-dialog></vaadin24-dialog>
 
-    <vaadin23-button>Open dialog 1</vaadin23-button>
+    <vaadin24-button>Open dialog 1</vaadin24-button>
 
     <script type="module">
-      const dialog1 = document.querySelector('vaadin23-dialog');
+      const dialog1 = document.querySelector('vaadin24-dialog');
       dialog1.headerTitle = 'Title';
       dialog1.draggable = true;
       dialog1.resizable = true;
@@ -33,14 +33,14 @@
         root.style.maxWidth = '40em';
 
         // Second dialog
-        const dialog2 = document.createElement('vaadin23-dialog');
+        const dialog2 = document.createElement('vaadin24-dialog');
         dialog2.renderer = (root2) => {
           if (root2.firstChild) {
             return;
           }
 
           // Close second dialog
-          const btnClose2 = document.createElement('vaadin23-button');
+          const btnClose2 = document.createElement('vaadin24-button');
           btnClose2.textContent = 'Close dialog 2';
           btnClose2.addEventListener('click', () => {
             dialog2.opened = false;
@@ -52,7 +52,7 @@
         root.appendChild(dialog2);
 
         // Open second dialog
-        const btnOpen2 = document.createElement('vaadin23-button');
+        const btnOpen2 = document.createElement('vaadin24-button');
         btnOpen2.textContent = 'Open dialog 2';
         btnOpen2.addEventListener('click', () => {
           dialog2.opened = true;
@@ -70,8 +70,8 @@
         if (root.firstChild) {
           return;
         }
-        const button = document.createElement('vaadin23-button');
-        button.innerHTML = '<vaadin23-icon icon="lumo:cross" aria-label="close dialog"></vaadin23-icon>';
+        const button = document.createElement('vaadin24-button');
+        button.innerHTML = '<vaadin24-icon icon="lumo:cross" aria-label="close dialog"></vaadin24-icon>';
         button.theme = 'tertiary-inline icon';
         button.addEventListener('click', () => {
           dialog1.opened = false;
@@ -87,11 +87,11 @@
         if (root.firstChild) {
           return;
         }
-        const button = document.createElement('vaadin23-button');
+        const button = document.createElement('vaadin24-button');
         button.textContent = 'Action';
         button.theme = 'primary';
 
-        const button2 = document.createElement('vaadin23-button');
+        const button2 = document.createElement('vaadin24-button');
         button2.textContent = 'Action';
 
         const text = document.createElement('span');
@@ -101,7 +101,7 @@
       };
 
       // Open first dialog
-      const btnOpen1 = document.querySelector('vaadin23-button');
+      const btnOpen1 = document.querySelector('vaadin24-button');
       btnOpen1.addEventListener('click', () => {
         dialog1.opened = true;
       });

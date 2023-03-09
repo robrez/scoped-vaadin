@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -9,7 +9,7 @@ import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * An element used internally by `<vaadin23-field-highlighter>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @mixes DirMixin
@@ -18,7 +18,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 export class FieldOutline extends ThemableMixin(DirMixin(PolymerElement)) {
   static get is() {
-    return 'vaadin23-field-outline';
+    return 'vaadin24-field-outline';
   }
 
   static get template() {

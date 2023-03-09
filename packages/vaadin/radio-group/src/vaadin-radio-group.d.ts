@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
@@ -36,14 +36,14 @@ export interface RadioGroupCustomEventMap {
 export interface RadioGroupEventMap extends HTMLElementEventMap, RadioGroupCustomEventMap {}
 
 /**
- * `<vaadin23-radio-group>` is a web component that allows the user to choose one item from a group of choices.
+ * `<vaadin24-radio-group>` is a web component that allows the user to choose one item from a group of choices.
  *
  * ```html
- * <vaadin23-radio-group label="Travel class">
- *   <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
- * </vaadin23-radio-group>
+ * <vaadin24-radio-group label="Travel class">
+ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
+ * </vaadin24-radio-group>
  * ```
  *
  * ### Styling
@@ -108,7 +108,7 @@ declare class RadioGroup extends FieldMixin(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-radio-group': RadioGroup;
+    'vaadin24-radio-group': RadioGroup;
   }
 }
 

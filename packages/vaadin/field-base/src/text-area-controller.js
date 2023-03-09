@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
@@ -10,11 +10,8 @@ import { SlotController } from '@scoped-vaadin/component-base/src/slot-controlle
  */
 export class TextAreaController extends SlotController {
   constructor(host, callback) {
-    super(
-      host,
-      'textarea',
-      () => document.createElement('textarea'),
-      (host, node) => {
+    super(host, 'textarea', 'textarea', {
+      initializer: (node, host) => {
         const value = host.getAttribute('value');
         if (value) {
           node.value = value;
@@ -31,7 +28,7 @@ export class TextAreaController extends SlotController {
           callback(node);
         }
       },
-      true,
-    );
+      useUniqueId: true,
+    });
   }
 }

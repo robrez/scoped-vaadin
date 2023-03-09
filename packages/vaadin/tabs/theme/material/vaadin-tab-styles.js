@@ -3,7 +3,7 @@ import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-tab',
+  'vaadin24-tab',
   css`
     :host {
       display: flex;
@@ -128,8 +128,7 @@ registerStyles(
     }
 
     /* Small space between icon and label */
-    ::slotted(vaadin-icon:not(:only-child)),
-    ::slotted(iron-icon:not(:only-child)) {
+    ::slotted(vaadin-icon:not(:only-child)) {
       margin-bottom: 8px;
     }
 

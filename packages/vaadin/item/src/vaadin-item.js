@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -10,20 +10,20 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { ItemMixin } from './vaadin-item-mixin.js';
 
 /**
- * `<vaadin23-item>` is a Web Component providing layout for items in tabs and menus.
+ * `<vaadin24-item>` is a Web Component providing layout for items in tabs and menus.
  *
  * ```
- *   <vaadin23-item>
+ *   <vaadin24-item>
  *     Item content
- *   </vaadin23-item>
+ *   </vaadin24-item>
  * ```
  *
  * ### Selectable
  *
- * `<vaadin23-item>` has the `selected` property and the corresponding state attribute.
+ * `<vaadin24-item>` has the `selected` property and the corresponding state attribute.
  * Currently, the component sets the `selected` to false, when `disabled` property is set to true.
- * But other than that, the `<vaadin23-item>` does not switch selection by itself.
- * In general, it is the wrapper component, like `<vaadin23-list-box>`, which should update
+ * But other than that, the `<vaadin24-item>` does not switch selection by itself.
+ * In general, it is the wrapper component, like `<vaadin24-list-box>`, which should update
  * the `selected` property on the items, e. g. on mousedown or when Enter / Spacebar is pressed.
  *
  * ### Styling
@@ -72,7 +72,7 @@ class Item extends ItemMixin(ThemableMixin(DirMixin(PolymerElement))) {
   }
 
   static get is() {
-    return 'vaadin23-item';
+    return 'vaadin24-item';
   }
 
   constructor() {

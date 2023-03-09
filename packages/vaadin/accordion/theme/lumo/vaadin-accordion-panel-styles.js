@@ -22,4 +22,4 @@ const accordionPanel = css`
   }
 `;
 
-registerStyles('vaadin23-accordion-panel', [details, accordionPanel], { moduleId: 'lumo-accordion-panel' });
+registerStyles('vaadin24-accordion-panel', [details, accordionPanel], { moduleId: 'lumo-accordion-panel' });

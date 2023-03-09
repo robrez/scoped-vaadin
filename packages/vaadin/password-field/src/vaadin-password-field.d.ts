@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
@@ -40,24 +40,24 @@ export interface PasswordFieldEventMap extends HTMLElementEventMap, PasswordFiel
 }
 
 /**
- * `<vaadin23-password-field>` is an extension of `<vaadin23-text-field>` component for entering passwords.
+ * `<vaadin24-password-field>` is an extension of `<vaadin24-text-field>` component for entering passwords.
  *
  * ```html
- * <vaadin23-password-field label="Password"></vaadin23-password-field>
+ * <vaadin24-password-field label="Password"></vaadin24-password-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-password-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-password-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name       | Description
  * ----------------|----------------------------------------------------
  * `reveal-button` | The eye icon which toggles the password visibility
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute          | Description
  * -------------------|---------------------------------
@@ -112,7 +112,7 @@ declare class PasswordField extends TextField {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-password-field': PasswordField;
+    'vaadin24-password-field': PasswordField;
   }
 }
 

@@ -1,15 +1,26 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/list-box",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin23-list-box",
-          "description": "`<vaadin23-list-box>` is a Web Component for creating menus.\n\n```\n  <vaadin23-list-box selected=\"2\">\n    <vaadin23-item>Item 1</vaadin23-item>\n    <vaadin23-item>Item 2</vaadin23-item>\n    <vaadin23-item>Item 3</vaadin23-item>\n    <vaadin23-item>Item 4</vaadin23-item>\n  </vaadin23-list-box>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|------------------------\n`items`           | The items container\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-list-box",
+          "description": "`<vaadin24-list-box>` is a Web Component for creating menus.\n\n```\n  <vaadin24-list-box selected=\"2\">\n    <vaadin24-item>Item 1</vaadin24-item>\n    <vaadin24-item>Item 2</vaadin24-item>\n    <vaadin24-item>Item 3</vaadin24-item>\n    <vaadin24-item>Item 4</vaadin24-item>\n  </vaadin24-list-box>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|------------------------\n`items`           | The items container\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
+            {
+              "name": "disabled",
+              "description": "If true, the user cannot interact with this element.\nWhen the element is disabled, the selected item is\nnot updated when `selected` property is changed.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
             {
               "name": "selected",
               "description": "The index of the item selected in the items array.\nNote: Not updated when used in `multiple` selection mode.",
@@ -46,6 +57,17 @@
           ],
           "js": {
             "properties": [
+              {
+                "name": "disabled",
+                "description": "If true, the user cannot interact with this element.\nWhen the element is disabled, the selected item is\nnot updated when `selected` property is changed.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
               {
                 "name": "selected",
                 "description": "The index of the item selected in the items array.\nNote: Not updated when used in `multiple` selection mode.",

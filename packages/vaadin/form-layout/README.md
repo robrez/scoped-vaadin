@@ -10,11 +10,11 @@ A web component for building responsive forms with multiple columns.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-form-layout>
-  <vaadin23-text-field label="First Name" value="Jane"></vaadin23-text-field>
-  <vaadin23-text-field label="Last Name" value="Doe"></vaadin23-text-field>
-  <vaadin23-text-field label="Email" value="jane.doe@example.com"></vaadin23-text-field>
-</vaadin23-form-layout>
+<vaadin24-form-layout>
+  <vaadin24-text-field label="First Name" value="Jane"></vaadin24-text-field>
+  <vaadin24-text-field label="Last Name" value="Doe"></vaadin24-text-field>
+  <vaadin24-text-field label="Email" value="jane.doe@example.com"></vaadin24-text-field>
+</vaadin24-form-layout>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/form-layout/screenshot.png" width="880" alt="Screenshot of vaadin-form-layout">](https://vaadin.com/docs/latest/components/form-layout)

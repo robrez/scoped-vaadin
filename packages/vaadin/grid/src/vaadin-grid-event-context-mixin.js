@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 
@@ -24,7 +24,7 @@ export const EventContextMixin = (superClass) =>
      *
      * The returned object is populated only when a grid cell, header, footer or row details is found in `event.composedPath()`.
      * This means mostly mouse and keyboard events. If such a grid part is not found in the path, an empty object is returned.
-     * This may be the case eg. if the event is fired on the `<vaadin23-grid>` element and not any deeper in the DOM, or if
+     * This may be the case eg. if the event is fired on the `<vaadin24-grid>` element and not any deeper in the DOM, or if
      * the event targets the empty part of the grid body.
      *
      * @param {!Event} event

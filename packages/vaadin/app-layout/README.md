@@ -10,25 +10,25 @@ A web component for building common application layouts.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-app-layout>
-  <vaadin23-drawer-toggle slot="navbar touch-optimized"></vaadin23-drawer-toggle>
+<vaadin24-app-layout>
+  <vaadin24-drawer-toggle slot="navbar touch-optimized"></vaadin24-drawer-toggle>
   <h3 slot="navbar touch-optimized">Application Name</h3>
-  <vaadin23-tabs orientation="vertical" slot="drawer">
-    <vaadin23-tab>
+  <vaadin24-tabs orientation="vertical" slot="drawer">
+    <vaadin24-tab>
       <a href="/profile">
-        <vaadin23-icon icon="lumo:user"></vaadin23-icon>
+        <vaadin24-icon icon="lumo:user"></vaadin24-icon>
         Profile
       </a>
-    </vaadin23-tab>
-    <vaadin23-tab>
+    </vaadin24-tab>
+    <vaadin24-tab>
       <a href="/contact">
-        <vaadin23-icon icon="lumo:phone"></vaadin23-icon>
+        <vaadin24-icon icon="lumo:phone"></vaadin24-icon>
         Contact
       </a>
-    </vaadin23-tab>
-  </vaadin23-tabs>
+    </vaadin24-tab>
+  </vaadin24-tabs>
   <div>Page content</div>
-</vaadin23-app-layout>
+</vaadin24-app-layout>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/app-layout/screenshot.png" width="900" alt="Screenshot of vaadin-app-layout">](https://vaadin.com/docs/latest/components/app-layout)

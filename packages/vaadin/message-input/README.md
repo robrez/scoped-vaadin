@@ -7,7 +7,7 @@ A web component that allows users to author and send messages.
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/message-input)
 
 ```html
-<vaadin23-message-input></vaadin23-message-input>
+<vaadin24-message-input></vaadin24-message-input>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/message-input/screenshot.png" width="656" alt="Screenshot of vaadin-message-input">](https://vaadin.com/docs/latest/components/message-input)

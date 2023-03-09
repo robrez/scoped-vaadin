@@ -1,20 +1,23 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { progressBarStyles } from './vaadin-progress-bar-styles.js';
 import { ProgressMixin } from './vaadin-progress-mixin.js';
 
+registerStyles('vaadin24-progress-bar', progressBarStyles, { moduleId: 'vaadin-progress-bar-styles' });
+
 /**
- * `<vaadin23-progress-bar>` is a Web Component for progress bars.
+ * `<vaadin24-progress-bar>` is a Web Component for progress bars.
  *
  * ```html
- * <vaadin23-progress-bar min="0" max="1" value="0.5">
- * </vaadin23-progress-bar>
+ * <vaadin24-progress-bar min="0" max="1" value="0.5">
+ * </vaadin24-progress-bar>
  * ```
  *
  * ### Styling
@@ -46,44 +49,16 @@ import { ProgressMixin } from './vaadin-progress-mixin.js';
  * @mixes ElementMixin
  */
 class ProgressBar extends ElementMixin(ThemableMixin(ProgressMixin(PolymerElement))) {
+  static get is() {
+    return 'vaadin24-progress-bar';
+  }
+
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-          width: 100%; /* prevent collapsing inside non-stretching column flex */
-          height: 8px;
-        }
-
-        :host([hidden]) {
-          display: none !important;
-        }
-
-        [part='bar'] {
-          height: 100%;
-        }
-
-        [part='value'] {
-          height: 100%;
-          transform-origin: 0 50%;
-          transform: scaleX(var(--vaadin-progress-value));
-        }
-
-        /* RTL specific styles */
-
-        :host([dir='rtl']) [part='value'] {
-          transform-origin: 100% 50%;
-        }
-      </style>
-
       <div part="bar">
         <div part="value"></div>
       </div>
     `;
-  }
-
-  static get is() {
-    return 'vaadin23-progress-bar';
   }
 }
 

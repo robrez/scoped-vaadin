@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -65,7 +65,7 @@ export declare class ColumnBaseMixinClass<TItem> {
    * Receives two arguments:
    *
    * - `root` The header cell content DOM element. Append your content to it.
-   * - `column` The `<vaadin23-grid-column>` element.
+   * - `column` The `<vaadin24-grid-column>` element.
    */
   headerRenderer: GridHeaderFooterRenderer<TItem> | null | undefined;
 
@@ -74,17 +74,17 @@ export declare class ColumnBaseMixinClass<TItem> {
    * Receives two arguments:
    *
    * - `root` The footer cell content DOM element. Append your content to it.
-   * - `column` The `<vaadin23-grid-column>` element.
+   * - `column` The `<vaadin24-grid-column>` element.
    */
   footerRenderer: GridHeaderFooterRenderer<TItem> | null | undefined;
 }
 
 /**
- * A `<vaadin23-grid-column>` is used to configure how a column in `<vaadin23-grid>`
+ * A `<vaadin24-grid-column>` is used to configure how a column in `<vaadin24-grid>`
  * should look like.
  *
- * See [`<vaadin23-grid>`](#/elements/vaadin-grid) documentation for instructions on how
- * to configure the `<vaadin23-grid-column>`.
+ * See [`<vaadin24-grid>`](#/elements/vaadin-grid) documentation for instructions on how
+ * to configure the `<vaadin24-grid-column>`.
  */
 declare class GridColumn<TItem = GridDefaultItem> extends HTMLElement {
   /**
@@ -103,7 +103,7 @@ declare class GridColumn<TItem = GridDefaultItem> extends HTMLElement {
    * Receives three arguments:
    *
    * - `root` The cell content DOM element. Append your content to it.
-   * - `column` The `<vaadin23-grid-column>` element.
+   * - `column` The `<vaadin24-grid-column>` element.
    * - `model` The object with the properties related with
    *   the rendered item, contains:
    *   - `model.index` The index of the item.
@@ -144,7 +144,7 @@ interface GridColumn<TItem = GridDefaultItem> extends ColumnBaseMixinClass<TItem
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-column': GridColumn<GridDefaultItem>;
+    'vaadin24-grid-column': GridColumn<GridDefaultItem>;
   }
 }
 

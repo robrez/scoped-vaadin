@@ -10,7 +10,7 @@ An input field component for multi-line text input.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-text-area label="Comment"></vaadin23-text-area>
+<vaadin24-text-area label="Comment"></vaadin24-text-area>
 ```
 
 ## Installation

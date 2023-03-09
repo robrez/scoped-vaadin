@@ -1,39 +1,26 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
-import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { emailFieldStyles } from './vaadin-email-field-styles.js';
 
-// See https://github.com/vaadin/vaadin-text-field/issues/466
-registerStyles(
-  'vaadin23-email-field',
-  css`
-    :host([dir='rtl']) [part='input-field'] {
-      direction: ltr;
-    }
-
-    :host([dir='rtl']) [part='input-field'] ::slotted(input)::placeholder {
-      direction: rtl;
-      text-align: left;
-    }
-  `,
-  { moduleId: 'vaadin-email-field-styles' },
-);
+registerStyles('vaadin24-email-field', emailFieldStyles, { moduleId: 'vaadin-email-field-styles' });
 
 /**
- * `<vaadin23-email-field>` is a Web Component for email field control in forms.
+ * `<vaadin24-email-field>` is a Web Component for email field control in forms.
  *
  * ```html
- * <vaadin23-email-field label="Email"></vaadin23-email-field>
+ * <vaadin24-email-field label="Email"></vaadin24-email-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -47,7 +34,7 @@ registerStyles(
  */
 export class EmailField extends TextField {
   static get is() {
-    return 'vaadin23-email-field';
+    return 'vaadin24-email-field';
   }
 
   constructor() {
@@ -66,4 +53,4 @@ export class EmailField extends TextField {
   }
 }
 
-internalCustomElements.define('vaadin23-email-field', EmailField);
+internalCustomElements.define('vaadin24-email-field', EmailField);

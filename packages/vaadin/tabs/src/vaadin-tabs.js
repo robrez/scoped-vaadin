@@ -1,27 +1,28 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-tab.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { getNormalizedScrollLeft } from '@scoped-vaadin/component-base/src/dir-utils.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { ListMixin } from '@scoped-vaadin/component-base/src/list-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
-import { ListMixin } from '@scoped-vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-tabs>` is a Web Component for organizing and grouping content into sections.
+ * `<vaadin24-tabs>` is a Web Component for organizing and grouping content into sections.
  *
  * ```
- *   <vaadin23-tabs selected="4">
- *     <vaadin23-tab>Page 1</vaadin23-tab>
- *     <vaadin23-tab>Page 2</vaadin23-tab>
- *     <vaadin23-tab>Page 3</vaadin23-tab>
- *     <vaadin23-tab>Page 4</vaadin23-tab>
- *   </vaadin23-tabs>
+ *   <vaadin24-tabs selected="4">
+ *     <vaadin24-tab>Page 1</vaadin24-tab>
+ *     <vaadin24-tab>Page 2</vaadin24-tab>
+ *     <vaadin24-tab>Page 3</vaadin24-tab>
+ *     <vaadin24-tab>Page 4</vaadin24-tab>
+ *   </vaadin24-tabs>
  * ```
  *
  * ### Styling
@@ -143,7 +144,7 @@ class Tabs extends ResizeMixin(ElementMixin(ListMixin(ThemableMixin(PolymerEleme
   }
 
   static get is() {
-    return 'vaadin23-tabs';
+    return 'vaadin24-tabs';
   }
 
   static get properties() {
@@ -177,6 +178,28 @@ class Tabs extends ResizeMixin(ElementMixin(ListMixin(ThemableMixin(PolymerEleme
     this.__itemsResizeObserver = new ResizeObserver(() => {
       setTimeout(() => this._updateOverflow());
     });
+  }
+
+  /**
+   * @return {number}
+   * @protected
+   */
+  get _scrollOffset() {
+    return this._vertical ? this._scrollerElement.offsetHeight : this._scrollerElement.offsetWidth;
+  }
+
+  /**
+   * @return {!HTMLElement}
+   * @protected
+   * @override
+   */
+  get _scrollerElement() {
+    return this.$.scroll;
+  }
+
+  /** @private */
+  get __direction() {
+    return !this._vertical && this.__isRTL ? 1 : -1;
   }
 
   /** @protected */
@@ -222,39 +245,18 @@ class Tabs extends ResizeMixin(ElementMixin(ListMixin(ThemableMixin(PolymerEleme
     this._scroll(this.__direction * this._scrollOffset);
   }
 
-  /**
-   * @return {number}
-   * @protected
-   */
-  get _scrollOffset() {
-    return this._vertical ? this._scrollerElement.offsetHeight : this._scrollerElement.offsetWidth;
-  }
-
-  /**
-   * @return {!HTMLElement}
-   * @protected
-   */
-  get _scrollerElement() {
-    return this.$.scroll;
-  }
-
-  /** @private */
-  get __direction() {
-    return !this._vertical && this.getAttribute('dir') === 'rtl' ? 1 : -1;
-  }
-
   /** @private */
   _updateOverflow() {
     const scrollPosition = this._vertical
       ? this._scrollerElement.scrollTop
-      : this.__getNormalizedScrollLeft(this._scrollerElement);
+      : getNormalizedScrollLeft(this._scrollerElement, this.getAttribute('dir'));
     const scrollSize = this._vertical ? this._scrollerElement.scrollHeight : this._scrollerElement.scrollWidth;
 
     let overflow = scrollPosition > 0 ? 'start' : '';
     overflow += scrollPosition + this._scrollOffset < scrollSize ? ' end' : '';
 
     if (this.__direction === 1) {
-      overflow = overflow.replace(/start|end/gi, (matched) => {
+      overflow = overflow.replace(/start|end/giu, (matched) => {
         return matched === 'start' ? 'end' : 'start';
       });
     }

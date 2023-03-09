@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
@@ -50,7 +50,7 @@ export interface DatePickerLightEventMap extends HTMLElementEventMap, DatePicker
 }
 
 /**
- * `<vaadin23-date-picker-light>` is a customizable version of the `<vaadin23-date-picker>` providing
+ * `<vaadin24-date-picker-light>` is a customizable version of the `<vaadin24-date-picker>` providing
  * only the scrollable month calendar view and leaving the input field definition to the user.
  *
  * To create a custom input field, you need to add a child element which has a two-way
@@ -59,29 +59,23 @@ export interface DatePickerLightEventMap extends HTMLElementEventMap, DatePicker
  * using an `<input>` element.
  *
  * ```html
- * <vaadin23-date-picker-light attr-for-value="value">
+ * <vaadin24-date-picker-light attr-for-value="value">
  *   <input class="input">
- * </vaadin23-date-picker-light>
+ * </vaadin24-date-picker-light>
  * ```
  *
  * ### Styling
  *
- * The following shadow DOM parts are available for styling:
- *
- * Part name | Description | Theme for Element
- * ----------------|----------------|----------------
- * `overlay-content` | The overlay element | vaadin-date-picker-light
- *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * In addition to `<vaadin23-date-picker-light>` itself, the following
+ * In addition to `<vaadin24-date-picker-light>` itself, the following
  * internal components are themable:
  *
- * - `<vaadin23-date-picker-overlay>`
- * - `<vaadin23-date-picker-overlay-content>`
- * - `<vaadin23-month-calendar>`
+ * - `<vaadin24-date-picker-overlay>`
+ * - `<vaadin24-date-picker-overlay-content>`
+ * - `<vaadin24-month-calendar>`
  *
- * Note: the `theme` attribute value set on `<vaadin23-date-picker-light>`
+ * Note: the `theme` attribute value set on `<vaadin24-date-picker-light>`
  * is propagated to the internal themable components listed above.
  *
  * @fires {Event} change - Fired when the user commits a value change.
@@ -111,7 +105,7 @@ declare class DatePickerLight extends ThemableMixin(DatePickerMixin(ValidateMixi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-date-picker-light': DatePickerLight;
+    'vaadin24-date-picker-light': DatePickerLight;
   }
 }
 

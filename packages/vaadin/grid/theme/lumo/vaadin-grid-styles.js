@@ -8,7 +8,7 @@ import '@scoped-vaadin/checkbox/theme/lumo/vaadin-checkbox.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-grid',
+  'vaadin24-grid',
   css`
     :host {
       font-family: var(--lumo-font-family);
@@ -57,7 +57,7 @@ registerStyles(
     }
 
     /* Hide first body row top border */
-    :host(:not([theme~='no-row-borders'])) [part='row'][first] [part~='cell']:not([part~='details-cell']) {
+    :host(:not([theme~='no-row-borders'])) [part~='first-row'] [part~='cell']:not([part~='details-cell']) {
       border-top: 0;
       min-height: calc(var(--lumo-size-m) - var(--_lumo-grid-border-width));
     }
@@ -137,7 +137,7 @@ registerStyles(
       margin-top: -1px;
     }
 
-    :host([all-rows-visible]) [part~='row'][last][dragover='below'] [part~='cell']::after {
+    :host([all-rows-visible]) [part~='last-row'][dragover='below'] [part~='cell']::after {
       height: 1px;
     }
 
@@ -207,42 +207,42 @@ registerStyles(
       font-weight: 400;
     }
 
-    [part='row']:only-child [part~='header-cell'] {
+    [part~='row']:only-child [part~='header-cell'] {
       min-height: var(--lumo-size-xl);
     }
 
     /* Header borders */
 
     /* Hide first header row top border */
-    :host(:not([theme~='no-row-borders'])) [part='row']:first-child [part~='header-cell'] {
+    :host(:not([theme~='no-row-borders'])) [part~='row']:first-child [part~='header-cell'] {
       border-top: 0;
     }
 
-    [part='row']:last-child [part~='header-cell'] {
+    [part~='row']:last-child [part~='header-cell'] {
       border-bottom: var(--_lumo-grid-border-width) solid transparent;
     }
 
-    :host(:not([theme~='no-row-borders'])) [part='row']:last-child [part~='header-cell'] {
+    :host(:not([theme~='no-row-borders'])) [part~='row']:last-child [part~='header-cell'] {
       border-bottom-color: var(--_lumo-grid-secondary-border-color);
     }
 
     /* Overflow uses a stronger border color */
-    :host([overflow~='top']) [part='row']:last-child [part~='header-cell'] {
+    :host([overflow~='top']) [part~='row']:last-child [part~='header-cell'] {
       border-bottom-color: var(--_lumo-grid-border-color);
     }
 
     /* Footer borders */
 
-    [part='row']:first-child [part~='footer-cell'] {
+    [part~='row']:first-child [part~='footer-cell'] {
       border-top: var(--_lumo-grid-border-width) solid transparent;
     }
 
-    :host(:not([theme~='no-row-borders'])) [part='row']:first-child [part~='footer-cell'] {
+    :host(:not([theme~='no-row-borders'])) [part~='row']:first-child [part~='footer-cell'] {
       border-top-color: var(--_lumo-grid-secondary-border-color);
     }
 
     /* Overflow uses a stronger border color */
-    :host([overflow~='bottom']) [part='row']:first-child [part~='footer-cell'] {
+    :host([overflow~='bottom']) [part~='row']:first-child [part~='footer-cell'] {
       border-top-color: var(--_lumo-grid-border-color);
     }
 
@@ -309,8 +309,8 @@ registerStyles(
 
     /* Row stripes */
 
-    :host([theme~='row-stripes']) [part~='row']:not([odd]) [part~='body-cell'],
-    :host([theme~='row-stripes']) [part~='row']:not([odd]) [part~='details-cell'] {
+    :host([theme~='row-stripes']) [part~='even-row'] [part~='body-cell'],
+    :host([theme~='row-stripes']) [part~='even-row'] [part~='details-cell'] {
       background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
       background-repeat: repeat-x;
     }
@@ -334,7 +334,7 @@ registerStyles(
 
     /* Compact */
 
-    :host([theme~='compact']) [part='row']:only-child [part~='header-cell'] {
+    :host([theme~='compact']) [part~='row']:only-child [part~='header-cell'] {
       min-height: var(--lumo-size-m);
     }
 
@@ -342,7 +342,7 @@ registerStyles(
       min-height: var(--lumo-size-s);
     }
 
-    :host([theme~='compact']) [part='row'][first] [part~='cell']:not([part~='details-cell']) {
+    :host([theme~='compact']) [part~='first-row'] [part~='cell']:not([part~='details-cell']) {
       min-height: calc(var(--lumo-size-s) - var(--_lumo-grid-border-width));
     }
 

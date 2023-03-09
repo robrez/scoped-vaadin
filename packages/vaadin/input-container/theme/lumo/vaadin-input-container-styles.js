@@ -5,17 +5,33 @@ import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-input-container',
+  'vaadin24-input-container',
   css`
     :host {
-      border-radius: var(--lumo-border-radius-m);
       background-color: var(--lumo-contrast-10pct);
-      padding: 0 calc(0.375em + var(--lumo-border-radius-m) / 4 - 1px);
+      padding: 0 calc(0.375em + var(--_input-container-radius) / 4 - 1px);
       font-weight: 500;
       line-height: 1;
       position: relative;
       cursor: text;
       box-sizing: border-box;
+      border-radius:
+        /* See https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius#syntax */
+        var(--vaadin-input-field-top-start-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-top-end-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-bottom-end-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-bottom-start-radius, var(--_input-container-radius));
+      /* Fallback */
+      --_input-container-radius: var(--vaadin-input-field-border-radius, var(--lumo-border-radius-m));
+    }
+
+    :host([dir='rtl']) {
+      border-radius:
+        /* Don't use logical props, see https://github.com/vaadin/vaadin-time-picker/issues/145 */
+        var(--vaadin-input-field-top-end-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-top-start-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-bottom-start-radius, var(--_input-container-radius))
+        var(--vaadin-input-field-bottom-end-radius, var(--_input-container-radius));
     }
 
     /* Used for hover and activation effects */
@@ -76,7 +92,6 @@ registerStyles(
     }
 
     /* Slotted icons */
-    ::slotted(iron-icon),
     ::slotted(vaadin-icon) {
       color: var(--lumo-contrast-60pct);
       width: var(--lumo-icon-size-m);
@@ -84,7 +99,6 @@ registerStyles(
     }
 
     /* Vaadin icons are based on a 16x16 grid (unlike Lumo and Material icons with 24x24), so they look too big by default */
-    ::slotted(iron-icon[icon^='vaadin:']),
     ::slotted(vaadin-icon[icon^='vaadin:']) {
       padding: 0.25em;
       box-sizing: border-box !important;

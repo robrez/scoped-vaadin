@@ -1,29 +1,32 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import '@polymer/polymer/lib/elements/dom-repeat.js';
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { microTask } from '@scoped-vaadin/component-base/src/async.js';
+import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html, render } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { Message } from './vaadin-message.js';
 
 /**
- * `<vaadin23-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin23-message>
+ * `<vaadin24-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin24-message>
  *
  * ### Example
+ *
  * To create a new message list, add the component to the page:
+ *
  * ```html
- * <vaadin23-message-list></vaadin23-message-list>
+ * <vaadin24-message-list></vaadin24-message-list>
  * ```
  *
- * Provide the messages to the message list with the `items` property.
+ * Provide the messages to the message list with the [`items`](#/elements/vaadin-message-list#property-items) property.
+ *
  * ```js
- * document.querySelector('vaadin23-message-list').items = [
+ * document.querySelector('vaadin24-message-list').items = [
  *   { text: 'Hello list', time: 'yesterday', userName: 'Matt Mambo', userAbbr: 'MM', userColorIndex: 1 },
  *   { text: 'Another message', time: 'right now', userName: 'Linsey Listy', userAbbr: 'LL', userColorIndex: 2, userImg: '/static/img/avatar.jpg' }
  * ];
@@ -37,6 +40,9 @@ import { Message } from './vaadin-message.js';
  * ----------|----------------
  * `list`    | The container wrapping messages.
  *
+ * See the [`<vaadin24-message>`](#/elements/vaadin-message) documentation for the available
+ * state attributes and stylable shadow parts of message elements.
+ *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * @extends HTMLElement
@@ -46,7 +52,7 @@ import { Message } from './vaadin-message.js';
  */
 class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(PolymerElement))) {
   static get is() {
-    return 'vaadin23-message-list';
+    return 'vaadin24-message-list';
   }
 
   static get properties() {
@@ -75,7 +81,7 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
   }
 
   static get template() {
-    return html`
+    return legacyHtml`
       <style>
         :host {
           display: block;
@@ -87,21 +93,14 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
         }
       </style>
       <div part="list" role="list">
-        <template is="dom-repeat" items="[[items]]">
-          <vaadin23-message
-            time="[[item.time]]"
-            user-name="[[item.userName]]"
-            user-abbr="[[item.userAbbr]]"
-            user-img="[[item.userImg]]"
-            user-color-index="[[item.userColorIndex]]"
-            theme$="[[item.theme]]"
-            role="listitem"
-            on-focusin="_handleFocusEvent"
-            >[[item.text]]</vaadin23-message
-          >
-        </template>
+        <slot></slot>
       </div>
     `;
+  }
+
+  /** @protected */
+  get _messages() {
+    return [...this.querySelectorAll('vaadin24-message')];
   }
 
   /** @protected */
@@ -125,24 +124,50 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
     return this._messages;
   }
 
-  /** @protected */
-  get _messages() {
-    return Array.from(this.shadowRoot.querySelectorAll('vaadin23-message'));
-  }
-
   /** @private */
   _itemsChanged(newVal, oldVal) {
-    const focusedIndex = this._getIndexOfFocusableElement();
-    if (newVal && newVal.length) {
-      const moreItems = !oldVal || newVal.length > oldVal.length;
+    const items = newVal || [];
+    const oldItems = oldVal || [];
+
+    if (items.length || oldItems.length) {
+      const focusedIndex = this._getIndexOfFocusableElement();
       const closeToBottom = this.scrollHeight < this.clientHeight + this.scrollTop + 50;
-      microTask.run(() => {
-        this._setTabIndexesByIndex(focusedIndex);
-        if (moreItems && closeToBottom) {
+
+      this._renderMessages(items);
+      this._setTabIndexesByIndex(focusedIndex);
+
+      requestAnimationFrame(() => {
+        if (items.length > oldItems.length && closeToBottom) {
           this._scrollToLastMessage();
         }
       });
     }
+  }
+
+  /** @private */
+  _renderMessages(items) {
+    render(
+      html`
+        ${items.map(
+          (item) =>
+            html`
+              <vaadin24-message
+                role="listitem"
+                .time="${item.time}"
+                .userAbbr="${item.userAbbr}"
+                .userName="${item.userName}"
+                .userImg="${item.userImg}"
+                .userColorIndex="${item.userColorIndex}"
+                theme="${ifDefined(item.theme)}"
+                @focusin="${this._onMessageFocusIn}"
+                >${item.text}</vaadin24-message
+              >
+            `,
+        )}
+      `,
+      this,
+      { host: this },
+    );
   }
 
   /** @private */
@@ -153,7 +178,7 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
   }
 
   /** @private */
-  _handleFocusEvent(e) {
+  _onMessageFocusIn(e) {
     const target = e.composedPath().find((node) => node instanceof Message);
     this._setTabIndexesByMessage(target);
   }

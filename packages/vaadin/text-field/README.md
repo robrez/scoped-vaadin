@@ -10,7 +10,7 @@ A web component that allows the user to input and edit text.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-text-field label="Street Address"></vaadin23-text-field>
+<vaadin24-text-field label="Street Address"></vaadin24-text-field>
 ```
 
 ## Installation

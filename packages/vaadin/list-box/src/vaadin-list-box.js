@@ -1,26 +1,26 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
-import { MultiSelectListMixin } from '@scoped-vaadin/vaadin-list-mixin/vaadin-multi-select-list-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { MultiSelectListMixin } from './vaadin-multi-select-list-mixin.js';
 
 /**
- * `<vaadin23-list-box>` is a Web Component for creating menus.
+ * `<vaadin24-list-box>` is a Web Component for creating menus.
  *
  * ```
- *   <vaadin23-list-box selected="2">
- *     <vaadin23-item>Item 1</vaadin23-item>
- *     <vaadin23-item>Item 2</vaadin23-item>
- *     <vaadin23-item>Item 3</vaadin23-item>
- *     <vaadin23-item>Item 4</vaadin23-item>
- *   </vaadin23-list-box>
+ *   <vaadin24-list-box selected="2">
+ *     <vaadin24-item>Item 1</vaadin24-item>
+ *     <vaadin24-item>Item 2</vaadin24-item>
+ *     <vaadin24-item>Item 3</vaadin24-item>
+ *     <vaadin24-item>Item 4</vaadin24-item>
+ *   </vaadin24-list-box>
  * ```
  *
  * ### Styling
@@ -71,7 +71,7 @@ class ListBox extends ElementMixin(MultiSelectListMixin(ThemableMixin(Controller
   }
 
   static get is() {
-    return 'vaadin23-list-box';
+    return 'vaadin24-list-box';
   }
 
   static get properties() {
@@ -96,6 +96,15 @@ class ListBox extends ElementMixin(MultiSelectListMixin(ThemableMixin(Controller
     this.focused;
   }
 
+  /**
+   * @return {!HTMLElement}
+   * @protected
+   * @override
+   */
+  get _scrollerElement() {
+    return this.shadowRoot.querySelector('[part="items"]');
+  }
+
   /** @protected */
   ready() {
     super.ready();
@@ -108,17 +117,9 @@ class ListBox extends ElementMixin(MultiSelectListMixin(ThemableMixin(Controller
     this.addController(this._tooltipController);
   }
 
-  /**
-   * @return {!HTMLElement}
-   * @protected
-   */
-  get _scrollerElement() {
-    return this.shadowRoot.querySelector('[part="items"]');
-  }
-
   /** @private */
   _checkImport() {
-    const item = this.querySelector('vaadin23-item');
+    const item = this.querySelector('vaadin24-item');
     if (item && !(item instanceof PolymerElement)) {
       console.warn(`Make sure you have imported the vaadin-item element.`);
     }

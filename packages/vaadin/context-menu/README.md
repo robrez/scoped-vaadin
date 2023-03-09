@@ -10,24 +10,24 @@ A web component that can be attached to any component to display a context menu.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-context-menu>
+<vaadin24-context-menu>
   <span>Open a context menu with <b>right click</b> or with <b>long touch.</b></span>
-</vaadin23-context-menu>
+</vaadin24-context-menu>
 
 <script>
-  const contextMenu = document.querySelector('vaadin23-context-menu');
+  const contextMenu = document.querySelector('vaadin24-context-menu');
   contextMenu.renderer = function (root) {
     let listBox = root.firstElementChild;
     // Check if there is a list-box generated with the previous renderer call to update its content instead of recreation
     if (listBox) {
       listBox.innerHTML = '';
     } else {
-      listBox = document.createElement('vaadin23-list-box');
+      listBox = document.createElement('vaadin24-list-box');
       root.appendChild(listBox);
     }
 
     ['First', 'Second', 'Third'].forEach(function (name) {
-      const item = document.createElement('vaadin23-item');
+      const item = document.createElement('vaadin24-item');
       item.textContent = name + ' menu item';
       listBox.appendChild(item);
     });
@@ -37,7 +37,7 @@ A web component that can be attached to any component to display a context menu.
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/context-menu/screenshot.png" width="493" alt="Screenshot of vaadin-context-menu">](https://vaadin.com/docs/latest/components/context-menu)
 
-**Note:** [`<vaadin23-list-box>`](https://github.com/vaadin/vaadin-list-box) component used in the above example should be installed and imported separately.
+**Note:** [`<vaadin24-list-box>`](https://github.com/vaadin/vaadin-list-box) component used in the above example should be installed and imported separately.
 
 ## Installation
 

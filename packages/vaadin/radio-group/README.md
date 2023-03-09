@@ -7,11 +7,11 @@ A web component that allows the user to choose one item from a group of choices.
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/radio-button)
 
 ```html
-<vaadin23-radio-group label="Travel class">
-  <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
-  <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
-  <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
-</vaadin23-radio-group>
+<vaadin24-radio-group label="Travel class">
+  <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
+  <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
+  <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
+</vaadin24-radio-group>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/radio-group/screenshot.png" width="370" alt="Screenshot of vaadin-radio-group">](https://vaadin.com/docs/latest/components/radio-button)

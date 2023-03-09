@@ -19,7 +19,7 @@
       // import '@scoped-vaadin/radio-group/theme/material/vaadin-radio-group.js';
 
       import '@scoped-vaadin/icon';
-      import '@vaadin/icons/vaadin-iconset.js';
+      import '@scoped-vaadin/icons/vaadin-iconset.js';
 
       // Generate content for the panels
       const lorem = `Odio quis mi. Aliquam massa pede, pharetra quis, tincidunt quis, fringilla at, mauris. Vestibulum a massa.
@@ -38,41 +38,41 @@
   </head>
 
   <body>
-    <vaadin23-tabsheet>
-      <vaadin23-checkbox slot="prefix" label="All tabs"></vaadin23-checkbox>
-      <vaadin23-button slot="suffix" label="Suffix">
-        <vaadin23-icon icon="vaadin:plus" slot="prefix"></vaadin23-icon>
+    <vaadin24-tabsheet>
+      <vaadin24-checkbox slot="prefix" label="All tabs"></vaadin24-checkbox>
+      <vaadin24-button slot="suffix" label="Suffix">
+        <vaadin24-icon icon="vaadin:plus" slot="prefix"></vaadin24-icon>
         Add tab
-      </vaadin23-button>
+      </vaadin24-button>
 
-      <vaadin23-tabs slot="tabs">
-        <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
-        <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
-        <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
-        <vaadin23-tab id="tab-4">Tab 4</vaadin23-tab>
-        <vaadin23-tab id="tab-5">Tab 5</vaadin23-tab>
-        <vaadin23-tab id="tab-6">Loading tab</vaadin23-tab>
-      </vaadin23-tabs>
+      <vaadin24-tabs slot="tabs">
+        <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
+        <vaadin24-tab id="tab-2">Tab 2</vaadin24-tab>
+        <vaadin24-tab id="tab-3">Tab 3</vaadin24-tab>
+        <vaadin24-tab id="tab-4">Tab 4</vaadin24-tab>
+        <vaadin24-tab id="tab-5">Tab 5</vaadin24-tab>
+        <vaadin24-tab id="tab-6">Loading tab</vaadin24-tab>
+      </vaadin24-tabs>
 
       <div tab="tab-1"></div>
       <div tab="tab-2"></div>
       <div tab="tab-3"></div>
       <div tab="tab-4"></div>
       <div tab="tab-5"></div>
-    </vaadin23-tabsheet>
+    </vaadin24-tabsheet>
 
     <section style="margin-top: 40px">
-      <vaadin23-checkbox-group label="Tabsheet theme variants" id="variant-group" theme="vertical">
-        <vaadin23-checkbox label="bordered" value="bordered"></vaadin23-checkbox>
-      </vaadin23-checkbox-group>
+      <vaadin24-checkbox-group label="Tabsheet theme variants" id="variant-group" theme="vertical">
+        <vaadin24-checkbox label="bordered" value="bordered"></vaadin24-checkbox>
+      </vaadin24-checkbox-group>
 
-      <vaadin23-radio-group label="Direction" id="direction-group" value="ltr" theme="vertical">
-        <vaadin23-radio-button label="ltr" value="ltr"></vaadin23-radio-button>
-        <vaadin23-radio-button label="rtl" value="rtl"></vaadin23-radio-button>
-      </vaadin23-radio-group>
+      <vaadin24-radio-group label="Direction" id="direction-group" value="ltr" theme="vertical">
+        <vaadin24-radio-button label="ltr" value="ltr"></vaadin24-radio-button>
+        <vaadin24-radio-button label="rtl" value="rtl"></vaadin24-radio-button>
+      </vaadin24-radio-group>
 
       <script>
-        const tabsheet = document.querySelector('vaadin23-tabsheet');
+        const tabsheet = document.querySelector('vaadin24-tabsheet');
 
         document.querySelector('#variant-group').addEventListener('value-changed', (e) => {
           tabsheet.setAttribute('theme', e.detail.value.join(' '));

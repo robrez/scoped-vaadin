@@ -3,7 +3,7 @@ import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-grid-sorter',
+  'vaadin24-grid-sorter',
   css`
     :host {
       justify-content: flex-start;

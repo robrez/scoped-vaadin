@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -20,25 +20,31 @@ export type OverlayOpenedChangedEvent = CustomEvent<{ value: boolean }>;
 export type OverlayOpenEvent = CustomEvent;
 
 /**
- * Fired before the overlay will be closed.
- * If canceled the closing of the overlay is canceled as well.
+ * Fired when the opened overlay is about to be closed.
+ * Calling `preventDefault()` on the event cancels the closing.
  */
 export type OverlayCloseEvent = CustomEvent;
 
 /**
- * Fired when the overlay will be closed.
+ * Fired after the overlay is closed.
+ */
+export type OverlayClosedEvent = CustomEvent;
+
+/**
+ * Fired when the overlay starts to close.
+ * Closing the overlay can be asynchronous depending on the animation.
  */
 export type OverlayClosingEvent = CustomEvent;
 
 /**
- * Fired before the overlay will be closed on outside click.
- * If canceled the closing of the overlay is canceled as well.
+ * Fired before the overlay is closed on outside click.
+ * Calling `preventDefault()` on the event cancels the closing.
  */
 export type OverlayOutsideClickEvent = CustomEvent<{ sourceEvent: MouseEvent }>;
 
 /**
- * Fired before the overlay will be closed on ESC button press.
- * If canceled the closing of the overlay is canceled as well.
+ * Fired before the overlay is closed on Escape key press.
+ * Calling `preventDefault()` on the event cancels the closing.
  */
 export type OverlayEscapePressEvent = CustomEvent<{ sourceEvent: KeyboardEvent }>;
 
@@ -46,6 +52,7 @@ export interface OverlayCustomEventMap {
   'opened-changed': OverlayOpenedChangedEvent;
   'vaadin-overlay-open': OverlayOpenEvent;
   'vaadin-overlay-close': OverlayCloseEvent;
+  'vaadin-overlay-closed': OverlayClosedEvent;
   'vaadin-overlay-closing': OverlayClosingEvent;
   'vaadin-overlay-outside-click': OverlayOutsideClickEvent;
   'vaadin-overlay-escape-press': OverlayEscapePressEvent;
@@ -54,13 +61,10 @@ export interface OverlayCustomEventMap {
 export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
 
 /**
- * `<vaadin23-overlay>` is a Web Component for creating overlays. The content of the overlay
- * can be populated in two ways: imperatively by using renderer callback function and
- * declaratively by using Polymer's Templates.
+ * `<vaadin24-overlay>` is a Web Component for creating overlays. The content of the overlay
+ * can be populated imperatively by using `renderer` callback function.
  *
  * ### Rendering
- *
- * By default, the overlay uses the content provided by using the renderer callback function.
  *
  * The renderer function provides `root`, `owner`, `model` arguments when applicable.
  * Generate DOM content by using `model` object properties if needed, append it to the `root`
@@ -68,7 +72,7 @@ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
  * content, users are able to check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-overlay id="overlay"></vaadin23-overlay>
+ * <vaadin24-overlay id="overlay"></vaadin24-overlay>
  * ```
  * ```js
  * const overlay = document.querySelector('#overlay');
@@ -82,39 +86,9 @@ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
  * in the next renderer call and will be provided with the `root` argument.
  * On first call it will be empty.
  *
- * **NOTE:** when the renderer property is defined, the `<template>` content is not used.
- *
- * ### Templating
- *
- * Alternatively, the content can be provided with Polymer Template.
- * Overlay finds the first child template and uses that in case renderer callback function
- * is not provided. You can also set a custom template using the `template` property.
- *
- * After the content from the template is stamped, the `content` property
- * points to the content container.
- *
- * The overlay provides `forwardHostProp` when calling
- * `Polymer.Templatize.templatize` for the template, so that the bindings
- * from the parent scope propagate to the content.
- *
- * ```html
- * <vaadin23-overlay>
- *   <template>Overlay content</template>
- * </vaadin23-overlay>
- * ```
- *
  * ### Styling
  *
- * To style the overlay content, use styles in the parent scope:
- *
- * - If the overlay is used in a component, then the component styles
- *   apply the overlay content.
- * - If the overlay is used in the global DOM scope, then global styles
- *   apply to the overlay content.
- *
- * See examples for styling the overlay content in the live demos.
- *
- * The following Shadow DOM parts are available for styling the overlay component itself:
+ * The following Shadow DOM parts are available for styling:
  *
  * Part name  | Description
  * -----------|---------------------------------------------------------|
@@ -139,10 +113,11 @@ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} vaadin-overlay-open - Fired after the overlay is opened.
- * @fires {CustomEvent} vaadin-overlay-close - Fired before the overlay will be closed. If canceled the closing of the overlay is canceled as well.
- * @fires {CustomEvent} vaadin-overlay-closing - Fired when the overlay will be closed.
- * @fires {CustomEvent} vaadin-overlay-outside-click - Fired before the overlay will be closed on outside click. If canceled the closing of the overlay is canceled as well.
- * @fires {CustomEvent} vaadin-overlay-escape-press - Fired before the overlay will be closed on ESC button press. If canceled the closing of the overlay is canceled as well.
+ * @fires {CustomEvent} vaadin-overlay-close - Fired when the opened overlay is about to be closed. Calling `preventDefault()` on the event cancels the closing.
+ * @fires {CustomEvent} vaadin-overlay-closing - Fired when the overlay starts to close. Closing the overlay can be asynchronous depending on the animation.
+ * @fires {CustomEvent} vaadin-overlay-closed - Fired after the overlay is closed.
+ * @fires {CustomEvent} vaadin-overlay-outside-click - Fired before the overlay is closed on outside click. Calling `preventDefault()` on the event cancels the closing.
+ * @fires {CustomEvent} vaadin-overlay-escape-press - Fired before the overlay is closed on Escape key press. Calling `preventDefault()` on the event cancels the closing.
  */
 declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement))) {
   /**
@@ -166,16 +141,6 @@ declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement
   renderer: OverlayRenderer | null | undefined;
 
   /**
-   * The template of the overlay content.
-   */
-  template: HTMLTemplateElement | null | undefined;
-
-  /**
-   * References the content container after the template is stamped.
-   */
-  content: HTMLElement | undefined;
-
-  /**
    * When true the overlay has backdrop on top of content when opened.
    */
   withBackdrop: boolean;
@@ -187,7 +152,7 @@ declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement
 
   /**
    * When true the overlay won't disable the main content, showing
-   * it doesn’t change the functionality of the user interface.
+   * it doesn't change the functionality of the user interface.
    */
   modeless: boolean;
 
@@ -213,6 +178,11 @@ declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement
    * if `restoreFocusOnClose` is set to true.
    */
   restoreFocusNode?: HTMLElement;
+
+  /**
+   * Returns true if this is the last one in the opened overlays stack.
+   */
+  protected readonly _last: boolean;
 
   close(sourceEvent?: Event | null): void;
 
@@ -240,11 +210,19 @@ declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement
     listener: (this: Overlay, ev: OverlayEventMap[K]) => void,
     options?: EventListenerOptions | boolean,
   ): void;
+
+  protected _flushAnimation(type: 'closing' | 'opening'): void;
+
+  /**
+   * Whether to close the overlay on outside click or not.
+   * Override this method to customize the closing logic.
+   */
+  protected _shouldCloseOnOutsideClick(event: Event): boolean;
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-overlay': Overlay;
+    'vaadin24-overlay': Overlay;
   }
 }
 

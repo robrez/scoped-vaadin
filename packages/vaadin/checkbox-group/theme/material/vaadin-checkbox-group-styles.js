@@ -41,6 +41,6 @@ const checkboxGroup = css`
   }
 `;
 
-registerStyles('vaadin23-checkbox-group', [requiredField, helper, checkboxGroup], {
+registerStyles('vaadin24-checkbox-group', [requiredField, helper, checkboxGroup], {
   moduleId: 'material-checkbox-group',
 });

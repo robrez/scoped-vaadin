@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { TemplateResult } from 'lit';
@@ -44,9 +44,9 @@ export class ContextMenuRendererDirective extends LitRendererDirective<ContextMe
  *
  * Example of usage:
  * ```js
- * `<vaadin23-context-menu
+ * `<vaadin24-context-menu
  *   ${contextMenuRenderer((context, menu) => html`...`)}
- * ></vaadin23-context-menu>`
+ * ></vaadin24-context-menu>`
  * ```
  *
  * @param renderer the renderer callback that returns a Lit template.

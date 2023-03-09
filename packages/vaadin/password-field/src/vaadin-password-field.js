@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-password-field-button.js';
@@ -18,24 +18,24 @@ const ownTemplate = html`
 let memoizedTemplate;
 
 /**
- * `<vaadin23-password-field>` is an extension of `<vaadin23-text-field>` component for entering passwords.
+ * `<vaadin24-password-field>` is an extension of `<vaadin24-text-field>` component for entering passwords.
  *
  * ```html
- * <vaadin23-password-field label="Password"></vaadin23-password-field>
+ * <vaadin24-password-field label="Password"></vaadin24-password-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-password-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-password-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name       | Description
  * ----------------|----------------------------------------------------
  * `reveal-button` | The eye icon which toggles the password visibility
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute          | Description
  * -------------------|---------------------------------
@@ -53,7 +53,7 @@ let memoizedTemplate;
  */
 export class PasswordField extends TextField {
   static get is() {
-    return 'vaadin23-password-field';
+    return 'vaadin24-password-field';
   }
 
   static get template() {
@@ -122,6 +122,13 @@ export class PasswordField extends TextField {
     return ['__i18nChanged(i18n.*)'];
   }
 
+  constructor() {
+    super();
+    this._setType('password');
+    this.__boundRevealButtonClick = this._onRevealButtonClick.bind(this);
+    this.__boundRevealButtonTouchend = this._onRevealButtonTouchend.bind(this);
+  }
+
   /** @protected */
   get slotStyles() {
     const tag = this.localName;
@@ -140,30 +147,20 @@ export class PasswordField extends TextField {
     return this._revealButtonController && this._revealButtonController.node;
   }
 
-  constructor() {
-    super();
-    this._setType('password');
-    this.__boundRevealButtonClick = this._onRevealButtonClick.bind(this);
-    this.__boundRevealButtonTouchend = this._onRevealButtonTouchend.bind(this);
-  }
-
   /** @protected */
   ready() {
     super.ready();
 
     this._revealPart = this.shadowRoot.querySelector('[part="reveal-button"]');
 
-    this._revealButtonController = new SlotController(
-      this,
-      'reveal',
-      () => document.createElement('vaadin23-password-field-button'),
-      (host, btn) => {
-        btn.disabled = host.disabled;
+    this._revealButtonController = new SlotController(this, 'reveal', 'vaadin24-password-field-button', {
+      initializer: (btn) => {
+        btn.disabled = this.disabled;
 
-        btn.addEventListener('click', host.__boundRevealButtonClick);
-        btn.addEventListener('touchend', host.__boundRevealButtonTouchend);
+        btn.addEventListener('click', this.__boundRevealButtonClick);
+        btn.addEventListener('touchend', this.__boundRevealButtonTouchend);
       },
-    );
+    });
     this.addController(this._revealButtonController);
 
     this.__updateAriaLabel(this.i18n);

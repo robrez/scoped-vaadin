@@ -1,13 +1,13 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
 import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -23,15 +23,15 @@ export interface RadioButtonCustomEventMap {
 export interface RadioButtonEventMap extends HTMLElementEventMap, RadioButtonCustomEventMap {}
 
 /**
- * `<vaadin23-radio-button>` is a web component representing a choice in a radio group.
+ * `<vaadin24-radio-button>` is a web component representing a choice in a radio group.
  * Only one radio button in the group can be selected at the same time.
  *
  * ```html
- * <vaadin23-radio-group label="Travel class">
- *   <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
- * </vaadin23-radio-group>
+ * <vaadin24-radio-group label="Travel class">
+ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
+ * </vaadin24-radio-group>
  * ```
  *
  * ### Styling
@@ -80,7 +80,7 @@ declare class RadioButton extends LabelMixin(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-radio-button': RadioButton;
+    'vaadin24-radio-button': RadioButton;
   }
 }
 

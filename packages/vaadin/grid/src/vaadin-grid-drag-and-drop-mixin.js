@@ -1,8 +1,10 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { iterateChildren, updateRowStates } from './vaadin-grid-helpers.js';
+
 const DropMode = {
   BETWEEN: 'between',
   ON_TOP: 'on-top',
@@ -126,7 +128,7 @@ export const DragAndDropMixin = (superClass) =>
           // Safari doesn't position drag images from transformed
           // elements properly so we need to switch to use top temporarily
           const transform = row.style.transform;
-          row.style.top = /translateY\((.*)\)/.exec(transform)[1];
+          row.style.top = /translateY\((.*)\)/u.exec(transform)[1];
           row.style.transform = 'none';
           requestAnimationFrame(() => {
             row.style.top = '';
@@ -154,13 +156,14 @@ export const DragAndDropMixin = (superClass) =>
         // Set the default transfer data
         e.dataTransfer.setData('text', this.__formatDefaultTransferData(rows));
 
-        row.setAttribute('dragstart', rows.length > 1 ? rows.length : '');
+        updateRowStates(row, { dragstart: rows.length > 1 ? `${rows.length}` : '' });
         this.style.setProperty('--_grid-drag-start-x', `${e.clientX - rowRect.left + 20}px`);
         this.style.setProperty('--_grid-drag-start-y', `${e.clientY - rowRect.top + 10}px`);
 
         requestAnimationFrame(() => {
-          row.removeAttribute('dragstart');
-          this.updateStyles({ '--_grid-drag-start-x': '', '--_grid-drag-start-y': '' });
+          updateRowStates(row, { dragstart: null });
+          this.style.setProperty('--_grid-drag-start-x', '');
+          this.style.setProperty('--_grid-drag-start-y', '');
         });
 
         const event = new CustomEvent('grid-dragstart', {
@@ -252,7 +255,7 @@ export const DragAndDropMixin = (superClass) =>
         } else if (row) {
           this._dragOverItem = row._item;
           if (row.getAttribute('dragover') !== this._dropLocation) {
-            row.setAttribute('dragover', this._dropLocation);
+            updateRowStates(row, { dragover: this._dropLocation }, true);
           }
         } else {
           this._clearDragStyles();
@@ -306,7 +309,9 @@ export const DragAndDropMixin = (superClass) =>
     /** @protected */
     _clearDragStyles() {
       this.removeAttribute('dragover');
-      Array.from(this.$.items.children).forEach((row) => row.removeAttribute('dragover'));
+      iterateChildren(this.$.items, (row) => {
+        updateRowStates(row, { dragover: null }, true);
+      });
     }
 
     /** @private */
@@ -368,11 +373,11 @@ export const DragAndDropMixin = (superClass) =>
      * the conditions change.
      */
     filterDragAndDrop() {
-      Array.from(this.$.items.children)
-        .filter((row) => !row.hidden)
-        .forEach((row) => {
+      iterateChildren(this.$.items, (row) => {
+        if (!row.hidden) {
           this._filterDragAndDrop(row, this.__getRowModel(row));
-        });
+        }
+      });
     }
 
     /**
@@ -385,18 +390,18 @@ export const DragAndDropMixin = (superClass) =>
       const dragDisabled = !this.rowsDraggable || loading || (this.dragFilter && !this.dragFilter(model));
       const dropDisabled = !this.dropMode || loading || (this.dropFilter && !this.dropFilter(model));
 
-      const draggableElements = Array.from(row.children).map((cell) => cell._content);
-
-      draggableElements.forEach((e) => {
+      iterateChildren(row, (cell) => {
         if (dragDisabled) {
-          e.removeAttribute('draggable');
+          cell._content.removeAttribute('draggable');
         } else {
-          e.setAttribute('draggable', true);
+          cell._content.setAttribute('draggable', true);
         }
       });
 
-      row.toggleAttribute('drag-disabled', !!dragDisabled);
-      row.toggleAttribute('drop-disabled', !!dropDisabled);
+      updateRowStates(row, {
+        'drag-disabled': !!dragDisabled,
+        'drop-disabled': !!dropDisabled,
+      });
     }
 
     /**

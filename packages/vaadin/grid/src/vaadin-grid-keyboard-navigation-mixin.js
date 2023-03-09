@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
@@ -77,37 +77,6 @@ export const KeyboardNavigationMixin = (superClass) =>
       };
     }
 
-    /** @protected */
-    ready() {
-      super.ready();
-
-      if (this._ios || this._android) {
-        // Disable keyboard navigation on mobile devices
-        return;
-      }
-
-      this.addEventListener('keydown', this._onKeyDown);
-      this.addEventListener('keyup', this._onKeyUp);
-
-      this.addEventListener('focusin', this._onFocusIn);
-      this.addEventListener('focusout', this._onFocusOut);
-
-      // When focus goes from cell to another cell, focusin/focusout events do
-      // not escape the grid’s shadowRoot, thus listening inside the shadowRoot.
-      this.$.table.addEventListener('focusin', this._onContentFocusIn.bind(this));
-
-      this.addEventListener('mousedown', () => {
-        this.toggleAttribute('navigating', false);
-        this._isMousedown = true;
-
-        // Reset stored order when moving focus with mouse.
-        this._focusedColumnOrder = undefined;
-      });
-      this.addEventListener('mouseup', () => {
-        this._isMousedown = false;
-      });
-    }
-
     /** @private */
     get __rowFocusMode() {
       return (
@@ -132,6 +101,37 @@ export const KeyboardNavigationMixin = (superClass) =>
           const cell = focusable.firstElementChild;
           this[prop] = cell._focusButton || cell;
         }
+      });
+    }
+
+    /** @protected */
+    ready() {
+      super.ready();
+
+      if (this._ios || this._android) {
+        // Disable keyboard navigation on mobile devices
+        return;
+      }
+
+      this.addEventListener('keydown', this._onKeyDown);
+      this.addEventListener('keyup', this._onKeyUp);
+
+      this.addEventListener('focusin', this._onFocusIn);
+      this.addEventListener('focusout', this._onFocusOut);
+
+      // When focus goes from cell to another cell, focusin/focusout events do
+      // not escape the grid's shadowRoot, thus listening inside the shadowRoot.
+      this.$.table.addEventListener('focusin', this._onContentFocusIn.bind(this));
+
+      this.addEventListener('mousedown', () => {
+        this.toggleAttribute('navigating', false);
+        this._isMousedown = true;
+
+        // Reset stored order when moving focus with mouse.
+        this._focusedColumnOrder = undefined;
+      });
+      this.addEventListener('mouseup', () => {
+        this._isMousedown = false;
       });
     }
 
@@ -243,7 +243,7 @@ export const KeyboardNavigationMixin = (superClass) =>
 
       this._detectInteracting(e);
       if (this.interacting && keyGroup !== 'Interaction') {
-        // When in the interacting mode, only the “Interaction” keys are handled.
+        // When in the interacting mode, only the "Interaction" keys are handled.
         keyGroup = undefined;
       }
 
@@ -300,6 +300,7 @@ export const KeyboardNavigationMixin = (superClass) =>
       e.preventDefault();
 
       const visibleItemsCount = this._lastVisibleIndex - this._firstVisibleIndex - 1;
+      const isRTL = this.__isRTL;
 
       // Handle keyboard interaction as defined in:
       // https://w3c.github.io/aria-practices/#keyboard-interaction-24
@@ -308,10 +309,10 @@ export const KeyboardNavigationMixin = (superClass) =>
         dy = 0;
       switch (key) {
         case 'ArrowRight':
-          dx = this.__isRTL ? -1 : 1;
+          dx = isRTL ? -1 : 1;
           break;
         case 'ArrowLeft':
-          dx = this.__isRTL ? 1 : -1;
+          dx = isRTL ? 1 : -1;
           break;
         case 'Home':
           if (this.__rowFocusMode) {
@@ -361,8 +362,8 @@ export const KeyboardNavigationMixin = (superClass) =>
         return;
       }
 
-      const forwardsKey = this.__isRTL ? 'ArrowLeft' : 'ArrowRight';
-      const backwardsKey = this.__isRTL ? 'ArrowRight' : 'ArrowLeft';
+      const forwardsKey = isRTL ? 'ArrowLeft' : 'ArrowRight';
+      const backwardsKey = isRTL ? 'ArrowRight' : 'ArrowLeft';
       if (key === forwardsKey) {
         // "Right Arrow:"
         if (this.__rowFocusMode) {
@@ -525,7 +526,7 @@ export const KeyboardNavigationMixin = (superClass) =>
       const activeRowGroup = activeRow.parentNode;
       const currentRowIndex = this.__getIndexInGroup(activeRow, this._focusedItemIndex);
 
-      // _focusedColumnOrder is memoized — this is to ensure predictable
+      // _focusedColumnOrder is memoized - this is to ensure predictable
       // navigation when entering and leaving detail and column group cells.
       if (this._focusedColumnOrder === undefined) {
         if (isCurrentCellRowDetails) {
@@ -544,7 +545,7 @@ export const KeyboardNavigationMixin = (superClass) =>
       } else {
         // Focusing a regular cell on the destination row
 
-        // Find orderedColumnIndex — the index of order closest matching the
+        // Find orderedColumnIndex - the index of order closest matching the
         // original _focusedColumnOrder in the sorted array of orders
         // of the visible columns on the destination row.
         const dstRowIndex = this.__getIndexInGroup(dstRow, this._focusedItemIndex);
@@ -585,7 +586,7 @@ export const KeyboardNavigationMixin = (superClass) =>
       const localTarget = e.composedPath()[0];
       const localTargetIsTextInput =
         localTarget.localName === 'input' &&
-        !/^(button|checkbox|color|file|image|radio|range|reset|submit)$/i.test(localTarget.type);
+        !/^(button|checkbox|color|file|image|radio|range|reset|submit)$/iu.test(localTarget.type);
 
       let wantInteracting;
       switch (key) {
@@ -723,7 +724,7 @@ export const KeyboardNavigationMixin = (superClass) =>
 
     /** @private */
     _onKeyUp(e) {
-      if (!/^( |SpaceBar)$/.test(e.key) || this.interacting) {
+      if (!/^( |SpaceBar)$/u.test(e.key) || this.interacting) {
         return;
       }
 

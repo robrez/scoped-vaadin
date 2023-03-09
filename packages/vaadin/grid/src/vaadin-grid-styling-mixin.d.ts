@@ -1,13 +1,18 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
 import type { GridItemModel } from './vaadin-grid.js';
 import type { GridColumn } from './vaadin-grid-column.js';
 
-export type GridCellClassNameGenerator<TItem> = (column: GridColumn<TItem>, model: GridItemModel<TItem>) => string;
+export type GridCellPartNameGenerator<TItem> = (column: GridColumn<TItem>, model: GridItemModel<TItem>) => string;
+
+/**
+ * @deprecated Use `GridPartCellGenerator` type and `cellPartNameGenerator` API instead.
+ */
+export type GridCellClassNameGenerator<TItem> = GridCellPartNameGenerator<TItem>;
 
 export declare function StylingMixin<TItem, T extends Constructor<HTMLElement>>(
   base: T,
@@ -21,7 +26,28 @@ export declare class StylingMixinClass<TItem> {
    * characters.
    *
    * Receives two arguments:
-   * - `column` The `<vaadin23-grid-column>` element (`undefined` for details-cell).
+   * - `column` The `<vaadin24-grid-column>` element (`undefined` for details-cell).
+   * - `model` The object with the properties related with
+   *   the rendered item, contains:
+   *   - `model.index` The index of the item.
+   *   - `model.item` The item.
+   *   - `model.expanded` Sublevel toggle state.
+   *   - `model.level` Level of the tree represented with a horizontal offset of the toggle button.
+   *   - `model.selected` Selected state.
+   *
+   * @deprecated Use `cellPartNameGenerator` instead.
+   */
+  cellClassNameGenerator: GridCellClassNameGenerator<TItem> | null | undefined;
+
+  /**
+   * A function that allows generating CSS `part` names for grid cells in Shadow DOM based
+   * on their row and column, for styling from outside using the `::part()` selector.
+   *
+   * The return value should be the generated part name as a string, or multiple part names
+   * separated by whitespace characters.
+   *
+   * Receives two arguments:
+   * - `column` The `<vaadin24-grid-column>` element (`undefined` for details-cell).
    * - `model` The object with the properties related with
    *   the rendered item, contains:
    *   - `model.index` The index of the item.
@@ -30,13 +56,23 @@ export declare class StylingMixinClass<TItem> {
    *   - `model.level` Level of the tree represented with a horizontal offset of the toggle button.
    *   - `model.selected` Selected state.
    */
-  cellClassNameGenerator: GridCellClassNameGenerator<TItem> | null | undefined;
+  cellPartNameGenerator: GridCellPartNameGenerator<TItem> | null | undefined;
 
   /**
    * Runs the `cellClassNameGenerator` for the visible cells.
    * If the generator depends on varying conditions, you need to
    * call this function manually in order to update the styles when
    * the conditions change.
+   *
+   * @deprecated Use `cellPartNameGenerator` and `generateCellPartNames()` instead.
    */
   generateCellClassNames(): void;
+
+  /**
+   * Runs the `cellPastNameGenerator` for the visible cells.
+   * If the generator depends on varying conditions, you need to
+   * call this function manually in order to update the styles when
+   * the conditions change.
+   */
+  generateCellPartNames(): void;
 }

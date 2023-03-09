@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
@@ -8,7 +8,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-field-outline',
+  'vaadin24-field-outline',
   css`
     :host {
       transition: opacity 0.3s;
@@ -24,7 +24,7 @@ registerStyles(
       right: 0;
       bottom: 0;
       box-shadow: 0 0 0 2px var(--_active-user-color);
-      border-radius: var(--lumo-border-radius);
+      border-radius: var(--lumo-border-radius-s);
       transition: box-shadow 0.3s;
     }
 

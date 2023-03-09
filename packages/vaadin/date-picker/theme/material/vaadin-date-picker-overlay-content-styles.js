@@ -3,10 +3,11 @@ import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import '@scoped-vaadin/vaadin-material-styles/shadow.js';
 import '@scoped-vaadin/button/theme/material/vaadin-button.js';
+import './vaadin-date-picker-year-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-date-picker-overlay-content',
+  'vaadin24-date-picker-overlay-content',
   css`
     :host {
       background: var(--material-background-color);
@@ -20,13 +21,10 @@ registerStyles(
       position: absolute;
     }
 
-    /* Fullscreen Toolbar */
-
     [part='overlay-header'] {
       display: flex;
       align-items: baseline;
       position: relative;
-      z-index: 2;
       color: var(--material-body-text-color);
       background: var(--material-secondary-background-color);
       border-bottom: 2px solid var(--material-primary-color);
@@ -89,45 +87,27 @@ registerStyles(
       transform: rotate(90deg);
     }
 
-    /* Month scroller */
-
-    [part='months'] {
+    ::slotted([slot='months']) {
       --vaadin-infinite-scroller-item-height: 328px;
       text-align: center;
     }
 
-    /* Year scroller */
-
-    [part='years'] {
-      z-index: 1;
+    ::slotted([slot='years']) {
       background: var(--material-secondary-text-color);
       color: var(--material-background-color);
+      font-size: var(--material-body-font-size);
+      font-weight: 400;
+      line-height: 1.4;
       text-align: center;
     }
 
-    [part='years']::before {
-      z-index: 2;
+    ::slotted([slot='years'])::before {
       border: 0;
       width: 8px;
       height: 8px;
       transform: translateX(-50%) rotate(-45deg);
       background: var(--material-background-color);
     }
-
-    [part='year-number'] {
-      font-size: var(--material-small-font-size);
-      line-height: 10px; /* NOTE(platosha): chosen to align years to months */
-    }
-
-    [part='year-separator'] {
-      background-color: currentColor;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      margin: calc(0.5 * var(--vaadin-infinite-scroller-item-height, 80px) - 0.5 * 10px - 0.5 * 4px) auto;
-    }
-
-    /* Bottom Bar */
 
     [part='toolbar'] {
       display: flex;
@@ -136,16 +116,15 @@ registerStyles(
       border-top: 1px solid var(--material-divider-color);
     }
 
-    [part='cancel-button'] {
+    ::slotted([slot='cancel-button']) {
       order: 1;
     }
 
-    [part='today-button'] {
+    ::slotted([slot='today-button']) {
       order: 2;
     }
 
-    [part='today-button'],
-    [part='cancel-button'] {
+    ::slotted(vaadin-button) {
       margin: 0 4px;
     }
   `,

@@ -11,7 +11,7 @@ globalStyle.textContent = 'html { --vaadin-avatar-size: var(--lumo-size-m); }';
 document.head.appendChild(globalStyle);
 
 registerStyles(
-  'vaadin23-avatar',
+  'vaadin24-avatar',
   css`
     :host {
       color: var(--lumo-secondary-text-color);

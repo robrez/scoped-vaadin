@@ -27,6 +27,10 @@ const drawerToggle = css`
     font-size: var(--lumo-icon-size-m);
     content: var(--lumo-icons-menu);
   }
+
+  :host([slot~='navbar']) {
+    color: var(--lumo-secondary-text-color);
+  }
 `;
 
-registerStyles('vaadin23-drawer-toggle', [button, drawerToggle], { moduleId: 'lumo-drawer-toggle' });
+registerStyles('vaadin24-drawer-toggle', [button, drawerToggle], { moduleId: 'lumo-drawer-toggle' });

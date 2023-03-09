@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
@@ -30,12 +30,16 @@ import { GridRowDetailsRenderer } from './vaadin-grid-row-details-mixin.js';
 import type { ScrollMixinClass } from './vaadin-grid-scroll-mixin.js';
 import type { SelectionMixinClass } from './vaadin-grid-selection-mixin.js';
 import type { SortMixinClass } from './vaadin-grid-sort-mixin.js';
-import type { StylingMixinClass } from './vaadin-grid-styling-mixin.js';
-import { GridCellClassNameGenerator } from './vaadin-grid-styling-mixin.js';
+import type {
+  GridCellClassNameGenerator,
+  GridCellPartNameGenerator,
+  StylingMixinClass,
+} from './vaadin-grid-styling-mixin.js';
 
 export {
   GridBodyRenderer,
   GridCellClassNameGenerator,
+  GridCellPartNameGenerator,
   GridDataProvider,
   GridDataProviderCallback,
   GridDataProviderParams,
@@ -160,26 +164,26 @@ export interface GridCustomEventMap<TItem> {
 export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEventMap<TItem> {}
 
 /**
- * `<vaadin23-grid>` is a free, high quality data grid / data table Web Component. The content of the
+ * `<vaadin24-grid>` is a free, high quality data grid / data table Web Component. The content of the
  * the grid can be populated by using renderer callback function.
  *
  * ### Quick Start
  *
  * Start with an assigning an array to the [`items`](#/elements/vaadin-grid#property-items) property to visualize your data.
  *
- * Use the [`<vaadin23-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
+ * Use the [`<vaadin24-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
  * shorthand properties for the columns to define what gets rendered in the cells of the column.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid>
- *   <vaadin23-grid-column path="name.first" header="First name"></vaadin23-grid-column>
- *   <vaadin23-grid-column path="name.last" header="Last name"></vaadin23-grid-column>
- *   <vaadin23-grid-column path="email"></vaadin23-grid-column>
- * </vaadin23-grid>
+ * <vaadin24-grid>
+ *   <vaadin24-grid-column path="name.first" header="First name"></vaadin24-grid-column>
+ *   <vaadin24-grid-column path="name.last" header="Last name"></vaadin24-grid-column>
+ *   <vaadin24-grid-column path="email"></vaadin24-grid-column>
+ * </vaadin24-grid>
  * ```
  *
- * For custom content `vaadin23-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
+ * For custom content `vaadin24-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
  * `renderer` and `footerRenderer`.
  *
  * Each of those renderer functions provides `root`, `column`, `model` arguments when applicable.
@@ -194,18 +198,18 @@ export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEven
  *
  * #### Example:
  * ```html
- * <vaadin23-grid>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- * </vaadin23-grid>
+ * <vaadin24-grid>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ * </vaadin24-grid>
  * ```
  * ```js
- * const grid = document.querySelector('vaadin23-grid');
+ * const grid = document.querySelector('vaadin24-grid');
  * grid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},
  *               {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];
  *
- * const columns = grid.querySelectorAll('vaadin23-grid-column');
+ * const columns = grid.querySelectorAll('vaadin24-grid-column');
  *
  * columns[0].headerRenderer = function(root) {
  *   root.textContent = 'Name';
@@ -241,11 +245,11 @@ export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEven
  * `detailsOpened` | Boolean | True if the item's row details are open.
  *
  * The following helper elements can be used for further customization:
- * - [`<vaadin23-grid-column-group>`](#/elements/vaadin-grid-column-group)
- * - [`<vaadin23-grid-filter>`](#/elements/vaadin-grid-filter)
- * - [`<vaadin23-grid-sorter>`](#/elements/vaadin-grid-sorter)
- * - [`<vaadin23-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
- * - [`<vaadin23-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
+ * - [`<vaadin24-grid-column-group>`](#/elements/vaadin-grid-column-group)
+ * - [`<vaadin24-grid-filter>`](#/elements/vaadin-grid-filter)
+ * - [`<vaadin24-grid-sorter>`](#/elements/vaadin-grid-sorter)
+ * - [`<vaadin24-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
+ * - [`<vaadin24-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
  *
  * __Note that the helper elements must be explicitly imported.__
  * If you want to import everything at once you can use the `all-imports.html` bundle.
@@ -253,14 +257,13 @@ export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEven
  * ### Lazy Loading with Function Data Provider
  *
  * In addition to assigning an array to the items property, you can alternatively
- * provide the `<vaadin23-grid>` data through the
+ * provide the `<vaadin24-grid>` data through the
  * [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) function property.
- * The `<vaadin23-grid>` calls this function lazily, only when it needs more data
+ * The `<vaadin24-grid>` calls this function lazily, only when it needs more data
  * to be displayed.
  *
- * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) in
- * the API reference below for the detailed data provider arguments description,
- * and the “Assigning Data” page in the demos.
+ * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
+ * documentation for the detailed data provider arguments description.
  *
  * __Note that expanding the tree grid's item will trigger a call to the `dataProvider`.__
  *
@@ -299,17 +302,56 @@ export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEven
  *
  * The following shadow DOM parts are available for styling:
  *
- * Part name | Description
- * ----------------|----------------
- * `row` | Row in the internal table
- * `cell` | Cell in the internal table
- * `header-cell` | Header cell in the internal table
- * `body-cell` | Body cell in the internal table
- * `footer-cell` | Footer cell in the internal table
- * `details-cell` | Row details cell in the internal table
- * `focused-cell` | Focused cell in the internal table
- * `resize-handle` | Handle for resizing the columns
- * `reorder-ghost` | Ghost element of the header cell being dragged
+ * Part name                  | Description
+ * ---------------------------|----------------
+ * `row`                      | Row in the internal table
+ * `expanded-row`             | Expanded row
+ * `selected-row`             | Selected row
+ * `details-opened-row`       | Row with details open
+ * `odd-row`                  | Odd row
+ * `even-row`                 | Even row
+ * `first-row`                | The first body row
+ * `last-row`                 | The last body row
+ * `dragstart-row`            | Set on the row for one frame when drag is starting.
+ * `dragover-above-row`       | Set on the row when the a row is dragged over above
+ * `dragover-below-row`       | Set on the row when the a row is dragged over below
+ * `dragover-on-top-row`      | Set on the row when the a row is dragged over on top
+ * `drag-disabled-row`        | Set to a row that isn't available for dragging
+ * `drop-disabled-row`        | Set to a row that can't be dropped on top of
+ * `cell`                     | Cell in the internal table
+ * `header-cell`              | Header cell in the internal table
+ * `body-cell`                | Body cell in the internal table
+ * `footer-cell`              | Footer cell in the internal table
+ * `details-cell`             | Row details cell in the internal table
+ * `focused-cell`             | Focused cell in the internal table
+ * `odd-row-cell`             | Cell in an odd row
+ * `even-row-cell`            | Cell in an even row
+ * `first-row-cell`           | Cell in the first body row
+ * `last-row-cell`            | Cell in the last body row
+ * `first-header-row-cell`    | Cell in the first header row
+ * `first-footer-row-cell`    | Cell in the first footer row
+ * `last-header-row-cell`     | Cell in the last header row
+ * `last-footer-row-cell`     | Cell in the last footer row
+ * `loading-row-cell`         | Cell in a row that is waiting for data from data provider
+ * `selected-row-cell`        | Cell in a selected row
+ * `expanded-row-cell`        | Cell in an expanded row
+ * `details-opened-row-cell`  | Cell in an row with details open
+ * `dragstart-row-cell`       | Cell in a row that user started to drag (set for one frame)
+ * `dragover-above-row-cell`  | Cell in a row that has another row dragged over above
+ * `dragover-below-row-cell`  | Cell in a row that has another row dragged over below
+ * `dragover-on-top-row-cell` | Cell in a row that has another row dragged over on top
+ * `drag-disabled-row-cell`   | Cell in a row that isn't available for dragging
+ * `drop-disabled-row-cell`   | Cell in a row that can't be dropped on top of
+ * `frozen-cell`              | Frozen cell in the internal table
+ * `frozen-to-end-cell`       | Frozen to end cell in the internal table
+ * `last-frozen-cell`         | Last frozen cell
+ * `first-frozen-to-end-cell` | First cell frozen to end
+ * `first-column-cell`        | First visible cell on a row
+ * `last-column-cell`         | Last visible cell on a row
+ * `reorder-allowed-cell`     | Cell in a column where another column can be reordered
+ * `reorder-dragging-cell`    | Cell in a column currently being reordered
+ * `resize-handle`            | Handle for resizing the columns
+ * `reorder-ghost`            | Ghost element of the header cell being dragged
  *
  * The following state attributes are available for styling:
  *
@@ -385,17 +427,6 @@ declare class Grid<TItem = GridDefaultItem> extends HTMLElement {
    */
   requestContentUpdate(): void;
 
-  /**
-   * Updates the computed metrics and positioning of internal grid parts
-   * (row/details cell positioning etc). Needs to be invoked whenever the sizing of grid
-   * content changes asynchronously to ensure consistent appearance (e.g. when a
-   * contained image whose bounds aren't known beforehand finishes loading).
-   *
-   * @deprecated Since Vaadin 22, `notifyResize()` is deprecated. The component uses a
-   * ResizeObserver internally and doesn't need to be explicitly notified of resizes.
-   */
-  notifyResize(): void;
-
   addEventListener<K extends keyof GridEventMap<TItem>>(
     type: K,
     listener: (this: Grid<TItem>, ev: GridEventMap<TItem>[K]) => void,
@@ -428,7 +459,7 @@ interface Grid<TItem = GridDefaultItem>
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid': Grid<GridDefaultItem>;
+    'vaadin24-grid': Grid<GridDefaultItem>;
   }
 }
 

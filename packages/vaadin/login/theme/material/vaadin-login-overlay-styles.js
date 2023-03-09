@@ -301,8 +301,8 @@ const loginOverlayWrapper = css`
   }
 `;
 
-registerStyles('vaadin23-login-overlay-wrapper', [overlay, typography, loginOverlayWrapper], {
-  moduleId: 'vaadin-login-overlay-wrapper-material-styles',
+registerStyles('vaadin24-login-overlay-wrapper', [overlay, typography, loginOverlayWrapper], {
+  moduleId: 'material-login-overlay-wrapper',
 });
 
 const loginFormWrapper = css`
@@ -353,4 +353,4 @@ const loginFormWrapper = css`
   }
 `;
 
-registerStyles('vaadin23-login-form-wrapper', [typography, loginFormWrapper], { moduleId: 'material-login-overlay' });
+registerStyles('vaadin24-login-form-wrapper', [typography, loginFormWrapper], { moduleId: 'material-login-overlay' });

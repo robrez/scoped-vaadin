@@ -1,14 +1,14 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * An element used by `<vaadin23-multi-select-combo-box>` to display selected items.
+ * An element used by `<vaadin24-multi-select-combo-box>` to display selected items.
  *
  * ### Styling
  *
@@ -26,7 +26,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 class MultiSelectComboBoxChip extends ThemableMixin(PolymerElement) {
   static get is() {
-    return 'vaadin23-multi-select-combo-box-chip';
+    return 'vaadin24-multi-select-combo-box-chip';
   }
 
   static get properties() {
@@ -67,7 +67,8 @@ class MultiSelectComboBoxChip extends ThemableMixin(PolymerElement) {
           text-overflow: ellipsis;
         }
 
-        :host(:is([readonly], [disabled], [part~='overflow'])) [part='remove-button'] {
+        :host([hidden]),
+        :host(:is([readonly], [disabled], [slot='overflow'])) [part='remove-button'] {
           display: none !important;
         }
       </style>

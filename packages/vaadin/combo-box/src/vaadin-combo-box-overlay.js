@@ -1,15 +1,15 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
-import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { ComboBoxOverlayMixin } from './vaadin-combo-box-overlay-mixin.js';
 
 registerStyles(
-  'vaadin23-combo-box-overlay',
+  'vaadin24-combo-box-overlay',
   css`
     #overlay {
       width: var(--vaadin-combo-box-overlay-width, var(--_vaadin-combo-box-overlay-default-width, auto));
@@ -27,71 +27,37 @@ registerStyles(
 let memoizedTemplate;
 
 /**
- * An element used internally by `<vaadin23-combo-box>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-combo-box>`. Not intended to be used separately.
  *
  * @extends Overlay
+ * @mixes ComboBoxOverlayMixin
  * @private
  */
-export class ComboBoxOverlay extends PositionMixin(Overlay) {
+export class ComboBoxOverlay extends ComboBoxOverlayMixin(Overlay) {
   static get is() {
-    return 'vaadin23-combo-box-overlay';
+    return 'vaadin24-combo-box-overlay';
   }
 
   static get template() {
     if (!memoizedTemplate) {
       memoizedTemplate = super.template.cloneNode(true);
-      memoizedTemplate.content.querySelector('[part~="overlay"]').removeAttribute('tabindex');
+
+      const overlay = memoizedTemplate.content.querySelector('[part~="overlay"]');
+      overlay.removeAttribute('tabindex');
+
+      const loader = document.createElement('div');
+      loader.setAttribute('part', 'loader');
+
+      overlay.insertBefore(loader, overlay.firstElementChild);
     }
 
     return memoizedTemplate;
   }
 
-  static get observers() {
-    return ['_setOverlayWidth(positionTarget, opened)'];
-  }
+  constructor() {
+    super();
 
-  connectedCallback() {
-    super.connectedCallback();
-
-    const comboBox = this._comboBox;
-
-    const hostDir = comboBox && comboBox.getAttribute('dir');
-    if (hostDir) {
-      this.setAttribute('dir', hostDir);
-    }
-  }
-
-  ready() {
-    super.ready();
-    const loader = document.createElement('div');
-    loader.setAttribute('part', 'loader');
-    const content = this.shadowRoot.querySelector('[part~="content"]');
-    content.parentNode.insertBefore(loader, content);
     this.requiredVerticalSpace = 200;
-  }
-
-  _outsideClickListener(event) {
-    const eventPath = event.composedPath();
-    if (!eventPath.includes(this.positionTarget) && !eventPath.includes(this)) {
-      this.close();
-    }
-  }
-
-  _setOverlayWidth(positionTarget, opened) {
-    if (positionTarget && opened) {
-      const propPrefix = this.localName.replace('vaadin23', 'vaadin');
-      this.style.setProperty(`--_${propPrefix}-default-width`, `${positionTarget.clientWidth}px`);
-
-      const customWidth = getComputedStyle(this._comboBox).getPropertyValue(`--${propPrefix}-width`);
-
-      if (customWidth === '') {
-        this.style.removeProperty(`--${propPrefix}-width`);
-      } else {
-        this.style.setProperty(`--${propPrefix}-width`, customWidth);
-      }
-
-      this._updatePosition();
-    }
   }
 }
 

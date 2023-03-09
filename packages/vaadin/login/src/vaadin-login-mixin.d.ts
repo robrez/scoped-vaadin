@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -65,7 +65,7 @@ export declare class LoginMixinClass {
    *
    * The object has the following JSON structure (by default it doesn't include `additionalInformation`
    * and `header` sections, `header` can be added to override `title` and `description` properties
-   * in `vaadin23-login-overlay`):
+   * in `vaadin24-login-overlay`):
    *
    * ```
    * {
@@ -89,6 +89,4 @@ export declare class LoginMixinClass {
    * ```
    */
   i18n: LoginI18n;
-
-  protected _retargetEvent(e: Event): void;
 }

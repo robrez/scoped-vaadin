@@ -1,29 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/checkbox",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin23-checkbox",
-          "description": "`<vaadin23-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin23-checkbox label=\"I accept the terms and conditions\"></vaadin23-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|----------------\n`checkbox`  | The wrapper element that contains slotted <input type=\"checkbox\">.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description | Part name\n----------------|-------------|--------------\n`active`        | Set when the checkbox is pressed down, either with mouse, touch or the keyboard. | `:host`\n`disabled`      | Set when the checkbox is disabled. | `:host`\n`focus-ring`    | Set when the checkbox is focused using the keyboard. | `:host`\n`focused`       | Set when the checkbox is focused. | `:host`\n`indeterminate` | Set when the checkbox is in the indeterminate state. | `:host`\n`checked`       | Set when the checkbox is checked. | `:host`\n`has-label`     | Set when the checkbox has a label. | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-checkbox",
+          "description": "`<vaadin24-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin24-checkbox label=\"I accept the terms and conditions\"></vaadin24-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|-------------\n`checkbox`  | The element representing a stylable custom checkbox.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description\n----------------|-------------\n`active`        | Set when the checkbox is activated with mouse, touch or the keyboard.\n`checked`       | Set when the checkbox is checked.\n`disabled`      | Set when the checkbox is disabled.\n`focus-ring`    | Set when the checkbox is focused using the keyboard.\n`focused`       | Set when the checkbox is focused.\n`indeterminate` | Set when the checkbox is in the indeterminate state.\n`has-label`     | Set when the checkbox has a label.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
               "description": "If true, the user cannot interact with this element.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "autofocus",
-              "description": "Specify that this control should have input focus when the page loads.",
               "value": {
                 "type": [
                   "boolean",
@@ -49,6 +38,17 @@
               "value": {
                 "type": [
                   "boolean"
+                ]
+              }
+            },
+            {
+              "name": "autofocus",
+              "description": "Specify that this control should have input focus when the page loads.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
                 ]
               }
             },
@@ -107,17 +107,6 @@
                 }
               },
               {
-                "name": "autofocus",
-                "description": "Specify that this control should have input focus when the page loads.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
                 "name": "value",
                 "description": "The value of the field.",
                 "value": {
@@ -134,6 +123,17 @@
                 "value": {
                   "type": [
                     "boolean"
+                  ]
+                }
+              },
+              {
+                "name": "autofocus",
+                "description": "Specify that this control should have input focus when the page loads.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
                   ]
                 }
               },
@@ -169,16 +169,16 @@
             ],
             "events": [
               {
-                "name": "indeterminate-changed",
-                "description": "Fired when the `indeterminate` property changes."
-              },
-              {
                 "name": "value-changed",
                 "description": "Fired when the `value` property changes."
               },
               {
                 "name": "checked-changed",
                 "description": "Fired when the `checked` property changes."
+              },
+              {
+                "name": "indeterminate-changed",
+                "description": "Fired when the `indeterminate` property changes."
               }
             ]
           }

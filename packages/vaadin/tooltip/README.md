@@ -8,8 +8,8 @@ A web component for creating tooltips.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-button id="confirm">Confirm</vaadin23-button>
-<vaadin23-tooltip text="Click to save changes" for="confirm"></vaadin23-tooltip>
+<vaadin24-button id="confirm">Confirm</vaadin24-button>
+<vaadin24-tooltip text="Click to save changes" for="confirm"></vaadin24-tooltip>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tooltip/screenshot.png" width="200" alt="Screenshot of vaadin-tooltip">](https://vaadin.com/docs/latest/components/tooltip)

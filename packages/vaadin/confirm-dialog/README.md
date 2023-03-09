@@ -10,9 +10,9 @@ A modal dialog web component for confirming user actions.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-confirm-dialog header="Unsaved changes" confirm-text="Save" reject-text="Discard" cancel reject>
+<vaadin24-confirm-dialog header="Unsaved changes" confirm-text="Save" reject-text="Discard" cancel reject>
   Do you want to save or discard your changes before navigating away?
-</vaadin23-confirm-dialog>
+</vaadin24-confirm-dialog>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/confirm-dialog/screenshot.png" width="200" alt="Screenshot of vaadin-confirm-dialog">](https://vaadin.com/docs/latest/components/confirm-dialog)

@@ -1,10 +1,10 @@
 import '@scoped-vaadin/vaadin-material-styles/color.js';
 import '@scoped-vaadin/vaadin-material-styles/typography.js';
-import './vaadin-message-avatar-styles.js';
+import '@scoped-vaadin/avatar/theme/material/vaadin-avatar-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-message',
+  'vaadin24-message',
   css`
     :host {
       color: var(--material-body-text-color);
@@ -57,6 +57,12 @@ registerStyles(
       color: var(--material-secondary-text-color);
       font-size: var(--material-small-font-size);
       line-height: 1.25rem;
+    }
+
+    ::slotted([slot='avatar']) {
+      --vaadin-avatar-size: 2.5rem;
+      margin-top: 0.25rem;
+      margin-inline-end: 1rem;
     }
   `,
   { moduleId: 'material-message' },

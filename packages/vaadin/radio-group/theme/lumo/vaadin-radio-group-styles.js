@@ -48,4 +48,4 @@ const radioGroup = css`
   }
 `;
 
-registerStyles('vaadin23-radio-group', [requiredField, helper, radioGroup], { moduleId: 'lumo-radio-group' });
+registerStyles('vaadin24-radio-group', [requiredField, helper, radioGroup], { moduleId: 'lumo-radio-group' });

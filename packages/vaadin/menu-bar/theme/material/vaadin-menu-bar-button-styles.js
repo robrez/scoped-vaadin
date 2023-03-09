@@ -6,7 +6,7 @@ const menuBarButton = css`
     width: 100%;
   }
 
-  [part='label'] ::slotted(vaadin-context-menu-item) {
+  [part='label'] ::slotted(vaadin-menu-bar-item) {
     line-height: 20px;
     background-color: transparent;
     margin: -8px;
@@ -19,8 +19,8 @@ const menuBarButton = css`
     border-radius: 0;
   }
 
-  :host([theme~='contained']) ::slotted(vaadin-context-menu-item),
-  :host([theme~='outlined']) ::slotted(vaadin-context-menu-item) {
+  :host([theme~='contained']) ::slotted(vaadin-menu-bar-item),
+  :host([theme~='outlined']) ::slotted(vaadin-menu-bar-item) {
     margin: -8px -16px;
     padding: 8px 16px;
   }
@@ -54,17 +54,17 @@ const menuBarButton = css`
   }
 
   :host(:nth-last-of-type(2)),
-  :host([part~='overflow-button']) {
+  :host([slot='overflow']) {
     border-radius: 0 4px 4px 0;
   }
 
-  :host([part='overflow-button']) {
+  :host([slot='overflow']) {
     padding-right: 8px;
     padding-left: 8px;
     min-width: 36px;
   }
 
-  :host([part='overflow-button']) ::slotted(*) {
+  :host([slot='overflow']) ::slotted(*) {
     font-size: 24px;
   }
 
@@ -73,7 +73,7 @@ const menuBarButton = css`
   }
 
   :host([theme~='outlined']:not([dir='rtl']):nth-last-of-type(2)),
-  :host([theme~='outlined']:not([dir='rtl'])[part~='overflow-button']) {
+  :host([theme~='outlined']:not([dir='rtl'])[slot='overflow']) {
     margin-right: 0;
   }
 
@@ -88,7 +88,7 @@ const menuBarButton = css`
   }
 
   :host([dir='rtl']:nth-last-of-type(2)),
-  :host([dir='rtl'][part='overflow-button']) {
+  :host([dir='rtl'][slot='overflow']) {
     border-radius: 4px 0 0 4px;
   }
 
@@ -101,11 +101,11 @@ const menuBarButton = css`
   }
 
   :host([theme~='outlined'][dir='rtl']:nth-last-of-type(2)),
-  :host([theme~='outlined'][dir='rtl'][part~='overflow-button']) {
+  :host([theme~='outlined'][dir='rtl'][slot='overflow']) {
     margin-left: 0;
   }
 `;
 
-registerStyles('vaadin23-menu-bar-button', [button, menuBarButton], {
+registerStyles('vaadin24-menu-bar-button', [button, menuBarButton], {
   moduleId: 'material-menu-bar-button',
 });

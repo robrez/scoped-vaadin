@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -27,9 +27,9 @@ export interface AccordionCustomEventMap {
 export type AccordionEventMap = AccordionCustomEventMap & HTMLElementEventMap;
 
 /**
- * `<vaadin23-accordion>` is a Web Component implementing accordion widget —
+ * `<vaadin24-accordion>` is a Web Component implementing accordion widget:
  * a vertically stacked set of expandable panels. The component should be
- * used as a wrapper for two or more `<vaadin23-accordion-panel>` components.
+ * used as a wrapper for two or more `<vaadin24-accordion-panel>` components.
  *
  * Panel headings function as controls that enable users to open (expand)
  * or hide (collapse) their associated sections of content. The user can
@@ -39,24 +39,24 @@ export type AccordionEventMap = AccordionCustomEventMap & HTMLElementEventMap;
  * previous panel to close and hide its content.
  *
  * ```
- * <vaadin23-accordion>
- *   <vaadin23-accordion-panel>
- *     <div slot="summary">Panel 1</div>
- *     This panel is opened, so the text is visible by default.
- *   </vaadin23-accordion-panel>
- *   <vaadin23-accordion-panel>
- *     <div slot="summary">Panel 2</div>
- *     After opening this panel, the first one becomes closed.
- *   </vaadin23-accordion-panel>
- * </vaadin23-accordion>
+ * <vaadin24-accordion>
+ *   <vaadin24-accordion-panel>
+ *     <vaadin24-accordion-heading slot="summary">Panel 1</vaadin24-accordion-heading>
+ *     <div>This panel is opened, so the text is visible by default.</div>
+ *   </vaadin24-accordion-panel>
+ *   <vaadin24-accordion-panel>
+ *     <vaadin24-accordion-heading slot="summary">Panel 2</vaadin24-accordion-heading>
+ *     <div>After opening this panel, the first one becomes closed.</div>
+ *   </vaadin24-accordion-panel>
+ * </vaadin24-accordion>
  * ```
  *
  * ### Styling
  *
- * See the [`<vaadin23-accordion-panel>`](#/elements/vaadin-accordion-panel)
+ * See the [`<vaadin24-accordion-panel>`](#/elements/vaadin-accordion-panel)
  * documentation for the available state attributes and stylable shadow parts.
  *
- * **Note:** You can apply the theme to `<vaadin23-accordion>` component itself,
+ * **Note:** You can apply the theme to `<vaadin24-accordion>` component itself,
  * especially by using the following CSS selector:
  *
  * ```
@@ -79,7 +79,7 @@ declare class Accordion extends KeyboardDirectionMixin(ElementMixin(ThemableMixi
   opened: number | null;
 
   /**
-   * The list of `<vaadin23-accordion-panel>` child elements.
+   * The list of `<vaadin24-accordion-panel>` child elements.
    * It is populated from the elements passed to the light DOM,
    * and updated dynamically when adding or removing panels.
    */
@@ -100,7 +100,7 @@ declare class Accordion extends KeyboardDirectionMixin(ElementMixin(ThemableMixi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-accordion': Accordion;
+    'vaadin24-accordion': Accordion;
   }
 }
 

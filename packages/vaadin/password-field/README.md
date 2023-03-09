@@ -2,7 +2,7 @@
 
 This component is based on [@vaadin/password-field](https://www.npmjs.com/package/@vaadin/password-field)
 
-An extension of [`<vaadin23-text-field>`](https://www.npmjs.com/package/@scoped-vaadin/text-field) component for entering passwords.
+An extension of [`<vaadin24-text-field>`](https://www.npmjs.com/package/@scoped-vaadin/text-field) component for entering passwords.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/password-field)
 
@@ -10,7 +10,7 @@ An extension of [`<vaadin23-text-field>`](https://www.npmjs.com/package/@scoped-
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-password-field label="Password"></vaadin23-password-field>
+<vaadin24-password-field label="Password"></vaadin24-password-field>
 ```
 
 ## Installation

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/virtual-list",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -15,8 +15,8 @@
     "html": {
       "elements": [
         {
-          "name": "vaadin23-virtual-list",
-          "description": "`<vaadin23-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.\n\n```html\n<vaadin23-virtual-list></vaadin23-virtual-list>\n```\n```js\nconst list = document.querySelector('vaadin23-virtual-list');\nlist.items = items; // An array of data items\nlist.renderer = (root, list, {item, index}) => {\n  root.textContent = `#${index}: ${item.name}`\n}\n```\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|--------------------------------------------\n`overflow`       | Set to `top`, `bottom`, both, or none.\n\nSee [Virtual List](https://vaadin.com/docs/latest/components/virtual-list) documentation.",
+          "name": "vaadin24-virtual-list",
+          "description": "`<vaadin24-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.\n\n```html\n<vaadin24-virtual-list></vaadin24-virtual-list>\n```\n```js\nconst list = document.querySelector('vaadin24-virtual-list');\nlist.items = items; // An array of data items\nlist.renderer = (root, list, {item, index}) => {\n  root.textContent = `#${index}: ${item.name}`\n}\n```\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|--------------------------------------------\n`overflow`       | Set to `top`, `bottom`, both, or none.\n\nSee [Virtual List](https://vaadin.com/docs/latest/components/virtual-list) documentation.",
           "extension": true,
           "attributes": [
             {
@@ -28,7 +28,7 @@
             },
             {
               "name": ".renderer",
-              "description": "Custom function for rendering the content of every item.\nReceives three arguments:\n\n- `root` The render target element representing one item at a time.\n- `virtualList` The reference to the `<vaadin23-virtual-list>` element.\n- `model` The object with the properties related with the rendered\n  item, contains:\n  - `model.index` The index of the rendered item.\n  - `model.item` The item.",
+              "description": "Custom function for rendering the content of every item.\nReceives three arguments:\n\n- `root` The render target element representing one item at a time.\n- `virtualList` The reference to the `<vaadin24-virtual-list>` element.\n- `model` The object with the properties related with the rendered\n  item, contains:\n  - `model.index` The index of the rendered item.\n  - `model.item` The item.",
               "value": {
                 "kind": "expression"
               }

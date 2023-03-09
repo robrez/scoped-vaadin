@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -25,19 +25,19 @@ template.innerHTML = `
 document.head.appendChild(template.content);
 
 /**
- * `<vaadin23-grid-tree-toggle>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-tree-toggle>` is a helper element for the `<vaadin24-grid>`
  * that provides toggle and level display functionality for the item tree.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
  * ```
  * ```js
  * const column = document.querySelector('#column');
  * column.renderer = (root, column, model) => {
  *   let treeToggle = root.firstElementChild;
  *   if (!treeToggle) {
- *     treeToggle = document.createElement('vaadin23-grid-tree-toggle');
+ *     treeToggle = document.createElement('vaadin24-grid-tree-toggle');
  *     treeToggle.addEventListener('expanded-changed', () => { ... });
  *     root.appendChild(treeToggle);
  *   }
@@ -64,7 +64,7 @@ document.head.appendChild(template.content);
  * `leaf` | When present, the toggle is not expandable, i. e., the current item is a leaf | :host
  *
  * The following custom CSS properties are available on
- * the `<vaadin23-grid-tree-toggle>` element:
+ * the `<vaadin24-grid-tree-toggle>` element:
  *
  * Custom CSS property | Description | Default
  * ---|---|---
@@ -142,7 +142,7 @@ class GridTreeToggle extends ThemableMixin(DirMixin(PolymerElement)) {
   }
 
   static get is() {
-    return 'vaadin23-grid-tree-toggle';
+    return 'vaadin24-grid-tree-toggle';
   }
 
   static get properties() {

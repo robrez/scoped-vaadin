@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
@@ -8,6 +8,7 @@ import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mi
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
 import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { InputMixin } from '@scoped-vaadin/field-base/src/input-mixin.js';
 import { VirtualKeyboardController } from '@scoped-vaadin/field-base/src/virtual-keyboard-controller.js';
@@ -43,10 +44,17 @@ function findItemIndex(items, callback) {
 
 /**
  * @polymerMixin
+ * @mixes ControllerMixin
+ * @mixes DisabledMixin
+ * @mixes InputMixin
+ * @mixes KeyboardMixin
+ * @mixes OverlayClassMixin
  * @param {function(new:HTMLElement)} subclass
  */
 export const ComboBoxMixin = (subclass) =>
-  class VaadinComboBoxMixinElement extends ControllerMixin(KeyboardMixin(InputMixin(DisabledMixin(subclass)))) {
+  class ComboBoxMixinClass extends OverlayClassMixin(
+    ControllerMixin(KeyboardMixin(InputMixin(DisabledMixin(subclass)))),
+  ) {
     static get properties() {
       return {
         /**
@@ -83,8 +91,8 @@ export const ComboBoxMixin = (subclass) =>
          * Custom function for rendering the content of every item.
          * Receives three arguments:
          *
-         * - `root` The `<vaadin23-combo-box-item>` internal container DOM element.
-         * - `comboBox` The reference to the `<vaadin23-combo-box>` element.
+         * - `root` The `<vaadin24-combo-box-item>` internal container DOM element.
+         * - `comboBox` The reference to the `<vaadin24-combo-box>` element.
          * - `model` The object with the properties related with the rendered
          *   item, contains:
          *   - `model.index` The index of the rendered item.
@@ -259,7 +267,25 @@ export const ComboBoxMixin = (subclass) =>
      * @return {string}
      */
     get _tagNamePrefix() {
-      return 'vaadin23-combo-box';
+      return 'vaadin24-combo-box';
+    }
+
+    /**
+     * Get a reference to the native `<input>` element.
+     * Override to provide a custom input.
+     * @protected
+     * @return {HTMLInputElement | undefined}
+     */
+    get _nativeInput() {
+      return this.inputElement;
+    }
+
+    /**
+     * @return {string}
+     * @protected
+     */
+    get _propertyForValue() {
+      return 'value';
     }
 
     /**
@@ -278,16 +304,6 @@ export const ComboBoxMixin = (subclass) =>
       if (this.inputElement) {
         this.inputElement[this._propertyForValue] = value;
       }
-    }
-
-    /**
-     * Get a reference to the native `<input>` element.
-     * Override to provide a custom input.
-     * @protected
-     * @return {HTMLInputElement | undefined}
-     */
-    get _nativeInput() {
-      return this.inputElement;
     }
 
     /**
@@ -339,7 +355,7 @@ export const ComboBoxMixin = (subclass) =>
 
       const bringToFrontListener = () => {
         requestAnimationFrame(() => {
-          this.$.overlay.bringToFront();
+          this._overlayElement.bringToFront();
         });
       };
 
@@ -430,6 +446,8 @@ export const ComboBoxMixin = (subclass) =>
       overlay.addEventListener('opened-changed', (e) => {
         this._overlayOpened = e.detail.value;
       });
+
+      this._overlayElement = overlay;
     }
 
     /**
@@ -441,7 +459,7 @@ export const ComboBoxMixin = (subclass) =>
     _initScroller(host) {
       const scrollerTag = `${this._tagNamePrefix}-scroller`;
 
-      const overlay = this.$.overlay;
+      const overlay = this._overlayElement;
 
       overlay.renderer = (root) => {
         if (!root.firstChild) {
@@ -454,7 +472,7 @@ export const ComboBoxMixin = (subclass) =>
 
       const scroller = overlay.querySelector(scrollerTag);
 
-      scroller.comboBox = host || this;
+      scroller.owner = host || this;
       scroller.getItemLabel = this._getItemLabel.bind(this);
       scroller.addEventListener('selection-changed', this._boundOverlaySelectedItemChanged);
 
@@ -547,7 +565,7 @@ export const ComboBoxMixin = (subclass) =>
           this.focus();
         }
 
-        this.$.overlay.restoreFocusOnClose = true;
+        this._overlayElement.restoreFocusOnClose = true;
       } else {
         this._onClosed();
         if (this._openedWithFocusRing && this._isInputFocused()) {
@@ -581,13 +599,19 @@ export const ComboBoxMixin = (subclass) =>
       return event.composedPath()[0] === this.clearElement;
     }
 
+    /** @private */
+    __onClearButtonMouseDown(event) {
+      event.preventDefault(); // Prevent native focusout event
+      this.inputElement.focus();
+    }
+
     /**
      * @param {Event} event
      * @protected
      */
-    _handleClearButtonClick(event) {
+    _onClearButtonClick(event) {
       event.preventDefault();
-      this._clear();
+      this._onClearAction();
 
       // De-select dropdown item
       if (this.opened) {
@@ -600,7 +624,7 @@ export const ComboBoxMixin = (subclass) =>
      * @private
      */
     _onToggleButtonClick(event) {
-      // Prevent parent components such as `vaadin23-grid`
+      // Prevent parent components such as `vaadin24-grid`
       // from handling the click event after it bubbles.
       event.preventDefault();
 
@@ -623,15 +647,13 @@ export const ComboBoxMixin = (subclass) =>
     }
 
     /** @private */
-    _onClick(e) {
-      const path = e.composedPath();
-
-      if (this._isClearButton(e)) {
-        this._handleClearButtonClick(e);
-      } else if (path.indexOf(this._toggleElement) > -1) {
-        this._onToggleButtonClick(e);
+    _onClick(event) {
+      if (this._isClearButton(event)) {
+        this._onClearButtonClick(event);
+      } else if (event.composedPath().includes(this._toggleElement)) {
+        this._onToggleButtonClick(event);
       } else {
-        this._onHostClick(e);
+        this._onHostClick(event);
       }
     }
 
@@ -646,7 +668,7 @@ export const ComboBoxMixin = (subclass) =>
       super._onKeyDown(e);
 
       if (e.key === 'Tab') {
-        this.$.overlay.restoreFocusOnClose = false;
+        this._overlayElement.restoreFocusOnClose = false;
       } else if (e.key === 'ArrowDown') {
         this._onArrowDown();
 
@@ -809,7 +831,7 @@ export const ComboBoxMixin = (subclass) =>
         } else if (this.clearButtonVisible && !this.opened && !!this.value) {
           e.stopPropagation();
           // The clear button is visible and the overlay is closed, so clear the value.
-          this._clear();
+          this._onClearAction();
         }
       } else if (this.opened) {
         // Auto-open is enabled
@@ -827,7 +849,7 @@ export const ComboBoxMixin = (subclass) =>
       } else if (this.clearButtonVisible && !!this.value) {
         e.stopPropagation();
         // The clear button is visible and the overlay is closed, so clear the value.
-        this._clear();
+        this._onClearAction();
       }
     }
 
@@ -849,7 +871,7 @@ export const ComboBoxMixin = (subclass) =>
      * Clears the current value.
      * @protected
      */
-    _clear() {
+    _onClearAction() {
       this.selectedItem = null;
 
       if (this.allowCustomValue) {
@@ -946,14 +968,6 @@ export const ComboBoxMixin = (subclass) =>
       this._clearSelectionRange();
 
       this.filter = '';
-    }
-
-    /**
-     * @return {string}
-     * @protected
-     */
-    get _propertyForValue() {
-      return 'value';
     }
 
     /**
@@ -1261,12 +1275,6 @@ export const ComboBoxMixin = (subclass) =>
     }
 
     /** @private */
-    __onClearButtonMouseDown(event) {
-      event.preventDefault(); // Prevent native focusout event
-      this.inputElement.focus();
-    }
-
-    /** @private */
     _onFocusout(event) {
       // VoiceOver on iOS fires `focusout` event when moving focus to the item in the dropdown.
       // Do not focus the input in this case, because it would break announcement for the item.
@@ -1275,7 +1283,7 @@ export const ComboBoxMixin = (subclass) =>
       }
 
       // Fixes the problem with `focusout` happening when clicking on the scroll bar on Edge
-      if (event.relatedTarget === this.$.overlay) {
+      if (event.relatedTarget === this._overlayElement) {
         event.composedPath()[0].focus();
         return;
       }
@@ -1298,7 +1306,7 @@ export const ComboBoxMixin = (subclass) =>
       }
 
       event.preventDefault();
-      this._clear();
+      this._onClearAction();
     }
 
     /**
@@ -1330,13 +1338,13 @@ export const ComboBoxMixin = (subclass) =>
      */
 
     /**
-     * Fired after the `vaadin23-combo-box-overlay` opens.
+     * Fired after the `vaadin24-combo-box-overlay` opens.
      *
      * @event vaadin-combo-box-dropdown-opened
      */
 
     /**
-     * Fired after the `vaadin23-combo-box-overlay` closes.
+     * Fired after the `vaadin24-combo-box-overlay` closes.
      *
      * @event vaadin-combo-box-dropdown-closed
      */

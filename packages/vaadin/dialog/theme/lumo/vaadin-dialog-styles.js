@@ -102,4 +102,4 @@ const dialogOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-dialog-overlay', [overlay, dialogOverlay], { moduleId: 'lumo-dialog' });
+registerStyles('vaadin24-dialog-overlay', [overlay, dialogOverlay], { moduleId: 'lumo-dialog' });

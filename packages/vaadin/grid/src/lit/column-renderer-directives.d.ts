@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 /* eslint-disable max-classes-per-file */
@@ -76,9 +76,9 @@ export declare class GridColumnFooterRendererDirective extends AbstractGridColum
  *
  * Example of usage:
  * ```js
- * `<vaadin23-grid-column
+ * `<vaadin24-grid-column
  *   ${columnBodyRenderer((item, model, column) => html`...`)}
- * ></vaadin23-grid-column>`
+ * ></vaadin24-grid-column>`
  * ```
  *
  * @param renderer the renderer callback.
@@ -107,9 +107,9 @@ export declare function columnBodyRenderer<TItem>(
  *
  * Example of usage:
  * ```js
- * `<vaadin23-grid-column
+ * `<vaadin24-grid-column
  *   ${columnHeaderRenderer((column) => html`...`)}
- * ></vaadin23-grid-column>`
+ * ></vaadin24-grid-column>`
  * ```
  *
  * @param renderer the renderer callback.
@@ -138,9 +138,9 @@ export declare function columnHeaderRenderer(
  *
  * Example of usage:
  * ```js
- * `<vaadin23-grid-column
+ * `<vaadin24-grid-column
  *   ${columnFooterRenderer((column) => html`...`)}
- * ></vaadin23-grid-column>`
+ * ></vaadin24-grid-column>`
  * ```
  *
  * @param renderer the renderer callback.

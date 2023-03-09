@@ -1,5 +1,5 @@
 {
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "name": "@scoped-vaadin/internal-custom-elements-registry",
   "publishConfig": {
     "access": "public"

@@ -3,7 +3,7 @@ import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-form-item',
+  'vaadin24-form-item',
   css`
     [part='label'] {
       font-family: var(--material-font-family);

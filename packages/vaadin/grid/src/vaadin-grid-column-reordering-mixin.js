@@ -1,11 +1,11 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { addListener } from '@scoped-vaadin/component-base/src/gestures.js';
-import { updateColumnOrders } from './vaadin-grid-helpers.js';
+import { iterateChildren, updateColumnOrders } from './vaadin-grid-helpers.js';
 
 /**
  * @polymerMixin
@@ -156,7 +156,7 @@ export const ColumnReorderingMixin = (superClass) =>
     /** @private */
     _onTrack(e) {
       if (!this._draggedColumn) {
-        // Reordering didn’t start. Skip this event.
+        // Reordering didn't start. Skip this event.
         return;
       }
 
@@ -196,7 +196,7 @@ export const ColumnReorderingMixin = (superClass) =>
     /** @private */
     _onTrackEnd() {
       if (!this._draggedColumn) {
-        // Reordering didn’t start. Skip this event.
+        // Reordering didn't start. Skip this event.
         return;
       }
 
@@ -233,9 +233,7 @@ export const ColumnReorderingMixin = (superClass) =>
      * @return {HTMLElement | undefined}
      * @protected
      */
-    _cellFromPoint(x, y) {
-      x = x || 0;
-      y = y || 0;
+    _cellFromPoint(x = 0, y = 0) {
       if (!this._draggedColumn) {
         this.$.scroller.toggleAttribute('no-content-pointer-events', true);
       }
@@ -313,11 +311,11 @@ export const ColumnReorderingMixin = (superClass) =>
      * @protected
      */
     _setSiblingsReorderStatus(column, status) {
-      Array.from(column.parentNode.children)
-        .filter((child) => /column/.test(child.localName) && this._isSwapAllowed(child, column))
-        .forEach((sibling) => {
+      iterateChildren(column.parentNode, (sibling) => {
+        if (/column/u.test(sibling.localName) && this._isSwapAllowed(sibling, column)) {
           sibling._reorderStatus = status;
-        });
+        }
+      });
     }
 
     /** @protected */

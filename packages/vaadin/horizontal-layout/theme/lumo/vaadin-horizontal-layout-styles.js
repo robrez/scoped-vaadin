@@ -31,4 +31,4 @@ const horizontalLayout = css`
   }
 `;
 
-registerStyles('vaadin23-horizontal-layout', horizontalLayout, { moduleId: 'lumo-horizontal-layout' });
+registerStyles('vaadin24-horizontal-layout', horizontalLayout, { moduleId: 'lumo-horizontal-layout' });

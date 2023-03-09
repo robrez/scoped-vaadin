@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { getAncestorRootNodes } from '@scoped-vaadin/component-base/src/dom-utils.js';
@@ -191,10 +191,6 @@ export const PositionMixin = (superClass) =>
       }
     }
 
-    get __isRTL() {
-      return this.getAttribute('dir') === 'rtl';
-    }
-
     __positionSettingsChanged() {
       this._updatePosition();
     }
@@ -218,9 +214,9 @@ export const PositionMixin = (superClass) =>
       const shouldAlignStartVertically = this.__shouldAlignStartVertically(targetRect);
       this.style.justifyContent = shouldAlignStartVertically ? 'flex-start' : 'flex-end';
 
-      const shouldAlignStartHorizontally = this.__shouldAlignStartHorizontally(targetRect, this.__isRTL);
-      const flexStart =
-        (!this.__isRTL && shouldAlignStartHorizontally) || (this.__isRTL && !shouldAlignStartHorizontally);
+      const isRTL = this.__isRTL;
+      const shouldAlignStartHorizontally = this.__shouldAlignStartHorizontally(targetRect, isRTL);
+      const flexStart = (!isRTL && shouldAlignStartHorizontally) || (isRTL && !shouldAlignStartHorizontally);
       this.style.alignItems = flexStart ? 'flex-start' : 'flex-end';
 
       // Get the overlay rect after possible overlay alignment changes

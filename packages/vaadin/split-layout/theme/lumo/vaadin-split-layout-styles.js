@@ -5,7 +5,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-split-layout',
+  'vaadin24-split-layout',
   css`
     [part='splitter'] {
       min-width: var(--lumo-space-s);

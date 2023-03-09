@@ -1,12 +1,14 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { ShadowFocusMixin } from '@scoped-vaadin/field-base/src/shadow-focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { CollapsibleMixin } from './collapsible-mixin.js';
 
 /**
  * Fired when the `opened` property changes.
@@ -20,14 +22,16 @@ export interface DetailsCustomEventMap {
 export type DetailsEventMap = DetailsCustomEventMap & HTMLElementEventMap;
 
 /**
- * `<vaadin23-details>` is a Web Component which the creates an
+ * `<vaadin24-details>` is a Web Component which the creates an
  * expandable panel similar to `<details>` HTML element.
  *
  * ```
- * <vaadin23-details>
- *   <div slot="summary">Expandable Details</div>
- *   Toggle using mouse, Enter and Space keys.
- * </vaadin23-details>
+ * <vaadin24-details>
+ *   <vaadin24-details-summary slot="summary">Expandable Details</vaadin24-details-summary>
+ *   <div>
+ *     Toggle using mouse, Enter and Space keys.
+ *   </div>
+ * </vaadin24-details>
  * ```
  *
  * ### Styling
@@ -54,11 +58,14 @@ export type DetailsEventMap = DetailsCustomEventMap & HTMLElementEventMap;
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class Details extends ShadowFocusMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))) {
+declare class Details extends CollapsibleMixin(
+  DelegateStateMixin(DelegateFocusMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement))))),
+) {
   /**
-   * If true, the details content is visible.
+   * A text that is displayed in the summary, if no
+   * element is assigned to the `summary` slot.
    */
-  opened: boolean;
+  summary: string | null | undefined;
 
   addEventListener<K extends keyof DetailsEventMap>(
     type: K,
@@ -75,7 +82,7 @@ declare class Details extends ShadowFocusMixin(ElementMixin(ThemableMixin(Contro
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-details': Details;
+    'vaadin24-details': Details;
   }
 }
 

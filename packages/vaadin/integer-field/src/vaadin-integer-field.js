@@ -1,24 +1,24 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { NumberField } from '@scoped-vaadin/number-field/src/vaadin-number-field.js';
 
 /**
- * `<vaadin23-integer-field>` is an input field web component that only accepts entering integer numbers.
+ * `<vaadin24-integer-field>` is an input field web component that only accepts entering integer numbers.
  *
  * ```html
- * <vaadin23-integer-field label="X"></vaadin23-integer-field>
+ * <vaadin24-integer-field label="X"></vaadin24-integer-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name         | Description
  * ------------------|-------------------------
@@ -37,7 +37,7 @@ import { NumberField } from '@scoped-vaadin/number-field/src/vaadin-number-field
  */
 export class IntegerField extends NumberField {
   static get is() {
-    return 'vaadin23-integer-field';
+    return 'vaadin24-integer-field';
   }
 
   constructor() {
@@ -56,7 +56,7 @@ export class IntegerField extends NumberField {
    */
   _valueChanged(newVal, oldVal) {
     if (newVal !== '' && !this.__isInteger(newVal)) {
-      console.warn(`Trying to set non-integer value "${newVal}" to <vaadin23-integer-field>. Clearing the value.`);
+      console.warn(`Trying to set non-integer value "${newVal}" to <vaadin24-integer-field>. Clearing the value.`);
       this.value = '';
       return;
     }
@@ -74,7 +74,7 @@ export class IntegerField extends NumberField {
   _stepChanged(step, inputElement) {
     if (step != null && !this.__hasOnlyDigits(step)) {
       console.warn(
-        `<vaadin23-integer-field> The \`step\` property must be a positive integer but \`${step}\` was provided, so the property was reset to \`null\`.`,
+        `<vaadin24-integer-field> The \`step\` property must be a positive integer but \`${step}\` was provided, so the property was reset to \`null\`.`,
       );
       this.step = null;
       return;
@@ -85,12 +85,12 @@ export class IntegerField extends NumberField {
 
   /** @private */
   __isInteger(value) {
-    return /^(-\d)?\d*$/.test(String(value));
+    return /^(-\d)?\d*$/u.test(String(value));
   }
 
   /** @private */
   __hasOnlyDigits(value) {
-    return /^\d+$/.test(String(value));
+    return /^\d+$/u.test(String(value));
   }
 }
 

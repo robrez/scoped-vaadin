@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
@@ -79,19 +79,19 @@ export interface ComboBoxLightEventMap<TItem> extends HTMLElementEventMap {
 }
 
 /**
- * `<vaadin23-combo-box-light>` is a customizable version of the `<vaadin23-combo-box>` providing
+ * `<vaadin24-combo-box-light>` is a customizable version of the `<vaadin24-combo-box>` providing
  * only the dropdown functionality and leaving the input field definition to the user.
  *
- * The element has the same API as `<vaadin23-combo-box>`.
+ * The element has the same API as `<vaadin24-combo-box>`.
  *
  * To create a custom input field, you need to add a child element which has a two-way
  * data-bindable property representing the input value. The property name is expected
- * to be `value` by default. For example, you can use `<vaadin23-text-field>` element:
+ * to be `value` by default. For example, you can use `<vaadin24-text-field>` element:
  *
  * ```html
- * <vaadin23-combo-box-light>
- *   <vaadin23-text-field></vaadin23-text-field>
- * </vaadin23-combo-box-light>
+ * <vaadin24-combo-box-light>
+ *   <vaadin24-text-field></vaadin24-text-field>
+ * </vaadin24-combo-box-light>
  * ```
  *
  * If you are using custom input field that has other property for value,
@@ -99,20 +99,20 @@ export interface ComboBoxLightEventMap<TItem> extends HTMLElementEventMap {
  * attribute to specify which property to use:
  *
  * ```html
- * <vaadin23-combo-box-light attr-for-value="input-value">
+ * <vaadin24-combo-box-light attr-for-value="input-value">
  *   <custom-input class="input"></custom-input>
- * </vaadin23-combo-box-light>
+ * </vaadin24-combo-box-light>
  * ```
  *
  * You can also pass custom toggle and clear buttons with corresponding classes:
  *
  * ```html
- * <vaadin23-combo-box-light>
+ * <vaadin24-combo-box-light>
  *   <custom-input class="input" attr-for-value="input-value">
  *     <button slot="suffix" class="clear-button">Clear</button>
  *     <button slot="suffix" class="toggle-button">Toggle</button>
  *   </custom-input>
- * </vaadin23-combo-box-light>
+ * </vaadin24-combo-box-light>
  * ```
  *
  * @fires {Event} change - Fired when the user commits a value change.
@@ -157,7 +157,7 @@ interface ComboBoxLight<TItem = ComboBoxDefaultItem>
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-combo-box-light': ComboBoxLight;
+    'vaadin24-combo-box-light': ComboBoxLight;
   }
 }
 

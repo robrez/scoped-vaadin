@@ -10,11 +10,11 @@ A web component for wrapping multiple components as a single field.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-custom-field label="Enrollment period" helper-text="Cannot be longer than 30 days" required>
-  <vaadin23-date-picker id="start" placeholder="Start date"></vaadin23-date-picker>
+<vaadin24-custom-field label="Enrollment period" helper-text="Cannot be longer than 30 days" required>
+  <vaadin24-date-picker id="start" placeholder="Start date"></vaadin24-date-picker>
   &ndash;
-  <vaadin23-date-picker id="end" placeholder="End date"></vaadin23-date-picker>
-</vaadin23-custom-field>
+  <vaadin24-date-picker id="end" placeholder="End date"></vaadin24-date-picker>
+</vaadin24-custom-field>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/custom-field/screenshot.png" width="401" alt="Screenshot of vaadin-custom-field">](https://vaadin.com/docs/latest/components/custom-field)

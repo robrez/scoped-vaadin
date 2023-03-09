@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
@@ -9,12 +9,7 @@ import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const numberField = css`
-  :host {
-    width: 8em;
-  }
-
-  :host([step-buttons-visible]:not([theme~='align-right'])) ::slotted(input),
-  :host([has-controls]:not([theme~='align-right'])) ::slotted(input) {
+  :host([step-buttons-visible]:not([theme~='align-right'])) ::slotted(input) {
     text-align: center;
   }
 
@@ -22,8 +17,7 @@ const numberField = css`
     opacity: 0.2;
   }
 
-  :host([step-buttons-visible]) [part='input-field'],
-  :host([has-controls]) [part='input-field'] {
+  :host([step-buttons-visible]) [part='input-field'] {
     padding: 0;
   }
 
@@ -52,6 +46,6 @@ const numberField = css`
   }
 `;
 
-registerStyles('vaadin23-number-field', [inputFieldShared, fieldButton, numberField], {
+registerStyles('vaadin24-number-field', [inputFieldShared, fieldButton, numberField], {
   moduleId: 'lumo-number-field',
 });

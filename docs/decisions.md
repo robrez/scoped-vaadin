@@ -97,3 +97,19 @@ Got lucky here but something like this could easily break
       return el || undefined;
     }
 ```
+
+## v24 problems
+
+```
+vaadin-date-time-picker.js:501 Uncaught TypeError: target.set is not a function
+    at vaadin-date-time-picker.js:501:16
+    at Array.forEach (<anonymous>)
+    at DateTimePicker.__syncI18n (vaadin-date-time-picker.js:498:11)
+    at DateTimePicker.__datePickerChanged (vaadin-date-time-picker.js:554:12)
+    at Object.runObserverEffect [as fn] (property-effects.js:231:8)
+    at runEffects (property-effects.js:140:16)
+    at DateTimePicker._propertiesChanged (property-effects.js:1922:7)
+    at DateTimePicker._flushProperties (properties-changed.js:384:14)
+    at DateTimePicker._invalidateProperties (property-effects.js:1748:14)
+    at Object.defineProperty.set (properties-changed.js:170:18)
+```

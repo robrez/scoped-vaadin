@@ -3,12 +3,12 @@ import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-confirm-dialog-overlay',
+  'vaadin24-confirm-dialog-overlay',
   css`
     [part='header'] ::slotted(h3) {
       margin-top: 0 !important;
       margin-bottom: 0 !important;
-      margin-inline-start: calc(var(--lumo-space-l) - var(--lumo-space-m));
+      margin-inline-start: calc(var(--lumo-space-l) - var(--lumo-space-m)) !important;
     }
 
     [part='message'] {

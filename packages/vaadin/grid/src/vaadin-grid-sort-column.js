@@ -1,22 +1,22 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-grid-sorter.js';
 import { GridColumn } from './vaadin-grid-column.js';
 
 /**
- * `<vaadin23-grid-sort-column>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-sort-column>` is a helper element for the `<vaadin24-grid>`
  * that provides default header renderer and functionality for sorting.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid items="[[items]]">
- *  <vaadin23-grid-sort-column path="name.first" direction="asc"></vaadin23-grid-sort-column>
+ * <vaadin24-grid items="[[items]]">
+ *  <vaadin24-grid-sort-column path="name.first" direction="asc"></vaadin24-grid-sort-column>
  *
- *  <vaadin23-grid-column>
+ *  <vaadin24-grid-column>
  *    ...
  * ```
  *
@@ -24,7 +24,7 @@ import { GridColumn } from './vaadin-grid-column.js';
  */
 class GridSortColumn extends GridColumn {
   static get is() {
-    return 'vaadin23-grid-sort-column';
+    return 'vaadin24-grid-sort-column';
   }
 
   static get properties() {
@@ -65,7 +65,7 @@ class GridSortColumn extends GridColumn {
   _defaultHeaderRenderer(root, _column) {
     let sorter = root.firstElementChild;
     if (!sorter) {
-      sorter = document.createElement('vaadin23-grid-sorter');
+      sorter = document.createElement('vaadin24-grid-sorter');
       sorter.addEventListener('direction-changed', this.__boundOnDirectionChanged);
       root.appendChild(sorter);
     }

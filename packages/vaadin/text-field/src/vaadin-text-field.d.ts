@@ -1,12 +1,11 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { InputFieldMixin } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
-import { PatternMixin } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { TextFieldMixin } from './vaadin-text-field-mixin.js';
 
 /**
  * Fired when the user commits a value change.
@@ -43,24 +42,24 @@ export interface TextFieldEventMap extends HTMLElementEventMap, TextFieldCustomE
 }
 
 /**
- * `<vaadin23-text-field>` is a web component that allows the user to input and edit text.
+ * `<vaadin24-text-field>` is a web component that allows the user to input and edit text.
  *
  * ```html
- * <vaadin23-text-field label="First Name"></vaadin23-text-field>
+ * <vaadin24-text-field label="First Name"></vaadin24-text-field>
  * ```
  *
  * ### Prefixes and suffixes
  *
- * These are child elements of a `<vaadin23-text-field>` that are displayed
+ * These are child elements of a `<vaadin24-text-field>` that are displayed
  * inline with the input, before or after.
  * In order for an element to be considered as a prefix, it must have the slot
  * attribute set to `prefix` (and similarly for `suffix`).
  *
  * ```html
- * <vaadin23-text-field label="Email address">
+ * <vaadin24-text-field label="Email address">
  *   <div slot="prefix">Sent to:</div>
  *   <div slot="suffix">@vaadin.com</div>
- * </vaadin23-text-field>
+ * </vaadin24-text-field>
  * ```
  *
  * ### Styling
@@ -105,17 +104,7 @@ export interface TextFieldEventMap extends HTMLElementEventMap, TextFieldCustomE
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  */
-declare class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(ElementMixin(HTMLElement)))) {
-  /**
-   * Maximum number of characters (in Unicode code points) that the user can enter.
-   */
-  maxlength: number | null | undefined;
-
-  /**
-   * Minimum number of characters (in Unicode code points) that the user can enter.
-   */
-  minlength: number | null | undefined;
-
+declare class TextField extends TextFieldMixin(ThemableMixin(ElementMixin(HTMLElement))) {
   addEventListener<K extends keyof TextFieldEventMap>(
     type: K,
     listener: (this: TextField, ev: TextFieldEventMap[K]) => void,
@@ -131,7 +120,7 @@ declare class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(Eleme
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-text-field': TextField;
+    'vaadin24-text-field': TextField;
   }
 }
 

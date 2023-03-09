@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-grid-column.js';
@@ -28,6 +28,7 @@ import { DragAndDropMixin } from './vaadin-grid-drag-and-drop-mixin.js';
 import { DynamicColumnsMixin } from './vaadin-grid-dynamic-columns-mixin.js';
 import { EventContextMixin } from './vaadin-grid-event-context-mixin.js';
 import { FilterMixin } from './vaadin-grid-filter-mixin.js';
+import { getBodyRowCells, iterateChildren, updateCellsPart, updateRowStates } from './vaadin-grid-helpers.js';
 import { KeyboardNavigationMixin } from './vaadin-grid-keyboard-navigation-mixin.js';
 import { RowDetailsMixin } from './vaadin-grid-row-details-mixin.js';
 import { ScrollMixin } from './vaadin-grid-scroll-mixin.js';
@@ -36,26 +37,26 @@ import { SortMixin } from './vaadin-grid-sort-mixin.js';
 import { StylingMixin } from './vaadin-grid-styling-mixin.js';
 
 /**
- * `<vaadin23-grid>` is a free, high quality data grid / data table Web Component. The content of the
+ * `<vaadin24-grid>` is a free, high quality data grid / data table Web Component. The content of the
  * the grid can be populated by using renderer callback function.
  *
  * ### Quick Start
  *
  * Start with an assigning an array to the [`items`](#/elements/vaadin-grid#property-items) property to visualize your data.
  *
- * Use the [`<vaadin23-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
+ * Use the [`<vaadin24-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
  * shorthand properties for the columns to define what gets rendered in the cells of the column.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid>
- *   <vaadin23-grid-column path="name.first" header="First name"></vaadin23-grid-column>
- *   <vaadin23-grid-column path="name.last" header="Last name"></vaadin23-grid-column>
- *   <vaadin23-grid-column path="email"></vaadin23-grid-column>
- * </vaadin23-grid>
+ * <vaadin24-grid>
+ *   <vaadin24-grid-column path="name.first" header="First name"></vaadin24-grid-column>
+ *   <vaadin24-grid-column path="name.last" header="Last name"></vaadin24-grid-column>
+ *   <vaadin24-grid-column path="email"></vaadin24-grid-column>
+ * </vaadin24-grid>
  * ```
  *
- * For custom content `vaadin23-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
+ * For custom content `vaadin24-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
  * `renderer` and `footerRenderer`.
  *
  * Each of those renderer functions provides `root`, `column`, `model` arguments when applicable.
@@ -70,18 +71,18 @@ import { StylingMixin } from './vaadin-grid-styling-mixin.js';
  *
  * #### Example:
  * ```html
- * <vaadin23-grid>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- *   <vaadin23-grid-column></vaadin23-grid-column>
- * </vaadin23-grid>
+ * <vaadin24-grid>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ *   <vaadin24-grid-column></vaadin24-grid-column>
+ * </vaadin24-grid>
  * ```
  * ```js
- * const grid = document.querySelector('vaadin23-grid');
+ * const grid = document.querySelector('vaadin24-grid');
  * grid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},
  *               {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];
  *
- * const columns = grid.querySelectorAll('vaadin23-grid-column');
+ * const columns = grid.querySelectorAll('vaadin24-grid-column');
  *
  * columns[0].headerRenderer = function(root) {
  *   root.textContent = 'Name';
@@ -117,11 +118,11 @@ import { StylingMixin } from './vaadin-grid-styling-mixin.js';
  * `detailsOpened` | Boolean | True if the item's row details are open.
  *
  * The following helper elements can be used for further customization:
- * - [`<vaadin23-grid-column-group>`](#/elements/vaadin-grid-column-group)
- * - [`<vaadin23-grid-filter>`](#/elements/vaadin-grid-filter)
- * - [`<vaadin23-grid-sorter>`](#/elements/vaadin-grid-sorter)
- * - [`<vaadin23-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
- * - [`<vaadin23-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
+ * - [`<vaadin24-grid-column-group>`](#/elements/vaadin-grid-column-group)
+ * - [`<vaadin24-grid-filter>`](#/elements/vaadin-grid-filter)
+ * - [`<vaadin24-grid-sorter>`](#/elements/vaadin-grid-sorter)
+ * - [`<vaadin24-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
+ * - [`<vaadin24-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
  *
  * __Note that the helper elements must be explicitly imported.__
  * If you want to import everything at once you can use the `all-imports.html` bundle.
@@ -129,14 +130,13 @@ import { StylingMixin } from './vaadin-grid-styling-mixin.js';
  * ### Lazy Loading with Function Data Provider
  *
  * In addition to assigning an array to the items property, you can alternatively
- * provide the `<vaadin23-grid>` data through the
+ * provide the `<vaadin24-grid>` data through the
  * [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) function property.
- * The `<vaadin23-grid>` calls this function lazily, only when it needs more data
+ * The `<vaadin24-grid>` calls this function lazily, only when it needs more data
  * to be displayed.
  *
- * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) in
- * the API reference below for the detailed data provider arguments description,
- * and the “Assigning Data” page in the demos.
+ * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
+ * documentation for the detailed data provider arguments description.
  *
  * __Note that expanding the tree grid's item will trigger a call to the `dataProvider`.__
  *
@@ -175,17 +175,56 @@ import { StylingMixin } from './vaadin-grid-styling-mixin.js';
  *
  * The following shadow DOM parts are available for styling:
  *
- * Part name | Description
- * ----------------|----------------
- * `row` | Row in the internal table
- * `cell` | Cell in the internal table
- * `header-cell` | Header cell in the internal table
- * `body-cell` | Body cell in the internal table
- * `footer-cell` | Footer cell in the internal table
- * `details-cell` | Row details cell in the internal table
- * `focused-cell` | Focused cell in the internal table
- * `resize-handle` | Handle for resizing the columns
- * `reorder-ghost` | Ghost element of the header cell being dragged
+ * Part name                  | Description
+ * ---------------------------|----------------
+ * `row`                      | Row in the internal table
+ * `expanded-row`             | Expanded row
+ * `selected-row`             | Selected row
+ * `details-opened-row`       | Row with details open
+ * `odd-row`                  | Odd row
+ * `even-row`                 | Even row
+ * `first-row`                | The first body row
+ * `last-row`                 | The last body row
+ * `dragstart-row`            | Set on the row for one frame when drag is starting.
+ * `dragover-above-row`       | Set on the row when the a row is dragged over above
+ * `dragover-below-row`       | Set on the row when the a row is dragged over below
+ * `dragover-on-top-row`      | Set on the row when the a row is dragged over on top
+ * `drag-disabled-row`        | Set to a row that isn't available for dragging
+ * `drop-disabled-row`        | Set to a row that can't be dropped on top of
+ * `cell`                     | Cell in the internal table
+ * `header-cell`              | Header cell in the internal table
+ * `body-cell`                | Body cell in the internal table
+ * `footer-cell`              | Footer cell in the internal table
+ * `details-cell`             | Row details cell in the internal table
+ * `focused-cell`             | Focused cell in the internal table
+ * `odd-row-cell`             | Cell in an odd row
+ * `even-row-cell`            | Cell in an even row
+ * `first-row-cell`           | Cell in the first body row
+ * `last-row-cell`            | Cell in the last body row
+ * `first-header-row-cell`    | Cell in the first header row
+ * `first-footer-row-cell`    | Cell in the first footer row
+ * `last-header-row-cell`     | Cell in the last header row
+ * `last-footer-row-cell`     | Cell in the last footer row
+ * `loading-row-cell`         | Cell in a row that is waiting for data from data provider
+ * `selected-row-cell`        | Cell in a selected row
+ * `expanded-row-cell`        | Cell in an expanded row
+ * `details-opened-row-cell`  | Cell in an row with details open
+ * `dragstart-row-cell`       | Cell in a row that user started to drag (set for one frame)
+ * `dragover-above-row-cell`  | Cell in a row that has another row dragged over above
+ * `dragover-below-row-cell`  | Cell in a row that has another row dragged over below
+ * `dragover-on-top-row-cell` | Cell in a row that has another row dragged over on top
+ * `drag-disabled-row-cell`   | Cell in a row that isn't available for dragging
+ * `drop-disabled-row-cell`   | Cell in a row that can't be dropped on top of
+ * `frozen-cell`              | Frozen cell in the internal table
+ * `frozen-to-end-cell`       | Frozen to end cell in the internal table
+ * `last-frozen-cell`         | Last frozen cell
+ * `first-frozen-to-end-cell` | First cell frozen to end
+ * `first-column-cell`        | First visible cell on a row
+ * `last-column-cell`         | Last visible cell on a row
+ * `reorder-allowed-cell`     | Cell in a column where another column can be reordered
+ * `reorder-dragging-cell`    | Cell in a column currently being reordered
+ * `resize-handle`            | Handle for resizing the columns
+ * `reorder-ghost`            | Ghost element of the header cell being dragged
  *
  * The following state attributes are available for styling:
  *
@@ -312,7 +351,7 @@ class Grid extends ElementMixin(
   }
 
   static get is() {
-    return 'vaadin23-grid';
+    return 'vaadin24-grid';
   }
 
   static get observers() {
@@ -397,6 +436,18 @@ class Grid extends ElementMixin(
     this.addEventListener('animationend', this._onAnimationEnd);
   }
 
+  /** @private */
+  get _firstVisibleIndex() {
+    const firstVisibleItem = this.__getFirstVisibleItem();
+    return firstVisibleItem ? firstVisibleItem.index : undefined;
+  }
+
+  /** @private */
+  get _lastVisibleIndex() {
+    const lastVisibleItem = this.__getLastVisibleItem();
+    return lastVisibleItem ? lastVisibleItem.index : undefined;
+  }
+
   /** @protected */
   connectedCallback() {
     super.connectedCallback();
@@ -417,22 +468,10 @@ class Grid extends ElementMixin(
   }
 
   /** @private */
-  get _firstVisibleIndex() {
-    const firstVisibleItem = this.__getFirstVisibleItem();
-    return firstVisibleItem ? firstVisibleItem.index : undefined;
-  }
-
-  /** @private */
   __getLastVisibleItem() {
     return this._getVisibleRows()
       .reverse()
       .find((row) => this._isInViewport(row));
-  }
-
-  /** @private */
-  get _lastVisibleIndex() {
-    const lastVisibleItem = this.__getLastVisibleItem();
-    return lastVisibleItem ? lastVisibleItem.index : undefined;
   }
 
   /** @private */
@@ -474,19 +513,6 @@ class Grid extends ElementMixin(
     this._tooltipController.setManual(true);
   }
 
-  /**
-   * @param {string} name
-   * @param {?string} oldValue
-   * @param {?string} newValue
-   * @protected
-   */
-  attributeChangedCallback(name, oldValue, newValue) {
-    super.attributeChangedCallback(name, oldValue, newValue);
-    if (name === 'dir') {
-      this.__isRTL = newValue === 'rtl';
-    }
-  }
-
   /** @private */
   __getBodyCellCoordinates(cell) {
     if (this.$.items.contains(cell) && cell.localName === 'td') {
@@ -513,9 +539,15 @@ class Grid extends ElementMixin(
       const cell = this.shadowRoot.activeElement;
       const cellCoordinates = this.__getBodyCellCoordinates(cell);
 
+      const previousSize = virtualizer.size || 0;
       virtualizer.size = effectiveSize;
-      virtualizer.update();
-      virtualizer.flush();
+
+      // Request an update for the previous last row to have the "last" state removed
+      virtualizer.update(previousSize - 1, previousSize - 1);
+      if (effectiveSize < previousSize) {
+        // Size was decreased, so the new last row requires an explicit update
+        virtualizer.update(effectiveSize - 1, effectiveSize - 1);
+      }
 
       // If the focused cell's parent row got hidden by the size change, focus the corresponding new cell
       if (cellCoordinates && cell.parentElement.hidden) {
@@ -745,7 +777,7 @@ class Grid extends ElementMixin(
       if (isChrome) {
         // Chrome bug: focusing before mouseup prevents text selection, see http://crbug.com/771903
         const mouseUpListener = (event) => {
-          // If focus is on element within the cell content — respect it, do not change
+          // If focus is on element within the cell content - respect it, do not change
           const contentContainsFocusedElement = cellContent.contains(this.getRootNode().activeElement);
           // Only focus if mouse is released on cell content itself
           const mouseUpWithinCell = event.composedPath().includes(cellContent);
@@ -777,13 +809,10 @@ class Grid extends ElementMixin(
    * @param {boolean} noNotify
    * @protected
    */
-  // eslint-disable-next-line max-params
-  _updateRow(row, columns, section, isColumnRow, noNotify) {
-    section = section || 'body';
-
+  _updateRow(row, columns, section = 'body', isColumnRow = false, noNotify = false) {
     const contentsFragment = document.createDocumentFragment();
 
-    Array.from(row.children).forEach((cell) => {
+    iterateChildren(row, (cell) => {
       cell._vacant = true;
     });
     row.innerHTML = '';
@@ -795,7 +824,9 @@ class Grid extends ElementMixin(
 
         if (section === 'body') {
           // Body
-          column._cells = column._cells || [];
+          if (!column._cells) {
+            column._cells = [];
+          }
           cell = column._cells.find((cell) => cell._vacant);
           if (!cell) {
             cell = this._createCell('td', column);
@@ -806,7 +837,9 @@ class Grid extends ElementMixin(
 
           if (index === cols.length - 1 && this.rowDetailsRenderer) {
             // Add details cell as last cell to body rows
-            this._detailsCells = this._detailsCells || [];
+            if (!this._detailsCells) {
+              this._detailsCells = [];
+            }
             const detailsCell = this._detailsCells.find((cell) => cell._vacant) || this._createCell('td');
             if (this._detailsCells.indexOf(detailsCell) === -1) {
               this._detailsCells.push(detailsCell);
@@ -826,13 +859,15 @@ class Grid extends ElementMixin(
         } else {
           // Header & footer
           const tagName = section === 'header' ? 'th' : 'td';
-          if (isColumnRow || column.localName === 'vaadin23-grid-column-group') {
+          if (isColumnRow || column.localName === 'vaadin24-grid-column-group') {
             cell = column[`_${section}Cell`] || this._createCell(tagName);
             cell._column = column;
             row.appendChild(cell);
             column[`_${section}Cell`] = cell;
           } else {
-            column._emptyCells = column._emptyCells || [];
+            if (!column._emptyCells) {
+              column._emptyCells = [];
+            }
             cell = column._emptyCells.find((cell) => cell._vacant) || this._createCell(tagName);
             cell._column = column;
             row.appendChild(cell);
@@ -927,9 +962,8 @@ class Grid extends ElementMixin(
       return;
     }
 
-    row.toggleAttribute('first', index === 0);
-    row.toggleAttribute('last', index === this._effectiveSize - 1);
-    row.toggleAttribute('odd', index % 2);
+    this._updateRowOrderParts(row, index);
+
     this._a11yUpdateRowRowindex(row, index);
     this._getItem(index, row);
   }
@@ -940,14 +974,38 @@ class Grid extends ElementMixin(
     this.recalculateColumnWidths();
   }
 
+  /** @private */
+  _updateRowOrderParts(row, index = row.index) {
+    updateRowStates(row, {
+      first: index === 0,
+      last: index === this._effectiveSize - 1,
+      odd: index % 2 !== 0,
+      even: index % 2 === 0,
+    });
+  }
+
+  /** @private */
+  _updateRowStateParts(row, { expanded, selected, detailsOpened }) {
+    updateRowStates(row, {
+      expanded,
+      selected,
+      'details-opened': detailsOpened,
+    });
+  }
+
   /**
    * @param {!Array<!GridColumn>} columnTree
    * @protected
    */
   _renderColumnTree(columnTree) {
-    Array.from(this.$.items.children).forEach((row) =>
-      this._updateRow(row, columnTree[columnTree.length - 1], null, false, true),
-    );
+    iterateChildren(this.$.items, (row) => {
+      this._updateRow(row, columnTree[columnTree.length - 1], 'body', false, true);
+
+      const model = this.__getRowModel(row);
+      this._updateRowOrderParts(row);
+      this._updateRowStateParts(row, model);
+      this._filterDragAndDrop(row, model);
+    });
 
     while (this.$.header.children.length < columnTree.length) {
       const headerRow = document.createElement('tr');
@@ -967,13 +1025,21 @@ class Grid extends ElementMixin(
       this.$.footer.removeChild(this.$.footer.firstElementChild);
     }
 
-    Array.from(this.$.header.children).forEach((headerRow, index) =>
-      this._updateRow(headerRow, columnTree[index], 'header', index === columnTree.length - 1),
-    );
+    iterateChildren(this.$.header, (headerRow, index, rows) => {
+      this._updateRow(headerRow, columnTree[index], 'header', index === columnTree.length - 1);
 
-    Array.from(this.$.footer.children).forEach((footerRow, index) =>
-      this._updateRow(footerRow, columnTree[columnTree.length - 1 - index], 'footer', index === 0),
-    );
+      const cells = getBodyRowCells(headerRow);
+      updateCellsPart(cells, 'first-header-row-cell', index === 0);
+      updateCellsPart(cells, 'last-header-row-cell', index === rows.length - 1);
+    });
+
+    iterateChildren(this.$.footer, (footerRow, index, rows) => {
+      this._updateRow(footerRow, columnTree[columnTree.length - 1 - index], 'footer', index === 0);
+
+      const cells = getBodyRowCells(footerRow);
+      updateCellsPart(cells, 'first-footer-row-cell', index === 0);
+      updateCellsPart(cells, 'last-footer-row-cell', index === rows.length - 1);
+    });
 
     // Sizer rows
     this._updateRow(this.$.sizer, columnTree[columnTree.length - 1]);
@@ -986,12 +1052,13 @@ class Grid extends ElementMixin(
     this._a11yUpdateFooterRows();
     this.__updateFooterPositioning();
     this.generateCellClassNames();
+    this.generateCellPartNames();
   }
 
   /** @private */
   __updateFooterPositioning() {
     // TODO: fixed in Firefox 99, remove when we can drop Firefox ESR 91 support
-    if (this._firefox && parseFloat(navigator.userAgent.match(/Firefox\/(\d{2,3}.\d)/)[1]) < 99) {
+    if (this._firefox && parseFloat(navigator.userAgent.match(/Firefox\/(\d{2,3}.\d)/u)[1]) < 99) {
       // Sticky (or translated) footer in a flexbox host doesn't get included in
       // the scroll height calculation on FF. This is a workaround for the issue.
       this.$.items.style.paddingBottom = 0;
@@ -1015,14 +1082,13 @@ class Grid extends ElementMixin(
     this._a11yUpdateRowLevel(row, model.level);
     this._a11yUpdateRowSelected(row, model.selected);
 
-    row.toggleAttribute('expanded', model.expanded);
-    row.toggleAttribute('selected', model.selected);
-    row.toggleAttribute('details-opened', model.detailsOpened);
+    this._updateRowStateParts(row, model);
 
     this._generateCellClassNames(row, model);
+    this._generateCellPartNames(row, model);
     this._filterDragAndDrop(row, model);
 
-    Array.from(row.children).forEach((cell) => {
+    iterateChildren(row, (cell) => {
       if (cell._renderer) {
         const owner = cell._column || this;
         cell._renderer.call(owner, cell._content, owner, model);
@@ -1129,21 +1195,6 @@ class Grid extends ElementMixin(
     if (this.__virtualizer) {
       this.__virtualizer.update(start, end);
     }
-  }
-
-  /**
-   * Updates the computed metrics and positioning of internal grid parts
-   * (row/details cell positioning etc). Needs to be invoked whenever the sizing of grid
-   * content changes asynchronously to ensure consistent appearance (e.g. when a
-   * contained image whose bounds aren't known beforehand finishes loading).
-   *
-   * @deprecated Since Vaadin 22, `notifyResize()` is deprecated. The component uses a
-   * ResizeObserver internally and doesn't need to be explicitly notified of resizes.
-   */
-  notifyResize() {
-    console.warn(
-      `WARNING: Since Vaadin 22, notifyResize() is deprecated. The component uses a ResizeObserver internally and doesn't need to be explicitly notified of resizes.`,
-    );
   }
 }
 

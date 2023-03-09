@@ -1,8 +1,9 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 
 /**
  * Fired when the `value` property changes.
@@ -16,19 +17,19 @@ export interface GridFilterCustomEventMap {
 export interface GridFilterEventMap extends HTMLElementEventMap, GridFilterCustomEventMap {}
 
 /**
- * `<vaadin23-grid-filter>` is a helper element for the `<vaadin23-grid>` that provides out-of-the-box UI controls,
+ * `<vaadin24-grid-filter>` is a helper element for the `<vaadin24-grid>` that provides out-of-the-box UI controls,
  * and handlers for filtering the grid data.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
  * ```
  * ```js
  * const column = document.querySelector('#column');
  * column.headerRenderer = (root, column) => {
  *   let filter = root.firstElementChild;
  *   if (!filter) {
- *     filter = document.createElement('vaadin23-grid-filter');
+ *     filter = document.createElement('vaadin24-grid-filter');
  *     root.appendChild(filter);
  *   }
  *   filter.path = 'name.first';
@@ -40,7 +41,7 @@ export interface GridFilterEventMap extends HTMLElementEventMap, GridFilterCusto
  *
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  */
-declare class GridFilter extends HTMLElement {
+declare class GridFilter extends ControllerMixin(HTMLElement) {
   /**
    * JS Path of the property in the item used for filtering the data.
    */
@@ -66,7 +67,7 @@ declare class GridFilter extends HTMLElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-filter': GridFilter;
+    'vaadin24-grid-filter': GridFilter;
   }
 }
 

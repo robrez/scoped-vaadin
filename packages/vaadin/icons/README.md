@@ -25,10 +25,10 @@ Once installed, import it in your application:
 import '@scoped-vaadin/icons';
 ```
 
-To display an icon, use [`<vaadin23-icon>`](https://www.npmjs.com/package/@scoped-vaadin/icon) element:
+To display an icon, use [`<vaadin24-icon>`](https://www.npmjs.com/package/@scoped-vaadin/icon) element:
 
 ```html
-<vaadin23-icon icon="vaadin:phone"></vaadin23-icon>
+<vaadin24-icon icon="vaadin:phone"></vaadin24-icon>
 ```
 
 ## License

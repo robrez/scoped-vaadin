@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -12,12 +12,12 @@ import { ItemMixin } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-tab>` is a Web Component providing an accessible and customizable tab.
+ * `<vaadin24-tab>` is a Web Component providing an accessible and customizable tab.
  *
  * ```
- *   <vaadin23-tab>
+ *   <vaadin24-tab>
  *     Tab 1
- *   </vaadin23-tab>
+ *   </vaadin24-tab>
  * ```
  *
  * The following state attributes are available for styling:
@@ -57,7 +57,7 @@ class Tab extends ElementMixin(ThemableMixin(ItemMixin(ControllerMixin(PolymerEl
   }
 
   static get is() {
-    return 'vaadin23-tab';
+    return 'vaadin24-tab';
   }
 
   /** @protected */

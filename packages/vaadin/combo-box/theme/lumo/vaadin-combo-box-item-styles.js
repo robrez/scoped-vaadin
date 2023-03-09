@@ -18,6 +18,8 @@ const comboBoxItem = css`
   }
 `;
 
-registerStyles('vaadin23-combo-box-item', [item, comboBoxItem], {
+registerStyles('vaadin24-combo-box-item', [item, comboBoxItem], {
   moduleId: 'lumo-combo-box-item',
 });
+
+export { comboBoxItem };

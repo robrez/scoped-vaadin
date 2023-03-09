@@ -10,16 +10,16 @@ A web component with two content areas and a draggable split handle between them
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-split-layout>
-  <vaadin23-split-layout orientation="vertical">
+<vaadin24-split-layout>
+  <vaadin24-split-layout orientation="vertical">
     <div>First layout content</div>
     <div>Second layout content</div>
-  </vaadin23-split-layout>
-  <vaadin23-split-layout orientation="vertical">
+  </vaadin24-split-layout>
+  <vaadin24-split-layout orientation="vertical">
     <div>Third layout content</div>
     <div>Fourth layout content</div>
-  </vaadin23-split-layout>
-</vaadin23-split-layout>
+  </vaadin24-split-layout>
+</vaadin24-split-layout>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/split-layout/screenshot.png" width="616" alt="Screenshot of vaadin-split-layout">](https://vaadin.com/docs/latest/components/split-layout)

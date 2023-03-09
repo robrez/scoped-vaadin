@@ -43,4 +43,4 @@ const tabsheet = css`
   }
 `;
 
-registerStyles('vaadin23-tabsheet', [tabsheet, loader], { moduleId: 'material-tabsheet' });
+registerStyles('vaadin24-tabsheet', [tabsheet, loader], { moduleId: 'material-tabsheet' });

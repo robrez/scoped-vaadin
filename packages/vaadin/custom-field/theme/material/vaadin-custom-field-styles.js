@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-material-styles/color.js';
@@ -44,7 +44,7 @@ const customField = css`
   }
 `;
 
-registerStyles('vaadin23-custom-field', [requiredField, helper, customField], {
+registerStyles('vaadin24-custom-field', [requiredField, helper, customField], {
   moduleId: 'material-custom-field',
 });
 

@@ -1,9 +1,10 @@
 /**
  * @license
- * Copyright (c) 2022 Vaadin Ltd.
+ * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 
 export type TooltipPosition =
@@ -21,20 +22,20 @@ export type TooltipPosition =
   | 'top';
 
 /**
- * `<vaadin23-tooltip>` is a Web Component for creating tooltips.
+ * `<vaadin24-tooltip>` is a Web Component for creating tooltips.
  *
  * ```html
  * <button id="confirm">Confirm</button>
- * <vaadin23-tooltip text="Click to save changes" for="confirm"></vaadin23-tooltip>
+ * <vaadin24-tooltip text="Click to save changes" for="confirm"></vaadin24-tooltip>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-tooltip>` uses `<vaadin23-tooltip-overlay>` internal
+ * `<vaadin24-tooltip>` uses `<vaadin24-tooltip-overlay>` internal
  * themable component as the actual visible overlay.
  *
- * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) documentation
- * for `<vaadin23-tooltip-overlay>` parts.
+ * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay) documentation
+ * for `<vaadin24-tooltip-overlay>` parts.
  *
  * The following state attributes are available for styling:
  *
@@ -42,12 +43,12 @@ export type TooltipPosition =
  * -----------------|----------------------------------------
  * `position`       | Reflects the `position` property value.
  *
- * Note: the `theme` attribute value set on `<vaadin23-tooltip>` is
- * propagated to the internal `<vaadin23-tooltip-overlay>` component.
+ * Note: the `theme` attribute value set on `<vaadin24-tooltip>` is
+ * propagated to the internal `<vaadin24-tooltip-overlay>` component.
  *
  * ### Custom CSS Properties
  *
- * The following custom CSS properties are available on the `<vaadin23-tooltip>` element:
+ * The following custom CSS properties are available on the `<vaadin24-tooltip>` element:
  *
  * Custom CSS property              | Description
  * ---------------------------------|-------------
@@ -58,7 +59,7 @@ export type TooltipPosition =
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  */
-declare class Tooltip extends ThemePropertyMixin(ElementMixin(HTMLElement)) {
+declare class Tooltip extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(HTMLElement))) {
   /**
    * Sets the default focus delay to be used by all tooltip instances,
    * except for those that have focus delay configured using property.
@@ -165,7 +166,7 @@ declare class Tooltip extends ThemePropertyMixin(ElementMixin(HTMLElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-tooltip': Tooltip;
+    'vaadin24-tooltip': Tooltip;
   }
 }
 

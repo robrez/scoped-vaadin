@@ -10,9 +10,9 @@ A web component for uploading files.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-upload accept=".pdf">
+<vaadin24-upload accept=".pdf">
   <span slot="drop-label">Drop your favourite Novels here (PDF files only)</span>
-</vaadin23-upload>
+</vaadin24-upload>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/upload/screenshot.png" width="656" alt="Screenshot of vaadin-upload">](https://vaadin.com/docs/latest/components/upload)

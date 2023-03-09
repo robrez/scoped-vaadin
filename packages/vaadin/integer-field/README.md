@@ -2,7 +2,7 @@
 
 This component is based on [@vaadin/integer-field](https://www.npmjs.com/package/@vaadin/integer-field)
 
-An extension of [`<vaadin23-number-field>`](https://www.npmjs.com/package/@scoped-vaadin/number-field) component that only allows entering integer numbers.
+An extension of [`<vaadin24-number-field>`](https://www.npmjs.com/package/@scoped-vaadin/number-field) component that only allows entering integer numbers.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/number-field/#integer-field)
 
@@ -10,7 +10,7 @@ An extension of [`<vaadin23-number-field>`](https://www.npmjs.com/package/@scope
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-integer-field label="X"></vaadin23-integer-field>
+<vaadin24-integer-field label="X"></vaadin24-integer-field>
 ```
 
 ## Installation

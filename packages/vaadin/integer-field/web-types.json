@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/integer-field",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin23-integer-field",
-          "description": "`<vaadin23-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin23-integer-field label=\"X\"></vaadin23-integer-field>\n```\n\n### Styling\n\n`<vaadin23-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin23-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-integer-field",
+          "description": "`<vaadin24-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin24-integer-field label=\"X\"></vaadin24-integer-field>\n```\n\n### Styling\n\n`<vaadin24-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin24-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
@@ -99,6 +99,17 @@
               }
             },
             {
+              "name": "clear-button-visible",
+              "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
               "name": "allowed-char-pattern",
               "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
               "value": {
@@ -112,17 +123,6 @@
             {
               "name": "autoselect",
               "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "clear-button-visible",
-              "description": "Set to true to display the clear icon which clears the input.",
               "value": {
                 "type": [
                   "boolean",
@@ -209,28 +209,6 @@
               }
             },
             {
-              "name": "has-controls",
-              "description": "Set to true to display value increase/decrease controls.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "step-buttons-visible",
-              "description": "Set to true to show increase/decrease buttons.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
               "name": "min",
               "description": "The minimum value of the field.",
               "value": {
@@ -258,6 +236,17 @@
               "value": {
                 "type": [
                   "number"
+                ]
+              }
+            },
+            {
+              "name": "step-buttons-visible",
+              "description": "Set to true to show increase/decrease buttons.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
                 ]
               }
             },
@@ -364,6 +353,17 @@
                 }
               },
               {
+                "name": "clearButtonVisible",
+                "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "allowedCharPattern",
                 "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
                 "value": {
@@ -377,17 +377,6 @@
               {
                 "name": "autoselect",
                 "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "clearButtonVisible",
-                "description": "Set to true to display the clear icon which clears the input.",
                 "value": {
                   "type": [
                     "boolean",
@@ -474,28 +463,6 @@
                 }
               },
               {
-                "name": "hasControls",
-                "description": "Set to true to display value increase/decrease controls.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "stepButtonsVisible",
-                "description": "Set to true to show increase/decrease buttons.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
                 "name": "min",
                 "description": "The minimum value of the field.",
                 "value": {
@@ -523,6 +490,17 @@
                 "value": {
                   "type": [
                     "number"
+                  ]
+                }
+              },
+              {
+                "name": "stepButtonsVisible",
+                "description": "Set to true to show increase/decrease buttons.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
                   ]
                 }
               }

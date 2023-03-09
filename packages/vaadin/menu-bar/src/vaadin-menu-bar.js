@@ -1,35 +1,33 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-menu-bar-submenu.js';
 import './vaadin-menu-bar-button.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { ButtonsMixin } from './vaadin-menu-bar-buttons-mixin.js';
-import { InteractionsMixin } from './vaadin-menu-bar-interactions-mixin.js';
+import { MenuBarMixin } from './vaadin-menu-bar-mixin.js';
 
 /**
- * `<vaadin23-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering
+ * `<vaadin24-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering
  * the user quick access to a consistent set of commands. Each button can toggle a submenu with
  * support for additional levels of nested menus.
  *
  * To create the menu bar, first add the component to the page:
  *
  * ```
- * <vaadin23-menu-bar></vaadin23-menu-bar>
+ * <vaadin24-menu-bar></vaadin24-menu-bar>
  * ```
  *
  * And then use [`items`](#/elements/vaadin-menu-bar#property-items) property to initialize the structure:
  *
  * ```
- * document.querySelector('vaadin23-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];
+ * document.querySelector('vaadin24-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];
  * ```
  *
  * ### Styling
@@ -39,8 +37,6 @@ import { InteractionsMixin } from './vaadin-menu-bar-interactions-mixin.js';
  * Part name         | Description
  * ------------------|----------------
  * `container`       | The container wrapping menu bar buttons.
- * `menu-bar-button` | The menu bar button.
- * `overflow-button` | The "overflow" button appearing when menu bar width is not enough to fit all the buttons.
  *
  * The following state attributes are available for styling:
  *
@@ -53,27 +49,23 @@ import { InteractionsMixin } from './vaadin-menu-bar-interactions-mixin.js';
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-menu-bar>` itself, the following internal
+ * In addition to `<vaadin24-menu-bar>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-menu-bar-button>` - has the same API as [`<vaadin23-button>`](#/elements/vaadin-button).
- * - `<vaadin23-context-menu-item>` - has the same API as [`<vaadin23-item>`](#/elements/vaadin-item).
- * - `<vaadin23-context-menu-list-box>` - has the same API as [`<vaadin23-list-box>`](#/elements/vaadin-list-box).
- * - `<vaadin23-context-menu-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-menu-bar-button>` - has the same API as [`<vaadin24-button>`](#/elements/vaadin-button).
+ * - `<vaadin24-menu-bar-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
+ * - `<vaadin24-menu-bar-list-box>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
+ * - `<vaadin24-menu-bar-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
  *
  * @fires {CustomEvent<boolean>} item-selected - Fired when a submenu item or menu bar button without children is clicked.
  *
  * @extends HTMLElement
- * @mixes ControllerMixin
- * @mixes ButtonsMixin
- * @mixes InteractionsMixin
  * @mixes DisabledMixin
  * @mixes ElementMixin
+ * @mixes MenuBarMixin
  * @mixes ThemableMixin
  */
-class MenuBar extends ButtonsMixin(
-  DisabledMixin(InteractionsMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement))))),
-) {
+class MenuBar extends MenuBarMixin(DisabledMixin(ElementMixin(ThemableMixin(PolymerElement)))) {
   static get template() {
     return html`
       <style>
@@ -92,36 +84,20 @@ class MenuBar extends ButtonsMixin(
           flex-wrap: nowrap;
           overflow: hidden;
         }
-
-        [part$='button'] {
-          flex-shrink: 0;
-        }
-
-        [part='overflow-button'] {
-          margin-right: 0;
-        }
-
-        .dots::before {
-          display: block;
-          content: '\\00B7\\00B7\\00B7';
-          font-size: inherit;
-          line-height: inherit;
-        }
       </style>
 
       <div part="container">
-        <vaadin23-menu-bar-button part="overflow-button" hidden$="[[!_hasOverflow]]" aria-label$="[[i18n.moreOptions]]">
-          <div class="dots"></div>
-        </vaadin23-menu-bar-button>
+        <slot></slot>
+        <slot name="overflow"></slot>
       </div>
-      <vaadin23-menu-bar-submenu is-root=""></vaadin23-menu-bar-submenu>
+      <vaadin24-menu-bar-submenu is-root overlay-class="[[overlayClass]]"></vaadin24-menu-bar-submenu>
 
       <slot name="tooltip"></slot>
     `;
   }
 
   static get is() {
-    return 'vaadin23-menu-bar';
+    return 'vaadin24-menu-bar';
   }
 
   static get properties() {
@@ -131,9 +107,9 @@ class MenuBar extends ButtonsMixin(
        * @type {object}
        * @property {string} text - Text to be set as the menu button component's textContent.
        * @property {string} tooltip - Text to be set as the menu button's tooltip.
-       * Requires a `<vaadin23-tooltip slot="tooltip">` element to be added inside the `<vaadin23-menu-bar>`.
+       * Requires a `<vaadin24-tooltip slot="tooltip">` element to be added inside the `<vaadin24-menu-bar>`.
        * @property {union: string | object} component - The component to represent the button content.
-       * Either a tagName or an element instance. Defaults to "vaadin23-context-menu-item".
+       * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
        * @property {boolean} disabled - If true, the button is disabled and cannot be activated.
        * @property {union: string | string[]} theme - Theme(s) to be set as the theme attribute of the button, overriding any theme set on the menu bar.
        * @property {SubMenuItem[]} children - Array of submenu items.
@@ -144,7 +120,7 @@ class MenuBar extends ButtonsMixin(
        * @type {object}
        * @property {string} text - Text to be set as the menu item component's textContent.
        * @property {union: string | object} component - The component to represent the item.
-       * Either a tagName or an element instance. Defaults to "vaadin23-context-menu-item".
+       * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
        * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
        * @property {boolean} checked - If true, the item shows a checkmark next to it.
        * @property {SubMenuItem[]} children - Array of child submenu items.
@@ -216,11 +192,21 @@ class MenuBar extends ButtonsMixin(
           };
         },
       },
+
+      /**
+       * A space-delimited list of CSS class names
+       * to set on each sub-menu overlay element.
+       *
+       * @attr {string} overlay-class
+       */
+      overlayClass: {
+        type: String,
+      },
     };
   }
 
   static get observers() {
-    return ['_themeChanged(_theme)'];
+    return ['_themeChanged(_theme, _overflow, _container)'];
   }
 
   /** @protected */
@@ -256,8 +242,8 @@ class MenuBar extends ButtonsMixin(
    * @param {string | null} theme
    * @protected
    */
-  _themeChanged(theme) {
-    if (this.shadowRoot) {
+  _themeChanged(theme, overflow, container) {
+    if (overflow && container) {
       this._buttons.forEach((btn) => this._setButtonTheme(btn, theme));
       this.__detectOverflow();
     }

@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -9,21 +9,21 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import type { IconSvgLiteral } from './vaadin-icon-svg.js';
 
 /**
- * `<vaadin23-icon>` is a Web Component for displaying SVG icons.
+ * `<vaadin24-icon>` is a Web Component for displaying SVG icons.
  *
  * ### Icon property
  *
- * The `<vaadin23-icon>` component is designed to be used as a drop-in replacement for `<iron-icon>`.
+ * The `<vaadin24-icon>` component is designed to be used as a drop-in replacement for `<iron-icon>`.
  * For example, you can use it with `vaadin-icons` like this:
  *
  * ```html
- * <vaadin23-icon icon="vaadin:angle-down"></vaadin23-icon>
+ * <vaadin24-icon icon="vaadin:angle-down"></vaadin24-icon>
  * ```
  *
  * Alternatively, you can also pick one of the Lumo icons:
  *
  * ```html
- * <vaadin23-icon icon="lumo:user"></vaadin23-icon>
+ * <vaadin24-icon icon="lumo:user"></vaadin24-icon>
  * ```
  *
  * ### Custom SVG icon
@@ -39,10 +39,10 @@ import type { IconSvgLiteral } from './vaadin-icon-svg.js';
  * render() {
  *   const svgIcon = svg`<path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>`;
  *   return html`
- *     <vaadin23-icon
+ *     <vaadin24-icon
  *       .svg="${svgIcon}"
  *       size="16"
- *     ></vaadin23-icon>
+ *     ></vaadin24-icon>
  *   `;
  * }
  * ```
@@ -54,9 +54,9 @@ declare class Icon extends ThemableMixin(ElementMixin(ControllerMixin(HTMLElemen
    * to omit the first part and only use `icon_name` as a value.
    *
    * Setting the `icon` property updates the `svg` and `size` based on the
-   * values provided by the corresponding `vaadin23-iconset` element.
+   * values provided by the corresponding `vaadin24-iconset` element.
    *
-   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin23-iconset`.
+   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin24-iconset`.
    */
   icon: string | null;
 
@@ -73,7 +73,7 @@ declare class Icon extends ThemableMixin(ElementMixin(ControllerMixin(HTMLElemen
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-icon': Icon;
+    'vaadin24-icon': Icon;
   }
 }
 

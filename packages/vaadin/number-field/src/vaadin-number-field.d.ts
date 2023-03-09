@@ -1,11 +1,12 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { InputFieldMixin } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { NumberFieldMixin } from './vaadin-number-field-mixin.js';
 
 /**
  * Fired when the user commits a value change.
@@ -42,18 +43,18 @@ export interface NumberFieldEventMap extends HTMLElementEventMap, NumberFieldCus
 }
 
 /**
- * `<vaadin23-number-field>` is an input field web component that only accepts numeric input.
+ * `<vaadin24-number-field>` is an input field web component that only accepts numeric input.
  *
  * ```html
- * <vaadin23-number-field label="Balance"></vaadin23-number-field>
+ * <vaadin24-number-field label="Balance"></vaadin24-number-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-number-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-number-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name         | Description
  * ------------------|-------------------------
@@ -68,36 +69,7 @@ export interface NumberFieldEventMap extends HTMLElementEventMap, NumberFieldCus
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  */
-declare class NumberField extends InputFieldMixin(ThemableMixin(ElementMixin(HTMLElement))) {
-  /**
-   * Set to true to display value increase/decrease controls.
-   * @attr {boolean} has-controls
-   * @deprecated since 23.3.
-   * Use [`stepButtonsVisible`](#/elements/vaadin-number-field#property-stepButtonsVisible) instead
-   */
-  hasControls: boolean;
-
-  /**
-   * Set to true to show increase/decrease buttons.
-   * @attr {boolean} step-buttons-visible
-   */
-  stepButtonsVisible: boolean;
-
-  /**
-   * The minimum value of the field.
-   */
-  min: number | null | undefined;
-
-  /**
-   * The maximum value of the field.
-   */
-  max: number | null | undefined;
-
-  /**
-   * Specifies the allowed number intervals of the field.
-   */
-  step: number | null | undefined;
-
+declare class NumberField extends NumberFieldMixin(ThemableMixin(ElementMixin(HTMLElement))) {
   addEventListener<K extends keyof NumberFieldEventMap>(
     type: K,
     listener: (this: NumberField, ev: NumberFieldEventMap[K]) => void,
@@ -113,7 +85,7 @@ declare class NumberField extends InputFieldMixin(ThemableMixin(ElementMixin(HTM
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-number-field': NumberField;
+    'vaadin24-number-field': NumberField;
   }
 }
 

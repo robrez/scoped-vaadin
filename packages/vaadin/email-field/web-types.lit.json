@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/email-field",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -15,31 +15,10 @@
     "html": {
       "elements": [
         {
-          "name": "vaadin23-email-field",
-          "description": "`<vaadin23-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin23-email-field label=\"Email\"></vaadin23-email-field>\n```\n\n### Styling\n\n`<vaadin23-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-email-field",
+          "description": "`<vaadin24-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin24-email-field label=\"Email\"></vaadin24-email-field>\n```\n\n### Styling\n\n`<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "extension": true,
           "attributes": [
-            {
-              "name": "?invalid",
-              "description": "Set to true when the field is invalid.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": "?required",
-              "description": "Specifies that the user must fill in a value.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": "?preventInvalidInput",
-              "description": "When set to true, user is prevented from typing a value that\nconflicts with the given `pattern`.",
-              "value": {
-                "kind": "expression"
-              }
-            },
             {
               "name": "?disabled",
               "description": "If true, the user cannot interact with this element.",
@@ -55,6 +34,27 @@
               }
             },
             {
+              "name": "?invalid",
+              "description": "Set to true when the field is invalid.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?required",
+              "description": "Specifies that the user must fill in a value.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?clearButtonVisible",
+              "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": "?autoselect",
               "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
               "value": {
@@ -62,29 +62,8 @@
               }
             },
             {
-              "name": "?clearButtonVisible",
-              "description": "Set to true to display the clear icon which clears the input.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
               "name": "?readonly",
               "description": "When present, it specifies that the field is read-only.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".value",
-              "description": "The value of the field.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".pattern",
-              "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
               "value": {
                 "kind": "expression"
               }
@@ -106,6 +85,13 @@
             {
               "name": ".helperText",
               "description": "String used for the helper text.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".value",
+              "description": "The value of the field.",
               "value": {
                 "kind": "expression"
               }
@@ -174,6 +160,13 @@
               }
             },
             {
+              "name": ".pattern",
+              "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": "@validated",
               "description": "Fired whenever the field is validated.",
               "value": {
@@ -195,15 +188,15 @@
               }
             },
             {
-              "name": "@value-changed",
-              "description": "Fired when the `value` property changes.",
+              "name": "@invalid-changed",
+              "description": "Fired when the `invalid` property changes.",
               "value": {
                 "kind": "expression"
               }
             },
             {
-              "name": "@invalid-changed",
-              "description": "Fired when the `invalid` property changes.",
+              "name": "@value-changed",
+              "description": "Fired when the `value` property changes.",
               "value": {
                 "kind": "expression"
               }

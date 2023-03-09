@@ -1,10 +1,10 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { SlotMixin } from '@scoped-vaadin/component-base/src/slot-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 
 /**
@@ -25,21 +25,21 @@ export interface ConfirmDialogCustomEventMap {
 export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEventMap;
 
 /**
- * `<vaadin23-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
+ * `<vaadin24-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
  *
  * ```
- * <vaadin23-confirm-dialog cancel>
+ * <vaadin24-confirm-dialog cancel-button-visible>
  *   There are unsaved changes. Do you really want to leave?
- * </vaadin23-confirm-dialog>
+ * </vaadin24-confirm-dialog>
  * ```
  *
  * ### Styling
  *
- * The `<vaadin23-confirm-dialog>` is not themable. Apply styles to `<vaadin23-confirm-dialog-overlay>`
+ * The `<vaadin24-confirm-dialog>` is not themable. Apply styles to `<vaadin24-confirm-dialog-overlay>`
  * component and use its shadow parts for styling.
- * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
+ * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
  *
- * In addition to `<vaadin23-overlay>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-overlay>` parts, the following parts are available for theming:
  *
  * Part name        | Description
  * -----------------|-------------------------------------------
@@ -51,8 +51,8 @@ export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEve
  * `reject-button`  | The "Reject" button wrapper
  *
  * Use `confirmTheme`, `cancelTheme` and `rejectTheme` properties to customize buttons theme.
- * Also, the `theme` attribute value set on `<vaadin23-confirm-dialog>` is propagated to the
- * `<vaadin23-confirm-dialog-overlay>` component.
+ * Also, the `theme` attribute value set on `<vaadin24-confirm-dialog>` is propagated to the
+ * `<vaadin24-confirm-dialog-overlay>` component.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -72,7 +72,7 @@ export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEve
  * @fires {Event} reject - Fired when Reject button was pressed.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class ConfirmDialog extends SlotMixin(ElementMixin(ThemePropertyMixin(HTMLElement))) {
+declare class ConfirmDialog extends ElementMixin(ThemePropertyMixin(ControllerMixin(HTMLElement))) {
   /**
    * True if the overlay is currently displayed.
    */
@@ -109,9 +109,10 @@ declare class ConfirmDialog extends SlotMixin(ElementMixin(ThemePropertyMixin(HT
   noCloseOnEsc: boolean;
 
   /**
-   * Whether to show cancel button or not.
+   * Whether to show reject button or not.
+   * @attr {boolean} reject-button-visible
    */
-  reject: boolean;
+  rejectButtonVisible: boolean;
 
   /**
    * Text displayed on reject-button.
@@ -129,8 +130,9 @@ declare class ConfirmDialog extends SlotMixin(ElementMixin(ThemePropertyMixin(HT
 
   /**
    * Whether to show cancel button or not.
+   * @attr {boolean} cancel-button-visible
    */
-  cancel: boolean;
+  cancelButtonVisible: boolean;
 
   /**
    * Text displayed on cancel-button.
@@ -145,6 +147,14 @@ declare class ConfirmDialog extends SlotMixin(ElementMixin(ThemePropertyMixin(HT
    * @attr {string} cancel-theme
    */
   cancelTheme: string;
+
+  /**
+   * A space-delimited list of CSS class names
+   * to set on the underlying overlay element.
+   *
+   * @attr {string} overlay-class
+   */
+  overlayClass: string;
 
   addEventListener<K extends keyof ConfirmDialogEventMap>(
     type: K,
@@ -161,7 +171,7 @@ declare class ConfirmDialog extends SlotMixin(ElementMixin(ThemePropertyMixin(HT
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-confirm-dialog': ConfirmDialog;
+    'vaadin24-confirm-dialog': ConfirmDialog;
   }
 }
 

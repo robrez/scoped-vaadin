@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -23,7 +23,7 @@ export declare class RowDetailsMixinClass<TItem> {
    * Receives three arguments:
    *
    * - `root` The row details content DOM element. Append your content to it.
-   * - `grid` The `<vaadin23-grid>` element.
+   * - `grid` The `<vaadin24-grid>` element.
    * - `model` The object with the properties related with
    *   the rendered item, contains:
    *   - `model.index` The index of the item.

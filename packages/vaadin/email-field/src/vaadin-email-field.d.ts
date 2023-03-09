@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
@@ -40,16 +40,16 @@ export interface EmailFieldEventMap extends HTMLElementEventMap, EmailFieldCusto
 }
 
 /**
- * `<vaadin23-email-field>` is a Web Component for email field control in forms.
+ * `<vaadin24-email-field>` is a Web Component for email field control in forms.
  *
  * ```html
- * <vaadin23-email-field label="Email"></vaadin23-email-field>
+ * <vaadin24-email-field label="Email"></vaadin24-email-field>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -75,7 +75,7 @@ declare class EmailField extends TextField {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-email-field': EmailField;
+    'vaadin24-email-field': EmailField;
   }
 }
 

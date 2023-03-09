@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { TemplateResult } from 'lit';
@@ -32,7 +32,7 @@ export class ComboBoxRendererDirective<TItem> extends LitRendererDirective<Combo
 }
 
 /**
- * A Lit directive for rendering the content of the `<vaadin23-combo-box-item>` elements.
+ * A Lit directive for rendering the content of the `<vaadin24-combo-box-item>` elements.
  *
  * The directive accepts a renderer callback returning a Lit template and assigns it to the combo-box
  * via the `renderer` property. The renderer is called for each combo-box item when assigned
@@ -48,9 +48,9 @@ export class ComboBoxRendererDirective<TItem> extends LitRendererDirective<Combo
  *
  * Example of usage:
  * ```js
- * `<vaadin23-combo-box
+ * `<vaadin24-combo-box
  *   ${comboBoxRenderer((item, model, comboBox) => html`...`)}
- * ></vaadin23-combo-box>`
+ * ></vaadin24-combo-box>`
  * ```
  *
  * @param renderer the renderer callback that returns a Lit template.

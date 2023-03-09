@@ -10,12 +10,12 @@ A web component that allows the user to choose several items from a group of bin
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-checkbox-group label="Export data">
-  <vaadin23-checkbox value="0" label="Order ID"></vaadin23-checkbox>
-  <vaadin23-checkbox value="1" label="Product name"></vaadin23-checkbox>
-  <vaadin23-checkbox value="2" label="Customer"></vaadin23-checkbox>
-  <vaadin23-checkbox value="3" label="Status"></vaadin23-checkbox>
-</vaadin23-checkbox-group>
+<vaadin24-checkbox-group label="Export data">
+  <vaadin24-checkbox value="0" label="Order ID"></vaadin24-checkbox>
+  <vaadin24-checkbox value="1" label="Product name"></vaadin24-checkbox>
+  <vaadin24-checkbox value="2" label="Customer"></vaadin24-checkbox>
+  <vaadin24-checkbox value="3" label="Status"></vaadin24-checkbox>
+</vaadin24-checkbox-group>
 ```
 
 ## Installation

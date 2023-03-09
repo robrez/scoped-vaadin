@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -8,11 +8,11 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { ProgressMixin } from './vaadin-progress-mixin.js';
 
 /**
- * `<vaadin23-progress-bar>` is a Web Component for progress bars.
+ * `<vaadin24-progress-bar>` is a Web Component for progress bars.
  *
  * ```html
- * <vaadin23-progress-bar min="0" max="1" value="0.5">
- * </vaadin23-progress-bar>
+ * <vaadin24-progress-bar min="0" max="1" value="0.5">
+ * </vaadin24-progress-bar>
  * ```
  *
  * ### Styling
@@ -42,7 +42,7 @@ declare class ProgressBar extends ProgressMixin(ThemableMixin(ElementMixin(HTMLE
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-progress-bar': ProgressBar;
+    'vaadin24-progress-bar': ProgressBar;
   }
 }
 

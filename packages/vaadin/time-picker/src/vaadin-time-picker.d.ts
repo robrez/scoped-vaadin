@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -62,10 +62,10 @@ export interface TimePickerEventMap extends HTMLElementEventMap, TimePickerCusto
 }
 
 /**
- * `<vaadin23-time-picker>` is a Web Component providing a time-selection field.
+ * `<vaadin24-time-picker>` is a Web Component providing a time-selection field.
  *
  * ```html
- * <vaadin23-time-picker></vaadin23-time-picker>
+ * <vaadin24-time-picker></vaadin24-time-picker>
  * ```
  * ```js
  * timePicker.value = '14:30';
@@ -82,16 +82,16 @@ export interface TimePickerEventMap extends HTMLElementEventMap, TimePickerCusto
  * `--vaadin-field-default-width`          | Default width of the field | `12em`
  * `--vaadin-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`
  *
- * `<vaadin23-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name       | Description
  * ----------------|----------------
  * `toggle-button` | The toggle button
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute | Description
  * ----------|------------------------------------------
@@ -99,15 +99,15 @@ export interface TimePickerEventMap extends HTMLElementEventMap, TimePickerCusto
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-time-picker>` itself, the following internal
+ * In addition to `<vaadin24-time-picker>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-time-picker-combo-box>` - has the same API as [`<vaadin23-combo-box-light>`](#/elements/vaadin-combo-box-light).
- * - `<vaadin23-time-picker-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
- * - `<vaadin23-time-picker-item>` - has the same API as [`<vaadin23-item>`](#/elements/vaadin-item).
- * - [`<vaadin23-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
+ * - `<vaadin24-time-picker-combo-box>` - has the same API as [`<vaadin24-combo-box-light>`](#/elements/vaadin-combo-box-light).
+ * - `<vaadin24-time-picker-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-time-picker-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
+ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
  *
- * Note: the `theme` attribute value set on `<vaadin23-time-picker>` is
+ * Note: the `theme` attribute value set on `<vaadin24-time-picker>` is
  * propagated to the internal components listed above.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -179,6 +179,13 @@ declare class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(El
   autoOpenDisabled: boolean | null | undefined;
 
   /**
+   * A space-delimited list of CSS class names to set on the overlay element.
+   *
+   * @attr {string} overlay-class
+   */
+  overlayClass: string;
+
+  /**
    * The object used to localize this component.
    * To change the default localization, replace the entire
    * _i18n_ object or just the property you want to modify.
@@ -234,7 +241,7 @@ declare class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(El
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-time-picker': TimePicker;
+    'vaadin24-time-picker': TimePicker;
   }
 }
 

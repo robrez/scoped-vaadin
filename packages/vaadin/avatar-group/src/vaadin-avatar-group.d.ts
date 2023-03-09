@@ -1,10 +1,12 @@
 /**
  * @license
- * Copyright (c) 2020 - 2022 Vaadin Ltd.
+ * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { AvatarI18n } from '@scoped-vaadin/avatar/src/vaadin-avatar.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -27,18 +29,18 @@ export interface AvatarGroupItem {
 }
 
 /**
- * `<vaadin23-avatar-group>` is a Web Component providing avatar group displaying functionality.
+ * `<vaadin24-avatar-group>` is a Web Component providing avatar group displaying functionality.
  *
  * To create the avatar group, first add the component to the page:
  *
  * ```
- * <vaadin23-avatar-group></vaadin23-avatar-group>
+ * <vaadin24-avatar-group></vaadin24-avatar-group>
  * ```
  *
  * And then use [`items`](#/elements/vaadin-avatar-group#property-items) property to initialize the structure:
  *
  * ```
- * document.querySelector('vaadin23-avatar-group').items = [
+ * document.querySelector('vaadin24-avatar-group').items = [
  *   {name: 'John Doe'},
  *   {abbr: 'AB'}
  * ];
@@ -51,19 +53,24 @@ export interface AvatarGroupItem {
  * Part name   | Description
  * ----------- | ---------------
  * `container` | The container element
- * `avatar`    | Individual avatars
+ *
+ * See the [`<vaadin24-avatar>`](#/elements/vaadin-avatar) documentation for the available
+ * state attributes and stylable shadow parts of avatar elements.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-avatar-group>` itself, the following internal
+ * In addition to `<vaadin24-avatar-group>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-avatar-group-list-box>` - has the same API as [`<vaadin23-list-box>`](#/elements/vaadin-list-box).
- * - `<vaadin23-avatar-group-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-avatar-group-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-avatar-group-menu>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
+ * - `<vaadin24-avatar-group-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
  */
-declare class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(HTMLElement))) {
+declare class AvatarGroup extends ResizeMixin(
+  OverlayClassMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))),
+) {
   readonly _avatars: HTMLElement[];
 
   /**
@@ -131,7 +138,7 @@ declare class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(HTMLEle
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-avatar-group': AvatarGroup;
+    'vaadin24-avatar-group': AvatarGroup;
   }
 }
 

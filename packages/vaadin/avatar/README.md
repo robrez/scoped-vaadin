@@ -10,9 +10,9 @@ A web component for graphical representation of an object or entity, for example
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-avatar></vaadin23-avatar>
-<vaadin23-avatar name="Jens Jansson"></vaadin23-avatar>
-<vaadin23-avatar abbr="SK"></vaadin23-avatar>
+<vaadin24-avatar></vaadin24-avatar>
+<vaadin24-avatar name="Jens Jansson"></vaadin24-avatar>
+<vaadin24-avatar abbr="SK"></vaadin24-avatar>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/avatar/screenshot.png" width="132" alt="Screenshot of vaadin-avatar">](https://vaadin.com/docs/latest/components/avatar)

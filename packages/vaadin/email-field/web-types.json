@@ -1,70 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/email-field",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin23-email-field",
-          "description": "`<vaadin23-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin23-email-field label=\"Email\"></vaadin23-email-field>\n```\n\n### Styling\n\n`<vaadin23-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-email-field",
+          "description": "`<vaadin24-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin24-email-field label=\"Email\"></vaadin24-email-field>\n```\n\n### Styling\n\n`<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
-            {
-              "name": "value",
-              "description": "The value of the field.",
-              "value": {
-                "type": [
-                  "string",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "invalid",
-              "description": "Set to true when the field is invalid.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "required",
-              "description": "Specifies that the user must fill in a value.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "pattern",
-              "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
-              "value": {
-                "type": [
-                  "string",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "prevent-invalid-input",
-              "description": "When set to true, user is prevented from typing a value that\nconflicts with the given `pattern`.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
             {
               "name": "disabled",
               "description": "If true, the user cannot interact with this element.",
@@ -99,6 +44,28 @@
               }
             },
             {
+              "name": "invalid",
+              "description": "Set to true when the field is invalid.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
+              "name": "required",
+              "description": "Specifies that the user must fill in a value.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
               "name": "error-message",
               "description": "Error to show when the field is invalid.",
               "value": {
@@ -121,6 +88,28 @@
               }
             },
             {
+              "name": "value",
+              "description": "The value of the field.",
+              "value": {
+                "type": [
+                  "string",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
+              "name": "clear-button-visible",
+              "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
               "name": "allowed-char-pattern",
               "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
               "value": {
@@ -134,17 +123,6 @@
             {
               "name": "autoselect",
               "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "clear-button-visible",
-              "description": "Set to true to display the clear icon which clears the input.",
               "value": {
                 "type": [
                   "boolean",
@@ -253,6 +231,17 @@
               }
             },
             {
+              "name": "pattern",
+              "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
+              "value": {
+                "type": [
+                  "string",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
               "name": "theme",
               "description": "The theme variants to apply to the component.",
               "value": {
@@ -266,61 +255,6 @@
           ],
           "js": {
             "properties": [
-              {
-                "name": "value",
-                "description": "The value of the field.",
-                "value": {
-                  "type": [
-                    "string",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "invalid",
-                "description": "Set to true when the field is invalid.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "required",
-                "description": "Specifies that the user must fill in a value.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "pattern",
-                "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
-                "value": {
-                  "type": [
-                    "string",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "preventInvalidInput",
-                "description": "When set to true, user is prevented from typing a value that\nconflicts with the given `pattern`.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
               {
                 "name": "disabled",
                 "description": "If true, the user cannot interact with this element.",
@@ -355,6 +289,28 @@
                 }
               },
               {
+                "name": "invalid",
+                "description": "Set to true when the field is invalid.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
+                "name": "required",
+                "description": "Specifies that the user must fill in a value.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "errorMessage",
                 "description": "Error to show when the field is invalid.",
                 "value": {
@@ -377,6 +333,28 @@
                 }
               },
               {
+                "name": "value",
+                "description": "The value of the field.",
+                "value": {
+                  "type": [
+                    "string",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
+                "name": "clearButtonVisible",
+                "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "allowedCharPattern",
                 "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
                 "value": {
@@ -390,17 +368,6 @@
               {
                 "name": "autoselect",
                 "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "clearButtonVisible",
-                "description": "Set to true to display the clear icon which clears the input.",
                 "value": {
                   "type": [
                     "boolean",
@@ -507,6 +474,17 @@
                     "undefined"
                   ]
                 }
+              },
+              {
+                "name": "pattern",
+                "description": "A regular expression that the value is checked against.\nThe pattern must match the entire value, not just some subset.",
+                "value": {
+                  "type": [
+                    "string",
+                    "null",
+                    "undefined"
+                  ]
+                }
               }
             ],
             "events": [
@@ -523,12 +501,12 @@
                 "description": "Fired when the value is changed by the user: on every typing keystroke,\nand the value is cleared using the clear button."
               },
               {
-                "name": "value-changed",
-                "description": "Fired when the `value` property changes."
-              },
-              {
                 "name": "invalid-changed",
                 "description": "Fired when the `invalid` property changes."
+              },
+              {
+                "name": "value-changed",
+                "description": "Fired when the `value` property changes."
               }
             ]
           }

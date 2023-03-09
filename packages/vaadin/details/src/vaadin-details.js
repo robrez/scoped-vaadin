@@ -1,26 +1,31 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import './vaadin-details-summary.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
-import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
-import { ShadowFocusMixin } from '@scoped-vaadin/field-base/src/shadow-focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { CollapsibleMixin } from './collapsible-mixin.js';
+import { SummaryController } from './summary-controller.js';
 
 /**
- * `<vaadin23-details>` is a Web Component which the creates an
+ * `<vaadin24-details>` is a Web Component which the creates an
  * expandable panel similar to `<details>` HTML element.
  *
  * ```
- * <vaadin23-details>
- *   <div slot="summary">Expandable Details</div>
- *   Toggle using mouse, Enter and Space keys.
- * </vaadin23-details>
+ * <vaadin24-details>
+ *   <vaadin24-details-summary slot="summary">Expandable Details</vaadin24-details-summary>
+ *   <div>
+ *     Toggle using mouse, Enter and Space keys.
+ *   </div>
+ * </vaadin24-details>
  * ```
  *
  * ### Styling
@@ -48,12 +53,16 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  *
  * @extends HTMLElement
+ * @mixes CollapsibleMixin
  * @mixes ControllerMixin
- * @mixes ShadowFocusMixin
+ * @mixes DelegateFocusMixin
+ * @mixes DelegateStateMixin
  * @mixes ElementMixin
  * @mixes ThemableMixin
  */
-class Details extends ShadowFocusMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement)))) {
+class Details extends CollapsibleMixin(
+  DelegateStateMixin(DelegateFocusMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement))))),
+) {
   static get template() {
     return html`
       <style>
@@ -67,119 +76,110 @@ class Details extends ShadowFocusMixin(ElementMixin(ThemableMixin(ControllerMixi
 
         [part='content'] {
           display: none;
-          overflow: hidden;
-        }
-
-        [part='summary'][disabled] {
-          pointer-events: none;
         }
 
         :host([opened]) [part='content'] {
           display: block;
-          overflow: visible;
         }
       </style>
-      <div role="heading">
-        <div
-          role="button"
-          part="summary"
-          on-click="_onToggleClick"
-          on-keydown="_onToggleKeyDown"
-          disabled$="[[disabled]]"
-          aria-expanded$="[[_getAriaExpanded(opened)]]"
-          aria-controls$="[[_contentId]]"
-        >
-          <span part="toggle" aria-hidden="true"></span>
-          <span part="summary-content"><slot name="summary"></slot></span>
-        </div>
-        <slot name="tooltip"></slot>
-      </div>
-      <section id$="[[_contentId]]" part="content" aria-hidden$="[[_getAriaHidden(opened)]]">
+
+      <slot name="summary"></slot>
+
+      <div part="content">
         <slot></slot>
-      </section>
+      </div>
+
+      <slot name="tooltip"></slot>
     `;
   }
 
   static get is() {
-    return 'vaadin23-details';
+    return 'vaadin24-details';
   }
 
   static get properties() {
     return {
       /**
-       * If true, the details content is visible.
-       * @type {boolean}
+       * A text that is displayed in the summary, if no
+       * element is assigned to the `summary` slot.
        */
-      opened: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        notify: true,
-        observer: '_openedChanged',
+      summary: {
+        type: String,
+        observer: '_summaryChanged',
       },
     };
   }
 
-  /**
-   * @return {!HTMLElement}
-   * @protected
-   */
-  get _collapsible() {
-    return this.shadowRoot.querySelector('[part="content"]');
+  static get observers() {
+    return ['__updateAriaControls(focusElement, _contentElements)', '__updateAriaExpanded(focusElement, opened)'];
   }
 
-  /**
-   * Focusable element used by `ShadowFocusMixin`.
-   * @return {!HTMLElement}
-   * @protected
-   */
-  get focusElement() {
-    return this.shadowRoot.querySelector('[part="summary"]');
+  static get delegateAttrs() {
+    return ['theme'];
+  }
+
+  static get delegateProps() {
+    return ['disabled', 'opened'];
+  }
+
+  constructor() {
+    super();
+
+    this._summaryController = new SummaryController(this, 'vaadin24-details-summary');
+    this._summaryController.addEventListener('slot-content-changed', (event) => {
+      const { node } = event.target;
+
+      this._setFocusElement(node);
+      this.stateTarget = node;
+
+      this._tooltipController.setTarget(node);
+    });
+
+    this._tooltipController = new TooltipController(this);
+    this._tooltipController.setPosition('bottom-start');
   }
 
   /** @protected */
   ready() {
     super.ready();
-    this._contentId = `${this.constructor.is}-content-${generateUniqueId()}`;
-    // Prevent Shift + Tab on content from host blur
-    this._collapsible.addEventListener('keydown', (e) => {
-      if (e.shiftKey && e.keyCode === 9) {
-        e.stopPropagation();
-      }
-    });
 
-    this._tooltipController = new TooltipController(this);
+    this.addController(this._summaryController);
     this.addController(this._tooltipController);
+  }
 
-    this._tooltipController.setTarget(this.focusElement);
-    this._tooltipController.setPosition('bottom-start');
+  /**
+   * Override method inherited from `DisabledMixin`
+   * to not set `aria-disabled` on the host element.
+   *
+   * @protected
+   * @override
+   */
+  _setAriaDisabled() {
+    // The `aria-disabled` is set on the details summary.
   }
 
   /** @private */
-  _getAriaExpanded(opened) {
-    return opened ? 'true' : 'false';
+  _summaryChanged(summary) {
+    this._summaryController.setSummary(summary);
   }
 
   /** @private */
-  _getAriaHidden(opened) {
-    return opened ? 'false' : 'true';
+  __updateAriaControls(summary, contentElements) {
+    if (summary && contentElements) {
+      const node = contentElements[0];
+
+      if (node && node.id) {
+        summary.setAttribute('aria-controls', node.id);
+      } else {
+        summary.removeAttribute('aria-controls');
+      }
+    }
   }
 
   /** @private */
-  _openedChanged(opened) {
-    this._collapsible.style.maxHeight = opened ? '' : '0px';
-  }
-
-  /** @private */
-  _onToggleClick() {
-    this.opened = !this.opened;
-  }
-
-  /** @private */
-  _onToggleKeyDown(e) {
-    if ([13, 32].indexOf(e.keyCode) > -1) {
-      e.preventDefault();
-      this.opened = !this.opened;
+  __updateAriaExpanded(focusElement, opened) {
+    if (focusElement) {
+      focusElement.setAttribute('aria-expanded', opened ? 'true' : 'false');
     }
   }
 }

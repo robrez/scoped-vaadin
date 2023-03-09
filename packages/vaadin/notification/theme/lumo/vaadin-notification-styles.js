@@ -5,7 +5,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-notification-card',
+  'vaadin24-notification-card',
   css`
     :host {
       position: relative;

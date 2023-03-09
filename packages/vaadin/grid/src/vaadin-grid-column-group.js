@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -12,17 +12,17 @@ import { ColumnBaseMixin } from './vaadin-grid-column.js';
 import { updateColumnOrders } from './vaadin-grid-helpers.js';
 
 /**
- * A `<vaadin23-grid-column-group>` is used to make groups of columns in `<vaadin23-grid>` and
+ * A `<vaadin24-grid-column-group>` is used to make groups of columns in `<vaadin24-grid>` and
  * to configure additional headers and footers.
  *
  * Groups can be nested to create complex header and footer configurations.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column-group resizable id="columnGroup">
- *   <vaadin23-grid-column id="column1"></vaadin23-grid-column>
- *   <vaadin23-grid-column id="column2"></vaadin23-grid-column>
- * </vaadin23-grid-column-group>
+ * <vaadin24-grid-column-group resizable id="columnGroup">
+ *   <vaadin24-grid-column id="column1"></vaadin24-grid-column>
+ *   <vaadin24-grid-column id="column2"></vaadin24-grid-column>
+ * </vaadin24-grid-column-group>
  * ```
  *
  * ```js
@@ -45,7 +45,7 @@ import { updateColumnOrders } from './vaadin-grid-helpers.js';
  */
 class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
   static get is() {
-    return 'vaadin23-grid-column-group';
+    return 'vaadin24-grid-column-group';
   }
 
   static get properties() {
@@ -127,28 +127,28 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
       this._preventHiddenSynchronization = false;
     }
 
-    if (/flexGrow|width|hidden|_childColumns/.test(path)) {
+    if (/flexGrow|width|hidden|_childColumns/u.test(path)) {
       this._updateFlexAndWidth();
     }
 
-    if (path === 'frozen') {
-      // Don’t unfreeze the frozen group because of a non-frozen child
-      this.frozen = this.frozen || value;
+    // Don't unfreeze the frozen group because of a non-frozen child
+    if (path === 'frozen' && !this.frozen) {
+      this.frozen = value;
     }
 
-    if (path === 'lastFrozen') {
-      // Don’t unfreeze the frozen group because of a non-frozen child
-      this._lastFrozen = this._lastFrozen || value;
+    // Don't unfreeze the frozen group because of a non-frozen child
+    if (path === 'lastFrozen' && !this._lastFrozen) {
+      this._lastFrozen = value;
     }
 
-    if (path === 'frozenToEnd') {
-      // Don’t unfreeze the frozen group because of a non-frozen child
-      this.frozenToEnd = this.frozenToEnd || value;
+    // Don't unfreeze the frozen group because of a non-frozen child
+    if (path === 'frozenToEnd' && !this.frozenToEnd) {
+      this.frozenToEnd = value;
     }
 
-    if (path === 'firstFrozenToEnd') {
-      // Don’t unfreeze the frozen group because of a non-frozen child
-      this._firstFrozenToEnd = this._firstFrozenToEnd || value;
+    // Don't unfreeze the frozen group because of a non-frozen child
+    if (path === 'firstFrozenToEnd' && !this._firstFrozenToEnd) {
+      this._firstFrozenToEnd = value;
     }
   }
 
@@ -170,7 +170,7 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
       // [1110] | [1120] | [1210] | [1220]
 
       // Trailing zeros are counted so we know the level on which we're working on.
-      const trailingZeros = /(0+)$/.exec(order).pop().length;
+      const trailingZeros = /(0+)$/u.exec(order).pop().length;
 
       // In an unlikely situation where a group has more than 9 child columns,
       // the child scope must have 1 digit less...
@@ -248,7 +248,7 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
   __scheduleAutoFreezeWarning(columns, frozenProp) {
     if (this._grid) {
       // Derive the attribute name from the property name
-      const frozenAttr = frozenProp.replace(/([A-Z])/g, '-$1').toLowerCase();
+      const frozenAttr = frozenProp.replace(/([A-Z])/gu, '-$1').toLowerCase();
 
       // Check if all the columns have the same frozen value
       const firstColumnFrozen = columns[0][frozenProp] || columns[0].hasAttribute(frozenAttr);
@@ -280,7 +280,7 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
       return;
     }
 
-    // Don’t propagate the default `false` value.
+    // Don't propagate the default `false` value.
     if (frozen !== false) {
       this.__scheduleAutoFreezeWarning(rootColumns, 'frozen');
 
@@ -296,7 +296,7 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
       return;
     }
 
-    // Don’t propagate the default `false` value.
+    // Don't propagate the default `false` value.
     if (frozenToEnd !== false) {
       this.__scheduleAutoFreezeWarning(rootColumns, 'frozenToEnd');
 
@@ -395,7 +395,7 @@ class GridColumnGroup extends ColumnBaseMixin(PolymerElement) {
    * @protected
    */
   _isColumnElement(node) {
-    return node.nodeType === Node.ELEMENT_NODE && /\bcolumn\b/.test(node.localName);
+    return node.nodeType === Node.ELEMENT_NODE && /\bcolumn\b/u.test(node.localName);
   }
 }
 

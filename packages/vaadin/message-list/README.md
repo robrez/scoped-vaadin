@@ -7,9 +7,9 @@ A web component that allows you to show a list of messages, for example, a chat 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/message-list)
 
 ```html
-<vaadin23-message-list></vaadin23-message-list>
+<vaadin24-message-list></vaadin24-message-list>
 <script>
-  document.querySelector('vaadin23-message-list').items = [
+  document.querySelector('vaadin24-message-list').items = [
     { userName: 'Alice', time: '8 Minutes ago', text: 'Lunch at the usual place?' },
     { userName: 'Bob', time: '6 Minutes ago', text: `Yeah, let's go together.` },
     { userName: 'Alice', time: '2 Minutes ago', text: 'Great! What about you, Charlie?' },

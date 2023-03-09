@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -56,9 +56,27 @@ export const FieldMixin = (superclass) =>
       return ['_invalidChanged(invalid)', '_requiredChanged(required)'];
     }
 
-    /** @protected */
-    get _errorId() {
-      return this._errorController.errorId;
+    constructor() {
+      super();
+
+      this._fieldAriaController = new FieldAriaController(this);
+      this._helperController = new HelperController(this);
+      this._errorController = new ErrorController(this);
+
+      this._errorController.addEventListener('slot-content-changed', (event) => {
+        this.toggleAttribute('has-error-message', event.detail.hasContent);
+      });
+
+      this._labelController.addEventListener('slot-content-changed', (event) => {
+        const { hasContent, node } = event.detail;
+        this.__labelChanged(hasContent, node);
+      });
+
+      this._helperController.addEventListener('slot-content-changed', (event) => {
+        const { hasContent, node } = event.detail;
+        this.toggleAttribute('has-helper', hasContent);
+        this.__helperChanged(hasContent, node);
+      });
     }
 
     /**
@@ -69,35 +87,12 @@ export const FieldMixin = (superclass) =>
       return this._errorController.node;
     }
 
-    /** @protected */
-    get _helperId() {
-      return this._helperController.helperId;
-    }
-
     /**
      * @protected
      * @return {HTMLElement}
      */
     get _helperNode() {
       return this._helperController.node;
-    }
-
-    constructor() {
-      super();
-
-      this._fieldAriaController = new FieldAriaController(this);
-      this._helperController = new HelperController(this);
-      this._errorController = new ErrorController(this);
-
-      this._labelController.addEventListener('label-changed', (event) => {
-        const { hasLabel, node } = event.detail;
-        this.__labelChanged(hasLabel, node);
-      });
-
-      this._helperController.addEventListener('helper-changed', (event) => {
-        const { hasHelper, node } = event.detail;
-        this.__helperChanged(hasHelper, node);
-      });
     }
 
     /** @protected */
@@ -178,7 +173,8 @@ export const FieldMixin = (superclass) =>
         // Error message ID needs to be dynamically added / removed based on the validity
         // Otherwise assistive technologies would announce the error, even if we hide it.
         if (invalid) {
-          this._fieldAriaController.setErrorId(this._errorController.errorId);
+          const node = this._errorNode;
+          this._fieldAriaController.setErrorId(node && node.id);
         } else {
           this._fieldAriaController.setErrorId(null);
         }

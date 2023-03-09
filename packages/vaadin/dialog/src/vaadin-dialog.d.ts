@@ -1,18 +1,15 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 import { DialogDraggableMixin } from './vaadin-dialog-draggable-mixin.js';
 import { DialogResizableMixin } from './vaadin-dialog-resizable-mixin.js';
 
-/**
- * An element used internally by `<vaadin23-dialog>`. Not intended to be used separately.
- */
-export class DialogOverlay extends Overlay {}
+export { DialogOverlay, DialogOverlayBounds, DialogOverlayBoundsParam } from './vaadin-dialog-overlay.js';
 
 export type DialogRenderer = (root: HTMLElement, dialog: Dialog) => void;
 
@@ -24,22 +21,6 @@ export type DialogResizeDimensions = {
   contentWidth: string;
   contentHeight: string;
 };
-
-export type DialogOverlayBounds = {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-};
-
-export type DialogOverlayBoundsParam =
-  | DialogOverlayBounds
-  | {
-      top?: number | string;
-      left?: number | string;
-      width?: number | string;
-      height?: number | string;
-    };
 
 /**
  * Fired when the `opened` property changes.
@@ -60,7 +41,7 @@ export interface DialogCustomEventMap {
 export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
 
 /**
- * `<vaadin23-dialog>` is a Web Component for creating customized modal dialogs.
+ * `<vaadin24-dialog>` is a Web Component for creating customized modal dialogs.
  *
  * ### Rendering
  *
@@ -72,7 +53,7 @@ export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
  * users are able to check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-dialog id="dialog"></vaadin23-dialog>
+ * <vaadin24-dialog id="dialog"></vaadin24-dialog>
  * ```
  * ```js
  * const dialog = document.querySelector('#dialog');
@@ -88,13 +69,13 @@ export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
  *
  * ### Styling
  *
- * `<vaadin23-dialog>` uses `<vaadin23-dialog-overlay>` internal
+ * `<vaadin24-dialog>` uses `<vaadin24-dialog-overlay>` internal
  * themable component as the actual visible dialog overlay.
  *
- * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) documentation.
- * for `<vaadin23-dialog-overlay>` parts.
+ * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay) documentation.
+ * for `<vaadin24-dialog-overlay>` parts.
  *
- * In addition to `<vaadin23-overlay>` parts, the following parts are available for styling:
+ * In addition to `<vaadin24-overlay>` parts, the following parts are available for styling:
  *
  * Part name        | Description
  * -----------------|-------------------------------------------
@@ -112,15 +93,17 @@ export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
  * `has-footer`     | Set when the element has footer renderer
  * `overflow`       | Set to `top`, `bottom`, none or both
  *
- * Note: the `theme` attribute value set on `<vaadin23-dialog>` is
- * propagated to the internal `<vaadin23-dialog-overlay>` component.
+ * Note: the `theme` attribute value set on `<vaadin24-dialog>` is
+ * propagated to the internal `<vaadin24-dialog-overlay>` component.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * @fires {CustomEvent} resize - Fired when the dialog resize is finished.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class Dialog extends ThemePropertyMixin(ElementMixin(DialogDraggableMixin(DialogResizableMixin(HTMLElement)))) {
+declare class Dialog extends OverlayClassMixin(
+  ThemePropertyMixin(ElementMixin(DialogDraggableMixin(DialogResizableMixin(HTMLElement)))),
+) {
   /**
    * True if the overlay is currently displayed.
    */
@@ -150,7 +133,7 @@ declare class Dialog extends ThemePropertyMixin(ElementMixin(DialogDraggableMixi
    * Receives two arguments:
    *
    * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin23-dialog>` element.
+   * - `dialog` The reference to the `<vaadin24-dialog>` element.
    */
   renderer: DialogRenderer | null | undefined;
 
@@ -171,7 +154,7 @@ declare class Dialog extends ThemePropertyMixin(ElementMixin(DialogDraggableMixi
    * Receives two arguments:
    *
    * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin23-dialog>` element.
+   * - `dialog` The reference to the `<vaadin24-dialog>` element.
    *
    * If both `headerTitle` and `headerRenderer` are defined, the title
    * and the elements created by the renderer will be placed next to
@@ -186,7 +169,7 @@ declare class Dialog extends ThemePropertyMixin(ElementMixin(DialogDraggableMixi
    * Receives two arguments:
    *
    * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin23-dialog>` element.
+   * - `dialog` The reference to the `<vaadin24-dialog>` element.
    *
    * When `footerRenderer` is set, the attribute `has-footer` is added to the overlay element.
    */
@@ -220,8 +203,7 @@ declare class Dialog extends ThemePropertyMixin(ElementMixin(DialogDraggableMixi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-dialog': Dialog;
-    'vaadin23-dialog-overlay': DialogOverlay;
+    'vaadin24-dialog': Dialog;
   }
 }
 

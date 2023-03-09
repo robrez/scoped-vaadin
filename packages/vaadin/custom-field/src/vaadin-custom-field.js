@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -14,13 +14,33 @@ import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-custom-field>` is a web component for wrapping multiple components as a single field.
+ * Default implementation of the parse function that creates individual field
+ * values from the single component value.
+ * @param value
+ * @returns {*}
+ */
+const defaultParseValue = (value) => {
+  return value.split('\t');
+};
+
+/**
+ * Default implementation of the format function that creates a single component
+ * value from individual field values.
+ * @param inputValues
+ * @returns {*}
+ */
+const defaultFormatValue = (inputValues) => {
+  return inputValues.join('\t');
+};
+
+/**
+ * `<vaadin24-custom-field>` is a web component for wrapping multiple components as a single field.
  *
  * ```
- * <vaadin23-custom-field label="Appointment time">
- *   <vaadin23-date-picker></vaadin23-date-picker>
- *   <vaadin23-time-picker></vaadin23-time-picker>
- * </vaadin23-custom-field>
+ * <vaadin24-custom-field label="Appointment time">
+ *   <vaadin24-date-picker></vaadin24-date-picker>
+ *   <vaadin24-time-picker></vaadin24-time-picker>
+ * </vaadin24-custom-field>
  * ```
  *
  * ### Styling
@@ -46,7 +66,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `has-error-message` | Set when the element has an error message | :host
  *
  * You may also manually set `disabled` or `readonly` attribute on this component to make the label
- * part look visually the same as on a `<vaadin23-text-field>` when it is disabled or readonly.
+ * part look visually the same as on a `<vaadin24-text-field>` when it is disabled or readonly.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -65,7 +85,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMixin(ElementMixin(PolymerElement))))) {
   static get is() {
-    return 'vaadin23-custom-field';
+    return 'vaadin24-custom-field';
   }
 
   static get template() {
@@ -188,55 +208,6 @@ class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMixin(Elem
        */
       parseValue: {
         type: Function,
-      },
-
-      /**
-       * The object used to localize this component.
-       * To change the default localization, replace the entire
-       * _i18n_ object or just the property you want to modify.
-       *
-       * The object has the following JSON structure:
-       *
-       * ```
-       * {
-       *   // A function to format given `Array` as
-       *   // component value. Array is list of all internal values
-       *   // in the order of their presence in the DOM
-       *   // This function is called each time the internal input
-       *   // value is changed.
-       *   formatValue: inputValues => {
-       *     // returns a representation of the given array of values
-       *     // in the form of string with delimiter characters
-       *   },
-       *
-       *   // A function to parse the given value to an `Array` in the format
-       *   // of the list of all internal values
-       *   // in the order of their presence in the DOM
-       *   // This function is called when value of the
-       *   // custom field is set.
-       *   parseValue: value => {
-       *     // returns the array of values from parsed value string.
-       *   }
-       * }
-       * ```
-       *
-       * @type {!CustomFieldI18n}
-       * @deprecated Since 23.3
-       * Use the [`formatValue`](#/elements/vaadin-custom-field#property-formatValue)
-       * and [`parseValue`](#/elements/vaadin-custom-field#property-parseValue) properties instead
-       */
-      i18n: {
-        type: Object,
-        value: () => {
-          return {
-            parseValue(value) {
-              return value.split('\t');
-            },
-            formatValue(inputValues) {
-              return inputValues.join('\t');
-            },
-          };
-        },
       },
     };
   }
@@ -369,7 +340,7 @@ class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMixin(Elem
   /** @private */
   __setValue() {
     this.__settingValue = true;
-    const formatFn = this.formatValue || this.i18n.formatValue;
+    const formatFn = this.formatValue || defaultFormatValue;
     this.value = formatFn.apply(this, [this.inputs.map((input) => input.value)]);
     this.__settingValue = false;
   }
@@ -421,7 +392,7 @@ class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMixin(Elem
 
     this.__toggleHasValue(value);
 
-    const parseFn = this.parseValue || this.i18n.parseValue;
+    const parseFn = this.parseValue || defaultParseValue;
     const valuesArray = parseFn.apply(this, [value]);
     if (!valuesArray || valuesArray.length === 0) {
       console.warn('Value parser has not provided values array');

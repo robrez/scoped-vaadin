@@ -8,6 +8,8 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
+/* eslint-disable @typescript-eslint/no-use-before-define */
+
 /**
  * @fileoverview
  *
@@ -90,7 +92,7 @@ function PASSIVE_TOUCH(eventName) {
 }
 
 // Check for touch-only devices
-const IS_TOUCH_ONLY = navigator.userAgent.match(/iP(?:[oa]d|hone)|Android/);
+const IS_TOUCH_ONLY = navigator.userAgent.match(/iP(?:[oa]d|hone)|Android/u);
 
 // Defined at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#enabling-and-disabling-form-controls:-the-disabled-attribute
 /** @type {!Object<boolean>} */
@@ -468,9 +470,9 @@ function _remove(node, evType, handler) {
  */
 export function register(recog) {
   recognizers.push(recog);
-  for (let i = 0; i < recog.emits.length; i++) {
-    gestures[recog.emits[i]] = recog;
-  }
+  recog.emits.forEach((emit) => {
+    gestures[emit] = recog;
+  });
 }
 
 /**

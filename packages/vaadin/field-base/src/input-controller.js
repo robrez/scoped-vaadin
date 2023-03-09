@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
@@ -10,11 +10,8 @@ import { SlotController } from '@scoped-vaadin/component-base/src/slot-controlle
  */
 export class InputController extends SlotController {
   constructor(host, callback) {
-    super(
-      host,
-      'input',
-      () => document.createElement('input'),
-      (host, node) => {
+    super(host, 'input', 'input', {
+      initializer: (node, host) => {
         if (host.value) {
           node.setAttribute('value', host.value);
         }
@@ -29,7 +26,7 @@ export class InputController extends SlotController {
           callback(node);
         }
       },
-      true,
-    );
+      useUniqueId: true,
+    });
   }
 }

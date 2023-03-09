@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
@@ -26,7 +26,7 @@ export class ComponentObserver {
   }
 
   initTags(component) {
-    const tags = document.createElement('vaadin23-user-tags');
+    const tags = document.createElement('vaadin24-user-tags');
     component.shadowRoot.appendChild(tags);
     tags.target = component;
     this._tags = tags;

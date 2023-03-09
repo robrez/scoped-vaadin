@@ -1,24 +1,24 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2022 Vaadin Ltd.
+ * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-tabsheet-scroller.js';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
-import { DelegateStateMixin } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
 import { Tabs } from '@scoped-vaadin/tabs/src/vaadin-tabs.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
  * @private
- * A controller which observes the <vaadin23-tabs> slotted to the tabs slot.
+ * A controller which observes the <vaadin24-tabs> slotted to the tabs slot.
  */
 class TabsSlotController extends SlotController {
   constructor(host) {
@@ -39,7 +39,7 @@ class TabsSlotController extends SlotController {
 
   initCustomNode(tabs) {
     if (!(tabs instanceof Tabs)) {
-      throw Error('The "tabs" slot of a <vaadin23-tabsheet> must only contain a <vaadin23-tabs> element!');
+      throw Error('The "tabs" slot of a <vaadin24-tabsheet> must only contain a <vaadin24-tabs> element!');
     }
     this.tabs = tabs;
     tabs.addEventListener('items-changed', this.__tabsItemsChangedListener);
@@ -60,24 +60,24 @@ class TabsSlotController extends SlotController {
 }
 
 /**
- * `<vaadin23-tabsheet>` is a Web Component for organizing and grouping content
+ * `<vaadin24-tabsheet>` is a Web Component for organizing and grouping content
  * into scrollable panels. The panels can be switched between by using tabs.
  *
  * ```
- *  <vaadin23-tabsheet>
+ *  <vaadin24-tabsheet>
  *    <div slot="prefix">Prefix</div>
  *    <div slot="suffix">Suffix</div>
  *
- *    <vaadin23-tabs slot="tabs">
- *      <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
- *      <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
- *      <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
- *    </vaadin23-tabs>
+ *    <vaadin24-tabs slot="tabs">
+ *      <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
+ *      <vaadin24-tab id="tab-2">Tab 2</vaadin24-tab>
+ *      <vaadin24-tab id="tab-3">Tab 3</vaadin24-tab>
+ *    </vaadin24-tabs>
  *
  *    <div tab="tab-1">Panel 1</div>
  *    <div tab="tab-2">Panel 2</div>
  *    <div tab="tab-3">Panel 3</div>
- *  </vaadin23-tabsheet>
+ *  </vaadin24-tabsheet>
  * ```
  *
  * ### Styling
@@ -145,25 +145,25 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
         <slot name="suffix"></slot>
       </div>
 
-      <vaadin23-tabsheet-scroller part="content">
+      <vaadin24-tabsheet-scroller part="content">
         <div part="loader"></div>
         <slot id="panel-slot"></slot>
-      </vaadin23-tabsheet-scroller>
+      </vaadin24-tabsheet-scroller>
     `;
   }
 
   static get is() {
-    return 'vaadin23-tabsheet';
+    return 'vaadin24-tabsheet';
   }
 
   static get properties() {
     return {
       /**
-       * The list of `<vaadin23-tab>`s from which a selection can be made.
+       * The list of `<vaadin24-tab>`s from which a selection can be made.
        * It is populated from the elements passed inside the slotted
-       * `<vaadin23-tabs>`, and updated dynamically when adding or removing items.
+       * `<vaadin24-tabs>`, and updated dynamically when adding or removing items.
        *
-       * Note: unlike `<vaadin23-combo-box>`, this property is read-only.
+       * Note: unlike `<vaadin24-combo-box>`, this property is read-only.
        * @type {!Array<!Tab> | undefined}
        */
       items: {
@@ -182,7 +182,7 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
       },
 
       /**
-       * The slotted <vaadin23-tabs> element.
+       * The slotted <vaadin24-tabs> element.
        */
       __tabs: {
         type: Object,
@@ -195,6 +195,10 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
         type: Array,
       },
     };
+  }
+
+  static get observers() {
+    return ['__itemsOrPanelsChanged(items, __panels)', '__selectedTabItemChanged(selected, items, __panels)'];
   }
 
   /** @override */
@@ -226,10 +230,6 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
     });
   }
 
-  static get observers() {
-    return ['__itemsOrPanelsChanged(items, __panels)', '__selectedTabItemChanged(selected, items, __panels)'];
-  }
-
   /**
    * An observer which applies the necessary roles and ARIA attributes
    * to associate the tab elements with the panels.
@@ -244,7 +244,9 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
       const panel = panels.find((panel) => panel.getAttribute('tab') === tabItem.id);
       if (panel) {
         panel.role = 'tabpanel';
-        panel.id = panel.id || `tabsheet-panel-${generateUniqueId()}`;
+        if (!panel.id) {
+          panel.id = `tabsheet-panel-${generateUniqueId()}`;
+        }
         panel.setAttribute('aria-labelledby', tabItem.id);
 
         tabItem.setAttribute('aria-controls', panel.id);

@@ -10,7 +10,7 @@ A web component that allows to enter a date by typing or by selecting from a cal
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-date-picker label="Label" value="2018-12-03" clear-button-visible></vaadin23-date-picker>
+<vaadin24-date-picker label="Label" value="2018-12-03" clear-button-visible></vaadin24-date-picker>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/date-picker/screenshot.png" width="343" alt="Screenshot of vaadin-date-picker">](https://vaadin.com/docs/latest/components/date-picker)

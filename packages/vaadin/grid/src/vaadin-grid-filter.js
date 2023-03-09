@@ -1,28 +1,30 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 
 /**
- * `<vaadin23-grid-filter>` is a helper element for the `<vaadin23-grid>` that provides out-of-the-box UI controls,
+ * `<vaadin24-grid-filter>` is a helper element for the `<vaadin24-grid>` that provides out-of-the-box UI controls,
  * and handlers for filtering the grid data.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
  * ```
  * ```js
  * const column = document.querySelector('#column');
  * column.headerRenderer = (root, column) => {
  *   let filter = root.firstElementChild;
  *   if (!filter) {
- *     filter = document.createElement('vaadin23-grid-filter');
+ *     filter = document.createElement('vaadin24-grid-filter');
  *     root.appendChild(filter);
  *   }
  *   filter.path = 'name.first';
@@ -36,7 +38,7 @@ import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
  *
  * @extends HTMLElement
  */
-class GridFilter extends class extends PolymerElement {} {
+class GridFilter extends ControllerMixin(PolymerElement) {
   static get template() {
     return html`
       <style>
@@ -45,19 +47,17 @@ class GridFilter extends class extends PolymerElement {} {
           max-width: 100%;
         }
 
-        #filter {
+        ::slotted(*) {
           width: 100%;
           box-sizing: border-box;
         }
       </style>
-      <slot name="filter">
-        <vaadin23-text-field id="filter" value="{{value}}"></vaadin23-text-field>
-      </slot>
+      <slot></slot>
     `;
   }
 
   static get is() {
-    return 'vaadin23-grid-filter';
+    return 'vaadin24-grid-filter';
   }
 
   static get properties() {
@@ -76,39 +76,42 @@ class GridFilter extends class extends PolymerElement {} {
       },
 
       /** @private */
-      _connected: Boolean,
+      _textField: {
+        type: Object,
+      },
     };
   }
 
-  /** @protected */
-  connectedCallback() {
-    super.connectedCallback();
-    this._connected = true;
-  }
-
   static get observers() {
-    return ['_filterChanged(path, value, _connected)'];
+    return ['_filterChanged(path, value, _textField)'];
   }
 
   /** @protected */
   ready() {
     super.ready();
 
-    const child = this.firstElementChild;
-    if (child && child.getAttribute('slot') !== 'filter') {
-      console.warn('Make sure you have assigned slot="filter" to the child elements of <vaadin23-grid-filter>');
-      child.setAttribute('slot', 'filter');
-    }
+    this._filterController = new SlotController(this, '', 'vaadin24-text-field', {
+      initializer: (field) => {
+        field.addEventListener('value-changed', (e) => {
+          this.value = e.detail.value;
+        });
+
+        this._textField = field;
+      },
+    });
+    this.addController(this._filterController);
   }
 
   /** @private */
-  _filterChanged(path, value, connected) {
-    if (path === undefined || value === undefined || !connected) {
+  _filterChanged(path, value, textField) {
+    if (path === undefined || value === undefined || !textField) {
       return;
     }
     if (this._previousValue === undefined && value === '') {
       return;
     }
+
+    textField.value = value;
     this._previousValue = value;
 
     this._debouncerFilterChanged = Debouncer.debounce(this._debouncerFilterChanged, timeOut.after(200), () => {
@@ -117,7 +120,9 @@ class GridFilter extends class extends PolymerElement {} {
   }
 
   focus() {
-    this.$.filter.focus();
+    if (this._textField) {
+      this._textField.focus();
+    }
   }
 }
 

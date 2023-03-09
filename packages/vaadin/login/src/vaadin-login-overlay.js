@@ -1,42 +1,43 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-login-form.js';
 import './vaadin-login-overlay-wrapper.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { LoginMixin } from './vaadin-login-mixin.js';
 
 /**
- * `<vaadin23-login-overlay>` is a wrapper of the `<vaadin23-login-form>` which opens a login form in an overlay and
- * having an additional `brand` part for application title and description. Using `<vaadin23-login-overlay>` allows
+ * `<vaadin24-login-overlay>` is a wrapper of the `<vaadin24-login-form>` which opens a login form in an overlay and
+ * having an additional `brand` part for application title and description. Using `<vaadin24-login-overlay>` allows
  * password managers to work with login form.
  *
  * ```
- * <vaadin23-login-overlay opened></vaadin23-login-overlay>
+ * <vaadin24-login-overlay opened></vaadin24-login-overlay>
  * ```
  *
  * ### Styling
  *
  * The component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.
- * Use `<vaadin23-login-overlay-wrapper>` and `<vaadin23-login-form-wrapper>` to apply styles.
+ * Use `<vaadin24-login-overlay-wrapper>` and `<vaadin24-login-form-wrapper>` to apply styles.
  *
- * The following shadow DOM parts of the `<vaadin23-login-overlay-wrapper>` are available for styling:
+ * The following shadow DOM parts of the `<vaadin24-login-overlay-wrapper>` are available for styling:
  *
  * Part name       | Description
  * ----------------|---------------------------------------------------------|
  * `card`          | Container for the entire component's content
  * `brand`         | Container for application title and description
- * `form`          | Container for the `<vaadin23-login-form>` component
+ * `form`          | Container for the `<vaadin24-login-form>` component
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * See [`<vaadin23-login-form>`](#/elements/vaadin-login-form)
- * documentation for  `<vaadin23-login-form-wrapper>` stylable parts.
+ * See [`<vaadin24-login-form>`](#/elements/vaadin-login-form)
+ * documentation for  `<vaadin24-login-form-wrapper>` stylable parts.
  *
  * @fires {CustomEvent} description-changed - Fired when the `description` property changes.
  * @fires {CustomEvent} disabled-changed - Fired when the `disabled` property changes.
@@ -48,11 +49,12 @@ import { LoginMixin } from './vaadin-login-mixin.js';
  * @mixes ElementMixin
  * @mixes ThemableMixin
  * @mixes LoginMixin
+ * @mixes OverlayClassMixin
  */
-class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+class LoginOverlay extends LoginMixin(OverlayClassMixin(ElementMixin(ThemableMixin(PolymerElement)))) {
   static get template() {
     return html`
-      <vaadin23-login-overlay-wrapper
+      <vaadin24-login-overlay-wrapper
         id="vaadinLoginOverlayWrapper"
         opened="{{opened}}"
         focus-trap
@@ -60,8 +62,10 @@ class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement)
         title="[[title]]"
         description="[[description]]"
         theme$="[[_theme]]"
+        on-vaadin-overlay-escape-press="_preventClosingLogin"
+        on-vaadin-overlay-outside-click="_preventClosingLogin"
       >
-        <vaadin23-login-form
+        <vaadin24-login-form
           theme="with-overlay"
           id="vaadinLoginForm"
           action="[[action]]"
@@ -72,13 +76,13 @@ class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement)
           i18n="{{i18n}}"
           on-login="_retargetEvent"
           on-forgot-password="_retargetEvent"
-        ></vaadin23-login-form>
-      </vaadin23-login-overlay-wrapper>
+        ></vaadin24-login-form>
+      </vaadin24-login-overlay-wrapper>
     `;
   }
 
   static get is() {
-    return 'vaadin23-login-overlay';
+    return 'vaadin24-login-overlay';
   }
 
   static get properties() {
@@ -122,19 +126,16 @@ class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement)
   ready() {
     super.ready();
 
-    this._preventClosingLogin = this._preventClosingLogin.bind(this);
+    this._overlayElement = this.$.vaadinLoginOverlayWrapper;
   }
 
   /** @protected */
   connectedCallback() {
     super.connectedCallback();
 
-    this.$.vaadinLoginOverlayWrapper.addEventListener('vaadin-overlay-outside-click', this._preventClosingLogin);
-    this.$.vaadinLoginOverlayWrapper.addEventListener('vaadin-overlay-escape-press', this._preventClosingLogin);
-
     // Restore opened state if overlay was open when disconnecting
     if (this.__restoreOpened) {
-      this.$.vaadinLoginOverlayWrapper.opened = true;
+      this.opened = true;
     }
   }
 
@@ -142,12 +143,9 @@ class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement)
   disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.$.vaadinLoginOverlayWrapper.removeEventListener('vaadin-overlay-outside-click', this._preventClosingLogin);
-    this.$.vaadinLoginOverlayWrapper.removeEventListener('vaadin-overlay-escape-press', this._preventClosingLogin);
-
     // Close overlay and memorize opened state
-    this.__restoreOpened = this.$.vaadinLoginOverlayWrapper.opened;
-    this.$.vaadinLoginOverlayWrapper.opened = false;
+    this.__restoreOpened = this.opened;
+    this.opened = false;
   }
 
   /** @private */
@@ -163,6 +161,21 @@ class LoginOverlay extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement)
   /** @private */
   _preventClosingLogin(e) {
     e.preventDefault();
+  }
+
+  /**
+   * @param {!Event} e
+   * @private
+   */
+  _retargetEvent(e) {
+    e.stopPropagation();
+    const { detail, composed, cancelable, bubbles } = e;
+
+    const firedEvent = this.dispatchEvent(new CustomEvent(e.type, { bubbles, cancelable, composed, detail }));
+    // Check if `eventTarget.preventDefault()` was called to prevent default in the original event
+    if (!firedEvent) {
+      e.preventDefault();
+    }
   }
 
   /** @private */

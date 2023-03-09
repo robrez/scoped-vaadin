@@ -10,9 +10,9 @@ A web component for showing the completion status of a task or process.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-progress-bar></vaadin23-progress-bar>
-<vaadin23-progress-bar value="0.3"></vaadin23-progress-bar>
-<vaadin23-progress-bar indeterminate></vaadin23-progress-bar>
+<vaadin24-progress-bar></vaadin24-progress-bar>
+<vaadin24-progress-bar value="0.3"></vaadin24-progress-bar>
+<vaadin24-progress-bar indeterminate></vaadin24-progress-bar>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/vaadin-progress-bar/master/screenshot.gif" width="418" alt="Screenshot of vaadin-progress-bar">](https://vaadin.com/docs/latest/components/progress-bar)

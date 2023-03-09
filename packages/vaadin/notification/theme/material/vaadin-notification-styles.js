@@ -4,7 +4,7 @@ import { colorDark } from '@scoped-vaadin/vaadin-material-styles/color.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-notification-container',
+  'vaadin24-notification-container',
   css`
     :host {
       top: 0;
@@ -151,6 +151,6 @@ const notificationCard = css`
   }
 `;
 
-registerStyles('vaadin23-notification-card', [colorDark, notificationCard], {
+registerStyles('vaadin24-notification-card', [colorDark, notificationCard], {
   moduleId: 'material-notification-card',
 });

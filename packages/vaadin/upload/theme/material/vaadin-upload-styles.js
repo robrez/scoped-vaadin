@@ -6,7 +6,7 @@ import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-upload',
+  'vaadin24-upload',
   css`
     :host(:not([nodrop])) {
       overflow: hidden;
@@ -23,14 +23,7 @@ registerStyles(
       align-items: baseline;
     }
 
-    /* TODO(jouni): unsupported selector (not sure why there's #addFiles element wrapping the upload button) */
-    [part='primary-buttons'] > * {
-      display: block;
-      flex-grow: 1;
-    }
-
-    [part='upload-button'] {
-      display: block;
+    ::slotted([slot='add-button']) {
       margin: 0 -8px;
     }
 
@@ -54,18 +47,6 @@ registerStyles(
 
     :host([max-files-reached]) [part='drop-label'] {
       color: var(--material-disabled-text-color);
-    }
-
-    [part='drop-label-icon'] {
-      display: inline-block;
-      margin-right: 8px;
-    }
-
-    [part='drop-label-icon']::before {
-      content: var(--material-icons-upload);
-      font-family: material-icons;
-      font-size: var(--material-icon-font-size);
-      line-height: 1;
     }
 
     /* Ripple */
@@ -97,7 +78,24 @@ registerStyles(
 );
 
 registerStyles(
-  'vaadin23-upload-file',
+  'vaadin24-upload-icon',
+  css`
+    :host {
+      margin-right: 8px;
+    }
+
+    :host::before {
+      content: var(--material-icons-upload);
+      font-family: material-icons;
+      font-size: var(--material-icon-font-size);
+      line-height: 1;
+    }
+  `,
+  { moduleId: 'material-upload-icon' },
+);
+
+registerStyles(
+  'vaadin24-upload-file',
   css`
     :host {
       outline: none;
@@ -237,14 +235,9 @@ registerStyles(
       color: var(--material-error-text-color);
     }
 
-    [part='progress'] {
+    ::slotted([slot='progress']) {
       width: auto;
       margin-left: 28px;
-    }
-
-    [part='progress'][complete],
-    [part='progress'][error] {
-      display: none;
     }
   `,
   { moduleId: 'material-upload-file' },

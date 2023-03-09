@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { InputControlMixin } from './input-control-mixin.js';
@@ -55,6 +55,15 @@ export const InputFieldMixin = (superclass) =>
       return [...super.delegateAttrs, 'autocapitalize', 'autocomplete', 'autocorrect'];
     }
 
+    // Workaround for https://github.com/Polymer/polymer/issues/5259
+    get __data() {
+      return this.__dataValue || {};
+    }
+
+    set __data(value) {
+      this.__dataValue = value;
+    }
+
     /**
      * @param {HTMLElement} input
      * @protected
@@ -74,15 +83,6 @@ export const InputFieldMixin = (superclass) =>
           input.value = this.value;
         }
       }
-    }
-
-    // Workaround for https://github.com/Polymer/polymer/issues/5259
-    get __data() {
-      return this.__dataValue || {};
-    }
-
-    set __data(value) {
-      this.__dataValue = value;
     }
 
     /**

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -12,24 +12,22 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { ensureSvgLiteral, renderSvg } from './vaadin-icon-svg.js';
 import { Iconset } from './vaadin-iconset.js';
 
-const DEFAULT_ICONSET = 'vaadin';
-
 /**
- * `<vaadin23-icon>` is a Web Component for displaying SVG icons.
+ * `<vaadin24-icon>` is a Web Component for displaying SVG icons.
  *
  * ### Icon property
  *
- * The `<vaadin23-icon>` component is designed to be used as a drop-in replacement for `<iron-icon>`.
+ * The `<vaadin24-icon>` component is designed to be used as a drop-in replacement for `<iron-icon>`.
  * For example, you can use it with `vaadin-icons` like this:
  *
  * ```html
- * <vaadin23-icon icon="vaadin:angle-down"></vaadin23-icon>
+ * <vaadin24-icon icon="vaadin:angle-down"></vaadin24-icon>
  * ```
  *
  * Alternatively, you can also pick one of the Lumo icons:
  *
  * ```html
- * <vaadin23-icon icon="lumo:user"></vaadin23-icon>
+ * <vaadin24-icon icon="lumo:user"></vaadin24-icon>
  * ```
  *
  * ### Custom SVG icon
@@ -45,10 +43,10 @@ const DEFAULT_ICONSET = 'vaadin';
  * render() {
  *   const svgIcon = svg`<path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>`;
  *   return html`
- *     <vaadin23-icon
+ *     <vaadin24-icon
  *       .svg="${svgIcon}"
  *       size="16"
- *     ></vaadin23-icon>
+ *     ></vaadin24-icon>
  *   `;
  * }
  * ```
@@ -97,7 +95,7 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
   }
 
   static get is() {
-    return 'vaadin23-icon';
+    return 'vaadin24-icon';
   }
 
   static get properties() {
@@ -108,9 +106,9 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
        * to omit the first part and only use `icon_name` as a value.
        *
        * Setting the `icon` property updates the `svg` and `size` based on the
-       * values provided by the corresponding `vaadin23-iconset` element.
+       * values provided by the corresponding `vaadin24-iconset` element.
        *
-       * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin23-iconset`.
+       * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin24-iconset`.
        */
       icon: {
         type: String,
@@ -144,11 +142,6 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
     return ['__svgChanged(svg, __svgElement)'];
   }
 
-  constructor() {
-    super();
-    this.__onIconsetRegistered = this.__onIconsetRegistered.bind(this);
-  }
-
   /** @protected */
   ready() {
     super.ready();
@@ -158,65 +151,41 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
     this.addController(this._tooltipController);
   }
 
-  /** @private */
-  __getIconsetName(icon) {
-    if (!icon) {
-      return;
-    }
-
-    const parts = icon.split(':');
-    return parts[0] || DEFAULT_ICONSET;
-  }
-
-  /** @private */
-  __onIconsetRegistered(e) {
-    if (e.detail === this.__getIconsetName(this.icon)) {
-      this.__iconChanged(this.icon);
-    }
-  }
-
   /** @protected */
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener('vaadin-iconset-registered', this.__onIconsetRegistered);
+
+    Iconset.attachedIcons.add(this);
   }
 
   /** @protected */
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('vaadin-iconset-registered', this.__onIconsetRegistered);
+
+    Iconset.attachedIcons.delete(this);
+  }
+
+  /** @protected */
+  _applyIcon() {
+    const { svg, size, viewBox } = Iconset.getIconSvg(this.icon);
+
+    if (viewBox) {
+      this.__viewBox = viewBox;
+    }
+
+    if (size && size !== this.size) {
+      this.size = size;
+    }
+
+    this.svg = svg;
   }
 
   /** @private */
   __iconChanged(icon) {
     if (icon) {
-      this.__checkDeprecatedIcon(icon);
-      const iconsetName = this.__getIconsetName(icon);
-      const iconset = Iconset.getIconset(iconsetName);
-      const { svg, size, viewBox } = iconset.applyIcon(icon);
-      if (viewBox) {
-        this.__viewBox = viewBox;
-      }
-      if (size !== this.size) {
-        this.size = size;
-      }
-      this.svg = svg;
+      this._applyIcon();
     } else {
       this.svg = ensureSvgLiteral(null);
-    }
-  }
-
-  /** @private */
-  __checkDeprecatedIcon(icon) {
-    const deprecatedIcons = {
-      'vaadin:buss': 'vaadin:bus',
-      'vaadin:funcion': 'vaadin:function',
-      'vaadin:megafone': 'vaadin:megaphone',
-      'vaadin:palete': 'vaadin:palette',
-      'vaadin:trendind-down': 'vaadin:trending-down',
-    };
-    if (icon in deprecatedIcons) {
-      console.warn(`WARNING: The icon "${icon}" is deprecated. Use "${deprecatedIcons[icon]}" instead`);
     }
   }
 

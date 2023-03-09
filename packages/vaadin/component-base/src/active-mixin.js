@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { DisabledMixin } from './disabled-mixin.js';
@@ -55,7 +55,7 @@ export const ActiveMixin = (superclass) =>
       // When the element is disconnecting from the DOM at the moment being active,
       // the `active` attribute needs to be manually removed from the element.
       // Otherwise, it will preserve on the element until the element is activated once again.
-      // The case reproduces for `<vaadin23-date-picker>` when closing on `Cancel` or `Today` click.
+      // The case reproduces for `<vaadin24-date-picker>` when closing on `Cancel` or `Today` click.
       this._setActive(false);
     }
 

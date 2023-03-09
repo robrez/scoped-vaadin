@@ -10,7 +10,7 @@ An input field web component for selecting both a date and a time.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-date-time-picker></vaadin23-date-time-picker>
+<vaadin24-date-time-picker></vaadin24-date-time-picker>
 ```
 
 ## Installation

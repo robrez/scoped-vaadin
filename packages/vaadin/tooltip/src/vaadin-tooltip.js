@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2022 Vaadin Ltd.
+ * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-tooltip-overlay.js';
@@ -9,6 +9,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { isKeyboardActive } from '@scoped-vaadin/component-base/src/focus-utils.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 
@@ -30,6 +31,29 @@ let cooldownTimeout = null;
 class TooltipStateController {
   constructor(host) {
     this.host = host;
+  }
+
+  /** @private */
+  get openedProp() {
+    return this.host.manual ? 'opened' : '_autoOpened';
+  }
+
+  /** @private */
+  get focusDelay() {
+    const tooltip = this.host;
+    return tooltip.focusDelay != null && tooltip.focusDelay > 0 ? tooltip.focusDelay : defaultFocusDelay;
+  }
+
+  /** @private */
+  get hoverDelay() {
+    const tooltip = this.host;
+    return tooltip.hoverDelay != null && tooltip.hoverDelay > 0 ? tooltip.hoverDelay : defaultHoverDelay;
+  }
+
+  /** @private */
+  get hideDelay() {
+    const tooltip = this.host;
+    return tooltip.hideDelay != null && tooltip.hideDelay > 0 ? tooltip.hideDelay : defaultHideDelay;
   }
 
   /**
@@ -67,29 +91,6 @@ class TooltipStateController {
       this.__abortCooldown();
       this.__scheduleCooldown();
     }
-  }
-
-  /** @private */
-  get openedProp() {
-    return this.host.manual ? 'opened' : '_autoOpened';
-  }
-
-  /** @private */
-  get focusDelay() {
-    const tooltip = this.host;
-    return tooltip.focusDelay != null && tooltip.focusDelay > 0 ? tooltip.focusDelay : defaultFocusDelay;
-  }
-
-  /** @private */
-  get hoverDelay() {
-    const tooltip = this.host;
-    return tooltip.hoverDelay != null && tooltip.hoverDelay > 0 ? tooltip.hoverDelay : defaultHoverDelay;
-  }
-
-  /** @private */
-  get hideDelay() {
-    const tooltip = this.host;
-    return tooltip.hideDelay != null && tooltip.hideDelay > 0 ? tooltip.hideDelay : defaultHideDelay;
   }
 
   /** @private */
@@ -193,20 +194,20 @@ class TooltipStateController {
 }
 
 /**
- * `<vaadin23-tooltip>` is a Web Component for creating tooltips.
+ * `<vaadin24-tooltip>` is a Web Component for creating tooltips.
  *
  * ```html
  * <button id="confirm">Confirm</button>
- * <vaadin23-tooltip text="Click to save changes" for="confirm"></vaadin23-tooltip>
+ * <vaadin24-tooltip text="Click to save changes" for="confirm"></vaadin24-tooltip>
  * ```
  *
  * ### Styling
  *
- * `<vaadin23-tooltip>` uses `<vaadin23-tooltip-overlay>` internal
+ * `<vaadin24-tooltip>` uses `<vaadin24-tooltip-overlay>` internal
  * themable component as the actual visible overlay.
  *
- * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) documentation
- * for `<vaadin23-tooltip-overlay>` parts.
+ * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay) documentation
+ * for `<vaadin24-tooltip-overlay>` parts.
  *
  * The following state attributes are available for styling:
  *
@@ -214,12 +215,12 @@ class TooltipStateController {
  * -----------------|----------------------------------------
  * `position`       | Reflects the `position` property value.
  *
- * Note: the `theme` attribute value set on `<vaadin23-tooltip>` is
- * propagated to the internal `<vaadin23-tooltip-overlay>` component.
+ * Note: the `theme` attribute value set on `<vaadin24-tooltip>` is
+ * propagated to the internal `<vaadin24-tooltip-overlay>` component.
  *
  * ### Custom CSS Properties
  *
- * The following custom CSS properties are available on the `<vaadin23-tooltip>` element:
+ * The following custom CSS properties are available on the `<vaadin24-tooltip>` element:
  *
  * Custom CSS property              | Description
  * ---------------------------------|-------------
@@ -232,11 +233,12 @@ class TooltipStateController {
  *
  * @extends HTMLElement
  * @mixes ElementMixin
+ * @mixes OverlayClassMixin
  * @mixes ThemePropertyMixin
  */
-class Tooltip extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
+class Tooltip extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(PolymerElement))) {
   static get is() {
-    return 'vaadin23-tooltip';
+    return 'vaadin24-tooltip';
   }
 
   static get template() {
@@ -246,7 +248,7 @@ class Tooltip extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
           display: none;
         }
       </style>
-      <vaadin23-tooltip-overlay
+      <vaadin24-tooltip-overlay
         id="[[_uniqueId]]"
         role="tooltip"
         renderer="[[_renderer]]"
@@ -260,7 +262,7 @@ class Tooltip extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
         vertical-align="[[__computeVerticalAlign(__effectivePosition)]]"
         on-mouseleave="__onOverlayMouseLeave"
         modeless
-      ></vaadin23-tooltip-overlay>
+      ></vaadin24-tooltip-overlay>
     `;
   }
 
@@ -410,9 +412,6 @@ class Tooltip extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
         type: String,
         computed: '__computePosition(position, _position)',
       },
-
-      /** @protected */
-      _overlayElement: Object,
 
       /** @private */
       __isTargetHidden: {

@@ -10,9 +10,9 @@ A web component for selecting a single value from a list of options presented in
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-select label="Sort by"></vaadin23-select>
+<vaadin24-select label="Sort by"></vaadin24-select>
 <script>
-  document.querySelector('vaadin23-select').renderer = (root) => {
+  document.querySelector('vaadin24-select').renderer = (root) => {
     if (root.firstElementChild) {
       return;
     }
@@ -20,13 +20,13 @@ A web component for selecting a single value from a list of options presented in
     // Note that innerHTML is only used for demo purposes here!
     // Consider using Lit or another template library instead.
     root.innerHTML = `
-      <vaadin23-list-box>
-        <vaadin23-item value="recent">Most recent first</vaadin23-item>
-        <vaadin23-item value="rating-desc">Rating: high to low</vaadin23-item>
-        <vaadin23-item value="rating-asc">Rating: low to high</vaadin23-item>
-        <vaadin23-item value="price-desc">Price: high to low</vaadin23-item>
-        <vaadin23-item value="price-asc">Price: low to high</vaadin23-item>
-      </vaadin23-list-box>
+      <vaadin24-list-box>
+        <vaadin24-item value="recent">Most recent first</vaadin24-item>
+        <vaadin24-item value="rating-desc">Rating: high to low</vaadin24-item>
+        <vaadin24-item value="rating-asc">Rating: low to high</vaadin24-item>
+        <vaadin24-item value="price-desc">Price: high to low</vaadin24-item>
+        <vaadin24-item value="price-asc">Price: low to high</vaadin24-item>
+      </vaadin24-list-box>
     `;
   };
 </script>

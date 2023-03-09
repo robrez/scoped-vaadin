@@ -12,7 +12,7 @@
       import '@scoped-vaadin/grid/all-imports';
       import '@scoped-vaadin/tooltip';
 
-      const grid = document.querySelector('vaadin23-grid');
+      const grid = document.querySelector('vaadin24-grid');
 
       grid.dataProvider = ({ parentItem, page, pageSize }, cb) => {
         // Let's have 100 root-level items and 5 items on every child level
@@ -23,7 +23,7 @@
 
           return {
             name: `${parentItem ? parentItem.name + '-' : ''}${indexInLevel}`,
-            children: true
+            children: true,
           };
         });
 
@@ -31,19 +31,19 @@
       };
 
       const tooltip = document.querySelector('[slot="tooltip"]');
-      tooltip.generator = ({column, item}) => {
+      tooltip.generator = ({ column, item }) => {
         return column && column.path && item ? `Tooltip ${column.path} ${item.name}` : '';
       };
     </script>
 
-    <vaadin23-grid item-id-path="name">
-      <vaadin23-grid-selection-column auto-select frozen></vaadin23-grid-selection-column>
-      <vaadin23-grid-tree-column frozen path="name" width="200px" flex-shrink="0"></vaadin23-grid-tree-column>
-      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
-      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
-      <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
+    <vaadin24-grid item-id-path="name">
+      <vaadin24-grid-selection-column auto-select frozen></vaadin24-grid-selection-column>
+      <vaadin24-grid-tree-column frozen path="name" width="200px" flex-shrink="0"></vaadin24-grid-tree-column>
+      <vaadin24-grid-column path="name" width="200px" flex-shrink="0"></vaadin24-grid-column>
+      <vaadin24-grid-column path="name" width="200px" flex-shrink="0"></vaadin24-grid-column>
+      <vaadin24-grid-column path="name" width="200px" flex-shrink="0"></vaadin24-grid-column>
 
-      <vaadin23-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin23-tooltip>
-    </vaadin23-grid>
+      <vaadin24-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin24-tooltip>
+    </vaadin24-grid>
   </body>
 </html>

@@ -68,6 +68,6 @@ const item = css`
   }
 `;
 
-registerStyles('vaadin23-item', item, { moduleId: 'material-item' });
+registerStyles('vaadin24-item', item, { moduleId: 'material-item' });
 
 export { item };

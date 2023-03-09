@@ -1,19 +1,14 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+import { SlotChildObserveController } from '@scoped-vaadin/component-base/src/slot-child-observe-controller.js';
 
 /**
  * A controller that manages the error message node content.
  */
-export class ErrorController extends SlotController {
-  /**
-   * ID attribute value set on the error message element.
-   */
-  readonly errorId: string;
-
+export class ErrorController extends SlotChildObserveController {
   /**
    * String used for the error message text content.
    */

@@ -1,13 +1,14 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { InputConstraintsMixin } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import { VirtualKeyboardController } from '@scoped-vaadin/field-base/src/virtual-keyboard-controller.js';
 import {
@@ -21,11 +22,16 @@ import {
 
 /**
  * @polymerMixin
+ * @mixes ControllerMixin
+ * @mixes DelegateFocusMixin
+ * @mixes InputConstraintsMixin
+ * @mixes KeyboardMixin
+ * @mixes OverlayClassMixin
  * @param {function(new:HTMLElement)} subclass
  */
 export const DatePickerMixin = (subclass) =>
-  class VaadinDatePickerMixin extends ControllerMixin(
-    DelegateFocusMixin(InputConstraintsMixin(KeyboardMixin(subclass))),
+  class DatePickerMixinClass extends OverlayClassMixin(
+    ControllerMixin(DelegateFocusMixin(InputConstraintsMixin(KeyboardMixin(subclass)))),
   ) {
     static get properties() {
       return {
@@ -91,6 +97,7 @@ export const DatePickerMixin = (subclass) =>
          */
         showWeekNumbers: {
           type: Boolean,
+          value: false,
         },
 
         /**
@@ -151,13 +158,6 @@ export const DatePickerMixin = (subclass) =>
          *   // An integer indicating the first day of the week
          *   // (0 = Sunday, 1 = Monday, etc.).
          *   firstDayOfWeek: 0,
-         *
-         *   // Used in screen reader announcements along with week
-         *   // numbers, if they are displayed.
-         *   week: 'Week',
-         *
-         *   // Translation of the Calendar icon button title.
-         *   calendar: 'Calendar',
          *
          *   // Translation of the Today shortcut button text.
          *   today: 'Today',
@@ -224,13 +224,11 @@ export const DatePickerMixin = (subclass) =>
               weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
               weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
               firstDayOfWeek: 0,
-              week: 'Week',
-              calendar: 'Calendar',
               today: 'Today',
               cancel: 'Cancel',
               referenceDate: '',
               formatDate(d) {
-                const yearStr = String(d.year).replace(/\d+/, (y) => '0000'.substr(y.length) + y);
+                const yearStr = String(d.year).replace(/\d+/u, (y) => '0000'.substr(y.length) + y);
                 return [d.month + 1, d.day, yearStr].join('/');
               },
               parseDate(text) {
@@ -327,8 +325,8 @@ export const DatePickerMixin = (subclass) =>
         /** @private */
         _focusOverlayOnOpen: Boolean,
 
-        /** @protected */
-        _overlayInitialized: Boolean,
+        /** @private */
+        _overlayContent: Object,
       };
     }
 
@@ -336,6 +334,9 @@ export const DatePickerMixin = (subclass) =>
       return [
         '_selectedDateChanged(_selectedDate, i18n.formatDate)',
         '_focusedDateChanged(_focusedDate, i18n.formatDate)',
+        '__updateOverlayContent(_overlayContent, i18n, label, _minDate, _maxDate, _focusedDate, _selectedDate, showWeekNumbers)',
+        '__updateOverlayContentTheme(_overlayContent, _theme)',
+        '__updateOverlayContentFullScreen(_overlayContent, _fullscreen)',
       ];
     }
 
@@ -343,14 +344,31 @@ export const DatePickerMixin = (subclass) =>
       return [...super.constraints, 'min', 'max'];
     }
 
+    constructor() {
+      super();
+
+      this._boundOnClick = this._onClick.bind(this);
+      this._boundOnScroll = this._onScroll.bind(this);
+      this._boundOverlayRenderer = this._overlayRenderer.bind(this);
+    }
+
     /**
      * Override a getter from `InputControlMixin` to make it optional
      * and to prevent warning when a clear button is missing,
-     * for example when using <vaadin23-date-picker-light>.
+     * for example when using <vaadin24-date-picker-light>.
      * @protected
      * @return {Element | null | undefined}
      */
     get clearElement() {
+      return null;
+    }
+
+    /** @private */
+    get _nativeInput() {
+      if (this.inputElement) {
+        // TODO: support focusElement for backwards compatibility
+        return this.inputElement.focusElement || this.inputElement;
+      }
       return null;
     }
 
@@ -364,22 +382,6 @@ export const DatePickerMixin = (subclass) =>
       if (this.inputElement) {
         this.inputElement.value = value;
       }
-    }
-
-    /** @private */
-    get _nativeInput() {
-      if (this.inputElement) {
-        // TODO: support focusElement for backwards compatibility
-        return this.inputElement.focusElement || this.inputElement;
-      }
-      return null;
-    }
-
-    constructor() {
-      super();
-
-      this._boundOnClick = this._onClick.bind(this);
-      this._boundOnScroll = this._onScroll.bind(this);
     }
 
     /**
@@ -427,6 +429,14 @@ export const DatePickerMixin = (subclass) =>
       );
 
       this.addController(new VirtualKeyboardController(this));
+
+      const overlay = this.$.overlay;
+      this._overlayElement = overlay;
+
+      overlay.renderer = this._boundOverlayRenderer;
+
+      this.addEventListener('mousedown', () => this.__bringToFront());
+      this.addEventListener('touchstart', () => this.__bringToFront());
     }
 
     /** @protected */
@@ -468,33 +478,29 @@ export const DatePickerMixin = (subclass) =>
      * Closes the dropdown.
      */
     close() {
-      if (this._overlayInitialized || this.autoOpenDisabled) {
-        this.$.overlay.close();
-      }
+      this.$.overlay.close();
     }
 
-    /** @protected */
-    _initOverlay() {
-      this.$.overlay.removeAttribute('disable-upgrade');
-      this._overlayInitialized = true;
+    /** @private */
+    _overlayRenderer(root) {
+      if (root.firstChild) {
+        return;
+      }
 
-      this.$.overlay.addEventListener('opened-changed', (e) => {
-        this.opened = e.detail.value;
-      });
+      // Create and store document content element
+      const content = document.createElement('vaadin24-date-picker-overlay-content');
+      root.appendChild(content);
 
-      this.$.overlay.addEventListener('vaadin-overlay-escape-press', () => {
-        this._focusedDate = this._selectedDate;
+      this._overlayContent = content;
+
+      content.addEventListener('close', () => {
         this._close();
       });
 
-      this._overlayContent.addEventListener('close', () => {
-        this._close();
-      });
-
-      this._overlayContent.addEventListener('focus-input', this._focusAndSelect.bind(this));
+      content.addEventListener('focus-input', this._focusAndSelect.bind(this));
 
       // User confirmed selected date by clicking the calendar.
-      this._overlayContent.addEventListener('date-tap', (e) => {
+      content.addEventListener('date-tap', (e) => {
         this.__userConfirmedDate = true;
 
         this._selectDate(e.detail.date);
@@ -503,7 +509,7 @@ export const DatePickerMixin = (subclass) =>
       });
 
       // User confirmed selected date by pressing Enter or Today.
-      this._overlayContent.addEventListener('date-selected', (e) => {
+      content.addEventListener('date-selected', (e) => {
         this.__userConfirmedDate = true;
 
         this._selectDate(e.detail.date);
@@ -511,14 +517,16 @@ export const DatePickerMixin = (subclass) =>
 
       // Set focus-ring attribute when moving focus to the overlay
       // by pressing Tab or arrow key, after opening it on click.
-      this._overlayContent.addEventListener('focusin', () => {
+      content.addEventListener('focusin', () => {
         if (this._keyboardActive) {
           this._setFocused(true);
         }
       });
 
-      this.addEventListener('mousedown', () => this.__bringToFront());
-      this.addEventListener('touchstart', () => this.__bringToFront());
+      // Two-way data binding for `focusedDate` property
+      content.addEventListener('focused-date-changed', (e) => {
+        this._focusedDate = e.detail.value;
+      });
     }
 
     /**
@@ -677,12 +685,6 @@ export const DatePickerMixin = (subclass) =>
 
     /** @protected */
     _openedChanged(opened) {
-      if (opened && !this._overlayInitialized) {
-        this._initOverlay();
-      }
-      if (this._overlayInitialized) {
-        this.$.overlay.opened = opened;
-      }
       if (this.inputElement) {
         this.inputElement.setAttribute('aria-expanded', opened);
       }
@@ -715,13 +717,6 @@ export const DatePickerMixin = (subclass) =>
       }
       if (!this._ignoreFocusedDateChange && !this._noInput) {
         this._applyInputValue(focusedDate);
-      }
-    }
-
-    /** @private */
-    __getOverlayTheme(theme, overlayInitialized) {
-      if (overlayInitialized) {
-        return theme;
       }
     }
 
@@ -763,23 +758,59 @@ export const DatePickerMixin = (subclass) =>
       this._toggleHasValue(this._hasValue);
     }
 
+    /** @private */
+    // eslint-disable-next-line max-params
+    __updateOverlayContent(overlayContent, i18n, label, minDate, maxDate, focusedDate, selectedDate, showWeekNumbers) {
+      if (overlayContent) {
+        overlayContent.setProperties({
+          i18n,
+          label,
+          minDate,
+          maxDate,
+          focusedDate,
+          selectedDate,
+          showWeekNumbers,
+        });
+      }
+    }
+
+    /** @private */
+    __updateOverlayContentTheme(overlayContent, theme) {
+      if (overlayContent) {
+        if (theme) {
+          overlayContent.setAttribute('theme', theme);
+        } else {
+          overlayContent.removeAttribute('theme');
+        }
+      }
+    }
+
+    /** @private */
+    __updateOverlayContentFullScreen(overlayContent, fullscreen) {
+      if (overlayContent) {
+        overlayContent.toggleAttribute('fullscreen', fullscreen);
+      }
+    }
+
+    /** @protected */
+    _onOverlayEscapePress() {
+      this._focusedDate = this._selectedDate;
+      this._close();
+    }
+
     /** @protected */
     _onOverlayOpened() {
-      const parsedInitialPosition = parseDate(this.initialPosition);
+      // Detect which date to show
+      const initialPosition = this._getInitialPosition();
+      this._overlayContent.initialPosition = initialPosition;
 
-      const initialPosition =
-        this._selectedDate || this._overlayContent.initialPosition || parsedInitialPosition || new Date();
+      // Scroll the date into view
+      const scrollFocusDate = this._overlayContent.focusedDate || initialPosition;
+      this._overlayContent.scrollToDate(scrollFocusDate);
 
-      if (parsedInitialPosition || dateAllowed(initialPosition, this._minDate, this._maxDate)) {
-        this._overlayContent.initialPosition = initialPosition;
-      } else {
-        this._overlayContent.initialPosition = getClosestDate(initialPosition, [this._minDate, this._maxDate]);
-      }
-
-      this._overlayContent.scrollToDate(this._overlayContent.focusedDate || this._overlayContent.initialPosition);
-      // Have a default focused date
+      // Ensure the date is focused
       this._ignoreFocusedDateChange = true;
-      this._overlayContent.focusedDate = this._overlayContent.focusedDate || this._overlayContent.initialPosition;
+      this._overlayContent.focusedDate = scrollFocusDate;
       this._ignoreFocusedDateChange = false;
 
       window.addEventListener('scroll', this._boundOnScroll, true);
@@ -795,6 +826,18 @@ export const DatePickerMixin = (subclass) =>
         this.focusElement.blur();
         this._overlayContent.focusDateElement();
       }
+    }
+
+    /** @private */
+    _getInitialPosition() {
+      const parsedInitialPosition = parseDate(this.initialPosition);
+
+      const initialPosition =
+        this._selectedDate || this._overlayContent.initialPosition || parsedInitialPosition || new Date();
+
+      return parsedInitialPosition || dateAllowed(initialPosition, this._minDate, this._maxDate)
+        ? initialPosition
+        : getClosestDate(initialPosition, [this._minDate, this._maxDate]);
     }
 
     /** @private */
@@ -1077,11 +1120,6 @@ export const DatePickerMixin = (subclass) =>
           this._ignoreFocusedDateChange = false;
         }
       }
-    }
-
-    /** @private */
-    get _overlayContent() {
-      return this.$.overlay.content.querySelector('#overlay-content');
     }
 
     /** @private */

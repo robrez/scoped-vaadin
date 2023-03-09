@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2020 - 2022 Vaadin Ltd.
+ * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-avatar-icons.js';
@@ -13,10 +13,10 @@ import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-con
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-avatar>` is a Web Component providing avatar displaying functionality.
+ * `<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.
  *
  * ```html
- * <vaadin23-avatar img="avatars/avatar-1.jpg"></vaadin23-avatar>
+ * <vaadin24-avatar img="avatars/avatar-1.jpg"></vaadin24-avatar>
  * ```
  *
  * ### Styling
@@ -112,7 +112,7 @@ class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(Polym
         preserveAspectRatio="xMidYMid meet"
         aria-hidden="true"
       >
-        <text dy=".35em" text-anchor="middle"></text>
+        <text dy=".35em" text-anchor="middle">&#xea01;</text>
       </svg>
       <svg
         part="abbr"
@@ -130,7 +130,7 @@ class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(Polym
   }
 
   static get is() {
-    return 'vaadin23-avatar';
+    return 'vaadin24-avatar';
   }
 
   static get properties() {
@@ -314,7 +314,7 @@ class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(Polym
   __withTooltipChanged(withTooltip, oldWithTooltip) {
     if (withTooltip) {
       // Create and attach tooltip
-      const tooltipNode = document.createElement('vaadin23-tooltip');
+      const tooltipNode = document.createElement('vaadin24-tooltip');
       tooltipNode.setAttribute('slot', 'tooltip');
       this.appendChild(tooltipNode);
       this.__tooltipNode = tooltipNode;
@@ -355,7 +355,7 @@ class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(Polym
   /** @private */
   __onImageLoadError() {
     if (this.img) {
-      console.warn(`<vaadin23-avatar> The specified image could not be loaded: ${this.img}`);
+      console.warn(`<vaadin24-avatar> The specified image could not be loaded: ${this.img}`);
       this.__imgFailedToLoad = true;
       this.__updateVisibility();
     }

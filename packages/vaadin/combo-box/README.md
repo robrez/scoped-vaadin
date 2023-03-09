@@ -10,15 +10,15 @@ A web component for choosing a value from a filterable list of options presented
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-combo-box
+<vaadin24-combo-box
   label="User"
   placeholder="Please select"
   item-value-path="email"
   item-label-path="email"
-></vaadin23-combo-box>
+></vaadin24-combo-box>
 
 <script>
-  const comboBox = document.querySelector('vaadin23-combo-box');
+  const comboBox = document.querySelector('vaadin24-combo-box');
 
   fetch('https://randomuser.me/api?results=100&inc=name,email')
     .then((res) => res.json())

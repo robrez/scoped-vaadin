@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/color.js';
@@ -56,12 +56,11 @@ const textArea = css`
   }
 
   /* Vertically align icon prefix/suffix with the first line of text */
-  [part='input-field'] ::slotted(iron-icon),
   [part='input-field'] ::slotted(vaadin-icon) {
     margin-top: calc((var(--lumo-icon-size-m) - 1em * var(--lumo-line-height-s)) / -2);
   }
 `;
 
-registerStyles('vaadin23-text-area', [inputFieldShared, textArea], {
+registerStyles('vaadin24-text-area', [inputFieldShared, textArea], {
   moduleId: 'lumo-text-area',
 });

@@ -7,19 +7,19 @@ A component container for creating scrollable areas in the UI.
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/scroller)
 
 ```html
-<vaadin23-scroller scroll-direction="vertical">
+<vaadin24-scroller scroll-direction="vertical">
   <section>
     <h3>Personal information</h3>
-    <vaadin23-text-field label="First name"></vaadin23-text-field>
-    <vaadin23-text-field label="Last name"></vaadin23-text-field>
-    <vaadin23-date-picker label="Birth date"></vaadin23-date-picker>
+    <vaadin24-text-field label="First name"></vaadin24-text-field>
+    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+    <vaadin24-date-picker label="Birth date"></vaadin24-date-picker>
   </section>
   <section>
     <h3>Employment information</h3>
-    <vaadin23-text-field label="Position"></vaadin23-text-field>
-    <vaadin23-text-area label="Additional information"></vaadin23-text-area>
+    <vaadin24-text-field label="Position"></vaadin24-text-field>
+    <vaadin24-text-area label="Additional information"></vaadin24-text-area>
   </section>
-</vaadin23-scroller>
+</vaadin24-scroller>
 ```
 
 ## Installation

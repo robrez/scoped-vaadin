@@ -10,12 +10,12 @@ A web component for organizing and grouping content into sections.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-tabs selected="3">
-  <vaadin23-tab>Page 1</vaadin23-tab>
-  <vaadin23-tab>Page 2</vaadin23-tab>
-  <vaadin23-tab>Page 3</vaadin23-tab>
-  <vaadin23-tab>Page 4</vaadin23-tab>
-</vaadin23-tabs>
+<vaadin24-tabs selected="3">
+  <vaadin24-tab>Page 1</vaadin24-tab>
+  <vaadin24-tab>Page 2</vaadin24-tab>
+  <vaadin24-tab>Page 3</vaadin24-tab>
+  <vaadin24-tab>Page 4</vaadin24-tab>
+</vaadin24-tabs>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tabs/screenshot.png" width="355" alt="Screenshot of vaadin-tabs">](https://vaadin.com/docs/latest/components/tabs)

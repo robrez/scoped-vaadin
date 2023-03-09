@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 
@@ -105,6 +105,20 @@ export function extractDateParts(date) {
 }
 
 /**
+ * Get difference in months between today and given months value.
+ *
+ * @param {number} months
+ * @return {number}
+ */
+export function dateAfterXMonths(months) {
+  const today = new Date();
+  const result = new Date(today);
+  result.setDate(1);
+  result.setMonth(parseInt(months) + today.getMonth());
+  return result;
+}
+
+/**
  * Calculate the year of the date based on the provided reference date.
  * Gets a two-digit year and returns a full year.
  * @param {!Date} referenceDate The date to act as basis in the calculation
@@ -139,7 +153,7 @@ export function getAdjustedYear(referenceDate, year, month = 0, day = 1) {
  */
 export function parseDate(str) {
   // Parsing with RegExp to ensure correct format
-  const parts = /^([-+]\d{1}|\d{2,4}|[-+]\d{6})-(\d{1,2})-(\d{1,2})$/.exec(str);
+  const parts = /^([-+]\d{1}|\d{2,4}|[-+]\d{6})-(\d{1,2})-(\d{1,2})$/u.exec(str);
   if (!parts) {
     return undefined;
   }

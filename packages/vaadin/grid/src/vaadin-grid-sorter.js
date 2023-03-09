@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -24,19 +24,19 @@ template.innerHTML = `
 document.head.appendChild(template.content);
 
 /**
- * `<vaadin23-grid-sorter>` is a helper element for the `<vaadin23-grid>` that provides out-of-the-box UI controls,
+ * `<vaadin24-grid-sorter>` is a helper element for the `<vaadin24-grid>` that provides out-of-the-box UI controls,
  * visual feedback, and handlers for sorting the grid data.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
  * ```
  * ```js
  * const column = document.querySelector('#column');
  * column.renderer = (root, column, model) => {
  *   let sorter = root.firstElementChild;
  *   if (!sorter) {
- *     sorter = document.createElement('vaadin23-grid-sorter');
+ *     sorter = document.createElement('vaadin24-grid-sorter');
  *     root.appendChild(sorter);
  *   }
  *   sorter.path = 'name.first';
@@ -117,7 +117,7 @@ class GridSorter extends ThemableMixin(DirMixin(PolymerElement)) {
   }
 
   static get is() {
-    return 'vaadin23-grid-sorter';
+    return 'vaadin24-grid-sorter';
   }
 
   static get properties() {

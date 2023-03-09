@@ -1,20 +1,21 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-message>` is a Web Component for showing a single message with an author, message and time.
+ * `<vaadin24-message>` is a Web Component for showing a single message with an author, message and time.
  *
  * ```html
- * <vaadin23-message time="2021-01-28 10:43"
+ * <vaadin24-message time="2021-01-28 10:43"
  *     user-name = "Bob Ross"
  *     user-abbr = "BR"
- *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin23-message>
+ *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin24-message>
  * ```
  *
  * ### Styling
@@ -23,7 +24,6 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * Part name | Description
  * ----------|----------------
- * `avatar`  | The author's avatar
  * `name`    | Author's name
  * `time`    | When the message was posted
  * `content` | The message itself as a slotted content
@@ -36,15 +36,8 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `focused`    | Set when the message is focused.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
- *
- * ### Internal components
- *
- * In addition to `<vaadin23-message>` itself, the following internal
- * components are themable:
- *
- * - `<vaadin23-message-avatar>` - has the same API as [`<vaadin23-avatar>`](#/elements/vaadin-avatar).
  */
-declare class Message extends FocusMixin(ThemableMixin(ElementMixin(HTMLElement))) {
+declare class Message extends FocusMixin(ThemableMixin(ElementMixin(ControllerMixin(HTMLElement)))) {
   /**
    * Time of sending the message. It is rendered as-is to the part='time' slot,
    * so the formatting is up to you.
@@ -102,7 +95,7 @@ declare class Message extends FocusMixin(ThemableMixin(ElementMixin(HTMLElement)
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-message': Message;
+    'vaadin24-message': Message;
   }
 }
 

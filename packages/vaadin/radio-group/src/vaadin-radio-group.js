@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -17,14 +17,14 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { RadioButton } from './vaadin-radio-button.js';
 
 /**
- * `<vaadin23-radio-group>` is a web component that allows the user to choose one item from a group of choices.
+ * `<vaadin24-radio-group>` is a web component that allows the user to choose one item from a group of choices.
  *
  * ```html
- * <vaadin23-radio-group label="Travel class">
- *   <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
- *   <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
- * </vaadin23-radio-group>
+ * <vaadin24-radio-group label="Travel class">
+ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
+ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
+ * </vaadin24-radio-group>
  * ```
  *
  * ### Styling
@@ -70,7 +70,7 @@ class RadioGroup extends FieldMixin(
   FocusMixin(DisabledMixin(KeyboardMixin(ElementMixin(ThemableMixin(PolymerElement))))),
 ) {
   static get is() {
-    return 'vaadin23-radio-group';
+    return 'vaadin24-radio-group';
   }
 
   static get template() {
@@ -170,6 +170,34 @@ class RadioGroup extends FieldMixin(
     this.__onRadioButtonCheckedChange = this.__onRadioButtonCheckedChange.bind(this);
   }
 
+  /**
+   * A collection of the group's radio buttons.
+   *
+   * @return {!Array<!RadioButton>}
+   * @private
+   */
+  get __radioButtons() {
+    return this.__filterRadioButtons([...this.children]);
+  }
+
+  /**
+   * A currently selected radio button.
+   *
+   * @return {!RadioButton | undefined}
+   * @private
+   */
+  get __selectedRadioButton() {
+    return this.__radioButtons.find((radioButton) => radioButton.checked);
+  }
+
+  /**
+   * @return {boolean}
+   * @private
+   */
+  get isHorizontalRTL() {
+    return this.__isRTL && this._theme !== 'vertical';
+  }
+
   /** @protected */
   ready() {
     super.ready();
@@ -201,34 +229,6 @@ class RadioGroup extends FieldMixin(
    */
   __filterRadioButtons(nodes) {
     return nodes.filter((child) => child instanceof RadioButton);
-  }
-
-  /**
-   * A collection of the group's radio buttons.
-   *
-   * @return {!Array<!RadioButton>}
-   * @private
-   */
-  get __radioButtons() {
-    return this.__filterRadioButtons([...this.children]);
-  }
-
-  /**
-   * A currently selected radio button.
-   *
-   * @return {!RadioButton | undefined}
-   * @private
-   */
-  get __selectedRadioButton() {
-    return this.__radioButtons.find((radioButton) => radioButton.checked);
-  }
-
-  /**
-   * @return {boolean}
-   * @private
-   */
-  get isHorizontalRTL() {
-    return this.getAttribute('dir') === 'rtl' && this._theme !== 'vertical';
   }
 
   /**

@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '../color.js';
@@ -45,7 +45,7 @@ const requiredField = css`
   }
 
   :host([required]) [part='required-indicator']::after {
-    content: var(--lumo-required-field-indicator, '•');
+    content: var(--lumo-required-field-indicator, '\\2022');
     transition: opacity 0.2s;
     color: var(--lumo-required-field-indicator-color, var(--lumo-primary-text-color));
     position: absolute;

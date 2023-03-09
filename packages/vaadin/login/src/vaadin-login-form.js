@@ -1,9 +1,10 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import '@scoped-vaadin/button/src/vaadin-button.js';
 import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
 import '@scoped-vaadin/password-field/src/vaadin-password-field.js';
 import './vaadin-login-form-wrapper.js';
@@ -13,22 +14,22 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { LoginMixin } from './vaadin-login-mixin.js';
 
 /**
- * `<vaadin23-login-form>` is a Web Component providing an easy way to require users
+ * `<vaadin24-login-form>` is a Web Component providing an easy way to require users
  * to log in into an application. Note that component has no shadowRoot.
  *
  * ```
- * <vaadin23-login-form></vaadin23-login-form>
+ * <vaadin24-login-form></vaadin24-login-form>
  * ```
  *
  * Component has to be accessible from the `document` layer in order to allow password managers to work properly with form values.
- * Using `<vaadin23-login-overlay>` allows to always attach the component to the document body.
+ * Using `<vaadin24-login-overlay>` allows to always attach the component to the document body.
  *
  * ### Styling
  *
  * The component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.
- * Use `<vaadin23-login-form-wrapper>` themable component to apply styles.
+ * Use `<vaadin24-login-form-wrapper>` themable component to apply styles.
  *
- * The following shadow DOM parts of the `<vaadin23-login-form-wrapper>` are available for styling:
+ * The following shadow DOM parts of the `<vaadin24-login-form-wrapper>` are available for styling:
  *
  * Part name      | Description
  * ---------------|---------------------------------------------------------|
@@ -55,22 +56,14 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
   static get template() {
     return html`
       <style>
-        [part='vaadin-login-native-form'] * {
+        vaadin-login-form-wrapper > form > * {
           width: 100%;
         }
       </style>
-      <vaadin23-login-form-wrapper
-        theme$="[[_theme]]"
-        part="vaadin-login-native-form-wrapper"
-        error="[[error]]"
-        no-forgot-password="[[noForgotPassword]]"
-        i18n="[[i18n]]"
-        on-login="_retargetEvent"
-        on-forgot-password="_retargetEvent"
-      >
-        <form part="vaadin-login-native-form" method="POST" action$="[[action]]" slot="form">
+      <vaadin24-login-form-wrapper theme$="[[_theme]]" error="[[error]]" i18n="[[i18n]]">
+        <form method="POST" action$="[[action]]" slot="form">
           <input id="csrf" type="hidden" />
-          <vaadin23-text-field
+          <vaadin24-text-field
             name="username"
             label="[[i18n.form.username]]"
             id="vaadinLoginUsername"
@@ -82,9 +75,9 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
             autocomplete="username"
           >
             <input type="text" slot="input" on-keyup="_handleInputKeyup" />
-          </vaadin23-text-field>
+          </vaadin24-text-field>
 
-          <vaadin23-password-field
+          <vaadin24-password-field
             name="password"
             label="[[i18n.form.password]]"
             id="vaadinLoginPassword"
@@ -94,18 +87,31 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
             autocomplete="current-password"
           >
             <input type="password" slot="input" on-keyup="_handleInputKeyup" />
-          </vaadin23-password-field>
+          </vaadin24-password-field>
 
-          <vaadin23-button part="vaadin-login-submit" theme="primary contained" on-click="submit" disabled$="[[disabled]]"
-            >[[i18n.form.submit]]</vaadin23-button
-          >
+          <vaadin24-button theme="primary contained submit" on-click="submit" disabled$="[[disabled]]">
+            [[i18n.form.submit]]
+          </vaadin24-button>
         </form>
-      </vaadin23-login-form-wrapper>
+
+        <vaadin24-button
+          slot="forgot-password"
+          theme="tertiary small"
+          on-click="_onForgotPasswordClick"
+          hidden$="[[noForgotPassword]]"
+        >
+          [[i18n.form.forgotPassword]]
+        </vaadin24-button>
+      </vaadin24-login-form-wrapper>
     `;
   }
 
   static get is() {
-    return 'vaadin23-login-form';
+    return 'vaadin24-login-form';
+  }
+
+  static get observers() {
+    return ['_errorChanged(error)'];
   }
 
   /** @protected */
@@ -124,10 +130,6 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
    */
   _attachDom(dom) {
     this.appendChild(dom);
-  }
-
-  static get observers() {
-    return ['_errorChanged(error)'];
   }
 
   /** @private */
@@ -165,7 +167,7 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
         this.$.csrf.name = csrfMetaName.content;
         this.$.csrf.value = csrfMetaValue.content;
       }
-      this.querySelector('[part="vaadin-login-native-form"]').submit();
+      this.querySelector('form').submit();
     }
   }
 
@@ -191,6 +193,11 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
     if (e.key === 'Tab' && input instanceof HTMLInputElement) {
       input.select();
     }
+  }
+
+  /** @private */
+  _onForgotPasswordClick() {
+    this.dispatchEvent(new CustomEvent('forgot-password'));
   }
 }
 

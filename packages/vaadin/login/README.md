@@ -10,7 +10,7 @@ A web component for displaying a login form, either inline, or as an overlay.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-login-overlay opened></vaadin23-login-overlay>
+<vaadin24-login-overlay opened></vaadin24-login-overlay>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/login/screenshot.png" width="456" alt="Screenshot of vaadin-login-overlay">](https://vaadin.com/docs/latest/components/login)
