@@ -75,9 +75,10 @@ render() {
 
 This repository is not mature. Ideally, versions here would align 1:1 w/ the underlying vaadin versions. There are unfilfilled goals herein; It is likely that changes need to take place when there may not be any underlying vaadin changes.
 
-Initial releases herein will start w/ version `^0.1.x`. Below, you can find which underlying vaadin version is used. Breaking changes _here_ will result in a new major version. Once things stabalize, we will align with the underlying vaadin version (eg: `23.x` ~= `23.x`)... but will still likely need to use use an internal scheme for the "minor" and "patch" segments. The eventual goal, being complete symmetry w/ underling vaadin versions (`23.3.7` === `23.3.7`).
+Below, you can find which underlying vaadin version is used
 
 | local version | vaadin version |
 | ------------- | -------------- |
-| `v0.1.0`      | `^23.3.7`      |
+| `v23.0.0`     | `~23.3.8`      |
 | `v0.2.0`      | `~23.3.8`      |
+| `v0.1.0`      | `^23.3.7`      |

@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/avatar-group",
-  "version": "0.2.0",
+  "version": "23.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -41,14 +41,14 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/avatar": "^0.2.0",
-    "@scoped-vaadin/component-base": "^0.2.0",
-    "@scoped-vaadin/item": "^0.2.0",
-    "@scoped-vaadin/list-box": "^0.2.0",
-    "@scoped-vaadin/overlay": "^0.2.0",
-    "@scoped-vaadin/vaadin-lumo-styles": "^0.2.0",
-    "@scoped-vaadin/vaadin-material-styles": "^0.2.0",
-    "@scoped-vaadin/vaadin-themable-mixin": "^0.2.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^0.2.0"
+    "@scoped-vaadin/avatar": "^23.0.0",
+    "@scoped-vaadin/component-base": "^23.0.0",
+    "@scoped-vaadin/item": "^23.0.0",
+    "@scoped-vaadin/list-box": "^23.0.0",
+    "@scoped-vaadin/overlay": "^23.0.0",
+    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.0",
+    "@scoped-vaadin/vaadin-material-styles": "^23.0.0",
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.0",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.0"
   }
 }
