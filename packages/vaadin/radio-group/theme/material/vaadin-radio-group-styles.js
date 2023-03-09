@@ -41,4 +41,4 @@ const radioGroup = css`
   }
 `;
 
-registerStyles('vaadin23-radio-group', [requiredField, helper, radioGroup], { moduleId: 'material-radio-group' });
+registerStyles('vaadin24-radio-group', [requiredField, helper, radioGroup], { moduleId: 'material-radio-group' });

@@ -10,10 +10,10 @@ A web component for creating a horizontal button bar with hierarchical drop-down
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-menu-bar></vaadin23-menu-bar>
+<vaadin24-menu-bar></vaadin24-menu-bar>
 
 <script>
-  document.querySelector('vaadin23-menu-bar').items = [
+  document.querySelector('vaadin24-menu-bar').items = [
     { text: 'View' },
     { text: 'Edit' },
     {

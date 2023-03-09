@@ -10,12 +10,12 @@ A web component for showing tabular data.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-grid theme="row-dividers" column-reordering-allowed multi-sort>
-  <vaadin23-grid-selection-column auto-select frozen></vaadin23-grid-selection-column>
-  <vaadin23-grid-sort-column width="9em" path="firstName"></vaadin23-grid-sort-column>
-  <vaadin23-grid-sort-column width="9em" path="lastName"></vaadin23-grid-sort-column>
-  <vaadin23-grid-column id="address" width="15em" flex-grow="2" header="Address"></vaadin23-grid-column>
-</vaadin23-grid>
+<vaadin24-grid theme="row-dividers" column-reordering-allowed multi-sort>
+  <vaadin24-grid-selection-column auto-select frozen></vaadin24-grid-selection-column>
+  <vaadin24-grid-sort-column width="9em" path="firstName"></vaadin24-grid-sort-column>
+  <vaadin24-grid-sort-column width="9em" path="lastName"></vaadin24-grid-sort-column>
+  <vaadin24-grid-column id="address" width="15em" flex-grow="2" header="Address"></vaadin24-grid-column>
+</vaadin24-grid>
 
 <script>
   // Customize the "Address" column's renderer
@@ -24,7 +24,7 @@ A web component for showing tabular data.
   };
 
   // Populate the grid with data
-  const grid = document.querySelector('vaadin23-grid');
+  const grid = document.querySelector('vaadin24-grid');
   fetch('https://demo.vaadin.com/demo-data/1.0/people?count=200')
     .then((res) => res.json())
     .then((json) => (grid.items = json.result));

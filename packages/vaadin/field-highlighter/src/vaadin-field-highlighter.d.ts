@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { ReactiveController } from 'lit';
@@ -70,7 +70,7 @@ declare class FieldHighlighter extends HTMLElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-field-highlighter': FieldHighlighter;
+    'vaadin24-field-highlighter': FieldHighlighter;
   }
 }
 

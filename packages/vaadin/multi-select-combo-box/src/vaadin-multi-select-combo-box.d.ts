@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type {
@@ -9,13 +9,14 @@ import type {
   ComboBoxItemModel,
 } from '@scoped-vaadin/combo-box/src/vaadin-combo-box.js';
 import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
-import type { DelegateStateMixinClass } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
+import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -87,11 +88,11 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
 }
 
 /**
- * `<vaadin23-multi-select-combo-box>` is a web component that wraps `<vaadin23-combo-box>` and extends
+ * `<vaadin24-multi-select-combo-box>` is a web component that wraps `<vaadin24-combo-box>` and extends
  * its functionality to allow selecting multiple items, in addition to basic features.
  *
  * ```html
- * <vaadin23-multi-select-combo-box id="comboBox"></vaadin23-multi-select-combo-box>
+ * <vaadin24-multi-select-combo-box id="comboBox"></vaadin24-multi-select-combo-box>
  * ```
  *
  * ```js
@@ -106,17 +107,13 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
  *
  * Part name              | Description
  * -----------------------|----------------
- * `chips`                | The element that wraps chips for selected items
- * `chip`                 | Chip shown for every selected item
+ * `chips`                | The element that wraps slotted chips for selected items
  * `label`                | The label element
  * `input-field`          | The element that wraps prefix, value and suffix
  * `clear-button`         | The clear button
  * `error-message`        | The error message element
  * `helper-text`          | The helper text element wrapper
  * `required-indicator`   | The `required` state indicator element
- * `overflow`             | The chip shown when component width is not enough to fit all chips
- * `overflow-one`         | Set on the overflow chip when only one chip does not fit
- * `overflow-two`         | Set on the overflow chip when two chips do not fit
  * `toggle-button`        | The toggle button
  *
  * The following state attributes are available for styling:
@@ -146,14 +143,14 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-multi-select-combo-box>` itself, the following internal
+ * In addition to `<vaadin24-multi-select-combo-box>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-multi-select-combo-box-overlay>` - has the same API as `<vaadin23-overlay>`.
- * - `<vaadin23-multi-select-combo-box-item>` - has the same API as `<vaadin23-item>`.
- * - `<vaadin23-multi-select-combo-box-container>` - has the same API as `<vaadin23-input-container>`.
+ * - `<vaadin24-multi-select-combo-box-overlay>` - has the same API as `<vaadin24-overlay>`.
+ * - `<vaadin24-multi-select-combo-box-item>` - has the same API as `<vaadin24-item>`.
+ * - `<vaadin24-multi-select-combo-box-container>` - has the same API as `<vaadin24-input-container>`.
  *
- * Note: the `theme` attribute value set on `<vaadin23-multi-select-combo-box>` is
+ * Note: the `theme` attribute value set on `<vaadin24-multi-select-combo-box>` is
  * propagated to these components.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -259,6 +256,13 @@ declare class MultiSelectComboBox<TItem = ComboBoxDefaultItem> extends HTMLEleme
   loading: boolean;
 
   /**
+   * A space-delimited list of CSS class names to set on the overlay element.
+   *
+   * @attr {string} overlay-class
+   */
+  overlayClass: string;
+
+  /**
    * True if the dropdown is open, false otherwise.
    */
   opened: boolean;
@@ -280,8 +284,8 @@ declare class MultiSelectComboBox<TItem = ComboBoxDefaultItem> extends HTMLEleme
    * Custom function for rendering the content of every item.
    * Receives three arguments:
    *
-   * - `root` The `<vaadin23-multi-select-combo-box-item>` internal container DOM element.
-   * - `comboBox` The reference to the `<vaadin23-multi-select-combo-box>` element.
+   * - `root` The `<vaadin24-multi-select-combo-box-item>` internal container DOM element.
+   * - `comboBox` The reference to the `<vaadin24-multi-select-combo-box>` element.
    * - `model` The object with the properties related with the rendered
    *   item, contains:
    *   - `model.index` The index of the rendered item.
@@ -336,6 +340,7 @@ interface MultiSelectComboBox
     SlotStylesMixinClass,
     LabelMixinClass,
     KeyboardMixinClass,
+    ClearButtonMixinClass,
     Omit<InputMixinClass, 'value'>,
     InputControlMixinClass,
     InputConstraintsMixinClass,
@@ -352,7 +357,7 @@ interface MultiSelectComboBox
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-multi-select-combo-box': MultiSelectComboBox;
+    'vaadin24-multi-select-combo-box': MultiSelectComboBox;
   }
 }
 

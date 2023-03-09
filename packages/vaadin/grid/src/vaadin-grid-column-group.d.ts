@@ -1,23 +1,23 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { GridDefaultItem } from './vaadin-grid.js';
 import type { ColumnBaseMixinClass } from './vaadin-grid-column.js';
 
 /**
- * A `<vaadin23-grid-column-group>` is used to make groups of columns in `<vaadin23-grid>` and
+ * A `<vaadin24-grid-column-group>` is used to make groups of columns in `<vaadin24-grid>` and
  * to configure additional headers and footers.
  *
  * Groups can be nested to create complex header and footer configurations.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column-group resizable id="columnGroup">
- *   <vaadin23-grid-column id="column1"></vaadin23-grid-column>
- *   <vaadin23-grid-column id="column2"></vaadin23-grid-column>
- * </vaadin23-grid-column-group>
+ * <vaadin24-grid-column-group resizable id="columnGroup">
+ *   <vaadin24-grid-column id="column1"></vaadin24-grid-column>
+ *   <vaadin24-grid-column id="column2"></vaadin24-grid-column>
+ * </vaadin24-grid-column-group>
  * ```
  *
  * ```js
@@ -52,7 +52,7 @@ interface GridColumnGroup<TItem = GridDefaultItem> extends ColumnBaseMixinClass<
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-column-group': GridColumnGroup<GridDefaultItem>;
+    'vaadin24-grid-column-group': GridColumnGroup<GridDefaultItem>;
   }
 }
 

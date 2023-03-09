@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer';
@@ -10,7 +10,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 
 export class InputContainer extends ThemableMixin(DirMixin(PolymerElement)) {
   static get is() {
-    return 'vaadin23-input-container';
+    return 'vaadin24-input-container';
   }
 
   static get template() {
@@ -20,6 +20,22 @@ export class InputContainer extends ThemableMixin(DirMixin(PolymerElement)) {
           display: flex;
           align-items: center;
           flex: 0 1 auto;
+          border-radius:
+            /* See https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius */
+            var(--vaadin-input-field-top-start-radius, var(--__border-radius))
+            var(--vaadin-input-field-top-end-radius, var(--__border-radius))
+            var(--vaadin-input-field-bottom-end-radius, var(--__border-radius))
+            var(--vaadin-input-field-bottom-start-radius, var(--__border-radius));
+          --_border-radius: var(--vaadin-input-field-border-radius, 0px);
+        }
+
+        :host([dir='rtl']) {
+          border-radius:
+            /* Don't use logical props, see https://github.com/vaadin/vaadin-time-picker/issues/145 */
+            var(--vaadin-input-field-top-end-radius, var(--_border-radius))
+            var(--vaadin-input-field-top-start-radius, var(--_border-radius))
+            var(--vaadin-input-field-bottom-start-radius, var(--_border-radius))
+            var(--vaadin-input-field-bottom-end-radius, var(--_border-radius));
         }
 
         :host([hidden]) {

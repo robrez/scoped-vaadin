@@ -2,7 +2,7 @@ import '@scoped-vaadin/vaadin-material-styles/color.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-split-layout',
+  'vaadin24-split-layout',
   css`
     [part='splitter'] {
       min-width: 8px;

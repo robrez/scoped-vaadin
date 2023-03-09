@@ -3,6 +3,7 @@ export const elementMeta = [
     "package": "@vaadin/accordion",
     "elementNames": [
       "vaadin-accordion",
+      "vaadin-accordion-heading",
       "vaadin-accordion-panel"
     ],
     "eventNames": [
@@ -35,7 +36,8 @@ export const elementMeta = [
     "package": "@vaadin/avatar-group",
     "elementNames": [
       "vaadin-avatar-group",
-      "vaadin-avatar-group-list-box",
+      "vaadin-avatar-group-menu",
+      "vaadin-avatar-group-menu-item",
       "vaadin-avatar-group-overlay"
     ],
     "eventNames": []
@@ -97,7 +99,11 @@ export const elementMeta = [
   {
     "package": "@vaadin/component-base",
     "elementNames": [],
-    "eventNames": []
+    "eventNames": [
+      "blur",
+      "focus",
+      "slot-content-changed"
+    ]
   },
   {
     "package": "@vaadin/confirm-dialog",
@@ -110,8 +116,7 @@ export const elementMeta = [
       "cancel",
       "confirm",
       "opened-changed",
-      "reject",
-      "vaadin-confirm-dialog-close"
+      "reject"
     ]
   },
   {
@@ -149,9 +154,11 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-date-picker",
       "vaadin-date-picker-light",
+      "vaadin-date-picker-month-scroller",
       "vaadin-date-picker-overlay",
       "vaadin-date-picker-overlay-content",
-      "vaadin-infinite-scroller",
+      "vaadin-date-picker-year",
+      "vaadin-date-picker-year-scroller",
       "vaadin-month-calendar"
     ],
     "eventNames": [
@@ -161,6 +168,7 @@ export const elementMeta = [
       "date-selected",
       "date-tap",
       "focus-input",
+      "init-done",
       "input",
       "invalid-changed",
       "opened-changed",
@@ -172,9 +180,7 @@ export const elementMeta = [
   {
     "package": "@vaadin/date-time-picker",
     "elementNames": [
-      "vaadin-date-time-picker",
-      "vaadin-date-time-picker-date-picker",
-      "vaadin-date-time-picker-time-picker"
+      "vaadin-date-time-picker"
     ],
     "eventNames": [
       "change",
@@ -186,7 +192,8 @@ export const elementMeta = [
   {
     "package": "@vaadin/details",
     "elementNames": [
-      "vaadin-details"
+      "vaadin-details",
+      "vaadin-details-summary"
     ],
     "eventNames": [
       "opened-changed"
@@ -220,13 +227,9 @@ export const elementMeta = [
     "package": "@vaadin/field-base",
     "elementNames": [],
     "eventNames": [
-      "blur",
       "change",
-      "focus",
       "has-input-value-changed",
-      "helper-changed",
       "input",
-      "label-changed",
       "validated"
     ]
   },
@@ -300,9 +303,7 @@ export const elementMeta = [
       "vaadin-icon",
       "vaadin-iconset"
     ],
-    "eventNames": [
-      "vaadin-iconset-registered"
-    ]
+    "eventNames": []
   },
   {
     "package": "@vaadin/icons",
@@ -373,6 +374,9 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-menu-bar",
       "vaadin-menu-bar-button",
+      "vaadin-menu-bar-item",
+      "vaadin-menu-bar-list-box",
+      "vaadin-menu-bar-overlay",
       "vaadin-menu-bar-submenu"
     ],
     "eventNames": [
@@ -383,12 +387,9 @@ export const elementMeta = [
   {
     "package": "@vaadin/message-input",
     "elementNames": [
-      "vaadin-message-input",
-      "vaadin-message-input-button",
-      "vaadin-message-input-text-area"
+      "vaadin-message-input"
     ],
     "eventNames": [
-      "enter",
       "submit"
     ]
   },
@@ -396,7 +397,6 @@ export const elementMeta = [
     "package": "@vaadin/message-list",
     "elementNames": [
       "vaadin-message",
-      "vaadin-message-avatar",
       "vaadin-message-list"
     ],
     "eventNames": []
@@ -456,6 +456,7 @@ export const elementMeta = [
     ],
     "eventNames": [
       "vaadin-overlay-close",
+      "vaadin-overlay-closed",
       "vaadin-overlay-closing",
       "vaadin-overlay-escape-press",
       "vaadin-overlay-open",
@@ -615,7 +616,9 @@ export const elementMeta = [
     "package": "@vaadin/upload",
     "elementNames": [
       "vaadin-upload",
-      "vaadin-upload-file"
+      "vaadin-upload-file",
+      "vaadin-upload-file-list",
+      "vaadin-upload-icon"
     ],
     "eventNames": [
       "file-abort",
@@ -639,11 +642,6 @@ export const elementMeta = [
   },
   {
     "package": "@vaadin/vaadin-development-mode-detector",
-    "elementNames": [],
-    "eventNames": []
-  },
-  {
-    "package": "@vaadin/vaadin-list-mixin",
     "elementNames": [],
     "eventNames": []
   },

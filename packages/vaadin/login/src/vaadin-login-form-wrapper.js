@@ -1,25 +1,20 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import '@scoped-vaadin/button/src/vaadin-button.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { LoginMixin } from './vaadin-login-mixin.js';
 
 /**
- * An element used internally by `<vaadin23-login-form>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-login-form>`. Not intended to be used separately.
  *
  * @extends HTMLElement
- * @mixes ElementMixin
  * @mixes ThemableMixin
- * @mixes LoginMixin
  * @private
  */
-class LoginFormWrapper extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+class LoginFormWrapper extends ThemableMixin(PolymerElement) {
   static get template() {
     return html`
       <style>
@@ -56,13 +51,7 @@ class LoginFormWrapper extends LoginMixin(ElementMixin(ThemableMixin(PolymerElem
 
         <slot name="form"></slot>
 
-        <vaadin23-button
-          id="forgotPasswordButton"
-          theme="tertiary small forgot-password"
-          on-click="_forgotPassword"
-          hidden$="[[noForgotPassword]]"
-          >[[i18n.form.forgotPassword]]</vaadin23-button
-        >
+        <slot name="forgot-password"></slot>
 
         <div part="footer">
           <p>[[i18n.additionalInformation]]</p>
@@ -72,11 +61,29 @@ class LoginFormWrapper extends LoginMixin(ElementMixin(ThemableMixin(PolymerElem
   }
 
   static get is() {
-    return 'vaadin23-login-form-wrapper';
+    return 'vaadin24-login-form-wrapper';
   }
 
-  _forgotPassword() {
-    this.dispatchEvent(new CustomEvent('forgot-password'));
+  static get properties() {
+    return {
+      /**
+       * If set, the error message is shown. The message is hidden by default.
+       * When set, it changes the disabled state of the submit button.
+       * @type {boolean}
+       */
+      error: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+      },
+
+      /**
+       * The object used to localize this component.
+       */
+      i18n: {
+        type: Object,
+      },
+    };
   }
 }
 

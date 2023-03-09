@@ -28,7 +28,7 @@ function checkPaths(arrayToCheck, action, items) {
       return;
     }
 
-    const parentProperty = path.replace(/\.[^.]*$/, ''); // A.b.c -> a.b
+    const parentProperty = path.replace(/\.[^.]*$/u, ''); // A.b.c -> a.b
     if (get(parentProperty, items[0]) === undefined) {
       console.warn(`Path "${path}" used for ${action} does not exist in all of the items, ${action} is disabled.`);
       result = false;
@@ -36,30 +36,6 @@ function checkPaths(arrayToCheck, action, items) {
   });
 
   return result;
-}
-
-/**
- * Sorts the given array of items based on the sorting rules and returns the result.
- *
- * @param {Array<any>} items
- * @param {Array<GridSorterDefinition>} items
- * @return {Array<any>}
- */
-function multiSort(items, sortOrders) {
-  return items.sort((a, b) => {
-    return sortOrders
-      .map((sortOrder) => {
-        if (sortOrder.direction === 'asc') {
-          return compare(get(sortOrder.path, a), get(sortOrder.path, b));
-        } else if (sortOrder.direction === 'desc') {
-          return compare(get(sortOrder.path, b), get(sortOrder.path, a));
-        }
-        return 0;
-      })
-      .reduce((p, n) => {
-        return p !== 0 ? p : n;
-      }, 0);
-  });
 }
 
 /**
@@ -91,6 +67,30 @@ function compare(a, b) {
     return 1;
   }
   return 0;
+}
+
+/**
+ * Sorts the given array of items based on the sorting rules and returns the result.
+ *
+ * @param {Array<any>} items
+ * @param {Array<GridSorterDefinition>} items
+ * @return {Array<any>}
+ */
+function multiSort(items, sortOrders) {
+  return items.sort((a, b) => {
+    return sortOrders
+      .map((sortOrder) => {
+        if (sortOrder.direction === 'asc') {
+          return compare(get(sortOrder.path, a), get(sortOrder.path, b));
+        } else if (sortOrder.direction === 'desc') {
+          return compare(get(sortOrder.path, b), get(sortOrder.path, a));
+        }
+        return 0;
+      })
+      .reduce((p, n) => {
+        return p !== 0 ? p : n;
+      }, 0);
+  });
 }
 
 /**

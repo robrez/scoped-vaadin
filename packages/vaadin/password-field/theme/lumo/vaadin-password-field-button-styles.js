@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { button } from '@scoped-vaadin/button/theme/lumo/vaadin-button-styles.js';
@@ -21,6 +21,6 @@ const passwordFieldButton = css`
   }
 `;
 
-registerStyles('vaadin23-password-field-button', [button, passwordFieldButton], {
+registerStyles('vaadin24-password-field-button', [button, passwordFieldButton], {
   moduleId: 'lumo-password-field-button',
 });

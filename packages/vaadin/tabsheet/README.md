@@ -10,17 +10,17 @@ A web component for organizing and grouping content into sections.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-tabsheet>
-  <vaadin23-tabs slot="tabs">
-    <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
-    <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
-    <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
-  </vaadin23-tabs>
+<vaadin24-tabsheet>
+  <vaadin24-tabs slot="tabs">
+    <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
+    <vaadin24-tab id="tab-2">Tab 2</vaadin24-tab>
+    <vaadin24-tab id="tab-3">Tab 3</vaadin24-tab>
+  </vaadin24-tabs>
 
   <div tab="tab-1">Panel 1</div>
   <div tab="tab-2">Panel 2</div>
   <div tab="tab-3">Panel 3</div>
-</vaadin23-tabsheet>
+</vaadin24-tabsheet>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tabsheet/screenshot.png" width="735" alt="Screenshot of vaadin-tabsheet">](https://vaadin.com/docs/latest/components/tabs/#tab-sheet)

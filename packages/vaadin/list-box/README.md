@@ -10,14 +10,14 @@ A web component for selecting one or more values from a scrollable list of items
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-list-box selected="2">
+<vaadin24-list-box selected="2">
   <b>Select an list-box</b>
-  <vaadin23-list-box>list-box one</vaadin23-list-box>
-  <vaadin23-list-box>list-box two</vaadin23-list-box>
+  <vaadin24-list-box>list-box one</vaadin24-list-box>
+  <vaadin24-list-box>list-box two</vaadin24-list-box>
   <hr />
-  <vaadin23-list-box>list-box three</vaadin23-list-box>
-  <vaadin23-list-box>list-box four</vaadin23-list-box>
-</vaadin23-list-box>
+  <vaadin24-list-box>list-box three</vaadin24-list-box>
+  <vaadin24-list-box>list-box four</vaadin24-list-box>
+</vaadin24-list-box>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/list-box/screenshot.png" width="150" alt="Screenshot of vaadin-list-box">](https://vaadin.com/docs/latest/components/list-box)

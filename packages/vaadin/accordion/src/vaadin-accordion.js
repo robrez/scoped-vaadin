@@ -1,20 +1,21 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
 import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { AccordionPanel } from './vaadin-accordion-panel.js';
 
 /**
- * `<vaadin23-accordion>` is a Web Component implementing accordion widget —
+ * `<vaadin24-accordion>` is a Web Component implementing accordion widget:
  * a vertically stacked set of expandable panels. The component should be
- * used as a wrapper for two or more `<vaadin23-accordion-panel>` components.
+ * used as a wrapper for two or more `<vaadin24-accordion-panel>` components.
  *
  * Panel headings function as controls that enable users to open (expand)
  * or hide (collapse) their associated sections of content. The user can
@@ -24,24 +25,24 @@ import { AccordionPanel } from './vaadin-accordion-panel.js';
  * previous panel to close and hide its content.
  *
  * ```
- * <vaadin23-accordion>
- *   <vaadin23-accordion-panel>
- *     <div slot="summary">Panel 1</div>
- *     This panel is opened, so the text is visible by default.
- *   </vaadin23-accordion-panel>
- *   <vaadin23-accordion-panel>
- *     <div slot="summary">Panel 2</div>
- *     After opening this panel, the first one becomes closed.
- *   </vaadin23-accordion-panel>
- * </vaadin23-accordion>
+ * <vaadin24-accordion>
+ *   <vaadin24-accordion-panel>
+ *     <vaadin24-accordion-heading slot="summary">Panel 1</vaadin24-accordion-heading>
+ *     <div>This panel is opened, so the text is visible by default.</div>
+ *   </vaadin24-accordion-panel>
+ *   <vaadin24-accordion-panel>
+ *     <vaadin24-accordion-heading slot="summary">Panel 2</vaadin24-accordion-heading>
+ *     <div>After opening this panel, the first one becomes closed.</div>
+ *   </vaadin24-accordion-panel>
+ * </vaadin24-accordion>
  * ```
  *
  * ### Styling
  *
- * See the [`<vaadin23-accordion-panel>`](#/elements/vaadin-accordion-panel)
+ * See the [`<vaadin24-accordion-panel>`](#/elements/vaadin-accordion-panel)
  * documentation for the available state attributes and stylable shadow parts.
  *
- * **Note:** You can apply the theme to `<vaadin23-accordion>` component itself,
+ * **Note:** You can apply the theme to `<vaadin24-accordion>` component itself,
  * especially by using the following CSS selector:
  *
  * ```
@@ -77,7 +78,7 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
   }
 
   static get is() {
-    return 'vaadin23-accordion';
+    return 'vaadin24-accordion';
   }
 
   static get properties() {
@@ -96,7 +97,7 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
       },
 
       /**
-       * The list of `<vaadin23-accordion-panel>` child elements.
+       * The list of `<vaadin24-accordion-panel>` child elements.
        * It is populated from the elements passed to the light DOM,
        * and updated dynamically when adding or removing panels.
        * @type {!Array<!AccordionPanel>}
@@ -116,6 +117,18 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
   constructor() {
     super();
     this._boundUpdateOpened = this._updateOpened.bind(this);
+  }
+
+  /**
+   * Override getter from `KeyboardDirectionMixin`
+   * to check if the heading element has focus.
+   *
+   * @return {Element | null}
+   * @protected
+   * @override
+   */
+  get focused() {
+    return (this._getItems() || []).find((item) => isElementFocused(item.focusElement));
   }
 
   /**
@@ -183,8 +196,7 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
    */
   _onKeyDown(event) {
     // Only check keyboard events on details toggle buttons
-    const item = event.composedPath()[0];
-    if (!this.items.some((el) => el.focusElement === item)) {
+    if (!this.items.some((item) => item.focusElement === event.target)) {
       return;
     }
 

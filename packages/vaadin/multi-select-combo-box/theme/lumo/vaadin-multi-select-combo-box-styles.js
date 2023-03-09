@@ -1,28 +1,50 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/color.js';
 import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
+import { comboBoxItem } from '@scoped-vaadin/combo-box/theme/lumo/vaadin-combo-box-item-styles.js';
+import { comboBoxLoader, comboBoxOverlay } from '@scoped-vaadin/combo-box/theme/lumo/vaadin-combo-box-overlay-styles.js';
+import { item } from '@scoped-vaadin/item/theme/lumo/vaadin-item-styles.js';
 import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
+import { loader } from '@scoped-vaadin/vaadin-lumo-styles/mixins/loader.js';
+import { menuOverlayCore } from '@scoped-vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
+import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-registerStyles(
-  'vaadin23-multi-select-combo-box-item',
-  css`
-    @media (any-hover: hover) {
-      :host(:hover[readonly]) {
-        background-color: transparent;
-        cursor: default;
-      }
+const multiSelectComboBoxItem = css`
+  @media (any-hover: hover) {
+    :host(:hover[readonly]) {
+      background-color: transparent;
+      cursor: default;
     }
-  `,
-  {
-    moduleId: 'lumo-multi-select-combo-box-item',
-  },
+  }
+`;
+
+registerStyles('vaadin24-multi-select-combo-box-item', [item, comboBoxItem, multiSelectComboBoxItem], {
+  moduleId: 'lumo-multi-select-combo-box-item',
+});
+
+registerStyles(
+  'vaadin24-multi-select-combo-box-overlay',
+  [
+    overlay,
+    menuOverlayCore,
+    comboBoxOverlay,
+    loader,
+    comboBoxLoader,
+    css`
+      :host {
+        --_vaadin-multi-select-combo-box-items-container-border-width: var(--lumo-space-xs);
+        --_vaadin-multi-select-combo-box-items-container-border-style: solid;
+      }
+    `,
+  ],
+  { moduleId: 'lumo-multi-select-combo-box-overlay' },
 );
 
 const multiSelectComboBox = css`
@@ -34,12 +56,28 @@ const multiSelectComboBox = css`
     caret-color: var(--lumo-body-text-color) !important;
   }
 
-  [part~='chip']:not(:last-of-type) {
+  /* Override input-container styles */
+  ::slotted([slot='chip']),
+  ::slotted([slot='overflow']) {
+    min-height: auto;
+    padding: 0.3125em calc(0.5em + var(--lumo-border-radius-s) / 4);
+    color: var(--lumo-body-text-color);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  ::slotted([slot='chip']:not([readonly]):not([disabled])) {
+    padding-inline-end: 0;
+  }
+
+  ::slotted([slot='chip']:not(:last-of-type)),
+  ::slotted([slot='overflow']:not(:last-of-type)) {
     margin-inline-end: var(--lumo-space-xs);
   }
 
-  [part~='overflow']:not([hidden]) + :not(:empty) {
-    margin-inline-start: var(--lumo-space-xs);
+  ::slotted([slot='chip'][focused]) {
+    background-color: var(--lumo-primary-color);
+    color: var(--lumo-primary-contrast-color);
   }
 
   [part='toggle-button']::before {
@@ -52,6 +90,6 @@ const multiSelectComboBox = css`
   }
 `;
 
-registerStyles('vaadin23-multi-select-combo-box', [inputFieldShared, multiSelectComboBox], {
+registerStyles('vaadin24-multi-select-combo-box', [inputFieldShared, multiSelectComboBox], {
   moduleId: 'lumo-multi-select-combo-box',
 });

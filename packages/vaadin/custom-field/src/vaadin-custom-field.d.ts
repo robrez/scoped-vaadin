@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -12,12 +12,6 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 export type CustomFieldParseValueFn = (value: string) => unknown[];
 
 export type CustomFieldFormatValueFn = (inputValues: unknown[]) => string;
-
-export interface CustomFieldI18n {
-  parseValue: CustomFieldParseValueFn;
-
-  formatValue: CustomFieldFormatValueFn;
-}
 
 /**
  * Fired when the user commits a value change.
@@ -63,13 +57,13 @@ export interface CustomFieldEventMap extends HTMLElementEventMap, CustomFieldCus
 }
 
 /**
- * `<vaadin23-custom-field>` is a web component for wrapping multiple components as a single field.
+ * `<vaadin24-custom-field>` is a web component for wrapping multiple components as a single field.
  *
  * ```
- * <vaadin23-custom-field label="Appointment time">
- *   <vaadin23-date-picker></vaadin23-date-picker>
- *   <vaadin23-time-picker></vaadin23-time-picker>
- * </vaadin23-custom-field>
+ * <vaadin24-custom-field label="Appointment time">
+ *   <vaadin24-date-picker></vaadin24-date-picker>
+ *   <vaadin24-time-picker></vaadin24-time-picker>
+ * </vaadin24-custom-field>
  * ```
  *
  * ### Styling
@@ -95,7 +89,7 @@ export interface CustomFieldEventMap extends HTMLElementEventMap, CustomFieldCus
  * `has-error-message` | Set when the element has an error message | :host
  *
  * You may also manually set `disabled` or `readonly` attribute on this component to make the label
- * part look visually the same as on a `<vaadin23-text-field>` when it is disabled or readonly.
+ * part look visually the same as on a `<vaadin24-text-field>` when it is disabled or readonly.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -145,41 +139,6 @@ declare class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMi
   parseValue: CustomFieldParseValueFn | undefined;
 
   /**
-   * The object used to localize this component.
-   * To change the default localization, replace the entire
-   * _i18n_ object or just the property you want to modify.
-   *
-   * The object has the following JSON structure:
-   *
-   * ```
-   * {
-   *   // A function to format given `Array` as
-   *   // component value. Array is list of all internal values
-   *   // in the order of their presence in the DOM
-   *   // This function is called each time the internal input
-   *   // value is changed.
-   *   formatValue: inputValues => {
-   *     // returns a representation of the given array of values
-   *     // in the form of string with delimiter characters
-   *   },
-   *
-   *   // A function to parse the given value to an `Array` in the format
-   *   // of the list of all internal values
-   *   // in the order of their presence in the DOM
-   *   // This function is called when value of the
-   *   // custom field is set.
-   *   parseValue: value => {
-   *     // returns the array of values from parsed value string.
-   *   }
-   * }
-   * ```
-   * @deprecated Since 23.3
-   * Use the [`formatValue`](#/elements/vaadin-custom-field#property-formatValue)
-   * and [`parseValue`](#/elements/vaadin-custom-field#property-parseValue) properties instead
-   */
-  i18n: CustomFieldI18n;
-
-  /**
    * The name of the control, which is submitted with the form data.
    */
   name: string | null | undefined;
@@ -209,7 +168,7 @@ declare class CustomField extends FieldMixin(FocusMixin(KeyboardMixin(ThemableMi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-custom-field': CustomField;
+    'vaadin24-custom-field': CustomField;
   }
 }
 

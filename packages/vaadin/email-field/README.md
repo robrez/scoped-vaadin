@@ -2,7 +2,7 @@
 
 This component is based on [@vaadin/email-field](https://www.npmjs.com/package/@vaadin/email-field)
 
-An extension of [`<vaadin23-text-field>`](https://www.npmjs.com/package/@scoped-vaadin/text-field) component that only accepts email addresses as input.
+An extension of [`<vaadin24-text-field>`](https://www.npmjs.com/package/@scoped-vaadin/text-field) component that only accepts email addresses as input.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/email-field)
 
@@ -10,7 +10,7 @@ An extension of [`<vaadin23-text-field>`](https://www.npmjs.com/package/@scoped-
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-email-field label="Email"></vaadin23-email-field>
+<vaadin24-email-field label="Email"></vaadin24-email-field>
 ```
 
 ## Installation

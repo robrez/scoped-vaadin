@@ -1,14 +1,20 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
+import { item } from '@scoped-vaadin/item/theme/lumo/vaadin-item-styles.js';
+import { listBox } from '@scoped-vaadin/list-box/theme/lumo/vaadin-list-box-styles.js';
 import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
 import { menuOverlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+
+registerStyles('vaadin24-select-item', item, { moduleId: 'lumo-select-item' });
+
+registerStyles('vaadin24-select-list-box', listBox, { moduleId: 'lumo-select-list-box' });
 
 const select = css`
   :host(:not([theme*='align'])) ::slotted([slot='value']) {
@@ -55,10 +61,10 @@ const select = css`
   }
 `;
 
-registerStyles('vaadin23-select', [inputFieldShared, select], { moduleId: 'lumo-select' });
+registerStyles('vaadin24-select', [inputFieldShared, select], { moduleId: 'lumo-select' });
 
 registerStyles(
-  'vaadin23-select-value-button',
+  'vaadin24-select-value-button',
   css`
     :host {
       font-family: var(--lumo-font-family);
@@ -113,4 +119,4 @@ const selectOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'lumo-select-overlay' });
+registerStyles('vaadin24-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'lumo-select-overlay' });

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -9,6 +9,7 @@ import { animationFrame } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
+import { updateCellState } from './vaadin-grid-helpers.js';
 
 /**
  * @polymerMixin
@@ -24,12 +25,12 @@ export const ColumnBaseMixin = (superClass) =>
         resizable: {
           type: Boolean,
           value() {
-            if (this.localName === 'vaadin23-grid-column-group') {
+            if (this.localName === 'vaadin24-grid-column-group') {
               return;
             }
 
             const parent = this.parentNode;
-            if (parent && parent.localName === 'vaadin23-grid-column-group') {
+            if (parent && parent.localName === 'vaadin24-grid-column-group') {
               return parent.resizable || false;
             }
             return false;
@@ -143,7 +144,7 @@ export const ColumnBaseMixin = (superClass) =>
          * Receives two arguments:
          *
          * - `root` The header cell content DOM element. Append your content to it.
-         * - `column` The `<vaadin23-grid-column>` element.
+         * - `column` The `<vaadin24-grid-column>` element.
          *
          * @type {GridHeaderFooterRenderer | null | undefined}
          */
@@ -166,7 +167,7 @@ export const ColumnBaseMixin = (superClass) =>
          * Receives two arguments:
          *
          * - `root` The footer cell content DOM element. Append your content to it.
-         * - `column` The `<vaadin23-grid-column>` element.
+         * - `column` The `<vaadin24-grid-column>` element.
          *
          * @type {GridHeaderFooterRenderer | null | undefined}
          */
@@ -214,6 +215,30 @@ export const ColumnBaseMixin = (superClass) =>
         '_reorderStatusChanged(_reorderStatus, _headerCell, _footerCell, _cells.*)',
         '_hiddenChanged(hidden, _headerCell, _footerCell, _cells.*)',
       ];
+    }
+
+    /**
+     * @return {!Grid | undefined}
+     * @protected
+     */
+    get _grid() {
+      if (!this._gridValue) {
+        this._gridValue = this._findHostGrid();
+      }
+      return this._gridValue;
+    }
+
+    /**
+     * @return {!Array<!HTMLElement>}
+     * @protected
+     */
+    get _allCells() {
+      return []
+        .concat(this._cells || [])
+        .concat(this._emptyCells || [])
+        .concat(this._headerCell)
+        .concat(this._footerCell)
+        .filter((cell) => cell);
     }
 
     /** @protected */
@@ -271,34 +296,10 @@ export const ColumnBaseMixin = (superClass) =>
       // eslint-disable-next-line @typescript-eslint/no-this-alias, consistent-this
       let el = this;
       // Custom elements extending grid must have a specific localName
-      while (el && !/^vaadin.*grid(-pro)?$/.test(el.localName)) {
+      while (el && !/^vaadin.*grid(-pro)?$/u.test(el.localName)) {
         el = el.assignedSlot ? el.assignedSlot.parentNode : el.parentNode;
       }
       return el || undefined;
-    }
-
-    /**
-     * @return {!Grid | undefined}
-     * @protected
-     */
-    get _grid() {
-      if (!this._gridValue) {
-        this._gridValue = this._findHostGrid();
-      }
-      return this._gridValue;
-    }
-
-    /**
-     * @return {!Array<!HTMLElement>}
-     * @protected
-     */
-    get _allCells() {
-      return []
-        .concat(this._cells || [])
-        .concat(this._emptyCells || [])
-        .concat(this._headerCell)
-        .concat(this._footerCell)
-        .filter((cell) => cell);
     }
 
     /** @protected */
@@ -342,7 +343,9 @@ export const ColumnBaseMixin = (superClass) =>
         this.parentElement._columnPropChanged('frozen', frozen);
       }
 
-      this._allCells.forEach((cell) => cell.toggleAttribute('frozen', frozen));
+      this._allCells.forEach((cell) => {
+        updateCellState(cell, 'frozen', frozen);
+      });
 
       if (this._grid && this._grid._frozenCellsChanged) {
         this._grid._frozenCellsChanged();
@@ -360,7 +363,8 @@ export const ColumnBaseMixin = (superClass) =>
         if (this._grid && cell.parentElement === this._grid.$.sizer) {
           return;
         }
-        cell.toggleAttribute('frozen-to-end', frozenToEnd);
+
+        updateCellState(cell, 'frozen-to-end', frozenToEnd);
       });
 
       if (this._grid && this._grid._frozenCellsChanged) {
@@ -370,7 +374,9 @@ export const ColumnBaseMixin = (superClass) =>
 
     /** @private */
     _lastFrozenChanged(lastFrozen) {
-      this._allCells.forEach((cell) => cell.toggleAttribute('last-frozen', lastFrozen));
+      this._allCells.forEach((cell) => {
+        updateCellState(cell, 'last-frozen', lastFrozen);
+      });
 
       if (this.parentElement && this.parentElement._columnPropChanged) {
         this.parentElement._lastFrozen = lastFrozen;
@@ -385,7 +391,7 @@ export const ColumnBaseMixin = (superClass) =>
           return;
         }
 
-        cell.toggleAttribute('first-frozen-to-end', firstFrozenToEnd);
+        updateCellState(cell, 'first-frozen-to-end', firstFrozenToEnd);
       });
 
       if (this.parentElement && this.parentElement._columnPropChanged) {
@@ -401,15 +407,23 @@ export const ColumnBaseMixin = (superClass) =>
     _generateHeader(path) {
       return path
         .substr(path.lastIndexOf('.') + 1)
-        .replace(/([A-Z])/g, '-$1')
+        .replace(/([A-Z])/gu, '-$1')
         .toLowerCase()
-        .replace(/-/g, ' ')
-        .replace(/^./, (match) => match.toUpperCase());
+        .replace(/-/gu, ' ')
+        .replace(/^./u, (match) => match.toUpperCase());
     }
 
     /** @private */
     _reorderStatusChanged(reorderStatus) {
-      this._allCells.forEach((cell) => cell.setAttribute('reorder-status', reorderStatus));
+      const prevStatus = this.__previousReorderStatus;
+      const oldPart = prevStatus ? `reorder-${prevStatus}-cell` : '';
+      const newPart = `reorder-${reorderStatus}-cell`;
+
+      this._allCells.forEach((cell) => {
+        updateCellState(cell, 'reorder-status', reorderStatus, newPart, oldPart);
+      });
+
+      this.__previousReorderStatus = reorderStatus;
     }
 
     /** @private */
@@ -728,18 +742,18 @@ export const ColumnBaseMixin = (superClass) =>
   };
 
 /**
- * A `<vaadin23-grid-column>` is used to configure how a column in `<vaadin23-grid>`
+ * A `<vaadin24-grid-column>` is used to configure how a column in `<vaadin24-grid>`
  * should look like.
  *
- * See [`<vaadin23-grid>`](#/elements/vaadin-grid) documentation for instructions on how
- * to configure the `<vaadin23-grid-column>`.
+ * See [`<vaadin24-grid>`](#/elements/vaadin-grid) documentation for instructions on how
+ * to configure the `<vaadin24-grid-column>`.
  *
  * @extends HTMLElement
  * @mixes ColumnBaseMixin
  */
 class GridColumn extends ColumnBaseMixin(DirMixin(PolymerElement)) {
   static get is() {
-    return 'vaadin23-grid-column';
+    return 'vaadin24-grid-column';
   }
 
   static get properties() {
@@ -767,7 +781,7 @@ class GridColumn extends ColumnBaseMixin(DirMixin(PolymerElement)) {
        * Receives three arguments:
        *
        * - `root` The cell content DOM element. Append your content to it.
-       * - `column` The `<vaadin23-grid-column>` element.
+       * - `column` The `<vaadin24-grid-column>` element.
        * - `model` The object with the properties related with
        *   the rendered item, contains:
        *   - `model.index` The index of the item.

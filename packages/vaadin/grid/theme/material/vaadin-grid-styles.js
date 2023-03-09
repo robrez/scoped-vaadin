@@ -3,7 +3,7 @@ import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-grid',
+  'vaadin24-grid',
   css`
     :host {
       background-color: var(--material-background-color);
@@ -191,7 +191,7 @@ registerStyles(
       margin-top: -1px;
     }
 
-    :host([all-rows-visible]) [part~='row'][last][dragover='below'] [part~='cell']::after {
+    :host([all-rows-visible]) [part~='last-row'][dragover='below'] [part~='cell']::after {
       height: 1px;
     }
 

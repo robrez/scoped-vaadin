@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2022 Vaadin Ltd.
+ * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
@@ -9,7 +9,7 @@ import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-positio
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-tooltip-overlay',
+  'vaadin24-tooltip-overlay',
   css`
     [part='overlay'] {
       max-width: 40ch;
@@ -41,14 +41,14 @@ registerStyles(
 let memoizedTemplate;
 
 /**
- * An element used internally by `<vaadin23-tooltip>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-tooltip>`. Not intended to be used separately.
  *
  * @extends Overlay
  * @private
  */
 class TooltipOverlay extends PositionMixin(Overlay) {
   static get is() {
-    return 'vaadin23-tooltip-overlay';
+    return 'vaadin24-tooltip-overlay';
   }
 
   static get template() {
@@ -77,7 +77,7 @@ class TooltipOverlay extends PositionMixin(Overlay) {
     super.ready();
 
     // When setting `manual` and `opened` attributes, the overlay is already moved to body
-    // by the time when `ready()` callback of the `vaadin23-tooltip` is executed by Polymer,
+    // by the time when `ready()` callback of the `vaadin24-tooltip` is executed by Polymer,
     // so querySelector() would return null. So we use this workaround to set properties.
     this.owner = this.__dataHost;
     this.owner._overlayElement = this;

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -15,14 +15,15 @@ import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
+ * `<vaadin24-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
  *
  * ```html
- * <vaadin23-checkbox-group label="Preferred language of contact:">
- *   <vaadin23-checkbox value="en" label="English"></vaadin23-checkbox>
- *   <vaadin23-checkbox value="fr" label="Français"></vaadin23-checkbox>
- *   <vaadin23-checkbox value="de" label="Deutsch"></vaadin23-checkbox>
- * </vaadin23-checkbox-group>
+ * <vaadin24-checkbox-group label="Export data">
+ *   <vaadin24-checkbox value="0" label="Order ID"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="1" label="Product name"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="2" label="Customer"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="3" label="Status"></vaadin24-checkbox>
+ * </vaadin24-checkbox-group>
  * ```
  *
  * ### Styling
@@ -64,7 +65,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(ThemableMixin(PolymerElement))))) {
   static get is() {
-    return 'vaadin23-checkbox-group';
+    return 'vaadin24-checkbox-group';
   }
 
   static get template() {
@@ -145,6 +146,16 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
     this.__onCheckboxCheckedChanged = this.__onCheckboxCheckedChanged.bind(this);
   }
 
+  /**
+   * A collection of the checkboxes.
+   *
+   * @return {!Array<!Checkbox>}
+   * @private
+   */
+  get __checkboxes() {
+    return this.__filterCheckboxes([...this.children]);
+  }
+
   /** @protected */
   ready() {
     super.ready();
@@ -186,16 +197,6 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
    */
   __filterCheckboxes(nodes) {
     return nodes.filter((child) => child instanceof Checkbox);
-  }
-
-  /**
-   * A collection of the checkboxes.
-   *
-   * @return {!Array<!Checkbox>}
-   * @private
-   */
-  get __checkboxes() {
-    return this.__filterCheckboxes([...this.children]);
   }
 
   /**

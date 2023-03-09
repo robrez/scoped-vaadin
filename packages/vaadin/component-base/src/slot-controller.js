@@ -1,9 +1,10 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+import { isEmptyTextNode } from './dom-utils.js';
 import { generateUniqueId } from './unique-id-utils.js';
 
 /**
@@ -13,64 +14,97 @@ export class SlotController extends EventTarget {
   /**
    * Ensure that every instance has unique ID.
    *
-   * @param {string} slotName
    * @param {HTMLElement} host
+   * @param {string} slotName
    * @return {string}
    * @protected
    */
-  static generateId(slotName, host) {
+  static generateId(host, slotName) {
     const prefix = slotName || 'default';
     return `${prefix}-${host.localName}-${generateUniqueId()}`;
   }
 
-  constructor(host, slotName, slotFactory, slotInitializer, useUniqueId) {
+  constructor(host, slotName, tagName, config = {}) {
     super();
+
+    const { initializer, multiple, observe, useUniqueId } = config;
 
     this.host = host;
     this.slotName = slotName;
-    this.slotFactory = slotFactory;
-    this.slotInitializer = slotInitializer;
+    this.tagName = tagName;
+    this.observe = typeof observe === 'boolean' ? observe : true;
+    this.multiple = typeof multiple === 'boolean' ? multiple : false;
+    this.slotInitializer = initializer;
+
+    if (multiple) {
+      this.nodes = [];
+    }
 
     // Only generate the default ID if requested by the controller.
     if (useUniqueId) {
-      this.defaultId = SlotController.generateId(slotName, host);
+      this.defaultId = this.constructor.generateId(host, slotName);
     }
   }
 
   hostConnected() {
     if (!this.initialized) {
-      let node = this.getSlotChild();
-
-      if (!node) {
-        node = this.attachDefaultNode();
+      if (this.multiple) {
+        this.initMultiple();
       } else {
-        this.node = node;
-        this.initCustomNode(node);
+        this.initSingle();
       }
 
-      this.initNode(node);
-
-      // TODO: Consider making this behavior opt-in to improve performance.
-      this.observe();
+      if (this.observe) {
+        this.observeSlot();
+      }
 
       this.initialized = true;
     }
   }
 
+  /** @protected */
+  initSingle() {
+    let node = this.getSlotChild();
+
+    if (!node) {
+      node = this.attachDefaultNode();
+      this.initNode(node);
+    } else {
+      this.node = node;
+      this.initAddedNode(node);
+    }
+  }
+
+  /** @protected */
+  initMultiple() {
+    const children = this.getSlotChildren();
+
+    if (children.length === 0) {
+      const defaultNode = this.attachDefaultNode();
+      this.nodes = [defaultNode];
+      this.initNode(defaultNode);
+    } else {
+      this.nodes = children;
+      children.forEach((node) => {
+        this.initAddedNode(node);
+      });
+    }
+  }
+
   /**
-   * Create and attach default node using the slot factory.
+   * Create and attach default node using the provided tag name, if any.
    * @return {Node | undefined}
    * @protected
    */
   attachDefaultNode() {
-    const { host, slotName, slotFactory } = this;
+    const { host, slotName, tagName } = this;
 
     // Check if the node was created previously and if so, reuse it.
     let node = this.defaultNode;
 
-    // Slot factory is optional, some slots don't have default content.
-    if (!node && slotFactory) {
-      node = slotFactory(host);
+    // Tag name is optional, sometimes we don't init default content.
+    if (!node && tagName) {
+      node = document.createElement(tagName);
       if (node instanceof Element) {
         if (slotName !== '') {
           node.setAttribute('slot', slotName);
@@ -88,12 +122,12 @@ export class SlotController extends EventTarget {
   }
 
   /**
-   * Return a reference to the node managed by the controller.
+   * Return the list of nodes matching the slot managed by the controller.
    * @return {Node}
    */
-  getSlotChild() {
+  getSlotChildren() {
     const { slotName } = this;
-    return Array.from(this.host.childNodes).find((node) => {
+    return Array.from(this.host.childNodes).filter((node) => {
       // Either an element (any slot) or a text node (only un-named slot).
       return (
         (node.nodeType === Node.ELEMENT_NODE && node.slot === slotName) ||
@@ -103,6 +137,16 @@ export class SlotController extends EventTarget {
   }
 
   /**
+   * Return a reference to the node managed by the controller.
+   * @return {Node}
+   */
+  getSlotChild() {
+    return this.getSlotChildren()[0];
+  }
+
+  /**
+   * Run `slotInitializer` for the node managed by the controller.
+   *
    * @param {Node} node
    * @protected
    */
@@ -111,7 +155,7 @@ export class SlotController extends EventTarget {
     // Don't try to bind `this` to initializer (normally it's arrow function).
     // Instead, pass the host as a first argument to access component's state.
     if (slotInitializer) {
-      slotInitializer(this.host, node);
+      slotInitializer(node, this.host);
     }
   }
 
@@ -132,18 +176,33 @@ export class SlotController extends EventTarget {
   teardownNode(_node) {}
 
   /**
+   * Run both `initCustomNode` and `initNode` for a custom slotted node.
+   *
+   * @param {Node} node
+   * @protected
+   */
+  initAddedNode(node) {
+    if (node !== this.defaultNode) {
+      this.initCustomNode(node);
+      this.initNode(node);
+    }
+  }
+
+  /**
    * Setup the observer to manage slot content changes.
    * @protected
    */
-  observe() {
+  observeSlot() {
     const { slotName } = this;
     const selector = slotName === '' ? 'slot:not([name])' : `slot[name=${slotName}]`;
     const slot = this.host.shadowRoot.querySelector(selector);
 
     this.__slotObserver = new FlattenedNodesObserver(slot, (info) => {
-      // TODO: support default slot with multiple nodes (e.g. confirm-dialog)
-      const current = this.node;
-      const newNode = info.addedNodes.find((node) => node !== current);
+      const current = this.multiple ? this.nodes : [this.node];
+
+      // Calling `slot.assignedNodes()` includes whitespace text nodes in case of default slot:
+      // unlike comment nodes, they are not filtered out. So we need to manually ignore them.
+      const newNodes = info.addedNodes.filter((node) => !isEmptyTextNode(node) && !current.includes(node));
 
       if (info.removedNodes.length) {
         info.removedNodes.forEach((node) => {
@@ -151,18 +210,22 @@ export class SlotController extends EventTarget {
         });
       }
 
-      if (newNode) {
+      if (newNodes && newNodes.length > 0) {
         // Custom node is added, remove the current one.
-        if (current && current.isConnected) {
-          this.host.removeChild(current);
-        }
+        current.forEach((node) => {
+          if (node && node.isConnected) {
+            node.parentNode.removeChild(node);
+          }
+        });
 
-        this.node = newNode;
-
-        if (newNode !== this.defaultNode) {
-          this.initCustomNode(newNode);
-
-          this.initNode(newNode);
+        if (this.multiple) {
+          this.nodes = newNodes;
+          newNodes.forEach((node) => {
+            this.initAddedNode(node);
+          });
+        } else {
+          this.node = newNodes[0];
+          this.initAddedNode(this.node);
         }
       }
     });

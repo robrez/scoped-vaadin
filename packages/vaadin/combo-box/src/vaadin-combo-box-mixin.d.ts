@@ -1,26 +1,19 @@
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 import type { ComboBox } from './vaadin-combo-box.js';
+import type { ComboBoxDefaultItem, ComboBoxItemModel, ComboBoxItemRenderer } from './vaadin-combo-box-item-mixin.js';
 
-export type ComboBoxDefaultItem = any;
+export type { ComboBoxDefaultItem, ComboBoxItemModel };
 
-export interface ComboBoxItemModel<TItem> {
-  index: number;
-  item: TItem;
-}
-
-export type ComboBoxRenderer<TItem> = (
-  root: HTMLElement,
-  comboBox: ComboBox<TItem>,
-  model: ComboBoxItemModel<TItem>,
-) => void;
+export type ComboBoxRenderer<TItem> = ComboBoxItemRenderer<TItem, ComboBox<TItem>>;
 
 export declare function ComboBoxMixin<TItem, T extends Constructor<HTMLElement>>(
   base: T,
@@ -28,6 +21,7 @@ export declare function ComboBoxMixin<TItem, T extends Constructor<HTMLElement>>
   Constructor<DisabledMixinClass> &
   Constructor<InputMixinClass> &
   Constructor<KeyboardMixinClass> &
+  Constructor<OverlayClassMixinClass> &
   T;
 
 export declare class ComboBoxMixinClass<TItem> {
@@ -51,8 +45,8 @@ export declare class ComboBoxMixinClass<TItem> {
    * Custom function for rendering the content of every item.
    * Receives three arguments:
    *
-   * - `root` The `<vaadin23-combo-box-item>` internal container DOM element.
-   * - `comboBox` The reference to the `<vaadin23-combo-box>` element.
+   * - `root` The `<vaadin24-combo-box-item>` internal container DOM element.
+   * - `comboBox` The reference to the `<vaadin24-combo-box>` element.
    * - `model` The object with the properties related with the rendered
    *   item, contains:
    *   - `model.index` The index of the rendered item.
@@ -85,7 +79,7 @@ export declare class ComboBoxMixinClass<TItem> {
   /**
    * The `String` value for the selected item of the combo box.
    *
-   * When there’s no item selected, the value is an empty string.
+   * When there is no item selected, the value is an empty string.
    *
    * Use `selectedItem` property to get the raw selected item from
    * the `items` array.

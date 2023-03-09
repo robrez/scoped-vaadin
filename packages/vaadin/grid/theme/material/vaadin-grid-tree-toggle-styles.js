@@ -4,7 +4,7 @@ import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-grid-tree-toggle',
+  'vaadin24-grid-tree-toggle',
   css`
     :host {
       --_material-grid-tree-toggle-collapsed-icon-transform: rotate(0);

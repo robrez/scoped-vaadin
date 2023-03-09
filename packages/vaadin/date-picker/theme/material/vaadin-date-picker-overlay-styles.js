@@ -41,6 +41,6 @@ const datePickerOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-date-picker-overlay', [overlay, datePickerOverlay], {
+registerStyles('vaadin24-date-picker-overlay', [overlay, datePickerOverlay], {
   moduleId: 'material-date-picker-overlay',
 });

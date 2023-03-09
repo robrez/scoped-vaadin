@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2020 - 2022 Vaadin Ltd.
+ * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -9,12 +9,12 @@ import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-scroller>` provides a simple way to enable scrolling when its content is overflowing.
+ * `<vaadin24-scroller>` provides a simple way to enable scrolling when its content is overflowing.
  *
  * ```
- * <vaadin23-scroller>
+ * <vaadin24-scroller>
  *   <div>Content</div>
- * </vaadin23-scroller>
+ * </vaadin24-scroller>
  * ```
  * The following attributes are exposed for styling:
  *
@@ -40,7 +40,7 @@ declare class Scroller extends FocusMixin(ThemableMixin(ElementMixin(ControllerM
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-scroller': Scroller;
+    'vaadin24-scroller': Scroller;
   }
 }
 

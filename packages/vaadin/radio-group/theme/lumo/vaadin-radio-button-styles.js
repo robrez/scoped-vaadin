@@ -6,7 +6,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-radio-button',
+  'vaadin24-radio-button',
   css`
     :host {
       color: var(--lumo-body-text-color);

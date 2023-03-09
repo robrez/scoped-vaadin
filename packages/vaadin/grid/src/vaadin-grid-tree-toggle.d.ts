@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
@@ -18,19 +18,19 @@ export interface GridTreeToggleCustomEventMap {
 export interface GridTreeToggleEventMap extends HTMLElementEventMap, GridTreeToggleCustomEventMap {}
 
 /**
- * `<vaadin23-grid-tree-toggle>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-tree-toggle>` is a helper element for the `<vaadin24-grid>`
  * that provides toggle and level display functionality for the item tree.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
  * ```
  * ```js
  * const column = document.querySelector('#column');
  * column.renderer = (root, column, model) => {
  *   let treeToggle = root.firstElementChild;
  *   if (!treeToggle) {
- *     treeToggle = document.createElement('vaadin23-grid-tree-toggle');
+ *     treeToggle = document.createElement('vaadin24-grid-tree-toggle');
  *     treeToggle.addEventListener('expanded-changed', () => { ... });
  *     root.appendChild(treeToggle);
  *   }
@@ -57,7 +57,7 @@ export interface GridTreeToggleEventMap extends HTMLElementEventMap, GridTreeTog
  * `leaf` | When present, the toggle is not expandable, i. e., the current item is a leaf | :host
  *
  * The following custom CSS properties are available on
- * the `<vaadin23-grid-tree-toggle>` element:
+ * the `<vaadin24-grid-tree-toggle>` element:
  *
  * Custom CSS property | Description | Default
  * ---|---|---
@@ -97,7 +97,7 @@ declare class GridTreeToggle extends ThemableMixin(DirMixin(HTMLElement)) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-tree-toggle': GridTreeToggle;
+    'vaadin24-grid-tree-toggle': GridTreeToggle;
   }
 }
 

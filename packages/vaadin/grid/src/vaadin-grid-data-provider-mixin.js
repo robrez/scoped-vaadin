@@ -1,10 +1,11 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+import { getBodyRowCells, iterateChildren, updateCellsPart, updateState } from './vaadin-grid-helpers.js';
 
 /**
  * @private
@@ -84,14 +85,12 @@ export const ItemCache = class ItemCache {
    */
   getCacheAndIndex(index) {
     let thisLevelIndex = index;
-    const keys = Object.keys(this.itemCaches);
-    for (let i = 0; i < keys.length; i++) {
-      const expandedIndex = Number(keys[i]);
-      const subCache = this.itemCaches[expandedIndex];
-      if (thisLevelIndex <= expandedIndex) {
+    for (const [index, subCache] of Object.entries(this.itemCaches)) {
+      const numberIndex = Number(index);
+      if (thisLevelIndex <= numberIndex) {
         return { cache: this, scaledIndex: thisLevelIndex };
-      } else if (thisLevelIndex <= expandedIndex + subCache.effectiveSize) {
-        return subCache.getCacheAndIndex(thisLevelIndex - expandedIndex - 1);
+      } else if (thisLevelIndex <= numberIndex + subCache.effectiveSize) {
+        return subCache.getCacheAndIndex(thisLevelIndex - numberIndex - 1);
       }
       thisLevelIndex -= subCache.effectiveSize;
     }
@@ -193,6 +192,7 @@ export const DataProviderMixin = (superClass) =>
         itemHasChildrenPath: {
           type: String,
           value: 'children',
+          observer: '__itemHasChildrenPathChanged',
         },
 
         /**
@@ -236,6 +236,15 @@ export const DataProviderMixin = (superClass) =>
       this._effectiveSize = this._cache.effectiveSize;
     }
 
+    /** @private */
+    __itemHasChildrenPathChanged(value, oldValue) {
+      if (!oldValue && value === 'children') {
+        // Avoid an unnecessary content update on init.
+        return;
+      }
+      this.requestContentUpdate();
+    }
+
     /**
      * @param {number} index
      * @param {HTMLElement} el
@@ -250,15 +259,30 @@ export const DataProviderMixin = (superClass) =>
       const { cache, scaledIndex } = this._cache.getCacheAndIndex(index);
       const item = cache.items[scaledIndex];
       if (item) {
-        el.toggleAttribute('loading', false);
+        this.__updateLoading(el, false);
         this._updateItem(el, item);
         if (this._isExpanded(item)) {
           cache.ensureSubCacheForScaledIndex(scaledIndex);
         }
       } else {
-        el.toggleAttribute('loading', true);
+        this.__updateLoading(el, true);
         this._loadPage(this._getPageForIndex(scaledIndex), cache);
       }
+    }
+
+    /**
+     * @param {!HTMLElement} row
+     * @param {boolean} loading
+     * @private
+     */
+    __updateLoading(row, loading) {
+      const cells = getBodyRowCells(row);
+
+      // Row state attribute
+      updateState(row, 'loading', loading);
+
+      // Cells part attribute
+      updateCellsPart(cells, 'loading-row-cell', loading);
     }
 
     /**
@@ -379,14 +403,14 @@ export const DataProviderMixin = (superClass) =>
             this._cache.updateSize();
             this._effectiveSize = this._cache.effectiveSize;
 
-            Array.from(this.$.items.children)
-              .filter((row) => !row.hidden)
-              .forEach((row) => {
+            iterateChildren(this.$.items, (row) => {
+              if (!row.hidden) {
                 const cachedItem = this._cache.getItemForIndex(row.index);
                 if (cachedItem) {
                   this._getItem(row.index, row);
                 }
-              });
+              }
+            });
 
             this.__scrollToPendingIndex();
           });
@@ -435,10 +459,10 @@ export const DataProviderMixin = (superClass) =>
     _checkSize() {
       if (this.size === undefined && this._effectiveSize === 0) {
         console.warn(
-          'The <vaadin23-grid> needs the total number of items' +
-            ' in order to display rows. Set the total number of items' +
-            ' to the `size` property, or provide the total number of items' +
-            ' in the second argument of the `dataProvider`’s `callback` call.',
+          'The <vaadin24-grid> needs the total number of items in' +
+            ' order to display rows, which you can specify either by setting' +
+            ' the `size` property, or by providing it to the second argument' +
+            ' of the `dataProvider` function `callback` call.',
         );
       }
     }

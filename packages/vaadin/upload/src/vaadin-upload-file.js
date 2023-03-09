@@ -1,17 +1,19 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/progress-bar/src/vaadin-progress-bar.js';
 import './vaadin-upload-icons.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-upload-file>` element represents a file in the file list of `<vaadin23-upload>`.
+ * `<vaadin24-upload-file>` element represents a file in the file list of `<vaadin24-upload>`.
  *
  * ### Styling
  *
@@ -31,7 +33,6 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `start-button`   | Start file upload button
  * `retry-button`   | Retry file upload button
  * `remove-button`  | Remove file button
- * `progress`       | Progress bar
  *
  * The following state attributes are available for styling:
  *
@@ -47,10 +48,11 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * @extends HTMLElement
+ * @mixes ControllerMixin
  * @mixes FocusMixin
  * @mixes ThemableMixin
  */
-class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
+class UploadFile extends FocusMixin(ThemableMixin(ControllerMixin(PolymerElement))) {
   static get template() {
     return html`
       <style>
@@ -72,17 +74,22 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
           border: none;
           box-shadow: none;
         }
+
+        :host([complete]) ::slotted([slot='progress']),
+        :host([error]) ::slotted([slot='progress']) {
+          display: none !important;
+        }
       </style>
 
       <div part="row">
         <div part="info">
-          <div part="done-icon" hidden$="[[!file.complete]]" aria-hidden="true"></div>
-          <div part="warning-icon" hidden$="[[!file.error]]" aria-hidden="true"></div>
+          <div part="done-icon" hidden$="[[!complete]]" aria-hidden="true"></div>
+          <div part="warning-icon" hidden$="[[!errorMessage]]" aria-hidden="true"></div>
 
           <div part="meta">
-            <div part="name" id="name">[[file.name]]</div>
-            <div part="status" hidden$="[[!file.status]]" id="status">[[file.status]]</div>
-            <div part="error" id="error" hidden$="[[!file.error]]">[[file.error]]</div>
+            <div part="name" id="name">[[fileName]]</div>
+            <div part="status" hidden$="[[!status]]" id="status">[[status]]</div>
+            <div part="error" id="error" hidden$="[[!errorMessage]]">[[errorMessage]]</div>
           </div>
         </div>
         <div part="commands">
@@ -91,7 +98,7 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
             part="start-button"
             file-event="file-start"
             on-click="_fireFileEvent"
-            hidden$="[[!file.held]]"
+            hidden$="[[!held]]"
             aria-label$="[[i18n.file.start]]"
             aria-describedby="name"
           ></button>
@@ -100,7 +107,7 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
             part="retry-button"
             file-event="file-retry"
             on-click="_fireFileEvent"
-            hidden$="[[!file.error]]"
+            hidden$="[[!errorMessage]]"
             aria-label$="[[i18n.file.retry]]"
             aria-describedby="name"
           ></button>
@@ -115,27 +122,85 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
         </div>
       </div>
 
-      <vaadin23-progress-bar
-        part="progress"
-        id="progress"
-        value$="[[_formatProgressValue(file.progress)]]"
-        error$="[[file.error]]"
-        indeterminate$="[[file.indeterminate]]"
-        uploading$="[[file.uploading]]"
-        complete$="[[file.complete]]"
-      ></vaadin23-progress-bar>
+      <slot name="progress"></slot>
     `;
   }
 
   static get is() {
-    return 'vaadin23-upload-file';
+    return 'vaadin24-upload-file';
   }
 
   static get properties() {
     return {
-      file: Object,
+      /**
+       * True if uploading is completed, false otherwise.
+       */
+      complete: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+      },
 
-      i18n: Object,
+      /**
+       * Error message returned by the server, if any.
+       */
+      errorMessage: {
+        type: String,
+        value: '',
+        observer: '_errorMessageChanged',
+      },
+
+      /**
+       * The object representing a file.
+       */
+      file: {
+        type: Object,
+      },
+
+      /**
+       * Name of the uploading file.
+       */
+      fileName: {
+        type: String,
+      },
+
+      /**
+       * True if uploading is not started, false otherwise.
+       */
+      held: {
+        type: Boolean,
+        value: false,
+      },
+
+      /**
+       * True if remaining time is unknown, false otherwise.
+       */
+      indeterminate: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+      },
+
+      /**
+       * The object used to localize this component.
+       */
+      i18n: {
+        type: Object,
+      },
+
+      /**
+       * Number representing the uploading progress.
+       */
+      progress: {
+        type: Number,
+      },
+
+      /**
+       * Uploading status.
+       */
+      status: {
+        type: String,
+      },
 
       /**
        * Indicates whether the element can be focused and where it participates in sequential keyboard navigation.
@@ -146,22 +211,38 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
         value: 0,
         reflectToAttribute: true,
       },
+
+      /**
+       * True if uploading is in progress, false otherwise.
+       */
+      uploading: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+      },
+
+      /** @private */
+      _progress: {
+        type: Object,
+      },
     };
   }
 
   static get observers() {
-    return [
-      '_fileAborted(file.abort)',
-      '_toggleHostAttribute(file.error, "error")',
-      '_toggleHostAttribute(file.indeterminate, "indeterminate")',
-      '_toggleHostAttribute(file.uploading, "uploading")',
-      '_toggleHostAttribute(file.complete, "complete")',
-    ];
+    return ['__updateProgress(_progress, progress, indeterminate)'];
   }
 
   /** @protected */
   ready() {
     super.ready();
+
+    this.addController(
+      new SlotController(this, 'progress', 'vaadin24-progress-bar', {
+        initializer: (progress) => {
+          this._progress = progress;
+        },
+      }),
+    );
 
     // Handle moving focus to the button on Tab.
     this.shadowRoot.addEventListener('focusin', (e) => {
@@ -192,26 +273,16 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
   }
 
   /** @private */
-  _fileAborted(abort) {
-    if (abort) {
-      this._remove();
+  _errorMessageChanged(errorMessage) {
+    this.toggleAttribute('error', Boolean(errorMessage));
+  }
+
+  /** @private */
+  __updateProgress(progress, value, indeterminate) {
+    if (progress) {
+      progress.value = isNaN(value) ? 0 : value / 100;
+      progress.indeterminate = indeterminate;
     }
-  }
-
-  /** @private */
-  _remove() {
-    this.dispatchEvent(
-      new CustomEvent('file-remove', {
-        detail: { file: this.file },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
-  /** @private */
-  _formatProgressValue(progress) {
-    return progress / 100;
   }
 
   /** @private */
@@ -226,21 +297,8 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
     );
   }
 
-  /** @private */
-  _toggleHostAttribute(value, attributeName) {
-    const shouldHave = Boolean(value);
-    const has = this.hasAttribute(attributeName);
-    if (has !== shouldHave) {
-      if (shouldHave) {
-        this.setAttribute(attributeName, '');
-      } else {
-        this.removeAttribute(attributeName);
-      }
-    }
-  }
-
   /**
-   * Fired when the retry button is pressed. It is listened by `vaadin23-upload`
+   * Fired when the retry button is pressed. It is listened by `vaadin24-upload`
    * which will start a new upload process of this file.
    *
    * @event file-retry
@@ -249,7 +307,7 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
    */
 
   /**
-   * Fired when the start button is pressed. It is listened by `vaadin23-upload`
+   * Fired when the start button is pressed. It is listened by `vaadin24-upload`
    * which will start a new upload process of this file.
    *
    * @event file-start
@@ -258,23 +316,12 @@ class UploadFile extends FocusMixin(ThemableMixin(PolymerElement)) {
    */
 
   /**
-   * Fired when abort button is pressed. It is listened by `vaadin23-upload` which
-   * will abort the upload in progress, but will not remove the file from the list
-   * to allow the animation to hide the element to be run.
+   * Fired when abort button is pressed. It is listened by `vaadin24-upload` which
+   * will abort the upload in progress, and then remove the file from the list.
    *
    * @event file-abort
    * @param {Object} detail
    * @param {Object} detail.file file to abort upload of
-   */
-
-  /**
-   * Fired after the animation to hide the element has finished. It is listened
-   * by `vaadin23-upload` which will actually remove the file from the upload
-   * file list.
-   *
-   * @event file-remove
-   * @param {Object} detail
-   * @param {Object} detail.file file to remove from the  upload of
    */
 }
 

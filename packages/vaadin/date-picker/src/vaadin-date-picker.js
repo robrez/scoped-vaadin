@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
@@ -16,15 +16,14 @@ import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-
 import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
-import { datePickerStyles } from './vaadin-date-picker-styles.js';
 
-registerStyles('vaadin23-date-picker', [inputFieldShared, datePickerStyles], { moduleId: 'vaadin-date-picker-styles' });
+registerStyles('vaadin24-date-picker', inputFieldShared, { moduleId: 'vaadin-date-picker-styles' });
 
 /**
- * `<vaadin23-date-picker>` is an input field that allows to enter a date by typing or by selecting from a calendar overlay.
+ * `<vaadin24-date-picker>` is an input field that allows to enter a date by typing or by selecting from a calendar overlay.
  *
  * ```html
- * <vaadin23-date-picker label="Birthday"></vaadin23-date-picker>
+ * <vaadin24-date-picker label="Birthday"></vaadin24-date-picker>
  * ```
  *
  * ```js
@@ -41,38 +40,38 @@ registerStyles('vaadin23-date-picker', [inputFieldShared, datePickerStyles], { m
  * -------------------------------|----------------------------|---------
  * `--vaadin-field-default-width` | Default width of the field | `12em`
  *
- * `<vaadin23-date-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-date-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name             | Description
  * ----------------------|--------------------
  * `toggle-button`       | Toggle button
- * `overlay-content`     | The overlay element
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute  | Description                                      | Part name
  * -----------|--------------------------------------------------|-----------
  * `opened`   | Set when the date selector overlay is opened     | :host
- * `today`    | Set on the date corresponding to the current day | date
- * `selected` | Set on the selected date                         | date
  *
  * If you want to replace the default `<input>` and its container with a custom implementation to get full control
- * over the input field, consider using the [`<vaadin23-date-picker-light>`](#/elements/vaadin-date-picker-light) element.
+ * over the input field, consider using the [`<vaadin24-date-picker-light>`](#/elements/vaadin-date-picker-light) element.
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-date-picker>` itself, the following internal
+ * In addition to `<vaadin24-date-picker>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-date-picker-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
- * - `<vaadin23-date-picker-overlay-content>`
- * - `<vaadin23-month-calendar>`
- * - [`<vaadin23-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
+ * - `<vaadin24-date-picker-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-date-picker-overlay-content>`
+ * - `<vaadin24-date-picker-month-scroller>`
+ * - `<vaadin24-date-picker-year-scroller>`
+ * - `<vaadin24-date-picker-year>`
+ * - `<vaadin24-month-calendar>`
+ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
  *
- * In order to style the overlay content, use `<vaadin23-date-picker-overlay-content>` shadow DOM parts:
+ * In order to style the overlay content, use `<vaadin24-date-picker-overlay-content>` shadow DOM parts:
  *
  * Part name             | Description
  * ----------------------|--------------------
@@ -81,16 +80,17 @@ registerStyles('vaadin23-date-picker', [inputFieldShared, datePickerStyles], { m
  * `clear-button`        | Fullscreen mode clear button
  * `toggle-button`       | Fullscreen mode toggle button
  * `years-toggle-button` | Fullscreen mode years scroller toggle
- * `months`              | Months scroller
- * `years`               | Years scroller
- * `toolbar`             | Footer bar with buttons
- * `today-button`        | Today button
- * `cancel-button`       | Cancel button
- * `month`               | Month calendar
- * `year-number`         | Year number
- * `year-separator`      | Year separator
+ * `toolbar`             | Footer bar with slotted buttons
  *
- * In order to style the month calendar, use `<vaadin23-month-calendar>` shadow DOM parts:
+ * The following state attributes are available on the `<vaadin24-date-picker-overlay-content>` element:
+ *
+ * Attribute       | Description
+ * ----------------|-------------------------------------------------
+ * `desktop`       | Set when the overlay content is in desktop mode
+ * `fullscreen`    | Set when the overlay content is in fullscreen mode
+ * `years-visible` | Set when the year scroller is visible in fullscreen mode
+ *
+ * In order to style the month calendar, use `<vaadin24-month-calendar>` shadow DOM parts:
  *
  * Part name             | Description
  * ----------------------|--------------------
@@ -100,8 +100,19 @@ registerStyles('vaadin23-date-picker', [inputFieldShared, datePickerStyles], { m
  * `week-numbers`        | Week numbers container
  * `week-number`         | Week number element
  * `date`                | Date element
+ * `disabled`            | Disabled date element
+ * `focused`             | Focused date element
+ * `selected`            | Selected date element
+ * `today`               | Date element corresponding to the current day
  *
- * Note: the `theme` attribute value set on `<vaadin23-date-picker>` is
+ * In order to style year scroller elements, use `<vaadin24-date-picker-year>` shadow DOM parts:
+ *
+ * Part name             | Description
+ * ----------------------|--------------------
+ * `year-number`         | Year number
+ * `year-separator`      | Year separator
+ *
+ * Note: the `theme` attribute value set on `<vaadin24-date-picker>` is
  * propagated to the internal components listed above.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -120,7 +131,7 @@ registerStyles('vaadin23-date-picker', [inputFieldShared, datePickerStyles], { m
  */
 class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(ElementMixin(PolymerElement)))) {
   static get is() {
-    return 'vaadin23-date-picker';
+    return 'vaadin24-date-picker';
   }
 
   static get template() {
@@ -128,6 +139,15 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
       <style>
         :host([opened]) {
           pointer-events: auto;
+        }
+
+        :host([dir='rtl']) [part='input-field'] {
+          direction: ltr;
+        }
+
+        :host([dir='rtl']) [part='input-field'] ::slotted(input)::placeholder {
+          direction: rtl;
+          text-align: left;
         }
       </style>
 
@@ -137,7 +157,7 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
         </div>
 
-        <vaadin23-input-container
+        <vaadin24-input-container
           part="input-field"
           readonly="[[readonly]]"
           disabled="[[disabled]]"
@@ -148,7 +168,7 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
           <slot name="input"></slot>
           <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>
           <div part="toggle-button" slot="suffix" aria-hidden="true" on-click="_toggle"></div>
-        </vaadin23-input-container>
+        </vaadin24-input-container>
 
         <div part="helper-text">
           <slot name="helper"></slot>
@@ -159,32 +179,17 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
         </div>
       </div>
 
-      <vaadin23-date-picker-overlay
+      <vaadin24-date-picker-overlay
         id="overlay"
         fullscreen$="[[_fullscreen]]"
-        theme$="[[__getOverlayTheme(_theme, _overlayInitialized)]]"
+        theme$="[[_theme]]"
+        opened="{{opened}}"
+        on-vaadin-overlay-escape-press="_onOverlayEscapePress"
         on-vaadin-overlay-open="_onOverlayOpened"
         on-vaadin-overlay-closing="_onOverlayClosed"
         restore-focus-on-close
         restore-focus-node="[[inputElement]]"
-        disable-upgrade
-      >
-        <template>
-          <vaadin23-date-picker-overlay-content
-            id="overlay-content"
-            i18n="[[i18n]]"
-            fullscreen$="[[_fullscreen]]"
-            label="[[label]]"
-            selected-date="[[_selectedDate]]"
-            focused-date="{{_focusedDate}}"
-            show-week-numbers="[[showWeekNumbers]]"
-            min-date="[[_minDate]]"
-            max-date="[[_maxDate]]"
-            part="overlay-content"
-            theme$="[[__getOverlayTheme(_theme, _overlayInitialized)]]"
-          ></vaadin23-date-picker-overlay-content>
-        </template>
-      </vaadin23-date-picker-overlay>
+      ></vaadin24-date-picker-overlay>
 
       <slot name="tooltip"></slot>
     `;
@@ -220,11 +225,6 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
 
     const toggleButton = this.shadowRoot.querySelector('[part="toggle-button"]');
     toggleButton.addEventListener('mousedown', (e) => e.preventDefault());
-  }
-
-  /** @protected */
-  _initOverlay() {
-    super._initOverlay();
 
     this.$.overlay.addEventListener('vaadin-overlay-close', this._onVaadinOverlayClose.bind(this));
   }
@@ -239,7 +239,11 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
   /** @private */
   _toggle(e) {
     e.stopPropagation();
-    this[this._overlayInitialized && this.$.overlay.opened ? 'close' : 'open']();
+    if (this.$.overlay.opened) {
+      this.close();
+    } else {
+      this.open();
+    }
   }
 
   // Workaround https://github.com/vaadin/web-components/issues/2855

@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/time-picker",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
-          "name": "vaadin23-time-picker",
-          "description": "`<vaadin23-time-picker>` is a Web Component providing a time-selection field.\n\n```html\n<vaadin23-time-picker></vaadin23-time-picker>\n```\n```js\ntimePicker.value = '14:30';\n```\n\nWhen the selected `value` is changed, a `value-changed` event is triggered.\n\n### Styling\n\nThe following custom properties are available for styling:\n\nCustom property                         | Description                | Default\n----------------------------------------|----------------------------|---------\n`--vaadin-field-default-width`          | Default width of the field | `12em`\n`--vaadin-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`\n\n`<vaadin23-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin23-text-field>` parts, the following parts are available for theming:\n\nPart name       | Description\n----------------|----------------\n`toggle-button` | The toggle button\n\nIn addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:\n\nAttribute | Description\n----------|------------------------------------------\n`opened`  | Set when the time-picker dropdown is open\n\n### Internal components\n\nIn addition to `<vaadin23-time-picker>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin23-time-picker-combo-box>` - has the same API as [`<vaadin23-combo-box-light>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-combo-box-light).\n- `<vaadin23-time-picker-overlay>` - has the same API as [`<vaadin23-overlay>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-overlay).\n- `<vaadin23-time-picker-item>` - has the same API as [`<vaadin23-item>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-item).\n- [`<vaadin23-input-container>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-input-container) - an internal element wrapping the input.\n\nNote: the `theme` attribute value set on `<vaadin23-time-picker>` is\npropagated to the internal components listed above.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "name": "vaadin24-time-picker",
+          "description": "`<vaadin24-time-picker>` is a Web Component providing a time-selection field.\n\n```html\n<vaadin24-time-picker></vaadin24-time-picker>\n```\n```js\ntimePicker.value = '14:30';\n```\n\nWhen the selected `value` is changed, a `value-changed` event is triggered.\n\n### Styling\n\nThe following custom properties are available for styling:\n\nCustom property                         | Description                | Default\n----------------------------------------|----------------------------|---------\n`--vaadin-field-default-width`          | Default width of the field | `12em`\n`--vaadin-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`\n\n`<vaadin24-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin24-text-field>` parts, the following parts are available for theming:\n\nPart name       | Description\n----------------|----------------\n`toggle-button` | The toggle button\n\nIn addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:\n\nAttribute | Description\n----------|------------------------------------------\n`opened`  | Set when the time-picker dropdown is open\n\n### Internal components\n\nIn addition to `<vaadin24-time-picker>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin24-time-picker-combo-box>` - has the same API as [`<vaadin24-combo-box-light>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-combo-box-light).\n- `<vaadin24-time-picker-overlay>` - has the same API as [`<vaadin24-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-overlay).\n- `<vaadin24-time-picker-item>` - has the same API as [`<vaadin24-item>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-item).\n- [`<vaadin24-input-container>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-input-container) - an internal element wrapping the input.\n\nNote: the `theme` attribute value set on `<vaadin24-time-picker>` is\npropagated to the internal components listed above.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
@@ -97,6 +97,17 @@
               }
             },
             {
+              "name": "clear-button-visible",
+              "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
               "name": "allowed-char-pattern",
               "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
               "value": {
@@ -110,17 +121,6 @@
             {
               "name": "autoselect",
               "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
-              "name": "clear-button-visible",
-              "description": "Set to true to display the clear icon which clears the input.",
               "value": {
                 "type": [
                   "boolean",
@@ -185,17 +185,6 @@
               }
             },
             {
-              "name": "prevent-invalid-input",
-              "description": "When set to true, user is prevented from typing a value that\nconflicts with the given `pattern`.",
-              "value": {
-                "type": [
-                  "boolean",
-                  "null",
-                  "undefined"
-                ]
-              }
-            },
-            {
               "name": "opened",
               "description": "True if the dropdown is open, false otherwise.",
               "value": {
@@ -241,6 +230,17 @@
               "value": {
                 "type": [
                   "boolean",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
+              "name": "overlay-class",
+              "description": "A space-delimited list of CSS class names to set on the overlay element.",
+              "value": {
+                "type": [
+                  "string",
                   "null",
                   "undefined"
                 ]
@@ -347,6 +347,17 @@
                 }
               },
               {
+                "name": "clearButtonVisible",
+                "description": "Set to true to display the clear icon which clears the input.\n\nIt is up to the component to choose where to place the clear icon:\nin the Shadow DOM or in the light DOM. In any way, a reference to\nthe clear icon element should be provided via the `clearElement` getter.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "allowedCharPattern",
                 "description": "A pattern matched against individual characters the user inputs.\n\nWhen set, the field will prevent:\n- `keydown` events if the entered key doesn't match `/^allowedCharPattern$/`\n- `paste` events if the pasted text doesn't match `/^allowedCharPattern*$/`\n- `drop` events if the dropped text doesn't match `/^allowedCharPattern*$/`\n\nFor example, to allow entering only numbers and minus signs, use:\n`allowedCharPattern = \"[\\\\d-]\"`",
                 "value": {
@@ -360,17 +371,6 @@
               {
                 "name": "autoselect",
                 "description": "If true, the input text gets fully selected when the field is focused using click or touch / tap.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "clearButtonVisible",
-                "description": "Set to true to display the clear icon which clears the input.",
                 "value": {
                   "type": [
                     "boolean",
@@ -435,17 +435,6 @@
                 }
               },
               {
-                "name": "preventInvalidInput",
-                "description": "When set to true, user is prevented from typing a value that\nconflicts with the given `pattern`.",
-                "value": {
-                  "type": [
-                    "boolean",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
                 "name": "opened",
                 "description": "True if the dropdown is open, false otherwise.",
                 "value": {
@@ -491,6 +480,17 @@
                 "value": {
                   "type": [
                     "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
+                "name": "overlayClass",
+                "description": "A space-delimited list of CSS class names to set on the overlay element.",
+                "value": {
+                  "type": [
+                    "string",
                     "null",
                     "undefined"
                   ]

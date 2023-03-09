@@ -30,4 +30,4 @@ const verticalLayout = css`
   }
 `;
 
-registerStyles('vaadin23-vertical-layout', verticalLayout, { moduleId: 'material-vertical-layout' });
+registerStyles('vaadin24-vertical-layout', verticalLayout, { moduleId: 'material-vertical-layout' });

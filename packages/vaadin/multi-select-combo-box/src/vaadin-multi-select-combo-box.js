@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-multi-select-combo-box-chip.js';
@@ -11,6 +11,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { InputControlMixin } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -24,10 +25,6 @@ const multiSelectComboBox = css`
     --input-min-width: var(--vaadin-multi-select-combo-box-input-min-width, 4em);
   }
 
-  [hidden] {
-    display: none !important;
-  }
-
   #chips {
     display: flex;
     align-items: center;
@@ -38,7 +35,8 @@ const multiSelectComboBox = css`
     flex: 1 0 var(--input-min-width);
   }
 
-  [part='chip'] {
+  ::slotted([slot='chip']),
+  ::slotted([slot='overflow']) {
     flex: 0 1 auto;
   }
 
@@ -49,16 +47,16 @@ const multiSelectComboBox = css`
   }
 `;
 
-registerStyles('vaadin23-multi-select-combo-box', [inputFieldShared, multiSelectComboBox], {
+registerStyles('vaadin24-multi-select-combo-box', [inputFieldShared, multiSelectComboBox], {
   moduleId: 'vaadin-multi-select-combo-box-styles',
 });
 
 /**
- * `<vaadin23-multi-select-combo-box>` is a web component that wraps `<vaadin23-combo-box>` and extends
+ * `<vaadin24-multi-select-combo-box>` is a web component that wraps `<vaadin24-combo-box>` and extends
  * its functionality to allow selecting multiple items, in addition to basic features.
  *
  * ```html
- * <vaadin23-multi-select-combo-box id="comboBox"></vaadin23-multi-select-combo-box>
+ * <vaadin24-multi-select-combo-box id="comboBox"></vaadin24-multi-select-combo-box>
  * ```
  *
  * ```js
@@ -73,17 +71,13 @@ registerStyles('vaadin23-multi-select-combo-box', [inputFieldShared, multiSelect
  *
  * Part name              | Description
  * -----------------------|----------------
- * `chips`                | The element that wraps chips for selected items
- * `chip`                 | Chip shown for every selected item
+ * `chips`                | The element that wraps slotted chips for selected items
  * `label`                | The label element
  * `input-field`          | The element that wraps prefix, value and suffix
  * `clear-button`         | The clear button
  * `error-message`        | The error message element
  * `helper-text`          | The helper text element wrapper
  * `required-indicator`   | The `required` state indicator element
- * `overflow`             | The chip shown when component width is not enough to fit all chips
- * `overflow-one`         | Set on the overflow chip when only one chip does not fit
- * `overflow-two`         | Set on the overflow chip when two chips do not fit
  * `toggle-button`        | The toggle button
  *
  * The following state attributes are available for styling:
@@ -113,14 +107,14 @@ registerStyles('vaadin23-multi-select-combo-box', [inputFieldShared, multiSelect
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-multi-select-combo-box>` itself, the following internal
+ * In addition to `<vaadin24-multi-select-combo-box>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-multi-select-combo-box-overlay>` - has the same API as `<vaadin23-overlay>`.
- * - `<vaadin23-multi-select-combo-box-item>` - has the same API as `<vaadin23-item>`.
- * - `<vaadin23-multi-select-combo-box-container>` - has the same API as `<vaadin23-input-container>`.
+ * - `<vaadin24-multi-select-combo-box-overlay>` - has the same API as `<vaadin24-overlay>`.
+ * - `<vaadin24-multi-select-combo-box-item>` - has the same API as `<vaadin24-item>`.
+ * - `<vaadin24-multi-select-combo-box-container>` - has the same API as `<vaadin24-input-container>`.
  *
- * Note: the `theme` attribute value set on `<vaadin23-multi-select-combo-box>` is
+ * Note: the `theme` attribute value set on `<vaadin24-multi-select-combo-box>` is
  * propagated to these components.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -140,18 +134,18 @@ registerStyles('vaadin23-multi-select-combo-box', [inputFieldShared, multiSelect
  */
 class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(ElementMixin(PolymerElement)))) {
   static get is() {
-    return 'vaadin23-multi-select-combo-box';
+    return 'vaadin24-multi-select-combo-box';
   }
 
   static get template() {
     return html`
-      <div class="vaadin23-multi-select-combo-box-container">
+      <div class="vaadin24-multi-select-combo-box-container">
         <div part="label">
           <slot name="label"></slot>
           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
         </div>
 
-        <vaadin23-multi-select-combo-box-internal
+        <vaadin24-multi-select-combo-box-internal
           id="comboBox"
           items="[[__effectiveItems]]"
           item-id-path="[[itemIdPath]]"
@@ -161,6 +155,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
           readonly="[[readonly]]"
           auto-open-disabled="[[autoOpenDisabled]]"
           allow-custom-value="[[allowCustomValue]]"
+          overlay-class="[[overlayClass]]"
           data-provider="[[dataProvider]]"
           filter="{{filter}}"
           last-filter="{{_lastFilter}}"
@@ -176,25 +171,17 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
           on-custom-value-set="_onCustomValueSet"
           on-filtered-items-changed="_onFilteredItemsChanged"
         >
-          <vaadin23-multi-select-combo-box-container
+          <vaadin24-multi-select-combo-box-container
             part="input-field"
             readonly="[[readonly]]"
             disabled="[[disabled]]"
             invalid="[[invalid]]"
             theme$="[[_theme]]"
           >
-            <vaadin23-multi-select-combo-box-chip
-              id="overflow"
-              slot="prefix"
-              part$="[[_getOverflowPart(_overflowItems.length)]]"
-              disabled="[[disabled]]"
-              readonly="[[readonly]]"
-              label="[[_getOverflowLabel(_overflowItems.length)]]"
-              title$="[[_getOverflowTitle(_overflowItems)]]"
-              hidden$="[[_isOverflowHidden(_overflowItems.length)]]"
-              on-mousedown="_preventBlur"
-            ></vaadin23-multi-select-combo-box-chip>
-            <div id="chips" part="chips" slot="prefix"></div>
+            <slot name="overflow" slot="prefix"></slot>
+            <div id="chips" part="chips" slot="prefix">
+              <slot name="chip"></slot>
+            </div>
             <slot name="input"></slot>
             <div
               id="clearButton"
@@ -204,8 +191,8 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
               aria-hidden="true"
             ></div>
             <div id="toggleButton" class="toggle-button" part="toggle-button" slot="suffix" aria-hidden="true"></div>
-          </vaadin23-multi-select-combo-box-container>
-        </vaadin23-multi-select-combo-box-internal>
+          </vaadin24-multi-select-combo-box-container>
+        </vaadin24-multi-select-combo-box-internal>
 
         <div part="helper-text">
           <slot name="helper"></slot>
@@ -321,6 +308,15 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
       },
 
       /**
+       * A space-delimited list of CSS class names to set on the overlay element.
+       *
+       * @attr {string} overlay-class
+       */
+      overlayClass: {
+        type: String,
+      },
+
+      /**
        * When present, it specifies that the field is read-only.
        */
       readonly: {
@@ -407,8 +403,8 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
        * Custom function for rendering the content of every item.
        * Receives three arguments:
        *
-       * - `root` The `<vaadin23-multi-select-combo-box-item>` internal container DOM element.
-       * - `comboBox` The reference to the `<vaadin23-multi-select-combo-box>` element.
+       * - `root` The `<vaadin24-multi-select-combo-box-item>` internal container DOM element.
+       * - `comboBox` The reference to the `<vaadin24-multi-select-combo-box>` element.
        * - `model` The object with the properties related with the rendered
        *   item, contains:
        *   - `model.index` The index of the rendered item.
@@ -470,7 +466,10 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   }
 
   static get observers() {
-    return ['_selectedItemsChanged(selectedItems, selectedItems.*)'];
+    return [
+      '_selectedItemsChanged(selectedItems, selectedItems.*)',
+      '__updateOverflowChip(_overflow, _overflowItems, disabled, readonly)',
+    ];
   }
 
   /** @protected */
@@ -497,7 +496,18 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
 
   /** @protected */
   get _chips() {
-    return this.shadowRoot.querySelectorAll('[part~="chip"]');
+    return [...this.querySelectorAll('[slot="chip"]')];
+  }
+
+  /**
+   * Override a getter from `InputMixin` to compute
+   * the presence of value based on `selectedItems`.
+   *
+   * @protected
+   * @override
+   */
+  get _hasValue() {
+    return this.selectedItems && this.selectedItems.length > 0;
   }
 
   /** @protected */
@@ -520,6 +530,15 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     this._tooltipController.setShouldShow((target) => !target.opened);
 
     this._inputField = this.shadowRoot.querySelector('[part="input-field"]');
+
+    this._overflowController = new SlotController(this, 'overflow', 'vaadin24-multi-select-combo-box-chip', {
+      initializer: (chip) => {
+        chip.addEventListener('mousedown', (e) => this._preventBlur(e));
+        this._overflow = chip;
+      },
+    });
+    this.addController(this._overflowController);
+
     this.__updateChips();
 
     processTemplates(this);
@@ -718,34 +737,6 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   }
 
   /** @private */
-  _getOverflowLabel(length) {
-    return length;
-  }
-
-  /** @private */
-  _getOverflowPart(length) {
-    let part = `chip overflow`;
-
-    if (length === 1) {
-      part += ' overflow-one';
-    } else if (length === 2) {
-      part += ' overflow-two';
-    }
-
-    return part;
-  }
-
-  /** @private */
-  _getOverflowTitle(items) {
-    return this._mergeItemLabels(items);
-  }
-
-  /** @private */
-  _isOverflowHidden(length) {
-    return length === 0;
-  }
-
-  /** @private */
   _mergeItemLabels(items) {
     return items.map((item) => this._getItemLabel(item)).join(', ');
   }
@@ -828,9 +819,8 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
 
   /** @private */
   __createChip(item) {
-    const chip = document.createElement('vaadin23-multi-select-combo-box-chip');
-    chip.setAttribute('part', 'chip');
-    chip.setAttribute('slot', 'prefix');
+    const chip = document.createElement('vaadin24-multi-select-combo-box-chip');
+    chip.setAttribute('slot', 'chip');
 
     chip.item = item;
     chip.disabled = this.disabled;
@@ -848,16 +838,20 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
 
   /** @private */
   __getOverflowWidth() {
-    const chip = this.$.overflow;
+    const chip = this._overflow;
 
     chip.style.visibility = 'hidden';
     chip.removeAttribute('hidden');
 
+    const count = chip.getAttribute('count');
+
     // Detect max possible width of the overflow chip
-    chip.setAttribute('part', 'chip overflow');
+    // by measuring it with widest number (2 digits)
+    chip.setAttribute('count', '99');
     const overflowStyle = getComputedStyle(chip);
     const overflowWidth = chip.clientWidth + parseInt(overflowStyle.marginInlineStart);
 
+    chip.setAttribute('count', count);
     chip.setAttribute('hidden', '');
     chip.style.visibility = '';
 
@@ -871,10 +865,8 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     }
 
     // Clear all chips except the overflow
-    Array.from(this._chips).forEach((chip) => {
-      if (chip !== this.$.overflow) {
-        chip.remove();
-      }
+    this._chips.forEach((chip) => {
+      chip.remove();
     });
 
     const items = [...this.selectedItems];
@@ -892,7 +884,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     // Add chips until remaining width is exceeded
     for (let i = items.length - 1, refNode = null; i >= 0; i--) {
       const chip = this.__createChip(items[i]);
-      this.$.chips.insertBefore(chip, refNode);
+      this.insertBefore(chip, refNode);
 
       if (this.$.chips.clientWidth > remainingWidth) {
         chip.remove();
@@ -904,6 +896,21 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     }
 
     this._overflowItems = items;
+  }
+
+  /** @private */
+  __updateOverflowChip(overflow, items, disabled, readonly) {
+    if (overflow) {
+      const count = items.length;
+
+      overflow.label = `${count}`;
+      overflow.setAttribute('count', `${count}`);
+      overflow.setAttribute('title', this._mergeItemLabels(items));
+      overflow.toggleAttribute('hidden', count === 0);
+
+      overflow.disabled = disabled;
+      overflow.readonly = readonly;
+    }
   }
 
   /** @private */
@@ -962,7 +969,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   _onKeyDown(event) {
     super._onKeyDown(event);
 
-    const chips = Array.from(this._chips).slice(1);
+    const chips = this._chips;
 
     if (!this.readonly && chips.length > 0) {
       switch (event.key) {
@@ -994,7 +1001,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     }
     let newIdx;
 
-    if (this.getAttribute('dir') !== 'rtl') {
+    if (!this.__isRTL) {
       if (idx === -1) {
         // Focus last chip
         newIdx = chips.length - 1;
@@ -1027,7 +1034,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     }
     let newIdx;
 
-    if (this.getAttribute('dir') === 'rtl') {
+    if (this.__isRTL) {
       if (idx === -1) {
         // Focus last chip
         newIdx = chips.length - 1;
@@ -1066,7 +1073,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   /** @private */
   _focusedChipIndexChanged(focusedIndex, oldFocusedIndex) {
     if (focusedIndex > -1 || oldFocusedIndex > -1) {
-      const chips = Array.from(this._chips).slice(1);
+      const chips = this._chips;
       chips.forEach((chip, index) => {
         chip.toggleAttribute('focused', index === focusedIndex);
       });
@@ -1132,17 +1139,6 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   /** @private */
   __computeEffectiveFilteredItems(items, filteredItems, selectedItems, readonly) {
     return !items && readonly ? selectedItems : filteredItems;
-  }
-
-  /**
-   * Override a method from `InputMixin` to
-   * compute the presence of value based on `selectedItems`.
-   *
-   * @protected
-   * @override
-   */
-  get _hasValue() {
-    return this.selectedItems && this.selectedItems.length > 0;
   }
 }
 

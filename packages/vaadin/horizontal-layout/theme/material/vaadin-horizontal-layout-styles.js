@@ -30,4 +30,4 @@ const horizontalLayout = css`
   }
 `;
 
-registerStyles('vaadin23-horizontal-layout', horizontalLayout, { moduleId: 'material-horizontal-layout' });
+registerStyles('vaadin24-horizontal-layout', horizontalLayout, { moduleId: 'material-horizontal-layout' });

@@ -1,12 +1,18 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
+import { item } from '@scoped-vaadin/item/theme/material/vaadin-item-styles.js';
+import { listBox } from '@scoped-vaadin/list-box/theme/material/vaadin-list-box-styles.js';
 import { inputFieldShared } from '@scoped-vaadin/vaadin-material-styles/mixins/input-field-shared.js';
 import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+
+registerStyles('vaadin24-select-item', item, { moduleId: 'material-select-item' });
+
+registerStyles('vaadin24-select-list-box', listBox, { moduleId: 'material-select-list-box' });
 
 const select = css`
   :host {
@@ -45,10 +51,10 @@ const select = css`
   }
 `;
 
-registerStyles('vaadin23-select', [inputFieldShared, select], { moduleId: 'material-select' });
+registerStyles('vaadin24-select', [inputFieldShared, select], { moduleId: 'material-select' });
 
 registerStyles(
-  'vaadin23-select-value-button',
+  'vaadin24-select-value-button',
   css`
     :host {
       font: inherit;
@@ -74,4 +80,4 @@ const selectOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'material-select-overlay' });
+registerStyles('vaadin24-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'material-select-overlay' });

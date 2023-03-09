@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -9,12 +9,13 @@ import { render } from 'lit';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 
 /**
- * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @mixes ElementMixin
@@ -94,7 +95,7 @@ class NotificationContainer extends ThemableMixin(ElementMixin(PolymerElement)) 
   }
 
   static get is() {
-    return 'vaadin23-notification-container';
+    return 'vaadin24-notification-container';
   }
 
   static get properties() {
@@ -164,7 +165,7 @@ class NotificationContainer extends ThemableMixin(ElementMixin(PolymerElement)) 
 }
 
 /**
- * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @mixes ThemableMixin
@@ -192,7 +193,7 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
   }
 
   static get is() {
-    return 'vaadin23-notification-card';
+    return 'vaadin24-notification-card';
   }
 
   /** @protected */
@@ -204,7 +205,7 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
 }
 
 /**
- * `<vaadin23-notification>` is a Web Component providing accessible and customizable notifications (toasts).
+ * `<vaadin24-notification>` is a Web Component providing accessible and customizable notifications (toasts).
  *
  * ### Rendering
  *
@@ -216,7 +217,7 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
  * users are able to check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-notification id="notification"></vaadin23-notification>
+ * <vaadin24-notification id="notification"></vaadin24-notification>
  * ```
  * ```js
  * const notification = document.querySelector('#notification');
@@ -232,10 +233,10 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
  *
  * ### Styling
  *
- * `<vaadin23-notification>` uses `<vaadin23-notification-card>` internal
+ * `<vaadin24-notification>` uses `<vaadin24-notification-card>` internal
  * themable component as the actual visible notification cards.
  *
- * The following shadow DOM parts of the `<vaadin23-notification-card>` are available for styling:
+ * The following shadow DOM parts of the `<vaadin24-notification-card>` are available for styling:
  *
  * Part name | Description
  * ----------------|----------------
@@ -244,16 +245,17 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * Note: the `theme` attribute value set on `<vaadin23-notification>` is
- * propagated to the internal `<vaadin23-notification-card>`.
+ * Note: the `theme` attribute value set on `<vaadin24-notification>` is
+ * propagated to the internal `<vaadin24-notification-card>`.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  *
  * @extends HTMLElement
  * @mixes ThemePropertyMixin
  * @mixes ElementMixin
+ * @mixes OverlayClassMixin
  */
-class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
+class Notification extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(PolymerElement))) {
   static get template() {
     return html`
       <style>
@@ -261,12 +263,12 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
           display: none !important;
         }
       </style>
-      <vaadin23-notification-card theme$="[[_theme]]"> </vaadin23-notification-card>
+      <vaadin24-notification-card theme$="[[_theme]]"> </vaadin24-notification-card>
     `;
   }
 
   static get is() {
-    return 'vaadin23-notification';
+    return 'vaadin24-notification';
   }
 
   static get properties() {
@@ -307,9 +309,9 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
        * Custom function for rendering the content of the notification.
        * Receives two arguments:
        *
-       * - `root` The `<vaadin23-notification-card>` DOM element. Append
+       * - `root` The `<vaadin24-notification-card>` DOM element. Append
        *   your content to it.
-       * - `notification` The reference to the `<vaadin23-notification>` element.
+       * - `notification` The reference to the `<vaadin24-notification>` element.
        * @type {!NotificationRenderer | undefined}
        */
       renderer: Function,
@@ -317,7 +319,7 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
   }
 
   static get observers() {
-    return ['_durationChanged(duration, opened)', '_rendererChanged(renderer, opened, _card)'];
+    return ['_durationChanged(duration, opened)', '_rendererChanged(renderer, opened, _overlayElement)'];
   }
 
   /**
@@ -377,11 +379,25 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
     return notification;
   }
 
+  /** @private */
+  get _container() {
+    if (!Notification._container) {
+      Notification._container = document.createElement('vaadin24-notification-container');
+      document.body.appendChild(Notification._container);
+    }
+    return Notification._container;
+  }
+
+  /** @protected */
+  get _card() {
+    return this._overlayElement;
+  }
+
   /** @protected */
   ready() {
     super.ready();
 
-    this._card = this.shadowRoot.querySelector('vaadin23-notification-card');
+    this._overlayElement = this.shadowRoot.querySelector('vaadin24-notification-card');
 
     processTemplates(this);
   }
@@ -446,15 +462,6 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
   }
 
   /** @private */
-  get _container() {
-    if (!Notification._container) {
-      Notification._container = document.createElement('vaadin23-notification-container');
-      document.body.appendChild(Notification._container);
-    }
-    return Notification._container;
-  }
-
-  /** @private */
   _openedChanged(opened) {
     if (opened) {
       this._container.opened = true;
@@ -492,7 +499,7 @@ class Notification extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
     }
 
     this._card.slot = this.position;
-    if (this._container.firstElementChild && /top/.test(this.position)) {
+    if (this._container.firstElementChild && /top/u.test(this.position)) {
       this._container.insertBefore(this._card, this._container.firstElementChild);
     } else {
       this._container.appendChild(this._card);

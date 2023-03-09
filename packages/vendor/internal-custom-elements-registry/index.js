@@ -1,8 +1,8 @@
 // import "@webcomponents/scoped-custom-element-registry";
 
 const nativeRegistry = window.customElements;
-const registryKey = Symbol.for("vaadin23"); // registry for entire major version
-const debugKey = Symbol.for("vaadin23-debug");
+const registryKey = Symbol.for("vaadin24"); // registry for entire major version
+const debugKey = Symbol.for("vaadin24-debug");
 
 class InternalCustomElementsRegistry {
   //define(name: string, constructor: CustomElementConstructor, options?: ElementDefinitionOptions): void;

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './safe-area-inset.js';
@@ -19,21 +19,21 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 
 /**
- * `<vaadin23-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
+ * `<vaadin24-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
  *
  * ```
- * <vaadin23-app-layout primary-section="navbar|drawer">
- *  <vaadin23-drawer-toggle slot="navbar [touch-optimized]"></vaadin23-drawer-toggle>
+ * <vaadin24-app-layout primary-section="navbar|drawer">
+ *  <vaadin24-drawer-toggle slot="navbar [touch-optimized]"></vaadin24-drawer-toggle>
  *  <h3 slot="navbar [touch-optimized]">Company Name</h3>
- *  <vaadin23-tabs orientation="vertical" slot="drawer">
- *    <vaadin23-tab>Menu item 1</vaadin23-tab>
- *  </vaadin23-tabs>
+ *  <vaadin24-tabs orientation="vertical" slot="drawer">
+ *    <vaadin24-tab>Menu item 1</vaadin24-tab>
+ *  </vaadin24-tabs>
  *  <!-- Everything else will be the page content -->
  *  <div>
  *    <h3>Page title</h3>
  *    <p>Page content</p>
  *  </div>
- * </vaadin23-app-layout>
+ * </vaadin24-app-layout>
  * ```
  *
  * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
@@ -53,7 +53,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * ### Styling
  *
- * The following Shadow DOM parts of the `<vaadin23-app-layout>` are available for styling:
+ * The following Shadow DOM parts of the `<vaadin24-app-layout>` are available for styling:
  *
  * Part name     | Description
  * --------------|---------------------------------------------------------|
@@ -86,7 +86,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * If you are using Vaadin Router, this will happen automatically unless you change the `closeDrawerOn` event name.
  *
  * In order to do so, there are two options:
- * - If the `vaadin23-app-layout` instance is available, then `drawerOpened` can be set to `false`
+ * - If the `vaadin24-app-layout` instance is available, then `drawerOpened` can be set to `false`
  * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
  *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
  *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
@@ -165,8 +165,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           }
         }
 
-        [part='navbar'],
-        [part='navbar']::before {
+        [part='navbar'] {
           position: fixed;
           display: flex;
           align-items: center;
@@ -214,6 +213,8 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           outline: none;
           /* The drawer should be inaccessible by the tabbing navigation when it is closed. */
           visibility: hidden;
+          display: flex;
+          flex-direction: column;
         }
 
         :host([drawer-opened]) [part='drawer'] {
@@ -264,8 +265,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           transform: translateX(100%);
         }
 
-        :host([dir='rtl']) [part='navbar'],
-        :host([dir='rtl']) [part='navbar']::before {
+        :host([dir='rtl']) [part='navbar'] {
           transition: right var(--vaadin-app-layout-transition);
         }
 
@@ -290,6 +290,12 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
             width: 20em;
           }
         }
+
+        /* If a vaadin-scroller is used in the drawer, allow it to take all remaining space and contain scrolling */
+        [part='drawer'] ::slotted(vaadin-scroller) {
+          flex: 1;
+          overscroll-behavior: contain;
+        }
       </style>
       <div part="navbar" id="navbarTop">
         <slot name="navbar"></slot>
@@ -309,7 +315,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
   }
 
   static get is() {
-    return 'vaadin23-app-layout';
+    return 'vaadin24-app-layout';
   }
 
   static get properties() {
@@ -519,7 +525,6 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
   __drawerOpenedChanged(drawerOpened, oldDrawerOpened) {
     if (this.overlay) {
       if (drawerOpened) {
-        this._updateDrawerHeight();
         this.__trapFocusInDrawer();
       } else if (oldDrawerOpened) {
         this.__releaseFocusFromDrawer();
@@ -562,7 +567,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
 
   /** @private */
   __setAriaExpanded() {
-    const toggle = this.querySelector('vaadin23-drawer-toggle');
+    const toggle = this.querySelector('vaadin24-drawer-toggle');
     if (toggle) {
       toggle.setAttribute('aria-expanded', this.drawerOpened);
     }
@@ -606,13 +611,6 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
   }
 
   /** @protected */
-  _updateDrawerHeight() {
-    const { scrollHeight, offsetHeight } = this.$.drawer;
-    const height = scrollHeight > offsetHeight ? `${scrollHeight}px` : '100%';
-    this.style.setProperty('--_vaadin-app-layout-drawer-scroll-size', height);
-  }
-
-  /** @protected */
   _updateOverlayMode() {
     const overlay = this._getCustomPropertyValue('--vaadin-app-layout-drawer-overlay') === 'true';
 
@@ -629,7 +627,6 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
       this._drawerStateSaved = null;
     }
 
-    this._updateDrawerHeight();
     this.__updateDrawerAriaAttributes();
   }
 
@@ -706,7 +703,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     this.$.drawer.removeAttribute('tabindex');
 
     // Move focus to the drawer toggle when closing the drawer.
-    const toggle = this.querySelector('vaadin23-drawer-toggle');
+    const toggle = this.querySelector('vaadin24-drawer-toggle');
     if (toggle) {
       toggle.focus();
       toggle.setAttribute('focus-ring', 'focus');

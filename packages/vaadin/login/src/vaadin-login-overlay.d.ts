@@ -1,9 +1,10 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { LoginMixin } from './vaadin-login-mixin.js';
 export { LoginI18n } from './vaadin-login-mixin.js';
@@ -43,31 +44,31 @@ export interface LoginOverlayCustomEventMap {
 export interface LoginOverlayEventMap extends HTMLElementEventMap, LoginOverlayCustomEventMap {}
 
 /**
- * `<vaadin23-login-overlay>` is a wrapper of the `<vaadin23-login-form>` which opens a login form in an overlay and
- * having an additional `brand` part for application title and description. Using `<vaadin23-login-overlay>` allows
+ * `<vaadin24-login-overlay>` is a wrapper of the `<vaadin24-login-form>` which opens a login form in an overlay and
+ * having an additional `brand` part for application title and description. Using `<vaadin24-login-overlay>` allows
  * password managers to work with login form.
  *
  * ```
- * <vaadin23-login-overlay opened></vaadin23-login-overlay>
+ * <vaadin24-login-overlay opened></vaadin24-login-overlay>
  * ```
  *
  * ### Styling
  *
  * The component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.
- * Use `<vaadin23-login-overlay-wrapper>` and `<vaadin23-login-form-wrapper>` to apply styles.
+ * Use `<vaadin24-login-overlay-wrapper>` and `<vaadin24-login-form-wrapper>` to apply styles.
  *
- * The following Shadow DOM parts of the `<vaadin23-login-overlay-wrapper>` are available for styling:
+ * The following Shadow DOM parts of the `<vaadin24-login-overlay-wrapper>` are available for styling:
  *
  * Part name       | Description
  * ----------------|---------------------------------------------------------|
  * `card`          | Container for the entire component's content
  * `brand`         | Container for application title and description
- * `form`          | Container for the `<vaadin23-login-form>` component
+ * `form`          | Container for the `<vaadin24-login-form>` component
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * See [`<vaadin23-login-form>`](#/elements/vaadin-login-form)
- * documentation for  `<vaadin23-login-form-wrapper>` stylable parts.
+ * See [`<vaadin24-login-form>`](#/elements/vaadin-login-form)
+ * documentation for  `<vaadin24-login-form-wrapper>` stylable parts.
  *
  * @fires {CustomEvent} description-changed - Fired when the `description` property changes.
  * @fires {CustomEvent} disabled-changed - Fired when the `disabled` property changes.
@@ -75,7 +76,7 @@ export interface LoginOverlayEventMap extends HTMLElementEventMap, LoginOverlayC
  * @fires {CustomEvent} forgot-password - Fired when user clicks on the "Forgot password" button.
  * @fires {CustomEvent} login - Fired when a user submits the login.
  */
-declare class LoginOverlay extends ElementMixin(ThemableMixin(LoginMixin(HTMLElement))) {
+declare class LoginOverlay extends LoginMixin(OverlayClassMixin(ElementMixin(ThemableMixin(HTMLElement)))) {
   /**
    * Defines the application description
    */
@@ -106,7 +107,7 @@ declare class LoginOverlay extends ElementMixin(ThemableMixin(LoginMixin(HTMLEle
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-login-overlay': LoginOverlay;
+    'vaadin24-login-overlay': LoginOverlay;
   }
 }
 

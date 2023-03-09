@@ -1,12 +1,12 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
-import { DelegateStateMixin } from './delegate-state-mixin.js';
 import { InputMixin } from './input-mixin.js';
 
 /**

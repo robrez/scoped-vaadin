@@ -1,15 +1,16 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { Dialog, DialogOverlay } from '@scoped-vaadin/dialog/src/vaadin-dialog.js';
+import { Dialog } from '@scoped-vaadin/dialog/src/vaadin-dialog.js';
+import { DialogOverlay } from '@scoped-vaadin/dialog/src/vaadin-dialog-overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-confirm-dialog-overlay',
+  'vaadin24-confirm-dialog-overlay',
   css`
     :host {
       --_vaadin-confirm-dialog-content-width: auto;
@@ -44,13 +45,13 @@ const footerTemplate = html`
 `;
 
 /**
- * An extension of `<vaadin23-dialog-overlay>` used internally by `<vaadin23-confirm-dialog>`.
+ * An extension of `<vaadin24-dialog-overlay>` used internally by `<vaadin24-confirm-dialog>`.
  * Not intended to be used separately.
  * @private
  */
 class ConfirmDialogOverlay extends DialogOverlay {
   static get is() {
-    return 'vaadin23-confirm-dialog-overlay';
+    return 'vaadin24-confirm-dialog-overlay';
   }
 
   static get template() {
@@ -83,18 +84,6 @@ class ConfirmDialogOverlay extends DialogOverlay {
   }
 
   /**
-   * Override method inherited from `Overlay` to notify when overlay is closed.
-   * The `vaadin-overlay-close` event is not suitable, as it fires before closing.
-   * @protected
-   * @override
-   */
-  _finishClosing() {
-    super._finishClosing();
-
-    this.dispatchEvent(new CustomEvent('vaadin-confirm-dialog-close'));
-  }
-
-  /**
    * @protected
    * @override
    */
@@ -110,13 +99,13 @@ class ConfirmDialogOverlay extends DialogOverlay {
 internalCustomElements.define(ConfirmDialogOverlay.is, ConfirmDialogOverlay);
 
 /**
- * An extension of `<vaadin23-dialog>` used internally by `<vaadin23-confirm-dialog>`.
+ * An extension of `<vaadin24-dialog>` used internally by `<vaadin24-confirm-dialog>`.
  * Not intended to be used separately.
  * @private
  */
 class ConfirmDialogDialog extends Dialog {
   static get is() {
-    return 'vaadin23-confirm-dialog-dialog';
+    return 'vaadin24-confirm-dialog-dialog';
   }
 
   /**
@@ -130,7 +119,7 @@ class ConfirmDialogDialog extends Dialog {
         }
       </style>
 
-      <vaadin23-confirm-dialog-overlay
+      <vaadin24-confirm-dialog-overlay
         id="overlay"
         on-opened-changed="_onOverlayOpened"
         on-mousedown="_bringOverlayToFront"
@@ -140,8 +129,70 @@ class ConfirmDialogDialog extends Dialog {
         with-backdrop="[[!modeless]]"
         resizable$="[[resizable]]"
         focus-trap
-      ></vaadin23-confirm-dialog-overlay>
+      ></vaadin24-confirm-dialog-overlay>
     `;
+  }
+
+  static get properties() {
+    return {
+      /**
+       * Height to be set on the overlay content.
+       */
+      contentHeight: {
+        type: String,
+      },
+
+      /**
+       * Width to be set on the overlay content.
+       */
+      contentWidth: {
+        type: String,
+      },
+
+      /** @private */
+      _overlayElement: {
+        type: Object,
+      },
+    };
+  }
+
+  static get observers() {
+    return [
+      '__updateContentHeight(contentHeight, _overlayElement)',
+      '__updateContentWidth(contentWidth, _overlayElement)',
+    ];
+  }
+
+  /** @protected */
+  ready() {
+    super.ready();
+
+    this._overlayElement = this.$.overlay;
+  }
+
+  /** @private */
+  __updateDimension(overlay, dimension, value) {
+    const prop = `--_vaadin-confirm-dialog-content-${dimension}`;
+
+    if (value) {
+      overlay.style.setProperty(prop, value);
+    } else {
+      overlay.style.removeProperty(prop);
+    }
+  }
+
+  /** @private */
+  __updateContentHeight(height, overlay) {
+    if (overlay) {
+      this.__updateDimension(overlay, 'height', height);
+    }
+  }
+
+  /** @private */
+  __updateContentWidth(width, overlay) {
+    if (overlay) {
+      this.__updateDimension(overlay, 'width', width);
+    }
   }
 }
 

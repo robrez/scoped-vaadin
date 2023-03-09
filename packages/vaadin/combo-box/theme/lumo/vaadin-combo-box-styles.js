@@ -12,4 +12,4 @@ const comboBox = css`
   }
 `;
 
-registerStyles('vaadin23-combo-box', [inputFieldShared, comboBox], { moduleId: 'lumo-combo-box' });
+registerStyles('vaadin24-combo-box', [inputFieldShared, comboBox], { moduleId: 'lumo-combo-box' });

@@ -1,12 +1,14 @@
 import '@scoped-vaadin/vaadin-lumo-styles/color.js';
 import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
+import { item } from '@scoped-vaadin/item/theme/lumo/vaadin-item-styles.js';
+import { listBox } from '@scoped-vaadin/list-box/theme/lumo/vaadin-list-box-styles.js';
 import { menuOverlayCore } from '@scoped-vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
 import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-avatar-group',
+  'vaadin24-avatar-group',
   css`
     :host {
       --vaadin-avatar-size: var(--lumo-size-m);
@@ -50,46 +52,33 @@ const avatarGroupOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-avatar-group-overlay', [overlay, menuOverlayCore, avatarGroupOverlay], {
+registerStyles('vaadin24-avatar-group-overlay', [overlay, menuOverlayCore, avatarGroupOverlay], {
   moduleId: 'lumo-avatar-group-overlay',
 });
 
-registerStyles(
-  'vaadin23-avatar-group-list-box',
-  css`
-    [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
-      padding: var(--lumo-space-xs);
-      padding-right: var(--lumo-space-m);
-    }
-
-    :host([dir='rtl']) [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
-      padding: var(--lumo-space-xs);
-      padding-left: var(--lumo-space-m);
-    }
-  `,
-  { moduleId: 'lumo-avatar-group-list-box' },
-);
+registerStyles('vaadin24-avatar-group-menu', listBox, { moduleId: 'lumo-avatar-group-menu' });
 
 registerStyles(
-  'vaadin23-item',
-  css`
-    :host([theme='avatar-group-item']) [part='content'] {
-      display: flex;
-      align-items: center;
-    }
+  'vaadin24-avatar-group-menu-item',
+  [
+    item,
+    css`
+      :host {
+        padding: var(--lumo-space-xs);
+        padding-inline-end: var(--lumo-space-m);
+      }
 
-    :host([theme='avatar-group-item']) ::slotted(vaadin-avatar) {
-      width: var(--lumo-size-xs);
-      height: var(--lumo-size-xs);
-    }
+      [part='content'] {
+        display: flex;
+        align-items: center;
+      }
 
-    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin-avatar) {
-      margin-right: var(--lumo-space-s);
-    }
-
-    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin-avatar) {
-      margin-left: var(--lumo-space-s);
-    }
-  `,
-  { moduleId: 'lumo-avatar-group-item' },
+      [part='content'] ::slotted(vaadin-avatar) {
+        width: var(--lumo-size-xs);
+        height: var(--lumo-size-xs);
+        margin-inline-end: var(--lumo-space-s);
+      }
+    `,
+  ],
+  { moduleId: 'lumo-avatar-group-menu-item' },
 );

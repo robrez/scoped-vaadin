@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ComboBoxPlaceholder } from './vaadin-combo-box-placeholder.js';
@@ -311,13 +311,11 @@ export const ComboBoxDataProviderMixin = (superClass) =>
     _flushPendingRequests(size) {
       if (this._pendingRequests) {
         const lastPage = Math.ceil(size / this.pageSize);
-        const pendingRequestsKeys = Object.keys(this._pendingRequests);
-        for (let reqIdx = 0; reqIdx < pendingRequestsKeys.length; reqIdx++) {
-          const page = parseInt(pendingRequestsKeys[reqIdx]);
-          if (page >= lastPage) {
-            this._pendingRequests[page]([], size);
+        Object.entries(this._pendingRequests).forEach(([page, callback]) => {
+          if (parseInt(page) >= lastPage) {
+            callback([], size);
           }
-        }
+        });
       }
     }
   };

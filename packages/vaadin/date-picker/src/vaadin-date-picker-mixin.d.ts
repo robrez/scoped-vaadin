@@ -1,13 +1,14 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
+import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 
@@ -38,15 +39,6 @@ export interface DatePickerI18n {
    * (0 = Sunday, 1 = Monday, etc.).
    */
   firstDayOfWeek: number;
-  /**
-   * Used in screen reader announcements along with week
-   * numbers, if they are displayed.
-   */
-  week: string;
-  /**
-   * Translation of the Calendar icon button title.
-   */
-  calendar: string;
   /**
    * Translation of the Today shortcut button text.
    */
@@ -102,6 +94,7 @@ export declare function DatePickerMixin<T extends Constructor<HTMLElement>>(
   Constructor<InputConstraintsMixinClass> &
   Constructor<InputMixinClass> &
   Constructor<KeyboardMixinClass> &
+  Constructor<OverlayClassMixinClass> &
   T;
 
 export declare class DatePickerMixinClass {
@@ -182,13 +175,6 @@ export declare class DatePickerMixinClass {
    *   // An integer indicating the first day of the week
    *   // (0 = Sunday, 1 = Monday, etc.).
    *   firstDayOfWeek: 0,
-   *
-   *   // Used in screen reader announcements along with week
-   *   // numbers, if they are displayed.
-   *   week: 'Week',
-   *
-   *   // Translation of the Calendar icon button title.
-   *   calendar: 'Calendar',
    *
    *   // Translation of the Today shortcut button text.
    *   today: 'Today',

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 
@@ -13,10 +13,10 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 class Lumo extends HTMLElement {
   static get version() {
-    return '23.3.8';
+    return '24.0.0';
   }
 }
 
-internalCustomElements.define('vaadin23-lumo-styles', Lumo);
+internalCustomElements.define('vaadin24-lumo-styles', Lumo);
 
 export { Lumo };

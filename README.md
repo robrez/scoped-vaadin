@@ -67,7 +67,7 @@ npm i @scoped-vaadin/button
 import '@scoped-vaadin/button';
 
 render() {
-  return html`<vaadin23-button></vaadin23-button>`;
+  return html`<vaadin24-button></vaadin24-button>`;
 }
 ```
 
@@ -77,9 +77,10 @@ This repository is not mature. Ideally, versions here would align 1:1 w/ the und
 
 Below, you can find which underlying vaadin version is used
 
-| local version | vaadin version |
-| ------------- | -------------- |
-| `v23.0.1`     | `~23.3.8`      |
-| `v23.0.0`     | `~23.3.8`      |
-| `v0.2.0`      | `~23.3.8`      |
-| `v0.1.0`      | `^23.3.7`      |
+| local version     | vaadin version |
+| ----------------- | -------------- |
+| `v24.0.0-alpha.1` | `24.0.0`       |
+| `v23.0.1`         | `~23.3.8`      |
+| `v23.0.0`         | `~23.3.8`      |
+| `v0.2.0`          | `~23.3.8`      |
+| `v0.1.0`          | `^23.3.7`      |

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/menu-bar",
-  "version": "23.0.1",
+  "version": "24.0.0-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -15,20 +15,20 @@
     "html": {
       "elements": [
         {
-          "name": "vaadin23-menu-bar",
-          "description": "`<vaadin23-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering\nthe user quick access to a consistent set of commands. Each button can toggle a submenu with\nsupport for additional levels of nested menus.\n\nTo create the menu bar, first add the component to the page:\n\n```\n<vaadin23-menu-bar></vaadin23-menu-bar>\n```\n\nAnd then use [`items`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-menu-bar#property-items) property to initialize the structure:\n\n```\ndocument.querySelector('vaadin23-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name         | Description\n------------------|----------------\n`container`       | The container wrapping menu bar buttons.\n`menu-bar-button` | The menu bar button.\n`overflow-button` | The \"overflow\" button appearing when menu bar width is not enough to fit all the buttons.\n\nThe following state attributes are available for styling:\n\nAttribute           | Description\n--------------------|----------------------------------\n`disabled`          | Set when the menu bar is disabled\n`has-single-button` | Set when there is only one button visible\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin23-menu-bar>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin23-menu-bar-button>` - has the same API as [`<vaadin23-button>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-button).\n- `<vaadin23-context-menu-item>` - has the same API as [`<vaadin23-item>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-item).\n- `<vaadin23-context-menu-list-box>` - has the same API as [`<vaadin23-list-box>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-list-box).\n- `<vaadin23-context-menu-overlay>` - has the same API as [`<vaadin23-overlay>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-overlay).",
+          "name": "vaadin24-menu-bar",
+          "description": "`<vaadin24-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering\nthe user quick access to a consistent set of commands. Each button can toggle a submenu with\nsupport for additional levels of nested menus.\n\nTo create the menu bar, first add the component to the page:\n\n```\n<vaadin24-menu-bar></vaadin24-menu-bar>\n```\n\nAnd then use [`items`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-menu-bar#property-items) property to initialize the structure:\n\n```\ndocument.querySelector('vaadin24-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name         | Description\n------------------|----------------\n`container`       | The container wrapping menu bar buttons.\n\nThe following state attributes are available for styling:\n\nAttribute           | Description\n--------------------|----------------------------------\n`disabled`          | Set when the menu bar is disabled\n`has-single-button` | Set when there is only one button visible\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin24-menu-bar>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin24-menu-bar-button>` - has the same API as [`<vaadin24-button>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-button).\n- `<vaadin24-menu-bar-item>` - has the same API as [`<vaadin24-item>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-item).\n- `<vaadin24-menu-bar-list-box>` - has the same API as [`<vaadin24-list-box>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-list-box).\n- `<vaadin24-menu-bar-overlay>` - has the same API as [`<vaadin24-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-overlay).",
           "extension": true,
           "attributes": [
             {
-              "name": "?openOnHover",
-              "description": "If true, the submenu will open on hover (mouseover) instead of click.",
+              "name": "?disabled",
+              "description": "If true, the user cannot interact with this element.",
               "value": {
                 "kind": "expression"
               }
             },
             {
-              "name": "?disabled",
-              "description": "If true, the user cannot interact with this element.",
+              "name": "?openOnHover",
+              "description": "If true, the submenu will open on hover (mouseover) instead of click.",
               "value": {
                 "kind": "expression"
               }
@@ -43,6 +43,13 @@
             {
               "name": ".i18n",
               "description": "The object used to localize this component.\nTo change the default localization, replace the entire\n`i18n` object with a custom one.\n\nTo update individual properties, extend the existing i18n object like so:\n```\nmenuBar.i18n = {\n  ...menuBar.i18n,\n  moreOptions: 'More options'\n}\n```\n\nThe object has the following JSON structure and default values:\n```\n{\n  moreOptions: 'More options'\n}\n```",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".overlayClass",
+              "description": "A space-delimited list of CSS class names\nto set on each sub-menu overlay element.",
               "value": {
                 "kind": "expression"
               }

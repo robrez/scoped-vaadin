@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
@@ -26,7 +26,9 @@ export const ButtonMixin = (superClass) =>
          * @protected
          */
         tabindex: {
+          type: Number,
           value: 0,
+          reflectToAttribute: true,
         },
       };
     }

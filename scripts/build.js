@@ -6,16 +6,22 @@ import { transformImports } from "./transformModuleImportsPlugin.js";
 import { elementMeta } from "./element-meta.js";
 import { versionMeta } from "../version.js";
 import { ignorePackages } from "./ignore-packages.js";
+import { supplementalElementNames } from "./supplemental-element-names.js";
 
 const nodePackagesRoot = "node_modules/@vaadin";
 const localPackagesRoot = "packages/vaadin";
 const majorVersion = versionMeta.vaadinVersion;
+
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 
 function allElementNames() {
   let accumulator = [];
   elementMeta.forEach((meta) => {
     accumulator = [...accumulator, ...meta.elementNames];
   });
+  accumulator = [...accumulator, ...supplementalElementNames];
   return [...new Set(accumulator)].sort();
 }
 
@@ -168,7 +174,9 @@ function computeLiteralRe() {
   // this._setInputElement(this.querySelector("vaadin-text-field,.input"));
   // could technically add optional commas within the quote maches, but will instead just
   // include them where the quotes are matched
-  const names = allElementNames().join("|");
+  const names = allElementNames()
+    .map((name) => escapeRegExp(name))
+    .join("|");
   return new RegExp(`[\`'",](${names})[\`'",]`, "g");
 }
 
@@ -217,7 +225,7 @@ function processLocalName(content) {
   // names are used, but crrently feel it's better to place along nicely w/ the
   // standard-fare custom property names
   // we want this:  --_vaadin-time-picker-overlay-default-width
-  // not this:      --_vaadin23-time-picker-overlay-default-width
+  // not this:      --_vaadin24-time-picker-overlay-default-width
   return content.replaceAll(
     `const propPrefix = this.localName;`,
     `const propPrefix = this.localName.replace('vaadin${majorVersion}', 'vaadin');`
@@ -227,7 +235,7 @@ function processLocalName(content) {
 /**
  * Attempts to find HTMLElement tag-names and replace them, eg:
  *
- *   "vaadin-button" -> "vaadin23-button"
+ *   "vaadin-button" -> "vaadin24-button"
  *
  * This is done using string search-and-replace only. There is no attempt to
  * parse the input as codeF

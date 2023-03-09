@@ -40,6 +40,6 @@ const tabsheet = css`
   }
 `;
 
-registerStyles('vaadin23-tabsheet', [tabsheet, loader], { moduleId: 'lumo-tabsheet' });
+registerStyles('vaadin24-tabsheet', [tabsheet, loader], { moduleId: 'lumo-tabsheet' });
 
 export { tabsheet };

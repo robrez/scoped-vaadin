@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-multi-select-combo-box-item.js';
@@ -14,7 +14,7 @@ import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-b
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * An element used internally by `<vaadin23-multi-select-combo-box>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @mixes ComboBoxDataProviderMixin
@@ -24,7 +24,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixin(ThemableMixin(PolymerElement))) {
   static get is() {
-    return 'vaadin23-multi-select-combo-box-internal';
+    return 'vaadin24-multi-select-combo-box-internal';
   }
 
   static get template() {
@@ -37,7 +37,7 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
 
       <slot></slot>
 
-      <vaadin23-multi-select-combo-box-overlay
+      <vaadin24-multi-select-combo-box-overlay
         id="overlay"
         opened="[[_overlayOpened]]"
         loading$="[[loading]]"
@@ -45,7 +45,7 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
         position-target="[[_target]]"
         no-vertical-overlap
         restore-focus-node="[[inputElement]]"
-      ></vaadin23-multi-select-combo-box-overlay>
+      ></vaadin24-multi-select-combo-box-overlay>
     `;
   }
 
@@ -117,7 +117,7 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
    * @return {string}
    */
   get _tagNamePrefix() {
-    return 'vaadin23-multi-select-combo-box';
+    return 'vaadin24-multi-select-combo-box';
   }
 
   /**
@@ -151,20 +151,6 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
     const comboBox = this.getRootNode().host;
 
     super._initScroller(comboBox);
-  }
-
-  /**
-   * Override method from `InputMixin`.
-   *
-   * @protected
-   * @override
-   */
-  clear() {
-    super.clear();
-
-    if (this.inputElement) {
-      this.inputElement.value = '';
-    }
   }
 
   /**

@@ -57,6 +57,6 @@ const dialogOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-dialog-overlay', [overlay, dialogOverlay], {
+registerStyles('vaadin24-dialog-overlay', [overlay, dialogOverlay], {
   moduleId: 'material-dialog',
 });

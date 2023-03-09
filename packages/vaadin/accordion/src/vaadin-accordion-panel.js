@@ -1,10 +1,18 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { Details } from '@scoped-vaadin/details/src/vaadin-details.js';
+import './vaadin-accordion-heading.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
+import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
+import { CollapsibleMixin } from '@scoped-vaadin/details/src/collapsible-mixin.js';
+import { SummaryController } from '@scoped-vaadin/details/src/summary-controller.js';
+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
  * The accordion panel element.
@@ -15,9 +23,6 @@ import { Details } from '@scoped-vaadin/details/src/vaadin-details.js';
  *
  * Part name        | Description
  * -----------------|----------------
- * `summary`        | The element used to open and close collapsible content.
- * `toggle`         | The element used as indicator, can represent an icon.
- * `summary-content`| The wrapper for the slotted summary content.
  * `content`        | The wrapper for the collapsible panel content.
  *
  * The following attributes are exposed for styling:
@@ -32,10 +37,135 @@ import { Details } from '@scoped-vaadin/details/src/vaadin-details.js';
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
+ *
+ * @extends HTMLElement
+ * @mixes CollapsibleMixin
+ * @mixes ControllerMixin
+ * @mixes DelegateFocusMixin
+ * @mixes DelegateStateMixin
+ * @mixes ThemableMixin
  */
-class AccordionPanel extends Details {
+class AccordionPanel extends CollapsibleMixin(
+  DelegateFocusMixin(DelegateStateMixin(ThemableMixin(ControllerMixin(PolymerElement)))),
+) {
   static get is() {
-    return 'vaadin23-accordion-panel';
+    return 'vaadin24-accordion-panel';
+  }
+
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none !important;
+        }
+
+        [part='content'] {
+          display: none;
+          overflow: hidden;
+        }
+
+        :host([opened]) [part='content'] {
+          display: block;
+          overflow: visible;
+        }
+      </style>
+
+      <slot name="summary"></slot>
+
+      <div part="content">
+        <slot></slot>
+      </div>
+
+      <slot name="tooltip"></slot>
+    `;
+  }
+
+  static get properties() {
+    return {
+      /**
+       * A text that is displayed in the heading, if no
+       * element is assigned to the `summary` slot.
+       */
+      summary: {
+        type: String,
+        observer: '_summaryChanged',
+      },
+    };
+  }
+
+  static get observers() {
+    return ['__updateAriaAttributes(focusElement, _contentElements)'];
+  }
+
+  static get delegateAttrs() {
+    return ['theme'];
+  }
+
+  static get delegateProps() {
+    return ['disabled', 'opened'];
+  }
+
+  constructor() {
+    super();
+
+    this._summaryController = new SummaryController(this, 'vaadin24-accordion-heading');
+    this._summaryController.addEventListener('slot-content-changed', (event) => {
+      const { node } = event.target;
+
+      this._setFocusElement(node);
+      this.stateTarget = node;
+
+      this._tooltipController.setTarget(node);
+    });
+
+    this._tooltipController = new TooltipController(this);
+    this._tooltipController.setPosition('bottom-start');
+  }
+
+  /** @protected */
+  ready() {
+    super.ready();
+
+    this.addController(this._summaryController);
+    this.addController(this._tooltipController);
+  }
+
+  /**
+   * Override method inherited from `DisabledMixin`
+   * to not set `aria-disabled` on the host element.
+   *
+   * @protected
+   * @override
+   */
+  _setAriaDisabled() {
+    // The `aria-disabled` is set on the details summary.
+  }
+
+  /** @private */
+  _summaryChanged(summary) {
+    this._summaryController.setSummary(summary);
+  }
+
+  /** @private */
+  __updateAriaAttributes(focusElement, contentElements) {
+    if (focusElement && contentElements) {
+      const node = contentElements[0];
+
+      if (node) {
+        node.setAttribute('role', 'region');
+        node.setAttribute('aria-labelledby', focusElement.id);
+      }
+
+      if (node && node.id) {
+        focusElement.setAttribute('aria-controls', node.id);
+      } else {
+        focusElement.removeAttribute('aria-controls');
+      }
+    }
   }
 }
 

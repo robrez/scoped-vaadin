@@ -1,28 +1,28 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-grid-filter.js';
 import { GridColumn } from './vaadin-grid-column.js';
 
 /**
- * `<vaadin23-grid-filter-column>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-filter-column>` is a helper element for the `<vaadin24-grid>`
  * that provides default header renderer and functionality for filtering.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid items="[[items]]">
- *  <vaadin23-grid-filter-column path="name.first"></vaadin23-grid-filter-column>
+ * <vaadin24-grid items="[[items]]">
+ *  <vaadin24-grid-filter-column path="name.first"></vaadin24-grid-filter-column>
  *
- *  <vaadin23-grid-column>
+ *  <vaadin24-grid-column>
  *    ...
  * ```
  */
 class GridFilterColumn extends GridColumn {
   static get is() {
-    return 'vaadin23-grid-filter-column';
+    return 'vaadin24-grid-filter-column';
   }
 
   static get properties() {
@@ -59,9 +59,8 @@ class GridFilterColumn extends GridColumn {
     let textField = filter ? filter.firstElementChild : undefined;
 
     if (!filter) {
-      filter = document.createElement('vaadin23-grid-filter');
-      textField = document.createElement('vaadin23-text-field');
-      textField.setAttribute('slot', 'filter');
+      filter = document.createElement('vaadin24-grid-filter');
+      textField = document.createElement('vaadin24-text-field');
       textField.setAttribute('theme', 'small');
       textField.setAttribute('style', 'max-width: 100%;');
       textField.setAttribute('focus-target', '');

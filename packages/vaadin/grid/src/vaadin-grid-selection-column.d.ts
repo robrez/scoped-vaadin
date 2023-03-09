@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { GridDefaultItem } from './vaadin-grid.js';
@@ -18,19 +18,19 @@ export interface GridSelectionColumnCustomEventMap {
 export interface GridSelectionColumnEventMap extends HTMLElementEventMap, GridSelectionColumnCustomEventMap {}
 
 /**
- * `<vaadin23-grid-selection-column>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-selection-column>` is a helper element for the `<vaadin24-grid>`
  * that provides default renderers and functionality for item selection.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid items="[[items]]">
- *  <vaadin23-grid-selection-column frozen auto-select></vaadin23-grid-selection-column>
+ * <vaadin24-grid items="[[items]]">
+ *  <vaadin24-grid-selection-column frozen auto-select></vaadin24-grid-selection-column>
  *
- *  <vaadin23-grid-column>
+ *  <vaadin24-grid-column>
  *    ...
  * ```
  *
- * By default the selection column displays `<vaadin23-checkbox>` elements in the
+ * By default the selection column displays `<vaadin24-checkbox>` elements in the
  * column cells. The checkboxes in the body rows toggle selection of the corresponding row items.
  *
  * When the grid data is provided as an array of [`items`](#/elements/vaadin-grid#property-items),
@@ -69,7 +69,7 @@ declare class GridSelectionColumn<TItem = GridDefaultItem> extends GridColumn<TI
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-selection-column': GridSelectionColumn<GridDefaultItem>;
+    'vaadin24-grid-selection-column': GridSelectionColumn<GridDefaultItem>;
   }
 }
 

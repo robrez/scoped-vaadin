@@ -1,28 +1,28 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-grid-tree-toggle.js';
 import { GridColumn } from './vaadin-grid-column.js';
 
 /**
- * `<vaadin23-grid-tree-column>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-tree-column>` is a helper element for the `<vaadin24-grid>`
  * that provides default renderer and functionality for toggling tree/hierarchical items.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid items="[[items]]">
- *  <vaadin23-grid-tree-column path="name.first"></vaadin23-grid-tree-column>
+ * <vaadin24-grid items="[[items]]">
+ *  <vaadin24-grid-tree-column path="name.first"></vaadin24-grid-tree-column>
  *
- *  <vaadin23-grid-column>
+ *  <vaadin24-grid-column>
  *    ...
  * ```
  */
 class GridTreeColumn extends GridColumn {
   static get is() {
-    return 'vaadin23-grid-tree-column';
+    return 'vaadin24-grid-tree-column';
   }
 
   static get properties() {
@@ -31,21 +31,11 @@ class GridTreeColumn extends GridColumn {
        * JS Path of the property in the item used as text content for the tree toggle.
        */
       path: String,
-
-      /**
-       * JS Path of the property in the item that indicates whether the item has child items.
-       * @attr {string} item-has-children-path
-       * @deprecated Use `grid.itemHasChildrenPath` instead.
-       */
-      itemHasChildrenPath: {
-        type: String,
-        observer: '_itemHasChildrenPathChanged',
-      },
     };
   }
 
   static get observers() {
-    return ['_onRendererOrBindingChanged(_renderer, _cells, _cells.*, path, itemHasChildrenPath)'];
+    return ['_onRendererOrBindingChanged(_renderer, _cells, _cells.*, path)'];
   }
 
   constructor() {
@@ -62,7 +52,7 @@ class GridTreeColumn extends GridColumn {
   __defaultRenderer(root, _column, { item, expanded, level }) {
     let toggle = root.firstElementChild;
     if (!toggle) {
-      toggle = document.createElement('vaadin23-grid-tree-toggle');
+      toggle = document.createElement('vaadin24-grid-tree-toggle');
       toggle.addEventListener('expanded-changed', this.__boundOnExpandedChanged);
       root.appendChild(toggle);
     }
@@ -84,19 +74,6 @@ class GridTreeColumn extends GridColumn {
    */
   _computeRenderer() {
     return this.__defaultRenderer;
-  }
-
-  /** @private */
-  _itemHasChildrenPathChanged(itemHasChildrenPath) {
-    if (itemHasChildrenPath) {
-      console.warn(
-        `WARNING: Since Vaadin 23, itemHasChildrenPath on <vaadin23-grid-tree-column> is deprecated. Please set this property on the <vaadin23-grid> instead.`,
-      );
-
-      if (this._grid) {
-        this._grid.itemHasChildrenPath = itemHasChildrenPath;
-      }
-    }
   }
 
   /**

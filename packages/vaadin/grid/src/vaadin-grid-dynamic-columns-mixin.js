@@ -1,12 +1,13 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+import { updateCellState } from './vaadin-grid-helpers.js';
 
 function arrayEquals(arr1, arr2) {
   if (!arr1 || !arr2 || arr1.length !== arr2.length) {
@@ -49,13 +50,7 @@ export const DynamicColumnsMixin = (superClass) =>
 
     /** @private */
     _hasColumnGroups(columns) {
-      for (let i = 0; i < columns.length; i++) {
-        if (columns[i].localName === 'vaadin23-grid-column-group') {
-          return true;
-        }
-      }
-
-      return false;
+      return columns.some((column) => column.localName === 'vaadin24-grid-column-group');
     }
 
     /**
@@ -71,7 +66,7 @@ export const DynamicColumnsMixin = (superClass) =>
     _flattenColumnGroups(columns) {
       return columns
         .map((col) => {
-          if (col.localName === 'vaadin23-grid-column-group') {
+          if (col.localName === 'vaadin24-grid-column-group') {
             return this._getChildColumns(col);
           }
           return [col];
@@ -130,13 +125,13 @@ export const DynamicColumnsMixin = (superClass) =>
     /** @protected */
     _checkImports() {
       [
-        'vaadin23-grid-column-group',
-        'vaadin23-grid-filter',
-        'vaadin23-grid-filter-column',
-        'vaadin23-grid-tree-toggle',
-        'vaadin23-grid-selection-column',
-        'vaadin23-grid-sort-column',
-        'vaadin23-grid-sorter',
+        'vaadin24-grid-column-group',
+        'vaadin24-grid-filter',
+        'vaadin24-grid-filter-column',
+        'vaadin24-grid-tree-toggle',
+        'vaadin24-grid-selection-column',
+        'vaadin24-grid-sort-column',
+        'vaadin24-grid-sorter',
       ].forEach((elementName) => {
         const element = this.querySelector(elementName);
         if (element && !(element instanceof PolymerElement)) {
@@ -160,8 +155,8 @@ export const DynamicColumnsMixin = (superClass) =>
           return a._column._order - b._column._order;
         })
         .forEach((cell, cellIndex, children) => {
-          cell.toggleAttribute('first-column', cellIndex === 0);
-          cell.toggleAttribute('last-column', cellIndex === children.length - 1);
+          updateCellState(cell, 'first-column', cellIndex === 0);
+          updateCellState(cell, 'last-column', cellIndex === children.length - 1);
         });
     }
 
@@ -171,6 +166,6 @@ export const DynamicColumnsMixin = (superClass) =>
      * @protected
      */
     _isColumnElement(node) {
-      return node.nodeType === Node.ELEMENT_NODE && /\bcolumn\b/.test(node.localName);
+      return node.nodeType === Node.ELEMENT_NODE && /\bcolumn\b/u.test(node.localName);
     }
   };

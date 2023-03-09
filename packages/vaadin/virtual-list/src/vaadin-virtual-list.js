@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -13,14 +13,14 @@ import { Virtualizer } from '@scoped-vaadin/component-base/src/virtualizer.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.
+ * `<vaadin24-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.
  *
  * ```html
- * <vaadin23-virtual-list></vaadin23-virtual-list>
+ * <vaadin24-virtual-list></vaadin24-virtual-list>
  * ```
  *
  * ```js
- * const list = document.querySelector('vaadin23-virtual-list');
+ * const list = document.querySelector('vaadin24-virtual-list');
  * list.items = items; // An array of data items
  * list.renderer = (root, list, {item, index}) => {
  *   root.textContent = `#${index}: ${item.name}`
@@ -68,7 +68,7 @@ class VirtualList extends ElementMixin(ControllerMixin(ThemableMixin(PolymerElem
   }
 
   static get is() {
-    return 'vaadin23-virtual-list';
+    return 'vaadin24-virtual-list';
   }
 
   static get properties() {
@@ -84,7 +84,7 @@ class VirtualList extends ElementMixin(ControllerMixin(ThemableMixin(PolymerElem
        * Receives three arguments:
        *
        * - `root` The render target element representing one item at a time.
-       * - `virtualList` The reference to the `<vaadin23-virtual-list>` element.
+       * - `virtualList` The reference to the `<vaadin24-virtual-list>` element.
        * - `model` The object with the properties related with the rendered
        *   item, contains:
        *   - `model.index` The index of the rendered item.
@@ -100,6 +100,24 @@ class VirtualList extends ElementMixin(ControllerMixin(ThemableMixin(PolymerElem
 
   static get observers() {
     return ['__itemsOrRendererChanged(items, renderer, __virtualizer)'];
+  }
+
+  /**
+   * Gets the index of the first visible item in the viewport.
+   *
+   * @return {number}
+   */
+  get firstVisibleIndex() {
+    return this.__virtualizer.firstVisibleIndex;
+  }
+
+  /**
+   * Gets the index of the last visible item in the viewport.
+   *
+   * @return {number}
+   */
+  get lastVisibleIndex() {
+    return this.__virtualizer.lastVisibleIndex;
   }
 
   /** @protected */
@@ -169,24 +187,6 @@ class VirtualList extends ElementMixin(ControllerMixin(ThemableMixin(PolymerElem
       virtualizer.size = (items || []).length;
       virtualizer.update();
     }
-  }
-
-  /**
-   * Gets the index of the first visible item in the viewport.
-   *
-   * @return {number}
-   */
-  get firstVisibleIndex() {
-    return this.__virtualizer.firstVisibleIndex;
-  }
-
-  /**
-   * Gets the index of the last visible item in the viewport.
-   *
-   * @return {number}
-   */
-  get lastVisibleIndex() {
-    return this.__virtualizer.lastVisibleIndex;
   }
 
   /**

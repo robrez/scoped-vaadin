@@ -2,13 +2,22 @@ import glob from "glob";
 import Path from "path";
 import fs from "fs";
 import { elementMeta } from "./element-meta.js";
+import { versionMeta } from "../version.js";
+
+function allElementNames() {
+  let accumulator = [];
+  elementMeta.forEach((meta) => {
+    accumulator = [...accumulator, ...meta.elementNames];
+  });
+  return [...new Set(accumulator)].sort();
+}
 
 // this lazily just operates on `dev/` which was copied directly from `@vaadin/web-components/dev`
 // TODO make this DRY vs `build.js`
 
 const nodePackagesRoot = "dev";
 const localPackagesRoot = "dev";
-const majorVersion = `23`; // todo resolve this another way
+const majorVersion = versionMeta.vaadinVersion;
 
 function findPackages(dir) {
   const files = glob.sync(dir, { dot: false });
@@ -34,11 +43,11 @@ function posixify(pathString) {
 
 function computeRe() {
   // var re = new RegExp("[<`'\"](vaadin-foo|vaadin-bar|vaadin-baz)", "gi")
-  const names = elementMeta.elementNames.join("|");
+  const names = allElementNames().join("|");
   return new RegExp(names, "gi");
 }
 
-const elementRe = computeRe();
+const elementsRe = computeRe();
 
 /**
  * @param {string} content : ;

@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '../color.js';
@@ -130,7 +130,7 @@ const inputField = css`
   }
 
   /* Slotted content */
-  [part='input-field'] ::slotted(:not(iron-icon):not(vaadin-icon):not(input):not(textarea)) {
+  [part='input-field'] ::slotted(:not(vaadin-icon):not(input):not(textarea)) {
     color: var(--lumo-secondary-text-color);
     font-weight: 400;
   }

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-field-outline.js';
@@ -19,25 +19,25 @@ const initFieldObserver = (field) => {
   let result;
   switch (field.tagName.toLowerCase()) {
     /* c8 ignore next */
-    case 'vaadin23-date-picker':
+    case 'vaadin24-date-picker':
       result = new DatePickerObserver(field);
       break;
     /* c8 ignore next */
-    case 'vaadin23-date-time-picker':
+    case 'vaadin24-date-time-picker':
       result = new DateTimePickerObserver(field);
       break;
     /* c8 ignore next */
-    case 'vaadin23-select':
+    case 'vaadin24-select':
       result = new SelectObserver(field);
       break;
     /* c8 ignore next 2 */
-    case 'vaadin23-checkbox-group':
+    case 'vaadin24-checkbox-group':
       result = new CheckboxGroupObserver(field);
       break;
-    case 'vaadin23-radio-group':
+    case 'vaadin24-radio-group':
       result = new RadioGroupObserver(field);
       break;
-    case 'vaadin23-list-box':
+    case 'vaadin24-list-box':
       result = new ListBoxObserver(field);
       break;
     default:
@@ -54,20 +54,6 @@ const initFieldObserver = (field) => {
  * See https://vaadin.com/collaboration for Collaboration Engine documentation.
  */
 export class FieldHighlighterController {
-  get user() {
-    return this._user;
-  }
-
-  set user(user) {
-    this._user = user;
-
-    if (user) {
-      const msg = `${user.name} started editing`;
-      const { label } = this.host;
-      announce(label ? `${msg} ${label}` : msg);
-    }
-  }
-
   constructor(host) {
     this.host = host;
 
@@ -93,6 +79,20 @@ export class FieldHighlighterController {
      * @type {FieldHighlighterUsers}
      */
     this.users = [];
+  }
+
+  get user() {
+    return this._user;
+  }
+
+  set user(user) {
+    this._user = user;
+
+    if (user) {
+      const msg = `${user.name} started editing`;
+      const { label } = this.host;
+      announce(label ? `${msg} ${label}` : msg);
+    }
   }
 
   hostConnected() {
@@ -187,4 +187,4 @@ export class FieldHighlighter extends HTMLElement {
   }
 }
 
-internalCustomElements.define('vaadin23-field-highlighter', FieldHighlighter);
+internalCustomElements.define('vaadin24-field-highlighter', FieldHighlighter);

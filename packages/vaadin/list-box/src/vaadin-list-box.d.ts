@@ -1,12 +1,12 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { MultiSelectListMixin } from '@scoped-vaadin/vaadin-list-mixin/vaadin-multi-select-list-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { MultiSelectListMixin } from './vaadin-multi-select-list-mixin.js';
 
 /**
  * Fired when the `items` property changes.
@@ -34,15 +34,15 @@ export interface ListBoxCustomEventMap {
 export interface ListBoxEventMap extends HTMLElementEventMap, ListBoxCustomEventMap {}
 
 /**
- * `<vaadin23-list-box>` is a Web Component for creating menus.
+ * `<vaadin24-list-box>` is a Web Component for creating menus.
  *
  * ```
- *   <vaadin23-list-box selected="2">
- *     <vaadin23-item>Item 1</vaadin23-item>
- *     <vaadin23-item>Item 2</vaadin23-item>
- *     <vaadin23-item>Item 3</vaadin23-item>
- *     <vaadin23-item>Item 4</vaadin23-item>
- *   </vaadin23-list-box>
+ *   <vaadin24-list-box selected="2">
+ *     <vaadin24-item>Item 1</vaadin24-item>
+ *     <vaadin24-item>Item 2</vaadin24-item>
+ *     <vaadin24-item>Item 3</vaadin24-item>
+ *     <vaadin24-item>Item 4</vaadin24-item>
+ *   </vaadin24-list-box>
  * ```
  *
  * ### Styling
@@ -77,7 +77,7 @@ declare class ListBox extends MultiSelectListMixin(ThemableMixin(ElementMixin(Co
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-list-box': ListBox;
+    'vaadin24-list-box': ListBox;
   }
 }
 

@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/vaadin-lumo-styles/color.js';
@@ -10,7 +10,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-user-tags-overlay',
+  'vaadin24-user-tags-overlay',
   css`
     [part='overlay'] {
       will-change: opacity, transform;
@@ -42,7 +42,7 @@ registerStyles(
 );
 
 registerStyles(
-  'vaadin23-user-tag',
+  'vaadin24-user-tag',
   css`
     :host {
       font-family: var(--lumo-font-family);
