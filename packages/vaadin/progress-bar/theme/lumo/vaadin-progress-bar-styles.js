@@ -5,7 +5,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-progress-bar',
+  'vaadin24-progress-bar',
   css`
     :host {
       height: calc(var(--lumo-size-l) / 10);

@@ -1,21 +1,67 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
 import { isEmptyTextNode } from '@scoped-vaadin/component-base/src/dom-utils.js';
+import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+
+/**
+ * Use registerStyles instead of the `<style>` tag to make sure
+ * that this CSS will override core styles of `vaadin24-button`.
+ */
+registerStyles(
+  'vaadin24-drawer-toggle',
+  css`
+    :host {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      position: relative;
+      outline: none;
+      height: 24px;
+      width: 24px;
+      padding: 4px;
+    }
+
+    [part='icon'],
+    [part='icon']::after,
+    [part='icon']::before {
+      position: absolute;
+      top: 8px;
+      height: 3px;
+      width: 24px;
+      background-color: #000;
+    }
+
+    [part='icon']::after,
+    [part='icon']::before {
+      content: '';
+    }
+
+    [part='icon']::after {
+      top: 6px;
+    }
+
+    [part='icon']::before {
+      top: 12px;
+    }
+  `,
+  { moduleId: 'vaadin-drawer-toggle-styles' },
+);
 
 /**
  * The Drawer Toggle component controls the drawer in App Layout component.
  *
  * ```
- * <vaadin23-app-layout>
- *   <vaadin23-drawer-toggle slot="navbar">Toggle drawer</vaadin23-drawer-toggle>
- * </vaadin23-app-layout>
+ * <vaadin24-app-layout>
+ *   <vaadin24-drawer-toggle slot="navbar">Toggle drawer</vaadin24-drawer-toggle>
+ * </vaadin24-app-layout>
  * ```
  *
  * @extends Button
@@ -23,42 +69,6 @@ import { isEmptyTextNode } from '@scoped-vaadin/component-base/src/dom-utils.js'
 class DrawerToggle extends Button {
   static get template() {
     return html`
-      <style>
-        :host {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          cursor: default;
-          position: relative;
-          outline: none;
-          height: 24px;
-          width: 24px;
-          padding: 4px;
-        }
-
-        [part='icon'],
-        [part='icon']::after,
-        [part='icon']::before {
-          position: absolute;
-          top: 8px;
-          height: 3px;
-          width: 24px;
-          background-color: #000;
-        }
-
-        [part='icon']::after,
-        [part='icon']::before {
-          content: '';
-        }
-
-        [part='icon']::after {
-          top: 6px;
-        }
-
-        [part='icon']::before {
-          top: 12px;
-        }
-      </style>
       <slot id="slot">
         <div part="icon"></div>
       </slot>
@@ -68,7 +78,7 @@ class DrawerToggle extends Button {
   }
 
   static get is() {
-    return 'vaadin23-drawer-toggle';
+    return 'vaadin24-drawer-toggle';
   }
 
   static get properties() {

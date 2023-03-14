@@ -1,9 +1,12 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { Details } from '@scoped-vaadin/details/src/vaadin-details.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
+import { CollapsibleMixin } from '@scoped-vaadin/details/src/collapsible-mixin.js';
+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
  * Fired when the `opened` property changes.
@@ -25,9 +28,6 @@ export type AccordionPanelEventMap = AccordionPanelCustomEventMap & HTMLElementE
  *
  * Part name        | Description
  * -----------------|----------------
- * `summary`        | The element used to open and close collapsible content.
- * `toggle`         | The element used as indicator, can represent an icon.
- * `summary-content`| The wrapper for the slotted summary content.
  * `content`        | The wrapper for the collapsible panel content.
  *
  * The following attributes are exposed for styling:
@@ -43,7 +43,15 @@ export type AccordionPanelEventMap = AccordionPanelCustomEventMap & HTMLElementE
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class AccordionPanel extends Details {
+declare class AccordionPanel extends CollapsibleMixin(
+  DelegateFocusMixin(DelegateStateMixin(ThemableMixin(HTMLElement))),
+) {
+  /**
+   * A text that is displayed in the heading, if no
+   * element is assigned to the `summary` slot.
+   */
+  summary: string | null | undefined;
+
   addEventListener<K extends keyof AccordionPanelEventMap>(
     type: K,
     listener: (this: AccordionPanel, ev: AccordionPanelEventMap[K]) => void,
@@ -59,7 +67,7 @@ declare class AccordionPanel extends Details {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-accordion-panel': AccordionPanel;
+    'vaadin24-accordion-panel': AccordionPanel;
   }
 }
 

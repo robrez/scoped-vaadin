@@ -8,31 +8,58 @@
     <script type="module" src="./common.js"></script>
 
     <style>
-      h1[slot='navbar'] {
+      body {
+        margin: 0;
+      }
+
+      header h1,
+      h2[slot~="navbar"] {
         font-size: var(--lumo-font-size-l);
         margin: 0;
+      }
+
+      :is(header, footer) {
+        display: flex;
+        align-items: center;
+        gap: var(--lumo-space-s);
+        padding: var(--lumo-space-s) var(--lumo-space-m);
+        min-height: var(--lumo-size-xl);
+        box-sizing: border-box;
+      }
+
+      dummy-content {
+        display: block;
+        background-image: linear-gradient(var(--lumo-primary-color), var(--lumo-primary-color-10pct));
+        border-radius: var(--lumo-border-radius-l);
+        margin: var(--lumo-space-m);
+        height: 150vh;
       }
     </style>
 
     <script type="module">
       import '@scoped-vaadin/app-layout';
       import '@scoped-vaadin/app-layout/vaadin-drawer-toggle';
-      import '@scoped-vaadin/tabs';
+      import '@scoped-vaadin/scroller';
     </script>
   </head>
 
   <body>
-    <vaadin23-app-layout>
-      <vaadin23-drawer-toggle slot="navbar"></vaadin23-drawer-toggle>
-      <h1 slot="navbar">MyApp</h1>
-      <vaadin23-tabs slot="drawer" orientation="vertical">
-        <vaadin23-tab>
-          <a>Dashboard</a>
-        </vaadin23-tab>
-        <vaadin23-tab>
-          <a>Orders</a>
-        </vaadin23-tab>
-      </vaadin23-tabs>
-    </vaadin23-app-layout>
+    <vaadin24-app-layout primary-section="drawer">
+      <header slot="drawer">
+        <h1>My App</h1>
+      </header>
+      <vaadin24-scroller slot="drawer" theme="overflow-indicators">
+        <dummy-content></dummy-content>
+      </vaadin24-scroller>
+      <footer slot="drawer">
+        <a href="">Sign in</a>
+      </footer>
+
+      <vaadin24-drawer-toggle slot="navbar touch-optimized"></vaadin24-drawer-toggle>
+      <h2 slot="navbar touch-optimized">View name</h2>
+
+      <dummy-content></dummy-content>
+
+    </vaadin24-app-layout>
   </body>
 </html>

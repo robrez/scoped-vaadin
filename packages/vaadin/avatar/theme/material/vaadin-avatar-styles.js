@@ -8,7 +8,7 @@ globalStyle.textContent = 'html { --vaadin-avatar-size: 2.25rem; }';
 document.head.appendChild(globalStyle);
 
 registerStyles(
-  'vaadin23-avatar',
+  'vaadin24-avatar',
   css`
     :host {
       color: var(--material-secondary-text-color);

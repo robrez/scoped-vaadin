@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -13,7 +13,7 @@ export interface MessageInputI18n {
 }
 
 /**
- * Fired when a new message is submitted with `<vaadin23-message-input>`, either
+ * Fired when a new message is submitted with `<vaadin24-message-input>`, either
  * by clicking the "send" button, or pressing the Enter key.
  */
 export type MessageInputSubmitEvent = CustomEvent<{ value: string }>;
@@ -25,7 +25,7 @@ export interface MessageInputCustomEventMap {
 export type MessageInputEventMap = HTMLElementEventMap & MessageInputCustomEventMap;
 
 /**
- * `<vaadin23-message-input>` is a Web Component for sending messages.
+ * `<vaadin24-message-input>` is a Web Component for sending messages.
  * It consists of a text area that grows on along with the content, and a send button to send message.
  *
  * The message can be sent by one of the following actions:
@@ -33,7 +33,7 @@ export type MessageInputEventMap = HTMLElementEventMap & MessageInputCustomEvent
  * - by clicking `submit` button.
  *
  * ```html
- * <vaadin23-message-input></vaadin23-message-input>
+ * <vaadin24-message-input></vaadin24-message-input>
  * ```
  */
 declare class MessageInput extends ThemableMixin(ElementMixin(ControllerMixin(HTMLElement))) {
@@ -81,7 +81,7 @@ declare class MessageInput extends ThemableMixin(ElementMixin(ControllerMixin(HT
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-message-input': MessageInput;
+    'vaadin24-message-input': MessageInput;
   }
 }
 

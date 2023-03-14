@@ -1,11 +1,11 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { ListMixin } from '@scoped-vaadin/component-base/src/list-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
-import { ListMixin } from '@scoped-vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
@@ -29,15 +29,15 @@ export interface TabsCustomEventMap {
 export interface TabsEventMap extends HTMLElementEventMap, TabsCustomEventMap {}
 
 /**
- * `<vaadin23-tabs>` is a Web Component for organizing and grouping content into sections.
+ * `<vaadin24-tabs>` is a Web Component for organizing and grouping content into sections.
  *
  * ```
- *   <vaadin23-tabs selected="4">
- *     <vaadin23-tab>Page 1</vaadin23-tab>
- *     <vaadin23-tab>Page 2</vaadin23-tab>
- *     <vaadin23-tab>Page 3</vaadin23-tab>
- *     <vaadin23-tab>Page 4</vaadin23-tab>
- *   </vaadin23-tabs>
+ *   <vaadin24-tabs selected="4">
+ *     <vaadin24-tab>Page 1</vaadin24-tab>
+ *     <vaadin24-tab>Page 2</vaadin24-tab>
+ *     <vaadin24-tab>Page 3</vaadin24-tab>
+ *     <vaadin24-tab>Page 4</vaadin24-tab>
+ *   </vaadin24-tabs>
  * ```
  *
  * ### Styling
@@ -88,7 +88,7 @@ declare class Tabs extends ResizeMixin(ElementMixin(ListMixin(ThemableMixin(HTML
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-tabs': Tabs;
+    'vaadin24-tabs': Tabs;
   }
 }
 

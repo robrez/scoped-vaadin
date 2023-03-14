@@ -24,4 +24,4 @@ const tooltipOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-tooltip-overlay', [overlay, tooltipOverlay], { moduleId: 'lumo-tooltip-overlay' });
+registerStyles('vaadin24-tooltip-overlay', [overlay, tooltipOverlay], { moduleId: 'lumo-tooltip-overlay' });

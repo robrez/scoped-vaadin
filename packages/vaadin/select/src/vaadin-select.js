@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
@@ -10,31 +10,33 @@ import './vaadin-select-list-box.js';
 import './vaadin-select-overlay.js';
 import './vaadin-select-value-button.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { addValueToAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
+import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
-import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
-import { DelegateStateMixin } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
 import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { fieldShared } from '@scoped-vaadin/field-base/src/styles/field-shared-styles.js';
 import { inputFieldContainer } from '@scoped-vaadin/field-base/src/styles/input-field-container-styles.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { ButtonController } from './button-controller.js';
 
-registerStyles('vaadin23-select', [fieldShared, inputFieldContainer], { moduleId: 'vaadin-select-styles' });
+registerStyles('vaadin24-select', [fieldShared, inputFieldContainer], { moduleId: 'vaadin-select-styles' });
 
 /**
- * `<vaadin23-select>` is a Web Component for selecting values from a list of items.
+ * `<vaadin24-select>` is a Web Component for selecting values from a list of items.
  *
  * ### Items
  *
  * Use the `items` property to define possible options for the select:
  *
  * ```html
- * <vaadin23-select id="select"></vaadin23-select>
+ * <vaadin24-select id="select"></vaadin24-select>
  * ```
  * ```js
  * const select = document.querySelector('#select');
@@ -60,10 +62,10 @@ registerStyles('vaadin23-select', [fieldShared, inputFieldContainer], { moduleId
  * ```js
  * const select = document.querySelector('#select');
  * select.renderer = function(root, select) {
- *   const listBox = document.createElement('vaadin23-list-box');
- *   // append 3 <vaadin23-item> elements
+ *   const listBox = document.createElement('vaadin24-list-box');
+ *   // append 3 <vaadin24-item> elements
  *   ['Jose', 'Manolo', 'Pedro'].forEach(function(name) {
- *     const item = document.createElement('vaadin23-item');
+ *     const item = document.createElement('vaadin24-item');
  *     item.textContent = name;
  *     item.setAttribute('label', name)
  *     listBox.appendChild(item);
@@ -89,38 +91,38 @@ registerStyles('vaadin23-select', [fieldShared, inputFieldContainer], { moduleId
  * Custom property                    | Description                  | Target element          | Default
  * -----------------------------------|------------------------------|----------------------------------
  * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
- * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin23-select-overlay` |
+ * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin24-select-overlay` |
  *
- * `<vaadin23-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name       | Description
  * ----------------|----------------
  * `toggle-button` | The toggle button
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute | Description                 | Part name
  * ----------|-----------------------------|-----------
  * `opened`  | Set when the select is open | :host
  *
- * There are two exceptions in terms of styling compared to `<vaadin23-text-field>`:
- * - the `clear-button` shadow DOM part does not exist in `<vaadin23-select>`.
- * - the `input-prevented` state attribute is not supported by `<vaadin23-select>`.
+ * There are two exceptions in terms of styling compared to `<vaadin24-text-field>`:
+ * - the `clear-button` shadow DOM part does not exist in `<vaadin24-select>`.
+ * - the `input-prevented` state attribute is not supported by `<vaadin24-select>`.
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-select>` itself, the following internal
+ * In addition to `<vaadin24-select>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-select-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
- * - `<vaadin23-select-value-button>` - has the same API as [`<vaadin23-button>`](#/elements/vaadin-button).
- * - [`<vaadin23-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
+ * - `<vaadin24-select-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-select-value-button>` - has the same API as [`<vaadin24-button>`](#/elements/vaadin-button).
+ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
  *
- * Note: the `theme` attribute value set on `<vaadin23-select>` is
+ * Note: the `theme` attribute value set on `<vaadin24-select>` is
  * propagated to the internal components listed above.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -137,10 +139,14 @@ registerStyles('vaadin23-select', [fieldShared, inputFieldContainer], { moduleId
  * @mixes FieldMixin
  * @mixes DelegateFocusMixin
  * @mixes DelegateStateMixin
+ * @mixes KeyboardMixin
+ * @mixes OverlayClassMixin
  */
-class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMixin(ThemableMixin(PolymerElement))))) {
+class Select extends OverlayClassMixin(
+  DelegateFocusMixin(DelegateStateMixin(KeyboardMixin(FieldMixin(ElementMixin(ThemableMixin(PolymerElement)))))),
+) {
   static get is() {
-    return 'vaadin23-select';
+    return 'vaadin24-select';
   }
 
   static get template() {
@@ -157,7 +163,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
         </div>
 
-        <vaadin23-input-container
+        <vaadin24-input-container
           part="input-field"
           readonly="[[readonly]]"
           disabled="[[disabled]]"
@@ -168,7 +174,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
           <slot name="prefix" slot="prefix"></slot>
           <slot name="value"></slot>
           <div part="toggle-button" slot="suffix" aria-hidden="true" on-mousedown="_onToggleMouseDown"></div>
-        </vaadin23-input-container>
+        </vaadin24-input-container>
 
         <div part="helper-text">
           <slot name="helper"></slot>
@@ -179,13 +185,13 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
         </div>
       </div>
 
-      <vaadin23-select-overlay
+      <vaadin24-select-overlay
         position-target="[[_inputContainer]]"
         opened="{{opened}}"
         with-backdrop="[[_phone]]"
         phone$="[[_phone]]"
         theme$="[[_theme]]"
-      ></vaadin23-select-overlay>
+      ></vaadin24-select-overlay>
 
       <slot name="tooltip"></slot>
     `;
@@ -209,7 +215,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
        * ];
        * ```
        *
-       * Note: each item is rendered by default as the internal `<vaadin23-select-item>` that is an extension of `<vaadin23-item>`.
+       * Note: each item is rendered by default as the internal `<vaadin24-select-item>` that is an extension of `<vaadin24-item>`.
        * To render the item with a custom component, provide a tag name by the `component` property.
        *
        * @type {!Array<!SelectItem>}
@@ -232,21 +238,19 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
       },
 
       /**
-       * Custom function for rendering the content of the `<vaadin23-select>`.
+       * Custom function for rendering the content of the `<vaadin24-select>`.
        * Receives two arguments:
        *
-       * - `root` The `<vaadin23-select-overlay>` internal container
+       * - `root` The `<vaadin24-select-overlay>` internal container
        *   DOM element. Append your content to it.
-       * - `select` The reference to the `<vaadin23-select>` element.
+       * - `select` The reference to the `<vaadin24-select>` element.
        * @type {!SelectRenderer | undefined}
        */
       renderer: Function,
 
       /**
-       * It stores the the `value` property of the selected item, providing the
-       * value for iron-form.
-       * When there’s an item selected, it's the value of that item, otherwise
-       * it's an empty string.
+       * The `value` property of the selected item, or an empty string
+       * if no item is selected.
        * On change or initialization, the component finds the item which matches the
        * value and displays it.
        * If no value is provided to the component, it selects the first item without
@@ -300,9 +304,6 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
       },
 
       /** @private */
-      _overlayElement: Object,
-
-      /** @private */
       _inputContainer: Object,
 
       /** @private */
@@ -316,23 +317,16 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
 
   static get observers() {
     return [
-      '_updateAriaExpanded(opened)',
+      '_updateAriaExpanded(opened, focusElement)',
       '_updateSelectedItem(value, _items, placeholder)',
       '_rendererChanged(renderer, _overlayElement)',
     ];
   }
 
-  /** @protected */
-  get _valueButton() {
-    return this._valueButtonController && this._valueButtonController.node;
-  }
-
   constructor() {
     super();
 
-    this._fieldId = `${this.localName}-${generateUniqueId()}`;
-
-    this._boundOnKeyDown = this._onKeyDown.bind(this);
+    this._itemId = `value-${this.localName}-${generateUniqueId()}`;
   }
 
   /** @protected */
@@ -347,26 +341,10 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
   ready() {
     super.ready();
 
-    this._overlayElement = this.shadowRoot.querySelector('vaadin23-select-overlay');
+    this._overlayElement = this.shadowRoot.querySelector('vaadin24-select-overlay');
     this._inputContainer = this.shadowRoot.querySelector('[part~="input-field"]');
 
-    this._valueButtonController = new SlotController(
-      this,
-      'value',
-      () => document.createElement('vaadin23-select-value-button'),
-      (host, btn) => {
-        this._setFocusElement(btn);
-        this.ariaTarget = btn;
-        this.stateTarget = btn;
-
-        btn.setAttribute('aria-haspopup', 'listbox');
-        addValueToAttribute(btn, 'aria-labelledby', this._fieldId);
-
-        this._updateAriaExpanded(host.opened);
-
-        btn.addEventListener('keydown', this._boundOnKeyDown);
-      },
-    );
+    this._valueButtonController = new ButtonController(this);
     this.addController(this._valueButtonController);
 
     this.addController(
@@ -457,7 +435,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
       });
 
       menuElement.addEventListener('selected-changed', () => this.__updateValueButton());
-      // Use capture phase to make it possible for `<vaadin23-grid-pro-edit-select>`
+      // Use capture phase to make it possible for `<vaadin24-grid-pro-edit-select>`
       // to override and handle the keydown event before the value change happens.
       menuElement.addEventListener('keydown', (e) => this._onKeyDownInside(e), true);
       menuElement.addEventListener(
@@ -497,7 +475,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
    * @private
    */
   _onClick(event) {
-    // Prevent parent components such as `vaadin23-grid`
+    // Prevent parent components such as `vaadin24-grid`
     // from handling the click event after it bubbles.
     event.preventDefault();
 
@@ -514,10 +492,11 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
   /**
    * @param {!KeyboardEvent} e
    * @protected
+   * @override
    */
   _onKeyDown(e) {
-    if (!this.readonly && !this.opened) {
-      if (/^(Enter|SpaceBar|\s|ArrowDown|Down|ArrowUp|Up)$/.test(e.key)) {
+    if (e.target === this.focusElement && !this.readonly && !this.opened) {
+      if (/^(Enter|SpaceBar|\s|ArrowDown|Down|ArrowUp|Up)$/u.test(e.key)) {
         e.preventDefault();
         this.opened = true;
       } else if (/[\p{L}\p{Nd}]/u.test(e.key) && e.key.length === 1) {
@@ -540,7 +519,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
    * @protected
    */
   _onKeyDownInside(e) {
-    if (/^(Tab)$/.test(e.key)) {
+    if (/^(Tab)$/u.test(e.key)) {
       this.opened = false;
     }
   }
@@ -581,19 +560,19 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
   }
 
   /** @private */
-  _updateAriaExpanded(opened) {
-    if (this._valueButton) {
-      this._valueButton.setAttribute('aria-expanded', opened ? 'true' : 'false');
+  _updateAriaExpanded(opened, focusElement) {
+    if (focusElement) {
+      focusElement.setAttribute('aria-expanded', opened ? 'true' : 'false');
     }
   }
 
   /** @private */
   _updateAriaLive(ariaLive) {
-    if (this._valueButton) {
+    if (this.focusElement) {
       if (ariaLive) {
-        this._valueButton.setAttribute('aria-live', 'polite');
+        this.focusElement.setAttribute('aria-live', 'polite');
       } else {
-        this._valueButton.removeAttribute('aria-live');
+        this.focusElement.removeAttribute('aria-live');
       }
     }
   }
@@ -612,7 +591,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
     // Store reference to the original item
     labelItem._sourceItem = selected;
 
-    this.__appendValueItemElement(labelItem);
+    this.__appendValueItemElement(labelItem, this.focusElement);
 
     // Ensure the item gets proper styles
     labelItem.selected = true;
@@ -623,7 +602,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
    * @private
    */
   __createItemElement(item) {
-    const itemElement = document.createElement(item.component || 'vaadin23-select-item');
+    const itemElement = document.createElement(item.component || 'vaadin24-select-item');
     if (item.label) {
       itemElement.textContent = item.label;
     }
@@ -641,32 +620,33 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
    * @param {!HTMLElement} parent
    * @private
    */
-  __appendValueItemElement(itemElement) {
-    this._valueButton.appendChild(itemElement);
-
+  __appendValueItemElement(itemElement, parent) {
+    parent.appendChild(itemElement);
     itemElement.removeAttribute('tabindex');
     itemElement.removeAttribute('aria-selected');
     itemElement.removeAttribute('role');
-    itemElement.setAttribute('id', this._fieldId);
+    itemElement.setAttribute('id', this._itemId);
   }
 
   /** @private */
   __updateValueButton() {
-    if (!this._valueButton) {
+    const valueButton = this.focusElement;
+
+    if (!valueButton) {
       return;
     }
 
-    this._valueButton.innerHTML = '';
+    valueButton.innerHTML = '';
 
     const selected = this._items[this._menuElement.selected];
 
-    this._valueButton.removeAttribute('placeholder');
+    valueButton.removeAttribute('placeholder');
 
     if (!selected) {
       if (this.placeholder) {
         const item = this.__createItemElement({ label: this.placeholder });
-        this.__appendValueItemElement(item);
-        this._valueButton.setAttribute('placeholder', '');
+        this.__appendValueItemElement(item, valueButton);
+        valueButton.setAttribute('placeholder', '');
       }
     } else {
       this.__attachSelectedItem(selected);
@@ -681,6 +661,13 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
         }
         delete this._selectedChanging;
       }
+    }
+
+    // Add the item ID to aria-labelledby if there is a selected item or a placeholder text.
+    if (selected || this.placeholder) {
+      addValueToAttribute(valueButton, 'aria-labelledby', this._itemId);
+    } else {
+      removeValueFromAttribute(valueButton, 'aria-labelledby', this._itemId);
     }
   }
 
@@ -747,7 +734,7 @@ class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMix
 
     let listBox = root.firstElementChild;
     if (!listBox) {
-      listBox = document.createElement('vaadin23-select-list-box');
+      listBox = document.createElement('vaadin24-select-list-box');
       root.appendChild(listBox);
     }
 

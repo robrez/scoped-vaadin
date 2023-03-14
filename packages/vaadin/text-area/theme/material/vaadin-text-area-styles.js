@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { inputFieldShared } from '@scoped-vaadin/vaadin-material-styles/mixins/input-field-shared.js';
@@ -23,4 +23,4 @@ const textArea = css`
   }
 `;
 
-registerStyles('vaadin23-text-area', [inputFieldShared, textArea], { moduleId: 'material-text-area' });
+registerStyles('vaadin24-text-area', [inputFieldShared, textArea], { moduleId: 'material-text-area' });

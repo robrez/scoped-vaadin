@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { addListener } from '@scoped-vaadin/component-base/src/gestures.js';
@@ -42,7 +42,7 @@ export const ColumnResizingMixin = (superClass) =>
         this.$.scroller.toggleAttribute('column-resizing', true);
 
         // Get the target column to resize
-        while (column.localName === 'vaadin23-grid-column-group') {
+        while (column.localName === 'vaadin24-grid-column-group') {
           column = column._childColumns
             .slice(0)
             .sort((a, b) => a._order - b._order)
@@ -50,6 +50,7 @@ export const ColumnResizingMixin = (superClass) =>
             .pop();
         }
 
+        const isRTL = this.__isRTL;
         const eventX = e.detail.x;
         const columnRowCells = Array.from(this.$.header.querySelectorAll('[part~="row"]:last-child [part~="cell"]'));
         const targetCell = columnRowCells.find((cell) => cell._column === column);
@@ -72,9 +73,9 @@ export const ColumnResizingMixin = (superClass) =>
 
           // For cells frozen to end, resize handle is flipped horizontally.
           if (targetCell.hasAttribute('frozen-to-end')) {
-            maxWidth = cellWidth + (this.__isRTL ? eventX - cellRect.right : cellRect.left - eventX);
+            maxWidth = cellWidth + (isRTL ? eventX - cellRect.right : cellRect.left - eventX);
           } else {
-            maxWidth = cellWidth + (this.__isRTL ? cellRect.left - eventX : eventX - cellRect.right);
+            maxWidth = cellWidth + (isRTL ? cellRect.left - eventX : eventX - cellRect.right);
           }
 
           column.width = `${Math.max(minWidth, maxWidth)}px`;
@@ -95,9 +96,9 @@ export const ColumnResizingMixin = (superClass) =>
         // When handle moves below the cell frozen to end, scroll into view.
         if (cellFrozenToEnd && this.$.table.scrollWidth > this.$.table.offsetWidth) {
           const frozenRect = cellFrozenToEnd.getBoundingClientRect();
-          const offset = eventX - (this.__isRTL ? frozenRect.right : frozenRect.left);
+          const offset = eventX - (isRTL ? frozenRect.right : frozenRect.left);
 
-          if ((this.__isRTL && offset <= 0) || (!this.__isRTL && offset >= 0)) {
+          if ((isRTL && offset <= 0) || (!isRTL && offset >= 0)) {
             this.$.table.scrollLeft += offset;
           }
         }

@@ -30,4 +30,4 @@ const datePicker = css`
   }
 `;
 
-registerStyles('vaadin23-date-picker', [inputFieldShared, datePicker], { moduleId: 'lumo-date-picker' });
+registerStyles('vaadin24-date-picker', [inputFieldShared, datePicker], { moduleId: 'lumo-date-picker' });

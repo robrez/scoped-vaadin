@@ -1,15 +1,17 @@
 /**
  * @license
- * Copyright (c) 2015 - 2022 Vaadin Ltd.
+ * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
-import type { DelegateStateMixinClass } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
+import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
+import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -90,12 +92,12 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
 }
 
 /**
- * `<vaadin23-combo-box>` is a web component for choosing a value from a filterable list of options
+ * `<vaadin24-combo-box>` is a web component for choosing a value from a filterable list of options
  * presented in a dropdown overlay. The options can be provided as a list of strings or objects
  * by setting [`items`](#/elements/vaadin-combo-box#property-items) property on the element.
  *
  * ```html
- * <vaadin23-combo-box id="combo-box"></vaadin23-combo-box>
+ * <vaadin24-combo-box id="combo-box"></vaadin24-combo-box>
  * ```
  *
  * ```js
@@ -106,7 +108,7 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
  *
  * ### Item rendering
  *
- * To customize the content of the `<vaadin23-combo-box-item>` elements placed in the dropdown, use
+ * To customize the content of the `<vaadin24-combo-box-item>` elements placed in the dropdown, use
  * [`renderer`](#/elements/vaadin-combo-box#property-renderer) property which accepts a function.
  * The renderer function is called with `root`, `comboBox`, and `model` as arguments.
  *
@@ -141,7 +143,7 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
  *
  * In addition to assigning an array to the items property, you can alternatively use the
  * [`dataProvider`](#/elements/vaadin-combo-box#property-dataProvider) function property.
- * The `<vaadin23-combo-box>` calls this function lazily, only when it needs more data
+ * The `<vaadin24-combo-box>` calls this function lazily, only when it needs more data
  * to be displayed.
  *
  * __Note that when using function data providers, the total number of items
@@ -172,16 +174,16 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
  * `--vaadin-combo-box-overlay-width`      | Width of the overlay       | `auto`
  * `--vaadin-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`
  *
- * `<vaadin23-combo-box>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
- * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+ * `<vaadin24-combo-box>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
+ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
  *
  * Part name       | Description
  * ----------------|----------------
  * `toggle-button` | The toggle button
  *
- * In addition to `<vaadin23-text-field>` state attributes, the following state attributes are available for theming:
+ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
  *
  * Attribute | Description | Part name
  * ----------|-------------|------------
@@ -189,18 +191,18 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
  * `loading` | Set when new items are expected | :host
  *
  * If you want to replace the default `<input>` and its container with a custom implementation to get full control
- * over the input field, consider using the [`<vaadin23-combo-box-light>`](#/elements/vaadin-combo-box-light) element.
+ * over the input field, consider using the [`<vaadin24-combo-box-light>`](#/elements/vaadin-combo-box-light) element.
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-combo-box>` itself, the following internal
+ * In addition to `<vaadin24-combo-box>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-combo-box-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
- * - `<vaadin23-combo-box-item>` - has the same API as [`<vaadin23-item>`](#/elements/vaadin-item).
- * - [`<vaadin23-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
+ * - `<vaadin24-combo-box-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-combo-box-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
+ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
  *
- * Note: the `theme` attribute value set on `<vaadin23-combo-box>` is
+ * Note: the `theme` attribute value set on `<vaadin24-combo-box>` is
  * propagated to the internal components listed above.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
@@ -235,7 +237,9 @@ interface ComboBox<TItem = ComboBoxDefaultItem>
     PatternMixinClass,
     LabelMixinClass,
     KeyboardMixinClass,
+    OverlayClassMixinClass,
     InputMixinClass,
+    ClearButtonMixinClass,
     InputControlMixinClass,
     InputConstraintsMixinClass,
     FocusMixinClass,
@@ -250,7 +254,7 @@ interface ComboBox<TItem = ComboBoxDefaultItem>
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-combo-box': ComboBox;
+    'vaadin24-combo-box': ComboBox;
   }
 }
 

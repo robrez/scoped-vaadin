@@ -2,14 +2,14 @@
 
 This component is based on [@vaadin/multi-select-combo-box](https://www.npmjs.com/package/@vaadin/multi-select-combo-box)
 
-A web component that wraps `<vaadin23-combo-box>` and allows selecting multiple items.
+A web component that wraps `<vaadin24-combo-box>` and allows selecting multiple items.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/multi-select-combo-box)
 
 ```html
-<vaadin23-multi-select-combo-box style="width: 300px"></vaadin23-multi-select-combo-box>
+<vaadin24-multi-select-combo-box style="width: 300px"></vaadin24-multi-select-combo-box>
 <script>
-  const comboBox = document.querySelector('vaadin23-multi-select-combo-box');
+  const comboBox = document.querySelector('vaadin24-multi-select-combo-box');
   comboBox.items = ['apple', 'banana', 'lemon', 'orange'];
   comboBox.selectedItems = ['apple', 'banana'];
 </script>

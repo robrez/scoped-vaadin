@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
@@ -23,7 +23,7 @@ export const InputMixin = dedupingMixin(
            *
            * A typical case is using `InputController` that does this automatically.
            * However, the input element does not have to always be native <input>:
-           * as an example, <vaadin23-combo-box-light> accepts other components.
+           * as an example, <vaadin24-combo-box-light> accepts other components.
            *
            * @protected
            * @type {!HTMLElement}
@@ -54,7 +54,11 @@ export const InputMixin = dedupingMixin(
           },
 
           /**
-           * When true, the input element has a non-empty value entered by the user.
+           * Whether the input element has user input.
+           *
+           * Note, the property indicates true only if the input has been entered by the user.
+           * In the case of programmatic changes, the property must be reset to false.
+           *
            * @protected
            */
           _hasInputValue: {
@@ -73,10 +77,28 @@ export const InputMixin = dedupingMixin(
       }
 
       /**
+       * Indicates whether the value is different from the default one.
+       * Override if the `value` property has a type other than `string`.
+       *
+       * @protected
+       */
+      get _hasValue() {
+        return this.value != null && this.value !== '';
+      }
+
+      /**
        * Clear the value of the field.
        */
       clear() {
+        this._hasInputValue = false;
+
         this.value = '';
+
+        // Clear the input immediately without waiting for the observer.
+        // Otherwise, when using Lit, the old value would be restored.
+        if (this.inputElement) {
+          this.inputElement.value = '';
+        }
       }
 
       /**
@@ -215,16 +237,6 @@ export const InputMixin = dedupingMixin(
 
         // Setting a value programmatically, sync it to input element.
         this._forwardInputValue(newVal);
-      }
-
-      /**
-       * Indicates whether the value is different from the default one.
-       * Override if the `value` property has a type other than `string`.
-       *
-       * @protected
-       */
-      get _hasValue() {
-        return this.value != null && this.value !== '';
       }
 
       /**

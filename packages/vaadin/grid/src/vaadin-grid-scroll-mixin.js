@@ -1,10 +1,11 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { animationFrame, microTask, timeOut } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+import { getNormalizedScrollLeft } from '@scoped-vaadin/component-base/src/dir-utils.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 
 const timeouts = {
@@ -42,6 +43,11 @@ export const ScrollMixin = (superClass) =>
     }
 
     /** @private */
+    get _scrollLeft() {
+      return this.$.table.scrollLeft;
+    }
+
+    /** @private */
     get _scrollTop() {
       return this.$.table.scrollTop;
     }
@@ -52,11 +58,6 @@ export const ScrollMixin = (superClass) =>
      */
     set _scrollTop(top) {
       this.$.table.scrollTop = top;
-    }
-
-    /** @private */
-    get _scrollLeft() {
-      return this.$.table.scrollLeft;
     }
 
     /** @protected */
@@ -146,6 +147,13 @@ export const ScrollMixin = (superClass) =>
 
     /** @private */
     _updateOverflow() {
+      this._debounceOverflow = Debouncer.debounce(this._debounceOverflow, animationFrame, () => {
+        this.__doUpdateOverflow();
+      });
+    }
+
+    /** @private */
+    __doUpdateOverflow() {
       // Set overflow styling attributes
       let overflow = '';
       const table = this.$.table;
@@ -157,7 +165,7 @@ export const ScrollMixin = (superClass) =>
         overflow += ' top';
       }
 
-      const scrollLeft = this.__getNormalizedScrollLeft(table);
+      const scrollLeft = getNormalizedScrollLeft(table, this.getAttribute('dir'));
       if (scrollLeft > 0) {
         overflow += ' start';
       }
@@ -167,7 +175,7 @@ export const ScrollMixin = (superClass) =>
       }
 
       if (this.__isRTL) {
-        overflow = overflow.replace(/start|end/gi, (matched) => {
+        overflow = overflow.replace(/start|end/giu, (matched) => {
           return matched === 'start' ? 'end' : 'start';
         });
       }
@@ -181,14 +189,12 @@ export const ScrollMixin = (superClass) =>
         overflow += ' left';
       }
 
-      this._debounceOverflow = Debouncer.debounce(this._debounceOverflow, animationFrame, () => {
-        const value = overflow.trim();
-        if (value.length > 0 && this.getAttribute('overflow') !== value) {
-          this.setAttribute('overflow', value);
-        } else if (value.length === 0 && this.hasAttribute('overflow')) {
-          this.removeAttribute('overflow');
-        }
-      });
+      const value = overflow.trim();
+      if (value.length > 0 && this.getAttribute('overflow') !== value) {
+        this.setAttribute('overflow', value);
+      } else if (value.length === 0 && this.hasAttribute('overflow')) {
+        this.removeAttribute('overflow');
+      }
     }
 
     /** @protected */
@@ -255,7 +261,7 @@ export const ScrollMixin = (superClass) =>
       const scrollWidth = this.$.table.scrollWidth;
       const clientWidth = this.$.table.clientWidth;
       const scrollLeft = Math.max(0, this.$.table.scrollLeft);
-      const normalizedScrollLeft = this.__getNormalizedScrollLeft(this.$.table);
+      const normalizedScrollLeft = getNormalizedScrollLeft(this.$.table, this.getAttribute('dir'));
 
       // Position header, footer and items container
       const transform = `translate(${-scrollLeft}px, 0)`;
@@ -266,16 +272,16 @@ export const ScrollMixin = (superClass) =>
       // Position frozen cells
       const x = this.__isRTL ? normalizedScrollLeft + clientWidth - scrollWidth : scrollLeft;
       const transformFrozen = `translate(${x}px, 0)`;
-      for (let i = 0; i < this._frozenCells.length; i++) {
-        this._frozenCells[i].style.transform = transformFrozen;
-      }
+      this._frozenCells.forEach((cell) => {
+        cell.style.transform = transformFrozen;
+      });
 
       // Position cells frozen to end
       const remaining = this.__isRTL ? normalizedScrollLeft : scrollLeft + clientWidth - scrollWidth;
       const transformFrozenToEnd = `translate(${remaining}px, 0)`;
-      for (let i = 0; i < this._frozenToEndCells.length; i++) {
-        this._frozenToEndCells[i].style.transform = transformFrozenToEnd;
-      }
+      this._frozenToEndCells.forEach((cell) => {
+        cell.style.transform = transformFrozenToEnd;
+      });
 
       // Only update the --_grid-horizontal-scroll-position custom property when navigating
       // on row focus mode to avoid performance issues.

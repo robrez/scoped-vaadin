@@ -1,10 +1,11 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { TemplateResult } from 'lit';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 
@@ -39,7 +40,7 @@ export interface ShowOptions {
 }
 
 /**
- * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  */
 declare class NotificationContainer extends ElementMixin(ThemableMixin(HTMLElement)) {
   /**
@@ -49,12 +50,12 @@ declare class NotificationContainer extends ElementMixin(ThemableMixin(HTMLEleme
 }
 
 /**
- * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  */
 declare class NotificationCard extends ThemableMixin(HTMLElement) {}
 
 /**
- * `<vaadin23-notification>` is a Web Component providing accessible and customizable notifications (toasts).
+ * `<vaadin24-notification>` is a Web Component providing accessible and customizable notifications (toasts).
  *
  * ### Rendering
  *
@@ -66,7 +67,7 @@ declare class NotificationCard extends ThemableMixin(HTMLElement) {}
  * users are able to check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-notification id="notification"></vaadin23-notification>
+ * <vaadin24-notification id="notification"></vaadin24-notification>
  * ```
  * ```js
  * const notification = document.querySelector('#notification');
@@ -82,10 +83,10 @@ declare class NotificationCard extends ThemableMixin(HTMLElement) {}
  *
  * ### Styling
  *
- * `<vaadin23-notification>` uses `<vaadin23-notification-card>` internal
+ * `<vaadin24-notification>` uses `<vaadin24-notification-card>` internal
  * themable component as the actual visible notification cards.
  *
- * The following shadow DOM parts of the `<vaadin23-notification-card>` are available for styling:
+ * The following shadow DOM parts of the `<vaadin24-notification-card>` are available for styling:
  *
  * Part name | Description
  * ----------------|----------------
@@ -94,12 +95,12 @@ declare class NotificationCard extends ThemableMixin(HTMLElement) {}
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * Note: the `theme` attribute value set on `<vaadin23-notification>` is
- * propagated to the internal `<vaadin23-notification-card>`.
+ * Note: the `theme` attribute value set on `<vaadin24-notification>` is
+ * propagated to the internal `<vaadin24-notification-card>`.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class Notification extends ThemePropertyMixin(ElementMixin(HTMLElement)) {
+declare class Notification extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(HTMLElement))) {
   /**
    * Shows a notification with the given content.
    * By default, positions the notification at `bottom-start` and uses a 5 second duration.
@@ -144,9 +145,9 @@ declare class Notification extends ThemePropertyMixin(ElementMixin(HTMLElement))
    * Custom function for rendering the content of the notification.
    * Receives two arguments:
    *
-   * - `root` The `<vaadin23-notification-card>` DOM element. Append
+   * - `root` The `<vaadin24-notification-card>` DOM element. Append
    *   your content to it.
-   * - `notification` The reference to the `<vaadin23-notification>` element.
+   * - `notification` The reference to the `<vaadin24-notification>` element.
    */
   renderer: NotificationRenderer | undefined;
 
@@ -183,9 +184,9 @@ declare class Notification extends ThemePropertyMixin(ElementMixin(HTMLElement))
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-notification-container': NotificationContainer;
-    'vaadin23-notification-card': NotificationCard;
-    'vaadin23-notification': Notification;
+    'vaadin24-notification-container': NotificationContainer;
+    'vaadin24-notification-card': NotificationCard;
+    'vaadin24-notification': Notification;
   }
 }
 

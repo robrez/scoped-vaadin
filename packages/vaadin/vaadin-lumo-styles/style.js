@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './version.js';
@@ -12,7 +12,6 @@ const style = css`
     --lumo-border-radius-s: 0.25em; /* Checkbox, badge, date-picker year indicator, etc */
     --lumo-border-radius-m: var(--lumo-border-radius, 0.25em); /* Button, text field, menu overlay, etc */
     --lumo-border-radius-l: 0.5em; /* Dialog, notification, etc */
-    --lumo-border-radius: 0.25em; /* Deprecated */
 
     /* Shadow */
     --lumo-box-shadow-xs: 0 1px 4px -1px var(--lumo-shade-50pct);
@@ -33,6 +32,7 @@ const globals = css`
   html {
     --vaadin-checkbox-size: calc(var(--lumo-size-m) / 2);
     --vaadin-radio-button-size: calc(var(--lumo-size-m) / 2);
+    --vaadin-input-field-border-radius: var(--lumo-border-radius-m);
   }
 `;
 

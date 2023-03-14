@@ -1,58 +1,58 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-form-item>` is a Web Component providing labelled form item wrapper
- * for using inside `<vaadin23-form-layout>`.
+ * `<vaadin24-form-item>` is a Web Component providing labelled form item wrapper
+ * for using inside `<vaadin24-form-layout>`.
  *
- * `<vaadin23-form-item>` accepts a single child as the input content,
+ * `<vaadin24-form-item>` accepts a single child as the input content,
  * and also has a separate named `label` slot:
  *
  * ```html
- * <vaadin23-form-item>
+ * <vaadin24-form-item>
  *   <label slot="label">Label aside</label>
  *   <input>
- * </vaadin23-form-item>
+ * </vaadin24-form-item>
  * ```
  *
  * The label is optional and can be omitted:
  *
  * ```html
- * <vaadin23-form-item>
+ * <vaadin24-form-item>
  *   <input type="checkbox"> Subscribe to our Newsletter
- * </vaadin23-form-item>
+ * </vaadin24-form-item>
  * ```
  *
  * By default, the `label` slot content is displayed aside of the input content.
  * When `label-position="top"` is set, the `label` slot content is displayed on top:
  *
  * ```html
- * <vaadin23-form-item label-position="top">
+ * <vaadin24-form-item label-position="top">
  *   <label slot="label">Label on top</label>
  *   <input>
- * </vaadin23-form-item>
+ * </vaadin24-form-item>
  * ```
  *
- * **Note:** Normally, `<vaadin23-form-item>` is used as a child of
- * a `<vaadin23-form-layout>` element. Setting `label-position` is unnecessary,
+ * **Note:** Normally, `<vaadin24-form-item>` is used as a child of
+ * a `<vaadin24-form-layout>` element. Setting `label-position` is unnecessary,
  * because the `label-position` attribute is triggered automatically by the parent
- * `<vaadin23-form-layout>`, depending on its width and responsive behavior.
+ * `<vaadin24-form-layout>`, depending on its width and responsive behavior.
  *
  * ### Input Width
  *
- * By default, `<vaadin23-form-item>` does not manipulate the width of the slotted
+ * By default, `<vaadin24-form-item>` does not manipulate the width of the slotted
  * input element. Optionally you can stretch the child input element to fill
  * the available width for the input content by adding the `full-width` class:
  *
  * ```html
- * <vaadin23-form-item>
+ * <vaadin24-form-item>
  *   <label slot="label">Label</label>
  *   <input class="full-width">
- * </vaadin23-form-item>
+ * </vaadin24-form-item>
  * ```
  *
  * ### Styling
@@ -73,7 +73,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * ### Custom CSS Properties Reference
  *
- * The following custom CSS properties are available on the `<vaadin23-form-item>`
+ * The following custom CSS properties are available on the `<vaadin24-form-item>`
  * element:
  *
  * Custom CSS property | Description | Default
@@ -97,7 +97,7 @@ declare class FormItem extends ThemableMixin(HTMLElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-form-item': FormItem;
+    'vaadin24-form-item': FormItem;
   }
 }
 

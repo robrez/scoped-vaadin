@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { directive } from 'lit/directive.js';
@@ -32,7 +32,7 @@ export class VirtualListRendererDirective extends LitRendererDirective {
 }
 
 /**
- * A Lit directive for rendering the content of the `<vaadin23-virtual-list>` item elements.
+ * A Lit directive for rendering the content of the `<vaadin24-virtual-list>` item elements.
  *
  * The directive accepts a renderer callback returning a Lit template and assigns it to the virtual
  * list via the `renderer` property. The renderer is called once to populate the content when
@@ -48,9 +48,9 @@ export class VirtualListRendererDirective extends LitRendererDirective {
  *
  * Example of usage:
  * ```js
- * `<vaadin23-virtual-list
+ * `<vaadin24-virtual-list
  *   ${virtualListRenderer((item, model, virtualList) => html`...`)}
- * ></vaadin23-virtual-list>`
+ * ></vaadin24-virtual-list>`
  * ```
  *
  * @param renderer the renderer callback that returns a Lit template.

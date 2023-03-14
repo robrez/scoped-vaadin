@@ -10,7 +10,7 @@ A web component for displaying items in list-box, context-menu or select compone
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-item>Simple Item</vaadin23-item> <vaadin23-item disabled>Disabled Item</vaadin23-item>
+<vaadin24-item>Simple Item</vaadin24-item> <vaadin24-item disabled>Disabled Item</vaadin24-item>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/vaadin-item/master/screenshot.png" width="169" alt="Screenshot of vaadin-item">](https://vaadin.com/components/vaadin-item)

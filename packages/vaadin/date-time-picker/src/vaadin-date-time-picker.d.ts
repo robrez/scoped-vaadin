@@ -1,12 +1,11 @@
 /**
  * @license
- * Copyright (c) 2019 - 2022 Vaadin Ltd.
+ * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import { SlotMixin } from '@scoped-vaadin/component-base/src/slot-mixin.js';
 import type { DatePickerI18n } from '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
 import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import type { TimePickerI18n } from '@scoped-vaadin/time-picker/src/vaadin-time-picker.js';
@@ -49,10 +48,10 @@ export interface DateTimePickerEventMap extends DateTimePickerCustomEventMap, HT
 }
 
 /**
- * `<vaadin23-date-time-picker>` is a Web Component providing a date time selection field.
+ * `<vaadin24-date-time-picker>` is a Web Component providing a date time selection field.
  *
  * ```html
- * <vaadin23-date-time-picker value="2019-09-16T15:00"></vaadin23-date-time-picker>
+ * <vaadin24-date-time-picker value="2019-09-16T15:00"></vaadin24-date-time-picker>
  * ```
  *
  * ```js
@@ -88,14 +87,13 @@ export interface DateTimePickerEventMap extends DateTimePickerCustomEventMap, HT
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-date-time-picker>` itself, the following internal
- * components are themable:
+ * The following components are created by `<vaadin24-date-time-picker>` and placed in light DOM:
  *
- * - `<vaadin23-date-time-picker-date-picker>` - has the same API as [`<vaadin23-date-picker>`](#/elements/vaadin-date-picker).
- * - `<vaadin23-date-time-picker-time-picker>` - has the same API as [`<vaadin23-time-picker>`](#/elements/vaadin-time-picker).
+ * - [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker).
+ * - [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker).
  *
- * Note: the `theme` attribute value set on `<vaadin23-date-time-picker>` is
- * propagated to the internal components listed above.
+ * Note: the `theme` attribute value set on `<vaadin24-date-time-picker>` is
+ * propagated to these components.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
@@ -104,9 +102,7 @@ export interface DateTimePickerEventMap extends DateTimePickerCustomEventMap, HT
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  */
-declare class DateTimePicker extends FieldMixin(
-  SlotMixin(DisabledMixin(FocusMixin(ThemableMixin(ElementMixin(HTMLElement))))),
-) {
+declare class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(ElementMixin(HTMLElement))))) {
   /**
    * The name of the control, which is submitted with the form data.
    */
@@ -210,10 +206,21 @@ declare class DateTimePicker extends FieldMixin(
    * `i18n` object or just the properties you want to modify.
    *
    * The object is a combination of the i18n properties supported by
-   * [`<vaadin23-date-picker>`](#/elements/vaadin-date-picker) and
-   * [`<vaadin23-time-picker>`](#/elements/vaadin-time-picker).
+   * [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker) and
+   * [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker).
    */
   i18n: DateTimePickerI18n;
+
+  /**
+   * A space-delimited list of CSS class names to set on the overlay elements
+   * of the internal components controlled by the `<vaadin24-date-time-picker>`:
+   *
+   * - [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker#property-overlayClass)
+   * - [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker#property-overlayClass)
+   *
+   * @attr {string} overlay-class
+   */
+  overlayClass: string;
 
   addEventListener<K extends keyof DateTimePickerEventMap>(
     type: K,
@@ -230,7 +237,7 @@ declare class DateTimePicker extends FieldMixin(
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-date-time-picker': DateTimePicker;
+    'vaadin24-date-time-picker': DateTimePicker;
   }
 }
 

@@ -80,13 +80,12 @@ const item = css`
   }
 
   /* Slotted icons */
-  :host ::slotted(vaadin-icon),
-  :host ::slotted(iron-icon) {
+  :host ::slotted(vaadin-icon) {
     width: var(--lumo-icon-size-m);
     height: var(--lumo-icon-size-m);
   }
 `;
 
-registerStyles('vaadin23-item', item, { moduleId: 'lumo-item' });
+registerStyles('vaadin24-item', item, { moduleId: 'lumo-item' });
 
 export { item };

@@ -12,23 +12,21 @@
     </script>
   </head>
   <body>
-    <vaadin23-select label="Size">
-      <vaadin23-tooltip slot="tooltip" text="Stock availability may vary"></vaadin23-tooltip>
-    </vaadin23-select>
+    <vaadin24-select label="Size">
+      <vaadin24-tooltip slot="tooltip" text="Stock availability may vary"></vaadin24-tooltip>
+    </vaadin24-select>
 
     <script>
-      const select = document.querySelector('vaadin23-select');
-      select.renderer = (root, _, model) => {
-        root.innerHTML = `
-          <vaadin23-list-box>
-            <vaadin23-item value="xs" disabled>XS (out of stock)</vaadin23-item>
-            <vaadin23-item value="s">S</vaadin23-item>
-            <vaadin23-item value="m">M</vaadin23-item>
-            <vaadin23-item value="l">L</vaadin23-item>
-            <vaadin23-item value="xl">XL</vaadin23-item>
-          </vaadin23-list-box>
-        `;
-      };
+      const select = document.querySelector('vaadin24-select');
+      select.items = items = [
+        { label: 'Show all', value: 'all' },
+        { component: 'hr' },
+        { label: 'XS (out of stock)', value: 'xs', disabled: true },
+        { label: 'S', value: 's' },
+        { label: 'M', value: 'm' },
+        { label: 'L', value: 'l' },
+        { label: 'XL', value: 'xl' },
+      ];
     </script>
   </body>
 </html>

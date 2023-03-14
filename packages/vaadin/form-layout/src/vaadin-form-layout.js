@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -11,28 +11,28 @@ import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-form-layout>` is a Web Component providing configurable responsive
+ * `<vaadin24-form-layout>` is a Web Component providing configurable responsive
  * layout for form elements.
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">First Name</label>
  *     <input class="full-width" value="Jane">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Last Name</label>
  *     <input class="full-width" value="Doe">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Email</label>
  *     <input class="full-width" value="jane.doe@example.com">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * It supports any child elements as layout items.
@@ -49,24 +49,24 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * In the example below, the first text field spans on two columns:
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item colspan="2">
+ *   <vaadin24-form-item colspan="2">
  *     <label slot="label">Address</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">First Name</label>
  *     <input class="full-width" value="Jane">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Last Name</label>
  *     <input class="full-width" value="Doe">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * ### Explicit New Row
@@ -74,26 +74,26 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * Use the `<br>` line break element to wrap the items on a new row:
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Email</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
  *   <br>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Confirm Email</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * ### CSS Properties Reference
  *
- * The following custom CSS properties are available on the `<vaadin23-form-layout>`
+ * The following custom CSS properties are available on the `<vaadin24-form-layout>`
  * element:
  *
  * Custom CSS property | Description | Default
@@ -160,7 +160,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
   }
 
   static get is() {
-    return 'vaadin23-form-layout';
+    return 'vaadin24-form-layout';
   }
 
   static get properties() {
@@ -249,7 +249,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
   /** @protected */
   ready() {
     // Here we create and attach a style element that we use for validating
-    // CSS values in `responsiveSteps`. We can’t add this to the `<template>`,
+    // CSS values in `responsiveSteps`. We can't add this to the `<template>`,
     // because Polymer will throw it away. We need to create this before
     // `super.ready()`, because `super.ready()` invokes property observers,
     // and the observer for `responsiveSteps` does CSS value validation.
@@ -330,7 +330,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
   /** @private */
   _isValidCSSLength(value) {
     // Let us choose a CSS property for validating CSS <length> values:
-    // - `border-spacing` accepts `<length> | inherit`, it’s the best! But
+    // - `border-spacing` accepts `<length> | inherit`, it's the best! But
     //   it does not disallow invalid values at all in MSIE :-(
     // - `letter-spacing` and `word-spacing` accept
     //   `<length> | normal | inherit`, and disallows everything else, like
@@ -425,7 +425,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
     // Sometimes converting units is not possible, e.g, when element is
     // not connected. Then the `selectedStep` stays `undefined`.
     if (selectedStep) {
-      // Apply the chosen responsive step’s properties
+      // Apply the chosen responsive step's properties
       this._columnCount = selectedStep.columns;
       this._labelsOnTop = selectedStep.labelsPosition === 'top';
     }
@@ -433,24 +433,6 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
 
   /** @private */
   _invokeUpdateLayout() {
-    this._updateLayout();
-  }
-
-  /**
-   * Set custom CSS property values and update the layout.
-   *
-   * @deprecated Since Vaadin 23, `updateStyles()` is deprecated.
-   * Use the native element.style.setProperty API to set custom CSS property values.
-   */
-  updateStyles(properties = {}) {
-    console.warn(
-      `WARNING: Since Vaadin 23, updateStyles() is deprecated. Use the native element.style.setProperty API to set custom CSS property values.`,
-    );
-
-    Object.entries(properties).forEach(([key, value]) => {
-      this.style.setProperty(key, value);
-    });
-
     this._updateLayout();
   }
 
@@ -500,7 +482,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
         child.style.width = `calc(${childRatio * 99.9}% - ${1 - childRatio} * ${columnSpacing})`;
 
         if (col + colspan > this._columnCount) {
-          // Too big to fit on this row, let’s wrap it
+          // Too big to fit on this row, let's wrap it
           col = 0;
         }
 
@@ -530,7 +512,7 @@ class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))
         // Move the column counter
         col = (col + colspan) % this._columnCount;
 
-        if (child.localName === 'vaadin23-form-item') {
+        if (child.localName === 'vaadin24-form-item') {
           if (this._labelsOnTop) {
             if (child.getAttribute('label-position') !== 'top') {
               child.__useLayoutLabelPosition = true;

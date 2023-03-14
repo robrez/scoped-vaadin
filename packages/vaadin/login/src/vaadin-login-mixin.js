@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 
@@ -85,7 +85,7 @@ export const LoginMixin = (superClass) =>
          *
          * The object has the following JSON structure (by default it doesn't include `additionalInformation`
          * and `header` sections, `header` can be added to override `title` and `description` properties
-         * in `vaadin23-login-overlay`):
+         * in `vaadin24-login-overlay`):
          *
          * ```
          * {
@@ -139,20 +139,5 @@ export const LoginMixin = (superClass) =>
           value: false,
         },
       };
-    }
-
-    /**
-     * @param {!Event} e
-     * @protected
-     */
-    _retargetEvent(e) {
-      e.stopPropagation();
-      const { detail, composed, cancelable, bubbles } = e;
-
-      const firedEvent = this.dispatchEvent(new CustomEvent(e.type, { bubbles, cancelable, composed, detail }));
-      // Check if `eventTarget.preventDefault()` was called to prevent default in the original event
-      if (!firedEvent) {
-        e.preventDefault();
-      }
     }
   };

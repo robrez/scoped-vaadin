@@ -11,6 +11,6 @@ const scroller = css`
   }
 `;
 
-registerStyles('vaadin23-scroller', scroller, { moduleId: 'material-scroller' });
+registerStyles('vaadin24-scroller', scroller, { moduleId: 'material-scroller' });
 
 export { scroller };

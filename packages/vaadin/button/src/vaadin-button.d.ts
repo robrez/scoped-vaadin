@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -9,10 +9,10 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 import { ButtonMixin } from './vaadin-button-mixin.js';
 
 /**
- * `<vaadin23-button>` is an accessible and customizable button that allows users to perform actions.
+ * `<vaadin24-button>` is an accessible and customizable button that allows users to perform actions.
  *
  * ```html
- * <vaadin23-button>Press me</vaadin23-button>
+ * <vaadin24-button>Press me</vaadin24-button>
  * ```
  *
  * ### Styling
@@ -40,7 +40,7 @@ declare class Button extends ButtonMixin(ElementMixin(ThemableMixin(ControllerMi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-button': Button;
+    'vaadin24-button': Button;
   }
 }
 

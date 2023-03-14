@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -18,17 +18,20 @@ export interface MessageListItem {
 }
 
 /**
- * `<vaadin23-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin23-message>
+ * `<vaadin24-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin24-message>
  *
  * ### Example
+ *
  * To create a new message list, add the component to the page:
+ *
  * ```html
- * <vaadin23-message-list></vaadin23-message-list>
+ * <vaadin24-message-list></vaadin24-message-list>
  * ```
  *
- * Provide the messages to the message list with the `items` property.
+ * Provide the messages to the message list with the [`items`](#/elements/vaadin-message-list#property-items) property.
+ *
  * ```js
- * document.querySelector('vaadin23-message-list').items = [
+ * document.querySelector('vaadin24-message-list').items = [
  *   { text: 'Hello list', time: 'yesterday', userName: 'Matt Mambo', userAbbr: 'MM', userColorIndex: 1 },
  *   { text: 'Another message', time: 'right now', userName: 'Linsey Listy', userAbbr: 'LL', userColorIndex: 2, userImg: '/static/img/avatar.jpg' }
  * ];
@@ -41,6 +44,9 @@ export interface MessageListItem {
  * Part name | Description
  * ----------|----------------
  * `list`    | The container wrapping messages.
+ *
+ * See the [`<vaadin24-message>`](#/elements/vaadin-message) documentation for the available
+ * state attributes and stylable shadow parts of message elements.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  */
@@ -67,7 +73,7 @@ declare class MessageList extends KeyboardDirectionMixin(ThemableMixin(ElementMi
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-message-list': MessageList;
+    'vaadin24-message-list': MessageList;
   }
 }
 

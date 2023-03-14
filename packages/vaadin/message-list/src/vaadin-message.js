@@ -1,23 +1,25 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import './vaadin-message-avatar.js';
+import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-message>` is a Web Component for showing a single message with an author, message and time.
+ * `<vaadin24-message>` is a Web Component for showing a single message with an author, message and time.
  *
  * ```html
- * <vaadin23-message time="2021-01-28 10:43"
+ * <vaadin24-message time="2021-01-28 10:43"
  *     user-name = "Bob Ross"
  *     user-abbr = "BR"
- *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin23-message>
+ *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin24-message>
  * ```
  *
  * ### Styling
@@ -26,7 +28,6 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * Part name | Description
  * ----------|----------------
- * `avatar`  | The author's avatar
  * `name`    | Author's name
  * `time`    | When the message was posted
  * `content` | The message itself as a slotted content
@@ -40,19 +41,13 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
- * ### Internal components
- *
- * In addition to `<vaadin23-message>` itself, the following internal
- * components are themable:
- *
- * - `<vaadin23-message-avatar>` - has the same API as [`<vaadin23-avatar>`](#/elements/vaadin-avatar).
- *
  * @extends HTMLElement
+ * @mixes ControllerMixin
  * @mixes FocusMixin
  * @mixes ThemableMixin
  * @mixes ElementMixin
  */
-class Message extends FocusMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+class Message extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement)))) {
   static get properties() {
     return {
       /**
@@ -118,6 +113,11 @@ class Message extends FocusMixin(ElementMixin(ThemableMixin(PolymerElement))) {
       userColorIndex: {
         type: Number,
       },
+
+      /** @private */
+      _avatar: {
+        ttype: Object,
+      },
     };
   }
 
@@ -154,16 +154,13 @@ class Message extends FocusMixin(ElementMixin(ThemableMixin(PolymerElement))) {
         [part='message'] {
           white-space: pre-wrap;
         }
+
+        ::slotted([slot='avatar']) {
+          --vaadin-avatar-outline-width: 0px;
+          flex-shrink: 0;
+        }
       </style>
-      <vaadin23-message-avatar
-        part="avatar"
-        name="[[userName]]"
-        abbr="[[userAbbr]]"
-        img="[[userImg]]"
-        color-index="[[userColorIndex]]"
-        tabindex="-1"
-        aria-hidden="true"
-      ></vaadin23-message-avatar>
+      <slot name="avatar"></slot>
       <div part="content">
         <div part="header">
           <span part="name">[[userName]]</span>
@@ -175,7 +172,37 @@ class Message extends FocusMixin(ElementMixin(ThemableMixin(PolymerElement))) {
   }
 
   static get is() {
-    return 'vaadin23-message';
+    return 'vaadin24-message';
+  }
+
+  static get observers() {
+    return ['__avatarChanged(_avatar, userName, userAbbr, userImg, userColorIndex)'];
+  }
+
+  /** @protected */
+  ready() {
+    super.ready();
+
+    this._avatarController = new SlotController(this, 'avatar', 'vaadin24-avatar', {
+      initializer: (avatar) => {
+        avatar.setAttribute('tabindex', '-1');
+        avatar.setAttribute('aria-hidden', 'true');
+        this._avatar = avatar;
+      },
+    });
+    this.addController(this._avatarController);
+  }
+
+  /** @private */
+  __avatarChanged(avatar, userName, userAbbr, userImg, userColorIndex) {
+    if (avatar) {
+      avatar.setProperties({
+        name: userName,
+        abbr: userAbbr,
+        img: userImg,
+        colorIndex: userColorIndex,
+      });
+    }
   }
 }
 

@@ -10,16 +10,16 @@ A web component for displaying a vertically stacked set of expandable panels.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-accordion>
-  <vaadin23-accordion-panel theme="filled">
-    <div slot="summary">Accordion Panel 1</div>
+<vaadin24-accordion>
+  <vaadin24-accordion-panel theme="filled">
+    <vaadin24-accordion-heading slot="summary">Accordion Panel 1</vaadin24-accordion-heading>
     <div>Accordion is a set of expandable sections.</div>
-  </vaadin23-accordion-panel>
-  <vaadin23-accordion-panel theme="filled">
-    <div slot="summary">Accordion Panel 2</div>
+  </vaadin24-accordion-panel>
+  <vaadin24-accordion-panel theme="filled">
+    <vaadin24-accordion-heading slot="summary">Accordion Panel 2</vaadin24-accordion-heading>
     <div>Only one accordion panel can be opened.</div>
-  </vaadin23-accordion-panel>
-</vaadin23-accordion>
+  </vaadin24-accordion-panel>
+</vaadin24-accordion>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/accordion/screenshot.png" alt="Screenshot of vaadin-accordion" width="900">](https://vaadin.com/docs/latest/components/accordion)

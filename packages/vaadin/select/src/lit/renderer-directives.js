@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { directive } from 'lit/directive.js';
@@ -32,7 +32,7 @@ export class SelectRendererDirective extends LitRendererDirective {
 }
 
 /**
- * A Lit directive for populating the content of the `<vaadin23-select-overlay>` element.
+ * A Lit directive for populating the content of the `<vaadin24-select-overlay>` element.
  *
  * The directive accepts a renderer callback returning a Lit template and assigns it to the select
  * via the `renderer` property. The renderer is called once to populate the content when assigned
@@ -48,9 +48,9 @@ export class SelectRendererDirective extends LitRendererDirective {
  *
  * Example of usage:
  * ```js
- * `<vaadin23-select
+ * `<vaadin24-select
  *   ${selectRenderer((select) => html`...`)}
- * ></vaadin23-select>`
+ * ></vaadin24-select>`
  * ```
  *
  * @param renderer the renderer callback that returns a Lit template.

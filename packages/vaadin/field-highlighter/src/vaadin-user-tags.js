@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-user-tag.js';
@@ -22,14 +22,14 @@ const listenOnce = (elem, type) => {
 };
 
 /**
- * An element used internally by `<vaadin23-field-highlighter>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @private
  */
 export class UserTags extends PolymerElement {
   static get is() {
-    return 'vaadin23-user-tags';
+    return 'vaadin24-user-tags';
   }
 
   static get template() {
@@ -39,13 +39,13 @@ export class UserTags extends PolymerElement {
           position: absolute;
         }
       </style>
-      <vaadin23-user-tags-overlay
+      <vaadin24-user-tags-overlay
         id="overlay"
         modeless
         opened="[[opened]]"
         no-vertical-overlap
         on-vaadin-overlay-open="_onOverlayOpen"
-      ></vaadin23-user-tags-overlay>
+      ></vaadin24-user-tags-overlay>
     `;
   }
 
@@ -130,6 +130,11 @@ export class UserTags extends PolymerElement {
   }
 
   /** @protected */
+  get wrapper() {
+    return this.$.overlay.querySelector('[part="tags"]');
+  }
+
+  /** @protected */
   connectedCallback() {
     super.connectedCallback();
 
@@ -209,12 +214,8 @@ export class UserTags extends PolymerElement {
     }
   }
 
-  get wrapper() {
-    return this.$.overlay.content.querySelector('[part="tags"]');
-  }
-
   createUserTag(user) {
-    const tag = document.createElement('vaadin23-user-tag');
+    const tag = document.createElement('vaadin24-user-tag');
     tag.name = user.name;
     tag.uid = user.id;
     tag.colorIndex = user.colorIndex;
@@ -236,9 +237,9 @@ export class UserTags extends PolymerElement {
     const usersToRemove = [];
 
     splices.forEach((splice) => {
-      for (let i = 0; i < splice.removed.length; i++) {
-        usersToRemove.push(splice.removed[i]);
-      }
+      splice.removed.forEach((user) => {
+        usersToRemove.push(user);
+      });
 
       for (let i = splice.addedCount - 1; i >= 0; i--) {
         usersToAdd.push(users[splice.index + i]);
@@ -291,15 +292,17 @@ export class UserTags extends PolymerElement {
 
     // Check if flash queue contains pending tags for removed users
     if (this.__flashQueue.length > 0) {
-      for (let i = 0; i < removedUsers.length; i++) {
+      removedUsers.forEach((user, i) => {
         if (changedTags.removed[i] === null) {
-          for (let j = 0; j < this.__flashQueue.length; j++) {
-            if (this.__flashQueue[j].some((tag) => tag.uid === removedUsers[i].id)) {
-              this.splice('__flashQueue', i, 1);
-            }
-          }
+          return;
         }
-      }
+
+        this.__flashQueue.forEach((tags) => {
+          if (tags.some((tag) => tag.uid === user.id)) {
+            this.splice('__flashQueue', i, 1);
+          }
+        });
+      });
     }
 
     if (this.opened && this.hasFocus) {

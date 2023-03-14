@@ -10,7 +10,7 @@ An input field web component that only accepts numeric input.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-number-field label="Balance"></vaadin23-number-field>
+<vaadin24-number-field label="Balance"></vaadin24-number-field>
 ```
 
 ## Installation

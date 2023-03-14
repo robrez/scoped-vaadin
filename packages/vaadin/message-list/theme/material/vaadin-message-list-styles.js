@@ -4,7 +4,7 @@ import './vaadin-message-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-message-list',
+  'vaadin24-message-list',
   css`
     [part='list'] {
       padding: 8px 0;

@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-contextmenu-event.js';
@@ -12,12 +12,13 @@ import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mi
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { addListener, gestures, removeListener } from '@scoped-vaadin/component-base/src/gestures.js';
 import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
 
 /**
- * `<vaadin23-context-menu>` is a Web Component for creating context menus.
+ * `<vaadin24-context-menu>` is a Web Component for creating context menus.
  *
  * ### Items
  *
@@ -25,25 +26,25 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * If a menu item has a non-empty `children` set, a sub-menu with the child items is opened
  * next to the parent menu on mouseover, tap or a right arrow keypress.
  *
- * When an item is selected, `<vaadin23-context-menu>` dispatches an "item-selected" event
+ * When an item is selected, `<vaadin24-context-menu>` dispatches an "item-selected" event
  * with the selected item as `event.detail.value` property.
  *
  * ```javascript
  * contextMenu.items = [
- *   {text: 'Menu Item 1', theme: 'primary', children:
+ *   { text: 'Menu Item 1', theme: 'primary', children:
  *     [
- *       {text: 'Menu Item 1-1', checked: true},
- *       {text: 'Menu Item 1-2'}
+ *       { text: 'Menu Item 1-1', checked: true },
+ *       { text: 'Menu Item 1-2' }
  *     ]
  *   },
- *   {component: 'hr'},
- *   {text: 'Menu Item 2', children:
+ *   { component: 'hr' },
+ *   { text: 'Menu Item 2', children:
  *     [
- *       {text: 'Menu Item 2-1'},
- *       {text: 'Menu Item 2-2', disabled: true}
+ *       { text: 'Menu Item 2-1' },
+ *       { text: 'Menu Item 2-2', disabled: true }
  *     ]
  *   },
- *   {text: 'Menu Item 3', disabled: true}
+ *   { text: 'Menu Item 3', disabled: true }
  * ];
  *
  * contextMenu.addEventListener('item-selected', e => {
@@ -64,22 +65,22 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * new content, the renderer function should check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-context-menu id="contextMenu">
+ * <vaadin24-context-menu id="contextMenu">
  *  <p>This paragraph has a context menu.</p>
- * </vaadin23-context-menu>
+ * </vaadin24-context-menu>
  * ```
  * ```js
  * const contextMenu = document.querySelector('#contextMenu');
  * contextMenu.renderer = (root, contextMenu, context) => {
  *   let listBox = root.firstElementChild;
  *   if (!listBox) {
- *     listBox = document.createElement('vaadin23-list-box');
+ *     listBox = document.createElement('vaadin24-list-box');
  *     root.appendChild(listBox);
  *   }
  *
- *   let item = listBox.querySelector('vaadin23-item');
+ *   let item = listBox.querySelector('vaadin24-item');
  *   if (!item) {
- *     item = document.createElement('vaadin23-item');
+ *     item = document.createElement('vaadin24-item');
  *     listBox.appendChild(item);
  *   }
  *   item.textContent = 'Content of the selector: ' + context.target.textContent;
@@ -94,24 +95,24 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * in the next renderer call and will be provided with the `root` argument.
  * On first call it will be empty.
  *
- * ### “vaadin-contextmenu” Gesture Event
+ * ### `vaadin-contextmenu` Gesture Event
  *
  * `vaadin-contextmenu` is a gesture event (a custom event),
  * which is dispatched after either `contextmenu` or long touch events.
  * This enables support for both mouse and touch environments in a uniform way.
  *
- * `<vaadin23-context-menu>` opens the menu overlay on the `vaadin-contextmenu`
+ * `<vaadin24-context-menu>` opens the menu overlay on the `vaadin-contextmenu`
  * event by default.
  *
  * ### Menu Listener
  *
- * By default, the `<vaadin23-context-menu>` element listens for the menu opening
+ * By default, the `<vaadin24-context-menu>` element listens for the menu opening
  * event on itself. In case if you do not want to wrap the target, you can listen for
- * events on an element outside the `<vaadin23-context-menu>` by setting the
+ * events on an element outside the `<vaadin24-context-menu>` by setting the
  * `listenOn` property:
  *
  * ```html
- * <vaadin23-context-menu id="contextMenu"></vaadin23-context-menu>
+ * <vaadin24-context-menu id="contextMenu"></vaadin24-context-menu>
  *
  * <div id="menuListener">The element that listens for the contextmenu event.</div>
  * ```
@@ -129,10 +130,10 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * In the following example, only the elements matching `.has-menu` will open the context menu:
  *
  * ```html
- * <vaadin23-context-menu selector=".has-menu">
+ * <vaadin24-context-menu selector=".has-menu">
  *   <p class="has-menu">This paragraph opens the context menu</p>
  *   <p>This paragraph does not open the context menu</p>
- * </vaadin23-context-menu>
+ * </vaadin24-context-menu>
  * ```
  *
  * ### Menu Context
@@ -147,26 +148,26 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * of the element that opened the menu:
  *
  * ```html
- * <vaadin23-context-menu selector="li" id="contextMenu">
+ * <vaadin24-context-menu selector="li" id="contextMenu">
  *   <ul>
  *     <li>Foo</li>
  *     <li>Bar</li>
  *     <li>Baz</li>
  *   </ul>
- * </vaadin23-context-menu>
+ * </vaadin24-context-menu>
  * ```
  * ```js
  * const contextMenu = document.querySelector('#contextMenu');
  * contextMenu.renderer = (root, contextMenu, context) => {
  *   let listBox = root.firstElementChild;
  *   if (!listBox) {
- *     listBox = document.createElement('vaadin23-list-box');
+ *     listBox = document.createElement('vaadin24-list-box');
  *     root.appendChild(listBox);
  *   }
  *
- *   let item = listBox.querySelector('vaadin23-item');
+ *   let item = listBox.querySelector('vaadin24-item');
  *   if (!item) {
- *     item = document.createElement('vaadin23-item');
+ *     item = document.createElement('vaadin24-item');
  *     listBox.appendChild(item);
  *   }
  *   item.textContent = 'The menu target: ' + context.target.textContent;
@@ -175,23 +176,23 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  *
  * ### Styling
  *
- * `<vaadin23-context-menu>` uses `<vaadin23-context-menu-overlay>` internal
+ * `<vaadin24-context-menu>` uses `<vaadin24-context-menu-overlay>` internal
  * themable component as the actual visible context menu overlay.
  *
- * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay)
- * documentation for `<vaadin23-context-menu-overlay>` stylable parts.
+ * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay)
+ * documentation for `<vaadin24-context-menu-overlay>` stylable parts.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * ### Internal components
  *
- * When using `items` API, in addition `<vaadin23-context-menu-overlay>`, the following
+ * When using `items` API, in addition `<vaadin24-context-menu-overlay>`, the following
  * internal components are themable:
  *
- * - `<vaadin23-context-menu-item>` - has the same API as [`<vaadin23-item>`](#/elements/vaadin-item).
- * - `<vaadin23-context-menu-list-box>` - has the same API as [`<vaadin23-list-box>`](#/elements/vaadin-list-box).
+ * - `<vaadin24-context-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
+ * - `<vaadin24-context-menu-list-box>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
  *
- * Note: the `theme` attribute value set on `<vaadin23-context-menu>` is
+ * Note: the `theme` attribute value set on `<vaadin24-context-menu>` is
  * propagated to the internal components listed above.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
@@ -200,10 +201,13 @@ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ControllerMixin
+ * @mixes OverlayClassMixin
  * @mixes ThemePropertyMixin
  * @mixes ItemsMixin
  */
-class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsMixin(PolymerElement)))) {
+class ContextMenu extends OverlayClassMixin(
+  ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsMixin(PolymerElement)))),
+) {
   static get template() {
     return html`
       <style>
@@ -218,21 +222,21 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
 
       <slot id="slot"></slot>
 
-      <vaadin23-context-menu-overlay
+      <vaadin24-context-menu-overlay
         id="overlay"
         on-opened-changed="_onOverlayOpened"
         on-vaadin-overlay-open="_onVaadinOverlayOpen"
+        modeless="[[_modeless]]"
         with-backdrop="[[_phone]]"
         phone$="[[_phone]]"
         model="[[_context]]"
         theme$="[[_theme]]"
-      >
-      </vaadin23-context-menu-overlay>
+      ></vaadin24-context-menu-overlay>
     `;
   }
 
   static get is() {
-    return 'vaadin23-context-menu';
+    return 'vaadin24-context-menu';
   }
 
   static get properties() {
@@ -296,7 +300,7 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
        * Receives three arguments:
        *
        * - `root` The root container DOM element. Append your content to it.
-       * - `contextMenu` The reference to the `<vaadin23-context-menu>` element.
+       * - `contextMenu` The reference to the `<vaadin24-context-menu>` element.
        * - `context` The object with the menu context, contains:
        *   - `context.target`  the target of the menu opening event,
        *   - `context.detail` the menu opening event detail.
@@ -306,14 +310,16 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
         type: Function,
       },
 
+      /**
+       * When true, the menu overlay is modeless.
+       * @protected
+       */
+      _modeless: {
+        type: Boolean,
+      },
+
       /** @private */
       _context: Object,
-
-      /** @private */
-      _boundClose: Object,
-
-      /** @private */
-      _boundOpen: Object,
 
       /** @private */
       _phone: {
@@ -352,6 +358,7 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
     super();
     this._boundOpen = this.open.bind(this);
     this._boundClose = this.close.bind(this);
+    this._boundPreventDefault = this._preventDefault.bind(this);
     this._boundOnGlobalContextMenu = this._onGlobalContextMenu.bind(this);
   }
 
@@ -446,22 +453,19 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
 
   /** @private */
   _closeOnChanged(closeOn, oldCloseOn) {
-    // Listen on this.$.overlay.root to workaround issue on
-    //  ShadyDOM polyfill: https://github.com/webcomponents/shadydom/issues/159
-
     // Outside click event from overlay
     const evtOverlay = 'vaadin-overlay-outside-click';
 
+    const overlay = this.$.overlay;
+
     if (oldCloseOn) {
-      this._unlisten(this.$.overlay, oldCloseOn, this._boundClose);
-      this._unlisten(this.$.overlay.root, oldCloseOn, this._boundClose);
+      this._unlisten(overlay, oldCloseOn, this._boundClose);
     }
     if (closeOn) {
-      this._listen(this.$.overlay, closeOn, this._boundClose);
-      this._listen(this.$.overlay.root, closeOn, this._boundClose);
-      this._unlisten(this.$.overlay, evtOverlay, this._preventDefault);
+      this._listen(overlay, closeOn, this._boundClose);
+      overlay.removeEventListener(evtOverlay, this._boundPreventDefault);
     } else {
-      this._listen(this.$.overlay, evtOverlay, this._preventDefault);
+      overlay.addEventListener(evtOverlay, this._boundPreventDefault);
     }
   }
 
@@ -546,7 +550,7 @@ class ContextMenu extends ControllerMixin(ElementMixin(ThemePropertyMixin(ItemsM
       };
 
       if (this._context.target) {
-        this._preventDefault(e);
+        e.preventDefault();
         e.stopPropagation();
 
         // Used in alignment which is delayed until overlay is rendered

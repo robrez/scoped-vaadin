@@ -10,10 +10,10 @@ A web component for rendering a long list of items without sacrificing performan
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-virtual-list></vaadin23-virtual-list>
+<vaadin24-virtual-list></vaadin24-virtual-list>
 
 <script>
-  const list = document.querySelector('vaadin23-virtual-list');
+  const list = document.querySelector('vaadin24-virtual-list');
   list.items = items; // An array of data items
   list.renderer = (root, list, { item, index }) => {
     root.textContent = `#${index}: ${item.name}`;

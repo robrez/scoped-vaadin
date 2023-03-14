@@ -31,4 +31,4 @@ const verticalLayout = css`
   }
 `;
 
-registerStyles('vaadin23-vertical-layout', verticalLayout, { moduleId: 'lumo-vertical-layout' });
+registerStyles('vaadin24-vertical-layout', verticalLayout, { moduleId: 'lumo-vertical-layout' });

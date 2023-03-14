@@ -1,9 +1,11 @@
 import '@scoped-vaadin/vaadin-material-styles/color.js';
+import { item } from '@scoped-vaadin/item/theme/material/vaadin-item-styles.js';
+import { listBox } from '@scoped-vaadin/list-box/theme/material/vaadin-list-box-styles.js';
 import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-avatar-group',
+  'vaadin24-avatar-group',
   css`
     :host {
       --vaadin-avatar-size: 2.25rem;
@@ -42,45 +44,35 @@ const avatarGroupOverlay = css`
   }
 `;
 
-registerStyles('vaadin23-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
+registerStyles('vaadin24-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
   moduleId: 'material-avatar-group-overlay',
 });
 
-registerStyles(
-  'vaadin23-avatar-group-list-box',
-  css`
-    [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
-      padding: 8px;
-      padding-right: 24px;
-    }
-
-    :host([dir='rtl']) [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
-      padding: 8px;
-      padding-left: 24px;
-    }
-  `,
-  { moduleId: 'material-avatar-group-list-box' },
-);
+registerStyles('vaadin24-avatar-group-menu', listBox, { moduleId: 'material-avatar-group-menu' });
 
 registerStyles(
-  'vaadin23-item',
-  css`
-    :host([theme='avatar-group-item']) [part='content'] {
-      display: flex;
-      align-items: center;
-    }
+  'vaadin24-avatar-group-menu-item',
+  [
+    item,
+    css`
+      :host {
+        padding: 8px;
+        padding-inline-end: 24px;
+      }
 
-    :host([theme='avatar-group-item']) [part='checkmark']::before {
-      display: none;
-    }
+      [part='content'] {
+        display: flex;
+        align-items: center;
+      }
 
-    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin-avatar) {
-      margin-right: 8px;
-    }
+      [part='checkmark']::before {
+        display: none;
+      }
 
-    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin-avatar) {
-      margin-left: 8px;
-    }
-  `,
-  { moduleId: 'material-avatar-group-item' },
+      [part='content'] ::slotted(vaadin-avatar) {
+        margin-inline-end: 8px;
+      }
+    `,
+  ],
+  { moduleId: 'material-avatar-group-menu-item' },
 );

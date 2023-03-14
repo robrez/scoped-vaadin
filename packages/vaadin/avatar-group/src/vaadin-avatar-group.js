@@ -1,37 +1,40 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2020 - 2022 Vaadin Ltd.
+ * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import '@polymer/polymer/lib/elements/dom-repeat.js';
 import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
-import '@scoped-vaadin/item/src/vaadin-item.js';
-import './vaadin-avatar-group-list-box.js';
+import './vaadin-avatar-group-menu.js';
+import './vaadin-avatar-group-menu-item.js';
 import './vaadin-avatar-group-overlay.js';
 import { calculateSplices } from '@polymer/polymer/lib/utils/array-splice.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html, render } from 'lit';
 import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const MINIMUM_DISPLAYED_AVATARS = 2;
 
 /**
- * `<vaadin23-avatar-group>` is a Web Component providing avatar group displaying functionality.
+ * `<vaadin24-avatar-group>` is a Web Component providing avatar group displaying functionality.
  *
  * To create the avatar group, first add the component to the page:
  *
  * ```
- * <vaadin23-avatar-group></vaadin23-avatar-group>
+ * <vaadin24-avatar-group></vaadin24-avatar-group>
  * ```
  *
  * And then use [`items`](#/elements/vaadin-avatar-group#property-items) property to initialize the structure:
  *
  * ```
- * document.querySelector('vaadin23-avatar-group').items = [
+ * document.querySelector('vaadin24-avatar-group').items = [
  *   {name: 'John Doe'},
  *   {abbr: 'AB'}
  * ];
@@ -44,26 +47,31 @@ const MINIMUM_DISPLAYED_AVATARS = 2;
  * Part name   | Description
  * ----------- | ---------------
  * `container` | The container element
- * `avatar`    | Individual avatars
+ *
+ * See the [`<vaadin24-avatar>`](#/elements/vaadin-avatar) documentation for the available
+ * state attributes and stylable shadow parts of avatar elements.
  *
  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
  *
  * ### Internal components
  *
- * In addition to `<vaadin23-avatar-group>` itself, the following internal
+ * In addition to `<vaadin24-avatar-group>` itself, the following internal
  * components are themable:
  *
- * - `<vaadin23-avatar-group-list-box>` - has the same API as [`<vaadin23-list-box>`](#/elements/vaadin-list-box).
- * - `<vaadin23-avatar-group-overlay>` - has the same API as [`<vaadin23-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-avatar-group-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+ * - `<vaadin24-avatar-group-menu>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
+ * - `<vaadin24-avatar-group-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
  *
  * @extends HTMLElement
+ * @mixes ControllerMixin
  * @mixes ElementMixin
+ * @mixes OverlayClassMixin
  * @mixes ThemableMixin
  * @mixes ResizeMixin
  */
-class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement))))) {
   static get template() {
-    return html`
+    return legacyHtml`
       <style>
         :host {
           display: block;
@@ -83,7 +91,7 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
           flex-wrap: nowrap;
         }
 
-        [part='avatar']:not(:first-child) {
+        ::slotted(vaadin-avatar:not(:first-child)) {
           -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox=%220 0 300 300%22 fill=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22><path fill-rule=%22evenodd%22 clip-rule=%22evenodd%22 d=%22M300 0H0V300H300V0ZM150 200C177.614 200 200 177.614 200 150C200 122.386 177.614 100 150 100C122.386 100 100 122.386 100 150C100 177.614 122.386 200 150 200Z%22 fill=%22black%22/></svg>');
           mask-image: url('data:image/svg+xml;utf8,<svg viewBox=%220 0 300 300%22 fill=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22><path fill-rule=%22evenodd%22 clip-rule=%22evenodd%22 d=%22M300 0H0V300H300V0ZM150 200C177.614 200 200 177.614 200 150C200 122.386 177.614 100 150 100C122.386 100 100 122.386 100 150C100 177.614 122.386 200 150 200Z%22 fill=%22black%22/></svg>');
           -webkit-mask-size: calc(
@@ -94,13 +102,13 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
           );
         }
 
-        [part='avatar']:not([dir='rtl']):not(:first-child) {
+        ::slotted(vaadin-avatar:not([dir='rtl']):not(:first-child)) {
           margin-left: calc(var(--vaadin-avatar-group-overlap) * -1 - var(--vaadin-avatar-outline-width));
           -webkit-mask-position: calc(50% - var(--vaadin-avatar-size) + var(--vaadin-avatar-group-overlap));
           mask-position: calc(50% - var(--vaadin-avatar-size) + var(--vaadin-avatar-group-overlap));
         }
 
-        [part='avatar'][dir='rtl']:not(:first-child) {
+        ::slotted(vaadin-avatar[dir='rtl']:not(:first-child)) {
           margin-right: calc(var(--vaadin-avatar-group-overlap) * -1);
           -webkit-mask-position: calc(
             50% + var(--vaadin-avatar-size) - var(--vaadin-avatar-group-overlap) + var(--vaadin-avatar-outline-width)
@@ -111,63 +119,21 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
         }
       </style>
       <div id="container" part="container">
-        <template id="items" is="dom-repeat" items="[[__computeItems(items.*, __itemsInView, maxItemsVisible)]]">
-          <vaadin23-avatar
-            name="[[item.name]]"
-            abbr="[[item.abbr]]"
-            img="[[item.img]]"
-            part="avatar"
-            theme$="[[_theme]]"
-            i18n="[[i18n]]"
-            color-index="[[item.colorIndex]]"
-            with-tooltip
-          ></vaadin23-avatar>
-        </template>
-        <vaadin23-avatar
-          id="overflow"
-          part="avatar"
-          hidden$="[[__computeMoreHidden(items.length, __itemsInView, __maxReached)]]"
-          abbr="[[__computeMore(items.length, __itemsInView, maxItemsVisible)]]"
-          theme$="[[_theme]]"
-          on-click="_onOverflowClick"
-          on-keydown="_onOverflowKeyDown"
-          aria-haspopup="listbox"
-        >
-          <vaadin23-tooltip slot="tooltip" generator="[[__overflowTextGenerator]]"></vaadin23-tooltip>
-        </vaadin23-avatar>
+        <slot></slot>
+        <slot name="overflow"></slot>
       </div>
-      <vaadin23-avatar-group-overlay
+      <vaadin24-avatar-group-overlay
         id="overlay"
         opened="{{_opened}}"
+        position-target="[[_overflow]]"
         no-vertical-overlap
         on-vaadin-overlay-close="_onVaadinOverlayClose"
-      >
-        <template>
-          <vaadin23-avatar-group-list-box on-keydown="_onListKeyDown">
-            <template is="dom-repeat" items="[[__computeExtraItems(items.*, __itemsInView, maxItemsVisible)]]">
-              <vaadin23-item theme="avatar-group-item">
-                <vaadin23-avatar
-                  name="[[item.name]]"
-                  abbr="[[item.abbr]]"
-                  img="[[item.img]]"
-                  i18n="[[i18n]]"
-                  part="avatar"
-                  theme$="[[_theme]]"
-                  color-index="[[item.colorIndex]]"
-                  tabindex="-1"
-                  aria-hidden="true"
-                ></vaadin23-avatar>
-                [[item.name]]
-              </vaadin23-item>
-            </template>
-          </vaadin23-avatar-group-list-box>
-        </template>
-      </vaadin23-avatar-group-overlay>
+      ></vaadin24-avatar-group-overlay>
     `;
   }
 
   static get is() {
-    return 'vaadin23-avatar-group';
+    return 'vaadin24-avatar-group';
   }
 
   static get properties() {
@@ -256,9 +222,20 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
       },
 
       /** @private */
+      _avatars: {
+        type: Array,
+        value: () => [],
+      },
+
+      /** @private */
       __maxReached: {
         type: Boolean,
         computed: '__computeMaxReached(items.length, maxItemsVisible)',
+      },
+
+      /** @private */
+      __items: {
+        type: Array,
       },
 
       /** @private */
@@ -268,22 +245,39 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
       },
 
       /** @private */
-      _opened: {
-        type: Boolean,
-        observer: '__openedChanged',
-        value: false,
+      _overflow: {
+        type: Object,
       },
 
       /** @private */
-      __overflowTextGenerator: Object,
+      _overflowItems: {
+        type: Array,
+        observer: '__overflowItemsChanged',
+        computed: '__computeOverflowItems(items.*, __itemsInView, maxItemsVisible)',
+      },
+
+      /** @private */
+      _overflowTooltip: {
+        type: Object,
+      },
+
+      /** @private */
+      _opened: {
+        type: Boolean,
+        observer: '__openedChanged',
+      },
     };
   }
 
   static get observers() {
     return [
-      '__computeMoreTooltip(items.length, __itemsInView, maxItemsVisible)',
       '__itemsChanged(items.splices, items.*)',
       '__i18nItemsChanged(i18n.*, items.length)',
+      '__updateAvatarsTheme(_overflow, _avatars, _theme)',
+      '__updateAvatars(items.*, __itemsInView, maxItemsVisible, _overflow, i18n)',
+      '__updateOverflowAbbr(_overflow, items.length, __itemsInView, maxItemsVisible)',
+      '__updateOverflowHidden(_overflow, items.length, __itemsInView, __maxReached)',
+      '__updateOverflowTooltip(_overflowTooltip, items.length, __itemsInView, maxItemsVisible)',
     ];
   }
 
@@ -291,8 +285,26 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   ready() {
     super.ready();
 
-    this._overlayElement = this.shadowRoot.querySelector('vaadin23-avatar-group-overlay');
-    this._overlayElement.positionTarget = this.$.overflow;
+    this._overflowController = new SlotController(this, 'overflow', 'vaadin24-avatar', {
+      initializer: (overflow) => {
+        overflow.setAttribute('aria-haspopup', 'menu');
+        overflow.setAttribute('aria-expanded', 'false');
+        overflow.addEventListener('click', (e) => this._onOverflowClick(e));
+        overflow.addEventListener('keydown', (e) => this._onOverflowKeyDown(e));
+
+        const tooltip = document.createElement('vaadin24-tooltip');
+        tooltip.setAttribute('slot', 'tooltip');
+        overflow.appendChild(tooltip);
+
+        this._overflow = overflow;
+        this._overflowTooltip = tooltip;
+      },
+    });
+    this.addController(this._overflowController);
+
+    const overlay = this.$.overlay;
+    overlay.renderer = this.__overlayRenderer.bind(this);
+    this._overlayElement = overlay;
 
     afterNextRender(this, () => {
       this.__setItemsInView();
@@ -306,17 +318,62 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
     this._opened = false;
   }
 
-  /**
-   * @return {!Array<!HTMLElement>}
-   * @protected
-   */
-  get _avatars() {
-    return this.shadowRoot.querySelectorAll('vaadin23-avatar');
-  }
-
   /** @private */
   __getMessage(user, action) {
     return action.replace('{user}', user.name || user.abbr || this.i18n.anonymous);
+  }
+
+  /**
+   * Renders items when they are provided by the `items` property and clears the content otherwise.
+   * @param {!HTMLElement} root
+   * @param {!Select} _select
+   * @private
+   */
+  __overlayRenderer(root) {
+    let menu = root.firstElementChild;
+    if (!menu) {
+      menu = document.createElement('vaadin24-avatar-group-menu');
+      menu.addEventListener('keydown', (event) => this._onListKeyDown(event));
+      root.appendChild(menu);
+    }
+
+    menu.textContent = '';
+
+    if (!this._overflowItems) {
+      return;
+    }
+
+    this._overflowItems.forEach((item) => {
+      menu.appendChild(this.__createItemElement(item));
+    });
+  }
+
+  /** @private */
+  __createItemElement(item) {
+    const itemElement = document.createElement('vaadin24-avatar-group-menu-item');
+
+    const avatar = document.createElement('vaadin24-avatar');
+    itemElement.appendChild(avatar);
+
+    avatar.setAttribute('aria-hidden', 'true');
+    avatar.setAttribute('tabindex', '-1');
+    avatar.i18n = this.i18n;
+
+    if (this._theme) {
+      avatar.setAttribute('theme', this._theme);
+    }
+
+    avatar.name = item.name;
+    avatar.abbr = item.abbr;
+    avatar.img = item.img;
+    avatar.colorIndex = item.colorIndex;
+
+    if (item.name) {
+      const text = document.createTextNode(item.name);
+      itemElement.appendChild(text);
+    }
+
+    return itemElement;
   }
 
   /** @private */
@@ -332,7 +389,7 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   /** @private */
   _onOverflowKeyDown(e) {
     if (!this._opened) {
-      if (/^(Enter|SpaceBar|\s)$/.test(e.key)) {
+      if (/^(Enter|SpaceBar|\s)$/u.test(e.key)) {
         e.preventDefault();
         this._opened = true;
       }
@@ -341,7 +398,7 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
 
   /** @private */
   _onListKeyDown(event) {
-    if (event.key === 'Escape' || event.key === 'Esc' || /^(Tab)$/.test(event.key)) {
+    if (event.key === 'Escape' || event.key === 'Tab') {
       this._opened = false;
     }
   }
@@ -362,17 +419,47 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   }
 
   /** @private */
-  __computeItems(arr, itemsInView, maxItemsVisible) {
-    const items = arr.base || [];
-    const limit = this.__getLimit(items.length, itemsInView, maxItemsVisible);
-    return limit ? items.slice(0, limit) : items;
+  __renderAvatars(items) {
+    render(
+      html`
+        ${items.map(
+          (item) =>
+            html`
+              <vaadin24-avatar
+                .name="${item.name}"
+                .abbr="${item.abbr}"
+                .img="${item.img}"
+                .colorIndex="${item.colorIndex}"
+                .i18n="${this.i18n}"
+                with-tooltip
+              ></vaadin24-avatar>
+            `,
+        )}
+      `,
+      this,
+      { renderBefore: this._overflow },
+    );
   }
 
   /** @private */
-  __computeExtraItems(arr, itemsInView, maxItemsVisible) {
+  __updateAvatars(arr, itemsInView, maxItemsVisible, overflow) {
+    if (!overflow) {
+      return;
+    }
+
     const items = arr.base || [];
     const limit = this.__getLimit(items.length, itemsInView, maxItemsVisible);
-    return limit ? items.slice(limit) : items;
+
+    this.__renderAvatars(limit ? items.slice(0, limit) : items);
+
+    this._avatars = [...this.querySelectorAll('vaadin24-avatar')];
+  }
+
+  /** @private */
+  __computeOverflowItems(arr, itemsInView, maxItemsVisible) {
+    const items = arr.base || [];
+    const limit = this.__getLimit(items.length, itemsInView, maxItemsVisible);
+    return limit ? items.slice(limit) : [];
   }
 
   /** @private */
@@ -381,21 +468,43 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   }
 
   /** @private */
-  __computeMore(items, itemsInView, maxItemsVisible) {
-    return `+${items - this.__getLimit(items, itemsInView, maxItemsVisible)}`;
+  __updateOverflowAbbr(overflow, items, itemsInView, maxItemsVisible) {
+    if (overflow) {
+      overflow.abbr = `+${items - this.__getLimit(items, itemsInView, maxItemsVisible)}`;
+    }
   }
 
   /** @private */
-  __computeMoreHidden(items, itemsInView, maxReached) {
-    return !maxReached && !(itemsInView && itemsInView < items);
+  __updateOverflowHidden(overflow, items, itemsInView, maxReached) {
+    if (overflow) {
+      overflow.toggleAttribute('hidden', !maxReached && !(itemsInView && itemsInView < items));
+    }
   }
 
   /** @private */
-  __computeMoreTooltip(items, itemsInView, maxItemsVisible) {
+  __updateAvatarsTheme(overflow, avatars, theme) {
+    if (overflow) {
+      [overflow, ...avatars].forEach((avatar) => {
+        if (theme) {
+          avatar.setAttribute('theme', theme);
+        } else {
+          avatar.removeAttribute('theme');
+        }
+      });
+    }
+  }
+
+  /** @private */
+  __updateOverflowTooltip(tooltip, items, itemsInView, maxItemsVisible) {
+    if (!tooltip) {
+      return;
+    }
+
     const limit = this.__getLimit(items, itemsInView, maxItemsVisible);
     if (limit == null) {
       return;
     }
+
     const result = [];
     for (let i = limit; i < items; i++) {
       const item = this.items[i];
@@ -403,8 +512,8 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
         result.push(item.name || item.abbr || 'anonymous');
       }
     }
-    // Override generated tooltip text
-    this.__overflowTextGenerator = () => result.join('\n');
+
+    tooltip.text = result.join('\n');
   }
 
   /** @private */
@@ -429,7 +538,6 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   /** @private */
   __itemsChanged(splices, itemsChange) {
     const items = itemsChange.base;
-    this.$.items.render();
     this.__setItemsInView();
 
     // Mutation using group.splice('items')
@@ -477,6 +585,10 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
       if (base.activeUsers[field]) {
         this.setAttribute('aria-label', base.activeUsers[field].replace('{count}', items || 0));
       }
+
+      this._avatars.forEach((avatar) => {
+        avatar.i18n = base;
+      });
     }
   }
 
@@ -484,20 +596,26 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
   __openedChanged(opened, wasOpened) {
     if (opened) {
       if (!this._menuElement) {
-        this._menuElement = this._overlayElement.content.querySelector('vaadin23-avatar-group-list-box');
-        this._menuElement.setAttribute('role', 'listbox');
+        this._menuElement = this.$.overlay.querySelector('vaadin24-avatar-group-menu');
       }
 
-      this._openedWithFocusRing = this.$.overflow.hasAttribute('focus-ring');
+      this._openedWithFocusRing = this._overflow.hasAttribute('focus-ring');
 
       this._menuElement.focus();
     } else if (wasOpened) {
-      this.$.overflow.focus();
+      this._overflow.focus();
       if (this._openedWithFocusRing) {
-        this.$.overflow.setAttribute('focus-ring', '');
+        this._overflow.setAttribute('focus-ring', '');
       }
     }
-    this.$.overflow.setAttribute('aria-expanded', opened === true);
+    this._overflow.setAttribute('aria-expanded', opened === true);
+  }
+
+  /** @private */
+  __overflowItemsChanged(items, oldItems) {
+    if (items || oldItems) {
+      this.$.overlay.requestContentUpdate();
+    }
   }
 
   /** @private */
@@ -542,10 +660,9 @@ class AvatarGroup extends ResizeMixin(ElementMixin(ThemableMixin(PolymerElement)
     // Take negative margin into account
     const { marginLeft, marginRight } = getComputedStyle(avatars[1]);
 
-    const offset =
-      this.getAttribute('dir') === 'rtl'
-        ? parseInt(marginRight, 0) - parseInt(marginLeft, 0)
-        : parseInt(marginLeft, 0) - parseInt(marginRight, 0);
+    const offset = this.__isRTL
+      ? parseInt(marginRight, 0) - parseInt(marginLeft, 0)
+      : parseInt(marginLeft, 0) - parseInt(marginRight, 0);
 
     return Math.floor((this.$.container.offsetWidth - avatarWidth) / (avatarWidth + offset));
   }

@@ -10,7 +10,7 @@ A web component for displaying SVG icons.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-icon name="vaadin:user"></vaadin23-icon>
+<vaadin24-icon name="vaadin:user"></vaadin24-icon>
 ```
 
 ## Installation

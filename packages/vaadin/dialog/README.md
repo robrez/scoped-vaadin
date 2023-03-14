@@ -10,10 +10,10 @@ A web component for presenting information and user interface elements in an ove
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-dialog opened></vaadin23-dialog>
+<vaadin24-dialog opened></vaadin24-dialog>
 
 <script>
-  const dialog = document.querySelector('vaadin23-dialog');
+  const dialog = document.querySelector('vaadin24-dialog');
   dialog.renderer = function (root, dialog) {
     root.textContent = 'Sample dialog';
   };

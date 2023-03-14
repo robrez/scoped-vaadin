@@ -1,28 +1,23 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { FocusTrapController } from '@scoped-vaadin/component-base/src/focus-trap-controller.js';
+import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- *
- * `<vaadin23-overlay>` is a Web Component for creating overlays. The content of the overlay
- * can be populated in two ways: imperatively by using renderer callback function and
- * declaratively by using Polymer's Templates.
+ * `<vaadin24-overlay>` is a Web Component for creating overlays. The content of the overlay
+ * can be populated imperatively by using `renderer` callback function.
  *
  * ### Rendering
- *
- * By default, the overlay uses the content provided by using the renderer callback function.
  *
  * The renderer function provides `root`, `owner`, `model` arguments when applicable.
  * Generate DOM content by using `model` object properties if needed, append it to the `root`
@@ -30,7 +25,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * content, users are able to check if there is already content in `root` for reusing it.
  *
  * ```html
- * <vaadin23-overlay id="overlay"></vaadin23-overlay>
+ * <vaadin24-overlay id="overlay"></vaadin24-overlay>
  * ```
  * ```js
  * const overlay = document.querySelector('#overlay');
@@ -44,33 +39,9 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * in the next renderer call and will be provided with the `root` argument.
  * On first call it will be empty.
  *
- * **NOTE:** when the renderer property is defined, the `<template>` content is not used.
- *
- * ### Templating
- *
- * Alternatively, the content can be provided with Polymer Template.
- * Overlay finds the first child template and uses that in case renderer callback function
- * is not provided. You can also set a custom template using the `template` property.
- *
- * After the content from the template is stamped, the `content` property
- * points to the content container.
- *
- * The overlay provides `forwardHostProp` when calling
- * `Polymer.Templatize.templatize` for the template, so that the bindings
- * from the parent scope propagate to the content.
- *
  * ### Styling
  *
- * To style the overlay content, use styles in the parent scope:
- *
- * - If the overlay is used in a component, then the component styles
- *   apply the overlay content.
- * - If the overlay is used in the global DOM scope, then global styles
- *   apply to the overlay content.
- *
- * See examples for styling the overlay content in the live demos.
- *
- * The following Shadow DOM parts are available for styling the overlay component itself:
+ * The following Shadow DOM parts are available for styling:
  *
  * Part name  | Description
  * -----------|---------------------------------------------------------|
@@ -95,10 +66,11 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} vaadin-overlay-open - Fired after the overlay is opened.
- * @fires {CustomEvent} vaadin-overlay-close - Fired before the overlay will be closed. If canceled the closing of the overlay is canceled as well.
- * @fires {CustomEvent} vaadin-overlay-closing - Fired when the overlay will be closed.
- * @fires {CustomEvent} vaadin-overlay-outside-click - Fired before the overlay will be closed on outside click. If canceled the closing of the overlay is canceled as well.
- * @fires {CustomEvent} vaadin-overlay-escape-press - Fired before the overlay will be closed on ESC button press. If canceled the closing of the overlay is canceled as well.
+ * @fires {CustomEvent} vaadin-overlay-close - Fired when the opened overlay is about to be closed. Calling `preventDefault()` on the event cancels the closing.
+ * @fires {CustomEvent} vaadin-overlay-closing - Fired when the overlay starts to close. Closing the overlay can be asynchronous depending on the animation.
+ * @fires {CustomEvent} vaadin-overlay-closed - Fired after the overlay is closed.
+ * @fires {CustomEvent} vaadin-overlay-outside-click - Fired before the overlay is closed on outside click. Calling `preventDefault()` on the event cancels the closing.
+ * @fires {CustomEvent} vaadin-overlay-escape-press - Fired before the overlay is closed on Escape key press. Calling `preventDefault()` on the event cancels the closing.
  *
  * @extends HTMLElement
  * @mixes ThemableMixin
@@ -113,7 +85,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
           z-index: 200;
           position: fixed;
 
-          /* Despite of what the names say, <vaadin23-overlay> is just a container
+          /* Despite of what the names say, <vaadin24-overlay> is just a container
           for position/sizing/alignment. The actual overlay is the overlay part. */
 
           /* Default position constraints: the entire viewport. Note: themes can
@@ -183,7 +155,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   }
 
   static get is() {
-    return 'vaadin23-overlay';
+    return 'vaadin24-overlay';
   }
 
   static get properties() {
@@ -216,24 +188,6 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
       renderer: Function,
 
       /**
-       * The template of the overlay content.
-       * @type {HTMLTemplateElement | null | undefined}
-       */
-      template: {
-        type: Object,
-        notify: true,
-      },
-
-      /**
-       * References the content container after the template is stamped.
-       * @type {!HTMLElement | undefined}
-       */
-      content: {
-        type: Object,
-        notify: true,
-      },
-
-      /**
        * When true the overlay has backdrop on top of content when opened.
        * @type {boolean}
        */
@@ -250,7 +204,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
 
       /**
        * When true the overlay won't disable the main content, showing
-       * it doesn’t change the functionality of the user interface.
+       * it doesn't change the functionality of the user interface.
        * @type {boolean}
        */
       modeless: {
@@ -310,24 +264,10 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
       },
 
       /** @private */
-      _instance: {
-        type: Object,
-      },
-
-      /** @private */
-      _originalContentPart: Object,
-
-      /** @private */
-      _contentNodes: Array,
-
-      /** @private */
       _oldOwner: Element,
 
       /** @private */
       _oldModel: Object,
-
-      /** @private */
-      _oldTemplate: Object,
 
       /** @private */
       _oldRenderer: Object,
@@ -338,7 +278,17 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   }
 
   static get observers() {
-    return ['_templateOrRendererChanged(template, renderer, owner, model, opened)'];
+    return ['_rendererOrDataChanged(renderer, owner, model, opened)'];
+  }
+
+  /**
+   * Returns all attached overlays in visual stacking order.
+   * @private
+   */
+  static get __attachedInstances() {
+    return Array.from(document.body.children)
+      .filter((el) => el instanceof Overlay && !el.hasAttribute('closing'))
+      .sort((a, b) => a.__zIndex - b.__zIndex || 0);
   }
 
   constructor() {
@@ -348,13 +298,6 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     this._boundOutsideClickListener = this._outsideClickListener.bind(this);
     this._boundKeydownListener = this._keydownListener.bind(this);
 
-    this._observer = new FlattenedNodesObserver(this, (info) => {
-      this._setTemplateFromNodes(info.addedNodes);
-    });
-
-    // Listener for preventing closing of the paper-dialog and all components extending `iron-overlay-behavior`.
-    this._boundIronOverlayCanceledListener = this._ironOverlayCanceled.bind(this);
-
     /* c8 ignore next 3 */
     if (isIOS) {
       this._boundIosResizeListener = () => this._detectIosNavbar();
@@ -363,20 +306,29 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     this.__focusTrapController = new FocusTrapController(this);
   }
 
+  /**
+   * Returns true if this is the last one in the opened overlays stack
+   * @return {boolean}
+   * @protected
+   */
+  get _last() {
+    return this === Overlay.__attachedInstances.pop();
+  }
+
   /** @protected */
   ready() {
     super.ready();
 
-    this._observer.flush();
-
     // Need to add dummy click listeners to this and the backdrop or else
     // the document click event listener (_outsideClickListener) may never
-    // get invoked on iOS Safari (reproducible in <vaadin23-dialog>
-    // and <vaadin23-context-menu>).
+    // get invoked on iOS Safari (reproducible in <vaadin24-dialog>
+    // and <vaadin24-context-menu>).
     this.addEventListener('click', () => {});
     this.$.backdrop.addEventListener('click', () => {});
 
     this.addController(this.__focusTrapController);
+
+    processTemplates(this);
   }
 
   /** @private */
@@ -401,17 +353,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   }
 
   /**
-   * @param {!Array<!Element>} nodes
-   * @protected
-   */
-  _setTemplateFromNodes(nodes) {
-    this.template = nodes.find((node) => node.localName && node.localName === 'template') || this.template;
-  }
-
-  /**
    * @param {Event=} sourceEvent
-   * @event vaadin-overlay-close
-   * fired before the `vaadin23-overlay` will be closed. If canceled the closing of the overlay is canceled as well.
    */
   close(sourceEvent) {
     const evt = new CustomEvent('vaadin-overlay-close', {
@@ -454,13 +396,8 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
    */
   requestContentUpdate() {
     if (this.renderer) {
-      this.renderer.call(this.owner, this.content, this.owner, this.model);
+      this.renderer.call(this.owner, this, this.owner, this.model);
     }
-  }
-
-  /** @private */
-  _ironOverlayCanceled(event) {
-    event.preventDefault();
   }
 
   /** @private */
@@ -474,12 +411,21 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   }
 
   /**
-   * We need to listen on 'click' / 'tap' event and capture it and close the overlay before
-   * propagating the event to the listener in the button. Otherwise, if the clicked button would call
-   * open(), this would happen: https://www.youtube.com/watch?v=Z86V_ICUCD4
+   * Whether to close the overlay on outside click or not.
+   * Override this method to customize the closing logic.
    *
-   * @event vaadin-overlay-outside-click
-   * fired before the `vaadin23-overlay` will be closed on outside click. If canceled the closing of the overlay is canceled as well.
+   * @param {Event} _event
+   * @return {boolean}
+   * @protected
+   */
+  _shouldCloseOnOutsideClick(_event) {
+    return this._last;
+  }
+
+  /**
+   * Outside click listener used in capture phase to close the overlay before
+   * propagating the event to the listener on the element that triggered it.
+   * Otherwise, calling `open()` would result in closing and re-opening.
    *
    * @private
    */
@@ -489,7 +435,8 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
       this._mouseUpInside = false;
       return;
     }
-    if (!this._last) {
+
+    if (!this._shouldCloseOnOutsideClick(event)) {
       return;
     }
 
@@ -506,9 +453,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   }
 
   /**
-   * @event vaadin-overlay-escape-press
-   * fired before the `vaadin23-overlay` will be closed on ESC button press. If canceled the closing of the overlay is canceled as well.
-   *
+   * Listener used to close whe overlay on Escape press, if it is the last one.
    * @private
    */
   _keydownListener(event) {
@@ -535,22 +480,8 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
-  _ensureTemplatized() {
-    this._setTemplateFromNodes(Array.from(this.children));
-  }
-
-  /**
-   * @event vaadin-overlay-open
-   * fired after the `vaadin23-overlay` is opened.
-   *
-   * @private
-   */
+  /** @private */
   _openedChanged(opened, wasOpened) {
-    if (!this._instance) {
-      this._ensureTemplatized();
-    }
-
     if (opened) {
       // Store focused node.
       this.__restoreFocusNode = this._getActiveElement();
@@ -594,18 +525,19 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
 
   /**
    * @return {boolean}
-   * @protected
+   * @private
    */
   _shouldAnimate() {
-    const name = getComputedStyle(this).getPropertyValue('animation-name');
-    const hidden = getComputedStyle(this).getPropertyValue('display') === 'none';
+    const style = getComputedStyle(this);
+    const name = style.getPropertyValue('animation-name');
+    const hidden = style.getPropertyValue('display') === 'none';
     return !hidden && name && name !== 'none';
   }
 
   /**
    * @param {string} type
    * @param {Function} callback
-   * @protected
+   * @private
    */
   _enqueueAnimation(type, callback) {
     const handler = `__${type}Handler`;
@@ -632,7 +564,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
+  /** @private */
   _animatedOpening() {
     if (this.parentNode === document.body && this.hasAttribute('closing')) {
       this._flushAnimation('closing');
@@ -652,7 +584,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
+  /** @private */
   _attachOverlay() {
     this._placeholder = document.createComment('vaadin-overlay-placeholder');
     this.parentNode.insertBefore(this._placeholder, this);
@@ -660,26 +592,20 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     this.bringToFront();
   }
 
-  /** @protected */
+  /** @private */
   _finishOpening() {
-    document.addEventListener('iron-overlay-canceled', this._boundIronOverlayCanceledListener);
     this.removeAttribute('opening');
   }
 
-  /** @protected */
+  /** @private */
   _finishClosing() {
-    document.removeEventListener('iron-overlay-canceled', this._boundIronOverlayCanceledListener);
     this._detachOverlay();
     this.$.overlay.style.removeProperty('pointer-events');
     this.removeAttribute('closing');
+    this.dispatchEvent(new CustomEvent('vaadin-overlay-closed'));
   }
 
-  /**
-   * @event vaadin-overlay-closing
-   * Fired when the overlay will be closed.
-   *
-   * @protected
-   */
+  /** @private */
   _animatedClosing() {
     if (this.hasAttribute('opening')) {
       this._flushAnimation('opening');
@@ -720,29 +646,10 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
+  /** @private */
   _detachOverlay() {
     this._placeholder.parentNode.insertBefore(this, this._placeholder);
     this._placeholder.parentNode.removeChild(this._placeholder);
-  }
-
-  /**
-   * Returns all attached overlays in visual stacking order.
-   * @private
-   */
-  static get __attachedInstances() {
-    return Array.from(document.body.children)
-      .filter((el) => el instanceof Overlay && !el.hasAttribute('closing'))
-      .sort((a, b) => a.__zIndex - b.__zIndex || 0);
-  }
-
-  /**
-   * Returns true if this is the last one in the opened overlays stack
-   * @return {boolean}
-   * @protected
-   */
-  get _last() {
-    return this === Overlay.__attachedInstances.pop();
   }
 
   /** @private */
@@ -758,7 +665,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
+  /** @private */
   _addGlobalListeners() {
     document.addEventListener('mousedown', this._boundMouseDownListener);
     document.addEventListener('mouseup', this._boundMouseUpListener);
@@ -767,7 +674,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     document.documentElement.addEventListener('click', this._boundOutsideClickListener, true);
   }
 
-  /** @protected */
+  /** @private */
   _enterModalState() {
     if (document.body.style.pointerEvents !== 'none') {
       // Set body pointer-events to 'none' to disable mouse interactions with
@@ -784,14 +691,14 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     });
   }
 
-  /** @protected */
+  /** @private */
   _removeGlobalListeners() {
     document.removeEventListener('mousedown', this._boundMouseDownListener);
     document.removeEventListener('mouseup', this._boundMouseUpListener);
     document.documentElement.removeEventListener('click', this._boundOutsideClickListener, true);
   }
 
-  /** @protected */
+  /** @private */
   _exitModalState() {
     if (this._previousDocumentPointerEvents !== undefined) {
       // Restore body pointer-events
@@ -816,107 +723,11 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     }
   }
 
-  /** @protected */
-  _removeOldContent() {
-    if (!this.content || !this._contentNodes) {
-      return;
-    }
-
-    this._observer.disconnect();
-
-    this._contentNodes.forEach((node) => {
-      if (node.parentNode === this.content) {
-        this.content.removeChild(node);
-      }
-    });
-
-    if (this._originalContentPart) {
-      // Restore the original <div part="content">
-      this.$.content.parentNode.replaceChild(this._originalContentPart, this.$.content);
-      this.$.content = this._originalContentPart;
-      this._originalContentPart = undefined;
-    }
-
-    this._observer.connect();
-
-    this._contentNodes = undefined;
-    this.content = undefined;
-  }
-
-  /**
-   * @param {!HTMLTemplateElement} template
-   * @protected
-   */
-  _stampOverlayTemplate(template) {
-    this._removeOldContent();
-
-    if (!template._Templatizer) {
-      template._Templatizer = templatize(template, this, {
-        forwardHostProp(prop, value) {
-          if (this._instance) {
-            this._instance.forwardHostProp(prop, value);
-          }
-        },
-      });
-    }
-
-    this._instance = new template._Templatizer({});
-    this._contentNodes = Array.from(this._instance.root.childNodes);
-
-    const templateRoot = template._templateRoot || (template._templateRoot = template.getRootNode());
-
-    if (templateRoot !== document) {
-      if (!this.$.content.shadowRoot) {
-        this.$.content.attachShadow({ mode: 'open' });
-      }
-
-      let scopeCssText = Array.from(templateRoot.querySelectorAll('style')).reduce(
-        (result, style) => result + style.textContent,
-        '',
-      );
-
-      // The overlay root’s :host styles should not apply inside the overlay
-      scopeCssText = scopeCssText.replace(/:host/g, ':host-nomatch');
-
-      if (scopeCssText) {
-        // Append a style to the content shadowRoot
-        const style = document.createElement('style');
-        style.textContent = scopeCssText;
-        this.$.content.shadowRoot.appendChild(style);
-        this._contentNodes.unshift(style);
-      }
-
-      this.$.content.shadowRoot.appendChild(this._instance.root);
-      this.content = this.$.content.shadowRoot;
-    } else {
-      this.appendChild(this._instance.root);
-      this.content = this;
-    }
-  }
-
   /** @private */
-  _removeNewRendererOrTemplate(template, oldTemplate, renderer, oldRenderer) {
-    if (template !== oldTemplate) {
-      this.template = undefined;
-    } else if (renderer !== oldRenderer) {
-      this.renderer = undefined;
-    }
-  }
-
-  /** @private */
-  // eslint-disable-next-line max-params
-  _templateOrRendererChanged(template, renderer, owner, model, opened) {
-    if (template && renderer) {
-      this._removeNewRendererOrTemplate(template, this._oldTemplate, renderer, this._oldRenderer);
-      throw new Error('You should only use either a renderer or a template for overlay content');
-    }
-
+  _rendererOrDataChanged(renderer, owner, model, opened) {
     const ownerOrModelChanged = this._oldOwner !== owner || this._oldModel !== model;
     this._oldModel = model;
     this._oldOwner = owner;
-
-    const templateChanged = this._oldTemplate !== template;
-    this._oldTemplate = template;
 
     const rendererChanged = this._oldRenderer !== renderer;
     this._oldRenderer = renderer;
@@ -925,26 +736,21 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     this._oldOpened = opened;
 
     if (rendererChanged) {
-      this.content = this;
-      this.content.innerHTML = '';
+      this.innerHTML = '';
       // Whenever a Lit-based renderer is used, it assigns a Lit part to the node it was rendered into.
       // When clearing the rendered content, this part needs to be manually disposed of.
       // Otherwise, using a Lit-based renderer on the same node will throw an exception or render nothing afterward.
-      delete this.content._$litPart$;
+      delete this._$litPart$;
     }
 
-    if (template && templateChanged) {
-      this._stampOverlayTemplate(template);
-    } else if (renderer && (rendererChanged || openedChanged || ownerOrModelChanged)) {
-      if (opened) {
-        this.requestContentUpdate();
-      }
+    if (opened && renderer && (rendererChanged || openedChanged || ownerOrModelChanged)) {
+      this.requestContentUpdate();
     }
   }
 
   /**
    * @return {!Element}
-   * @protected
+   * @private
    */
   _getActiveElement() {
     // Document.activeElement can be null
@@ -959,7 +765,7 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
   /**
    * @param {!Node} node
    * @return {boolean}
-   * @protected
+   * @private
    */
   _deepContains(node) {
     if (this.contains(node)) {
@@ -987,6 +793,40 @@ class Overlay extends ThemableMixin(DirMixin(ControllerMixin(PolymerElement))) {
     this.style.zIndex = zIndex;
     this.__zIndex = zIndex || parseFloat(getComputedStyle(this).zIndex);
   }
+
+  /**
+   * @event vaadin-overlay-open
+   * Fired after the overlay is opened.
+   */
+
+  /**
+   * @event vaadin-overlay-close
+   * Fired when the opened overlay is about to be closed.
+   * Calling `preventDefault()` on the event cancels the closing.
+   */
+
+  /**
+   * @event vaadin-overlay-closing
+   * Fired when the overlay starts to close.
+   * Closing the overlay can be asynchronous depending on the animation.
+   */
+
+  /**
+   * @event vaadin-overlay-closed
+   * Fired after the overlay is closed.
+   */
+
+  /**
+   * @event vaadin-overlay-escape-press
+   * Fired before the overlay is closed on Escape key press.
+   * Calling `preventDefault()` on the event cancels the closing.
+   */
+
+  /**
+   * @event vaadin-overlay-outside-click
+   * Fired before the overlay is closed on outside click.
+   * Calling `preventDefault()` on the event cancels the closing.
+   */
 }
 
 internalCustomElements.define(Overlay.is, Overlay);

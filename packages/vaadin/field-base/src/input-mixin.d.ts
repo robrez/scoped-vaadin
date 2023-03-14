@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -19,7 +19,7 @@ export declare class InputMixinClass {
    *
    * A typical case is using `InputController` that does this automatically.
    * However, the input element does not have to always be native <input>:
-   * as an example, <vaadin23-combo-box-light> accepts other components.
+   * as an example, <vaadin24-combo-box-light> accepts other components.
    */
   readonly inputElement: HTMLElement;
 
@@ -47,9 +47,9 @@ export declare class InputMixinClass {
 
   protected _inputElementChanged(input: HTMLElement, oldInput: HTMLElement): void;
 
-  protected _onChange(event: void): void;
+  protected _onChange(event: Event): void;
 
-  protected _onInput(event: void): void;
+  protected _onInput(event: Event): void;
 
   protected _setInputElement(input: HTMLElement): void;
 

@@ -1,41 +1,38 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
 import { html, PolymerElement } from '@polymer/polymer';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
-import { InputController } from '@scoped-vaadin/field-base/src/input-controller.js';
-import { InputFieldMixin } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
-import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-input-controller.js';
-import { PatternMixin } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
 import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { TextFieldMixin } from './vaadin-text-field-mixin.js';
 
-registerStyles('vaadin23-text-field', inputFieldShared, { moduleId: 'vaadin-text-field-styles' });
+registerStyles('vaadin24-text-field', inputFieldShared, { moduleId: 'vaadin-text-field-styles' });
 
 /**
- * `<vaadin23-text-field>` is a web component that allows the user to input and edit text.
+ * `<vaadin24-text-field>` is a web component that allows the user to input and edit text.
  *
  * ```html
- * <vaadin23-text-field label="First Name"></vaadin23-text-field>
+ * <vaadin24-text-field label="First Name"></vaadin24-text-field>
  * ```
  *
  * ### Prefixes and suffixes
  *
- * These are child elements of a `<vaadin23-text-field>` that are displayed
+ * These are child elements of a `<vaadin24-text-field>` that are displayed
  * inline with the input, before or after.
  * In order for an element to be considered as a prefix, it must have the slot
  * attribute set to `prefix` (and similarly for `suffix`).
  *
  * ```html
- * <vaadin23-text-field label="Email address">
+ * <vaadin24-text-field label="Email address">
  *   <div slot="prefix">Sent to:</div>
  *   <div slot="suffix">@vaadin.com</div>
- * </vaadin23-text-field>
+ * </vaadin24-text-field>
  * ```
  *
  * ### Styling
@@ -83,12 +80,11 @@ registerStyles('vaadin23-text-field', inputFieldShared, { moduleId: 'vaadin-text
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
- * @mixes PatternMixin
- * @mixes InputFieldMixin
+ * @mixes TextFieldMixin
  */
-export class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(ElementMixin(PolymerElement)))) {
+export class TextField extends TextFieldMixin(ThemableMixin(ElementMixin(PolymerElement))) {
   static get is() {
-    return 'vaadin23-text-field';
+    return 'vaadin24-text-field';
   }
 
   static get template() {
@@ -105,7 +101,7 @@ export class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(Elemen
           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
         </div>
 
-        <vaadin23-input-container
+        <vaadin24-input-container
           part="input-field"
           readonly="[[readonly]]"
           disabled="[[disabled]]"
@@ -116,7 +112,7 @@ export class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(Elemen
           <slot name="input"></slot>
           <slot name="suffix" slot="suffix"></slot>
           <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>
-        </vaadin23-input-container>
+        </vaadin24-input-container>
 
         <div part="helper-text">
           <slot name="helper"></slot>
@@ -148,37 +144,9 @@ export class TextField extends PatternMixin(InputFieldMixin(ThemableMixin(Elemen
     };
   }
 
-  static get delegateAttrs() {
-    return [...super.delegateAttrs, 'maxlength', 'minlength'];
-  }
-
-  static get constraints() {
-    return [...super.constraints, 'maxlength', 'minlength'];
-  }
-
-  constructor() {
-    super();
-    this._setType('text');
-  }
-
-  /** @protected */
-  get clearElement() {
-    return this.$.clearButton;
-  }
-
   /** @protected */
   ready() {
     super.ready();
-
-    this.addController(
-      new InputController(this, (input) => {
-        this._setInputElement(input);
-        this._setFocusElement(input);
-        this.stateTarget = input;
-        this.ariaTarget = input;
-      }),
-    );
-    this.addController(new LabelledInputController(this.inputElement, this._labelController));
 
     this._tooltipController = new TooltipController(this);
     this._tooltipController.setPosition('top');

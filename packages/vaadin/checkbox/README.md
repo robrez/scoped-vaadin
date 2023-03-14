@@ -10,9 +10,9 @@ An input field representing a binary choice.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-checkbox label="Checked" checked></vaadin23-checkbox>
-<vaadin23-checkbox label="Unchecked"></vaadin23-checkbox>
-<vaadin23-checkbox label="Indeterminate" indeterminate></vaadin23-checkbox>
+<vaadin24-checkbox label="Checked" checked></vaadin24-checkbox>
+<vaadin24-checkbox label="Unchecked"></vaadin24-checkbox>
+<vaadin24-checkbox label="Indeterminate" indeterminate></vaadin24-checkbox>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/checkbox/screenshot.png" width="400" alt="Screenshot of vaadin-checkbox">](https://vaadin.com/docs/latest/components/checkbox)

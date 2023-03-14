@@ -3,11 +3,11 @@ import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
-import './vaadin-message-avatar-styles.js';
+import '@scoped-vaadin/avatar/theme/lumo/vaadin-avatar-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-message',
+  'vaadin24-message',
   css`
     :host {
       color: var(--lumo-body-text-color);
@@ -48,6 +48,12 @@ registerStyles(
     [part='time'] {
       color: var(--lumo-secondary-text-color);
       font-size: var(--lumo-font-size-s);
+    }
+
+    ::slotted([slot='avatar']) {
+      --vaadin-avatar-size: var(--lumo-size-m);
+      margin-top: calc(var(--lumo-space-s));
+      margin-inline-end: calc(var(--lumo-space-m));
     }
   `,
   { moduleId: 'lumo-message' },

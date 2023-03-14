@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
@@ -11,14 +11,14 @@ import { addListener } from '@scoped-vaadin/component-base/src/gestures.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-split-layout>` is a Web Component implementing a split layout for two
+ * `<vaadin24-split-layout>` is a Web Component implementing a split layout for two
  * content elements with a draggable splitter between them.
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div>First content element</div>
  *   <div>Second content element</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Horizontal and Vertical Layouts
@@ -29,10 +29,10 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * You can change the split mode to vertical by setting the `orientation` attribute to `"vertical"`:
  *
  * ```html
- * <vaadin23-split-layout orientation="vertical">
+ * <vaadin24-split-layout orientation="vertical">
  *   <div>Content on the top</div>
  *   <div>Content on the bottom</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Layouts Combination
@@ -41,17 +41,17 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * although you can use any other elements as well.
  *
  * For instance, in order to have a nested vertical split layout inside a
- * horizontal one, you can include `<vaadin23-split-layout>` as a content element
+ * horizontal one, you can include `<vaadin24-split-layout>` as a content element
  * inside another split layout:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div>First content element</div>
- *   <vaadin23-split-layout orientation="vertical">
+ *   <vaadin24-split-layout orientation="vertical">
  *     <div>Second content element</div>
  *     <div>Third content element</div>
- *   </vaadin23-split-layout>
- * </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * You can also trigger the vertical mode in JavaScript by setting the property:
@@ -59,7 +59,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  *
  * ### Split Layout Element Height
  *
- * `<vaadin23-split-layout>` element itself is a flex container. It does not inherit
+ * `<vaadin24-split-layout>` element itself is a flex container. It does not inherit
  * the parent height by default, but rather sets its height depending on the
  * content.
  *
@@ -67,35 +67,35 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * block element:
  *
  * ```html
- * <vaadin23-split-layout style="height: 200px;">
+ * <vaadin24-split-layout style="height: 200px;">
  *   <div>First content element</div>
  *   <div>Second content element</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * It is possible to define percentage height as well. Note that you have to set
  * the parent height in order to make percentages work correctly. In the following
  * example, the `<body>` is resized to fill the entire viewport, and the
- * `<vaadin23-split-layout>` element is set to take 100% height of the `<body>`:
+ * `<vaadin24-split-layout>` element is set to take 100% height of the `<body>`:
  *
  * ```html
  * <body style="height: 100vh; margin: 0;">
- *   <vaadin23-split-layout style="height: 100%;">
+ *   <vaadin24-split-layout style="height: 100%;">
  *     <div>First</div>
  *     <div>Second</div>
- *   </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
  * </body>
  * ```
  *
- * Alternatively, you can use a flexbox layout to make `<vaadin23-split-layout>`
+ * Alternatively, you can use a flexbox layout to make `<vaadin24-split-layout>`
  * fill up the parent:
  *
  * ```html
  * <body style="height: 100vh; margin: 0; display: flex;">
- *   <vaadin23-split-layout style="flex: 1;">
+ *   <vaadin24-split-layout style="flex: 1;">
  *     <div>First</div>
  *     <div>Second</div>
- *   </vaadin23-split-layout>
+ *   </vaadin24-split-layout>
  * </body>
  * ```
  *
@@ -113,10 +113,10 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * recommended to assign the size for both content elements:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div style="width: 75%;">Three fourths</div>
  *   <div style="width: 25%;">One fourth</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Size Limits
@@ -129,10 +129,10 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * to avoid size conflicts:
  *
  * ```html
- * <vaadin23-split-layout>
+ * <vaadin24-split-layout>
  *   <div style="min-width: 50px; max-width: 150px;">First</div>
  *   <div>Second</div>
- * </vaadin23-split-layout>
+ * </vaadin24-split-layout>
  * ```
  *
  * ### Styling
@@ -211,7 +211,7 @@ class SplitLayout extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 
   static get is() {
-    return 'vaadin23-split-layout';
+    return 'vaadin24-split-layout';
   }
 
   static get properties() {
@@ -322,7 +322,7 @@ class SplitLayout extends ElementMixin(ThemableMixin(PolymerElement)) {
     }
 
     const distance = this.orientation === 'vertical' ? event.detail.dy : event.detail.dx;
-    const isRtl = this.orientation !== 'vertical' && this.getAttribute('dir') === 'rtl';
+    const isRtl = this.orientation !== 'vertical' && this.__isRTL;
     const dirDistance = isRtl ? -distance : distance;
 
     this._setFlexBasis(this._primaryChild, this._startSize.primary + dirDistance, this._startSize.container);
@@ -333,16 +333,6 @@ class SplitLayout extends ElementMixin(ThemableMixin(PolymerElement)) {
 
       delete this._startSize;
     }
-  }
-
-  /**
-   * @deprecated Since Vaadin 23, `notifyResize()` is deprecated. The component uses a
-   * ResizeObserver internally and doesn't need to be explicitly notified of resizes.
-   */
-  notifyResize() {
-    console.warn(
-      `WARNING: Since Vaadin 23, notifyResize() is deprecated. The component uses a ResizeObserver internally and doesn't need to be explicitly notified of resizes.`,
-    );
   }
 
   /**

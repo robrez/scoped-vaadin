@@ -1,8 +1,32 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+
+/**
+ * @param {!Element} target
+ * @return {boolean}
+ * @protected
+ */
+export const isFocusable = (target) => {
+  if (!target.parentNode) {
+    return false;
+  }
+  const focusables = Array.from(
+    target.parentNode.querySelectorAll(
+      '[tabindex], button, input, select, textarea, object, iframe, a[href], area[href]',
+    ),
+  ).filter((element) => {
+    const part = element.getAttribute('part');
+    return !(part && part.includes('body-cell'));
+  });
+
+  const isFocusableElement = focusables.includes(target);
+  return (
+    !target.disabled && isFocusableElement && target.offsetParent && getComputedStyle(target).visibility !== 'hidden'
+  );
+};
 
 /**
  * @polymerMixin
@@ -52,7 +76,7 @@ export const ActiveItemMixin = (superClass) =>
      */
     _onClick(e) {
       if (e.defaultPrevented) {
-        // Something has handled this click already, e. g., <vaadin23-grid-sorter>
+        // Something has handled this click already, e. g., <vaadin24-grid-sorter>
         return;
       }
 
@@ -97,27 +121,3 @@ export const ActiveItemMixin = (superClass) =>
      * @event cell-activate
      */
   };
-
-/**
- * @param {!Element} target
- * @return {boolean}
- * @protected
- */
-export const isFocusable = (target) => {
-  if (!target.parentNode) {
-    return false;
-  }
-  const focusables = Array.from(
-    target.parentNode.querySelectorAll(
-      '[tabindex], button, input, select, textarea, object, iframe, a[href], area[href]',
-    ),
-  ).filter((element) => {
-    const part = element.getAttribute('part');
-    return !(part && part.includes('body-cell'));
-  });
-
-  const isFocusableElement = focusables.includes(target);
-  return (
-    !target.disabled && isFocusableElement && target.offsetParent && getComputedStyle(target).visibility !== 'hidden'
-  );
-};

@@ -1,21 +1,21 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { GridDefaultItem } from './vaadin-grid.js';
 import { GridColumn } from './vaadin-grid-column.js';
 
 /**
- * `<vaadin23-grid-filter-column>` is a helper element for the `<vaadin23-grid>`
+ * `<vaadin24-grid-filter-column>` is a helper element for the `<vaadin24-grid>`
  * that provides default header renderer and functionality for filtering.
  *
  * #### Example:
  * ```html
- * <vaadin23-grid items="[[items]]">
- *  <vaadin23-grid-filter-column path="name.first"></vaadin23-grid-filter-column>
+ * <vaadin24-grid items="[[items]]">
+ *  <vaadin24-grid-filter-column path="name.first"></vaadin24-grid-filter-column>
  *
- *  <vaadin23-grid-column>
+ *  <vaadin24-grid-column>
  *    ...
  * ```
  */
@@ -33,7 +33,7 @@ declare class GridFilterColumn<TItem = GridDefaultItem> extends GridColumn<TItem
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-grid-filter-column': GridFilterColumn<GridDefaultItem>;
+    'vaadin24-grid-filter-column': GridFilterColumn<GridDefaultItem>;
   }
 }
 

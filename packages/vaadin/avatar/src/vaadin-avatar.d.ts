@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2020 - 2022 Vaadin Ltd.
+ * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -13,10 +13,10 @@ export interface AvatarI18n {
 }
 
 /**
- * `<vaadin23-avatar>` is a Web Component providing avatar displaying functionality.
+ * `<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.
  *
  * ```html
- * <vaadin23-avatar img="avatars/avatar-1.jpg"></vaadin23-avatar>
+ * <vaadin24-avatar img="avatars/avatar-1.jpg"></vaadin24-avatar>
  * ```
  *
  * ### Styling
@@ -89,7 +89,7 @@ declare class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMix
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-avatar': Avatar;
+    'vaadin24-avatar': Avatar;
   }
 }
 

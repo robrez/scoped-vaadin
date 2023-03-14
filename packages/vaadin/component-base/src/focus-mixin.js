@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
@@ -38,8 +38,8 @@ export const FocusMixin = dedupingMixin(
 
         // In super.ready() other 'focusin' and 'focusout' listeners might be
         // added, so we call it after our own ones to ensure they execute first.
-        // Issue to watch out: when incorrect, <vaadin23-combo-box> refocuses the
-        // input field on iOS after “Done” is pressed.
+        // Issue to watch out: when incorrect, <vaadin24-combo-box> refocuses the
+        // input field on iOS after "Done" is pressed.
         super.ready();
       }
 
@@ -48,7 +48,7 @@ export const FocusMixin = dedupingMixin(
         super.disconnectedCallback();
 
         // In non-Chrome browsers, blur does not fire on the element when it is disconnected.
-        // reproducible in `<vaadin23-date-picker>` when closing on `Cancel` or `Today` click.
+        // reproducible in `<vaadin24-date-picker>` when closing on `Cancel` or `Today` click.
         if (this.hasAttribute('focused')) {
           this._setFocused(false);
         }

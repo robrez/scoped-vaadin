@@ -19,4 +19,4 @@ const comboBox = css`
   }
 `;
 
-registerStyles('vaadin23-combo-box', [inputFieldShared, comboBox], { moduleId: 'material-combo-box' });
+registerStyles('vaadin24-combo-box', [inputFieldShared, comboBox], { moduleId: 'material-combo-box' });

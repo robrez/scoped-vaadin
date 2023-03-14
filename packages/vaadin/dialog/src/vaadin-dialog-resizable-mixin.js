@@ -1,13 +1,13 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { eventInWindow, getMouseOrFirstTouchEvent } from './vaadin-dialog-utils.js';
 
 registerStyles(
-  'vaadin23-dialog-overlay',
+  'vaadin24-dialog-overlay',
   css`
     [part='overlay'] {
       position: relative;

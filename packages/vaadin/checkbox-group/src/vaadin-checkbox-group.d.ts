@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
@@ -35,14 +35,15 @@ export interface CheckboxGroupCustomEventMap {
 export interface CheckboxGroupEventMap extends HTMLElementEventMap, CheckboxGroupCustomEventMap {}
 
 /**
- * `<vaadin23-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
+ * `<vaadin24-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
  *
  * ```html
- * <vaadin23-checkbox-group label="Preferred language of contact:">
- *   <vaadin23-checkbox value="en" label="English"></vaadin23-checkbox>
- *   <vaadin23-checkbox value="fr" label="Français"></vaadin23-checkbox>
- *   <vaadin23-checkbox value="de" label="Deutsch"></vaadin23-checkbox>
- * </vaadin23-checkbox-group>
+ * <vaadin24-checkbox-group label="Export data">
+ *   <vaadin24-checkbox value="0" label="Order ID"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="1" label="Product name"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="2" label="Customer"></vaadin24-checkbox>
+ *   <vaadin24-checkbox value="3" label="Status"></vaadin24-checkbox>
+ * </vaadin24-checkbox-group>
  * ```
  *
  * ### Styling
@@ -99,7 +100,7 @@ declare class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementM
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-checkbox-group': CheckboxGroup;
+    'vaadin24-checkbox-group': CheckboxGroup;
   }
 }
 

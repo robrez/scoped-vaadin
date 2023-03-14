@@ -10,7 +10,7 @@ A web component that allows to enter a time, either by typing, or by selecting f
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-time-picker label="Delivery Time"></vaadin23-time-picker>
+<vaadin24-time-picker label="Delivery Time"></vaadin24-time-picker>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/time-picker/screenshot.png" width="215" alt="Screenshot of vaadin-time-picker">](https://vaadin.com/docs/latest/components/time-picker)

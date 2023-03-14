@@ -9,13 +9,13 @@
   </head>
 
   <body>
-    <vaadin23-notification position="middle" duration="0" theme="success"></vaadin23-notification>
+    <vaadin24-notification position="middle" duration="0" theme="success"></vaadin24-notification>
 
     <script type="module">
       import '@scoped-vaadin/notification';
 
-      const notification = document.querySelector('vaadin23-notification');
-      notification.renderer = root => root.textContent = 'Financial report generated';
+      const notification = document.querySelector('vaadin24-notification');
+      notification.renderer = (root) => (root.textContent = 'Financial report generated');
       notification.open();
     </script>
   </body>

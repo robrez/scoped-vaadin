@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -37,21 +37,21 @@ export interface AppLayoutCustomEventMap {
 export type AppLayoutEventMap = AppLayoutCustomEventMap & HTMLElementEventMap;
 
 /**
- * `<vaadin23-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
+ * `<vaadin24-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
  *
  * ```
- * <vaadin23-app-layout primary-section="navbar|drawer">
- *  <vaadin23-drawer-toggle slot="navbar [touch-optimized]"></vaadin23-drawer-toggle>
+ * <vaadin24-app-layout primary-section="navbar|drawer">
+ *  <vaadin24-drawer-toggle slot="navbar [touch-optimized]"></vaadin24-drawer-toggle>
  *  <h3 slot="navbar [touch-optimized]">Company Name</h3>
- *  <vaadin23-tabs orientation="vertical" slot="drawer">
- *    <vaadin23-tab>Menu item 1</vaadin23-tab>
- *  </vaadin23-tabs>
+ *  <vaadin24-tabs orientation="vertical" slot="drawer">
+ *    <vaadin24-tab>Menu item 1</vaadin24-tab>
+ *  </vaadin24-tabs>
  *  <!-- Everything else will be the page content -->
  *  <div>
  *    <h3>Page title</h3>
  *    <p>Page content</p>
  *  </div>
- * </vaadin23-app-layout>
+ * </vaadin24-app-layout>
  * ```
  *
  * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
@@ -71,7 +71,7 @@ export type AppLayoutEventMap = AppLayoutCustomEventMap & HTMLElementEventMap;
  *
  * ### Styling
  *
- * The following Shadow DOM parts of the `<vaadin23-app-layout>` are available for styling:
+ * The following Shadow DOM parts of the `<vaadin24-app-layout>` are available for styling:
  *
  * Part name     | Description
  * --------------|---------------------------------------------------------|
@@ -104,7 +104,7 @@ export type AppLayoutEventMap = AppLayoutCustomEventMap & HTMLElementEventMap;
  * If you are using Vaadin Router, this will happen automatically unless you change the `closeDrawerOn` event name.
  *
  * In order to do so, there are two options:
- * - If the `vaadin23-app-layout` instance is available, then `drawerOpened` can be set to `false`
+ * - If the `vaadin24-app-layout` instance is available, then `drawerOpened` can be set to `false`
  * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
  *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
  *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
@@ -197,7 +197,7 @@ declare class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(HTMLE
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-app-layout': AppLayout;
+    'vaadin24-app-layout': AppLayout;
   }
 }
 

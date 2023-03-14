@@ -1,12 +1,12 @@
 /**
  * @license
- * Copyright (c) 2022 Vaadin Ltd.
+ * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { DelegateStateMixin } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
 import type { Tab } from '@scoped-vaadin/tabs/src/vaadin-tab.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -29,24 +29,24 @@ export interface TabSheetCustomEventMap {
 export interface TabSheetEventMap extends HTMLElementEventMap, TabSheetCustomEventMap {}
 
 /**
- * `<vaadin23-tabsheet>` is a Web Component for organizing and grouping content
+ * `<vaadin24-tabsheet>` is a Web Component for organizing and grouping content
  * into scrollable panels. The panels can be switched between by using tabs.
  *
  * ```
- *  <vaadin23-tabsheet>
+ *  <vaadin24-tabsheet>
  *    <div slot="prefix">Prefix</div>
  *    <div slot="suffix">Suffix</div>
  *
- *    <vaadin23-tabs slot="tabs">
- *      <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
- *      <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
- *      <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
- *    </vaadin23-tabs>
+ *    <vaadin24-tabs slot="tabs">
+ *      <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
+ *      <vaadin24-tab id="tab-2">Tab 2</vaadin24-tab>
+ *      <vaadin24-tab id="tab-3">Tab 3</vaadin24-tab>
+ *    </vaadin24-tabs>
  *
  *    <div tab="tab-1">Panel 1</div>
  *    <div tab="tab-2">Panel 2</div>
  *    <div tab="tab-3">Panel 3</div>
- *  </vaadin23-tabsheet>
+ *  </vaadin24-tabsheet>
  * ```
  *
  * ### Styling
@@ -77,11 +77,11 @@ declare class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(T
   selected: number | null | undefined;
 
   /**
-   * The list of `<vaadin23-tab>`s from which a selection can be made.
+   * The list of `<vaadin24-tab>`s from which a selection can be made.
    * It is populated from the elements passed inside the slotted
-   * `<vaadin23-tabs>`, and updated dynamically when adding or removing items.
+   * `<vaadin24-tabs>`, and updated dynamically when adding or removing items.
    *
-   * Note: unlike `<vaadin23-combo-box>`, this property is read-only.
+   * Note: unlike `<vaadin24-combo-box>`, this property is read-only.
    */
   readonly items: Tab[] | undefined;
 
@@ -100,7 +100,7 @@ declare class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(T
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-tabsheet': TabSheet;
+    'vaadin24-tabsheet': TabSheet;
   }
 }
 

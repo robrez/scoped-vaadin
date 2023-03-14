@@ -10,10 +10,10 @@ A web component for providing feedback to the user.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-notification opened position="middle" duration="-1"></vaadin23-notification>
+<vaadin24-notification opened position="middle" duration="-1"></vaadin24-notification>
 
 <script>
-  const notification = document.querySelector('vaadin23-notification');
+  const notification = document.querySelector('vaadin24-notification');
 
   notification.renderer = function (root) {
     root.textContent = 'Your work has been saved';

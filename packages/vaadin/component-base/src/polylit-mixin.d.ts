@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -14,10 +14,10 @@ export declare class PolylitMixinClass {
   /**
    * Reads a value from a path.
    */
-  protected _get(root: Object, path: String): any;
+  protected _get(root: object, path: string): any;
 
   /**
    * Sets a value to a path.
    */
-  protected _set(root: Object, path: String, value: any): void;
+  protected _set(root: object, path: string, value: any): void;
 }

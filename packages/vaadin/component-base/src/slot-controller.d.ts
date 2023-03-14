@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { ReactiveController } from 'lit';
@@ -16,7 +16,15 @@ export class SlotController extends EventTarget implements ReactiveController {
    */
   node: HTMLElement;
 
+  /**
+   * The list of slotted nodes managed by the controller.
+   * Only used when `multiple` property is set to `true`.
+   */
+  nodes: HTMLElement[];
+
   protected initialized: boolean;
+
+  protected multiple: boolean;
 
   protected defaultNode: Node;
 
@@ -25,20 +33,40 @@ export class SlotController extends EventTarget implements ReactiveController {
   constructor(
     host: HTMLElement,
     slotName: string,
-    slotFactory?: () => HTMLElement,
-    slotInitializer?: (host: HTMLElement, node: HTMLElement) => void,
-    useUniqueId?: boolean,
+    tagName?: string,
+    config?: {
+      multiple?: boolean;
+      observe?: boolean;
+      useUniqueId?: boolean;
+      initializer?(host: HTMLElement, node: HTMLElement): void;
+    },
   );
 
   hostConnected(): void;
+
+  /**
+   * Return the list of nodes matching the slot managed by the controller.
+   */
+  getSlotChildren(): Node[];
 
   /**
    * Return a reference to the node managed by the controller.
    */
   getSlotChild(): Node;
 
+  /**
+   * Create and attach default node using the provided tag name, if any.
+   */
   protected attachDefaultNode(): Node | undefined;
 
+  /**
+   * Run both `initCustomNode` and `initNode` for a custom slotted node.
+   */
+  protected initAddedNode(node: Node): void;
+
+  /**
+   * Run `slotInitializer` for the node managed by the controller.
+   */
   protected initNode(node: Node): void;
 
   /**
@@ -54,5 +82,5 @@ export class SlotController extends EventTarget implements ReactiveController {
   /**
    * Setup the observer to manage slot content changes.
    */
-  protected observe(): void;
+  protected observeSlot(): void;
 }

@@ -1,20 +1,18 @@
 /**
  * @license
- * Copyright (c) 2021 - 2022 Vaadin Ltd.
+ * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+import { SlotChildObserveController } from '@scoped-vaadin/component-base/src/slot-child-observe-controller.js';
 
 /**
  * A controller that manages the helper node content.
  */
-export class HelperController extends SlotController {
+export class HelperController extends SlotChildObserveController {
   /**
    * String used for the helper text.
    */
   helperText: string | null | undefined;
-
-  helperId: string;
 
   /**
    * Set helper text based on corresponding host property.

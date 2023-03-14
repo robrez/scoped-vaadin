@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2016 - 2022 Vaadin Ltd.
+ * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -16,7 +16,7 @@ export declare class SortMixinClass {
   static setDefaultMultiSortPriority(priority: 'append' | 'prepend'): void;
 
   /**
-   * When `true`, all `<vaadin23-grid-sorter>` are applied for sorting.
+   * When `true`, all `<vaadin24-grid-sorter>` are applied for sorting.
    * @attr {boolean} multi-sort
    */
   multiSort: boolean;

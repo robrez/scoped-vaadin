@@ -10,10 +10,10 @@ A web component that provides an expandable panel for showing and hiding content
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-details opened>
-  <div slot="summary">Expandable Details</div>
-  Toggle using mouse, Enter and Space keys.
-</vaadin23-details>
+<vaadin24-details opened>
+  <vaadin24-details-summary slot="summary">Expandable Details</vaadin24-details-summary>
+  <div>Toggle using mouse, Enter and Space keys.</div>
+</vaadin24-details>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/details/screenshot.png" alt="Screenshot of vaadin-details" width="320">](https://vaadin.com/docs/latest/components/details)

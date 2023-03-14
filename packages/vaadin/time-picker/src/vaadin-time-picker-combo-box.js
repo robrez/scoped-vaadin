@@ -1,7 +1,7 @@
 import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
- * Copyright (c) 2018 - 2022 Vaadin Ltd.
+ * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-time-picker-item.js';
@@ -12,7 +12,7 @@ import { ComboBoxMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-mix
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * An element used internally by `<vaadin23-time-picker>`. Not intended to be used separately.
+ * An element used internally by `<vaadin24-time-picker>`. Not intended to be used separately.
  *
  * @extends HTMLElement
  * @mixes ComboBoxMixin
@@ -21,7 +21,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  */
 class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
   static get is() {
-    return 'vaadin23-time-picker-combo-box';
+    return 'vaadin24-time-picker-combo-box';
   }
 
   static get template() {
@@ -34,7 +34,7 @@ class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
 
       <slot></slot>
 
-      <vaadin23-time-picker-overlay
+      <vaadin24-time-picker-overlay
         id="overlay"
         opened="[[_overlayOpened]]"
         loading$="[[loading]]"
@@ -42,7 +42,7 @@ class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
         position-target="[[positionTarget]]"
         no-vertical-overlap
         restore-focus-node="[[inputElement]]"
-      ></vaadin23-time-picker-overlay>
+      ></vaadin24-time-picker-overlay>
     `;
   }
 
@@ -60,7 +60,7 @@ class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
    * @return {string}
    */
   get _tagNamePrefix() {
-    return 'vaadin23-time-picker';
+    return 'vaadin24-time-picker';
   }
 
   /**

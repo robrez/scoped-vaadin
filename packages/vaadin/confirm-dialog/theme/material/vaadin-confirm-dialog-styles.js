@@ -1,7 +1,7 @@
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
-  'vaadin23-confirm-dialog-overlay',
+  'vaadin24-confirm-dialog-overlay',
   css`
     [part='overlay'] {
       max-width: 100%;

@@ -2,7 +2,7 @@
 
 This component is based on [@vaadin/avatar-group](https://www.npmjs.com/package/@vaadin/avatar-group)
 
-A web component for grouping multiple [`<vaadin23-avatar>`](https://www.npmjs.com/package/@scoped-vaadin/avatar-group) components together.
+A web component for grouping multiple [`<vaadin24-avatar>`](https://www.npmjs.com/package/@scoped-vaadin/avatar-group) components together.
 
 [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/avatar/#avatar-group)
 
@@ -10,9 +10,9 @@ A web component for grouping multiple [`<vaadin23-avatar>`](https://www.npmjs.co
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-avatar-group max-items-visible="3"></vaadin23-avatar-group>
+<vaadin24-avatar-group max-items-visible="3"></vaadin24-avatar-group>
 <script>
-  document.querySelector('vaadin23-avatar-group').items = [
+  document.querySelector('vaadin24-avatar-group').items = [
     { name: 'Foo Bar', colorIndex: 1 },
     { colorIndex: 2 },
     { name: 'Foo Bar', colorIndex: 3 },

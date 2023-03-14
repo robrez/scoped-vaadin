@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
@@ -16,28 +16,28 @@ export type FormLayoutResponsiveStep = {
 };
 
 /**
- * `<vaadin23-form-layout>` is a Web Component providing configurable responsive
+ * `<vaadin24-form-layout>` is a Web Component providing configurable responsive
  * layout for form elements.
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">First Name</label>
  *     <input class="full-width" value="Jane">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Last Name</label>
  *     <input class="full-width" value="Doe">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Email</label>
  *     <input class="full-width" value="jane.doe@example.com">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * It supports any child elements as layout items.
@@ -54,24 +54,24 @@ export type FormLayoutResponsiveStep = {
  * In the example below, the first text field spans on two columns:
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item colspan="2">
+ *   <vaadin24-form-item colspan="2">
  *     <label slot="label">Address</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">First Name</label>
  *     <input class="full-width" value="Jane">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Last Name</label>
  *     <input class="full-width" value="Doe">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * ### Explicit New Row
@@ -79,26 +79,26 @@ export type FormLayoutResponsiveStep = {
  * Use the `<br>` line break element to wrap the items on a new row:
  *
  * ```html
- * <vaadin23-form-layout>
+ * <vaadin24-form-layout>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Email</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
  *   <br>
  *
- *   <vaadin23-form-item>
+ *   <vaadin24-form-item>
  *     <label slot="label">Confirm Email</label>
  *     <input class="full-width">
- *   </vaadin23-form-item>
+ *   </vaadin24-form-item>
  *
- * </vaadin23-form-layout>
+ * </vaadin24-form-layout>
  * ```
  *
  * ### CSS Properties Reference
  *
- * The following custom CSS properties are available on the `<vaadin23-form-layout>`
+ * The following custom CSS properties are available on the `<vaadin24-form-layout>`
  * element:
  *
  * Custom CSS property | Description | Default
@@ -146,14 +146,6 @@ declare class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(HTMLElem
   responsiveSteps: FormLayoutResponsiveStep[];
 
   /**
-   * Set custom CSS property values and update the layout.
-   *
-   * @deprecated Since Vaadin 23, `updateStyles()` is deprecated.
-   * Use the native element.style.setProperty API to set custom CSS property values.
-   */
-  updateStyles(properties?: { [key: string]: string }): void;
-
-  /**
    * Update the layout.
    */
   protected _updateLayout(): void;
@@ -161,7 +153,7 @@ declare class FormLayout extends ResizeMixin(ElementMixin(ThemableMixin(HTMLElem
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-form-layout': FormLayout;
+    'vaadin24-form-layout': FormLayout;
   }
 }
 

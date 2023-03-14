@@ -1,24 +1,24 @@
 /**
  * @license
- * Copyright (c) 2017 - 2022 Vaadin Ltd.
+ * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
- * `<vaadin23-horizontal-layout>` provides a simple way to horizontally align your HTML elements.
+ * `<vaadin24-horizontal-layout>` provides a simple way to horizontally align your HTML elements.
  *
  * ```
- * <vaadin23-horizontal-layout>
+ * <vaadin24-horizontal-layout>
  *   <div>Item 1</div>
  *   <div>Item 2</div>
- * </vaadin23-horizontal-layout>
+ * </vaadin24-horizontal-layout>
  * ```
  *
  * ### Built-in Theme Variations
  *
- * `<vaadin23-horizontal-layout>` supports the following theme variations:
+ * `<vaadin24-horizontal-layout>` supports the following theme variations:
  *
  * Theme variation | Description
  * ---|---
@@ -30,7 +30,7 @@ declare class HorizontalLayout extends ThemableMixin(ElementMixin(HTMLElement)) 
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vaadin23-horizontal-layout': HorizontalLayout;
+    'vaadin24-horizontal-layout': HorizontalLayout;
   }
 }
 

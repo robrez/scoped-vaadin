@@ -5,6 +5,6 @@ import { helper } from '@scoped-vaadin/vaadin-material-styles/mixins/helper.js';
 import { requiredField } from '@scoped-vaadin/vaadin-material-styles/mixins/required-field.js';
 import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
-registerStyles('vaadin23-date-time-picker', [requiredField, helper, customField], {
+registerStyles('vaadin24-date-time-picker', [requiredField, helper, customField], {
   moduleId: 'material-date-time-picker',
 });

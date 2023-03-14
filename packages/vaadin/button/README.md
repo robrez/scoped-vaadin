@@ -10,9 +10,9 @@ An accessible and customizable button that allows users to perform actions.
 [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
 
 ```html
-<vaadin23-button theme="primary">Primary</vaadin23-button>
-<vaadin23-button theme="secondary">Secondary</vaadin23-button>
-<vaadin23-button theme="tertiary">Tertiary</vaadin23-button>
+<vaadin24-button theme="primary">Primary</vaadin24-button>
+<vaadin24-button theme="secondary">Secondary</vaadin24-button>
+<vaadin24-button theme="tertiary">Tertiary</vaadin24-button>
 ```
 
 [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/button/screenshot.png" width="296" alt="Screenshot of vaadin-button">](https://vaadin.com/docs/latest/components/button)
