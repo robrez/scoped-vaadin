@@ -4,19 +4,76 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Icon</title>
     <script type="module" src="./common.js"></script>
 
     <script type="module">
       import '@scoped-vaadin/icon';
       import '@scoped-vaadin/icons/vaadin-iconset.js';
+      import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
       import '@scoped-vaadin/tooltip';
+      import { Iconset } from '@scoped-vaadin/icon/vaadin-iconset.js';
+
+      const template = document.createElement('template');
+      template.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <svg
+              id="my-icons-iconset:logo"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="26"
+              preserveAspectRatio="xMidYMin slice"
+            >
+              <g fill="#770C56" fill-rule="evenodd">
+                <path d="M.077 12.962c0-2.496.464-4.85 1.392-7.062A17.772 17.772 0 0 1 5.48.023h3.508C5.349 3.583 3.53 7.896 3.53 12.962c0 5.065 1.819 9.378 5.457 12.939H5.479a17.772 17.772 0 0 1-4.01-5.878C.541 17.812.077 15.458.077 12.962zm31.36 0c0 2.496-.463 4.85-1.391 7.061a17.772 17.772 0 0 1-4.01 5.878h-3.508c3.638-3.56 5.457-7.874 5.457-12.94 0-5.065-1.819-9.378-5.457-12.938h3.509A17.772 17.772 0 0 1 30.046 5.9c.928 2.212 1.392 4.566 1.392 7.062zM12.954 1.721h2.32v13.191h-2.32z"/><path d="m15.273 14.871-1.504-1.487 9.434-9.328 1.503 1.487-9.433 9.328z"/>
+              </g>
+            </svg>
+          </defs>
+        </svg>
+      `;
+
+      Iconset.register('my-icons-iconset', 32, template);
     </script>
+
+    <style>
+      h6 {
+        margin-top: var(--lumo-space-m);
+      }
+    </style>
   </head>
 
   <body>
+    <h6>Vaadin iconset icon with a tooltip</h6>
     <vaadin24-icon icon="vaadin:phone">
       <vaadin24-tooltip slot="tooltip" text="Icon tooltip text"></vaadin24-tooltip>
     </vaadin24-icon>
+
+    <h6>Custom iconset icon</h6>
+    <vaadin24-icon icon="my-icons-iconset:logo"></vaadin24-icon>
+
+    <h6>Font icon (unprefixed char)</h6>
+    <vaadin24-icon font-family="lumo-icons" char="ea0e"></vaadin24-icon>
+
+    <h6>Font icon (prefixed char)</h6>
+    <vaadin24-icon font-family="lumo-icons" char="&#xea0e;"></vaadin24-icon>
+
+    <h6>SVG Standalone</h6>
+    <vaadin24-icon src="assets/code-branch.svg"></vaadin24-icon>
+
+    <h6>SVG Standalone with fill and stroke attributes</h6>
+    <vaadin24-icon src="assets/info-circle.svg"></vaadin24-icon>
+
+    <h6>SVG Sprite</h6>
+    <vaadin24-icon src="assets/solid.svg#code-branch"></vaadin24-icon>
+
+    <h6>SVG Data</h6>
+    <vaadin24-icon id="icon-data"></vaadin24-icon>
+    <script>
+      const iconData = document.querySelector('#icon-data');
+      iconData.src = `data:image/svg+xml,${encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M80 104a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm80-24c0 32.8-19.7 61-48 73.3v87.8c18.8-10.9 40.7-17.1 64-17.1h96c35.3 0 64-28.7 64-64v-6.7C307.7 141 288 112.8 288 80c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V160c0 70.7-57.3 128-128 128H176c-35.3 0-64 28.7-64 64v6.7c28.3 12.3 48 40.5 48 73.3c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-32.8 19.7-61 48-73.3V352 153.3C19.7 141 0 112.8 0 80C0 35.8 35.8 0 80 0s80 35.8 80 80zm232 0a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM80 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>`,
+      )}`;
+    </script>
   </body>
 </html>

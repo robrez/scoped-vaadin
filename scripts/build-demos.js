@@ -1,40 +1,32 @@
 import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
-import { elementMeta } from "./element-meta.js";
-import { versionMeta } from "../version.js";
-
-function allElementNames() {
-  let accumulator = [];
-  elementMeta.forEach((meta) => {
-    accumulator = [...accumulator, ...meta.elementNames];
-  });
-  return [...new Set(accumulator)].sort();
-}
+import {
+  processJs,
+  processTagNames,
+  allElementNames,
+  majorVersion,
+} from "./build.js";
 
 // this lazily just operates on `dev/` which was copied directly from `@vaadin/web-components/dev`
 // TODO make this DRY vs `build.js`
 
 const nodePackagesRoot = "dev";
 const localPackagesRoot = "dev";
-const majorVersion = versionMeta.vaadinVersion;
 
 function findPackages(dir) {
-  const files = glob.sync(dir, { dot: false });
-  const paths = files.map((name) => Path.parse(name));
+  const files = glob.sync(dir, { dot: false, posix: true });
+  const paths = files.sort().map((name) => Path.parse(name));
   return paths;
 }
 
 function findFiles(dir) {
-  const files = glob.sync(dir + "/*.html", { dot: true });
+  const files = glob.sync(dir + "/*.html", { dot: true, posix: true });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .sort()
     .map((name) => Path.parse(name));
   return paths;
-}
-
-function replaceNpmScope(input) {
-  return input.replaceAll("@vaadin/", "@scoped-vaadin/");
 }
 
 function posixify(pathString) {
@@ -50,10 +42,13 @@ function computeRe() {
 const elementsRe = computeRe();
 
 /**
+ * Not using the fn from build.js because it is more conservative, causing it
+ * to miss bare tag names in CSS rules.  Someting is needed to handle that
+ * but I will keep this part as naive
  * @param {string} content : ;
  * @param {Path} filePath
  */
-function processTagNames(content, filePath) {
+function processTagNamesNaive(content, filePath) {
   let result = content;
   result = result.replace(elementsRe, (matched) => {
     return matched.replaceAll(`vaadin-`, `vaadin${majorVersion}-`);
@@ -61,16 +56,65 @@ function processTagNames(content, filePath) {
   return result;
 }
 
-/**
- *
- * @param {string} content : ;
- * @param {Path} filePath
- * @returns
- */
-async function processJs(content, filePath) {
-  const cleanedImports = replaceNpmScope(content); // should really use the es-lexer, but need to parse content between script tags first
-  const cleanedTagNames = processTagNames(cleanedImports, filePath);
-  return cleanedTagNames;
+async function processHtml(content, filePath) {
+  const contentLower = content.toLowerCase();
+  const results = [];
+  let pos = 0;
+  let done = false;
+  const open = "<script";
+  const close = "</script>";
+  while (!done) {
+    const openStart = contentLower.substring(pos).indexOf(open);
+    if (openStart < 0) {
+      done = true;
+      break;
+    }
+    const openEnd = contentLower.substring(pos + openStart).indexOf(">");
+    if (openEnd < 0) {
+      done = true;
+      break;
+    }
+    const closeStart = contentLower
+      .substring(pos + openStart + openEnd + 1)
+      .indexOf(close);
+    if (closeStart < 0) {
+      done = true;
+      break;
+    }
+    const pre = content.substring(pos, pos + openStart);
+    const openTag = content.substring(
+      pos + openStart,
+      pos + openStart + openEnd + 1
+    );
+    const scriptContent = content.substring(
+      pos + openStart + openEnd + 1,
+      pos + openStart + openEnd + closeStart + 1
+    );
+    const closeTag = content.substring(
+      pos + openStart + openEnd + closeStart + 1,
+      pos + openStart + openEnd + closeStart + 1 + close.length
+    );
+
+    let cleanScriptContent = scriptContent;
+    if (!!scriptContent) {
+      // use the js lexer to cleanup the js parts
+      cleanScriptContent = await processJs(scriptContent, filePath);
+    }
+    // use simple tagname replacement to process the html parts
+    let cleanPreContent = processTagNamesNaive(pre);
+    results.push(cleanPreContent);
+    results.push(openTag);
+    results.push(cleanScriptContent);
+    results.push(closeTag);
+    pos =
+      pos + openStart + openTag.length + scriptContent.length + closeTag.length;
+  }
+
+  if (pos < content.length) {
+    results.push(processTagNamesNaive(content.substring(pos, content.length)));
+  }
+
+  return results.join("");
 }
 
 async function processFile(filePath) {
@@ -88,7 +132,7 @@ async function processFile(filePath) {
   let content = fs.readFileSync(inputFileName, "utf-8");
 
   if (filePath.ext.toLowerCase() === ".html") {
-    content = await processJs(content, filePath);
+    content = await processHtml(content, filePath);
   }
 
   fs.writeFileSync(outputFileName, content);
