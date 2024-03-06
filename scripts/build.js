@@ -1,4 +1,4 @@
-import glob from "glob";
+import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
 import { init, parse } from "es-module-lexer";
@@ -39,18 +39,26 @@ function allPackageNames() {
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
-  const files = glob.sync(dir + "/*", { dot: false }).filter((file) => {
-    const packageName = file.replace("node_modules/", "");
-    return !ignore.has(packageName);
-  });
-  const paths = files.map((name) => Path.parse(name));
+  const files = glob
+    .sync(dir + "/*", { dot: false, posix: true })
+    .map((name) => posixify(name))
+    .filter((file) => {
+      const packageName = file.replace("node_modules/", "");
+      return !ignore.has(packageName);
+    });
+  const paths = files
+    .map((name) => posixify(name))
+    .sort()
+    .map((name) => Path.parse(name));
   return paths;
 }
 
 function findFiles(dir) {
-  const files = glob.sync(dir + "/**/*", { dot: true });
+  const files = glob.sync(dir + "/**/*", { dot: true, posix: true });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .map((name) => posixify(name))
+    .sort()
     .map((name) => Path.parse(name));
   return paths;
 }
@@ -432,10 +440,12 @@ function processVendorPackageJson(content) {
 function processVendorPackageJsons() {
   const files = [
     "package.json",
-    ...glob.sync("packages/vendor/*/package.json", { dot: false }),
+    ...glob.sync("packages/vendor/*/package.json", { dot: false, posix: true }),
   ];
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .map((name) => posixify(name))
+    .sort()
     .map((name) => Path.parse(name));
   paths.forEach((filePath) => {
     const inputFileName = posixify(Path.format(filePath));

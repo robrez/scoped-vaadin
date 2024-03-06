@@ -1,7 +1,7 @@
 /**
  * Performs analysis on packages to determine things such as custom element tag names, event names
  */
-import glob from "glob";
+import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
 import { minify } from "terser";
@@ -20,15 +20,23 @@ const eventRegexes = [
 ];
 
 function findPackages(dir) {
-  const files = glob.sync(dir + "/*", { dot: false });
-  const paths = files.map((name) => Path.parse(name));
+  const files = glob.sync(dir + "/*", { dot: false, posix: true });
+  const paths = files
+    .sort()
+    .map((name) => posixify(name))
+    .map((name) => Path.parse(name));
   return paths;
 }
 
 function findFiles(dir) {
-  const files = glob.sync(dir + "/**/{*.js,web-types.json}", { dot: false });
+  const files = glob.sync(dir + "/**/{*.js,web-types.json}", {
+    dot: false,
+    posix: true,
+  });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .sort()
+    .map((name) => posixify(name))
     .map((name) => Path.parse(name));
   return paths;
 }
