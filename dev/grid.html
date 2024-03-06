@@ -9,8 +9,14 @@
   </head>
   <body>
     <script type="module">
+      // PolymerElement based imports
       import '@scoped-vaadin/grid/all-imports';
       import '@scoped-vaadin/tooltip';
+
+      // LitElement based imports
+      // import '@vaadin/grid/lit-all-imports.js';
+      // import '@vaadin/tooltip/theme/lumo/vaadin-tooltip-styles.js';
+      // import '@vaadin/tooltip/src/vaadin-lit-tooltip.js';
 
       const grid = document.querySelector('vaadin24-grid');
 
@@ -37,7 +43,7 @@
     </script>
 
     <vaadin24-grid item-id-path="name">
-      <vaadin24-grid-selection-column auto-select frozen></vaadin24-grid-selection-column>
+      <vaadin24-grid-selection-column auto-select frozen drag-select></vaadin24-grid-selection-column>
       <vaadin24-grid-tree-column frozen path="name" width="200px" flex-shrink="0"></vaadin24-grid-tree-column>
       <vaadin24-grid-column path="name" width="200px" flex-shrink="0"></vaadin24-grid-column>
       <vaadin24-grid-column path="name" width="200px" flex-shrink="0"></vaadin24-grid-column>

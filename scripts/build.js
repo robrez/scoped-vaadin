@@ -10,13 +10,13 @@ import { supplementalElementNames } from "./supplemental-element-names.js";
 
 const nodePackagesRoot = "node_modules/@vaadin";
 const localPackagesRoot = "packages/vaadin";
-const majorVersion = versionMeta.vaadinVersion;
+export const majorVersion = versionMeta.vaadinVersion;
 
 function escapeRegExp(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
-function allElementNames() {
+export function allElementNames() {
   let accumulator = [];
   elementMeta.forEach((meta) => {
     accumulator = [...accumulator, ...meta.elementNames];
@@ -251,7 +251,7 @@ function processLocalName(content) {
  * @param {string} content : ;
  * @param {Path} filePath
  */
-function processTagNames(content, filePath) {
+export function processTagNames(content, filePath) {
   let result = content;
 
   result = processLocalName(result);
@@ -281,7 +281,7 @@ function processTagNames(content, filePath) {
  * @param {Path} filePath
  * @returns
  */
-async function processJs(content, filePath) {
+export async function processJs(content, filePath) {
   const cleanedTagNames = processTagNames(content, filePath);
 
   await init;
