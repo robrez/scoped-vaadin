@@ -1,4 +1,4 @@
-import glob from "glob";
+import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
 import { elementMeta } from "./element-meta.js";
