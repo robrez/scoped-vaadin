@@ -1,0 +1,30 @@
+Index: combo-box/src/vaadin-combo-box-item.d.ts
+===================================================================
+--- combo-box/src/vaadin-combo-box-item.d.ts	null
++++ combo-box/src/vaadin-combo-box-item.d.ts	null
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import type { DirMixinClass } from '@vaadin/component-base/src/dir-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { DirMixinClass } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { ComboBox } from './vaadin-combo-box.js';
+ import type { ComboBoxDefaultItem, ComboBoxItemMixinClass } from './vaadin-combo-box-item-mixin.js';
+ 
+ /**
+- * An item element used by the `<vaadin-combo-box>` dropdown.
++ * An item element used by the `<vaadin24-combo-box>` dropdown.
+  *
+  * ### Styling
+  *
+@@ -38,7 +38,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-combo-box-item': ComboBoxItem;
++    'vaadin24-combo-box-item': ComboBoxItem;
+   }
+ }
+ 

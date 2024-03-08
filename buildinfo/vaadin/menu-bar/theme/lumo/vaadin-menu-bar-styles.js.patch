@@ -1,0 +1,16 @@
+Index: menu-bar/theme/lumo/vaadin-menu-bar-styles.js
+===================================================================
+--- menu-bar/theme/lumo/vaadin-menu-bar-styles.js	null
++++ menu-bar/theme/lumo/vaadin-menu-bar-styles.js	null
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-menu-bar',
++  'vaadin24-menu-bar',
+   css`
+     :host([has-single-button]) ::slotted(vaadin-menu-bar-button) {
+       border-radius: var(--lumo-border-radius-m);

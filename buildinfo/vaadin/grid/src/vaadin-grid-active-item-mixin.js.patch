@@ -1,0 +1,13 @@
+Index: grid/src/vaadin-grid-active-item-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-active-item-mixin.js	null
++++ grid/src/vaadin-grid-active-item-mixin.js	null
+@@ -77,7 +77,7 @@
+      */
+     _onClick(e) {
+       if (e.defaultPrevented) {
+-        // Something has handled this click already, e. g., <vaadin-grid-sorter>
++        // Something has handled this click already, e. g., <vaadin24-grid-sorter>
+         return;
+       }
+ 

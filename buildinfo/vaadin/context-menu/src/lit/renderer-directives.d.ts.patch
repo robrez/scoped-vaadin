@@ -1,0 +1,27 @@
+Index: context-menu/src/lit/renderer-directives.d.ts
+===================================================================
+--- context-menu/src/lit/renderer-directives.d.ts	null
++++ context-menu/src/lit/renderer-directives.d.ts	null
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { DirectiveResult } from 'lit/directive.js';
+-import type { LitRendererResult } from '@vaadin/lit-renderer';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import type { LitRendererResult } from '@scoped-vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { ContextMenu, ContextMenuRendererContext } from '../vaadin-context-menu.js';
+ 
+ export type ContextMenuLitRenderer = (context: ContextMenuRendererContext, menu: ContextMenu) => LitRendererResult;
+@@ -44,9 +44,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-context-menu
++ * `<vaadin24-context-menu
+  *   ${contextMenuRenderer((context, menu) => html`...`)}
+- * ></vaadin-context-menu>`
++ * ></vaadin24-context-menu>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

@@ -1,0 +1,59 @@
+Index: upload/src/vaadin-upload.d.ts
+===================================================================
+--- upload/src/vaadin-upload.d.ts	null
++++ upload/src/vaadin-upload.d.ts	null
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { type UploadFile, UploadMixin } from './vaadin-upload-mixin.js';
+ 
+ export { UploadFile, UploadI18n, UploadMethod } from './vaadin-upload-mixin.js';
+@@ -58,7 +58,7 @@
+  * on the server response. If the event is defaultPrevented the vaadin-upload
+  * will return allowing the user to do something on his own like retry the
+  * upload, etc. since he has full access to the `xhr` and `file` objects.
+- * Otherwise, if the event is not prevented default `vaadin-upload` continues
++ * Otherwise, if the event is not prevented default `vaadin24-upload` continues
+  * with the normal workflow checking the `xhr.status` and `file.error`
+  * which also might be modified by the user to force a customized response,
+  */
+@@ -79,7 +79,7 @@
+ /**
+  * Fired when the XHR has been opened but not sent yet. Useful for appending
+  * data keys to the FormData object, for changing some parameters like
+- * headers, etc. If the event is defaultPrevented, `vaadin-upload` will not
++ * headers, etc. If the event is defaultPrevented, `vaadin24-upload` will not
+  * send the request allowing the user to do something on his own.
+  */
+ export type UploadRequestEvent = CustomEvent<{ xhr: XMLHttpRequest; file: UploadFile; formData: FormData }>;
+@@ -113,12 +113,12 @@
+ export interface UploadEventMap extends HTMLElementEventMap, UploadCustomEventMap {}
+ 
+ /**
+- * `<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.
++ * `<vaadin24-upload>` is a Web Component for uploading multiple files with drag and drop support.
+  *
+  * Example:
+  *
+  * ```
+- * <vaadin-upload></vaadin-upload>
++ * <vaadin24-upload></vaadin24-upload>
+  * ```
+  *
+  * ### Styling
+@@ -170,7 +170,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-upload': Upload;
++    'vaadin24-upload': Upload;
+   }
+ }
+ 

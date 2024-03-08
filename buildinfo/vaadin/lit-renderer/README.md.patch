@@ -1,0 +1,13 @@
+Index: lit-renderer/README.md
+===================================================================
+--- lit-renderer/README.md	null
++++ lit-renderer/README.md	null
+@@ -1,5 +1,7 @@
+-# @vaadin/lit-renderer
++# @scoped-vaadin/lit-renderer
+ 
++This component is based on [@vaadin/lit-renderer](https://www.npmjs.com/package/@vaadin/lit-renderer)
++
+ An abstract Lit directive for adding a renderer to a Vaadin web component.
+ 
+ ## License

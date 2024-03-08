@@ -1,0 +1,34 @@
+Index: grid/src/vaadin-grid-filter-element-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-filter-element-mixin.js	null
++++ grid/src/vaadin-grid-filter-element-mixin.js	null
+@@ -3,14 +3,14 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { timeOut } from '@vaadin/component-base/src/async.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin';
++import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin';
+ 
+ registerStyles(
+-  'vaadin-grid-filter',
++  'vaadin24-grid-filter',
+   css`
+     :host {
+       display: inline-flex;
+@@ -67,7 +67,7 @@
+     ready() {
+       super.ready();
+ 
+-      this._filterController = new SlotController(this, '', 'vaadin-text-field', {
++      this._filterController = new SlotController(this, '', 'vaadin24-text-field', {
+         initializer: (field) => {
+           field.addEventListener('value-changed', (e) => {
+             if (field.__previousValue === undefined && e.detail.value === '') {

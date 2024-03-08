@@ -1,0 +1,20 @@
+Index: grid/theme/lumo/vaadin-grid-sorter-styles.js
+===================================================================
+--- grid/theme/lumo/vaadin-grid-sorter-styles.js	null
++++ grid/theme/lumo/vaadin-grid-sorter-styles.js	null
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-grid-sorter',
++  'vaadin24-grid-sorter',
+   css`
+     :host {
+       justify-content: flex-start;

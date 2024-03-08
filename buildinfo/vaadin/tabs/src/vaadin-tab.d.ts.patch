@@ -1,0 +1,39 @@
+Index: tabs/src/vaadin-tab.d.ts
+===================================================================
+--- tabs/src/vaadin-tab.d.ts	null
++++ tabs/src/vaadin-tab.d.ts	null
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ItemMixin } from '@vaadin/item/src/vaadin-item-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ItemMixin } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-tab>` is a Web Component providing an accessible and customizable tab.
++ * `<vaadin24-tab>` is a Web Component providing an accessible and customizable tab.
+  *
+  * ```
+- *   <vaadin-tab>
++ *   <vaadin24-tab>
+  *     Tab 1
+- *   </vaadin-tab>
++ *   </vaadin24-tab>
+  * ```
+  *
+  * The following state attributes are available for styling:
+@@ -34,7 +34,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-tab': Tab;
++    'vaadin24-tab': Tab;
+   }
+ }
+ 

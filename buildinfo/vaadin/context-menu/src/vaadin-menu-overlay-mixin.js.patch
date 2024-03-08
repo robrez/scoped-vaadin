@@ -1,0 +1,17 @@
+Index: context-menu/src/vaadin-menu-overlay-mixin.js
+===================================================================
+--- context-menu/src/vaadin-menu-overlay-mixin.js	null
++++ context-menu/src/vaadin-menu-overlay-mixin.js	null
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { getClosestElement } from '@vaadin/component-base/src/dom-utils.js';
+-import { OverlayFocusMixin } from '@vaadin/overlay/src/vaadin-overlay-focus-mixin.js';
+-import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import { getClosestElement } from '@scoped-vaadin/component-base/src/dom-utils.js';
++import { OverlayFocusMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-focus-mixin.js';
++import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+ 
+ /**
+  * @polymerMixin

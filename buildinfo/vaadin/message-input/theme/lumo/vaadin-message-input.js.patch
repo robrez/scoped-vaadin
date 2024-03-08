@@ -1,0 +1,11 @@
+Index: message-input/theme/lumo/vaadin-message-input.js
+===================================================================
+--- message-input/theme/lumo/vaadin-message-input.js	null
++++ message-input/theme/lumo/vaadin-message-input.js	null
+@@ -1,4 +1,4 @@
+-import '@vaadin/button/theme/lumo/vaadin-button.js';
+-import '@vaadin/text-area/theme/lumo/vaadin-text-area.js';
++import '@scoped-vaadin/button/theme/lumo/vaadin-button.js';
++import '@scoped-vaadin/text-area/theme/lumo/vaadin-text-area.js';
+ import './vaadin-message-input-styles.js';
+ import '../../src/vaadin-message-input.js';

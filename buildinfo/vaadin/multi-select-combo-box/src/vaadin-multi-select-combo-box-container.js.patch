@@ -1,0 +1,39 @@
+Index: multi-select-combo-box/src/vaadin-multi-select-combo-box-container.js
+===================================================================
+--- multi-select-combo-box/src/vaadin-multi-select-combo-box-container.js	null
++++ multi-select-combo-box/src/vaadin-multi-select-combo-box-container.js	null
+@@ -3,12 +3,12 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { InputContainer } from '@vaadin/input-container/src/vaadin-input-container.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { InputContainer } from '@scoped-vaadin/input-container/src/vaadin-input-container.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-container',
++  'vaadin24-multi-select-combo-box-container',
+   css`
+     #wrapper {
+       display: flex;
+@@ -28,7 +28,7 @@
+ let memoizedTemplate;
+ 
+ /**
+- * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends InputContainer
+@@ -36,7 +36,7 @@
+  */
+ class MultiSelectComboBoxContainer extends InputContainer {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-container';
++    return 'vaadin24-multi-select-combo-box-container';
+   }
+ 
+   static get template() {

@@ -1,0 +1,48 @@
+Index: tooltip/src/vaadin-tooltip-overlay.js
+===================================================================
+--- tooltip/src/vaadin-tooltip-overlay.js	null
++++ tooltip/src/vaadin-tooltip-overlay.js	null
+@@ -4,19 +4,19 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { TooltipOverlayMixin } from './vaadin-tooltip-overlay-mixin.js';
+ import { tooltipOverlayStyles } from './vaadin-tooltip-overlay-styles.js';
+ 
+-registerStyles('vaadin-tooltip-overlay', [overlayStyles, tooltipOverlayStyles], {
++registerStyles('vaadin24-tooltip-overlay', [overlayStyles, tooltipOverlayStyles], {
+   moduleId: 'vaadin-tooltip-overlay-styles',
+ });
+ 
+ /**
+- * An element used internally by `<vaadin-tooltip>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-tooltip>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -27,7 +27,7 @@
+  */
+ class TooltipOverlay extends TooltipOverlayMixin(DirMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-tooltip-overlay';
++    return 'vaadin24-tooltip-overlay';
+   }
+ 
+   static get template() {
+@@ -44,7 +44,7 @@
+     super.ready();
+ 
+     // When setting `manual` and `opened` attributes, the overlay is already moved to body
+-    // by the time when `ready()` callback of the `vaadin-tooltip` is executed by Polymer,
++    // by the time when `ready()` callback of the `vaadin24-tooltip` is executed by Polymer,
+     // so querySelector() would return null. So we use this workaround to set properties.
+     this.owner = this.__dataHost;
+     this.owner._overlayElement = this;

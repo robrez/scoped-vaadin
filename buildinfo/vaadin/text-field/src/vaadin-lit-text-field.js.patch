@@ -1,0 +1,58 @@
+Index: text-field/src/vaadin-lit-text-field.js
+===================================================================
+--- text-field/src/vaadin-lit-text-field.js	null
++++ text-field/src/vaadin-lit-text-field.js	null
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/src/vaadin-lit-input-container.js';
++import '@scoped-vaadin/input-container/src/vaadin-lit-input-container.js';
+ import { css, html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { TextFieldMixin } from './vaadin-text-field-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-text-field>` web component.
++ * LitElement based version of `<vaadin24-text-field>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -24,7 +24,7 @@
+  */
+ export class TextField extends TextFieldMixin(ThemableMixin(ElementMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-text-field';
++    return 'vaadin24-text-field';
+   }
+ 
+   static get styles() {
+@@ -47,7 +47,7 @@
+           <span part="required-indicator" aria-hidden="true" @click="${this.focus}"></span>
+         </div>
+ 
+-        <vaadin-input-container
++        <vaadin24-input-container
+           part="input-field"
+           .readonly="${this.readonly}"
+           .disabled="${this.disabled}"
+@@ -58,7 +58,7 @@
+           <slot name="input"></slot>
+           <slot name="suffix" slot="suffix"></slot>
+           <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>
+-        </vaadin-input-container>
++        </vaadin24-input-container>
+ 
+         <div part="helper-text">
+           <slot name="helper"></slot>

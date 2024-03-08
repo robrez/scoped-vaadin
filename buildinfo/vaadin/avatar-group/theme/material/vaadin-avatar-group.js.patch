@@ -1,0 +1,9 @@
+Index: avatar-group/theme/material/vaadin-avatar-group.js
+===================================================================
+--- avatar-group/theme/material/vaadin-avatar-group.js	null
++++ avatar-group/theme/material/vaadin-avatar-group.js	null
+@@ -1,3 +1,3 @@
+-import '@vaadin/avatar/theme/material/vaadin-avatar.js';
++import '@scoped-vaadin/avatar/theme/material/vaadin-avatar.js';
+ import './vaadin-avatar-group-styles.js';
+ import '../../src/vaadin-avatar-group.js';

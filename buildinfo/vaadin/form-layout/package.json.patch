@@ -1,0 +1,68 @@
+Index: form-layout/package.json
+===================================================================
+--- form-layout/package.json	null
++++ form-layout/package.json	null
+@@ -1,21 +1,21 @@
+ {
+-  "name": "@vaadin/form-layout",
+-  "version": "24.3.7",
++  "name": "@scoped-vaadin/form-layout",
++  "version": "24.3.6-alpha.1",
++  "repository": {
++    "type": "git",
++    "url": "https://github.com/robrez/scoped-vaadin.git",
++    "directory": "packages/vaadin/form-layout"
++  },
++  "bugs": {
++    "url": "https://github.com/robrez/scoped-vaadin/issues"
++  },
+   "publishConfig": {
+     "access": "public"
+   },
+   "description": "Web component providing configurable responsive layout for form elements",
+   "license": "Apache-2.0",
+-  "repository": {
+-    "type": "git",
+-    "url": "https://github.com/vaadin/web-components.git",
+-    "directory": "packages/form-layout"
+-  },
+   "author": "Vaadin Ltd",
+   "homepage": "https://vaadin.com/components",
+-  "bugs": {
+-    "url": "https://github.com/vaadin/web-components/issues"
+-  },
+   "main": "vaadin-form-layout.js",
+   "module": "vaadin-form-layout.js",
+   "type": "module",
+@@ -34,23 +34,16 @@
+     "web-component",
+     "polymer"
+   ],
+-  "dependencies": {
+-    "@polymer/polymer": "^3.0.0",
+-    "@vaadin/component-base": "~24.3.7",
+-    "@vaadin/vaadin-lumo-styles": "~24.3.7",
+-    "@vaadin/vaadin-material-styles": "~24.3.7",
+-    "@vaadin/vaadin-themable-mixin": "~24.3.7"
+-  },
+-  "devDependencies": {
+-    "@esm-bundle/chai": "^4.3.4",
+-    "@vaadin/custom-field": "~24.3.7",
+-    "@vaadin/testing-helpers": "^0.6.0",
+-    "@vaadin/text-field": "~24.3.7",
+-    "sinon": "^13.0.2"
+-  },
+   "web-types": [
+     "web-types.json",
+     "web-types.lit.json"
+   ],
+-  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
++  "dependencies": {
++    "@polymer/polymer": "^3.0.0",
++    "@scoped-vaadin/component-base": "^24.3.6-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.6-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.3.6-alpha.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.6-alpha.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.6-alpha.1"
++  }
+ }

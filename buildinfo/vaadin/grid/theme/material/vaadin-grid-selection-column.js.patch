@@ -1,0 +1,8 @@
+Index: grid/theme/material/vaadin-grid-selection-column.js
+===================================================================
+--- grid/theme/material/vaadin-grid-selection-column.js	null
++++ grid/theme/material/vaadin-grid-selection-column.js	null
+@@ -1,2 +1,2 @@
+-import '@vaadin/checkbox/theme/material/vaadin-checkbox.js';
++import '@scoped-vaadin/checkbox/theme/material/vaadin-checkbox.js';
+ import '../../src/vaadin-grid-selection-column.js';

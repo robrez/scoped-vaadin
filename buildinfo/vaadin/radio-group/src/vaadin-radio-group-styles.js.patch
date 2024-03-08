@@ -1,0 +1,13 @@
+Index: radio-group/src/vaadin-radio-group-styles.js
+===================================================================
+--- radio-group/src/vaadin-radio-group-styles.js	null
++++ radio-group/src/vaadin-radio-group-styles.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { css } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export const radioGroupStyles = css`
+   :host {

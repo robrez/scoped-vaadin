@@ -1,0 +1,13 @@
+Index: text-area/src/vaadin-text-area-styles.js
+===================================================================
+--- text-area/src/vaadin-text-area-styles.js	null
++++ text-area/src/vaadin-text-area-styles.js	null
+@@ -50,7 +50,7 @@
+     box-shadow: none;
+   }
+ 
+-  /* Override styles from <vaadin-input-container> */
++  /* Override styles from <vaadin24-input-container> */
+   [part='input-field'] ::slotted(textarea) {
+     align-self: stretch;
+     white-space: pre-wrap;

@@ -1,0 +1,51 @@
+Index: grid/src/lit/column-renderer-directives.d.ts
+===================================================================
+--- grid/src/lit/column-renderer-directives.d.ts	null
++++ grid/src/lit/column-renderer-directives.d.ts	null
+@@ -5,8 +5,8 @@
+  */
+ /* eslint-disable max-classes-per-file */
+ import type { DirectiveResult } from 'lit/directive';
+-import type { LitRenderer, LitRendererResult } from '@vaadin/lit-renderer';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import type { LitRenderer, LitRendererResult } from '@scoped-vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { GridItemModel } from '../vaadin-grid.js';
+ import type { GridColumn } from '../vaadin-grid-column.js';
+ 
+@@ -75,9 +75,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-grid-column
++ * `<vaadin24-grid-column
+  *   ${columnBodyRenderer((item, model, column) => html`...`)}
+- * ></vaadin-grid-column>`
++ * ></vaadin24-grid-column>`
+  * ```
+  *
+  * @param renderer the renderer callback.
+@@ -106,9 +106,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-grid-column
++ * `<vaadin24-grid-column
+  *   ${columnHeaderRenderer((column) => html`...`)}
+- * ></vaadin-grid-column>`
++ * ></vaadin24-grid-column>`
+  * ```
+  *
+  * @param renderer the renderer callback.
+@@ -137,9 +137,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-grid-column
++ * `<vaadin24-grid-column
+  *   ${columnFooterRenderer((column) => html`...`)}
+- * ></vaadin-grid-column>`
++ * ></vaadin24-grid-column>`
+  * ```
+  *
+  * @param renderer the renderer callback.

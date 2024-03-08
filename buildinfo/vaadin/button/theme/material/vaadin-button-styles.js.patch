@@ -1,0 +1,24 @@
+Index: button/theme/material/vaadin-button-styles.js
+===================================================================
+--- button/theme/material/vaadin-button-styles.js	null
++++ button/theme/material/vaadin-button-styles.js	null
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const button = css`
+   :host {
+@@ -165,6 +165,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-button', button, { moduleId: 'material-button' });
++registerStyles('vaadin24-button', button, { moduleId: 'material-button' });
+ 
+ export { button };

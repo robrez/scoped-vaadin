@@ -1,0 +1,123 @@
+Index: select/src/vaadin-select.d.ts
+===================================================================
+--- select/src/vaadin-select.d.ts	null
++++ select/src/vaadin-select.d.ts	null
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { SelectBaseMixin } from './vaadin-select-base-mixin.js';
+ 
+ export interface SelectItem {
+@@ -23,12 +23,12 @@
+ };
+ 
+ /**
+- * Function for rendering the content of the `<vaadin-select>`.
++ * Function for rendering the content of the `<vaadin24-select>`.
+  * Receives two arguments:
+  *
+- * - `root` The `<vaadin-select-overlay>` internal container
++ * - `root` The `<vaadin24-select-overlay>` internal container
+  *   DOM element. Append your content to it.
+- * - `select` The reference to the `<vaadin-select>` element.
++ * - `select` The reference to the `<vaadin24-select>` element.
+  */
+ export type SelectRenderer = (root: HTMLElement, select: Select) => void;
+ 
+@@ -67,14 +67,14 @@
+ }
+ 
+ /**
+- * `<vaadin-select>` is a Web Component for selecting values from a list of items.
++ * `<vaadin24-select>` is a Web Component for selecting values from a list of items.
+  *
+  * ### Items
+  *
+  * Use the `items` property to define possible options for the select:
+  *
+  * ```html
+- * <vaadin-select id="select"></vaadin-select>
++ * <vaadin24-select id="select"></vaadin24-select>
+  * ```
+  * ```js
+  * const select = document.querySelector('#select');
+@@ -100,10 +100,10 @@
+  * ```js
+  * const select = document.querySelector('#select');
+  * select.renderer = function(root, select) {
+- *   const listBox = document.createElement('vaadin-list-box');
+- *   // append 3 <vaadin-item> elements
++ *   const listBox = document.createElement('vaadin24-list-box');
++ *   // append 3 <vaadin24-item> elements
+  *   ['Jose', 'Manolo', 'Pedro'].forEach(function(name) {
+- *     const item = document.createElement('vaadin-item');
++ *     const item = document.createElement('vaadin24-item');
+  *     item.textContent = name;
+  *     item.setAttribute('label', name)
+  *     listBox.appendChild(item);
+@@ -129,38 +129,38 @@
+  * Custom property                    | Description                  | Target element          | Default
+  * -----------------------------------|------------------------------|----------------------------------
+  * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
+- * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin-select-overlay` |
++ * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin24-select-overlay` |
+  *
+- * `<vaadin-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name       | Description
+  * ----------------|----------------
+  * `toggle-button` | The toggle button
+  *
+- * In addition to `<vaadin-text-field>` state attributes, the following state attributes are available for theming:
++ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
+  *
+  * Attribute | Description                 | Part name
+  * ----------|-----------------------------|-----------
+  * `opened`  | Set when the select is open | :host
+  *
+- * There are two exceptions in terms of styling compared to `<vaadin-text-field>`:
+- * - the `clear-button` shadow DOM part does not exist in `<vaadin-select>`.
+- * - the `input-prevented` state attribute is not supported by `<vaadin-select>`.
++ * There are two exceptions in terms of styling compared to `<vaadin24-text-field>`:
++ * - the `clear-button` shadow DOM part does not exist in `<vaadin24-select>`.
++ * - the `input-prevented` state attribute is not supported by `<vaadin24-select>`.
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-select>` itself, the following internal
++ * In addition to `<vaadin24-select>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-select-overlay>` - has the same API as [`<vaadin-overlay>`](#/elements/vaadin-overlay).
+- * - `<vaadin-select-value-button>` - has the same API as [`<vaadin-button>`](#/elements/vaadin-button).
+- * - [`<vaadin-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
++ * - `<vaadin24-select-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
++ * - `<vaadin24-select-value-button>` - has the same API as [`<vaadin24-button>`](#/elements/vaadin-button).
++ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-select>` is
++ * Note: the `theme` attribute value set on `<vaadin24-select>` is
+  * propagated to the internal components listed above.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+@@ -187,7 +187,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-select': Select;
++    'vaadin24-select': Select;
+   }
+ }
+ 

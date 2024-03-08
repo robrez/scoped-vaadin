@@ -1,0 +1,15 @@
+Index: grid/src/vaadin-grid-column-group-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-column-group-mixin.js	null
++++ grid/src/vaadin-grid-column-group-mixin.js	null
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { animationFrame } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
++import { animationFrame } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+ import { ColumnBaseMixin } from './vaadin-grid-column-mixin.js';
+ import { ColumnObserver, updateColumnOrders } from './vaadin-grid-helpers.js';
+ 

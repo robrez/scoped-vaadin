@@ -1,0 +1,28 @@
+Index: item/theme/lumo/vaadin-item-styles.js
+===================================================================
+--- item/theme/lumo/vaadin-item-styles.js	null
++++ item/theme/lumo/vaadin-item-styles.js	null
+@@ -1,9 +1,9 @@
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const item = css`
+   :host {
+@@ -89,6 +89,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-item', item, { moduleId: 'lumo-item' });
++registerStyles('vaadin24-item', item, { moduleId: 'lumo-item' });
+ 
+ export { item };

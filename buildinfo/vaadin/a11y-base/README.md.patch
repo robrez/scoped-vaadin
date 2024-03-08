@@ -1,0 +1,13 @@
+Index: a11y-base/README.md
+===================================================================
+--- a11y-base/README.md	null
++++ a11y-base/README.md	null
+@@ -1,5 +1,7 @@
+-# @vaadin/a11y-base
++# @scoped-vaadin/a11y-base
+ 
++This component is based on [@vaadin/a11y-base](https://www.npmjs.com/package/@vaadin/a11y-base)
++
+ A set of accessibility helpers, mixins and controllers used by Vaadin components.
+ 
+ ## Contributing

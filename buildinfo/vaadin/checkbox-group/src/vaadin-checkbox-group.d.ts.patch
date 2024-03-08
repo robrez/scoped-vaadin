@@ -1,0 +1,53 @@
+Index: checkbox-group/src/vaadin-checkbox-group.d.ts
+===================================================================
+--- checkbox-group/src/vaadin-checkbox-group.d.ts	null
++++ checkbox-group/src/vaadin-checkbox-group.d.ts	null
+@@ -3,11 +3,11 @@
+  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * Fired when the `invalid` property changes.
+@@ -35,15 +35,15 @@
+ export interface CheckboxGroupEventMap extends HTMLElementEventMap, CheckboxGroupCustomEventMap {}
+ 
+ /**
+- * `<vaadin-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
++ * `<vaadin24-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
+  *
+  * ```html
+- * <vaadin-checkbox-group label="Export data">
+- *   <vaadin-checkbox value="0" label="Order ID"></vaadin-checkbox>
+- *   <vaadin-checkbox value="1" label="Product name"></vaadin-checkbox>
+- *   <vaadin-checkbox value="2" label="Customer"></vaadin-checkbox>
+- *   <vaadin-checkbox value="3" label="Status"></vaadin-checkbox>
+- * </vaadin-checkbox-group>
++ * <vaadin24-checkbox-group label="Export data">
++ *   <vaadin24-checkbox value="0" label="Order ID"></vaadin24-checkbox>
++ *   <vaadin24-checkbox value="1" label="Product name"></vaadin24-checkbox>
++ *   <vaadin24-checkbox value="2" label="Customer"></vaadin24-checkbox>
++ *   <vaadin24-checkbox value="3" label="Status"></vaadin24-checkbox>
++ * </vaadin24-checkbox-group>
+  * ```
+  *
+  * ### Styling
+@@ -100,7 +100,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-checkbox-group': CheckboxGroup;
++    'vaadin24-checkbox-group': CheckboxGroup;
+   }
+ }
+ 

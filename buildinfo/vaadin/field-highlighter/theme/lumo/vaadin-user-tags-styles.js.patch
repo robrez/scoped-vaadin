@@ -1,0 +1,36 @@
+Index: field-highlighter/theme/lumo/vaadin-user-tags-styles.js
+===================================================================
+--- field-highlighter/theme/lumo/vaadin-user-tags-styles.js	null
++++ field-highlighter/theme/lumo/vaadin-user-tags-styles.js	null
+@@ -3,15 +3,15 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-user-tags-overlay',
++  'vaadin24-user-tags-overlay',
+   [
+     overlay,
+     css`
+@@ -46,7 +46,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-user-tag',
++  'vaadin24-user-tag',
+   css`
+     :host {
+       font-family: var(--lumo-font-family);

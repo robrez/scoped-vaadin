@@ -1,0 +1,57 @@
+Index: time-picker/src/vaadin-time-picker-combo-box.js
+===================================================================
+--- time-picker/src/vaadin-time-picker-combo-box.js	null
++++ time-picker/src/vaadin-time-picker-combo-box.js	null
+@@ -7,12 +7,12 @@
+ import './vaadin-time-picker-overlay.js';
+ import './vaadin-time-picker-scroller.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ComboBoxMixin } from '@vaadin/combo-box/src/vaadin-combo-box-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-time-picker>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-time-picker>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -22,7 +22,7 @@
+  */
+ class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-time-picker-combo-box';
++    return 'vaadin24-time-picker-combo-box';
+   }
+ 
+   static get template() {
+@@ -35,7 +35,7 @@
+ 
+       <slot></slot>
+ 
+-      <vaadin-time-picker-overlay
++      <vaadin24-time-picker-overlay
+         id="overlay"
+         opened="[[_overlayOpened]]"
+         loading$="[[loading]]"
+@@ -43,7 +43,7 @@
+         position-target="[[positionTarget]]"
+         no-vertical-overlap
+         restore-focus-node="[[inputElement]]"
+-      ></vaadin-time-picker-overlay>
++      ></vaadin24-time-picker-overlay>
+     `;
+   }
+ 
+@@ -61,7 +61,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-time-picker';
++    return 'vaadin24-time-picker';
+   }
+ 
+   /**

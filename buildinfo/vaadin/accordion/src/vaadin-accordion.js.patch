@@ -1,0 +1,84 @@
+Index: accordion/src/vaadin-accordion.js
+===================================================================
+--- accordion/src/vaadin-accordion.js	null
++++ accordion/src/vaadin-accordion.js	null
+@@ -4,18 +4,18 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { SlotObserver } from '@vaadin/component-base/src/slot-observer.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { AccordionPanel } from './vaadin-accordion-panel.js';
+ 
+ /**
+- * `<vaadin-accordion>` is a Web Component implementing accordion widget:
++ * `<vaadin24-accordion>` is a Web Component implementing accordion widget:
+  * a vertically stacked set of expandable panels. The component should be
+- * used as a wrapper for two or more `<vaadin-accordion-panel>` components.
++ * used as a wrapper for two or more `<vaadin24-accordion-panel>` components.
+  *
+  * Panel headings function as controls that enable users to open (expand)
+  * or hide (collapse) their associated sections of content. The user can
+@@ -25,24 +25,24 @@
+  * previous panel to close and hide its content.
+  *
+  * ```
+- * <vaadin-accordion>
+- *   <vaadin-accordion-panel>
+- *     <vaadin-accordion-heading slot="summary">Panel 1</vaadin-accordion-heading>
++ * <vaadin24-accordion>
++ *   <vaadin24-accordion-panel>
++ *     <vaadin24-accordion-heading slot="summary">Panel 1</vaadin24-accordion-heading>
+  *     <div>This panel is opened, so the text is visible by default.</div>
+- *   </vaadin-accordion-panel>
+- *   <vaadin-accordion-panel>
+- *     <vaadin-accordion-heading slot="summary">Panel 2</vaadin-accordion-heading>
++ *   </vaadin24-accordion-panel>
++ *   <vaadin24-accordion-panel>
++ *     <vaadin24-accordion-heading slot="summary">Panel 2</vaadin24-accordion-heading>
+  *     <div>After opening this panel, the first one becomes closed.</div>
+- *   </vaadin-accordion-panel>
+- * </vaadin-accordion>
++ *   </vaadin24-accordion-panel>
++ * </vaadin24-accordion>
+  * ```
+  *
+  * ### Styling
+  *
+- * See the [`<vaadin-accordion-panel>`](#/elements/vaadin-accordion-panel)
++ * See the [`<vaadin24-accordion-panel>`](#/elements/vaadin-accordion-panel)
+  * documentation for the available state attributes and stylable shadow parts.
+  *
+- * **Note:** You can apply the theme to `<vaadin-accordion>` component itself,
++ * **Note:** You can apply the theme to `<vaadin24-accordion>` component itself,
+  * especially by using the following CSS selector:
+  *
+  * ```
+@@ -79,7 +79,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-accordion';
++    return 'vaadin24-accordion';
+   }
+ 
+   static get properties() {
+@@ -98,7 +98,7 @@
+       },
+ 
+       /**
+-       * The list of `<vaadin-accordion-panel>` child elements.
++       * The list of `<vaadin24-accordion-panel>` child elements.
+        * It is populated from the elements passed to the light DOM,
+        * and updated dynamically when adding or removing panels.
+        * @type {!Array<!AccordionPanel>}

@@ -1,0 +1,55 @@
+Index: grid/src/vaadin-grid-tree-toggle.d.ts
+===================================================================
+--- grid/src/vaadin-grid-tree-toggle.d.ts	null
++++ grid/src/vaadin-grid-tree-toggle.d.ts	null
+@@ -3,27 +3,27 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { GridTreeToggleEventMap } from './vaadin-grid-tree-toggle-mixin.js';
+ import { GridTreeToggleMixin } from './vaadin-grid-tree-toggle-mixin.js';
+ 
+ export * from './vaadin-grid-tree-toggle-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-tree-toggle>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-tree-toggle>` is a helper element for the `<vaadin24-grid>`
+  * that provides toggle and level display functionality for the item tree.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid-column id="column"></vaadin-grid-column>
++ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
+  * ```
+  * ```js
+  * const column = document.querySelector('#column');
+  * column.renderer = (root, column, model) => {
+  *   let treeToggle = root.firstElementChild;
+  *   if (!treeToggle) {
+- *     treeToggle = document.createElement('vaadin-grid-tree-toggle');
++ *     treeToggle = document.createElement('vaadin24-grid-tree-toggle');
+  *     treeToggle.addEventListener('expanded-changed', () => { ... });
+  *     root.appendChild(treeToggle);
+  *   }
+@@ -50,7 +50,7 @@
+  * `leaf` | When present, the toggle is not expandable, i. e., the current item is a leaf | :host
+  *
+  * The following custom CSS properties are available on
+- * the `<vaadin-grid-tree-toggle>` element:
++ * the `<vaadin24-grid-tree-toggle>` element:
+  *
+  * Custom CSS property | Description | Default
+  * ---|---|---
+@@ -74,7 +74,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-tree-toggle': GridTreeToggle;
++    'vaadin24-grid-tree-toggle': GridTreeToggle;
+   }
+ }
+ 

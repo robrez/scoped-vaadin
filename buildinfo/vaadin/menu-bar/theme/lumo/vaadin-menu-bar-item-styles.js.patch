@@ -1,0 +1,24 @@
+Index: menu-bar/theme/lumo/vaadin-menu-bar-item-styles.js
+===================================================================
+--- menu-bar/theme/lumo/vaadin-menu-bar-item-styles.js	null
++++ menu-bar/theme/lumo/vaadin-menu-bar-item-styles.js	null
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { contextMenuItem } from '@vaadin/context-menu/theme/lumo/vaadin-context-menu-item-styles.js';
+-import { item } from '@vaadin/item/theme/lumo/vaadin-item-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { contextMenuItem } from '@scoped-vaadin/context-menu/theme/lumo/vaadin-context-menu-item-styles.js';
++import { item } from '@scoped-vaadin/item/theme/lumo/vaadin-item-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const menuBarItem = css`
+   [part='content'] {
+@@ -24,4 +24,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-menu-bar-item', [item, contextMenuItem, menuBarItem], { moduleId: 'lumo-menu-bar-item' });
++registerStyles('vaadin24-menu-bar-item', [item, contextMenuItem, menuBarItem], { moduleId: 'lumo-menu-bar-item' });

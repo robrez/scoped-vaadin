@@ -1,0 +1,22 @@
+Index: grid/src/vaadin-grid-tree-toggle-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-tree-toggle-mixin.js	null
++++ grid/src/vaadin-grid-tree-toggle-mixin.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { isFocusable } from './vaadin-grid-active-item-mixin.js';
+ 
+ const template = document.createElement('template');
+@@ -22,7 +22,7 @@
+ document.head.appendChild(template.content);
+ 
+ registerStyles(
+-  'vaadin-grid-tree-toggle',
++  'vaadin24-grid-tree-toggle',
+   css`
+     :host {
+       display: inline-flex;

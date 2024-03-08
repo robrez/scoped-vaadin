@@ -1,0 +1,40 @@
+Index: date-picker/src/vaadin-date-picker-year-scroller.js
+===================================================================
+--- date-picker/src/vaadin-date-picker-year-scroller.js	null
++++ date-picker/src/vaadin-date-picker-year-scroller.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { InfiniteScroller } from './vaadin-infinite-scroller.js';
+ 
+ const stylesTemplate = document.createElement('template');
+@@ -44,7 +44,7 @@
+ `;
+ 
+ /**
+- * An element used internally by `<vaadin-date-picker>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-date-picker>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends InfiniteScroller
+@@ -52,7 +52,7 @@
+  */
+ class DatePickerYearScroller extends InfiniteScroller {
+   static get is() {
+-    return 'vaadin-date-picker-year-scroller';
++    return 'vaadin24-date-picker-year-scroller';
+   }
+ 
+   constructor() {
+@@ -67,7 +67,7 @@
+    * @override
+    */
+   _createElement() {
+-    return document.createElement('vaadin-date-picker-year');
++    return document.createElement('vaadin24-date-picker-year');
+   }
+ 
+   /**

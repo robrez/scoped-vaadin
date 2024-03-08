@@ -1,0 +1,61 @@
+Index: grid/src/vaadin-grid-dynamic-columns-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-dynamic-columns-mixin.js	null
++++ grid/src/vaadin-grid-dynamic-columns-mixin.js	null
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { microTask, timeOut } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
++import { microTask, timeOut } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+ import { ColumnObserver, updateCellState } from './vaadin-grid-helpers.js';
+ 
+ function arrayEquals(arr1, arr2) {
+@@ -48,7 +49,7 @@
+ 
+     /** @private */
+     _hasColumnGroups(columns) {
+-      return columns.some((column) => column.localName === 'vaadin-grid-column-group');
++      return columns.some((column) => column.localName === 'vaadin24-grid-column-group');
+     }
+ 
+     /**
+@@ -64,7 +65,7 @@
+     _flattenColumnGroups(columns) {
+       return columns
+         .map((col) => {
+-          if (col.localName === 'vaadin-grid-column-group') {
++          if (col.localName === 'vaadin24-grid-column-group') {
+             return this._getChildColumns(col);
+           }
+           return [col];
+@@ -137,16 +138,16 @@
+     /** @protected */
+     _checkImports() {
+       [
+-        'vaadin-grid-column-group',
+-        'vaadin-grid-filter',
+-        'vaadin-grid-filter-column',
+-        'vaadin-grid-tree-toggle',
+-        'vaadin-grid-selection-column',
+-        'vaadin-grid-sort-column',
+-        'vaadin-grid-sorter',
++        'vaadin24-grid-column-group',
++        'vaadin24-grid-filter',
++        'vaadin24-grid-filter-column',
++        'vaadin24-grid-tree-toggle',
++        'vaadin24-grid-selection-column',
++        'vaadin24-grid-sort-column',
++        'vaadin24-grid-sorter',
+       ].forEach((elementName) => {
+         const element = this.querySelector(elementName);
+-        if (element && !customElements.get(elementName)) {
++        if (element && !internalCustomElements.get(elementName)) {
+           console.warn(`Make sure you have imported the required module for <${elementName}> element.`);
+         }
+       });

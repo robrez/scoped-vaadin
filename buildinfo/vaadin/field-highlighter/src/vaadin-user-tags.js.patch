@@ -1,0 +1,60 @@
+Index: field-highlighter/src/vaadin-user-tags.js
+===================================================================
+--- field-highlighter/src/vaadin-user-tags.js	null
++++ field-highlighter/src/vaadin-user-tags.js	null
+@@ -7,9 +7,9 @@
+ import './vaadin-user-tags-overlay.js';
+ import { calculateSplices } from '@polymer/polymer/lib/utils/array-splice.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { timeOut } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ 
+ const listenOnce = (elem, type) => {
+   return new Promise((resolve) => {
+@@ -22,7 +22,7 @@
+ };
+ 
+ /**
+- * An element used internally by `<vaadin-field-highlighter>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -30,7 +30,7 @@
+  */
+ export class UserTags extends PolymerElement {
+   static get is() {
+-    return 'vaadin-user-tags';
++    return 'vaadin24-user-tags';
+   }
+ 
+   static get template() {
+@@ -40,13 +40,13 @@
+           position: absolute;
+         }
+       </style>
+-      <vaadin-user-tags-overlay
++      <vaadin24-user-tags-overlay
+         id="overlay"
+         modeless
+         opened="[[opened]]"
+         no-vertical-overlap
+         on-vaadin-overlay-open="_onOverlayOpen"
+-      ></vaadin-user-tags-overlay>
++      ></vaadin24-user-tags-overlay>
+     `;
+   }
+ 
+@@ -216,7 +216,7 @@
+   }
+ 
+   createUserTag(user) {
+-    const tag = document.createElement('vaadin-user-tag');
++    const tag = document.createElement('vaadin24-user-tag');
+     tag.name = user.name;
+     tag.uid = user.id;
+     tag.colorIndex = user.colorIndex;

@@ -1,0 +1,16 @@
+Index: checkbox/theme/material/vaadin-checkbox-styles.js
+===================================================================
+--- checkbox/theme/material/vaadin-checkbox-styles.js	null
++++ checkbox/theme/material/vaadin-checkbox-styles.js	null
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-checkbox',
++  'vaadin24-checkbox',
+   css`
+     :host {
+       display: inline-block;

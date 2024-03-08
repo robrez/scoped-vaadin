@@ -1,0 +1,84 @@
+Index: time-picker/src/vaadin-time-picker.d.ts
+===================================================================
+--- time-picker/src/vaadin-time-picker.d.ts	null
++++ time-picker/src/vaadin-time-picker.d.ts	null
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { InputControlMixin } from '@vaadin/field-base/src/input-control-mixin.js';
+-import { PatternMixin } from '@vaadin/field-base/src/pattern-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { InputControlMixin } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
++import { PatternMixin } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export interface TimePickerTime {
+   hours: number | string;
+@@ -62,10 +62,10 @@
+ }
+ 
+ /**
+- * `<vaadin-time-picker>` is a Web Component providing a time-selection field.
++ * `<vaadin24-time-picker>` is a Web Component providing a time-selection field.
+  *
+  * ```html
+- * <vaadin-time-picker></vaadin-time-picker>
++ * <vaadin24-time-picker></vaadin24-time-picker>
+  * ```
+  * ```js
+  * timePicker.value = '14:30';
+@@ -82,16 +82,16 @@
+  * `--vaadin-field-default-width`          | Default width of the field | `12em`
+  * `--vaadin-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`
+  *
+- * `<vaadin-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-time-picker>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name       | Description
+  * ----------------|----------------
+  * `toggle-button` | The toggle button
+  *
+- * In addition to `<vaadin-text-field>` state attributes, the following state attributes are available for theming:
++ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
+  *
+  * Attribute | Description
+  * ----------|------------------------------------------
+@@ -99,15 +99,15 @@
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-time-picker>` itself, the following internal
++ * In addition to `<vaadin24-time-picker>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-time-picker-combo-box>` - has the same API as [`<vaadin-combo-box-light>`](#/elements/vaadin-combo-box-light).
+- * - `<vaadin-time-picker-overlay>` - has the same API as [`<vaadin-overlay>`](#/elements/vaadin-overlay).
+- * - `<vaadin-time-picker-item>` - has the same API as [`<vaadin-item>`](#/elements/vaadin-item).
+- * - [`<vaadin-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
++ * - `<vaadin24-time-picker-combo-box>` - has the same API as [`<vaadin24-combo-box-light>`](#/elements/vaadin-combo-box-light).
++ * - `<vaadin24-time-picker-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
++ * - `<vaadin24-time-picker-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
++ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the input.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-time-picker>` is
++ * Note: the `theme` attribute value set on `<vaadin24-time-picker>` is
+  * propagated to the internal components listed above.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+@@ -257,7 +257,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-time-picker': TimePicker;
++    'vaadin24-time-picker': TimePicker;
+   }
+ }
+ 

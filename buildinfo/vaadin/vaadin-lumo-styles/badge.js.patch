@@ -1,0 +1,31 @@
+Index: vaadin-lumo-styles/badge.js
+===================================================================
+--- vaadin-lumo-styles/badge.js	null
++++ vaadin-lumo-styles/badge.js	null
+@@ -6,7 +6,7 @@
+ import './style.js';
+ import './color.js';
+ import './typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const badge = css`
+   [theme~='badge'] {
+@@ -109,7 +109,7 @@
+     margin-right: -0.375em;
+   }
+ 
+-  vaadin-icon[theme~='badge'][icon] {
++  vaadin24-icon[theme~='badge'][icon] {
+     min-width: 0;
+     padding: 0;
+     font-size: 1rem;
+@@ -117,7 +117,7 @@
+     height: var(--lumo-icon-size-m);
+   }
+ 
+-  vaadin-icon[theme~='badge'][icon][theme~='small'] {
++  vaadin24-icon[theme~='badge'][icon][theme~='small'] {
+     width: var(--lumo-icon-size-s);
+     height: var(--lumo-icon-size-s);
+   }

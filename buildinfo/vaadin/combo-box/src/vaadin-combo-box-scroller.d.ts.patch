@@ -1,0 +1,20 @@
+Index: combo-box/src/vaadin-combo-box-scroller.d.ts
+===================================================================
+--- combo-box/src/vaadin-combo-box-scroller.d.ts	null
++++ combo-box/src/vaadin-combo-box-scroller.d.ts	null
+@@ -6,13 +6,13 @@
+ import { ComboBoxScrollerMixin } from './vaadin-combo-box-overlay-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-combo-box>`. Not intended to be used separately.
+  */
+ declare class ComboBoxScroller extends ComboBoxScrollerMixin(HTMLElement) {}
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-combo-box-scroller': ComboBoxScroller;
++    'vaadin24-combo-box-scroller': ComboBoxScroller;
+   }
+ }
+ 

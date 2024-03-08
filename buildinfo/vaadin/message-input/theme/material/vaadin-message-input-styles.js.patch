@@ -1,0 +1,18 @@
+Index: message-input/theme/material/vaadin-message-input-styles.js
+===================================================================
+--- message-input/theme/material/vaadin-message-input-styles.js	null
++++ message-input/theme/material/vaadin-message-input-styles.js	null
+@@ -1,9 +1,9 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message-input',
++  'vaadin24-message-input',
+   css`
+     :host {
+       padding: 0.5em 1em;

@@ -1,0 +1,15 @@
+Index: field-base/src/clear-button-mixin.d.ts
+===================================================================
+--- field-base/src/clear-button-mixin.d.ts	null
++++ field-base/src/clear-button-mixin.d.ts	null
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+ import type { InputMixinClass } from './input-mixin.js';
+ 
+ /**

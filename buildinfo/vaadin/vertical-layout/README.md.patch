@@ -1,0 +1,65 @@
+Index: vertical-layout/README.md
+===================================================================
+--- vertical-layout/README.md	null
++++ vertical-layout/README.md	null
+@@ -1,16 +1,18 @@
+-# @vaadin/vertical-layout
++# @scoped-vaadin/vertical-layout
+ 
++This component is based on [@vaadin/vertical-layout](https://www.npmjs.com/package/@vaadin/vertical-layout)
++
+ A web component that places its content top-to-bottom in a column.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/basic-layouts/#horizontal-layout)
+ 
+ ```html
+-<vaadin-vertical-layout theme="spacing padding">
++<vaadin24-vertical-layout theme="spacing padding">
+   <div>Item 1</div>
+   <div>Item 2</div>
+   <div>Item 3</div>
+   <div>Item 4</div>
+-</vaadin-vertical-layout>
++</vaadin24-vertical-layout>
+ ```
+ 
+ ## Installation
+@@ -18,13 +20,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/vertical-layout
++npm i @scoped-vaadin/vertical-layout
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/vertical-layout';
++import '@scoped-vaadin/vertical-layout';
+ ```
+ 
+ ## Themes
+@@ -35,19 +37,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/vertical-layout/theme/material/vaadin-vertical-layout.js';
++import '@scoped-vaadin/vertical-layout/theme/material/vaadin-vertical-layout.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js';
++import '@scoped-vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/vertical-layout/src/vaadin-vertical-layout.js';
++import '@scoped-vaadin/vertical-layout/src/vaadin-vertical-layout.js';
+ ```
+ 
+ ## Contributing

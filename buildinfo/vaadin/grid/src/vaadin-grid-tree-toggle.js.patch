@@ -1,0 +1,54 @@
+Index: grid/src/vaadin-grid-tree-toggle.js
+===================================================================
+--- grid/src/vaadin-grid-tree-toggle.js	null
++++ grid/src/vaadin-grid-tree-toggle.js	null
+@@ -4,25 +4,25 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin';
+ import { GridTreeToggleMixin } from './vaadin-grid-tree-toggle-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-tree-toggle>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-tree-toggle>` is a helper element for the `<vaadin24-grid>`
+  * that provides toggle and level display functionality for the item tree.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid-column id="column"></vaadin-grid-column>
++ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
+  * ```
+  * ```js
+  * const column = document.querySelector('#column');
+  * column.renderer = (root, column, model) => {
+  *   let treeToggle = root.firstElementChild;
+  *   if (!treeToggle) {
+- *     treeToggle = document.createElement('vaadin-grid-tree-toggle');
++ *     treeToggle = document.createElement('vaadin24-grid-tree-toggle');
+  *     treeToggle.addEventListener('expanded-changed', () => { ... });
+  *     root.appendChild(treeToggle);
+  *   }
+@@ -49,7 +49,7 @@
+  * `leaf` | When present, the toggle is not expandable, i. e., the current item is a leaf | :host
+  *
+  * The following custom CSS properties are available on
+- * the `<vaadin-grid-tree-toggle>` element:
++ * the `<vaadin24-grid-tree-toggle>` element:
+  *
+  * Custom CSS property | Description | Default
+  * ---|---|---
+@@ -65,7 +65,7 @@
+  */
+ class GridTreeToggle extends GridTreeToggleMixin(ThemableMixin(DirMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-grid-tree-toggle';
++    return 'vaadin24-grid-tree-toggle';
+   }
+ 
+   static get template() {

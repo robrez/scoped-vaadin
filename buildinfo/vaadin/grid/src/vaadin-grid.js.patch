@@ -1,0 +1,118 @@
+Index: grid/src/vaadin-grid.js
+===================================================================
+--- grid/src/vaadin-grid.js	null
++++ grid/src/vaadin-grid.js	null
+@@ -5,36 +5,36 @@
+  */
+ import './vaadin-grid-column.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { GridMixin } from './vaadin-grid-mixin.js';
+ import { gridStyles } from './vaadin-grid-styles.js';
+ 
+-registerStyles('vaadin-grid', gridStyles, { moduleId: 'vaadin-grid-styles' });
++registerStyles('vaadin24-grid', gridStyles, { moduleId: 'vaadin-grid-styles' });
+ 
+ /**
+- * `<vaadin-grid>` is a free, high quality data grid / data table Web Component. The content of the
++ * `<vaadin24-grid>` is a free, high quality data grid / data table Web Component. The content of the
+  * the grid can be populated by using renderer callback function.
+  *
+  * ### Quick Start
+  *
+  * Start with an assigning an array to the [`items`](#/elements/vaadin-grid#property-items) property to visualize your data.
+  *
+- * Use the [`<vaadin-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
++ * Use the [`<vaadin24-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
+  * shorthand properties for the columns to define what gets rendered in the cells of the column.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid>
+- *   <vaadin-grid-column path="name.first" header="First name"></vaadin-grid-column>
+- *   <vaadin-grid-column path="name.last" header="Last name"></vaadin-grid-column>
+- *   <vaadin-grid-column path="email"></vaadin-grid-column>
+- * </vaadin-grid>
++ * <vaadin24-grid>
++ *   <vaadin24-grid-column path="name.first" header="First name"></vaadin24-grid-column>
++ *   <vaadin24-grid-column path="name.last" header="Last name"></vaadin24-grid-column>
++ *   <vaadin24-grid-column path="email"></vaadin24-grid-column>
++ * </vaadin24-grid>
+  * ```
+  *
+- * For custom content `vaadin-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
++ * For custom content `vaadin24-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
+  * `renderer` and `footerRenderer`.
+  *
+  * Each of those renderer functions provides `root`, `column`, `model` arguments when applicable.
+@@ -49,18 +49,18 @@
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- * </vaadin-grid>
++ * <vaadin24-grid>
++ *   <vaadin24-grid-column></vaadin24-grid-column>
++ *   <vaadin24-grid-column></vaadin24-grid-column>
++ *   <vaadin24-grid-column></vaadin24-grid-column>
++ * </vaadin24-grid>
+  * ```
+  * ```js
+- * const grid = document.querySelector('vaadin-grid');
++ * const grid = document.querySelector('vaadin24-grid');
+  * grid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},
+  *               {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];
+  *
+- * const columns = grid.querySelectorAll('vaadin-grid-column');
++ * const columns = grid.querySelectorAll('vaadin24-grid-column');
+  *
+  * columns[0].headerRenderer = function(root) {
+  *   root.textContent = 'Name';
+@@ -96,11 +96,11 @@
+  * `detailsOpened` | Boolean | True if the item's row details are open.
+  *
+  * The following helper elements can be used for further customization:
+- * - [`<vaadin-grid-column-group>`](#/elements/vaadin-grid-column-group)
+- * - [`<vaadin-grid-filter>`](#/elements/vaadin-grid-filter)
+- * - [`<vaadin-grid-sorter>`](#/elements/vaadin-grid-sorter)
+- * - [`<vaadin-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
+- * - [`<vaadin-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
++ * - [`<vaadin24-grid-column-group>`](#/elements/vaadin-grid-column-group)
++ * - [`<vaadin24-grid-filter>`](#/elements/vaadin-grid-filter)
++ * - [`<vaadin24-grid-sorter>`](#/elements/vaadin-grid-sorter)
++ * - [`<vaadin24-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
++ * - [`<vaadin24-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
+  *
+  * __Note that the helper elements must be explicitly imported.__
+  * If you want to import everything at once you can use the `all-imports.html` bundle.
+@@ -108,9 +108,9 @@
+  * ### Lazy Loading with Function Data Provider
+  *
+  * In addition to assigning an array to the items property, you can alternatively
+- * provide the `<vaadin-grid>` data through the
++ * provide the `<vaadin24-grid>` data through the
+  * [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) function property.
+- * The `<vaadin-grid>` calls this function lazily, only when it needs more data
++ * The `<vaadin24-grid>` calls this function lazily, only when it needs more data
+  * to be displayed.
+  *
+  * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
+@@ -286,7 +286,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-grid';
++    return 'vaadin24-grid';
+   }
+ }
+ 

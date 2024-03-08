@@ -1,0 +1,50 @@
+Index: app-layout/src/vaadin-drawer-toggle.js
+===================================================================
+--- app-layout/src/vaadin-drawer-toggle.js	null
++++ app-layout/src/vaadin-drawer-toggle.js	null
+@@ -4,17 +4,17 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+-import { Button } from '@vaadin/button/src/vaadin-button.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { isEmptyTextNode } from '@vaadin/component-base/src/dom-utils.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { isEmptyTextNode } from '@scoped-vaadin/component-base/src/dom-utils.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * Use registerStyles instead of the `<style>` tag to make sure
+- * that this CSS will override core styles of `vaadin-button`.
++ * that this CSS will override core styles of `vaadin24-button`.
+  */
+ registerStyles(
+-  'vaadin-drawer-toggle',
++  'vaadin24-drawer-toggle',
+   css`
+     :host {
+       display: inline-flex;
+@@ -58,9 +58,9 @@
+  * The Drawer Toggle component controls the drawer in App Layout component.
+  *
+  * ```
+- * <vaadin-app-layout>
+- *   <vaadin-drawer-toggle slot="navbar">Toggle drawer</vaadin-drawer-toggle>
+- * </vaadin-app-layout>
++ * <vaadin24-app-layout>
++ *   <vaadin24-drawer-toggle slot="navbar">Toggle drawer</vaadin24-drawer-toggle>
++ * </vaadin24-app-layout>
+  * ```
+  *
+  * @customElement
+@@ -78,7 +78,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-drawer-toggle';
++    return 'vaadin24-drawer-toggle';
+   }
+ 
+   static get properties() {

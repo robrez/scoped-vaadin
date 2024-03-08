@@ -1,0 +1,16 @@
+Index: vertical-layout/theme/material/vaadin-vertical-layout-styles.js
+===================================================================
+--- vertical-layout/theme/material/vaadin-vertical-layout-styles.js	null
++++ vertical-layout/theme/material/vaadin-vertical-layout-styles.js	null
+@@ -1,4 +1,4 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const verticalLayout = css`
+   [theme~='margin'] {
+@@ -30,4 +30,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-vertical-layout', verticalLayout, { moduleId: 'material-vertical-layout' });
++registerStyles('vaadin24-vertical-layout', verticalLayout, { moduleId: 'material-vertical-layout' });

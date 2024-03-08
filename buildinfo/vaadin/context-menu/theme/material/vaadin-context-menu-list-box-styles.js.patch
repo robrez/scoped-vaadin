@@ -1,0 +1,25 @@
+Index: context-menu/theme/material/vaadin-context-menu-list-box-styles.js
+===================================================================
+--- context-menu/theme/material/vaadin-context-menu-list-box-styles.js	null
++++ context-menu/theme/material/vaadin-context-menu-list-box-styles.js	null
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { listBox } from '@vaadin/list-box/theme/material/vaadin-list-box-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { listBox } from '@scoped-vaadin/list-box/theme/material/vaadin-list-box-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const contextMenuListBox = css`
+   [part='items'] ::slotted([role='menuitem']) {
+@@ -31,7 +31,7 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-context-menu-list-box', [listBox, contextMenuListBox], {
++registerStyles('vaadin24-context-menu-list-box', [listBox, contextMenuListBox], {
+   moduleId: 'material-context-menu-list-box',
+ });
+ 

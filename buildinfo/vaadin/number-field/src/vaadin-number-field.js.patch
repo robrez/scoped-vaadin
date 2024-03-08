@@ -1,0 +1,77 @@
+Index: number-field/src/vaadin-number-field.js
+===================================================================
+--- number-field/src/vaadin-number-field.js	null
++++ number-field/src/vaadin-number-field.js	null
+@@ -3,33 +3,33 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/src/vaadin-input-container.js';
++import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
+ import { html, PolymerElement } from '@polymer/polymer';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { NumberFieldMixin } from './vaadin-number-field-mixin.js';
+ import { numberFieldStyles } from './vaadin-number-field-styles.js';
+ 
+-registerStyles('vaadin-number-field', [inputFieldShared, numberFieldStyles], {
++registerStyles('vaadin24-number-field', [inputFieldShared, numberFieldStyles], {
+   moduleId: 'vaadin-number-field-styles',
+ });
+ 
+ /**
+- * `<vaadin-number-field>` is an input field web component that only accepts numeric input.
++ * `<vaadin24-number-field>` is an input field web component that only accepts numeric input.
+  *
+  * ```html
+- * <vaadin-number-field label="Balance"></vaadin-number-field>
++ * <vaadin24-number-field label="Balance"></vaadin24-number-field>
+  * ```
+  *
+  * ### Styling
+  *
+- * `<vaadin-number-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-number-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name         | Description
+  * ------------------|-------------------------
+@@ -74,7 +74,7 @@
+  */
+ export class NumberField extends NumberFieldMixin(ThemableMixin(ElementMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-number-field';
++    return 'vaadin24-number-field';
+   }
+ 
+   static get template() {
+@@ -85,7 +85,7 @@
+           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
+         </div>
+ 
+-        <vaadin-input-container
++        <vaadin24-input-container
+           part="input-field"
+           readonly="[[readonly]]"
+           disabled="[[disabled]]"
+@@ -114,7 +114,7 @@
+             aria-hidden="true"
+             slot="suffix"
+           ></div>
+-        </vaadin-input-container>
++        </vaadin24-input-container>
+ 
+         <div part="helper-text">
+           <slot name="helper"></slot>

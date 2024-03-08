@@ -1,0 +1,47 @@
+Index: checkbox/src/vaadin-checkbox.d.ts
+===================================================================
+--- checkbox/src/vaadin-checkbox.d.ts	null
++++ checkbox/src/vaadin-checkbox.d.ts	null
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ActiveMixin } from '@vaadin/a11y-base/src/active-mixin.js';
+-import { DelegateFocusMixin } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { CheckedMixin } from '@vaadin/field-base/src/checked-mixin.js';
+-import { LabelMixin } from '@vaadin/field-base/src/label-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
++import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
++import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * Fired when the checkbox is checked or unchecked by the user.
+@@ -39,10 +39,10 @@
+ }
+ 
+ /**
+- * `<vaadin-checkbox>` is an input field representing a binary choice.
++ * `<vaadin24-checkbox>` is an input field representing a binary choice.
+  *
+  * ```html
+- * <vaadin-checkbox label="I accept the terms and conditions"></vaadin-checkbox>
++ * <vaadin24-checkbox label="I accept the terms and conditions"></vaadin24-checkbox>
+  * ```
+  *
+  * ### Styling
+@@ -103,7 +103,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-checkbox': Checkbox;
++    'vaadin24-checkbox': Checkbox;
+   }
+ }
+ 

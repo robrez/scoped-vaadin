@@ -1,0 +1,11 @@
+Index: tabsheet/theme/lumo/vaadin-tabsheet.js
+===================================================================
+--- tabsheet/theme/lumo/vaadin-tabsheet.js	null
++++ tabsheet/theme/lumo/vaadin-tabsheet.js	null
+@@ -1,4 +1,4 @@
+-import '@vaadin/tabs/theme/lumo/vaadin-tabs.js';
+-import '@vaadin/scroller/theme/lumo/vaadin-scroller.js';
++import '@scoped-vaadin/tabs/theme/lumo/vaadin-tabs.js';
++import '@scoped-vaadin/scroller/theme/lumo/vaadin-scroller.js';
+ import './vaadin-tabsheet-styles.js';
+ import '../../src/vaadin-tabsheet.js';

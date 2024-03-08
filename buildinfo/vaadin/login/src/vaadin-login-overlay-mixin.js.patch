@@ -1,0 +1,22 @@
+Index: login/src/vaadin-login-overlay-mixin.js
+===================================================================
+--- login/src/vaadin-login-overlay-mixin.js	null
++++ login/src/vaadin-login-overlay-mixin.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
+ import { LoginMixin } from './vaadin-login-mixin.js';
+ 
+ /**
+@@ -137,7 +137,7 @@
+         this._undoFieldsTeleport = this._teleport(
+           'custom-form-area',
+           form.$.vaadinLoginFormWrapper,
+-          form.querySelector('vaadin-button'),
++          form.querySelector('vaadin24-button'),
+         );
+ 
+         this._undoFooterTeleport = this._teleport('footer', form.$.vaadinLoginFormWrapper);

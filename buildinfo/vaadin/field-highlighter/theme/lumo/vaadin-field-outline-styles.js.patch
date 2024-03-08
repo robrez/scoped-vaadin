@@ -1,0 +1,21 @@
+Index: field-highlighter/theme/lumo/vaadin-field-outline-styles.js
+===================================================================
+--- field-highlighter/theme/lumo/vaadin-field-outline-styles.js	null
++++ field-highlighter/theme/lumo/vaadin-field-outline-styles.js	null
+@@ -3,12 +3,12 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-field-outline',
++  'vaadin24-field-outline',
+   css`
+     :host {
+       transition: opacity 0.3s;

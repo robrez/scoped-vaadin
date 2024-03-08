@@ -1,0 +1,34 @@
+Index: custom-field/theme/lumo/vaadin-custom-field-styles.js
+===================================================================
+--- custom-field/theme/lumo/vaadin-custom-field-styles.js	null
++++ custom-field/theme/lumo/vaadin-custom-field-styles.js	null
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2019 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { helper } from '@vaadin/vaadin-lumo-styles/mixins/helper.js';
+-import { requiredField } from '@vaadin/vaadin-lumo-styles/mixins/required-field.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { helper } from '@scoped-vaadin/vaadin-lumo-styles/mixins/helper.js';
++import { requiredField } from '@scoped-vaadin/vaadin-lumo-styles/mixins/required-field.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const customField = css`
+   :host {
+@@ -90,7 +90,7 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-custom-field', [requiredField, helper, customField], {
++registerStyles('vaadin24-custom-field', [requiredField, helper, customField], {
+   moduleId: 'lumo-custom-field',
+ });
+ 

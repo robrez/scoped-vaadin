@@ -1,0 +1,15 @@
+Index: date-picker/src/vaadin-month-calendar-mixin.js
+===================================================================
+--- date-picker/src/vaadin-month-calendar-mixin.js	null
++++ date-picker/src/vaadin-month-calendar-mixin.js	null
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import { addListener } from '@vaadin/component-base/src/gestures.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import { addListener } from '@scoped-vaadin/component-base/src/gestures.js';
+ import { dateAllowed, dateEquals, getISOWeekNumber } from './vaadin-date-picker-helper.js';
+ 
+ /**

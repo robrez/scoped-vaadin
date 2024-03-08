@@ -1,0 +1,45 @@
+Index: field-highlighter/src/vaadin-user-tags-overlay.js
+===================================================================
+--- field-highlighter/src/vaadin-user-tags-overlay.js	null
++++ field-highlighter/src/vaadin-user-tags-overlay.js	null
+@@ -4,12 +4,12 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { css, registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { css, registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const userTagsOverlayStyles = css`
+   :host {
+@@ -58,10 +58,10 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-user-tags-overlay', [overlayStyles, userTagsOverlayStyles]);
++registerStyles('vaadin24-user-tags-overlay', [overlayStyles, userTagsOverlayStyles]);
+ 
+ /**
+- * An element used internally by `<vaadin-field-highlighter>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -73,7 +73,7 @@
+  */
+ class UserTagsOverlay extends PositionMixin(OverlayMixin(DirMixin(ThemableMixin(PolymerElement)))) {
+   static get is() {
+-    return 'vaadin-user-tags-overlay';
++    return 'vaadin24-user-tags-overlay';
+   }
+ 
+   static get template() {

@@ -1,0 +1,75 @@
+Index: menu-bar/src/vaadin-menu-bar.js
+===================================================================
+--- menu-bar/src/vaadin-menu-bar.js	null
++++ menu-bar/src/vaadin-menu-bar.js	null
+@@ -6,27 +6,27 @@
+ import './vaadin-menu-bar-submenu.js';
+ import './vaadin-menu-bar-button.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { MenuBarMixin } from './vaadin-menu-bar-mixin.js';
+ 
+ /**
+- * `<vaadin-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering
++ * `<vaadin24-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering
+  * the user quick access to a consistent set of commands. Each button can toggle a submenu with
+  * support for additional levels of nested menus.
+  *
+  * To create the menu bar, first add the component to the page:
+  *
+  * ```
+- * <vaadin-menu-bar></vaadin-menu-bar>
++ * <vaadin24-menu-bar></vaadin24-menu-bar>
+  * ```
+  *
+  * And then use [`items`](#/elements/vaadin-menu-bar#property-items) property to initialize the structure:
+  *
+  * ```
+- * document.querySelector('vaadin-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];
++ * document.querySelector('vaadin24-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];
+  * ```
+  *
+  * ### Styling
+@@ -48,13 +48,13 @@
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-menu-bar>` itself, the following internal
++ * In addition to `<vaadin24-menu-bar>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-menu-bar-button>` - has the same API as [`<vaadin-button>`](#/elements/vaadin-button).
+- * - `<vaadin-menu-bar-item>` - has the same API as [`<vaadin-item>`](#/elements/vaadin-item).
+- * - `<vaadin-menu-bar-list-box>` - has the same API as [`<vaadin-list-box>`](#/elements/vaadin-list-box).
+- * - `<vaadin-menu-bar-overlay>` - has the same API as [`<vaadin-overlay>`](#/elements/vaadin-overlay).
++ * - `<vaadin24-menu-bar-button>` - has the same API as [`<vaadin24-button>`](#/elements/vaadin-button).
++ * - `<vaadin24-menu-bar-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
++ * - `<vaadin24-menu-bar-list-box>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
++ * - `<vaadin24-menu-bar-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
+  *
+  * @fires {CustomEvent<boolean>} item-selected - Fired when a submenu item or menu bar button without children is clicked.
+  *
+@@ -89,14 +89,14 @@
+         <slot></slot>
+         <slot name="overflow"></slot>
+       </div>
+-      <vaadin-menu-bar-submenu is-root overlay-class="[[overlayClass]]"></vaadin-menu-bar-submenu>
++      <vaadin24-menu-bar-submenu is-root overlay-class="[[overlayClass]]"></vaadin24-menu-bar-submenu>
+ 
+       <slot name="tooltip"></slot>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-menu-bar';
++    return 'vaadin24-menu-bar';
+   }
+ 
+   /** @protected */

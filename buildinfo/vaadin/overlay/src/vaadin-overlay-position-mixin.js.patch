@@ -1,0 +1,13 @@
+Index: overlay/src/vaadin-overlay-position-mixin.js
+===================================================================
+--- overlay/src/vaadin-overlay-position-mixin.js	null
++++ overlay/src/vaadin-overlay-position-mixin.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { getAncestorRootNodes } from '@vaadin/component-base/src/dom-utils.js';
++import { getAncestorRootNodes } from '@scoped-vaadin/component-base/src/dom-utils.js';
+ 
+ const PROP_NAMES_VERTICAL = {
+   start: 'top',

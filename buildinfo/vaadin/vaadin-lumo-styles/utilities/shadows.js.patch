@@ -1,0 +1,13 @@
+Index: vaadin-lumo-styles/utilities/shadows.js
+===================================================================
+--- vaadin-lumo-styles/utilities/shadows.js	null
++++ vaadin-lumo-styles/utilities/shadows.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { css } from '@vaadin/vaadin-themable-mixin/register-styles.js';
++import { css } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';
+ 
+ export const shadows = css`
+   /* === Box shadow === */

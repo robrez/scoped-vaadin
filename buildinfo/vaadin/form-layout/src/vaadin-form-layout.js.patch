@@ -1,0 +1,137 @@
+Index: form-layout/src/vaadin-form-layout.js
+===================================================================
+--- form-layout/src/vaadin-form-layout.js	null
++++ form-layout/src/vaadin-form-layout.js	null
+@@ -4,34 +4,34 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-form-layout>` is a Web Component providing configurable responsive
++ * `<vaadin24-form-layout>` is a Web Component providing configurable responsive
+  * layout for form elements.
+  *
+  * ```html
+- * <vaadin-form-layout>
++ * <vaadin24-form-layout>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">First Name</label>
+  *     <input class="full-width" value="Jane">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">Last Name</label>
+  *     <input class="full-width" value="Doe">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">Email</label>
+  *     <input class="full-width" value="jane.doe@example.com">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- * </vaadin-form-layout>
++ * </vaadin24-form-layout>
+  * ```
+  *
+  * It supports any child elements as layout items.
+@@ -48,24 +48,24 @@
+  * In the example below, the first text field spans on two columns:
+  *
+  * ```html
+- * <vaadin-form-layout>
++ * <vaadin24-form-layout>
+  *
+- *   <vaadin-form-item colspan="2">
++ *   <vaadin24-form-item colspan="2">
+  *     <label slot="label">Address</label>
+  *     <input class="full-width">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">First Name</label>
+  *     <input class="full-width" value="Jane">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">Last Name</label>
+  *     <input class="full-width" value="Doe">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- * </vaadin-form-layout>
++ * </vaadin24-form-layout>
+  * ```
+  *
+  * ### Explicit New Row
+@@ -73,26 +73,26 @@
+  * Use the `<br>` line break element to wrap the items on a new row:
+  *
+  * ```html
+- * <vaadin-form-layout>
++ * <vaadin24-form-layout>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">Email</label>
+  *     <input class="full-width">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+  *   <br>
+  *
+- *   <vaadin-form-item>
++ *   <vaadin24-form-item>
+  *     <label slot="label">Confirm Email</label>
+  *     <input class="full-width">
+- *   </vaadin-form-item>
++ *   </vaadin24-form-item>
+  *
+- * </vaadin-form-layout>
++ * </vaadin24-form-layout>
+  * ```
+  *
+  * ### CSS Properties Reference
+  *
+- * The following custom CSS properties are available on the `<vaadin-form-layout>`
++ * The following custom CSS properties are available on the `<vaadin24-form-layout>`
+  * element:
+  *
+  * Custom CSS property | Description | Default
+@@ -160,7 +160,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-form-layout';
++    return 'vaadin24-form-layout';
+   }
+ 
+   static get properties() {
+@@ -525,7 +525,7 @@
+         // Move the column counter
+         col = (col + colspan) % this._columnCount;
+ 
+-        if (child.localName === 'vaadin-form-item') {
++        if (child.localName === 'vaadin24-form-item') {
+           if (this._labelsOnTop) {
+             if (child.getAttribute('label-position') !== 'top') {
+               child.__useLayoutLabelPosition = true;

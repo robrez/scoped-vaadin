@@ -1,0 +1,13 @@
+Index: a11y-base/src/list-mixin.d.ts
+===================================================================
+--- a11y-base/src/list-mixin.d.ts	null
++++ a11y-base/src/list-mixin.d.ts	null
+@@ -42,7 +42,7 @@
+    *
+    * The item elements must implement `Vaadin.ItemMixin`.
+    *
+-   * Note: unlike `<vaadin-combo-box>`, this property is read-only,
++   * Note: unlike `<vaadin24-combo-box>`, this property is read-only,
+    * so if you want to provide items by iterating array of data,
+    * you have to use `dom-repeat` and place it to the light DOM.
+    */

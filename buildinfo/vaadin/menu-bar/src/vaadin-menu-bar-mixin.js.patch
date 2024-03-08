@@ -1,0 +1,101 @@
+Index: menu-bar/src/vaadin-menu-bar-mixin.js
+===================================================================
+--- menu-bar/src/vaadin-menu-bar-mixin.js	null
++++ menu-bar/src/vaadin-menu-bar-mixin.js	null
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2019 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import { isElementFocused, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
++import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import { isElementFocused, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+ 
+ /**
+  * @polymerMixin
+@@ -30,9 +30,9 @@
+          * @type {object}
+          * @property {string} text - Text to be set as the menu button component's textContent.
+          * @property {string} tooltip - Text to be set as the menu button's tooltip.
+-         * Requires a `<vaadin-tooltip slot="tooltip">` element to be added inside the `<vaadin-menu-bar>`.
++         * Requires a `<vaadin24-tooltip slot="tooltip">` element to be added inside the `<vaadin24-menu-bar>`.
+          * @property {union: string | object} component - The component to represent the button content.
+-         * Either a tagName or an element instance. Defaults to "vaadin-menu-bar-item".
++         * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
+          * @property {boolean} disabled - If true, the button is disabled and cannot be activated.
+          * @property {union: string | string[]} theme - Theme(s) to be set as the theme attribute of the button, overriding any theme set on the menu bar.
+          * @property {SubMenuItem[]} children - Array of submenu items.
+@@ -43,7 +43,7 @@
+          * @type {object}
+          * @property {string} text - Text to be set as the menu item component's textContent.
+          * @property {union: string | object} component - The component to represent the item.
+-         * Either a tagName or an element instance. Defaults to "vaadin-menu-bar-item".
++         * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
+          * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
+          * @property {boolean} checked - If true, the item shows a checkmark next to it.
+          * @property {SubMenuItem[]} children - Array of child submenu items.
+@@ -209,12 +209,12 @@
+      * @protected
+      */
+     get _buttons() {
+-      return Array.from(this.querySelectorAll('vaadin-menu-bar-button'));
++      return Array.from(this.querySelectorAll('vaadin24-menu-bar-button'));
+     }
+ 
+     /** @private */
+     get _subMenu() {
+-      return this.shadowRoot.querySelector('vaadin-menu-bar-submenu');
++      return this.shadowRoot.querySelector('vaadin24-menu-bar-submenu');
+     }
+ 
+     /** @protected */
+@@ -223,7 +223,7 @@
+ 
+       this.setAttribute('role', 'menubar');
+ 
+-      this._overflowController = new SlotController(this, 'overflow', 'vaadin-menu-bar-button', {
++      this._overflowController = new SlotController(this, 'overflow', 'vaadin24-menu-bar-button', {
+         initializer: (btn) => {
+           btn.setAttribute('hidden', '');
+ 
+@@ -474,7 +474,7 @@
+ 
+     /** @protected */
+     _initButton(item) {
+-      const button = document.createElement('vaadin-menu-bar-button');
++      const button = document.createElement('vaadin24-menu-bar-button');
+ 
+       const itemCopy = { ...item };
+       button.item = itemCopy;
+@@ -536,10 +536,10 @@
+ 
+       const isElement = itemComponent instanceof HTMLElement;
+       // Use existing item component, if any
+-      if (isElement && itemComponent.localName === 'vaadin-menu-bar-item') {
++      if (isElement && itemComponent.localName === 'vaadin24-menu-bar-item') {
+         component = itemComponent;
+       } else {
+-        component = document.createElement('vaadin-menu-bar-item');
++        component = document.createElement('vaadin24-menu-bar-item');
+         component.appendChild(isElement ? itemComponent : document.createElement(itemComponent));
+       }
+       if (item.text) {
+@@ -649,7 +649,7 @@
+ 
+     /** @private */
+     _getButtonFromEvent(e) {
+-      return Array.from(e.composedPath()).find((el) => el.localName === 'vaadin-menu-bar-button');
++      return Array.from(e.composedPath()).find((el) => el.localName === 'vaadin24-menu-bar-button');
+     }
+ 
+     /**

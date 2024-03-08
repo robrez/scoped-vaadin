@@ -1,0 +1,13 @@
+Index: overlay/src/vaadin-overlay-styles.js
+===================================================================
+--- overlay/src/vaadin-overlay-styles.js	null
++++ overlay/src/vaadin-overlay-styles.js	null
+@@ -10,7 +10,7 @@
+     z-index: 200;
+     position: fixed;
+ 
+-    /* Despite of what the names say, <vaadin-overlay> is just a container
++    /* Despite of what the names say, <vaadin24-overlay> is just a container
+           for position/sizing/alignment. The actual overlay is the overlay part. */
+ 
+     /* Default position constraints: the entire viewport. Note: themes can

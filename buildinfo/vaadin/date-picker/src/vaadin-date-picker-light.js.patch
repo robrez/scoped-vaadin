@@ -1,0 +1,86 @@
+Index: date-picker/src/vaadin-date-picker-light.js
+===================================================================
+--- date-picker/src/vaadin-date-picker-light.js	null
++++ date-picker/src/vaadin-date-picker-light.js	null
+@@ -7,13 +7,13 @@
+ import './vaadin-date-picker-overlay.js';
+ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
+ 
+ /**
+- * `<vaadin-date-picker-light>` is a customizable version of the `<vaadin-date-picker>` providing
++ * `<vaadin24-date-picker-light>` is a customizable version of the `<vaadin24-date-picker>` providing
+  * only the scrollable month calendar view and leaving the input field definition to the user.
+  *
+  * To create a custom input field, you need to add a child element which has a two-way
+@@ -22,23 +22,23 @@
+  * using an `<input>` element.
+  *
+  * ```html
+- * <vaadin-date-picker-light attr-for-value="value">
++ * <vaadin24-date-picker-light attr-for-value="value">
+  *   <input class="input">
+- * </vaadin-date-picker-light>
++ * </vaadin24-date-picker-light>
+  * ```
+  *
+  * ### Styling
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+- * In addition to `<vaadin-date-picker-light>` itself, the following
++ * In addition to `<vaadin24-date-picker-light>` itself, the following
+  * internal components are themable:
+  *
+- * - `<vaadin-date-picker-overlay>`
+- * - `<vaadin-date-picker-overlay-content>`
+- * - `<vaadin-month-calendar>`
++ * - `<vaadin24-date-picker-overlay>`
++ * - `<vaadin24-date-picker-overlay-content>`
++ * - `<vaadin24-month-calendar>`
+  *
+- * Note: the `theme` attribute value set on `<vaadin-date-picker-light>`
++ * Note: the `theme` attribute value set on `<vaadin24-date-picker-light>`
+  * is propagated to the internal themable components listed above.
+  *
+  * @fires {Event} change - Fired when the user commits a value change.
+@@ -65,7 +65,7 @@
+       </style>
+       <slot></slot>
+ 
+-      <vaadin-date-picker-overlay
++      <vaadin24-date-picker-overlay
+         id="overlay"
+         fullscreen$="[[_fullscreen]]"
+         opened="{{opened}}"
+@@ -75,12 +75,12 @@
+         restore-focus-on-close
+         restore-focus-node="[[inputElement]]"
+         theme$="[[_theme]]"
+-      ></vaadin-date-picker-overlay>
++      ></vaadin24-date-picker-overlay>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-date-picker-light';
++    return 'vaadin24-date-picker-light';
+   }
+ 
+   static get properties() {
+@@ -113,7 +113,7 @@
+   /** @protected */
+   connectedCallback() {
+     super.connectedCallback();
+-    const cssSelector = 'vaadin-text-field,.input';
++    const cssSelector = 'vaadin24-text-field,.input';
+     this._setInputElement(this.querySelector(cssSelector));
+     this._setFocusElement(this.inputElement);
+   }

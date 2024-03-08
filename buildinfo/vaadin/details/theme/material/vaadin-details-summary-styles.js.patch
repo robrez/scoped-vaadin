@@ -1,0 +1,24 @@
+Index: details/theme/material/vaadin-details-summary-styles.js
+===================================================================
+--- details/theme/material/vaadin-details-summary-styles.js	null
++++ details/theme/material/vaadin-details-summary-styles.js	null
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const detailsSummary = css`
+   :host {
+@@ -99,6 +99,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-details-summary', detailsSummary, { moduleId: 'material-details-summary' });
++registerStyles('vaadin24-details-summary', detailsSummary, { moduleId: 'material-details-summary' });
+ 
+ export { detailsSummary };

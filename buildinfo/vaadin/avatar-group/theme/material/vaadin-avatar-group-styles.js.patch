@@ -1,0 +1,40 @@
+Index: avatar-group/theme/material/vaadin-avatar-group-styles.js
+===================================================================
+--- avatar-group/theme/material/vaadin-avatar-group-styles.js	null
++++ avatar-group/theme/material/vaadin-avatar-group-styles.js	null
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { item } from '@vaadin/item/theme/material/vaadin-item-styles.js';
+-import { listBox } from '@vaadin/list-box/theme/material/vaadin-list-box-styles.js';
+-import { menuOverlay } from '@vaadin/vaadin-material-styles/mixins/menu-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { item } from '@scoped-vaadin/item/theme/material/vaadin-item-styles.js';
++import { listBox } from '@scoped-vaadin/list-box/theme/material/vaadin-list-box-styles.js';
++import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-avatar-group',
++  'vaadin24-avatar-group',
+   css`
+     :host {
+       --vaadin-avatar-size: 2.25rem;
+@@ -44,14 +44,14 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
++registerStyles('vaadin24-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
+   moduleId: 'material-avatar-group-overlay',
+ });
+ 
+-registerStyles('vaadin-avatar-group-menu', listBox, { moduleId: 'material-avatar-group-menu' });
++registerStyles('vaadin24-avatar-group-menu', listBox, { moduleId: 'material-avatar-group-menu' });
+ 
+ registerStyles(
+-  'vaadin-avatar-group-menu-item',
++  'vaadin24-avatar-group-menu-item',
+   [
+     item,
+     css`

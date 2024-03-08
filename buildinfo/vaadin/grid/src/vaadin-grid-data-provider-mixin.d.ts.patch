@@ -1,0 +1,13 @@
+Index: grid/src/vaadin-grid-data-provider-mixin.d.ts
+===================================================================
+--- grid/src/vaadin-grid-data-provider-mixin.d.ts	null
++++ grid/src/vaadin-grid-data-provider-mixin.d.ts	null
+@@ -7,7 +7,7 @@
+ import type {
+   DataProvider,
+   DataProviderCallback,
+-} from '@vaadin/component-base/src/data-provider-controller/data-provider-controller.js';
++} from '@scoped-vaadin/component-base/src/data-provider-controller/data-provider-controller.js';
+ import { GridSorterDirection } from './vaadin-grid-sorter.js';
+ 
+ export { GridSorterDirection };

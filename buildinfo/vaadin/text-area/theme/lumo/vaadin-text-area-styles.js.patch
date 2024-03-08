@@ -1,0 +1,31 @@
+Index: text-area/theme/lumo/vaadin-text-area-styles.js
+===================================================================
+--- text-area/theme/lumo/vaadin-text-area-styles.js	null
++++ text-area/theme/lumo/vaadin-text-area-styles.js	null
+@@ -3,12 +3,12 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { inputFieldShared } from '@vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const textArea = css`
+   [part='input-field'],
+@@ -62,6 +62,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-text-area', [inputFieldShared, textArea], {
++registerStyles('vaadin24-text-area', [inputFieldShared, textArea], {
+   moduleId: 'lumo-text-area',
+ });

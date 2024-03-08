@@ -1,0 +1,29 @@
+Index: upload/src/vaadin-upload-file-list.js
+===================================================================
+--- upload/src/vaadin-upload-file-list.js	null
++++ upload/src/vaadin-upload-file-list.js	null
+@@ -5,12 +5,12 @@
+  */
+ import './vaadin-upload-file.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { UploadFileListMixin } from './vaadin-upload-file-list-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-upload>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-upload>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -20,7 +20,7 @@
+  */
+ class UploadFileList extends UploadFileListMixin(ThemableMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-upload-file-list';
++    return 'vaadin24-upload-file-list';
+   }
+ 
+   static get template() {

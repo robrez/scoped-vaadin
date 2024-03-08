@@ -1,0 +1,31 @@
+Index: avatar/src/vaadin-avatar-mixin.js
+===================================================================
+--- avatar/src/vaadin-avatar-mixin.js	null
++++ avatar/src/vaadin-avatar-mixin.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+ 
+ /**
+  * A mixin providing common avatar functionality.
+@@ -191,7 +191,7 @@
+     __withTooltipChanged(withTooltip, oldWithTooltip) {
+       if (withTooltip) {
+         // Create and attach tooltip
+-        const tooltipNode = document.createElement('vaadin-tooltip');
++        const tooltipNode = document.createElement('vaadin24-tooltip');
+         tooltipNode.setAttribute('slot', 'tooltip');
+         this.appendChild(tooltipNode);
+         this.__tooltipNode = tooltipNode;
+@@ -232,7 +232,7 @@
+     /** @protected */
+     __onImageLoadError() {
+       if (this.img) {
+-        console.warn(`<vaadin-avatar> The specified image could not be loaded: ${this.img}`);
++        console.warn(`<vaadin24-avatar> The specified image could not be loaded: ${this.img}`);
+         this.__imgFailedToLoad = true;
+         this.__updateVisibility();
+       }

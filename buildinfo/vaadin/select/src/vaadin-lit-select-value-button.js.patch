@@ -1,0 +1,33 @@
+Index: select/src/vaadin-lit-select-value-button.js
+===================================================================
+--- select/src/vaadin-lit-select-value-button.js	null
++++ select/src/vaadin-lit-select-value-button.js	null
+@@ -4,14 +4,14 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, LitElement } from 'lit';
+-import { ButtonMixin } from '@vaadin/button/src/vaadin-button-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ButtonMixin } from '@scoped-vaadin/button/src/vaadin-button-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { valueButton } from './vaadin-select-value-button-styles.js';
+ 
+ /**
+- * An element used internally by `<vaadin-select>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-select>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ButtonMixin
+@@ -20,7 +20,7 @@
+  */
+ class SelectValueButton extends ButtonMixin(ThemableMixin(PolylitMixin(LitElement))) {
+   static get is() {
+-    return 'vaadin-select-value-button';
++    return 'vaadin24-select-value-button';
+   }
+ 
+   static get styles() {

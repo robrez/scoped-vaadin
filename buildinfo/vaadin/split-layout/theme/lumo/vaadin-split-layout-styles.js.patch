@@ -1,0 +1,22 @@
+Index: split-layout/theme/lumo/vaadin-split-layout-styles.js
+===================================================================
+--- split-layout/theme/lumo/vaadin-split-layout-styles.js	null
++++ split-layout/theme/lumo/vaadin-split-layout-styles.js	null
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-split-layout',
++  'vaadin24-split-layout',
+   css`
+     [part='splitter'] {
+       min-width: var(--lumo-space-s);

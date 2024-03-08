@@ -1,0 +1,54 @@
+Index: custom-field/src/vaadin-custom-field.js
+===================================================================
+--- custom-field/src/vaadin-custom-field.js	null
++++ custom-field/src/vaadin-custom-field.js	null
+@@ -4,22 +4,22 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { CustomFieldMixin } from './vaadin-custom-field-mixin.js';
+ import { customFieldStyles } from './vaadin-custom-field-styles.js';
+ 
+-registerStyles('vaadin-custom-field', customFieldStyles, { moduleId: 'vaadin-custom-field-styles' });
++registerStyles('vaadin24-custom-field', customFieldStyles, { moduleId: 'vaadin-custom-field-styles' });
+ 
+ /**
+- * `<vaadin-custom-field>` is a web component for wrapping multiple components as a single field.
++ * `<vaadin24-custom-field>` is a web component for wrapping multiple components as a single field.
+  *
+  * ```
+- * <vaadin-custom-field label="Appointment time">
+- *   <vaadin-date-picker></vaadin-date-picker>
+- *   <vaadin-time-picker></vaadin-time-picker>
+- * </vaadin-custom-field>
++ * <vaadin24-custom-field label="Appointment time">
++ *   <vaadin24-date-picker></vaadin24-date-picker>
++ *   <vaadin24-time-picker></vaadin24-time-picker>
++ * </vaadin24-custom-field>
+  * ```
+  *
+  * ### Styling
+@@ -46,7 +46,7 @@
+  * `has-error-message` | Set when the element has an error message | :host
+  *
+  * You may also manually set `disabled` or `readonly` attribute on this component to make the label
+- * part look visually the same as on a `<vaadin-text-field>` when it is disabled or readonly.
++ * part look visually the same as on a `<vaadin24-text-field>` when it is disabled or readonly.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+@@ -64,7 +64,7 @@
+  */
+ class CustomField extends CustomFieldMixin(ThemableMixin(ElementMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-custom-field';
++    return 'vaadin24-custom-field';
+   }
+ 
+   static get template() {

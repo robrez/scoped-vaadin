@@ -1,0 +1,32 @@
+Index: item/web-types.json
+===================================================================
+--- item/web-types.json	null
++++ item/web-types.json	null
+@@ -1,14 +1,14 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/item",
+-  "version": "24.3.7",
++  "name": "@scoped-vaadin/item",
++  "version": "24.3.6-alpha.1",
+   "description-markup": "markdown",
+   "contributions": {
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-item",
+-          "description": "`<vaadin-item>` is a Web Component providing layout for items in tabs and menus.\n\n```\n  <vaadin-item>\n    Item content\n  </vaadin-item>\n```\n\n### Selectable\n\n`<vaadin-item>` has the `selected` property and the corresponding state attribute.\nCurrently, the component sets the `selected` to false, when `disabled` property is set to true.\nBut other than that, the `<vaadin-item>` does not switch selection by itself.\nIn general, it is the wrapper component, like `<vaadin-list-box>`, which should update\nthe `selected` property on the items, e. g. on mousedown or when Enter / Spacebar is pressed.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name    | Description\n-------------|----------------\n`checkmark`  | The graphical checkmark shown for a selected item\n`content`    | The element that wraps the slot\n\nThe following state attributes are available for styling:\n\nAttribute    | Description\n-------------|-------------\n`active`     | Set when the item is pressed down, either with mouse, touch or the keyboard.\n`disabled`   | Set when the item is disabled.\n`focus-ring` | Set when the item is focused using the keyboard.\n`focused`    | Set when the item is focused.\n`selected`   | Set when the item is selected\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
++          "name": "vaadin24-item",
++          "description": "`<vaadin24-item>` is a Web Component providing layout for items in tabs and menus.\n\n```\n  <vaadin24-item>\n    Item content\n  </vaadin24-item>\n```\n\n### Selectable\n\n`<vaadin24-item>` has the `selected` property and the corresponding state attribute.\nCurrently, the component sets the `selected` to false, when `disabled` property is set to true.\nBut other than that, the `<vaadin24-item>` does not switch selection by itself.\nIn general, it is the wrapper component, like `<vaadin24-list-box>`, which should update\nthe `selected` property on the items, e. g. on mousedown or when Enter / Spacebar is pressed.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name    | Description\n-------------|----------------\n`checkmark`  | The graphical checkmark shown for a selected item\n`content`    | The element that wraps the slot\n\nThe following state attributes are available for styling:\n\nAttribute    | Description\n-------------|-------------\n`active`     | Set when the item is pressed down, either with mouse, touch or the keyboard.\n`disabled`   | Set when the item is disabled.\n`focus-ring` | Set when the item is focused using the keyboard.\n`focused`    | Set when the item is focused.\n`selected`   | Set when the item is selected\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
+           "attributes": [
+             {
+               "name": "disabled",
+@@ -75,7 +75,7 @@
+               },
+               {
+                 "name": "label",
+-                "description": "String that can be set to visually represent the selected item in `vaadin-select`.",
++                "description": "String that can be set to visually represent the selected item in `vaadin24-select`.",
+                 "value": {
+                   "type": [
+                     "string"

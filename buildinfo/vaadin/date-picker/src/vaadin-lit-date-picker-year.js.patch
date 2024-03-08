@@ -1,0 +1,26 @@
+Index: date-picker/src/vaadin-lit-date-picker-year.js
+===================================================================
+--- date-picker/src/vaadin-lit-date-picker-year.js	null
++++ date-picker/src/vaadin-lit-date-picker-year.js	null
+@@ -4,9 +4,9 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DatePickerYearMixin } from './vaadin-date-picker-year-mixin.js';
+ 
+ /**
+@@ -17,7 +17,7 @@
+  */
+ export class DatePickerYear extends ThemableMixin(DatePickerYearMixin(PolylitMixin(LitElement))) {
+   static get is() {
+-    return 'vaadin-date-picker-year';
++    return 'vaadin24-date-picker-year';
+   }
+ 
+   static get styles() {

@@ -1,0 +1,24 @@
+Index: checkbox-group/theme/material/vaadin-checkbox-group-styles.js
+===================================================================
+--- checkbox-group/theme/material/vaadin-checkbox-group-styles.js	null
++++ checkbox-group/theme/material/vaadin-checkbox-group-styles.js	null
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { helper } from '@vaadin/vaadin-material-styles/mixins/helper.js';
+-import { requiredField } from '@vaadin/vaadin-material-styles/mixins/required-field.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { helper } from '@scoped-vaadin/vaadin-material-styles/mixins/helper.js';
++import { requiredField } from '@scoped-vaadin/vaadin-material-styles/mixins/required-field.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const checkboxGroup = css`
+   :host {
+@@ -40,6 +40,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-checkbox-group', [requiredField, helper, checkboxGroup], {
++registerStyles('vaadin24-checkbox-group', [requiredField, helper, checkboxGroup], {
+   moduleId: 'material-checkbox-group',
+ });

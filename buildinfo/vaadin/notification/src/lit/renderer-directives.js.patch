@@ -1,0 +1,25 @@
+Index: notification/src/lit/renderer-directives.js
+===================================================================
+--- notification/src/lit/renderer-directives.js	null
++++ notification/src/lit/renderer-directives.js	null
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { directive } from 'lit/directive.js';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ 
+ export class NotificationRendererDirective extends LitRendererDirective {
+   /**
+@@ -48,9 +48,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-notification
++ * `<vaadin24-notification
+  *   ${notificationRenderer((notification) => html`...`)}
+- * ></vaadin-notification>`
++ * ></vaadin24-notification>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

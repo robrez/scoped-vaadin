@@ -1,0 +1,11 @@
+Index: confirm-dialog/theme/material/vaadin-lit-confirm-dialog.js
+===================================================================
+--- confirm-dialog/theme/material/vaadin-lit-confirm-dialog.js	null
++++ confirm-dialog/theme/material/vaadin-lit-confirm-dialog.js	null
+@@ -1,4 +1,4 @@
+-import '@vaadin/dialog/theme/material/vaadin-dialog-styles.js';
+-import '@vaadin/button/theme/material/vaadin-button-styles.js';
++import '@scoped-vaadin/dialog/theme/material/vaadin-dialog-styles.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
+ import './vaadin-confirm-dialog-styles.js';
+ import '../../src/vaadin-lit-confirm-dialog.js';

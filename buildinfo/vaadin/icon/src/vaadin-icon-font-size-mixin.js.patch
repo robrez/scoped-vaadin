@@ -1,0 +1,23 @@
+Index: icon/src/vaadin-icon-font-size-mixin.js
+===================================================================
+--- icon/src/vaadin-icon-font-size-mixin.js	null
++++ icon/src/vaadin-icon-font-size-mixin.js	null
+@@ -4,15 +4,15 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { needsFontIconSizingFallback } from './vaadin-icon-helpers.js';
+ 
+ const usesFontIconSizingFallback = needsFontIconSizingFallback();
+ 
+ if (usesFontIconSizingFallback) {
+   registerStyles(
+-    'vaadin-icon',
++    'vaadin24-icon',
+     css`
+       :host::after,
+       :host::before {

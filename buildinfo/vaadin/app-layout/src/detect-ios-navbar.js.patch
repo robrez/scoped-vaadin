@@ -1,0 +1,13 @@
+Index: app-layout/src/detect-ios-navbar.js
+===================================================================
+--- app-layout/src/detect-ios-navbar.js	null
++++ app-layout/src/detect-ios-navbar.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ 
+ export function _detectIosNavbar() {
+   /* c8 ignore next 11 */

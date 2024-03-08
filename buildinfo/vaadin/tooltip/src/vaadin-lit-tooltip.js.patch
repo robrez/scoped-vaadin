@@ -1,0 +1,60 @@
+Index: tooltip/src/vaadin-lit-tooltip.js
+===================================================================
+--- tooltip/src/vaadin-lit-tooltip.js	null
++++ tooltip/src/vaadin-lit-tooltip.js	null
+@@ -6,14 +6,14 @@
+ import './vaadin-lit-tooltip-overlay.js';
+ import { css, html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import { TooltipMixin } from './vaadin-tooltip-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-tooltip>` web component.
++ * LitElement based version of `<vaadin24-tooltip>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -28,7 +28,7 @@
+  */
+ class Tooltip extends TooltipMixin(ThemePropertyMixin(ElementMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-tooltip';
++    return 'vaadin24-tooltip';
+   }
+ 
+   static get styles() {
+@@ -44,7 +44,7 @@
+     const effectivePosition = this.__effectivePosition;
+ 
+     return html`
+-      <vaadin-tooltip-overlay
++      <vaadin24-tooltip-overlay
+         .renderer="${this._renderer}"
+         .owner="${this}"
+         theme="${ifDefined(this._theme)}"
+@@ -58,7 +58,7 @@
+         @mouseenter="${this.__onOverlayMouseEnter}"
+         @mouseleave="${this.__onOverlayMouseLeave}"
+         modeless
+-      ></vaadin-tooltip-overlay>
++      ></vaadin24-tooltip-overlay>
+ 
+       <slot name="sr-label"></slot>
+     `;
+@@ -68,7 +68,7 @@
+   ready() {
+     super.ready();
+ 
+-    this._overlayElement = this.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    this._overlayElement = this.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+   }
+ }
+ 

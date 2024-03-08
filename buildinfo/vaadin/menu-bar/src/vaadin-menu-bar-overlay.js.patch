@@ -1,0 +1,43 @@
+Index: menu-bar/src/vaadin-menu-bar-overlay.js
+===================================================================
+--- menu-bar/src/vaadin-menu-bar-overlay.js	null
++++ menu-bar/src/vaadin-menu-bar-overlay.js	null
+@@ -4,20 +4,20 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { MenuOverlayMixin } from '@vaadin/context-menu/src/vaadin-menu-overlay-mixin.js';
+-import { styles } from '@vaadin/context-menu/src/vaadin-menu-overlay-styles.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { MenuOverlayMixin } from '@scoped-vaadin/context-menu/src/vaadin-menu-overlay-mixin.js';
++import { styles } from '@scoped-vaadin/context-menu/src/vaadin-menu-overlay-styles.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+-registerStyles('vaadin-menu-bar-overlay', [overlayStyles, styles], {
++registerStyles('vaadin24-menu-bar-overlay', [overlayStyles, styles], {
+   moduleId: 'vaadin-menu-bar-overlay-styles',
+ });
+ 
+ /**
+- * An element used internally by `<vaadin-menu-bar>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-menu-bar>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -29,7 +29,7 @@
+  */
+ export class MenuBarOverlay extends MenuOverlayMixin(OverlayMixin(DirMixin(ThemableMixin(PolymerElement)))) {
+   static get is() {
+-    return 'vaadin-menu-bar-overlay';
++    return 'vaadin24-menu-bar-overlay';
+   }
+ 
+   static get template() {

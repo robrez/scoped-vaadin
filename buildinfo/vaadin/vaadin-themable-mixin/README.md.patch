@@ -1,0 +1,18 @@
+Index: vaadin-themable-mixin/README.md
+===================================================================
+--- vaadin-themable-mixin/README.md	null
++++ vaadin-themable-mixin/README.md	null
+@@ -1,10 +1,12 @@
+ # vaadin-themable-mixin
+ 
++This component is based on [@vaadin/vaadin-themable-mixin](https://www.npmjs.com/package/@vaadin/vaadin-themable-mixin)
++
+ A mixin to enable customization of Shadow DOM used by Vaadin components.
+ 
+ [Documentation ↗](https://vaadin.com/docs/latest/styling/styling-components)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/vaadin-themable-mixin)](https://www.npmjs.com/package/@vaadin/vaadin-themable-mixin)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/vaadin-themable-mixin)](https://www.npmjs.com/package/@scoped-vaadin/vaadin-themable-mixin)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ## License

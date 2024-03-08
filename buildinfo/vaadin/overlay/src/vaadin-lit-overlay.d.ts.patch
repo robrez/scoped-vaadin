@@ -1,0 +1,22 @@
+Index: overlay/src/vaadin-lit-overlay.d.ts
+===================================================================
+--- overlay/src/vaadin-lit-overlay.d.ts	null
++++ overlay/src/vaadin-lit-overlay.d.ts	null
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { LitElement } from 'lit';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { OverlayMixin } from './vaadin-overlay-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-overlay>` web component.
++ * LitElement based version of `<vaadin24-overlay>` web component.
+  *
+  * ## Disclaimer
+  *

@@ -1,0 +1,26 @@
+Index: context-menu/src/vaadin-context-menu-mixin.js
+===================================================================
+--- context-menu/src/vaadin-context-menu-mixin.js	null
++++ context-menu/src/vaadin-context-menu-mixin.js	null
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
+-import { addListener, gestures, removeListener } from '@vaadin/component-base/src/gestures.js';
+-import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { addListener, gestures, removeListener } from '@scoped-vaadin/component-base/src/gestures.js';
++import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
+ import { ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
+ 
+ /**
+@@ -78,7 +78,7 @@
+          * Receives three arguments:
+          *
+          * - `root` The root container DOM element. Append your content to it.
+-         * - `contextMenu` The reference to the `<vaadin-context-menu>` element.
++         * - `contextMenu` The reference to the `<vaadin24-context-menu>` element.
+          * - `context` The object with the menu context, contains:
+          *   - `context.target`  the target of the menu opening event,
+          *   - `context.detail` the menu opening event detail.

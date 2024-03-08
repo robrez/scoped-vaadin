@@ -1,0 +1,13 @@
+Index: field-highlighter/src/vaadin-field-highlighter.d.ts
+===================================================================
+--- field-highlighter/src/vaadin-field-highlighter.d.ts	null
++++ field-highlighter/src/vaadin-field-highlighter.d.ts	null
+@@ -70,7 +70,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-field-highlighter': FieldHighlighter;
++    'vaadin24-field-highlighter': FieldHighlighter;
+   }
+ }
+ 

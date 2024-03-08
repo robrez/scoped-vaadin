@@ -1,0 +1,30 @@
+Index: field-highlighter/src/vaadin-user-tag.js
+===================================================================
+--- field-highlighter/src/vaadin-user-tag.js	null
++++ field-highlighter/src/vaadin-user-tag.js	null
+@@ -4,12 +4,12 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-field-highlighter>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -19,7 +19,7 @@
+  */
+ export class UserTag extends ThemableMixin(DirMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-user-tag';
++    return 'vaadin24-user-tag';
+   }
+ 
+   static get template() {

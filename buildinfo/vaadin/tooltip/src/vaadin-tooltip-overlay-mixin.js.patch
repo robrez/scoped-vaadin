@@ -1,0 +1,15 @@
+Index: tooltip/src/vaadin-tooltip-overlay-mixin.js
+===================================================================
+--- tooltip/src/vaadin-tooltip-overlay-mixin.js	null
++++ tooltip/src/vaadin-tooltip-overlay-mixin.js	null
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2022 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+ 
+ /**
+  * A mixin providing common tooltip overlay functionality.

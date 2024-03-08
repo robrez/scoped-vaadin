@@ -1,0 +1,47 @@
+Index: radio-group/src/vaadin-radio-group.js
+===================================================================
+--- radio-group/src/vaadin-radio-group.js	null
++++ radio-group/src/vaadin-radio-group.js	null
+@@ -5,23 +5,23 @@
+  */
+ import './vaadin-radio-button.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { RadioGroupMixin } from './vaadin-radio-group-mixin.js';
+ import { radioGroupStyles } from './vaadin-radio-group-styles.js';
+ 
+-registerStyles('vaadin-radio-group', radioGroupStyles, { moduleId: 'vaadin-radio-group-styles' });
++registerStyles('vaadin24-radio-group', radioGroupStyles, { moduleId: 'vaadin-radio-group-styles' });
+ 
+ /**
+- * `<vaadin-radio-group>` is a web component that allows the user to choose one item from a group of choices.
++ * `<vaadin24-radio-group>` is a web component that allows the user to choose one item from a group of choices.
+  *
+  * ```html
+- * <vaadin-radio-group label="Travel class">
+- *   <vaadin-radio-button value="economy" label="Economy"></vaadin-radio-button>
+- *   <vaadin-radio-button value="business" label="Business"></vaadin-radio-button>
+- *   <vaadin-radio-button value="firstClass" label="First Class"></vaadin-radio-button>
+- * </vaadin-radio-group>
++ * <vaadin24-radio-group label="Travel class">
++ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
++ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
++ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
++ * </vaadin24-radio-group>
+  * ```
+  *
+  * ### Styling
+@@ -63,7 +63,7 @@
+  */
+ class RadioGroup extends RadioGroupMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-radio-group';
++    return 'vaadin24-radio-group';
+   }
+ 
+   static get template() {

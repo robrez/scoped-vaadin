@@ -1,0 +1,48 @@
+Index: field-highlighter/src/fields/outline.js
+===================================================================
+--- field-highlighter/src/fields/outline.js	null
++++ field-highlighter/src/fields/outline.js	null
+@@ -8,22 +8,22 @@
+   switch (tagName) {
+     /* c8 ignore next */
+     case 'vaadin-big-decimal-field':
+-    case 'vaadin-combo-box':
+-    case 'vaadin-date-picker':
+-    case 'vaadin-email-field':
+-    case 'vaadin-integer-field':
+-    case 'vaadin-number-field':
+-    case 'vaadin-password-field':
+-    case 'vaadin-select':
+-    case 'vaadin-text-area':
+-    case 'vaadin-text-field':
+-    case 'vaadin-time-picker':
++    case 'vaadin24-combo-box':
++    case 'vaadin24-date-picker':
++    case 'vaadin24-email-field':
++    case 'vaadin24-integer-field':
++    case 'vaadin24-number-field':
++    case 'vaadin24-password-field':
++    case 'vaadin24-select':
++    case 'vaadin24-text-area':
++    case 'vaadin24-text-field':
++    case 'vaadin24-time-picker':
+       return element.shadowRoot.querySelector('[part="input-field"]');
+     /* c8 ignore next */
+-    case 'vaadin-checkbox':
++    case 'vaadin24-checkbox':
+       return element.shadowRoot.querySelector('[part="checkbox"]');
+     /* c8 ignore next */
+-    case 'vaadin-radio-button':
++    case 'vaadin24-radio-button':
+       return element.shadowRoot.querySelector('[part="radio"]');
+     /* c8 ignore next */
+     default:
+@@ -55,7 +55,7 @@
+     `;
+     field.shadowRoot.appendChild(style);
+ 
+-    const outline = document.createElement('vaadin-field-outline');
++    const outline = document.createElement('vaadin24-field-outline');
+     (target === field ? field.shadowRoot : target).appendChild(outline);
+ 
+     // Mimic :host-context to apply styles

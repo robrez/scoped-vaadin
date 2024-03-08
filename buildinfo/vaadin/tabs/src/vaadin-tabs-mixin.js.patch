@@ -1,0 +1,17 @@
+Index: tabs/src/vaadin-tabs-mixin.js
+===================================================================
+--- tabs/src/vaadin-tabs-mixin.js	null
++++ tabs/src/vaadin-tabs-mixin.js	null
+@@ -4,9 +4,9 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+-import { ListMixin } from '@vaadin/a11y-base/src/list-mixin.js';
+-import { getNormalizedScrollLeft } from '@vaadin/component-base/src/dir-utils.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
++import { ListMixin } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
++import { getNormalizedScrollLeft } from '@scoped-vaadin/component-base/src/dir-utils.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+ 
+ /**
+  * @polymerMixin

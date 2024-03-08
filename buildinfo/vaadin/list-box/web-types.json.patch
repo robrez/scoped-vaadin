@@ -1,0 +1,23 @@
+Index: list-box/web-types.json
+===================================================================
+--- list-box/web-types.json	null
++++ list-box/web-types.json	null
+@@ -1,14 +1,14 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/list-box",
+-  "version": "24.3.7",
++  "name": "@scoped-vaadin/list-box",
++  "version": "24.3.6-alpha.1",
+   "description-markup": "markdown",
+   "contributions": {
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-list-box",
+-          "description": "`<vaadin-list-box>` is a Web Component for creating menus.\n\n```\n  <vaadin-list-box selected=\"2\">\n    <vaadin-item>Item 1</vaadin-item>\n    <vaadin-item>Item 2</vaadin-item>\n    <vaadin-item>Item 3</vaadin-item>\n    <vaadin-item>Item 4</vaadin-item>\n  </vaadin-list-box>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|------------------------\n`items`           | The items container\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
++          "name": "vaadin24-list-box",
++          "description": "`<vaadin24-list-box>` is a Web Component for creating menus.\n\n```\n  <vaadin24-list-box selected=\"2\">\n    <vaadin24-item>Item 1</vaadin24-item>\n    <vaadin24-item>Item 2</vaadin24-item>\n    <vaadin24-item>Item 3</vaadin24-item>\n    <vaadin24-item>Item 4</vaadin24-item>\n  </vaadin24-list-box>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|------------------------\n`items`           | The items container\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
+           "attributes": [
+             {
+               "name": "disabled",

@@ -1,0 +1,14 @@
+Index: vaadin-lumo-styles/README.md
+===================================================================
+--- vaadin-lumo-styles/README.md	null
++++ vaadin-lumo-styles/README.md	null
+@@ -1,6 +1,8 @@
+ # Lumo
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/vaadin-lumo-styles)](https://www.npmjs.com/package/@vaadin/vaadin-lumo-styles)
++This component is based on [@vaadin/vaadin-lumo-styles](https://www.npmjs.com/package/@vaadin/vaadin-lumo-styles)
++
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/vaadin-lumo-styles)](https://www.npmjs.com/package/@scoped-vaadin/vaadin-lumo-styles)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ > Lumo – ✨ enchantment (Finnish) and 🔆 light (Esperanto)

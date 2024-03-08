@@ -1,0 +1,22 @@
+Index: notification/theme/lumo/vaadin-notification-styles.js
+===================================================================
+--- notification/theme/lumo/vaadin-notification-styles.js	null
++++ notification/theme/lumo/vaadin-notification-styles.js	null
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-notification-card',
++  'vaadin24-notification-card',
+   css`
+     :host {
+       position: relative;

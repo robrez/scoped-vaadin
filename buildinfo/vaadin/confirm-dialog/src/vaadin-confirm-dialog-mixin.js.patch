@@ -1,0 +1,42 @@
+Index: confirm-dialog/src/vaadin-confirm-dialog-mixin.js
+===================================================================
+--- confirm-dialog/src/vaadin-confirm-dialog-mixin.js	null
++++ confirm-dialog/src/vaadin-confirm-dialog-mixin.js	null
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { setAriaIDReference } from '@vaadin/a11y-base/src/aria-id-reference.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { setAriaIDReference } from '@scoped-vaadin/a11y-base/src/aria-id-reference.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+ /**
+  * @polymerMixin
+@@ -282,21 +282,21 @@
+       this.addController(this._messageController);
+ 
+       // NOTE: order in which buttons are added should match the order of slots in template
+-      this._cancelController = new SlotController(this, 'cancel-button', 'vaadin-button', {
++      this._cancelController = new SlotController(this, 'cancel-button', 'vaadin24-button', {
+         initializer: (button) => {
+           this.__setupSlottedButton('cancel', button);
+         },
+       });
+       this.addController(this._cancelController);
+ 
+-      this._rejectController = new SlotController(this, 'reject-button', 'vaadin-button', {
++      this._rejectController = new SlotController(this, 'reject-button', 'vaadin24-button', {
+         initializer: (button) => {
+           this.__setupSlottedButton('reject', button);
+         },
+       });
+       this.addController(this._rejectController);
+ 
+-      this._confirmController = new SlotController(this, 'confirm-button', 'vaadin-button', {
++      this._confirmController = new SlotController(this, 'confirm-button', 'vaadin24-button', {
+         initializer: (button) => {
+           this.__setupSlottedButton('confirm', button);
+         },

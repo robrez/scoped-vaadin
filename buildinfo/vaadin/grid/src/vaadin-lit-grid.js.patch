@@ -1,0 +1,36 @@
+Index: grid/src/vaadin-lit-grid.js
+===================================================================
+--- grid/src/vaadin-lit-grid.js	null
++++ grid/src/vaadin-lit-grid.js	null
+@@ -5,16 +5,16 @@
+  */
+ import './vaadin-lit-grid-column.js';
+ import { html, LitElement } from 'lit';
+-import { isIOS, isSafari } from '@vaadin/component-base/src/browser-utils.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { isIOS, isSafari } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { GridMixin } from './vaadin-grid-mixin.js';
+ import { gridStyles } from './vaadin-grid-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-grid>` web component.
++ * LitElement based version of `<vaadin24-grid>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -24,7 +24,7 @@
+  */
+ class Grid extends GridMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-grid';
++    return 'vaadin24-grid';
+   }
+ 
+   static get styles() {

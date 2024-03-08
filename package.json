@@ -21,6 +21,7 @@
   ],
   "devDependencies": {
     "@web/dev-server": "^0.4.3",
+    "diff": "^5.2.0",
     "es-module-lexer": "^1.4.1",
     "glob": "^10.3.10",
     "terser": "^5.28.1"

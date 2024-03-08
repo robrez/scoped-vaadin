@@ -1,0 +1,25 @@
+Index: date-picker/theme/material/vaadin-date-picker-overlay-content-styles.js
+===================================================================
+--- date-picker/theme/material/vaadin-date-picker-overlay-content-styles.js	null
++++ date-picker/theme/material/vaadin-date-picker-overlay-content-styles.js	null
+@@ -1,13 +1,13 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/button/theme/material/vaadin-button-styles.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
+ import './vaadin-date-picker-year-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-date-picker-overlay-content',
++  'vaadin24-date-picker-overlay-content',
+   css`
+     :host {
+       background: var(--material-background-color);

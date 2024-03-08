@@ -1,0 +1,13 @@
+Index: combo-box/src/vaadin-combo-box-overlay-mixin.d.ts
+===================================================================
+--- combo-box/src/vaadin-combo-box-overlay-mixin.d.ts	null
++++ combo-box/src/vaadin-combo-box-overlay-mixin.d.ts	null
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { PositionMixinClass } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import type { PositionMixinClass } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+ 
+ export declare function ComboBoxOverlayMixin<T extends Constructor<HTMLElement>>(
+   base: T,

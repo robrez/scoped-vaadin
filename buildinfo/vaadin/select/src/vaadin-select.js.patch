@@ -1,0 +1,160 @@
+Index: select/src/vaadin-select.js
+===================================================================
+--- select/src/vaadin-select.js	null
++++ select/src/vaadin-select.js	null
+@@ -3,34 +3,34 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/src/vaadin-input-container.js';
++import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
+ import './vaadin-select-item.js';
+ import './vaadin-select-list-box.js';
+ import './vaadin-select-overlay.js';
+ import './vaadin-select-value-button.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { screenReaderOnly } from '@vaadin/a11y-base/src/styles/sr-only-styles.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { fieldShared } from '@vaadin/field-base/src/styles/field-shared-styles.js';
+-import { inputFieldContainer } from '@vaadin/field-base/src/styles/input-field-container-styles.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { screenReaderOnly } from '@scoped-vaadin/a11y-base/src/styles/sr-only-styles.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { fieldShared } from '@scoped-vaadin/field-base/src/styles/field-shared-styles.js';
++import { inputFieldContainer } from '@scoped-vaadin/field-base/src/styles/input-field-container-styles.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { SelectBaseMixin } from './vaadin-select-base-mixin.js';
+ 
+-registerStyles('vaadin-select', [fieldShared, inputFieldContainer, screenReaderOnly], {
++registerStyles('vaadin24-select', [fieldShared, inputFieldContainer, screenReaderOnly], {
+   moduleId: 'vaadin-select-styles',
+ });
+ 
+ /**
+- * `<vaadin-select>` is a Web Component for selecting values from a list of items.
++ * `<vaadin24-select>` is a Web Component for selecting values from a list of items.
+  *
+  * ### Items
+  *
+  * Use the `items` property to define possible options for the select:
+  *
+  * ```html
+- * <vaadin-select id="select"></vaadin-select>
++ * <vaadin24-select id="select"></vaadin24-select>
+  * ```
+  * ```js
+  * const select = document.querySelector('#select');
+@@ -56,10 +56,10 @@
+  * ```js
+  * const select = document.querySelector('#select');
+  * select.renderer = function(root, select) {
+- *   const listBox = document.createElement('vaadin-list-box');
+- *   // append 3 <vaadin-item> elements
++ *   const listBox = document.createElement('vaadin24-list-box');
++ *   // append 3 <vaadin24-item> elements
+  *   ['Jose', 'Manolo', 'Pedro'].forEach(function(name) {
+- *     const item = document.createElement('vaadin-item');
++ *     const item = document.createElement('vaadin24-item');
+  *     item.textContent = name;
+  *     item.setAttribute('label', name)
+  *     listBox.appendChild(item);
+@@ -85,38 +85,38 @@
+  * Custom property                    | Description                  | Target element          | Default
+  * -----------------------------------|------------------------------|----------------------------------
+  * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
+- * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin-select-overlay` |
++ * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin24-select-overlay` |
+  *
+- * `<vaadin-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name       | Description
+  * ----------------|----------------
+  * `toggle-button` | The toggle button
+  *
+- * In addition to `<vaadin-text-field>` state attributes, the following state attributes are available for theming:
++ * In addition to `<vaadin24-text-field>` state attributes, the following state attributes are available for theming:
+  *
+  * Attribute | Description                 | Part name
+  * ----------|-----------------------------|-----------
+  * `opened`  | Set when the select is open | :host
+  *
+- * There are two exceptions in terms of styling compared to `<vaadin-text-field>`:
+- * - the `clear-button` shadow DOM part does not exist in `<vaadin-select>`.
+- * - the `input-prevented` state attribute is not supported by `<vaadin-select>`.
++ * There are two exceptions in terms of styling compared to `<vaadin24-text-field>`:
++ * - the `clear-button` shadow DOM part does not exist in `<vaadin24-select>`.
++ * - the `input-prevented` state attribute is not supported by `<vaadin24-select>`.
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-select>` itself, the following internal
++ * In addition to `<vaadin24-select>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-select-overlay>` - has the same API as [`<vaadin-overlay>`](#/elements/vaadin-overlay).
+- * - `<vaadin-select-value-button>` - has the same API as [`<vaadin-button>`](#/elements/vaadin-button).
+- * - [`<vaadin-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
++ * - `<vaadin24-select-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
++ * - `<vaadin24-select-value-button>` - has the same API as [`<vaadin24-button>`](#/elements/vaadin-button).
++ * - [`<vaadin24-input-container>`](#/elements/vaadin-input-container) - an internal element wrapping the button.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-select>` is
++ * Note: the `theme` attribute value set on `<vaadin24-select>` is
+  * propagated to the internal components listed above.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+@@ -135,7 +135,7 @@
+  */
+ class Select extends SelectBaseMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-select';
++    return 'vaadin24-select';
+   }
+ 
+   static get template() {
+@@ -156,7 +156,7 @@
+           <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
+         </div>
+ 
+-        <vaadin-input-container
++        <vaadin24-input-container
+           part="input-field"
+           readonly="[[readonly]]"
+           disabled="[[disabled]]"
+@@ -167,7 +167,7 @@
+           <slot name="prefix" slot="prefix"></slot>
+           <slot name="value"></slot>
+           <div part="toggle-button" slot="suffix" aria-hidden="true" on-mousedown="_onToggleMouseDown"></div>
+-        </vaadin-input-container>
++        </vaadin24-input-container>
+ 
+         <div part="helper-text">
+           <slot name="helper"></slot>
+@@ -178,14 +178,14 @@
+         </div>
+       </div>
+ 
+-      <vaadin-select-overlay
++      <vaadin24-select-overlay
+         position-target="[[_inputContainer]]"
+         opened="{{opened}}"
+         with-backdrop="[[_phone]]"
+         phone$="[[_phone]]"
+         theme$="[[_theme]]"
+         on-vaadin-overlay-open="_onOverlayOpen"
+-      ></vaadin-select-overlay>
++      ></vaadin24-select-overlay>
+ 
+       <slot name="tooltip"></slot>
+       <div class="sr-only">

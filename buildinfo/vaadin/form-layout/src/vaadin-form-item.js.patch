@@ -1,0 +1,112 @@
+Index: form-layout/src/vaadin-form-item.js
+===================================================================
+--- form-layout/src/vaadin-form-item.js	null
++++ form-layout/src/vaadin-form-item.js	null
+@@ -4,59 +4,59 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { addValueToAttribute, removeValueFromAttribute } from '@vaadin/component-base/src/dom-utils.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-form-item>` is a Web Component providing labelled form item wrapper
+- * for using inside `<vaadin-form-layout>`.
++ * `<vaadin24-form-item>` is a Web Component providing labelled form item wrapper
++ * for using inside `<vaadin24-form-layout>`.
+  *
+- * `<vaadin-form-item>` accepts a single child as the input content,
++ * `<vaadin24-form-item>` accepts a single child as the input content,
+  * and also has a separate named `label` slot:
+  *
+  * ```html
+- * <vaadin-form-item>
++ * <vaadin24-form-item>
+  *   <label slot="label">Label aside</label>
+  *   <input>
+- * </vaadin-form-item>
++ * </vaadin24-form-item>
+  * ```
+  *
+  * The label is optional and can be omitted:
+  *
+  * ```html
+- * <vaadin-form-item>
++ * <vaadin24-form-item>
+  *   <input type="checkbox"> Subscribe to our Newsletter
+- * </vaadin-form-item>
++ * </vaadin24-form-item>
+  * ```
+  *
+  * By default, the `label` slot content is displayed aside of the input content.
+  * When `label-position="top"` is set, the `label` slot content is displayed on top:
+  *
+  * ```html
+- * <vaadin-form-item label-position="top">
++ * <vaadin24-form-item label-position="top">
+  *   <label slot="label">Label on top</label>
+  *   <input>
+- * </vaadin-form-item>
++ * </vaadin24-form-item>
+  * ```
+  *
+- * **Note:** Normally, `<vaadin-form-item>` is used as a child of
+- * a `<vaadin-form-layout>` element. Setting `label-position` is unnecessary,
++ * **Note:** Normally, `<vaadin24-form-item>` is used as a child of
++ * a `<vaadin24-form-layout>` element. Setting `label-position` is unnecessary,
+  * because the `label-position` attribute is triggered automatically by the parent
+- * `<vaadin-form-layout>`, depending on its width and responsive behavior.
++ * `<vaadin24-form-layout>`, depending on its width and responsive behavior.
+  *
+  * ### Input Width
+  *
+- * By default, `<vaadin-form-item>` does not manipulate the width of the slotted
++ * By default, `<vaadin24-form-item>` does not manipulate the width of the slotted
+  * input element. Optionally you can stretch the child input element to fill
+  * the available width for the input content by adding the `full-width` class:
+  *
+  * ```html
+- * <vaadin-form-item>
++ * <vaadin24-form-item>
+  *   <label slot="label">Label</label>
+  *   <input class="full-width">
+- * </vaadin-form-item>
++ * </vaadin24-form-item>
+  * ```
+  *
+  * ### Styling
+@@ -77,7 +77,7 @@
+  *
+  * ### Custom CSS Properties Reference
+  *
+- * The following custom CSS properties are available on the `<vaadin-form-item>`
++ * The following custom CSS properties are available on the `<vaadin24-form-item>`
+  * element:
+  *
+  * Custom CSS property | Description | Default
+@@ -148,7 +148,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-form-item';
++    return 'vaadin24-form-item';
+   }
+ 
+   constructor() {
+@@ -291,8 +291,8 @@
+     const fieldNodes = this.$.contentSlot.assignedElements();
+     if (fieldNodes.length > 1) {
+       console.warn(
+-        `WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin-form-item> is deprecated.
+-Please wrap fields with a <vaadin-custom-field> instead.`,
++        `WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin24-form-item> is deprecated.
++Please wrap fields with a <vaadin24-custom-field> instead.`,
+       );
+     }
+ 

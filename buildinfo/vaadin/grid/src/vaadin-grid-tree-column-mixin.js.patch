@@ -1,0 +1,22 @@
+Index: grid/src/vaadin-grid-tree-column-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-tree-column-mixin.js	null
++++ grid/src/vaadin-grid-tree-column-mixin.js	null
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { get } from '@vaadin/component-base/src/path-utils.js';
++import { get } from '@scoped-vaadin/component-base/src/path-utils.js';
+ 
+ /**
+  * @polymerMixin
+@@ -40,7 +40,7 @@
+     __defaultRenderer(root, _column, { item, expanded, level }) {
+       let toggle = root.firstElementChild;
+       if (!toggle) {
+-        toggle = document.createElement('vaadin-grid-tree-toggle');
++        toggle = document.createElement('vaadin24-grid-tree-toggle');
+         toggle.addEventListener('expanded-changed', this.__boundOnExpandedChanged);
+         root.appendChild(toggle);
+       }
