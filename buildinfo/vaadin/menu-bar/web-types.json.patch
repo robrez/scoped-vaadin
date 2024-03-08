@@ -8,7 +8,7 @@ Index: menu-bar/web-types.json
 -  "name": "@vaadin/menu-bar",
 -  "version": "24.3.7",
 +  "name": "@scoped-vaadin/menu-bar",
-+  "version": "24.3.6-alpha.1",
++  "version": "24.3.7-alpha.1",
    "description-markup": "markdown",
    "contributions": {
      "html": {

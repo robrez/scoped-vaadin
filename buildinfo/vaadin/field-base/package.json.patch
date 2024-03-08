@@ -7,7 +7,7 @@ Index: field-base/package.json
 -  "name": "@vaadin/field-base",
 -  "version": "24.3.7",
 +  "name": "@scoped-vaadin/field-base",
-+  "version": "24.3.6-alpha.1",
++  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -48,9 +48,9 @@ Index: field-base/package.json
 -    "sinon": "^13.0.2"
 -  },
 -  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
-+    "@scoped-vaadin/a11y-base": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/component-base": "^24.3.6-alpha.1",
++    "@scoped-vaadin/a11y-base": "^24.3.7-alpha.1",
++    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.6-alpha.1"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
 +  }
  }

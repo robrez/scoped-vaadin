@@ -7,7 +7,7 @@ Index: checkbox-group/package.json
 -  "name": "@vaadin/checkbox-group",
 -  "version": "24.3.7",
 +  "name": "@scoped-vaadin/checkbox-group",
-+  "version": "24.3.6-alpha.1",
++  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -60,13 +60,13 @@ Index: checkbox-group/package.json
 -  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/a11y-base": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/checkbox": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/component-base": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/field-base": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/vaadin-material-styles": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.6-alpha.1",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.6-alpha.1"
++    "@scoped-vaadin/a11y-base": "^24.3.7-alpha.1",
++    "@scoped-vaadin/checkbox": "^24.3.7-alpha.1",
++    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
++    "@scoped-vaadin/field-base": "^24.3.7-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.7-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.3.7-alpha.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.7-alpha.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
 +  }
  }
