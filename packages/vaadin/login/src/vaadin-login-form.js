@@ -57,7 +57,7 @@ class LoginForm extends LoginFormMixin(ElementMixin(ThemableMixin(PolymerElement
   static get template() {
     return html`
       <style>
-        vaadin-login-form-wrapper > form > * {
+        vaadin24-login-form-wrapper > form > * {
           width: 100%;
         }
       </style>
