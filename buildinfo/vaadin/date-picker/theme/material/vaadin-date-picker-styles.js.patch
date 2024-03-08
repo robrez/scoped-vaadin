@@ -1,7 +1,7 @@
 Index: date-picker/theme/material/vaadin-date-picker-styles.js
 ===================================================================
---- date-picker/theme/material/vaadin-date-picker-styles.js	null
-+++ date-picker/theme/material/vaadin-date-picker-styles.js	null
+--- date-picker/theme/material/vaadin-date-picker-styles.js
++++ date-picker/theme/material/vaadin-date-picker-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/input-container/theme/material/vaadin-input-container-styles.js';
 -import '@vaadin/vaadin-material-styles/color.js';

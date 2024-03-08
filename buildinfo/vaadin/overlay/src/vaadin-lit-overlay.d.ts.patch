@@ -1,7 +1,7 @@
 Index: overlay/src/vaadin-lit-overlay.d.ts
 ===================================================================
---- overlay/src/vaadin-lit-overlay.d.ts	null
-+++ overlay/src/vaadin-lit-overlay.d.ts	null
+--- overlay/src/vaadin-lit-overlay.d.ts
++++ overlay/src/vaadin-lit-overlay.d.ts
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

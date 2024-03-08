@@ -1,7 +1,7 @@
 Index: message-list/README.md
 ===================================================================
---- message-list/README.md	null
-+++ message-list/README.md	null
+--- message-list/README.md
++++ message-list/README.md
 @@ -1,13 +1,15 @@
 -# @vaadin/message-list
 +# @scoped-vaadin/message-list

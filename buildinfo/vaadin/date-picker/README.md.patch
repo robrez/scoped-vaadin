@@ -1,7 +1,7 @@
 Index: date-picker/README.md
 ===================================================================
---- date-picker/README.md	null
-+++ date-picker/README.md	null
+--- date-picker/README.md
++++ date-picker/README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/date-picker
 +# @scoped-vaadin/date-picker

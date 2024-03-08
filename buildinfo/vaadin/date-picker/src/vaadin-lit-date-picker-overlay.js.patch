@@ -1,7 +1,7 @@
 Index: date-picker/src/vaadin-lit-date-picker-overlay.js
 ===================================================================
---- date-picker/src/vaadin-lit-date-picker-overlay.js	null
-+++ date-picker/src/vaadin-lit-date-picker-overlay.js	null
+--- date-picker/src/vaadin-lit-date-picker-overlay.js
++++ date-picker/src/vaadin-lit-date-picker-overlay.js
 @@ -4,17 +4,17 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

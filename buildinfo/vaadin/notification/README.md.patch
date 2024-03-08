@@ -1,7 +1,7 @@
 Index: notification/README.md
 ===================================================================
---- notification/README.md	null
-+++ notification/README.md	null
+--- notification/README.md
++++ notification/README.md
 @@ -1,17 +1,19 @@
 -# @vaadin/notification
 +# @scoped-vaadin/notification

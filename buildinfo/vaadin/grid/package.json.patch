@@ -1,7 +1,7 @@
 Index: grid/package.json
 ===================================================================
---- grid/package.json	null
-+++ grid/package.json	null
+--- grid/package.json
++++ grid/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/grid",

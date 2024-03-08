@@ -1,7 +1,7 @@
 Index: field-base/src/input-control-mixin.d.ts
 ===================================================================
---- field-base/src/input-control-mixin.d.ts	null
-+++ field-base/src/input-control-mixin.d.ts	null
+--- field-base/src/input-control-mixin.d.ts
++++ field-base/src/input-control-mixin.d.ts
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

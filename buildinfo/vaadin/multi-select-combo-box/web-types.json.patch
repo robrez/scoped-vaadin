@@ -1,7 +1,7 @@
 Index: multi-select-combo-box/web-types.json
 ===================================================================
---- multi-select-combo-box/web-types.json	null
-+++ multi-select-combo-box/web-types.json	null
+--- multi-select-combo-box/web-types.json
++++ multi-select-combo-box/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

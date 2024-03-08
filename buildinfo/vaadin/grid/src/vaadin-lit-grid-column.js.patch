@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-lit-grid-column.js
 ===================================================================
---- grid/src/vaadin-lit-grid-column.js	null
-+++ grid/src/vaadin-lit-grid-column.js	null
+--- grid/src/vaadin-lit-grid-column.js
++++ grid/src/vaadin-lit-grid-column.js
 @@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

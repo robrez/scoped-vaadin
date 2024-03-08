@@ -1,7 +1,7 @@
 Index: text-field/package.json
 ===================================================================
---- text-field/package.json	null
-+++ text-field/package.json	null
+--- text-field/package.json
++++ text-field/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/text-field",

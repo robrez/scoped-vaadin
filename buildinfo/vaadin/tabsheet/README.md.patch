@@ -1,7 +1,7 @@
 Index: tabsheet/README.md
 ===================================================================
---- tabsheet/README.md	null
-+++ tabsheet/README.md	null
+--- tabsheet/README.md
++++ tabsheet/README.md
 @@ -1,24 +1,26 @@
 -# @vaadin/tabsheet
 +# @scoped-vaadin/tabsheet

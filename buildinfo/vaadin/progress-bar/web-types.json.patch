@@ -1,7 +1,7 @@
 Index: progress-bar/web-types.json
 ===================================================================
---- progress-bar/web-types.json	null
-+++ progress-bar/web-types.json	null
+--- progress-bar/web-types.json
++++ progress-bar/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

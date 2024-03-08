@@ -1,7 +1,7 @@
 Index: a11y-base/src/list-mixin.d.ts
 ===================================================================
---- a11y-base/src/list-mixin.d.ts	null
-+++ a11y-base/src/list-mixin.d.ts	null
+--- a11y-base/src/list-mixin.d.ts
++++ a11y-base/src/list-mixin.d.ts
 @@ -42,7 +42,7 @@
     *
     * The item elements must implement `Vaadin.ItemMixin`.

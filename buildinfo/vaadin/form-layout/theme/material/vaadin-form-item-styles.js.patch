@@ -1,7 +1,7 @@
 Index: form-layout/theme/material/vaadin-form-item-styles.js
 ===================================================================
---- form-layout/theme/material/vaadin-form-item-styles.js	null
-+++ form-layout/theme/material/vaadin-form-item-styles.js	null
+--- form-layout/theme/material/vaadin-form-item-styles.js
++++ form-layout/theme/material/vaadin-form-item-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/typography.js';

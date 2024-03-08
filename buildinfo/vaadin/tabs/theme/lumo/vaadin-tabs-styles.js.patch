@@ -1,7 +1,7 @@
 Index: tabs/theme/lumo/vaadin-tabs-styles.js
 ===================================================================
---- tabs/theme/lumo/vaadin-tabs-styles.js	null
-+++ tabs/theme/lumo/vaadin-tabs-styles.js	null
+--- tabs/theme/lumo/vaadin-tabs-styles.js
++++ tabs/theme/lumo/vaadin-tabs-styles.js
 @@ -1,13 +1,13 @@
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';
 -import '@vaadin/vaadin-lumo-styles/color.js';

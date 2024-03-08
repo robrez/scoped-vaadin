@@ -1,7 +1,7 @@
 Index: button/package.json
 ===================================================================
---- button/package.json	null
-+++ button/package.json	null
+--- button/package.json
++++ button/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/button",

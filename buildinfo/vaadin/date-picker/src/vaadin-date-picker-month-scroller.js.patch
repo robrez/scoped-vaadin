@@ -1,7 +1,7 @@
 Index: date-picker/src/vaadin-date-picker-month-scroller.js
 ===================================================================
---- date-picker/src/vaadin-date-picker-month-scroller.js	null
-+++ date-picker/src/vaadin-date-picker-month-scroller.js	null
+--- date-picker/src/vaadin-date-picker-month-scroller.js
++++ date-picker/src/vaadin-date-picker-month-scroller.js
 @@ -3,7 +3,7 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

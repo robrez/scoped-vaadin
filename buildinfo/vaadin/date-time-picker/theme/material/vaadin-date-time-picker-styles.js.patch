@@ -1,7 +1,7 @@
 Index: date-time-picker/theme/material/vaadin-date-time-picker-styles.js
 ===================================================================
---- date-time-picker/theme/material/vaadin-date-time-picker-styles.js	null
-+++ date-time-picker/theme/material/vaadin-date-time-picker-styles.js	null
+--- date-time-picker/theme/material/vaadin-date-time-picker-styles.js
++++ date-time-picker/theme/material/vaadin-date-time-picker-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/date-picker/theme/material/vaadin-date-picker.js';
 -import '@vaadin/time-picker/theme/material/vaadin-time-picker.js';

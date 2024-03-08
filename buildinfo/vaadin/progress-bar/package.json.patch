@@ -1,7 +1,7 @@
 Index: progress-bar/package.json
 ===================================================================
---- progress-bar/package.json	null
-+++ progress-bar/package.json	null
+--- progress-bar/package.json
++++ progress-bar/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/progress-bar",

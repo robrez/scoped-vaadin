@@ -1,7 +1,7 @@
 Index: overlay/theme/lumo/vaadin-overlay-styles.js
 ===================================================================
---- overlay/theme/lumo/vaadin-overlay-styles.js	null
-+++ overlay/theme/lumo/vaadin-overlay-styles.js	null
+--- overlay/theme/lumo/vaadin-overlay-styles.js
++++ overlay/theme/lumo/vaadin-overlay-styles.js
 @@ -1,4 +1,4 @@
 -import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';
 -import { registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

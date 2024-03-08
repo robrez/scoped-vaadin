@@ -1,7 +1,7 @@
 Index: avatar/web-types.lit.json
 ===================================================================
---- avatar/web-types.lit.json	null
-+++ avatar/web-types.lit.json	null
+--- avatar/web-types.lit.json
++++ avatar/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

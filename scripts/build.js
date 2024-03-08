@@ -278,9 +278,16 @@ async function processFile(filePath) {
   }
 
   const nameForPatch = outputFileName.split("/").splice(2).join("/");
-  const diff = createPatch(nameForPatch, _origContent, content, null, null, {
-    context: 3,
-  });
+  const diff = createPatch(
+    nameForPatch,
+    _origContent,
+    content,
+    undefined,
+    undefined,
+    {
+      context: 3,
+    }
+  );
   if (diff.trim().split(/\r?\n/).length > 4) {
     const patchDestination = filePath.dir.replace(
       nodePackagesRoot,

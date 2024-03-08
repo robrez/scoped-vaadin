@@ -1,7 +1,7 @@
 Index: component-base/README.md
 ===================================================================
---- component-base/README.md	null
-+++ component-base/README.md	null
+--- component-base/README.md
++++ component-base/README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/component-base
 +# @scoped-vaadin/component-base

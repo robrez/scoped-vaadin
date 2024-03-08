@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-styling-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-styling-mixin.js	null
-+++ grid/src/vaadin-grid-styling-mixin.js	null
+--- grid/src/vaadin-grid-styling-mixin.js
++++ grid/src/vaadin-grid-styling-mixin.js
 @@ -19,7 +19,7 @@
           * characters.
           *

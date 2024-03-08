@@ -1,7 +1,7 @@
 Index: number-field/src/vaadin-number-field.d.ts
 ===================================================================
---- number-field/src/vaadin-number-field.d.ts	null
-+++ number-field/src/vaadin-number-field.d.ts	null
+--- number-field/src/vaadin-number-field.d.ts
++++ number-field/src/vaadin-number-field.d.ts
 @@ -3,9 +3,9 @@
   * Copyright (c) 2021 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

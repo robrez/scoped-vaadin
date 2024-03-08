@@ -1,7 +1,7 @@
 Index: avatar-group/theme/material/vaadin-avatar-group-styles.js
 ===================================================================
---- avatar-group/theme/material/vaadin-avatar-group-styles.js	null
-+++ avatar-group/theme/material/vaadin-avatar-group-styles.js	null
+--- avatar-group/theme/material/vaadin-avatar-group-styles.js
++++ avatar-group/theme/material/vaadin-avatar-group-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { item } from '@vaadin/item/theme/material/vaadin-item-styles.js';

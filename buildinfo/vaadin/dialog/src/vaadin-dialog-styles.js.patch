@@ -1,7 +1,7 @@
 Index: dialog/src/vaadin-dialog-styles.js
 ===================================================================
---- dialog/src/vaadin-dialog-styles.js	null
-+++ dialog/src/vaadin-dialog-styles.js	null
+--- dialog/src/vaadin-dialog-styles.js
++++ dialog/src/vaadin-dialog-styles.js
 @@ -68,10 +68,10 @@
  
    /*

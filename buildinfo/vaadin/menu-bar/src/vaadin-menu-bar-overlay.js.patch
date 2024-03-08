@@ -1,7 +1,7 @@
 Index: menu-bar/src/vaadin-menu-bar-overlay.js
 ===================================================================
---- menu-bar/src/vaadin-menu-bar-overlay.js	null
-+++ menu-bar/src/vaadin-menu-bar-overlay.js	null
+--- menu-bar/src/vaadin-menu-bar-overlay.js
++++ menu-bar/src/vaadin-menu-bar-overlay.js
 @@ -4,20 +4,20 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

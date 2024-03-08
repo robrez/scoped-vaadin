@@ -1,7 +1,7 @@
 Index: accordion/src/vaadin-accordion-panel.js
 ===================================================================
---- accordion/src/vaadin-accordion-panel.js	null
-+++ accordion/src/vaadin-accordion-panel.js	null
+--- accordion/src/vaadin-accordion-panel.js
++++ accordion/src/vaadin-accordion-panel.js
 @@ -5,17 +5,17 @@
   */
  import './vaadin-accordion-heading.js';

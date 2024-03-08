@@ -1,7 +1,7 @@
 Index: checkbox/README.md
 ===================================================================
---- checkbox/README.md	null
-+++ checkbox/README.md	null
+--- checkbox/README.md
++++ checkbox/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/checkbox
 +# @scoped-vaadin/checkbox

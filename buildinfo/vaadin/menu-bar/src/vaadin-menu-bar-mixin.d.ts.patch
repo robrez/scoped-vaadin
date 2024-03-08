@@ -1,7 +1,7 @@
 Index: menu-bar/src/vaadin-menu-bar-mixin.d.ts
 ===================================================================
---- menu-bar/src/vaadin-menu-bar-mixin.d.ts	null
-+++ menu-bar/src/vaadin-menu-bar-mixin.d.ts	null
+--- menu-bar/src/vaadin-menu-bar-mixin.d.ts
++++ menu-bar/src/vaadin-menu-bar-mixin.d.ts
 @@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

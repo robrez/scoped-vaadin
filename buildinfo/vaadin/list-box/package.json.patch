@@ -1,7 +1,7 @@
 Index: list-box/package.json
 ===================================================================
---- list-box/package.json	null
-+++ list-box/package.json	null
+--- list-box/package.json
++++ list-box/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/list-box",

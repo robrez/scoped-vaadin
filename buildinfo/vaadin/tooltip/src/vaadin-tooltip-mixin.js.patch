@@ -1,7 +1,7 @@
 Index: tooltip/src/vaadin-tooltip-mixin.js
 ===================================================================
---- tooltip/src/vaadin-tooltip-mixin.js	null
-+++ tooltip/src/vaadin-tooltip-mixin.js	null
+--- tooltip/src/vaadin-tooltip-mixin.js
++++ tooltip/src/vaadin-tooltip-mixin.js
 @@ -3,13 +3,13 @@
   * Copyright (c) 2022 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

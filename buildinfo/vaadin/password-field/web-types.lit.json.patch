@@ -1,7 +1,7 @@
 Index: password-field/web-types.lit.json
 ===================================================================
---- password-field/web-types.lit.json	null
-+++ password-field/web-types.lit.json	null
+--- password-field/web-types.lit.json
++++ password-field/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

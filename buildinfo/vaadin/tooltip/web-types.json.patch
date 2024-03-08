@@ -1,7 +1,7 @@
 Index: tooltip/web-types.json
 ===================================================================
---- tooltip/web-types.json	null
-+++ tooltip/web-types.json	null
+--- tooltip/web-types.json
++++ tooltip/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

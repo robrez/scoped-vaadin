@@ -1,7 +1,7 @@
 Index: date-picker/package.json
 ===================================================================
---- date-picker/package.json	null
-+++ date-picker/package.json	null
+--- date-picker/package.json
++++ date-picker/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/date-picker",

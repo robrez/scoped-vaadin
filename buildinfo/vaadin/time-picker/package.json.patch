@@ -1,7 +1,7 @@
 Index: time-picker/package.json
 ===================================================================
---- time-picker/package.json	null
-+++ time-picker/package.json	null
+--- time-picker/package.json
++++ time-picker/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/time-picker",

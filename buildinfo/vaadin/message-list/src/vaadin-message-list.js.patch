@@ -1,7 +1,7 @@
 Index: message-list/src/vaadin-message-list.js
 ===================================================================
---- message-list/src/vaadin-message-list.js	null
-+++ message-list/src/vaadin-message-list.js	null
+--- message-list/src/vaadin-message-list.js
++++ message-list/src/vaadin-message-list.js
 @@ -6,27 +6,27 @@
  import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
  import { html, render } from 'lit';

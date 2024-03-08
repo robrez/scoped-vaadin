@@ -1,7 +1,7 @@
 Index: horizontal-layout/web-types.json
 ===================================================================
---- horizontal-layout/web-types.json	null
-+++ horizontal-layout/web-types.json	null
+--- horizontal-layout/web-types.json
++++ horizontal-layout/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

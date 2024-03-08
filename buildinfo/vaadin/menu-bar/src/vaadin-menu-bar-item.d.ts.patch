@@ -1,7 +1,7 @@
 Index: menu-bar/src/vaadin-menu-bar-item.d.ts
 ===================================================================
---- menu-bar/src/vaadin-menu-bar-item.d.ts	null
-+++ menu-bar/src/vaadin-menu-bar-item.d.ts	null
+--- menu-bar/src/vaadin-menu-bar-item.d.ts
++++ menu-bar/src/vaadin-menu-bar-item.d.ts
 @@ -3,18 +3,18 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

@@ -1,7 +1,7 @@
 Index: upload/src/vaadin-upload-mixin.js
 ===================================================================
---- upload/src/vaadin-upload-mixin.js	null
-+++ upload/src/vaadin-upload-mixin.js	null
+--- upload/src/vaadin-upload-mixin.js
++++ upload/src/vaadin-upload-mixin.js
 @@ -3,13 +3,13 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

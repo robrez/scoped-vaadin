@@ -1,7 +1,7 @@
 Index: split-layout/package.json
 ===================================================================
---- split-layout/package.json	null
-+++ split-layout/package.json	null
+--- split-layout/package.json
++++ split-layout/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/split-layout",

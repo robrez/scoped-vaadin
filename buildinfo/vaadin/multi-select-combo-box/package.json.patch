@@ -1,7 +1,7 @@
 Index: multi-select-combo-box/package.json
 ===================================================================
---- multi-select-combo-box/package.json	null
-+++ multi-select-combo-box/package.json	null
+--- multi-select-combo-box/package.json
++++ multi-select-combo-box/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/multi-select-combo-box",

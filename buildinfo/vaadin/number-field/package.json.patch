@@ -1,7 +1,7 @@
 Index: number-field/package.json
 ===================================================================
---- number-field/package.json	null
-+++ number-field/package.json	null
+--- number-field/package.json
++++ number-field/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/number-field",

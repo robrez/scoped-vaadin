@@ -1,7 +1,7 @@
 Index: message-input/package.json
 ===================================================================
---- message-input/package.json	null
-+++ message-input/package.json	null
+--- message-input/package.json
++++ message-input/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/message-input",

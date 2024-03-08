@@ -1,7 +1,7 @@
 Index: split-layout/web-types.lit.json
 ===================================================================
---- split-layout/web-types.lit.json	null
-+++ split-layout/web-types.lit.json	null
+--- split-layout/web-types.lit.json
++++ split-layout/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

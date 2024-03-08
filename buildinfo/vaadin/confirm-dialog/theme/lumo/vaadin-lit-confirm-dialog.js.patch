@@ -1,7 +1,7 @@
 Index: confirm-dialog/theme/lumo/vaadin-lit-confirm-dialog.js
 ===================================================================
---- confirm-dialog/theme/lumo/vaadin-lit-confirm-dialog.js	null
-+++ confirm-dialog/theme/lumo/vaadin-lit-confirm-dialog.js	null
+--- confirm-dialog/theme/lumo/vaadin-lit-confirm-dialog.js
++++ confirm-dialog/theme/lumo/vaadin-lit-confirm-dialog.js
 @@ -1,4 +1,4 @@
 -import '@vaadin/dialog/theme/lumo/vaadin-dialog-styles.js';
 -import '@vaadin/button/theme/lumo/vaadin-button-styles.js';

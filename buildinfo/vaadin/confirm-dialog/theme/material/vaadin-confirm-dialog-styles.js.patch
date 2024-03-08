@@ -1,7 +1,7 @@
 Index: confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
 ===================================================================
---- confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js	null
-+++ confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js	null
+--- confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
++++ confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/button/theme/material/vaadin-button-styles.js';
 -import { dialogOverlay } from '@vaadin/dialog/theme/material/vaadin-dialog-styles.js';

@@ -1,7 +1,7 @@
 Index: lit-renderer/README.md
 ===================================================================
---- lit-renderer/README.md	null
-+++ lit-renderer/README.md	null
+--- lit-renderer/README.md
++++ lit-renderer/README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/lit-renderer
 +# @scoped-vaadin/lit-renderer

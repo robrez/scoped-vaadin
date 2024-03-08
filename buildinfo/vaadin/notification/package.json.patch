@@ -1,7 +1,7 @@
 Index: notification/package.json
 ===================================================================
---- notification/package.json	null
-+++ notification/package.json	null
+--- notification/package.json
++++ notification/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/notification",

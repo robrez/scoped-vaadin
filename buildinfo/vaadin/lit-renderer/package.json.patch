@@ -1,7 +1,7 @@
 Index: lit-renderer/package.json
 ===================================================================
---- lit-renderer/package.json	null
-+++ lit-renderer/package.json	null
+--- lit-renderer/package.json
++++ lit-renderer/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/lit-renderer",

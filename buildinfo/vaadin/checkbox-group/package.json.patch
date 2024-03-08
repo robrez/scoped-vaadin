@@ -1,7 +1,7 @@
 Index: checkbox-group/package.json
 ===================================================================
---- checkbox-group/package.json	null
-+++ checkbox-group/package.json	null
+--- checkbox-group/package.json
++++ checkbox-group/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/checkbox-group",

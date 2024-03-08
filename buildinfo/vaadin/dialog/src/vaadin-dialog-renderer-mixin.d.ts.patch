@@ -1,7 +1,7 @@
 Index: dialog/src/vaadin-dialog-renderer-mixin.d.ts
 ===================================================================
---- dialog/src/vaadin-dialog-renderer-mixin.d.ts	null
-+++ dialog/src/vaadin-dialog-renderer-mixin.d.ts	null
+--- dialog/src/vaadin-dialog-renderer-mixin.d.ts
++++ dialog/src/vaadin-dialog-renderer-mixin.d.ts
 @@ -16,7 +16,7 @@
     * Receives two arguments:
     *

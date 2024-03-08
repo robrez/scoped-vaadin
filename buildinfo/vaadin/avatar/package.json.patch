@@ -1,7 +1,7 @@
 Index: avatar/package.json
 ===================================================================
---- avatar/package.json	null
-+++ avatar/package.json	null
+--- avatar/package.json
++++ avatar/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/avatar",

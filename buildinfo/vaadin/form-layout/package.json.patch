@@ -1,7 +1,7 @@
 Index: form-layout/package.json
 ===================================================================
---- form-layout/package.json	null
-+++ form-layout/package.json	null
+--- form-layout/package.json
++++ form-layout/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/form-layout",

@@ -1,7 +1,7 @@
 Index: tooltip/src/vaadin-lit-tooltip.js
 ===================================================================
---- tooltip/src/vaadin-lit-tooltip.js	null
-+++ tooltip/src/vaadin-lit-tooltip.js	null
+--- tooltip/src/vaadin-lit-tooltip.js
++++ tooltip/src/vaadin-lit-tooltip.js
 @@ -6,14 +6,14 @@
  import './vaadin-lit-tooltip-overlay.js';
  import { css, html, LitElement } from 'lit';

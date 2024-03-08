@@ -1,7 +1,7 @@
 Index: confirm-dialog/web-types.json
 ===================================================================
---- confirm-dialog/web-types.json	null
-+++ confirm-dialog/web-types.json	null
+--- confirm-dialog/web-types.json
++++ confirm-dialog/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

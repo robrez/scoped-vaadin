@@ -1,7 +1,7 @@
 Index: radio-group/theme/lumo/vaadin-radio-group-styles.js
 ===================================================================
---- radio-group/theme/lumo/vaadin-radio-group-styles.js	null
-+++ radio-group/theme/lumo/vaadin-radio-group-styles.js	null
+--- radio-group/theme/lumo/vaadin-radio-group-styles.js
++++ radio-group/theme/lumo/vaadin-radio-group-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

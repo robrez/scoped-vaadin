@@ -1,7 +1,7 @@
 Index: tooltip/src/vaadin-tooltip.js
 ===================================================================
---- tooltip/src/vaadin-tooltip.js	null
-+++ tooltip/src/vaadin-tooltip.js	null
+--- tooltip/src/vaadin-tooltip.js
++++ tooltip/src/vaadin-tooltip.js
 @@ -5,27 +5,27 @@
   */
  import './vaadin-tooltip-overlay.js';

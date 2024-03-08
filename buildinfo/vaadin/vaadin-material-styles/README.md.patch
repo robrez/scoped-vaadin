@@ -1,7 +1,7 @@
 Index: vaadin-material-styles/README.md
 ===================================================================
---- vaadin-material-styles/README.md	null
-+++ vaadin-material-styles/README.md	null
+--- vaadin-material-styles/README.md
++++ vaadin-material-styles/README.md
 @@ -1,9 +1,11 @@
  # Material Theme for Vaadin components
  

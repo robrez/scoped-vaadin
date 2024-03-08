@@ -1,7 +1,7 @@
 Index: field-base/src/input-mixin.js
 ===================================================================
---- field-base/src/input-mixin.js	null
-+++ field-base/src/input-mixin.js	null
+--- field-base/src/input-mixin.js
++++ field-base/src/input-mixin.js
 @@ -23,7 +23,7 @@
             *
             * A typical case is using `InputController` that does this automatically.

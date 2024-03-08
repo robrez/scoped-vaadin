@@ -1,7 +1,7 @@
 Index: date-picker/theme/lumo/vaadin-month-calendar-styles.js
 ===================================================================
---- date-picker/theme/lumo/vaadin-month-calendar-styles.js	null
-+++ date-picker/theme/lumo/vaadin-month-calendar-styles.js	null
+--- date-picker/theme/lumo/vaadin-month-calendar-styles.js
++++ date-picker/theme/lumo/vaadin-month-calendar-styles.js
 @@ -1,12 +1,12 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

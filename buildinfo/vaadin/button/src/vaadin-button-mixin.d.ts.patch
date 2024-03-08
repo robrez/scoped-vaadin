@@ -1,7 +1,7 @@
 Index: button/src/vaadin-button-mixin.d.ts
 ===================================================================
---- button/src/vaadin-button-mixin.d.ts	null
-+++ button/src/vaadin-button-mixin.d.ts	null
+--- button/src/vaadin-button-mixin.d.ts
++++ button/src/vaadin-button-mixin.d.ts
 @@ -4,11 +4,11 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

@@ -1,7 +1,7 @@
 Index: text-area/web-types.lit.json
 ===================================================================
---- text-area/web-types.lit.json	null
-+++ text-area/web-types.lit.json	null
+--- text-area/web-types.lit.json
++++ text-area/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

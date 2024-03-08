@@ -1,7 +1,7 @@
 Index: vaadin-material-styles/package.json
 ===================================================================
---- vaadin-material-styles/package.json	null
-+++ vaadin-material-styles/package.json	null
+--- vaadin-material-styles/package.json
++++ vaadin-material-styles/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-material-styles",

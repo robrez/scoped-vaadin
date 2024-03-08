@@ -1,7 +1,7 @@
 Index: icons/README.md
 ===================================================================
---- icons/README.md	null
-+++ icons/README.md	null
+--- icons/README.md
++++ icons/README.md
 @@ -1,10 +1,12 @@
 -# @vaadin/icons
 +# @scoped-vaadin/icons

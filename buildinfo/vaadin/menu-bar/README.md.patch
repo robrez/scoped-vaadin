@@ -1,7 +1,7 @@
 Index: menu-bar/README.md
 ===================================================================
---- menu-bar/README.md	null
-+++ menu-bar/README.md	null
+--- menu-bar/README.md
++++ menu-bar/README.md
 @@ -1,17 +1,19 @@
 -# @vaadin/menu-bar
 +# @scoped-vaadin/menu-bar

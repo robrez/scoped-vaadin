@@ -1,7 +1,7 @@
 Index: time-picker/src/vaadin-time-picker.js
 ===================================================================
---- time-picker/src/vaadin-time-picker.js	null
-+++ time-picker/src/vaadin-time-picker.js	null
+--- time-picker/src/vaadin-time-picker.js
++++ time-picker/src/vaadin-time-picker.js
 @@ -3,29 +3,29 @@
   * Copyright (c) 2018 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

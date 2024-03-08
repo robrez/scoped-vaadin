@@ -1,7 +1,7 @@
 Index: form-layout/theme/lumo/vaadin-form-item-styles.js
 ===================================================================
---- form-layout/theme/lumo/vaadin-form-item-styles.js	null
-+++ form-layout/theme/lumo/vaadin-form-item-styles.js	null
+--- form-layout/theme/lumo/vaadin-form-item-styles.js
++++ form-layout/theme/lumo/vaadin-form-item-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

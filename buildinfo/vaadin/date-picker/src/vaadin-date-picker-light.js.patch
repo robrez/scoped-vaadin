@@ -1,7 +1,7 @@
 Index: date-picker/src/vaadin-date-picker-light.js
 ===================================================================
---- date-picker/src/vaadin-date-picker-light.js	null
-+++ date-picker/src/vaadin-date-picker-light.js	null
+--- date-picker/src/vaadin-date-picker-light.js
++++ date-picker/src/vaadin-date-picker-light.js
 @@ -7,13 +7,13 @@
  import './vaadin-date-picker-overlay.js';
  import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';

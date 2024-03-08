@@ -1,7 +1,7 @@
 Index: tabsheet/web-types.lit.json
 ===================================================================
---- tabsheet/web-types.lit.json	null
-+++ tabsheet/web-types.lit.json	null
+--- tabsheet/web-types.lit.json
++++ tabsheet/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

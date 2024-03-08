@@ -1,7 +1,7 @@
 Index: vaadin-lumo-styles/package.json
 ===================================================================
---- vaadin-lumo-styles/package.json	null
-+++ vaadin-lumo-styles/package.json	null
+--- vaadin-lumo-styles/package.json
++++ vaadin-lumo-styles/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-lumo-styles",

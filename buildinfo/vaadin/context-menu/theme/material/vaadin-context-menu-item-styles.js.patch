@@ -1,7 +1,7 @@
 Index: context-menu/theme/material/vaadin-context-menu-item-styles.js
 ===================================================================
---- context-menu/theme/material/vaadin-context-menu-item-styles.js	null
-+++ context-menu/theme/material/vaadin-context-menu-item-styles.js	null
+--- context-menu/theme/material/vaadin-context-menu-item-styles.js
++++ context-menu/theme/material/vaadin-context-menu-item-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-material-styles/font-icons.js';
 -import '@vaadin/vaadin-material-styles/color.js';

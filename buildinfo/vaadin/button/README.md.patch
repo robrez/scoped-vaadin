@@ -1,7 +1,7 @@
 Index: button/README.md
 ===================================================================
---- button/README.md	null
-+++ button/README.md	null
+--- button/README.md
++++ button/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/button
 +# @scoped-vaadin/button

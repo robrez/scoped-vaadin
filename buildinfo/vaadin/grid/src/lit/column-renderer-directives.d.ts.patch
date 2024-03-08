@@ -1,7 +1,7 @@
 Index: grid/src/lit/column-renderer-directives.d.ts
 ===================================================================
---- grid/src/lit/column-renderer-directives.d.ts	null
-+++ grid/src/lit/column-renderer-directives.d.ts	null
+--- grid/src/lit/column-renderer-directives.d.ts
++++ grid/src/lit/column-renderer-directives.d.ts
 @@ -5,8 +5,8 @@
   */
  /* eslint-disable max-classes-per-file */

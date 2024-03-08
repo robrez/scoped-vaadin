@@ -1,7 +1,7 @@
 Index: dialog/web-types.json
 ===================================================================
---- dialog/web-types.json	null
-+++ dialog/web-types.json	null
+--- dialog/web-types.json
++++ dialog/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

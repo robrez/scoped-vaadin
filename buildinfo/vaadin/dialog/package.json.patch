@@ -1,7 +1,7 @@
 Index: dialog/package.json
 ===================================================================
---- dialog/package.json	null
-+++ dialog/package.json	null
+--- dialog/package.json
++++ dialog/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/dialog",

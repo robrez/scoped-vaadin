@@ -1,7 +1,7 @@
 Index: progress-bar/README.md
 ===================================================================
---- progress-bar/README.md	null
-+++ progress-bar/README.md	null
+--- progress-bar/README.md
++++ progress-bar/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/progress-bar
 +# @scoped-vaadin/progress-bar

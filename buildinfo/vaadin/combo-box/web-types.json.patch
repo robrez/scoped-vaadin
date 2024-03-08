@@ -1,7 +1,7 @@
 Index: combo-box/web-types.json
 ===================================================================
---- combo-box/web-types.json	null
-+++ combo-box/web-types.json	null
+--- combo-box/web-types.json
++++ combo-box/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

@@ -1,7 +1,7 @@
 Index: message-input/theme/material/vaadin-message-input.js
 ===================================================================
---- message-input/theme/material/vaadin-message-input.js	null
-+++ message-input/theme/material/vaadin-message-input.js	null
+--- message-input/theme/material/vaadin-message-input.js
++++ message-input/theme/material/vaadin-message-input.js
 @@ -1,4 +1,4 @@
 -import '@vaadin/button/theme/material/vaadin-button.js';
 -import '@vaadin/text-area/theme/material/vaadin-text-area.js';

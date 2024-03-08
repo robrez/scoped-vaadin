@@ -1,7 +1,7 @@
 Index: upload/package.json
 ===================================================================
---- upload/package.json	null
-+++ upload/package.json	null
+--- upload/package.json
++++ upload/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/upload",

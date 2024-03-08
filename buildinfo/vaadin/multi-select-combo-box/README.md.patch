@@ -1,7 +1,7 @@
 Index: multi-select-combo-box/README.md
 ===================================================================
---- multi-select-combo-box/README.md	null
-+++ multi-select-combo-box/README.md	null
+--- multi-select-combo-box/README.md
++++ multi-select-combo-box/README.md
 @@ -1,13 +1,15 @@
 -# @vaadin/multi-select-combo-box
 +# @scoped-vaadin/multi-select-combo-box

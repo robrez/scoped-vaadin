@@ -1,7 +1,7 @@
 Index: vertical-layout/README.md
 ===================================================================
---- vertical-layout/README.md	null
-+++ vertical-layout/README.md	null
+--- vertical-layout/README.md
++++ vertical-layout/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/vertical-layout
 +# @scoped-vaadin/vertical-layout

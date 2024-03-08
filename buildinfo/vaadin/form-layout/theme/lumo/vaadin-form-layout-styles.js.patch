@@ -1,7 +1,7 @@
 Index: form-layout/theme/lumo/vaadin-form-layout-styles.js
 ===================================================================
---- form-layout/theme/lumo/vaadin-form-layout-styles.js	null
-+++ form-layout/theme/lumo/vaadin-form-layout-styles.js	null
+--- form-layout/theme/lumo/vaadin-form-layout-styles.js
++++ form-layout/theme/lumo/vaadin-form-layout-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

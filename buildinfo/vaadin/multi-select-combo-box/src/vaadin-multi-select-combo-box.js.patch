@@ -1,7 +1,7 @@
 Index: multi-select-combo-box/src/vaadin-multi-select-combo-box.js
 ===================================================================
---- multi-select-combo-box/src/vaadin-multi-select-combo-box.js	null
-+++ multi-select-combo-box/src/vaadin-multi-select-combo-box.js	null
+--- multi-select-combo-box/src/vaadin-multi-select-combo-box.js
++++ multi-select-combo-box/src/vaadin-multi-select-combo-box.js
 @@ -7,18 +7,18 @@
  import './vaadin-multi-select-combo-box-container.js';
  import './vaadin-multi-select-combo-box-internal.js';

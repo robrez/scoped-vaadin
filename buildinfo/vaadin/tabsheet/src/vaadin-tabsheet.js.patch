@@ -1,7 +1,7 @@
 Index: tabsheet/src/vaadin-tabsheet.js
 ===================================================================
---- tabsheet/src/vaadin-tabsheet.js	null
-+++ tabsheet/src/vaadin-tabsheet.js	null
+--- tabsheet/src/vaadin-tabsheet.js
++++ tabsheet/src/vaadin-tabsheet.js
 @@ -5,20 +5,20 @@
   */
  import './vaadin-tabsheet-scroller.js';

@@ -1,7 +1,7 @@
 Index: field-base/package.json
 ===================================================================
---- field-base/package.json	null
-+++ field-base/package.json	null
+--- field-base/package.json
++++ field-base/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/field-base",

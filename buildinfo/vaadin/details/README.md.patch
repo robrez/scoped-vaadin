@@ -1,7 +1,7 @@
 Index: details/README.md
 ===================================================================
---- details/README.md	null
-+++ details/README.md	null
+--- details/README.md
++++ details/README.md
 @@ -1,17 +1,19 @@
 -# @vaadin/details
 +# @scoped-vaadin/details

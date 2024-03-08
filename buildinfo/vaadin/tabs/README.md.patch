@@ -1,7 +1,7 @@
 Index: tabs/README.md
 ===================================================================
---- tabs/README.md	null
-+++ tabs/README.md	null
+--- tabs/README.md
++++ tabs/README.md
 @@ -1,19 +1,21 @@
 -# @vaadin/tabs
 +# @scoped-vaadin/tabs

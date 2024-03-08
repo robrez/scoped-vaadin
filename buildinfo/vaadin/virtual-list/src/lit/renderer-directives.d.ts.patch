@@ -1,7 +1,7 @@
 Index: virtual-list/src/lit/renderer-directives.d.ts
 ===================================================================
---- virtual-list/src/lit/renderer-directives.d.ts	null
-+++ virtual-list/src/lit/renderer-directives.d.ts	null
+--- virtual-list/src/lit/renderer-directives.d.ts
++++ virtual-list/src/lit/renderer-directives.d.ts
 @@ -4,8 +4,8 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

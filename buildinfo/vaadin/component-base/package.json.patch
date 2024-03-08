@@ -1,7 +1,7 @@
 Index: component-base/package.json
 ===================================================================
---- component-base/package.json	null
-+++ component-base/package.json	null
+--- component-base/package.json
++++ component-base/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/component-base",

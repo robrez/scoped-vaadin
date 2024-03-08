@@ -1,7 +1,7 @@
 Index: integer-field/web-types.lit.json
 ===================================================================
---- integer-field/web-types.lit.json	null
-+++ integer-field/web-types.lit.json	null
+--- integer-field/web-types.lit.json
++++ integer-field/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

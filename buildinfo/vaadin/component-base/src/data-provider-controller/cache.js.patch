@@ -1,7 +1,7 @@
 Index: component-base/src/data-provider-controller/cache.js
 ===================================================================
---- component-base/src/data-provider-controller/cache.js	null
-+++ component-base/src/data-provider-controller/cache.js	null
+--- component-base/src/data-provider-controller/cache.js
++++ component-base/src/data-provider-controller/cache.js
 @@ -131,7 +131,7 @@
     */
    get effectiveSize() {

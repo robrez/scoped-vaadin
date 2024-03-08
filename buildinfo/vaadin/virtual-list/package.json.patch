@@ -1,7 +1,7 @@
 Index: virtual-list/package.json
 ===================================================================
---- virtual-list/package.json	null
-+++ virtual-list/package.json	null
+--- virtual-list/package.json
++++ virtual-list/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/virtual-list",

@@ -1,7 +1,7 @@
 Index: form-layout/src/vaadin-form-layout.js
 ===================================================================
---- form-layout/src/vaadin-form-layout.js	null
-+++ form-layout/src/vaadin-form-layout.js	null
+--- form-layout/src/vaadin-form-layout.js
++++ form-layout/src/vaadin-form-layout.js
 @@ -4,34 +4,34 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

@@ -1,7 +1,7 @@
 Index: avatar-group/package.json
 ===================================================================
---- avatar-group/package.json	null
-+++ avatar-group/package.json	null
+--- avatar-group/package.json
++++ avatar-group/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/avatar-group",

@@ -1,7 +1,7 @@
 Index: a11y-base/package.json
 ===================================================================
---- a11y-base/package.json	null
-+++ a11y-base/package.json	null
+--- a11y-base/package.json
++++ a11y-base/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/a11y-base",

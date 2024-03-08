@@ -1,7 +1,7 @@
 Index: combo-box/theme/material/vaadin-combo-box-styles.js
 ===================================================================
---- combo-box/theme/material/vaadin-combo-box-styles.js	null
-+++ combo-box/theme/material/vaadin-combo-box-styles.js	null
+--- combo-box/theme/material/vaadin-combo-box-styles.js
++++ combo-box/theme/material/vaadin-combo-box-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/input-container/theme/material/vaadin-input-container-styles.js';
 -import '@vaadin/vaadin-material-styles/color.js';

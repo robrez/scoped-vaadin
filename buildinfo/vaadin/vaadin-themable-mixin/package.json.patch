@@ -1,7 +1,7 @@
 Index: vaadin-themable-mixin/package.json
 ===================================================================
---- vaadin-themable-mixin/package.json	null
-+++ vaadin-themable-mixin/package.json	null
+--- vaadin-themable-mixin/package.json
++++ vaadin-themable-mixin/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-themable-mixin",

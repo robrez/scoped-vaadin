@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-column-group.js
 ===================================================================
---- grid/src/vaadin-grid-column-group.js	null
-+++ grid/src/vaadin-grid-column-group.js	null
+--- grid/src/vaadin-grid-column-group.js
++++ grid/src/vaadin-grid-column-group.js
 @@ -5,22 +5,22 @@
   */
  

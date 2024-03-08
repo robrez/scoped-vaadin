@@ -1,7 +1,7 @@
 Index: radio-group/theme/material/vaadin-radio-group-styles.js
 ===================================================================
---- radio-group/theme/material/vaadin-radio-group-styles.js	null
-+++ radio-group/theme/material/vaadin-radio-group-styles.js	null
+--- radio-group/theme/material/vaadin-radio-group-styles.js
++++ radio-group/theme/material/vaadin-radio-group-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { helper } from '@vaadin/vaadin-material-styles/mixins/helper.js';

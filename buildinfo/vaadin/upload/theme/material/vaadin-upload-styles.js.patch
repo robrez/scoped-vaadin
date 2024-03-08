@@ -1,7 +1,7 @@
 Index: upload/theme/material/vaadin-upload-styles.js
 ===================================================================
---- upload/theme/material/vaadin-upload-styles.js	null
-+++ upload/theme/material/vaadin-upload-styles.js	null
+--- upload/theme/material/vaadin-upload-styles.js
++++ upload/theme/material/vaadin-upload-styles.js
 @@ -1,12 +1,12 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/font-icons.js';

@@ -1,7 +1,7 @@
 Index: app-layout/theme/lumo/vaadin-app-layout-styles.js
 ===================================================================
---- app-layout/theme/lumo/vaadin-app-layout-styles.js	null
-+++ app-layout/theme/lumo/vaadin-app-layout-styles.js	null
+--- app-layout/theme/lumo/vaadin-app-layout-styles.js
++++ app-layout/theme/lumo/vaadin-app-layout-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

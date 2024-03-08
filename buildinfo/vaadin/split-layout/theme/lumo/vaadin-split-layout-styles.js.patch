@@ -1,7 +1,7 @@
 Index: split-layout/theme/lumo/vaadin-split-layout-styles.js
 ===================================================================
---- split-layout/theme/lumo/vaadin-split-layout-styles.js	null
-+++ split-layout/theme/lumo/vaadin-split-layout-styles.js	null
+--- split-layout/theme/lumo/vaadin-split-layout-styles.js
++++ split-layout/theme/lumo/vaadin-split-layout-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

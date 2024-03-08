@@ -1,7 +1,7 @@
 Index: confirm-dialog/package.json
 ===================================================================
---- confirm-dialog/package.json	null
-+++ confirm-dialog/package.json	null
+--- confirm-dialog/package.json
++++ confirm-dialog/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/confirm-dialog",

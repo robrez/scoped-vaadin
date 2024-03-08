@@ -1,7 +1,7 @@
 Index: grid/theme/lumo/vaadin-grid-styles.js
 ===================================================================
---- grid/theme/lumo/vaadin-grid-styles.js	null
-+++ grid/theme/lumo/vaadin-grid-styles.js	null
+--- grid/theme/lumo/vaadin-grid-styles.js
++++ grid/theme/lumo/vaadin-grid-styles.js
 @@ -1,14 +1,14 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';

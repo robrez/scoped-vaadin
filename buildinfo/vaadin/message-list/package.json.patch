@@ -1,7 +1,7 @@
 Index: message-list/package.json
 ===================================================================
---- message-list/package.json	null
-+++ message-list/package.json	null
+--- message-list/package.json
++++ message-list/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/message-list",

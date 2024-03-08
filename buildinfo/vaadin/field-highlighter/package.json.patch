@@ -1,7 +1,7 @@
 Index: field-highlighter/package.json
 ===================================================================
---- field-highlighter/package.json	null
-+++ field-highlighter/package.json	null
+--- field-highlighter/package.json
++++ field-highlighter/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/field-highlighter",

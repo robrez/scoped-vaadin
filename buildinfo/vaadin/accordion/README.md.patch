@@ -1,7 +1,7 @@
 Index: accordion/README.md
 ===================================================================
---- accordion/README.md	null
-+++ accordion/README.md	null
+--- accordion/README.md
++++ accordion/README.md
 @@ -1,23 +1,25 @@
 -# @vaadin/accordion
 +# @scoped-vaadin/accordion

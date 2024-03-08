@@ -1,7 +1,7 @@
 Index: a11y-base/src/focus-mixin.js
 ===================================================================
---- a11y-base/src/focus-mixin.js	null
-+++ a11y-base/src/focus-mixin.js	null
+--- a11y-base/src/focus-mixin.js
++++ a11y-base/src/focus-mixin.js
 @@ -38,7 +38,7 @@
  
          // In super.ready() other 'focusin' and 'focusout' listeners might be

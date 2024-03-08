@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-active-item-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-active-item-mixin.js	null
-+++ grid/src/vaadin-grid-active-item-mixin.js	null
+--- grid/src/vaadin-grid-active-item-mixin.js
++++ grid/src/vaadin-grid-active-item-mixin.js
 @@ -77,7 +77,7 @@
       */
      _onClick(e) {

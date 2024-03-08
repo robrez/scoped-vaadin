@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-a11y-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-a11y-mixin.js	null
-+++ grid/src/vaadin-grid-a11y-mixin.js	null
+--- grid/src/vaadin-grid-a11y-mixin.js
++++ grid/src/vaadin-grid-a11y-mixin.js
 @@ -129,7 +129,7 @@
  
      /** @protected */

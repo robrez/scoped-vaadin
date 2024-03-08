@@ -1,7 +1,7 @@
 Index: vaadin-material-styles/mixins/input-field-shared.js
 ===================================================================
---- vaadin-material-styles/mixins/input-field-shared.js	null
-+++ vaadin-material-styles/mixins/input-field-shared.js	null
+--- vaadin-material-styles/mixins/input-field-shared.js
++++ vaadin-material-styles/mixins/input-field-shared.js
 @@ -6,7 +6,7 @@
  import '../color.js';
  import '../font-icons.js';

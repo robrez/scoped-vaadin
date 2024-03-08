@@ -1,7 +1,7 @@
 Index: custom-field/src/vaadin-custom-field.js
 ===================================================================
---- custom-field/src/vaadin-custom-field.js	null
-+++ custom-field/src/vaadin-custom-field.js	null
+--- custom-field/src/vaadin-custom-field.js
++++ custom-field/src/vaadin-custom-field.js
 @@ -4,22 +4,22 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

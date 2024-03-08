@@ -1,7 +1,7 @@
 Index: tabsheet/theme/material/vaadin-tabsheet.js
 ===================================================================
---- tabsheet/theme/material/vaadin-tabsheet.js	null
-+++ tabsheet/theme/material/vaadin-tabsheet.js	null
+--- tabsheet/theme/material/vaadin-tabsheet.js
++++ tabsheet/theme/material/vaadin-tabsheet.js
 @@ -1,4 +1,4 @@
 -import '@vaadin/tabs/theme/material/vaadin-tabs.js';
 -import '@vaadin/scroller/theme/material/vaadin-scroller.js';

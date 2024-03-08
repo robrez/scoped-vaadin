@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-sort-mixin.d.ts
 ===================================================================
---- grid/src/vaadin-grid-sort-mixin.d.ts	null
-+++ grid/src/vaadin-grid-sort-mixin.d.ts	null
+--- grid/src/vaadin-grid-sort-mixin.d.ts
++++ grid/src/vaadin-grid-sort-mixin.d.ts
 @@ -16,7 +16,7 @@
    static setDefaultMultiSortPriority(priority: 'append' | 'prepend'): void;
  

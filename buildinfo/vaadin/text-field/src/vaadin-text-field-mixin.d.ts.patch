@@ -1,7 +1,7 @@
 Index: text-field/src/vaadin-text-field-mixin.d.ts
 ===================================================================
---- text-field/src/vaadin-text-field-mixin.d.ts	null
-+++ text-field/src/vaadin-text-field-mixin.d.ts	null
+--- text-field/src/vaadin-text-field-mixin.d.ts
++++ text-field/src/vaadin-text-field-mixin.d.ts
 @@ -4,21 +4,21 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

@@ -1,7 +1,7 @@
 Index: message-list/web-types.json
 ===================================================================
---- message-list/web-types.json	null
-+++ message-list/web-types.json	null
+--- message-list/web-types.json
++++ message-list/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-filter.d.ts
 ===================================================================
---- grid/src/vaadin-grid-filter.d.ts	null
-+++ grid/src/vaadin-grid-filter.d.ts	null
+--- grid/src/vaadin-grid-filter.d.ts
++++ grid/src/vaadin-grid-filter.d.ts
 @@ -4,25 +4,25 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

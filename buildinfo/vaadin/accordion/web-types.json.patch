@@ -1,7 +1,7 @@
 Index: accordion/web-types.json
 ===================================================================
---- accordion/web-types.json	null
-+++ accordion/web-types.json	null
+--- accordion/web-types.json
++++ accordion/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

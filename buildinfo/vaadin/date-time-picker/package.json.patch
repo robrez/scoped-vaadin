@@ -1,7 +1,7 @@
 Index: date-time-picker/package.json
 ===================================================================
---- date-time-picker/package.json	null
-+++ date-time-picker/package.json	null
+--- date-time-picker/package.json
++++ date-time-picker/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/date-time-picker",

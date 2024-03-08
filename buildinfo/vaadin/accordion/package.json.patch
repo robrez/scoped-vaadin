@@ -1,7 +1,7 @@
 Index: accordion/package.json
 ===================================================================
---- accordion/package.json	null
-+++ accordion/package.json	null
+--- accordion/package.json
++++ accordion/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/accordion",

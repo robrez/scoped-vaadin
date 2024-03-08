@@ -1,7 +1,7 @@
 Index: virtual-list/web-types.json
 ===================================================================
---- virtual-list/web-types.json	null
-+++ virtual-list/web-types.json	null
+--- virtual-list/web-types.json
++++ virtual-list/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

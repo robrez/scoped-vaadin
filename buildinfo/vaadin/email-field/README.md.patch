@@ -1,7 +1,7 @@
 Index: email-field/README.md
 ===================================================================
---- email-field/README.md	null
-+++ email-field/README.md	null
+--- email-field/README.md
++++ email-field/README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/email-field
 +# @scoped-vaadin/email-field

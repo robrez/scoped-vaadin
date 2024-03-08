@@ -1,7 +1,7 @@
 Index: custom-field/web-types.json
 ===================================================================
---- custom-field/web-types.json	null
-+++ custom-field/web-types.json	null
+--- custom-field/web-types.json
++++ custom-field/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

@@ -1,7 +1,7 @@
 Index: details/theme/lumo/vaadin-details-styles.js
 ===================================================================
---- details/theme/lumo/vaadin-details-styles.js	null
-+++ details/theme/lumo/vaadin-details-styles.js	null
+--- details/theme/lumo/vaadin-details-styles.js
++++ details/theme/lumo/vaadin-details-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

@@ -1,7 +1,7 @@
 Index: accordion/theme/lumo/vaadin-accordion-heading-styles.js
 ===================================================================
---- accordion/theme/lumo/vaadin-accordion-heading-styles.js	null
-+++ accordion/theme/lumo/vaadin-accordion-heading-styles.js	null
+--- accordion/theme/lumo/vaadin-accordion-heading-styles.js
++++ accordion/theme/lumo/vaadin-accordion-heading-styles.js
 @@ -1,5 +1,5 @@
 -import { detailsSummary } from '@vaadin/details/theme/lumo/vaadin-details-summary-styles.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

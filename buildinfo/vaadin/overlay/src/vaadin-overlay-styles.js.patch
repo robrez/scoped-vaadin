@@ -1,7 +1,7 @@
 Index: overlay/src/vaadin-overlay-styles.js
 ===================================================================
---- overlay/src/vaadin-overlay-styles.js	null
-+++ overlay/src/vaadin-overlay-styles.js	null
+--- overlay/src/vaadin-overlay-styles.js
++++ overlay/src/vaadin-overlay-styles.js
 @@ -10,7 +10,7 @@
      z-index: 200;
      position: fixed;

@@ -1,7 +1,7 @@
 Index: combo-box/src/vaadin-combo-box-scroller.d.ts
 ===================================================================
---- combo-box/src/vaadin-combo-box-scroller.d.ts	null
-+++ combo-box/src/vaadin-combo-box-scroller.d.ts	null
+--- combo-box/src/vaadin-combo-box-scroller.d.ts
++++ combo-box/src/vaadin-combo-box-scroller.d.ts
 @@ -6,13 +6,13 @@
  import { ComboBoxScrollerMixin } from './vaadin-combo-box-overlay-mixin.js';
  

@@ -1,7 +1,7 @@
 Index: combo-box/package.json
 ===================================================================
---- combo-box/package.json	null
-+++ combo-box/package.json	null
+--- combo-box/package.json
++++ combo-box/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/combo-box",

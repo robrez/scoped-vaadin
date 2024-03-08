@@ -1,7 +1,7 @@
 Index: radio-group/theme/material/vaadin-radio-button-styles.js
 ===================================================================
---- radio-group/theme/material/vaadin-radio-button-styles.js	null
-+++ radio-group/theme/material/vaadin-radio-button-styles.js	null
+--- radio-group/theme/material/vaadin-radio-button-styles.js
++++ radio-group/theme/material/vaadin-radio-button-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

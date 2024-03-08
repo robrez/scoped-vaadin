@@ -1,7 +1,7 @@
 Index: login/theme/lumo/vaadin-login-form-wrapper-styles.js
 ===================================================================
---- login/theme/lumo/vaadin-login-form-wrapper-styles.js	null
-+++ login/theme/lumo/vaadin-login-form-wrapper-styles.js	null
+--- login/theme/lumo/vaadin-login-form-wrapper-styles.js
++++ login/theme/lumo/vaadin-login-form-wrapper-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { color } from '@vaadin/vaadin-lumo-styles/color.js';

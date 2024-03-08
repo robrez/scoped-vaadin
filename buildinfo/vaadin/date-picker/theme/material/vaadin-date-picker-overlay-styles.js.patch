@@ -1,7 +1,7 @@
 Index: date-picker/theme/material/vaadin-date-picker-overlay-styles.js
 ===================================================================
---- date-picker/theme/material/vaadin-date-picker-overlay-styles.js	null
-+++ date-picker/theme/material/vaadin-date-picker-overlay-styles.js	null
+--- date-picker/theme/material/vaadin-date-picker-overlay-styles.js
++++ date-picker/theme/material/vaadin-date-picker-overlay-styles.js
 @@ -1,5 +1,5 @@
 -import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

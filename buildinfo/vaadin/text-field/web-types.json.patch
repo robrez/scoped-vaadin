@@ -1,7 +1,7 @@
 Index: text-field/web-types.json
 ===================================================================
---- text-field/web-types.json	null
-+++ text-field/web-types.json	null
+--- text-field/web-types.json
++++ text-field/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

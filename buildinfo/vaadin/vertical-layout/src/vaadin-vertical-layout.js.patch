@@ -1,7 +1,7 @@
 Index: vertical-layout/src/vaadin-vertical-layout.js
 ===================================================================
---- vertical-layout/src/vaadin-vertical-layout.js	null
-+++ vertical-layout/src/vaadin-vertical-layout.js	null
+--- vertical-layout/src/vaadin-vertical-layout.js
++++ vertical-layout/src/vaadin-vertical-layout.js
 @@ -4,23 +4,23 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

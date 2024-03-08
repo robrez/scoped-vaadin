@@ -1,7 +1,7 @@
 Index: custom-field/package.json
 ===================================================================
---- custom-field/package.json	null
-+++ custom-field/package.json	null
+--- custom-field/package.json
++++ custom-field/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/custom-field",

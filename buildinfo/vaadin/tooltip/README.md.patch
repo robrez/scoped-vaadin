@@ -1,7 +1,7 @@
 Index: tooltip/README.md
 ===================================================================
---- tooltip/README.md	null
-+++ tooltip/README.md	null
+--- tooltip/README.md
++++ tooltip/README.md
 @@ -1,13 +1,15 @@
 -# @vaadin/tooltip
 +# @scoped-vaadin/tooltip

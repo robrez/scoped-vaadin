@@ -1,7 +1,7 @@
 Index: tabsheet/package.json
 ===================================================================
---- tabsheet/package.json	null
-+++ tabsheet/package.json	null
+--- tabsheet/package.json
++++ tabsheet/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/tabsheet",

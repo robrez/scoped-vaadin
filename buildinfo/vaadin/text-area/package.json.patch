@@ -1,7 +1,7 @@
 Index: text-area/package.json
 ===================================================================
---- text-area/package.json	null
-+++ text-area/package.json	null
+--- text-area/package.json
++++ text-area/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/text-area",

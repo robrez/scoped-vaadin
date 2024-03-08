@@ -1,7 +1,7 @@
 Index: checkbox/theme/lumo/vaadin-checkbox-styles.js
 ===================================================================
---- checkbox/theme/lumo/vaadin-checkbox-styles.js	null
-+++ checkbox/theme/lumo/vaadin-checkbox-styles.js	null
+--- checkbox/theme/lumo/vaadin-checkbox-styles.js
++++ checkbox/theme/lumo/vaadin-checkbox-styles.js
 @@ -1,13 +1,13 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';

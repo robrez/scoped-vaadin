@@ -1,7 +1,7 @@
 Index: upload/README.md
 ===================================================================
---- upload/README.md	null
-+++ upload/README.md	null
+--- upload/README.md
++++ upload/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/upload
 +# @scoped-vaadin/upload

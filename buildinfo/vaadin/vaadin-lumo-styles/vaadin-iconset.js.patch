@@ -1,7 +1,7 @@
 Index: vaadin-lumo-styles/vaadin-iconset.js
 ===================================================================
---- vaadin-lumo-styles/vaadin-iconset.js	null
-+++ vaadin-lumo-styles/vaadin-iconset.js	null
+--- vaadin-lumo-styles/vaadin-iconset.js
++++ vaadin-lumo-styles/vaadin-iconset.js
 @@ -4,7 +4,7 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

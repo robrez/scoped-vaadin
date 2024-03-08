@@ -1,7 +1,7 @@
 Index: item/theme/lumo/vaadin-item-styles.js
 ===================================================================
---- item/theme/lumo/vaadin-item-styles.js	null
-+++ item/theme/lumo/vaadin-item-styles.js	null
+--- item/theme/lumo/vaadin-item-styles.js
++++ item/theme/lumo/vaadin-item-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

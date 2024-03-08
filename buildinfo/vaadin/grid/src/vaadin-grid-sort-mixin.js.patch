@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-sort-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-sort-mixin.js	null
-+++ grid/src/vaadin-grid-sort-mixin.js	null
+--- grid/src/vaadin-grid-sort-mixin.js
++++ grid/src/vaadin-grid-sort-mixin.js
 @@ -14,7 +14,7 @@
      static get properties() {
        return {

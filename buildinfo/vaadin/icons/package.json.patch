@@ -1,7 +1,7 @@
 Index: icons/package.json
 ===================================================================
---- icons/package.json	null
-+++ icons/package.json	null
+--- icons/package.json
++++ icons/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/icons",

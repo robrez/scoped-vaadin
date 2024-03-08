@@ -1,7 +1,7 @@
 Index: app-layout/theme/material/vaadin-drawer-toggle-styles.js
 ===================================================================
---- app-layout/theme/material/vaadin-drawer-toggle-styles.js	null
-+++ app-layout/theme/material/vaadin-drawer-toggle-styles.js	null
+--- app-layout/theme/material/vaadin-drawer-toggle-styles.js
++++ app-layout/theme/material/vaadin-drawer-toggle-styles.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { button } from '@vaadin/button/theme/material/vaadin-button-styles.js';

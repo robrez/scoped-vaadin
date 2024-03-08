@@ -1,7 +1,7 @@
 Index: context-menu/theme/lumo/vaadin-context-menu-overlay-styles.js
 ===================================================================
---- context-menu/theme/lumo/vaadin-context-menu-overlay-styles.js	null
-+++ context-menu/theme/lumo/vaadin-context-menu-overlay-styles.js	null
+--- context-menu/theme/lumo/vaadin-context-menu-overlay-styles.js
++++ context-menu/theme/lumo/vaadin-context-menu-overlay-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import '@vaadin/vaadin-lumo-styles/style.js';

@@ -1,7 +1,7 @@
 Index: login/theme/material/vaadin-login-form.js
 ===================================================================
---- login/theme/material/vaadin-login-form.js	null
-+++ login/theme/material/vaadin-login-form.js	null
+--- login/theme/material/vaadin-login-form.js
++++ login/theme/material/vaadin-login-form.js
 @@ -1,5 +1,5 @@
 -import '@vaadin/button/theme/material/vaadin-button.js';
 -import '@vaadin/text-field/theme/material/vaadin-text-field.js';

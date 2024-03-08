@@ -1,7 +1,7 @@
 Index: details/theme/lumo/vaadin-details-summary-styles.js
 ===================================================================
---- details/theme/lumo/vaadin-details-summary-styles.js	null
-+++ details/theme/lumo/vaadin-details-summary-styles.js	null
+--- details/theme/lumo/vaadin-details-summary-styles.js
++++ details/theme/lumo/vaadin-details-summary-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';

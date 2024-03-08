@@ -1,7 +1,7 @@
 Index: button/src/vaadin-button.d.ts
 ===================================================================
---- button/src/vaadin-button.d.ts	null
-+++ button/src/vaadin-button.d.ts	null
+--- button/src/vaadin-button.d.ts
++++ button/src/vaadin-button.d.ts
 @@ -3,16 +3,16 @@
   * Copyright (c) 2017 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-lit-grid.js
 ===================================================================
---- grid/src/vaadin-lit-grid.js	null
-+++ grid/src/vaadin-lit-grid.js	null
+--- grid/src/vaadin-lit-grid.js
++++ grid/src/vaadin-lit-grid.js
 @@ -5,16 +5,16 @@
   */
  import './vaadin-lit-grid-column.js';

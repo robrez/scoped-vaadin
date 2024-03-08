@@ -1,7 +1,7 @@
 Index: form-layout/web-types.lit.json
 ===================================================================
---- form-layout/web-types.lit.json	null
-+++ form-layout/web-types.lit.json	null
+--- form-layout/web-types.lit.json
++++ form-layout/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

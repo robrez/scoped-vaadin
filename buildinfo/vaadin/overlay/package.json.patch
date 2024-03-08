@@ -1,7 +1,7 @@
 Index: overlay/package.json
 ===================================================================
---- overlay/package.json	null
-+++ overlay/package.json	null
+--- overlay/package.json
++++ overlay/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/overlay",

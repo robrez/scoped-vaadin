@@ -1,7 +1,7 @@
 Index: app-layout/src/vaadin-app-layout.d.ts
 ===================================================================
---- app-layout/src/vaadin-app-layout.d.ts	null
-+++ app-layout/src/vaadin-app-layout.d.ts	null
+--- app-layout/src/vaadin-app-layout.d.ts
++++ app-layout/src/vaadin-app-layout.d.ts
 @@ -3,9 +3,9 @@
   * Copyright (c) 2018 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

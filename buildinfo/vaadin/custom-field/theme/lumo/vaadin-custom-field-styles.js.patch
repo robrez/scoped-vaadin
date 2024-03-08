@@ -1,7 +1,7 @@
 Index: custom-field/theme/lumo/vaadin-custom-field-styles.js
 ===================================================================
---- custom-field/theme/lumo/vaadin-custom-field-styles.js	null
-+++ custom-field/theme/lumo/vaadin-custom-field-styles.js	null
+--- custom-field/theme/lumo/vaadin-custom-field-styles.js
++++ custom-field/theme/lumo/vaadin-custom-field-styles.js
 @@ -3,13 +3,13 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

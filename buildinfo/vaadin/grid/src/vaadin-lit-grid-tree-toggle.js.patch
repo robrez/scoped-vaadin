@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-lit-grid-tree-toggle.js
 ===================================================================
---- grid/src/vaadin-lit-grid-tree-toggle.js	null
-+++ grid/src/vaadin-lit-grid-tree-toggle.js	null
+--- grid/src/vaadin-lit-grid-tree-toggle.js
++++ grid/src/vaadin-lit-grid-tree-toggle.js
 @@ -4,14 +4,14 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

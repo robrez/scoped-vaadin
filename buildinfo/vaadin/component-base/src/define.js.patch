@@ -1,7 +1,7 @@
 Index: component-base/src/define.js
 ===================================================================
---- component-base/src/define.js	null
-+++ component-base/src/define.js	null
+--- component-base/src/define.js
++++ component-base/src/define.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**

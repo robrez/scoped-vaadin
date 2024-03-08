@@ -1,7 +1,7 @@
 Index: menu-bar/src/vaadin-menu-bar-submenu.js
 ===================================================================
---- menu-bar/src/vaadin-menu-bar-submenu.js	null
-+++ menu-bar/src/vaadin-menu-bar-submenu.js	null
+--- menu-bar/src/vaadin-menu-bar-submenu.js
++++ menu-bar/src/vaadin-menu-bar-submenu.js
 @@ -7,11 +7,11 @@
  import './vaadin-menu-bar-list-box.js';
  import './vaadin-menu-bar-overlay.js';

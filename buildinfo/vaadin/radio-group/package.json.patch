@@ -1,7 +1,7 @@
 Index: radio-group/package.json
 ===================================================================
---- radio-group/package.json	null
-+++ radio-group/package.json	null
+--- radio-group/package.json
++++ radio-group/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/radio-group",

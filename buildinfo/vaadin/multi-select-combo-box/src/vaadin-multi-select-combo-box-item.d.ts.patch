@@ -1,7 +1,7 @@
 Index: multi-select-combo-box/src/vaadin-multi-select-combo-box-item.d.ts
 ===================================================================
---- multi-select-combo-box/src/vaadin-multi-select-combo-box-item.d.ts	null
-+++ multi-select-combo-box/src/vaadin-multi-select-combo-box-item.d.ts	null
+--- multi-select-combo-box/src/vaadin-multi-select-combo-box-item.d.ts
++++ multi-select-combo-box/src/vaadin-multi-select-combo-box-item.d.ts
 @@ -3,13 +3,13 @@
   * Copyright (c) 2018 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

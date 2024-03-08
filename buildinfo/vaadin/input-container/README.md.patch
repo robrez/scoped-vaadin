@@ -1,7 +1,7 @@
 Index: input-container/README.md
 ===================================================================
---- input-container/README.md	null
-+++ input-container/README.md	null
+--- input-container/README.md
++++ input-container/README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/input-container
 +# @scoped-vaadin/input-container

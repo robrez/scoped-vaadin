@@ -1,7 +1,7 @@
 Index: radio-group/src/vaadin-radio-group-mixin.d.ts
 ===================================================================
---- radio-group/src/vaadin-radio-group-mixin.d.ts	null
-+++ radio-group/src/vaadin-radio-group-mixin.d.ts	null
+--- radio-group/src/vaadin-radio-group-mixin.d.ts
++++ radio-group/src/vaadin-radio-group-mixin.d.ts
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

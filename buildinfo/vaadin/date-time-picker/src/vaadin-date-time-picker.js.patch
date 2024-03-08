@@ -1,7 +1,7 @@
 Index: date-time-picker/src/vaadin-date-time-picker.js
 ===================================================================
---- date-time-picker/src/vaadin-date-time-picker.js	null
-+++ date-time-picker/src/vaadin-date-time-picker.js	null
+--- date-time-picker/src/vaadin-date-time-picker.js
++++ date-time-picker/src/vaadin-date-time-picker.js
 @@ -4,20 +4,20 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

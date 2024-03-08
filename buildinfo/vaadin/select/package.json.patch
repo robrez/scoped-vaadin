@@ -1,7 +1,7 @@
 Index: select/package.json
 ===================================================================
---- select/package.json	null
-+++ select/package.json	null
+--- select/package.json
++++ select/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/select",

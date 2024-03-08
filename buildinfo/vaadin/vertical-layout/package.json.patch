@@ -1,7 +1,7 @@
 Index: vertical-layout/package.json
 ===================================================================
---- vertical-layout/package.json	null
-+++ vertical-layout/package.json	null
+--- vertical-layout/package.json
++++ vertical-layout/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vertical-layout",

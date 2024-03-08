@@ -1,7 +1,7 @@
 Index: date-picker/src/vaadin-date-picker-mixin.js
 ===================================================================
---- date-picker/src/vaadin-date-picker-mixin.js	null
-+++ date-picker/src/vaadin-date-picker-mixin.js	null
+--- date-picker/src/vaadin-date-picker-mixin.js
++++ date-picker/src/vaadin-date-picker-mixin.js
 @@ -3,15 +3,15 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

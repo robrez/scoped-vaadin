@@ -1,7 +1,7 @@
 Index: dialog/README.md
 ===================================================================
---- dialog/README.md	null
-+++ dialog/README.md	null
+--- dialog/README.md
++++ dialog/README.md
 @@ -1,17 +1,19 @@
 -# @vaadin/dialog
 +# @scoped-vaadin/dialog

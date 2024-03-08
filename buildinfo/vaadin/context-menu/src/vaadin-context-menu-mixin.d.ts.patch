@@ -1,7 +1,7 @@
 Index: context-menu/src/vaadin-context-menu-mixin.d.ts
 ===================================================================
---- context-menu/src/vaadin-context-menu-mixin.d.ts	null
-+++ context-menu/src/vaadin-context-menu-mixin.d.ts	null
+--- context-menu/src/vaadin-context-menu-mixin.d.ts
++++ context-menu/src/vaadin-context-menu-mixin.d.ts
 @@ -47,7 +47,7 @@
     * Receives three arguments:
     *

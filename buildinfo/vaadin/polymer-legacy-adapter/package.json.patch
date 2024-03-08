@@ -1,7 +1,7 @@
 Index: polymer-legacy-adapter/package.json
 ===================================================================
---- polymer-legacy-adapter/package.json	null
-+++ polymer-legacy-adapter/package.json	null
+--- polymer-legacy-adapter/package.json
++++ polymer-legacy-adapter/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/polymer-legacy-adapter",

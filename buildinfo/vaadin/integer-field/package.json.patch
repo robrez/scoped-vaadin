@@ -1,7 +1,7 @@
 Index: integer-field/package.json
 ===================================================================
---- integer-field/package.json	null
-+++ integer-field/package.json	null
+--- integer-field/package.json
++++ integer-field/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/integer-field",

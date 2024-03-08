@@ -1,7 +1,7 @@
 Index: message-input/README.md
 ===================================================================
---- message-input/README.md	null
-+++ message-input/README.md	null
+--- message-input/README.md
++++ message-input/README.md
 @@ -1,11 +1,13 @@
 -# @vaadin/message-input
 +# @scoped-vaadin/message-input

@@ -1,7 +1,7 @@
 Index: context-menu/package.json
 ===================================================================
---- context-menu/package.json	null
-+++ context-menu/package.json	null
+--- context-menu/package.json
++++ context-menu/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/context-menu",

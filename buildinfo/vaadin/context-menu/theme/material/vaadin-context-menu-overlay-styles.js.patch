@@ -1,7 +1,7 @@
 Index: context-menu/theme/material/vaadin-context-menu-overlay-styles.js
 ===================================================================
---- context-menu/theme/material/vaadin-context-menu-overlay-styles.js	null
-+++ context-menu/theme/material/vaadin-context-menu-overlay-styles.js	null
+--- context-menu/theme/material/vaadin-context-menu-overlay-styles.js
++++ context-menu/theme/material/vaadin-context-menu-overlay-styles.js
 @@ -1,5 +1,5 @@
 -import { menuOverlay } from '@vaadin/vaadin-material-styles/mixins/menu-overlay.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

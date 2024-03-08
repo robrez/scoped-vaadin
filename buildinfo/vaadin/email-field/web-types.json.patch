@@ -1,7 +1,7 @@
 Index: email-field/web-types.json
 ===================================================================
---- email-field/web-types.json	null
-+++ email-field/web-types.json	null
+--- email-field/web-types.json
++++ email-field/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

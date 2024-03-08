@@ -1,7 +1,7 @@
 Index: menu-bar/web-types.json
 ===================================================================
---- menu-bar/web-types.json	null
-+++ menu-bar/web-types.json	null
+--- menu-bar/web-types.json
++++ menu-bar/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

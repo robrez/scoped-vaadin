@@ -1,7 +1,7 @@
 Index: select/README.md
 ===================================================================
---- select/README.md	null
-+++ select/README.md	null
+--- select/README.md
++++ select/README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/select
 +# @scoped-vaadin/select

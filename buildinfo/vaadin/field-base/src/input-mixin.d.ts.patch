@@ -1,7 +1,7 @@
 Index: field-base/src/input-mixin.d.ts
 ===================================================================
---- field-base/src/input-mixin.d.ts	null
-+++ field-base/src/input-mixin.d.ts	null
+--- field-base/src/input-mixin.d.ts
++++ field-base/src/input-mixin.d.ts
 @@ -19,7 +19,7 @@
     *
     * A typical case is using `InputController` that does this automatically.

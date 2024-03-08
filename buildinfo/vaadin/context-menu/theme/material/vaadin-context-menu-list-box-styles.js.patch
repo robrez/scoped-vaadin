@@ -1,7 +1,7 @@
 Index: context-menu/theme/material/vaadin-context-menu-list-box-styles.js
 ===================================================================
---- context-menu/theme/material/vaadin-context-menu-list-box-styles.js	null
-+++ context-menu/theme/material/vaadin-context-menu-list-box-styles.js	null
+--- context-menu/theme/material/vaadin-context-menu-list-box-styles.js
++++ context-menu/theme/material/vaadin-context-menu-list-box-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/typography.js';

@@ -1,7 +1,7 @@
 Index: radio-group/web-types.json
 ===================================================================
---- radio-group/web-types.json	null
-+++ radio-group/web-types.json	null
+--- radio-group/web-types.json
++++ radio-group/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

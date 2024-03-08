@@ -1,7 +1,7 @@
 Index: upload/web-types.json
 ===================================================================
---- upload/web-types.json	null
-+++ upload/web-types.json	null
+--- upload/web-types.json
++++ upload/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

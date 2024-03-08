@@ -1,7 +1,7 @@
 Index: avatar/theme/material/vaadin-avatar-styles.js
 ===================================================================
---- avatar/theme/material/vaadin-avatar-styles.js	null
-+++ avatar/theme/material/vaadin-avatar-styles.js	null
+--- avatar/theme/material/vaadin-avatar-styles.js
++++ avatar/theme/material/vaadin-avatar-styles.js
 @@ -1,14 +1,14 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/typography.js';

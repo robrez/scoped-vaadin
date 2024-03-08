@@ -1,7 +1,7 @@
 Index: date-time-picker/web-types.json
 ===================================================================
---- date-time-picker/web-types.json	null
-+++ date-time-picker/web-types.json	null
+--- date-time-picker/web-types.json
++++ date-time-picker/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

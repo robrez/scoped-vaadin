@@ -1,7 +1,7 @@
 Index: checkbox/web-types.json
 ===================================================================
---- checkbox/web-types.json	null
-+++ checkbox/web-types.json	null
+--- checkbox/web-types.json
++++ checkbox/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

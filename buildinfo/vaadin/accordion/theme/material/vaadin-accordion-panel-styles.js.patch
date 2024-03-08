@@ -1,7 +1,7 @@
 Index: accordion/theme/material/vaadin-accordion-panel-styles.js
 ===================================================================
---- accordion/theme/material/vaadin-accordion-panel-styles.js	null
-+++ accordion/theme/material/vaadin-accordion-panel-styles.js	null
+--- accordion/theme/material/vaadin-accordion-panel-styles.js
++++ accordion/theme/material/vaadin-accordion-panel-styles.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { details } from '@vaadin/details/theme/material/vaadin-details-styles.js';

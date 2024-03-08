@@ -1,7 +1,7 @@
 Index: grid/theme/lumo/vaadin-grid-filter.js
 ===================================================================
---- grid/theme/lumo/vaadin-grid-filter.js	null
-+++ grid/theme/lumo/vaadin-grid-filter.js	null
+--- grid/theme/lumo/vaadin-grid-filter.js
++++ grid/theme/lumo/vaadin-grid-filter.js
 @@ -1,2 +1,2 @@
 -import '@vaadin/text-field/theme/lumo/vaadin-text-field.js';
 +import '@scoped-vaadin/text-field/theme/lumo/vaadin-text-field.js';

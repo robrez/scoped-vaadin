@@ -1,7 +1,7 @@
 Index: avatar/theme/lumo/vaadin-avatar-styles.js
 ===================================================================
---- avatar/theme/lumo/vaadin-avatar-styles.js	null
-+++ avatar/theme/lumo/vaadin-avatar-styles.js	null
+--- avatar/theme/lumo/vaadin-avatar-styles.js
++++ avatar/theme/lumo/vaadin-avatar-styles.js
 @@ -1,17 +1,17 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

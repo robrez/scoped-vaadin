@@ -1,7 +1,7 @@
 Index: confirm-dialog/README.md
 ===================================================================
---- confirm-dialog/README.md	null
-+++ confirm-dialog/README.md	null
+--- confirm-dialog/README.md
++++ confirm-dialog/README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/confirm-dialog
 +# @scoped-vaadin/confirm-dialog

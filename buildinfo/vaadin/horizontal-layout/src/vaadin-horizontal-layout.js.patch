@@ -1,7 +1,7 @@
 Index: horizontal-layout/src/vaadin-horizontal-layout.js
 ===================================================================
---- horizontal-layout/src/vaadin-horizontal-layout.js	null
-+++ horizontal-layout/src/vaadin-horizontal-layout.js	null
+--- horizontal-layout/src/vaadin-horizontal-layout.js
++++ horizontal-layout/src/vaadin-horizontal-layout.js
 @@ -4,23 +4,23 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

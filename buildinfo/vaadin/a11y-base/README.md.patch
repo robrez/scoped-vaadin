@@ -1,7 +1,7 @@
 Index: a11y-base/README.md
 ===================================================================
---- a11y-base/README.md	null
-+++ a11y-base/README.md	null
+--- a11y-base/README.md
++++ a11y-base/README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/a11y-base
 +# @scoped-vaadin/a11y-base

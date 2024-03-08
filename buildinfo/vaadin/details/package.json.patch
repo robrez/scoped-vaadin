@@ -1,7 +1,7 @@
 Index: details/package.json
 ===================================================================
---- details/package.json	null
-+++ details/package.json	null
+--- details/package.json
++++ details/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/details",

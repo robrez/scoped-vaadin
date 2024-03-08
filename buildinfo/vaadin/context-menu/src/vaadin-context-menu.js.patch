@@ -1,7 +1,7 @@
 Index: context-menu/src/vaadin-context-menu.js
 ===================================================================
---- context-menu/src/vaadin-context-menu.js	null
-+++ context-menu/src/vaadin-context-menu.js	null
+--- context-menu/src/vaadin-context-menu.js
++++ context-menu/src/vaadin-context-menu.js
 @@ -8,16 +8,16 @@
  import './vaadin-context-menu-list-box.js';
  import './vaadin-context-menu-overlay.js';

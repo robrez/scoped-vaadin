@@ -1,7 +1,7 @@
 Index: tabs/src/vaadin-tabs.js
 ===================================================================
---- tabs/src/vaadin-tabs.js	null
-+++ tabs/src/vaadin-tabs.js	null
+--- tabs/src/vaadin-tabs.js
++++ tabs/src/vaadin-tabs.js
 @@ -5,24 +5,24 @@
   */
  import './vaadin-tab.js';

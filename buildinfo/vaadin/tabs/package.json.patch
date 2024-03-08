@@ -1,7 +1,7 @@
 Index: tabs/package.json
 ===================================================================
---- tabs/package.json	null
-+++ tabs/package.json	null
+--- tabs/package.json
++++ tabs/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/tabs",

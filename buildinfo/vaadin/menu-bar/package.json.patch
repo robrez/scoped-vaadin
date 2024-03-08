@@ -1,7 +1,7 @@
 Index: menu-bar/package.json
 ===================================================================
---- menu-bar/package.json	null
-+++ menu-bar/package.json	null
+--- menu-bar/package.json
++++ menu-bar/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/menu-bar",

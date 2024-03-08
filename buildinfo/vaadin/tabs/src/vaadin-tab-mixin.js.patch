@@ -1,7 +1,7 @@
 Index: tabs/src/vaadin-tab-mixin.js
 ===================================================================
---- tabs/src/vaadin-tab-mixin.js	null
-+++ tabs/src/vaadin-tab-mixin.js	null
+--- tabs/src/vaadin-tab-mixin.js
++++ tabs/src/vaadin-tab-mixin.js
 @@ -3,7 +3,7 @@
   * Copyright (c) 2017 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

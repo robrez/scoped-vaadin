@@ -1,7 +1,7 @@
 Index: upload/theme/lumo/vaadin-upload-styles.js
 ===================================================================
---- upload/theme/lumo/vaadin-upload-styles.js	null
-+++ upload/theme/lumo/vaadin-upload-styles.js	null
+--- upload/theme/lumo/vaadin-upload-styles.js
++++ upload/theme/lumo/vaadin-upload-styles.js
 @@ -1,16 +1,16 @@
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';
 -import '@vaadin/vaadin-lumo-styles/color.js';

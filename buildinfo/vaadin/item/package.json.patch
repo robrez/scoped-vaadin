@@ -1,7 +1,7 @@
 Index: item/package.json
 ===================================================================
---- item/package.json	null
-+++ item/package.json	null
+--- item/package.json
++++ item/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/item",

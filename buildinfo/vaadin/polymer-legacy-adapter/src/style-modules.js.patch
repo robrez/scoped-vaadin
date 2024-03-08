@@ -1,7 +1,7 @@
 Index: polymer-legacy-adapter/src/style-modules.js
 ===================================================================
---- polymer-legacy-adapter/src/style-modules.js	null
-+++ polymer-legacy-adapter/src/style-modules.js	null
+--- polymer-legacy-adapter/src/style-modules.js
++++ polymer-legacy-adapter/src/style-modules.js
 @@ -6,7 +6,7 @@
  import { DomModule } from '@polymer/polymer/lib/elements/dom-module.js';
  import { stylesFromTemplate } from '@polymer/polymer/lib/utils/style-gather.js';

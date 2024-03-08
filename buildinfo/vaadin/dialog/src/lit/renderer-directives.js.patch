@@ -1,7 +1,7 @@
 Index: dialog/src/lit/renderer-directives.js
 ===================================================================
---- dialog/src/lit/renderer-directives.js	null
-+++ dialog/src/lit/renderer-directives.js	null
+--- dialog/src/lit/renderer-directives.js
++++ dialog/src/lit/renderer-directives.js
 @@ -5,9 +5,9 @@
   */
  /* eslint-disable max-classes-per-file */

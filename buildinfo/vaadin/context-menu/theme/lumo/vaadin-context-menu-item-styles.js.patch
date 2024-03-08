@@ -1,7 +1,7 @@
 Index: context-menu/theme/lumo/vaadin-context-menu-item-styles.js
 ===================================================================
---- context-menu/theme/lumo/vaadin-context-menu-item-styles.js	null
-+++ context-menu/theme/lumo/vaadin-context-menu-item-styles.js	null
+--- context-menu/theme/lumo/vaadin-context-menu-item-styles.js
++++ context-menu/theme/lumo/vaadin-context-menu-item-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';

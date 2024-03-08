@@ -1,7 +1,7 @@
 Index: tooltip/package.json
 ===================================================================
---- tooltip/package.json	null
-+++ tooltip/package.json	null
+--- tooltip/package.json
++++ tooltip/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/tooltip",

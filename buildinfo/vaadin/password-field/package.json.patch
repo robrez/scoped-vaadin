@@ -1,7 +1,7 @@
 Index: password-field/package.json
 ===================================================================
---- password-field/package.json	null
-+++ password-field/package.json	null
+--- password-field/package.json
++++ password-field/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/password-field",

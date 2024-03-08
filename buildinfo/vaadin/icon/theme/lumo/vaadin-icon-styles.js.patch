@@ -1,7 +1,7 @@
 Index: icon/theme/lumo/vaadin-icon-styles.js
 ===================================================================
---- icon/theme/lumo/vaadin-icon-styles.js	null
-+++ icon/theme/lumo/vaadin-icon-styles.js	null
+--- icon/theme/lumo/vaadin-icon-styles.js
++++ icon/theme/lumo/vaadin-icon-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-lumo-styles/sizing.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

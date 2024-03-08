@@ -1,7 +1,7 @@
 Index: field-highlighter/src/vaadin-field-highlighter.d.ts
 ===================================================================
---- field-highlighter/src/vaadin-field-highlighter.d.ts	null
-+++ field-highlighter/src/vaadin-field-highlighter.d.ts	null
+--- field-highlighter/src/vaadin-field-highlighter.d.ts
++++ field-highlighter/src/vaadin-field-highlighter.d.ts
 @@ -70,7 +70,7 @@
  
  declare global {

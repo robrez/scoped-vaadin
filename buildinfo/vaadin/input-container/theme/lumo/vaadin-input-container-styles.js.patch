@@ -1,7 +1,7 @@
 Index: input-container/theme/lumo/vaadin-input-container-styles.js
 ===================================================================
---- input-container/theme/lumo/vaadin-input-container-styles.js	null
-+++ input-container/theme/lumo/vaadin-input-container-styles.js	null
+--- input-container/theme/lumo/vaadin-input-container-styles.js
++++ input-container/theme/lumo/vaadin-input-container-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

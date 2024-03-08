@@ -1,7 +1,7 @@
 Index: vaadin-lumo-styles/mixins/loader.js
 ===================================================================
---- vaadin-lumo-styles/mixins/loader.js	null
-+++ vaadin-lumo-styles/mixins/loader.js	null
+--- vaadin-lumo-styles/mixins/loader.js
++++ vaadin-lumo-styles/mixins/loader.js
 @@ -5,7 +5,7 @@
   */
  import '../color.js';

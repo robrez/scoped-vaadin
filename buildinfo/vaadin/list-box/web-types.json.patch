@@ -1,7 +1,7 @@
 Index: list-box/web-types.json
 ===================================================================
---- list-box/web-types.json	null
-+++ list-box/web-types.json	null
+--- list-box/web-types.json
++++ list-box/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

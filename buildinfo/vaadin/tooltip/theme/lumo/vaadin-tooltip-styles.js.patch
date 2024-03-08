@@ -1,7 +1,7 @@
 Index: tooltip/theme/lumo/vaadin-tooltip-styles.js
 ===================================================================
---- tooltip/theme/lumo/vaadin-tooltip-styles.js	null
-+++ tooltip/theme/lumo/vaadin-tooltip-styles.js	null
+--- tooltip/theme/lumo/vaadin-tooltip-styles.js
++++ tooltip/theme/lumo/vaadin-tooltip-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/style.js';

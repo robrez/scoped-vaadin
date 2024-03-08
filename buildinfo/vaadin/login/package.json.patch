@@ -1,7 +1,7 @@
 Index: login/package.json
 ===================================================================
---- login/package.json	null
-+++ login/package.json	null
+--- login/package.json
++++ login/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/login",

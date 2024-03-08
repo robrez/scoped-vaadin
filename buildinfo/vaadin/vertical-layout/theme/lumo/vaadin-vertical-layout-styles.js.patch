@@ -1,7 +1,7 @@
 Index: vertical-layout/theme/lumo/vaadin-vertical-layout-styles.js
 ===================================================================
---- vertical-layout/theme/lumo/vaadin-vertical-layout-styles.js	null
-+++ vertical-layout/theme/lumo/vaadin-vertical-layout-styles.js	null
+--- vertical-layout/theme/lumo/vaadin-vertical-layout-styles.js
++++ vertical-layout/theme/lumo/vaadin-vertical-layout-styles.js
 @@ -1,5 +1,5 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

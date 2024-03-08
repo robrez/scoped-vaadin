@@ -1,7 +1,7 @@
 Index: horizontal-layout/package.json
 ===================================================================
---- horizontal-layout/package.json	null
-+++ horizontal-layout/package.json	null
+--- horizontal-layout/package.json
++++ horizontal-layout/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/horizontal-layout",

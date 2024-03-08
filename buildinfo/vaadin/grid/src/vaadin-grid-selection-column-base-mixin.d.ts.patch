@@ -1,7 +1,7 @@
 Index: grid/src/vaadin-grid-selection-column-base-mixin.d.ts
 ===================================================================
---- grid/src/vaadin-grid-selection-column-base-mixin.d.ts	null
-+++ grid/src/vaadin-grid-selection-column-base-mixin.d.ts	null
+--- grid/src/vaadin-grid-selection-column-base-mixin.d.ts
++++ grid/src/vaadin-grid-selection-column-base-mixin.d.ts
 @@ -11,13 +11,13 @@
  
  /**

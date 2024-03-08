@@ -1,7 +1,7 @@
 Index: input-container/package.json
 ===================================================================
---- input-container/package.json	null
-+++ input-container/package.json	null
+--- input-container/package.json
++++ input-container/package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/input-container",

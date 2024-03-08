@@ -1,7 +1,7 @@
 Index: notification/web-types.json
 ===================================================================
---- notification/web-types.json	null
-+++ notification/web-types.json	null
+--- notification/web-types.json
++++ notification/web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",

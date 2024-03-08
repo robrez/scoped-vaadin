@@ -1,7 +1,7 @@
 Index: context-menu/README.md
 ===================================================================
---- context-menu/README.md	null
-+++ context-menu/README.md	null
+--- context-menu/README.md
++++ context-menu/README.md
 @@ -1,31 +1,33 @@
 -# @vaadin/context-menu
 +# @scoped-vaadin/context-menu

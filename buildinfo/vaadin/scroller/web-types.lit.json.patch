@@ -1,7 +1,7 @@
 Index: scroller/web-types.lit.json
 ===================================================================
---- scroller/web-types.lit.json	null
-+++ scroller/web-types.lit.json	null
+--- scroller/web-types.lit.json
++++ scroller/web-types.lit.json
 @@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
