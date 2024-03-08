@@ -109,7 +109,7 @@ const badge = css`
     margin-right: -0.375em;
   }
 
-  vaadin-icon[theme~='badge'][icon] {
+  vaadin24-icon[theme~='badge'][icon] {
     min-width: 0;
     padding: 0;
     font-size: 1rem;
@@ -117,7 +117,7 @@ const badge = css`
     height: var(--lumo-icon-size-m);
   }
 
-  vaadin-icon[theme~='badge'][icon][theme~='small'] {
+  vaadin24-icon[theme~='badge'][icon][theme~='small'] {
     width: var(--lumo-icon-size-s);
     height: var(--lumo-icon-size-s);
   }

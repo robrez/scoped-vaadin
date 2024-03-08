@@ -1,12 +1,8 @@
 import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
-import {
-  processJs,
-  processTagNames,
-  allElementNames,
-  majorVersion,
-} from "./build.js";
+import { processJs, majorVersion } from "./build.js";
+import { processTagNamesNaive } from "./replacement-helpers.js";
 
 // this lazily just operates on `dev/` which was copied directly from `@vaadin/web-components/dev`
 // TODO make this DRY vs `build.js`
@@ -31,29 +27,6 @@ function findFiles(dir) {
 
 function posixify(pathString) {
   return pathString.split(Path.sep).join(Path.posix.sep);
-}
-
-function computeRe() {
-  // var re = new RegExp("[<`'\"](vaadin-foo|vaadin-bar|vaadin-baz)", "gi")
-  const names = allElementNames().join("|");
-  return new RegExp(names, "gi");
-}
-
-const elementsRe = computeRe();
-
-/**
- * Not using the fn from build.js because it is more conservative, causing it
- * to miss bare tag names in CSS rules.  Someting is needed to handle that
- * but I will keep this part as naive
- * @param {string} content : ;
- * @param {Path} filePath
- */
-function processTagNamesNaive(content, filePath) {
-  let result = content;
-  result = result.replace(elementsRe, (matched) => {
-    return matched.replaceAll(`vaadin-`, `vaadin${majorVersion}-`);
-  });
-  return result;
 }
 
 async function processHtml(content, filePath) {
