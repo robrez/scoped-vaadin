@@ -1,15 +1,15 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { Checkbox } from '@scoped-vaadin/checkbox/src/vaadin-checkbox.js';
-import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
+import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -50,12 +50,13 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `has-helper`        | Set when the element has helper text      | :host
  * `has-error-message` | Set when the element has an error message | :host
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @mixes DisabledMixin
@@ -89,6 +90,11 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
           display: flex;
           flex-direction: column;
           width: 100%;
+        }
+
+        [part='group-field'] {
+          display: flex;
+          flex-wrap: wrap;
         }
 
         :host(:not([has-label])) [part='label'] {
@@ -144,6 +150,19 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
     this.__registerCheckbox = this.__registerCheckbox.bind(this);
     this.__unregisterCheckbox = this.__unregisterCheckbox.bind(this);
     this.__onCheckboxCheckedChanged = this.__onCheckboxCheckedChanged.bind(this);
+
+    this._tooltipController = new TooltipController(this);
+    this._tooltipController.addEventListener('tooltip-changed', (event) => {
+      const tooltip = event.detail.node;
+      if (tooltip && tooltip.isConnected) {
+        // Tooltip element has been added to the DOM
+        const inputs = this.__checkboxes.map((checkbox) => checkbox.inputElement);
+        this._tooltipController.setAriaTarget(inputs);
+      } else {
+        // Tooltip element is no longer connected
+        this._tooltipController.setAriaTarget([]);
+      }
+    });
   }
 
   /**
@@ -165,17 +184,20 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
     // See https://github.com/vaadin/vaadin-web-components/issues/94
     this.setAttribute('role', 'group');
 
-    this._observer = new FlattenedNodesObserver(this, ({ addedNodes, removedNodes }) => {
+    const slot = this.shadowRoot.querySelector('slot:not([name])');
+    this._observer = new SlotObserver(slot, ({ addedNodes, removedNodes }) => {
       const addedCheckboxes = this.__filterCheckboxes(addedNodes);
       const removedCheckboxes = this.__filterCheckboxes(removedNodes);
 
       addedCheckboxes.forEach(this.__registerCheckbox);
       removedCheckboxes.forEach(this.__unregisterCheckbox);
 
+      const inputs = this.__checkboxes.map((checkbox) => checkbox.inputElement);
+      this._tooltipController.setAriaTarget(inputs);
+
       this.__warnOfCheckboxesWithoutValue(addedCheckboxes);
     });
 
-    this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
   }
 
@@ -355,12 +377,14 @@ class CheckboxGroup extends FieldMixin(FocusMixin(DisabledMixin(ElementMixin(The
   _setFocused(focused) {
     super._setFocused(focused);
 
-    if (!focused) {
+    // Do not validate when focusout is caused by document
+    // losing focus, which happens on browser tab switch.
+    if (!focused && document.hasFocus()) {
       this.validate();
     }
   }
 }
 
-internalCustomElements.define(CheckboxGroup.is, CheckboxGroup);
+defineCustomElement(CheckboxGroup);
 
 export { CheckboxGroup };

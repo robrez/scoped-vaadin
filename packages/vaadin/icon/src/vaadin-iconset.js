@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { cloneSvgNode } from './vaadin-icon-svg.js';
 
@@ -38,6 +38,7 @@ function initIconsMap(iconset, name) {
 /**
  * `<vaadin24-iconset>` is a Web Component for creating SVG icon collections.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  */
@@ -115,6 +116,7 @@ class Iconset extends ElementMixin(PolymerElement) {
     const iconSvg = iconset._icons[iconId];
 
     return {
+      preserveAspectRatio: iconSvg ? iconSvg.getAttribute('preserveAspectRatio') : null,
       svg: cloneSvgNode(iconSvg),
       size: iconset.size,
       viewBox: iconSvg ? iconSvg.getAttribute('viewBox') : null,
@@ -184,6 +186,6 @@ class Iconset extends ElementMixin(PolymerElement) {
   }
 }
 
-internalCustomElements.define(Iconset.is, Iconset);
+defineCustomElement(Iconset);
 
 export { Iconset };

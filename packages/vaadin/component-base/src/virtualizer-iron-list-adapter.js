@@ -82,10 +82,24 @@ export class IronListAdapter {
     return this.lastVisibleIndex + this._vidxOffset;
   }
 
+  __hasPlaceholders() {
+    return this.__getVisibleElements().some((el) => el.__virtualizerPlaceholder);
+  }
+
   scrollToIndex(index) {
     if (typeof index !== 'number' || isNaN(index) || this.size === 0 || !this.scrollTarget.offsetHeight) {
       return;
     }
+    delete this.__pendingScrollToIndex;
+
+    if (this._physicalCount <= 3 /* iron-list-core.DEFAULT_PHYSICAL_COUNT */) {
+      // The condition here is a performance improvement to avoid an unnecessary
+      // re-render when the physical item pool is already covered.
+
+      // Finish rendering at the current scroll position before scrolling
+      this.flush();
+    }
+
     index = this._clamp(index, 0, this.size - 1);
 
     const visibleElementCount = this.__getVisibleElements().length;
@@ -113,9 +127,16 @@ export class IronListAdapter {
       this._scrollTop -= this.__getIndexScrollOffset(index) || 0;
     }
     this._scrollHandler();
+
+    if (this.__hasPlaceholders()) {
+      // After rendering synchronously, there are still placeholders in the DOM.
+      // Try again after the next elements update.
+      this.__pendingScrollToIndex = index;
+    }
   }
 
   flush() {
+    const startPhysicalCount = this._physicalCount;
     // The scroll target is hidden.
     if (this.scrollTarget.offsetHeight === 0) {
       return;
@@ -133,14 +154,23 @@ export class IronListAdapter {
     if (this.__debouncerWheelAnimationFrame) {
       this.__debouncerWheelAnimationFrame.flush();
     }
+
+    if (this._physicalCount !== startPhysicalCount) {
+      // Flushing again until physical count stabilizes fixes https://github.com/vaadin/flow-components/issues/5595#issuecomment-1770278913
+      this.flush();
+    }
   }
 
   update(startIndex = 0, endIndex = this.size - 1) {
+    const updatedElements = [];
     this.__getVisibleElements().forEach((el) => {
       if (el.__virtualIndex >= startIndex && el.__virtualIndex <= endIndex) {
         this.__updateElement(el, el.__virtualIndex, true);
+        updatedElements.push(el);
       }
     });
+
+    this.__afterElementsUpdated(updatedElements);
   }
 
   /**
@@ -195,35 +225,53 @@ export class IronListAdapter {
 
   __updateElement(el, index, forceSameIndexUpdates) {
     // Clean up temporary placeholder sizing
-    if (el.style.paddingTop) {
+    if (el.__virtualizerPlaceholder) {
       el.style.paddingTop = '';
+      el.__virtualizerPlaceholder = false;
     }
 
     if (!this.__preventElementUpdates && (el.__lastUpdatedIndex !== index || forceSameIndexUpdates)) {
       this.updateElement(el, index);
       el.__lastUpdatedIndex = index;
     }
+  }
 
-    const elementHeight = el.offsetHeight;
-    if (elementHeight === 0) {
-      // If the elements have 0 height after update (for example due to lazy rendering),
-      // it results in iron-list requesting to create an unlimited count of elements.
-      // Assign a temporary placeholder sizing to elements that would otherwise end up having
-      // no height.
-      el.style.paddingTop = `${this.__placeholderHeight}px`;
+  /**
+   * Called synchronously right after elements have been updated.
+   * This is a good place to do any post-update work.
+   *
+   * @param {!Array<!HTMLElement>} updatedElements
+   */
+  __afterElementsUpdated(updatedElements) {
+    updatedElements.forEach((el) => {
+      const elementHeight = el.offsetHeight;
+      if (elementHeight === 0) {
+        // If the elements have 0 height after update (for example due to lazy rendering),
+        // it results in iron-list requesting to create an unlimited count of elements.
+        // Assign a temporary placeholder sizing to elements that would otherwise end up having
+        // no height.
+        el.style.paddingTop = `${this.__placeholderHeight}px`;
+        el.__virtualizerPlaceholder = true;
 
-      // Manually schedule the resize handler to make sure the placeholder padding is
-      // cleared in case the resize observer never triggers.
-      requestAnimationFrame(() => this._resizeHandler());
-    } else {
-      // Add element height to the queue
-      this.__elementHeightQueue.push(elementHeight);
-      this.__elementHeightQueue.shift();
+        // Manually schedule the resize handler to make sure the placeholder padding is
+        // cleared in case the resize observer never triggers.
+        this.__placeholderClearDebouncer = Debouncer.debounce(this.__placeholderClearDebouncer, animationFrame, () =>
+          this._resizeHandler(),
+        );
+      } else {
+        // Add element height to the queue
+        this.__elementHeightQueue.push(elementHeight);
+        this.__elementHeightQueue.shift();
 
-      // Calcualte new placeholder height based on the average of the defined values in the
-      // element height queue
-      const filteredHeights = this.__elementHeightQueue.filter((h) => h !== undefined);
-      this.__placeholderHeight = Math.round(filteredHeights.reduce((a, b) => a + b, 0) / filteredHeights.length);
+        // Calculate new placeholder height based on the average of the defined values in the
+        // element height queue
+        const filteredHeights = this.__elementHeightQueue.filter((h) => h !== undefined);
+        this.__placeholderHeight = Math.round(filteredHeights.reduce((a, b) => a + b, 0) / filteredHeights.length);
+      }
+    });
+
+    if (this.__pendingScrollToIndex !== undefined && !this.__hasPlaceholders()) {
+      this.scrollToIndex(this.__pendingScrollToIndex);
     }
   }
 
@@ -249,42 +297,37 @@ export class IronListAdapter {
       this._debouncers._increasePoolIfNeeded.cancel();
     }
 
-    // Prevent element update while the scroll position is being restored
-    this.__preventElementUpdates = true;
-
-    // Record the scroll position before changing the size
-    let fvi; // First visible index
-    let fviOffsetBefore; // Scroll offset of the first visible index
-    if (size > 0) {
-      fvi = this.adjustedFirstVisibleIndex;
-      fviOffsetBefore = this.__getIndexScrollOffset(fvi);
-    }
-
     // Change the size
     this.__size = size;
 
-    this._itemsChanged({
-      path: 'items',
-    });
-    flush();
+    if (!this._physicalItems) {
+      // Not initialized yet
+      this._itemsChanged({
+        path: 'items',
+      });
+      this.__preventElementUpdates = true;
+      flush();
+      this.__preventElementUpdates = false;
+    } else {
+      // Already initialized, just update _virtualCount
+      this._updateScrollerSize();
+      this._virtualCount = this.items.length;
+      this._render();
+    }
 
-    // Try to restore the scroll position if the new size is larger than 0
-    if (size > 0) {
-      fvi = Math.min(fvi, size - 1);
-      this.scrollToIndex(fvi);
-
-      const fviOffsetAfter = this.__getIndexScrollOffset(fvi);
-      if (fviOffsetBefore !== undefined && fviOffsetAfter !== undefined) {
-        this._scrollTop += fviOffsetBefore - fviOffsetAfter;
-      }
+    // When reducing size while invisible, iron-list does not update items, so
+    // their hidden state is not updated and their __lastUpdatedIndex is not
+    // reset. In that case force an update here.
+    if (!this._isVisible) {
+      this._assignModels();
     }
 
     if (!this.elementsContainer.children.length) {
       requestAnimationFrame(() => this._resizeHandler());
     }
 
-    this.__preventElementUpdates = false;
-    // Schedule and flush a resize handler
+    // Schedule and flush a resize handler. This will cause a
+    // re-render for the elements.
     this._resizeHandler();
     flush();
   }
@@ -349,16 +392,20 @@ export class IronListAdapter {
 
   /** @private */
   _assignModels(itemSet) {
+    const updatedElements = [];
     this._iterateItems((pidx, vidx) => {
       const el = this._physicalItems[pidx];
       el.hidden = vidx >= this.size;
       if (!el.hidden) {
         el.__virtualIndex = vidx + (this._vidxOffset || 0);
         this.__updateElement(el, el.__virtualIndex);
+        updatedElements.push(el);
       } else {
         delete el.__lastUpdatedIndex;
       }
     }, itemSet);
+
+    this.__afterElementsUpdated(updatedElements);
   }
 
   /** @private */
@@ -379,6 +426,11 @@ export class IronListAdapter {
   toggleScrollListener() {}
 
   _scrollHandler() {
+    // The scroll target is hidden.
+    if (this.scrollTarget.offsetHeight === 0) {
+      return;
+    }
+
     this._adjustVirtualIndexOffset(this._scrollTop - (this.__previousScrollTop || 0));
     const delta = this.scrollTarget.scrollTop - this._scrollPosition;
 
@@ -555,6 +607,29 @@ export class IronListAdapter {
       (deltaX > 0 && el.scrollLeft < el.scrollWidth - el.offsetWidth) ||
       (deltaX < 0 && el.scrollLeft > 0)
     );
+  }
+
+  /**
+   * Increases the pool size.
+   * @override
+   */
+  _increasePoolIfNeeded(count) {
+    if (this._physicalCount > 2 && count) {
+      // The iron-list logic has already created some physical items and
+      // has decided to create more. Since each item creation round is
+      // expensive, let's try to create the remaining items in one go.
+
+      // Calculate the total item count that would be needed to fill the viewport
+      // plus the buffer assuming rest of the items to be of the average size
+      // of the items already created.
+      const totalItemCount = Math.ceil(this._optPhysicalSize / this._physicalAverage);
+      const missingItemCount = totalItemCount - this._physicalCount;
+      // Create the remaining items in one go. Use a maximum of 100 items
+      // as a safety measure.
+      super._increasePoolIfNeeded(Math.max(count, Math.min(100, missingItemCount)));
+    } else {
+      super._increasePoolIfNeeded(count);
+    }
   }
 
   /**

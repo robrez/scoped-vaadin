@@ -3,9 +3,9 @@
  * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**

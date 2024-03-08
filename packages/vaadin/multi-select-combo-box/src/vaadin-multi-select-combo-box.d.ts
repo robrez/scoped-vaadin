@@ -3,26 +3,26 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import type {
   ComboBoxDataProvider,
   ComboBoxDefaultItem,
   ComboBoxItemModel,
 } from '@scoped-vaadin/combo-box/src/vaadin-combo-box.js';
 import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+import type { SlotStylesMixinClass } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
-import type { SlotStylesMixinClass } from '@scoped-vaadin/field-base/src/slot-styles-mixin.js';
 import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
@@ -64,6 +64,11 @@ export type MultiSelectComboBoxFilterChangedEvent = CustomEvent<{ value: string 
 export type MultiSelectComboBoxInvalidChangedEvent = CustomEvent<{ value: boolean }>;
 
 /**
+ * Fired when the `opened` property changes.
+ */
+export type MultiSelectComboBoxOpenedChangedEvent = CustomEvent<{ value: boolean }>;
+
+/**
  * Fired when the `selectedItems` property changes.
  */
 export type MultiSelectComboBoxSelectedItemsChangedEvent<TItem> = CustomEvent<{ value: TItem[] }>;
@@ -81,6 +86,8 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
   'filter-changed': MultiSelectComboBoxFilterChangedEvent;
 
   'invalid-changed': MultiSelectComboBoxInvalidChangedEvent;
+
+  'opened-changed': MultiSelectComboBoxOpenedChangedEvent;
 
   'selected-items-changed': MultiSelectComboBoxSelectedItemsChangedEvent<TItem>;
 
@@ -139,6 +146,7 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
  * `--vaadin-field-default-width`                       | Default width of the field | `12em`
  * `--vaadin-multi-select-combo-box-overlay-width`      | Width of the overlay       | `auto`
  * `--vaadin-multi-select-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`
+ * `--vaadin-multi-select-combo-box-chip-min-width`     | Min width of the chip      | `50px`
  * `--vaadin-multi-select-combo-box-input-min-width`    | Min width of the input     | `4em`
  *
  * ### Internal components
@@ -153,16 +161,32 @@ export interface MultiSelectComboBoxEventMap<TItem> extends HTMLElementEventMap 
  * Note: the `theme` attribute value set on `<vaadin24-multi-select-combo-box>` is
  * propagated to these components.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} custom-value-set - Fired when the user sets a custom value.
  * @fires {CustomEvent} filter-changed - Fired when the `filter` property changes.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
+ * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} selected-items-changed - Fired when the `selectedItems` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  */
 declare class MultiSelectComboBox<TItem = ComboBoxDefaultItem> extends HTMLElement {
+  /**
+   * Set to true to auto expand horizontally, causing input field to
+   * grow until max width is reached.
+   * @attr {boolean} auto-expand-horizontally
+   */
+  autoExpandHorizontally: boolean;
+
+  /**
+   * Set to true to not collapse selected items chips into the overflow
+   * chip and instead always expand vertically, causing input field to
+   * wrap into multiple lines when width is limited.
+   * @attr {boolean} auto-expand-vertically
+   */
+  autoExpandVertically: boolean;
+
   /**
    * When true, the user can input a value that is not present in the items list.
    * @attr {boolean} allow-custom-value
@@ -298,6 +322,12 @@ declare class MultiSelectComboBox<TItem = ComboBoxDefaultItem> extends HTMLEleme
    * Note: modifying the selected items creates a new array each time.
    */
   selectedItems: TItem[];
+
+  /**
+   * Set to true to group selected items at the top of the overlay.
+   * @attr {boolean} selected-items-on-top
+   */
+  selectedItemsOnTop: boolean;
 
   /**
    * Total number of items.

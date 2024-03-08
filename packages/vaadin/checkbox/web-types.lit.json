@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/checkbox",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -16,7 +16,7 @@
       "elements": [
         {
           "name": "vaadin24-checkbox",
-          "description": "`<vaadin24-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin24-checkbox label=\"I accept the terms and conditions\"></vaadin24-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|-------------\n`checkbox`  | The element representing a stylable custom checkbox.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description\n----------------|-------------\n`active`        | Set when the checkbox is activated with mouse, touch or the keyboard.\n`checked`       | Set when the checkbox is checked.\n`disabled`      | Set when the checkbox is disabled.\n`focus-ring`    | Set when the checkbox is focused using the keyboard.\n`focused`       | Set when the checkbox is focused.\n`indeterminate` | Set when the checkbox is in the indeterminate state.\n`has-label`     | Set when the checkbox has a label.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-checkbox>` is an input field representing a binary choice.\n\n```html\n<vaadin24-checkbox label=\"I accept the terms and conditions\"></vaadin24-checkbox>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|-------------\n`checkbox`  | The element representing a stylable custom checkbox.\n\nThe following state attributes are available for styling:\n\nAttribute       | Description\n----------------|-------------\n`active`        | Set when the checkbox is activated with mouse, touch or the keyboard.\n`checked`       | Set when the checkbox is checked.\n`disabled`      | Set when the checkbox is disabled.\n`focus-ring`    | Set when the checkbox is focused using the keyboard.\n`focused`       | Set when the checkbox is focused.\n`indeterminate` | Set when the checkbox is in the indeterminate state.\n`has-label`     | Set when the checkbox has a label.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "extension": true,
           "attributes": [
             {
@@ -64,6 +64,13 @@
             {
               "name": ".name",
               "description": "The name of the checkbox.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "@change",
+              "description": "Fired when the checkbox is checked or unchecked by the user.",
               "value": {
                 "kind": "expression"
               }

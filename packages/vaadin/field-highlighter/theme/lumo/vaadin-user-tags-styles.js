@@ -7,35 +7,39 @@ import '@scoped-vaadin/vaadin-lumo-styles/color.js';
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
+import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
   'vaadin24-user-tags-overlay',
-  css`
-    [part='overlay'] {
-      will-change: opacity, transform;
-    }
-
-    :host([opening]) [part='overlay'] {
-      animation: 0.1s lumo-user-tags-enter ease-out both;
-    }
-
-    @keyframes lumo-user-tags-enter {
-      0% {
-        opacity: 0;
+  [
+    overlay,
+    css`
+      [part='overlay'] {
+        will-change: opacity, transform;
       }
-    }
 
-    :host([closing]) [part='overlay'] {
-      animation: 0.1s lumo-user-tags-exit both;
-    }
-
-    @keyframes lumo-user-tags-exit {
-      100% {
-        opacity: 0;
+      :host([opening]) [part='overlay'] {
+        animation: 0.1s lumo-user-tags-enter ease-out both;
       }
-    }
-  `,
+
+      @keyframes lumo-user-tags-enter {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      :host([closing]) [part='overlay'] {
+        animation: 0.1s lumo-user-tags-exit both;
+      }
+
+      @keyframes lumo-user-tags-exit {
+        100% {
+          opacity: 0;
+        }
+      }
+    `,
+  ],
   {
     moduleId: 'lumo-user-tags-overlay',
   },

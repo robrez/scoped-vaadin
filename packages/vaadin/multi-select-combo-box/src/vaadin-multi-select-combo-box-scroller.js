@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -7,10 +6,12 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
 import { ComboBoxScrollerMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-scroller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 
 /**
  * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ComboBoxScrollerMixin
  * @private
@@ -42,6 +43,7 @@ export class MultiSelectComboBoxScroller extends ComboBoxScrollerMixin(PolymerEl
           border-width: var(--_vaadin-multi-select-combo-box-items-container-border-width);
           border-style: var(--_vaadin-multi-select-combo-box-items-container-border-style);
           border-color: var(--_vaadin-multi-select-combo-box-items-container-border-color, transparent);
+          position: relative;
         }
       </style>
       <div id="selector">
@@ -86,4 +88,4 @@ export class MultiSelectComboBoxScroller extends ComboBoxScrollerMixin(PolymerEl
   }
 }
 
-internalCustomElements.define(MultiSelectComboBoxScroller.is, MultiSelectComboBoxScroller);
+defineCustomElement(MultiSelectComboBoxScroller);

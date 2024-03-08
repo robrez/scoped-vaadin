@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
@@ -8,11 +7,13 @@ import './vaadin-menu-bar-item.js';
 import './vaadin-menu-bar-list-box.js';
 import './vaadin-menu-bar-overlay.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ContextMenu } from '@scoped-vaadin/context-menu/src/vaadin-context-menu.js';
 
 /**
  * An element used internally by `<vaadin24-menu-bar>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends ContextMenu
  * @protected
  */
@@ -34,17 +35,6 @@ class MenuBarSubmenu extends ContextMenu {
       </style>
 
       <slot id="slot"></slot>
-
-      <vaadin24-menu-bar-overlay
-        id="overlay"
-        on-opened-changed="_onOverlayOpened"
-        on-vaadin-overlay-open="_onVaadinOverlayOpen"
-        modeless="[[_modeless]]"
-        with-backdrop="[[_phone]]"
-        phone$="[[_phone]]"
-        model="[[_context]]"
-        theme$="[[_theme]]"
-      ></vaadin24-menu-bar-overlay>
     `;
   }
 
@@ -67,7 +57,7 @@ class MenuBarSubmenu extends ContextMenu {
    * Overriding the observer to not add global "contextmenu" listener.
    */
   _openedChanged(opened) {
-    this.$.overlay.opened = opened;
+    this._overlayElement.opened = opened;
   }
 
   /**
@@ -83,4 +73,4 @@ class MenuBarSubmenu extends ContextMenu {
   }
 }
 
-internalCustomElements.define(MenuBarSubmenu.is, MenuBarSubmenu);
+defineCustomElement(MenuBarSubmenu);

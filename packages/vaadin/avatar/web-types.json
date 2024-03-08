@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/avatar",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
           "name": "vaadin24-avatar",
-          "description": "`<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.\n\n```html\n<vaadin24-avatar img=\"avatars/avatar-1.jpg\"></vaadin24-avatar>\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name | Description\n--------- | ---------------\n`abbr`    | The abbreviation element\n`icon`    | The icon element\n\nThe following state attributes are available for styling:\n\nAttribute         | Description\n------------------|-------------\n`focus-ring`      | Set when the avatar is focused using the keyboard.\n`focused`         | Set when the avatar is focused.\n`has-color-index` | Set when the avatar has `colorIndex` and the corresponding custom CSS property exists.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.\n\n```html\n<vaadin24-avatar img=\"avatars/avatar-1.jpg\"></vaadin24-avatar>\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name | Description\n--------- | ---------------\n`abbr`    | The abbreviation element\n`icon`    | The icon element\n\nThe following state attributes are available for styling:\n\nAttribute         | Description\n------------------|-------------\n`focus-ring`      | Set when the avatar is focused using the keyboard.\n`focused`         | Set when the avatar is focused.\n`has-color-index` | Set when the avatar has `colorIndex` and the corresponding custom CSS property exists.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "attributes": [
             {
               "name": "img",

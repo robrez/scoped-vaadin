@@ -3,8 +3,9 @@
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -152,6 +153,7 @@ interface ComboBoxLight<TItem = ComboBoxDefaultItem>
     InputMixinClass,
     DisabledMixinClass,
     ThemableMixinClass,
+    FocusMixinClass,
     ThemePropertyMixinClass,
     ValidateMixinClass {}
 

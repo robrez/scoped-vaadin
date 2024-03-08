@@ -3,13 +3,13 @@
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
@@ -205,7 +205,7 @@ export interface ComboBoxEventMap<TItem> extends HTMLElementEventMap {
  * Note: the `theme` attribute value set on `<vaadin24-combo-box>` is
  * propagated to the internal components listed above.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} custom-value-set - Fired when the user sets a custom value.

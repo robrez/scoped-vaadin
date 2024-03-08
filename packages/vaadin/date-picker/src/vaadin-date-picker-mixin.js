@@ -3,10 +3,11 @@
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { hideOthers } from '@scoped-vaadin/a11y-base/src/aria-hidden.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
+import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
-import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
 import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { InputConstraintsMixin } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
@@ -41,14 +42,18 @@ export const DatePickerMixin = (subclass) =>
          * @protected
          */
         _selectedDate: {
-          type: Date,
+          type: Object,
+          sync: true,
         },
 
         /**
          * @type {Date | undefined}
          * @protected
          */
-        _focusedDate: Date,
+        _focusedDate: {
+          type: Object,
+          sync: true,
+        },
 
         /**
          * Selected date.
@@ -63,6 +68,7 @@ export const DatePickerMixin = (subclass) =>
           type: String,
           notify: true,
           value: '',
+          sync: true,
         },
 
         /**
@@ -81,6 +87,7 @@ export const DatePickerMixin = (subclass) =>
           reflectToAttribute: true,
           notify: true,
           observer: '_openedChanged',
+          sync: true,
         },
 
         /**
@@ -98,6 +105,7 @@ export const DatePickerMixin = (subclass) =>
         showWeekNumbers: {
           type: Boolean,
           value: false,
+          sync: true,
         },
 
         /**
@@ -107,6 +115,7 @@ export const DatePickerMixin = (subclass) =>
         _fullscreen: {
           type: Boolean,
           value: false,
+          sync: true,
         },
 
         /**
@@ -205,6 +214,7 @@ export const DatePickerMixin = (subclass) =>
          */
         i18n: {
           type: Object,
+          sync: true,
           value: () => {
             return {
               monthNames: [
@@ -275,6 +285,7 @@ export const DatePickerMixin = (subclass) =>
          */
         min: {
           type: String,
+          sync: true,
         },
 
         /**
@@ -288,6 +299,7 @@ export const DatePickerMixin = (subclass) =>
          */
         max: {
           type: String,
+          sync: true,
         },
 
         /**
@@ -298,6 +310,7 @@ export const DatePickerMixin = (subclass) =>
         _minDate: {
           type: Date,
           computed: '__computeMinOrMaxDate(min)',
+          sync: true,
         },
 
         /**
@@ -308,6 +321,7 @@ export const DatePickerMixin = (subclass) =>
         _maxDate: {
           type: Date,
           computed: '__computeMinOrMaxDate(max)',
+          sync: true,
         },
 
         /** @private */
@@ -326,14 +340,31 @@ export const DatePickerMixin = (subclass) =>
         _focusOverlayOnOpen: Boolean,
 
         /** @private */
-        _overlayContent: Object,
+        _overlayContent: {
+          type: Object,
+          sync: true,
+        },
+
+        /**
+         * In date-picker, unlike other components extending `InputMixin`,
+         * the property indicates true only if the input has been entered by the user.
+         * In the case of programmatic changes, the property is reset to false.
+         * Read more about why this workaround is needed:
+         * https://github.com/vaadin/web-components/issues/5639
+         *
+         * @protected
+         * @override
+         */
+        _hasInputValue: {
+          type: Boolean,
+        },
       };
     }
 
     static get observers() {
       return [
-        '_selectedDateChanged(_selectedDate, i18n.formatDate)',
-        '_focusedDateChanged(_focusedDate, i18n.formatDate)',
+        '_selectedDateChanged(_selectedDate, i18n)',
+        '_focusedDateChanged(_focusedDate, i18n)',
         '__updateOverlayContent(_overlayContent, i18n, label, _minDate, _maxDate, _focusedDate, _selectedDate, showWeekNumbers)',
         '__updateOverlayContentTheme(_overlayContent, _theme)',
         '__updateOverlayContentFullScreen(_overlayContent, _fullscreen)',
@@ -350,6 +381,30 @@ export const DatePickerMixin = (subclass) =>
       this._boundOnClick = this._onClick.bind(this);
       this._boundOnScroll = this._onScroll.bind(this);
       this._boundOverlayRenderer = this._overlayRenderer.bind(this);
+    }
+
+    /**
+     * @override
+     * @protected
+     */
+    get _inputElementValue() {
+      return super._inputElementValue;
+    }
+
+    /**
+     * The setter is overridden to reset the `_hasInputValue` property
+     * to false when the input element's value is updated programmatically.
+     * In date-picker, `_hasInputValue` is supposed to indicate true only
+     * if the input has been entered by the user.
+     * Read more about why this workaround is needed:
+     * https://github.com/vaadin/web-components/issues/5639
+     *
+     * @override
+     * @protected
+     */
+    set _inputElementValue(value) {
+      super._inputElementValue = value;
+      this._hasInputValue = false;
     }
 
     /**
@@ -372,16 +427,18 @@ export const DatePickerMixin = (subclass) =>
       return null;
     }
 
-    /** @protected */
-    get _inputValue() {
-      return this.inputElement ? this.inputElement.value : undefined;
-    }
-
-    /** @protected */
-    set _inputValue(value) {
-      if (this.inputElement) {
-        this.inputElement.value = value;
+    /**
+     * The input element's value when it cannot be parsed as a date, and an empty string otherwise.
+     *
+     * @return {string}
+     * @private
+     */
+    get __unparsableValue() {
+      if (!this._inputElementValue || this.__parseDate(this._inputElementValue)) {
+        return '';
       }
+
+      return this._inputElementValue;
     }
 
     /**
@@ -404,14 +461,12 @@ export const DatePickerMixin = (subclass) =>
       super._onBlur(event);
 
       if (!this.opened) {
-        if (this.autoOpenDisabled) {
-          this._selectParsedOrFocusedDate();
-        }
+        this.__commitParsedOrFocusedDate();
 
-        this.validate();
-
-        if (this._inputValue === '' && this.value !== '') {
-          this.value = '';
+        // Do not validate when focusout is caused by document
+        // losing focus, which happens on browser tab switch.
+        if (document.hasFocus()) {
+          this.validate();
         }
       }
     }
@@ -444,25 +499,6 @@ export const DatePickerMixin = (subclass) =>
       super.disconnectedCallback();
 
       this.opened = false;
-    }
-
-    /**
-     * Override Polymer lifecycle callback to dispatch `change` event if needed.
-     * This is necessary to ensure `change` is fired after `value-changed`.
-     *
-     * @param {!Object} currentProps Current accessor values
-     * @param {?Object} changedProps Properties changed since the last call
-     * @param {?Object} oldProps Previous values for each changed property
-     * @protected
-     * @override
-     */
-    _propertiesChanged(currentProps, changedProps, oldProps) {
-      super._propertiesChanged(currentProps, changedProps, oldProps);
-
-      if ('value' in changedProps && this.__dispatchChange) {
-        this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
-        this.__dispatchChange = false;
-      }
     }
 
     /**
@@ -501,18 +537,14 @@ export const DatePickerMixin = (subclass) =>
 
       // User confirmed selected date by clicking the calendar.
       content.addEventListener('date-tap', (e) => {
-        this.__userConfirmedDate = true;
-
-        this._selectDate(e.detail.date);
+        this.__commitDate(e.detail.date);
 
         this._close();
       });
 
-      // User confirmed selected date by pressing Enter or Today.
+      // User confirmed selected date by pressing Enter, Space, or Today.
       content.addEventListener('date-selected', (e) => {
-        this.__userConfirmedDate = true;
-
-        this._selectDate(e.detail.date);
+        this.__commitDate(e.detail.date);
       });
 
       // Set focus-ring attribute when moving focus to the overlay
@@ -527,6 +559,36 @@ export const DatePickerMixin = (subclass) =>
       content.addEventListener('focused-date-changed', (e) => {
         this._focusedDate = e.detail.value;
       });
+
+      content.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    /**
+     * @param {string} dateString
+     * @private
+     */
+    __parseDate(dateString) {
+      if (!this.i18n.parseDate) {
+        return;
+      }
+
+      let dateObject = this.i18n.parseDate(dateString);
+      if (dateObject) {
+        dateObject = parseDate(`${dateObject.year}-${dateObject.month + 1}-${dateObject.day}`);
+      }
+      if (dateObject && !isNaN(dateObject.getTime())) {
+        return dateObject;
+      }
+    }
+
+    /**
+     * @param {Date} dateObject
+     * @private
+     */
+    __formatDate(dateObject) {
+      if (this.i18n.formatDate) {
+        return this.i18n.formatDate(extractDateParts(dateObject));
+      }
     }
 
     /**
@@ -537,9 +599,8 @@ export const DatePickerMixin = (subclass) =>
      * @return {boolean} True if the value is valid
      */
     checkValidity() {
-      const inputValid =
-        !this._inputValue ||
-        (!!this._selectedDate && this._inputValue === this._getFormattedDate(this.i18n.formatDate, this._selectedDate));
+      const inputValue = this._inputElementValue;
+      const inputValid = !inputValue || (!!this._selectedDate && inputValue === this.__formatDate(this._selectedDate));
       const minMaxValid = !this._selectedDate || dateAllowed(this._selectedDate, this._minDate, this._maxDate);
 
       let inputValidity = true;
@@ -601,21 +662,51 @@ export const DatePickerMixin = (subclass) =>
     }
 
     /**
-     * Select date on user interaction and set the flag
-     * to fire change event if necessary.
+     * Depending on the nature of the value change that has occurred since
+     * the last commit attempt, triggers validation and fires an event:
      *
-     * @param {Date} dateToSelect
-     * @protected
+     * Value change             | Event
+     * :------------------------|:------------------
+     * empty => parsable        | change
+     * empty => unparsable      | unparsable-change
+     * parsable => empty        | change
+     * parsable => parsable     | change
+     * parsable => unparsable   | change
+     * unparsable => empty      | unparsable-change
+     * unparsable => parsable   | change
+     * unparsable => unparsable | unparsable-change
+     *
+     * @private
      */
-    _selectDate(dateToSelect) {
-      const value = this._formatISO(dateToSelect);
+    __commitValueChange() {
+      const unparsableValue = this.__unparsableValue;
 
-      // Only set flag if the value will change.
-      if (this.value !== value) {
-        this.__dispatchChange = true;
+      if (this.__committedValue !== this.value) {
+        this.validate();
+        this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
+      } else if (this.__committedUnparsableValue !== unparsableValue) {
+        this.validate();
+        this.dispatchEvent(new CustomEvent('unparsable-change'));
       }
 
-      this._selectedDate = dateToSelect;
+      this.__committedValue = this.value;
+      this.__committedUnparsableValue = unparsableValue;
+    }
+
+    /**
+     * Sets the given date as the value and commits it.
+     *
+     * @param {Date} date
+     * @private
+     */
+    __commitDate(date) {
+      // Prevent the value observer from treating the following value change
+      // as initiated programmatically by the developer, and therefore
+      // from automatically committing it without a change event.
+      this.__keepCommittedValue = true;
+      this._selectedDate = date;
+      this.__keepCommittedValue = false;
+      this.__commitValueChange();
     }
 
     /** @private */
@@ -691,28 +782,24 @@ export const DatePickerMixin = (subclass) =>
     }
 
     /** @private */
-    _selectedDateChanged(selectedDate, formatDate) {
-      if (selectedDate === undefined || formatDate === undefined) {
+    _selectedDateChanged(selectedDate, i18n) {
+      if (selectedDate === undefined || i18n === undefined) {
         return;
       }
-      const value = this._formatISO(selectedDate);
 
       if (!this.__keepInputValue) {
         this._applyInputValue(selectedDate);
       }
 
-      if (value !== this.value) {
-        this.validate();
-        this.value = value;
-      }
+      this.value = this._formatISO(selectedDate);
       this._ignoreFocusedDateChange = true;
       this._focusedDate = selectedDate;
       this._ignoreFocusedDateChange = false;
     }
 
     /** @private */
-    _focusedDateChanged(focusedDate, formatDate) {
-      if (focusedDate === undefined || formatDate === undefined) {
+    _focusedDateChanged(focusedDate, i18n) {
+      if (focusedDate === undefined || i18n === undefined) {
         return;
       }
       if (!this._ignoreFocusedDateChange && !this._noInput) {
@@ -755,6 +842,11 @@ export const DatePickerMixin = (subclass) =>
         this._selectedDate = null;
       }
 
+      if (!this.__keepCommittedValue) {
+        this.__committedValue = this.value;
+        this.__committedUnparsableValue = '';
+      }
+
       this._toggleHasValue(this._hasValue);
     }
 
@@ -762,15 +854,13 @@ export const DatePickerMixin = (subclass) =>
     // eslint-disable-next-line max-params
     __updateOverlayContent(overlayContent, i18n, label, minDate, maxDate, focusedDate, selectedDate, showWeekNumbers) {
       if (overlayContent) {
-        overlayContent.setProperties({
-          i18n,
-          label,
-          minDate,
-          maxDate,
-          focusedDate,
-          selectedDate,
-          showWeekNumbers,
-        });
+        overlayContent.i18n = i18n;
+        overlayContent.label = label;
+        overlayContent.minDate = minDate;
+        overlayContent.maxDate = maxDate;
+        overlayContent.focusedDate = focusedDate;
+        overlayContent.selectedDate = selectedDate;
+        overlayContent.showWeekNumbers = showWeekNumbers;
       }
     }
 
@@ -800,32 +890,39 @@ export const DatePickerMixin = (subclass) =>
 
     /** @protected */
     _onOverlayOpened() {
+      const content = this._overlayContent;
+      content.reset();
+
       // Detect which date to show
       const initialPosition = this._getInitialPosition();
-      this._overlayContent.initialPosition = initialPosition;
+      content.initialPosition = initialPosition;
 
       // Scroll the date into view
-      const scrollFocusDate = this._overlayContent.focusedDate || initialPosition;
-      this._overlayContent.scrollToDate(scrollFocusDate);
+      const scrollFocusDate = content.focusedDate || initialPosition;
+      content.scrollToDate(scrollFocusDate);
 
       // Ensure the date is focused
       this._ignoreFocusedDateChange = true;
-      this._overlayContent.focusedDate = scrollFocusDate;
+      content.focusedDate = scrollFocusDate;
       this._ignoreFocusedDateChange = false;
 
       window.addEventListener('scroll', this._boundOnScroll, true);
 
       if (this._focusOverlayOnOpen) {
-        this._overlayContent.focusDateElement();
+        content.focusDateElement();
         this._focusOverlayOnOpen = false;
       } else {
         this._focus();
       }
 
-      if (this._noInput && this.focusElement) {
-        this.focusElement.blur();
+      const input = this._nativeInput;
+      if (this._noInput && input) {
+        input.blur();
         this._overlayContent.focusDateElement();
       }
+
+      const focusables = this._noInput ? content : [input, content];
+      this.__showOthers = hideOthers(focusables);
     }
 
     /** @private */
@@ -840,45 +937,52 @@ export const DatePickerMixin = (subclass) =>
         : getClosestDate(initialPosition, [this._minDate, this._maxDate]);
     }
 
-    /** @private */
-    _selectParsedOrFocusedDate() {
+    /**
+     * Tries to parse the input element's value as a date. If the input value
+     * is parsable, commits the resulting date as the value. Otherwise, commits
+     * an empty string as the value. If no i18n parser is provided, commits
+     * the focused date as the value.
+     *
+     * @private
+     */
+    __commitParsedOrFocusedDate() {
       // Select the parsed input or focused date
       this._ignoreFocusedDateChange = true;
       if (this.i18n.parseDate) {
-        const inputValue = this._inputValue || '';
-        const parsedDate = this._getParsedDate(inputValue);
+        const inputValue = this._inputElementValue || '';
+        const parsedDate = this.__parseDate(inputValue);
 
-        if (this._isValidDate(parsedDate)) {
-          this._selectDate(parsedDate);
+        if (parsedDate) {
+          this.__commitDate(parsedDate);
         } else {
           this.__keepInputValue = true;
-          this._selectDate(null);
-          this._selectedDate = null;
+          this.__commitDate(null);
           this.__keepInputValue = false;
         }
       } else if (this._focusedDate) {
-        this._selectDate(this._focusedDate);
+        this.__commitDate(this._focusedDate);
       }
       this._ignoreFocusedDateChange = false;
     }
 
     /** @protected */
     _onOverlayClosed() {
+      // Reset `aria-hidden` state.
+      if (this.__showOthers) {
+        this.__showOthers();
+        this.__showOthers = null;
+      }
       window.removeEventListener('scroll', this._boundOnScroll, true);
 
-      // No need to select date on close if it was confirmed by the user.
-      if (this.__userConfirmedDate) {
-        this.__userConfirmedDate = false;
-      } else {
-        this._selectParsedOrFocusedDate();
-      }
+      this.__commitParsedOrFocusedDate();
 
       if (this._nativeInput && this._nativeInput.selectionStart) {
         this._nativeInput.selectionStart = this._nativeInput.selectionEnd;
       }
       // No need to revalidate the value after `_selectedDateChanged`
-      // Needed in case the value was not changed: open and close dropdown.
-      if (!this.value) {
+      // Needed in case the value was not changed: open and close dropdown,
+      // especially on outside click. On Esc key press, do not validate.
+      if (!this.value && !this._keyboardActive) {
         this.validate();
       }
     }
@@ -900,17 +1004,12 @@ export const DatePickerMixin = (subclass) =>
     /** @private */
     _focusAndSelect() {
       this._focus();
-      this._setSelectionRange(0, this._inputValue.length);
+      this._setSelectionRange(0, this._inputElementValue.length);
     }
 
     /** @private */
     _applyInputValue(date) {
-      this._inputValue = date ? this._getFormattedDate(this.i18n.formatDate, date) : '';
-    }
-
-    /** @private */
-    _getFormattedDate(formatDate, date) {
-      return formatDate(extractDateParts(date));
+      this._inputElementValue = date ? this.__formatDate(date) : '';
     }
 
     /** @private */
@@ -920,23 +1019,14 @@ export const DatePickerMixin = (subclass) =>
       }
     }
 
-    /** @private */
-    _isValidDate(d) {
-      return d && !isNaN(d.getTime());
-    }
-
     /**
      * Override an event listener from `InputConstraintsMixin`
-     * to have date-picker fully control when to fire a change event.
+     * to have date-picker fully control when to fire a change event
+     * and trigger validation.
+     *
      * @protected
      */
     _onChange(event) {
-      // For change event on the native <input> blur, after the input is cleared,
-      // we schedule change event to be dispatched on date-picker blur.
-      if (this._inputValue === '') {
-        this.__dispatchChange = true;
-      }
-
       event.stopPropagation();
     }
 
@@ -970,10 +1060,7 @@ export const DatePickerMixin = (subclass) =>
      */
     _onClearButtonClick(event) {
       event.preventDefault();
-      this.value = '';
-      this._inputValue = '';
-      this.validate();
-      this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
+      this.__commitDate(null);
     }
 
     /**
@@ -1037,15 +1124,11 @@ export const DatePickerMixin = (subclass) =>
      * @override
      */
     _onEnter(_event) {
-      const oldValue = this.value;
       if (this.opened) {
         // Closing will implicitly select parsed or focused date
         this.close();
       } else {
-        this._selectParsedOrFocusedDate();
-      }
-      if (oldValue === this.value) {
-        this.validate();
+        this.__commitParsedOrFocusedDate();
       }
     }
 
@@ -1072,23 +1155,12 @@ export const DatePickerMixin = (subclass) =>
         return;
       }
 
-      if (this.autoOpenDisabled) {
+      if (this.inputElement.value === '') {
         // Do not restore selected date if Esc was pressed after clearing input field
-        if (this.inputElement.value === '') {
-          this._selectDate(null);
-        }
-        this._applyInputValue(this._selectedDate);
+        this.__commitDate(null);
       } else {
-        this._focusedDate = this._selectedDate;
-        this._selectParsedOrFocusedDate();
+        this._applyInputValue(this._selectedDate);
       }
-    }
-
-    /** @private */
-    _getParsedDate(inputValue = this._inputValue) {
-      const dateObject = this.i18n.parseDate && this.i18n.parseDate(inputValue);
-      const parsedDate = dateObject && parseDate(`${dateObject.year}-${dateObject.month + 1}-${dateObject.day}`);
-      return parsedDate;
     }
 
     /** @protected */
@@ -1101,18 +1173,13 @@ export const DatePickerMixin = (subclass) =>
      * @protected
      */
     _onInput() {
-      if (!this.opened && this.inputElement.value && !this.autoOpenDisabled) {
+      if (!this.opened && this._inputElementValue && !this.autoOpenDisabled) {
         this.open();
       }
-      this._userInputValueChanged();
-    }
 
-    /** @private */
-    _userInputValueChanged() {
-      if (this._inputValue) {
-        const parsedDate = this._getParsedDate();
-
-        if (this._isValidDate(parsedDate)) {
+      if (this._inputElementValue) {
+        const parsedDate = this.__parseDate(this._inputElementValue);
+        if (parsedDate) {
           this._ignoreFocusedDateChange = true;
           if (!dateEquals(parsedDate, this._focusedDate)) {
             this._focusedDate = parsedDate;

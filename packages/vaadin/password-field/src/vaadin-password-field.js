@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import './vaadin-password-field-button.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
 
@@ -41,7 +41,7 @@ let memoizedTemplate;
  * -------------------|---------------------------------
  * `password-visible` | Set when the password is visible
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} input - Fired when the value is changed by the user: on every typing keystroke, and the value is cleared using the clear button.
  * @fires {Event} change - Fired when the user commits a value change.
@@ -49,6 +49,7 @@ let memoizedTemplate;
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends TextField
  */
 export class PasswordField extends TextField {
@@ -126,7 +127,8 @@ export class PasswordField extends TextField {
     super();
     this._setType('password');
     this.__boundRevealButtonClick = this._onRevealButtonClick.bind(this);
-    this.__boundRevealButtonTouchend = this._onRevealButtonTouchend.bind(this);
+    this.__boundRevealButtonMouseDown = this._onRevealButtonMouseDown.bind(this);
+    this.__lastChange = '';
   }
 
   /** @protected */
@@ -158,7 +160,7 @@ export class PasswordField extends TextField {
         btn.disabled = this.disabled;
 
         btn.addEventListener('click', this.__boundRevealButtonClick);
-        btn.addEventListener('touchend', this.__boundRevealButtonTouchend);
+        btn.addEventListener('mousedown', this.__boundRevealButtonMouseDown);
       },
     });
     this.addController(this._revealButtonController);
@@ -171,6 +173,19 @@ export class PasswordField extends TextField {
     if (this.inputElement) {
       this.inputElement.autocapitalize = 'off';
     }
+  }
+
+  /**
+   * Override an event listener inherited from `InputControlMixin`
+   * to store the value at the moment of the native `change` event.
+   * @param {Event} event
+   * @protected
+   * @override
+   */
+  _onChange(event) {
+    super._onChange(event);
+
+    this.__lastChange = this.inputElement.value;
   }
 
   /**
@@ -209,6 +224,12 @@ export class PasswordField extends TextField {
 
     if (!focused) {
       this._setPasswordVisible(false);
+
+      // Detect if `focusout` was prevented and if so, dispatch `change` event manually.
+      if (this.__lastChange !== this.inputElement.value) {
+        this.__lastChange = this.inputElement.value;
+        this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
+      }
     } else {
       const isButtonFocused = this.getRootNode().activeElement === this._revealNode;
       // Remove focus-ring from the field when the reveal button gets focused
@@ -244,10 +265,10 @@ export class PasswordField extends TextField {
   }
 
   /** @private */
-  _onRevealButtonTouchend(e) {
-    // Cancel the following click event
+  _onRevealButtonMouseDown(e) {
+    // Cancel the following focusout event
     e.preventDefault();
-    this._togglePasswordVisibility();
+
     // Focus the input to avoid problem with password still visible
     // when user clicks the reveal button and then clicks outside.
     this.inputElement.focus();
@@ -298,4 +319,4 @@ export class PasswordField extends TextField {
   }
 }
 
-internalCustomElements.define(PasswordField.is, PasswordField);
+defineCustomElement(PasswordField);

@@ -5,12 +5,10 @@
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { AvatarMixin } from './vaadin-avatar-mixin.js';
 
-export interface AvatarI18n {
-  anonymous: string;
-}
+export { AvatarI18n } from './vaadin-avatar-mixin.js';
 
 /**
  * `<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.
@@ -36,56 +34,9 @@ export interface AvatarI18n {
  * `focused`         | Set when the avatar is focused.
  * `has-color-index` | Set when the avatar has `colorIndex` and the corresponding custom CSS property exists.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  */
-declare class Avatar extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))) {
-  /**
-   * The path to the image
-   */
-  img: string | null | undefined;
-
-  /**
-   * A shortened form of name that is displayed
-   * in the avatar when `img` is not provided.
-   */
-  abbr: string | null | undefined;
-
-  /**
-   * Full name of the user
-   * used for the tooltip of the avatar.
-   */
-  name: string | null | undefined;
-
-  /**
-   * Color index used for avatar background.
-   * @attr {number} color-index
-   */
-  colorIndex: number | null | undefined;
-
-  /**
-   * The object used to localize this component.
-   * To change the default localization, replace the entire
-   * _i18n_ object or just the property you want to modify.
-   *
-   * The object has the following JSON structure and default values:
-   *
-   * ```
-   * {
-   *   // Translation of the anonymous user avatar tooltip.
-   *   anonymous: 'anonymous'
-   * }
-   * ```
-   */
-  i18n: AvatarI18n;
-
-  /**
-   * When true, the avatar has tooltip shown on hover and focus.
-   * The tooltip text is based on the `name` and `abbr` properties.
-   * When neither is provided, `i18n.anonymous` is used instead.
-   * @attr {boolean} with-tooltip
-   */
-  withTooltip: boolean;
-}
+declare class Avatar extends AvatarMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))) {}
 
 declare global {
   interface HTMLElementTagNameMap {

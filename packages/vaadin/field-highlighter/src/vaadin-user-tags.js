@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -10,6 +9,7 @@ import { calculateSplices } from '@polymer/polymer/lib/utils/array-splice.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 
 const listenOnce = (elem, type) => {
   return new Promise((resolve) => {
@@ -24,6 +24,7 @@ const listenOnce = (elem, type) => {
 /**
  * An element used internally by `<vaadin24-field-highlighter>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @private
  */
@@ -451,4 +452,4 @@ export class UserTags extends PolymerElement {
   }
 }
 
-internalCustomElements.define(UserTags.is, UserTags);
+defineCustomElement(UserTags);

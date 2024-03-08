@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/radio-group",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
           "name": "vaadin24-radio-button",
-          "description": "`<vaadin24-radio-button>` is a web component representing a choice in a radio group.\nOnly one radio button in the group can be selected at the same time.\n\n```html\n<vaadin24-radio-group label=\"Travel class\">\n  <vaadin24-radio-button value=\"economy\" label=\"Economy\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"business\" label=\"Business\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"firstClass\" label=\"First Class\"></vaadin24-radio-button>\n</vaadin24-radio-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|----------------\n`radio`     | The wrapper element that contains slotted `<input type=\"radio\">`.\n\nThe following state attributes are available for styling:\n\nAttribute    | Description | Part name\n-------------|-------------|------------\n`active`     | Set when the radio button is pressed down, either with a pointer or the keyboard. | `:host`\n`disabled`   | Set when the radio button is disabled. | `:host`\n`focus-ring` | Set when the radio button is focused using the keyboard. | `:host`\n`focused`    | Set when the radio button is focused. | `:host`\n`checked`    | Set when the radio button is checked. | `:host`\n`has-label`  | Set when the radio button has a label. | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-radio-button>` is a web component representing a choice in a radio group.\nOnly one radio button in the group can be selected at the same time.\n\n```html\n<vaadin24-radio-group label=\"Travel class\">\n  <vaadin24-radio-button value=\"economy\" label=\"Economy\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"business\" label=\"Business\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"firstClass\" label=\"First Class\"></vaadin24-radio-button>\n</vaadin24-radio-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name   | Description\n------------|----------------\n`radio`     | The wrapper element that contains slotted `<input type=\"radio\">`.\n\nThe following state attributes are available for styling:\n\nAttribute    | Description | Part name\n-------------|-------------|------------\n`active`     | Set when the radio button is pressed down, either with a pointer or the keyboard. | `:host`\n`disabled`   | Set when the radio button is disabled. | `:host`\n`focus-ring` | Set when the radio button is focused using the keyboard. | `:host`\n`focused`    | Set when the radio button is focused. | `:host`\n`checked`    | Set when the radio button is checked. | `:host`\n`has-label`  | Set when the radio button has a label. | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
@@ -38,6 +38,17 @@
               "value": {
                 "type": [
                   "boolean"
+                ]
+              }
+            },
+            {
+              "name": "autofocus",
+              "description": "Specify that this control should have input focus when the page loads.",
+              "value": {
+                "type": [
+                  "boolean",
+                  "null",
+                  "undefined"
                 ]
               }
             },
@@ -107,6 +118,17 @@
                 }
               },
               {
+                "name": "autofocus",
+                "description": "Specify that this control should have input focus when the page loads.",
+                "value": {
+                  "type": [
+                    "boolean",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "label",
                 "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used.",
                 "value": {
@@ -141,7 +163,7 @@
         },
         {
           "name": "vaadin24-radio-group",
-          "description": "`<vaadin24-radio-group>` is a web component that allows the user to choose one item from a group of choices.\n\n```html\n<vaadin24-radio-group label=\"Travel class\">\n  <vaadin24-radio-button value=\"economy\" label=\"Economy\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"business\" label=\"Business\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"firstClass\" label=\"First Class\"></vaadin24-radio-button>\n</vaadin24-radio-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`group-field`        | The radio button elements wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`disabled`          | Set when the element is disabled          | :host\n`readonly`          | Set when the element is readonly          | :host\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-radio-group>` is a web component that allows the user to choose one item from a group of choices.\n\n```html\n<vaadin24-radio-group label=\"Travel class\">\n  <vaadin24-radio-button value=\"economy\" label=\"Economy\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"business\" label=\"Business\"></vaadin24-radio-button>\n  <vaadin24-radio-button value=\"firstClass\" label=\"First Class\"></vaadin24-radio-button>\n</vaadin24-radio-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`group-field`        | The radio button elements wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`disabled`          | Set when the element is disabled          | :host\n`readonly`          | Set when the element is readonly          | :host\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "attributes": [
             {
               "name": "disabled",
@@ -201,6 +223,28 @@
             {
               "name": "helper-text",
               "description": "String used for the helper text.",
+              "value": {
+                "type": [
+                  "string",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
+              "name": "accessible-name",
+              "description": "String used to label the component to screen reader users.",
+              "value": {
+                "type": [
+                  "string",
+                  "null",
+                  "undefined"
+                ]
+              }
+            },
+            {
+              "name": "accessible-name-ref",
+              "description": "Id of the element used as label of the component to screen reader users.",
               "value": {
                 "type": [
                   "string",
@@ -308,6 +352,28 @@
                 }
               },
               {
+                "name": "accessibleName",
+                "description": "String used to label the component to screen reader users.",
+                "value": {
+                  "type": [
+                    "string",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
+                "name": "accessibleNameRef",
+                "description": "Id of the element used as label of the component to screen reader users.",
+                "value": {
+                  "type": [
+                    "string",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "value",
                 "description": "The value of the radio group.",
                 "value": {
@@ -332,12 +398,12 @@
                 "description": "Fired whenever the field is validated."
               },
               {
-                "name": "value-changed",
-                "description": "Fired when the `value` property changes."
-              },
-              {
                 "name": "invalid-changed",
                 "description": "Fired when the `invalid` property changes."
+              },
+              {
+                "name": "value-changed",
+                "description": "Fired when the `value` property changes."
               }
             ]
           }

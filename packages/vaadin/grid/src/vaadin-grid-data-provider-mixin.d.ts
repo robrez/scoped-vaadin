@@ -4,6 +4,10 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
+import type {
+  DataProvider,
+  DataProviderCallback,
+} from '@scoped-vaadin/component-base/src/data-provider-controller/data-provider-controller.js';
 import { GridSorterDirection } from './vaadin-grid-sorter.js';
 
 export { GridSorterDirection };
@@ -18,7 +22,7 @@ export interface GridSorterDefinition {
   direction: GridSorterDirection;
 }
 
-export type GridDataProviderCallback<TItem> = (items: TItem[], size?: number) => void;
+export type GridDataProviderCallback<TItem> = DataProviderCallback<TItem>;
 
 export type GridDataProviderParams<TItem> = {
   page: number;
@@ -28,33 +32,7 @@ export type GridDataProviderParams<TItem> = {
   parentItem?: TItem;
 };
 
-export type GridDataProvider<TItem> = (
-  params: GridDataProviderParams<TItem>,
-  callback: GridDataProviderCallback<TItem>,
-) => void;
-
-export declare class ItemCache<TItem> {
-  grid: HTMLElement;
-  parentCache: ItemCache<TItem> | undefined;
-  parentItem: TItem | undefined;
-  itemCaches: object | null;
-  items: object | null;
-  effectiveSize: number;
-  size: number;
-  pendingRequests: object | null;
-
-  constructor(grid: HTMLElement, parentCache: ItemCache<TItem> | undefined, parentItem: TItem | undefined);
-
-  isLoading(): boolean;
-
-  getItemForIndex(index: number): TItem | undefined;
-
-  updateSize(): void;
-
-  ensureSubCacheForScaledIndex(scaledIndex: number): void;
-
-  getCacheAndIndex(index: number): { cache: ItemCache<TItem>; scaledIndex: number };
-}
+export type GridDataProvider<TItem> = DataProvider<TItem, GridDataProviderParams<TItem>>;
 
 export declare function DataProviderMixin<TItem, T extends Constructor<HTMLElement>>(
   base: T,
@@ -138,4 +116,19 @@ export declare class DataProviderMixinClass<TItem> {
    * Clears the cached pages and reloads data from dataprovider when needed.
    */
   clearCache(): void;
+
+  /**
+   * Scroll to a specific row index in the virtual list. Note that the row index is
+   * not always the same for any particular item. For example, sorting or filtering
+   * items can affect the row index related to an item.
+   *
+   * The `indexes` parameter can be either a single number or multiple numbers.
+   * The grid will first try to scroll to the item at the first index on the top level.
+   * In case the item at the first index is expanded, the grid will then try scroll to the
+   * item at the second index within the children of the expanded first item, and so on.
+   * Each given index points to a child of the item at the previous index.
+   *
+   * Using `Infinity` as an index will point to the last item on the level.
+   */
+  scrollToIndex(...indexes: number[]): void;
 }

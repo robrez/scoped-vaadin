@@ -3,7 +3,7 @@
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
+import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -38,7 +38,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `opened`     | Set when the collapsible content is expanded and visible.
  * `disabled`   | Set when the element is disabled.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  */
 declare class AccordionHeading extends ActiveMixin(DirMixin(ThemableMixin(HTMLElement))) {
   /**

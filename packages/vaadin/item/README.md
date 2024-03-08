@@ -13,7 +13,7 @@ A web component for displaying items in list-box, context-menu or select compone
 <vaadin24-item>Simple Item</vaadin24-item> <vaadin24-item disabled>Disabled Item</vaadin24-item>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/vaadin-item/master/screenshot.png" width="169" alt="Screenshot of vaadin-item">](https://vaadin.com/components/vaadin-item)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/item/screenshot.png" width="169" alt="Screenshot of vaadin-item">](https://vaadin.com/docs/latest/components/item)
 
 ## Installation
 
@@ -32,7 +32,7 @@ import '@scoped-vaadin/item';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/item/vaadin-item.js) of the package uses Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/item/vaadin-item.js) of the package uses Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

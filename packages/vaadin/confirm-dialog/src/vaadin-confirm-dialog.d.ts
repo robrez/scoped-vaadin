@@ -6,23 +6,9 @@
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+import { type ConfirmDialogEventMap, ConfirmDialogMixin } from './vaadin-confirm-dialog-mixin.js';
 
-/**
- * Fired when the `opened` property changes.
- */
-export type ConfirmDialogOpenedChangedEvent = CustomEvent<{ value: boolean }>;
-
-export interface ConfirmDialogCustomEventMap {
-  'opened-changed': ConfirmDialogOpenedChangedEvent;
-
-  confirm: Event;
-
-  cancel: Event;
-
-  reject: Event;
-}
-
-export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEventMap;
+export * from './vaadin-confirm-dialog-mixin.js';
 
 /**
  * `<vaadin24-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
@@ -54,7 +40,7 @@ export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEve
  * Also, the `theme` attribute value set on `<vaadin24-confirm-dialog>` is propagated to the
  * `<vaadin24-confirm-dialog-overlay>` component.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Custom content
  *
@@ -72,90 +58,7 @@ export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEve
  * @fires {Event} reject - Fired when Reject button was pressed.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class ConfirmDialog extends ElementMixin(ThemePropertyMixin(ControllerMixin(HTMLElement))) {
-  /**
-   * True if the overlay is currently displayed.
-   */
-  opened: boolean;
-
-  /**
-   * Set the confirmation dialog title.
-   */
-  header: string;
-
-  /**
-   * Set the message or confirmation question.
-   */
-  message: string | null | undefined;
-
-  /**
-   * Text displayed on confirm-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} confirm-text
-   */
-  confirmText: string;
-
-  /**
-   * Theme for a confirm-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} confirm-theme
-   */
-  confirmTheme: string;
-
-  /**
-   * Set to true to disable closing dialog on Escape press
-   * @attr {boolean} no-close-on-esc
-   */
-  noCloseOnEsc: boolean;
-
-  /**
-   * Whether to show reject button or not.
-   * @attr {boolean} reject-button-visible
-   */
-  rejectButtonVisible: boolean;
-
-  /**
-   * Text displayed on reject-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} reject-text
-   */
-  rejectText: string;
-
-  /**
-   * Theme for a reject-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} reject-theme
-   */
-  rejectTheme: string;
-
-  /**
-   * Whether to show cancel button or not.
-   * @attr {boolean} cancel-button-visible
-   */
-  cancelButtonVisible: boolean;
-
-  /**
-   * Text displayed on cancel-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} cancel-text
-   */
-  cancelText: string;
-
-  /**
-   * Theme for a cancel-button.
-   * This only affects the default button, custom slotted buttons will not be altered.
-   * @attr {string} cancel-theme
-   */
-  cancelTheme: string;
-
-  /**
-   * A space-delimited list of CSS class names
-   * to set on the underlying overlay element.
-   *
-   * @attr {string} overlay-class
-   */
-  overlayClass: string;
-
+declare class ConfirmDialog extends ConfirmDialogMixin(ElementMixin(ThemePropertyMixin(ControllerMixin(HTMLElement)))) {
   addEventListener<K extends keyof ConfirmDialogEventMap>(
     type: K,
     listener: (this: ConfirmDialog, ev: ConfirmDialogEventMap[K]) => void,

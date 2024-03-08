@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
@@ -6,9 +5,12 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ComboBoxScrollerMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-scroller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+
 /**
  * An element used internally by `<vaadin24-time-picker>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ComboBoxScrollerMixin
  * @private
@@ -40,6 +42,7 @@ export class TimePickerScroller extends ComboBoxScrollerMixin(PolymerElement) {
           border-width: var(--_vaadin-time-picker-items-container-border-width);
           border-style: var(--_vaadin-time-picker-items-container-border-style);
           border-color: var(--_vaadin-time-picker-items-container-border-color, transparent);
+          position: relative;
         }
       </style>
       <div id="selector">
@@ -49,4 +52,4 @@ export class TimePickerScroller extends ComboBoxScrollerMixin(PolymerElement) {
   }
 }
 
-internalCustomElements.define(TimePickerScroller.is, TimePickerScroller);
+defineCustomElement(TimePickerScroller);

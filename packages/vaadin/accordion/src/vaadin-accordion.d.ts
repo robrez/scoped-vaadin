@@ -3,8 +3,8 @@
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import type { AccordionPanel } from './vaadin-accordion-panel.js';
 
@@ -65,7 +65,7 @@ export type AccordionEventMap = AccordionCustomEventMap & HTMLElementEventMap;
  * }
  * ```
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} items-changed - Fired when the `items` property changes.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.

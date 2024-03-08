@@ -3,11 +3,11 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { OverlayMixin } from './vaadin-overlay-mixin.js';
 
-export type OverlayRenderer = (root: HTMLElement, owner: HTMLElement, model?: object) => void;
+export { OverlayRenderer } from './vaadin-overlay-mixin.js';
 
 /**
  * Fired when the `opened` property changes.
@@ -109,7 +109,7 @@ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
  * ---|---|---
  * `--vaadin-overlay-viewport-bottom` | Bottom offset of the visible viewport area | `0` or detected offset
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} vaadin-overlay-open - Fired after the overlay is opened.
@@ -119,86 +119,7 @@ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
  * @fires {CustomEvent} vaadin-overlay-outside-click - Fired before the overlay is closed on outside click. Calling `preventDefault()` on the event cancels the closing.
  * @fires {CustomEvent} vaadin-overlay-escape-press - Fired before the overlay is closed on Escape key press. Calling `preventDefault()` on the event cancels the closing.
  */
-declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement))) {
-  /**
-   * When true, the overlay is visible and attached to body.
-   */
-  opened: boolean | null | undefined;
-
-  /**
-   * Owner element passed with renderer function
-   */
-  owner: HTMLElement | null;
-
-  /**
-   * Custom function for rendering the content of the overlay.
-   * Receives three arguments:
-   *
-   * - `root` The root container DOM element. Append your content to it.
-   * - `owner` The host element of the renderer function.
-   * - `model` The object with the properties related with rendering.
-   */
-  renderer: OverlayRenderer | null | undefined;
-
-  /**
-   * When true the overlay has backdrop on top of content when opened.
-   */
-  withBackdrop: boolean;
-
-  /**
-   * Object with properties that is passed to `renderer` function
-   */
-  model: object | null | undefined;
-
-  /**
-   * When true the overlay won't disable the main content, showing
-   * it doesn't change the functionality of the user interface.
-   */
-  modeless: boolean;
-
-  /**
-   * When set to true, the overlay is hidden. This also closes the overlay
-   * immediately in case there is a closing animation in progress.
-   */
-  hidden: boolean;
-
-  /**
-   * When true move focus to the first focusable element in the overlay,
-   * or to the overlay if there are no focusable elements.
-   */
-  focusTrap: boolean;
-
-  /**
-   * Set to true to enable restoring of focus when overlay is closed.
-   */
-  restoreFocusOnClose: boolean;
-
-  /**
-   * Set to specify the element which should be focused on overlay close,
-   * if `restoreFocusOnClose` is set to true.
-   */
-  restoreFocusNode?: HTMLElement;
-
-  /**
-   * Returns true if this is the last one in the opened overlays stack.
-   */
-  protected readonly _last: boolean;
-
-  close(sourceEvent?: Event | null): void;
-
-  /**
-   * Requests an update for the content of the overlay.
-   * While performing the update, it invokes the renderer passed in the `renderer` property.
-   *
-   * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
-   */
-  requestContentUpdate(): void;
-
-  /**
-   * Brings the overlay as visually the frontmost one
-   */
-  bringToFront(): void;
-
+declare class Overlay extends OverlayMixin(ThemableMixin(DirMixin(HTMLElement))) {
   addEventListener<K extends keyof OverlayEventMap>(
     type: K,
     listener: (this: Overlay, ev: OverlayEventMap[K]) => void,
@@ -210,14 +131,6 @@ declare class Overlay extends ThemableMixin(DirMixin(ControllerMixin(HTMLElement
     listener: (this: Overlay, ev: OverlayEventMap[K]) => void,
     options?: EventListenerOptions | boolean,
   ): void;
-
-  protected _flushAnimation(type: 'closing' | 'opening'): void;
-
-  /**
-   * Whether to close the overlay on outside click or not.
-   * Override this method to customize the closing logic.
-   */
-  protected _shouldCloseOnOutsideClick(event: Event): boolean;
 }
 
 declare global {

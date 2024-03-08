@@ -3,8 +3,8 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
 import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
 import { InputController } from '@scoped-vaadin/field-base/src/input-controller.js';
 import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
@@ -47,6 +47,18 @@ export const CheckboxMixin = (superclass) =>
         name: {
           type: String,
           value: '',
+        },
+
+        /**
+         * Indicates whether the element can be focused and where it participates in sequential keyboard navigation.
+         *
+         * @override
+         * @protected
+         */
+        tabindex: {
+          type: Number,
+          value: 0,
+          reflectToAttribute: true,
         },
       };
     }
@@ -118,4 +130,10 @@ export const CheckboxMixin = (superclass) =>
 
       super._toggleChecked(checked);
     }
+
+    /**
+     * Fired when the checkbox is checked or unchecked by the user.
+     *
+     * @event change
+     */
   };

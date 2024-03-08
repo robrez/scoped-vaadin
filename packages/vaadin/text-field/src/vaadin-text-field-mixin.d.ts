@@ -4,19 +4,20 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
+import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import type { DelegateFocusMixinClass } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
-import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import type { SlotStylesMixinClass } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
+import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
 import type { InputFieldMixinClass } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
-import type { SlotStylesMixinClass } from '@scoped-vaadin/field-base/src/slot-styles-mixin.js';
 import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 
 /**
@@ -24,7 +25,8 @@ import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-
  */
 export declare function TextFieldMixin<T extends Constructor<HTMLElement>>(
   base: T,
-): Constructor<ControllerMixinClass> &
+): Constructor<ClearButtonMixinClass> &
+  Constructor<ControllerMixinClass> &
   Constructor<DelegateFocusMixinClass> &
   Constructor<DelegateStateMixinClass> &
   Constructor<DisabledMixinClass> &
@@ -37,11 +39,11 @@ export declare function TextFieldMixin<T extends Constructor<HTMLElement>>(
   Constructor<KeyboardMixinClass> &
   Constructor<LabelMixinClass> &
   Constructor<SlotStylesMixinClass> &
-  Constructor<TexFieldMixinClass> &
+  Constructor<TextFieldMixinClass> &
   Constructor<ValidateMixinClass> &
   T;
 
-export declare class TexFieldMixinClass {
+export declare class TextFieldMixinClass {
   /**
    * Maximum number of characters (in Unicode code points) that the user can enter.
    */

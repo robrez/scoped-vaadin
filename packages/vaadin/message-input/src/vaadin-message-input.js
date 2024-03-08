@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -8,6 +7,7 @@ import '@scoped-vaadin/button/src/vaadin-button.js';
 import '@scoped-vaadin/text-area/src/vaadin-text-area.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
@@ -25,6 +25,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * <vaadin24-message-input></vaadin24-message-input>
  * ```
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ControllerMixin
  * @mixes ThemableMixin
@@ -228,6 +229,6 @@ class MessageInput extends ElementMixin(ThemableMixin(ControllerMixin(PolymerEle
    */
 }
 
-internalCustomElements.define(MessageInput.is, MessageInput);
+defineCustomElement(MessageInput);
 
 export { MessageInput };

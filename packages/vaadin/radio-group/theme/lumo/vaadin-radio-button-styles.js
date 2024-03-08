@@ -9,8 +9,8 @@ registerStyles(
   'vaadin24-radio-button',
   css`
     :host {
-      color: var(--lumo-body-text-color);
-      font-size: var(--lumo-font-size-m);
+      color: var(--vaadin-radio-button-label-color, var(--lumo-body-text-color));
+      font-size: var(--vaadin-radio-button-label-font-size, var(--lumo-font-size-m));
       font-family: var(--lumo-font-family);
       line-height: var(--lumo-line-height-s);
       -webkit-font-smoothing: antialiased;
@@ -22,11 +22,16 @@ registerStyles(
       cursor: default;
       outline: none;
       --_radio-button-size: var(--vaadin-radio-button-size, calc(var(--lumo-size-m) / 2));
+      --_focus-ring-color: var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+      --_focus-ring-width: var(--vaadin-focus-ring-width, 2px);
+      --_selection-color: var(--vaadin-selection-color, var(--lumo-primary-color));
     }
 
     :host([has-label]) ::slotted(label) {
-      padding-block: var(--lumo-space-xs);
-      padding-inline: var(--lumo-space-xs) var(--lumo-space-s);
+      padding: var(
+        --vaadin-radio-button-label-padding,
+        var(--lumo-space-xs) var(--lumo-space-s) var(--lumo-space-xs) var(--lumo-space-xs)
+      );
     }
 
     [part='radio'] {
@@ -35,10 +40,12 @@ registerStyles(
       margin: var(--lumo-space-xs);
       position: relative;
       border-radius: 50%;
-      background-color: var(--lumo-contrast-20pct);
+      background: var(--vaadin-radio-button-background, var(--lumo-contrast-20pct));
       transition: transform 0.2s cubic-bezier(0.12, 0.32, 0.54, 2), background-color 0.15s;
       will-change: transform;
       cursor: var(--lumo-clickable-cursor);
+      /* Default field border color */
+      --_input-border-color: var(--vaadin-input-field-border-color, var(--lumo-contrast-50pct));
     }
 
     /* Used for activation "halo" */
@@ -62,7 +69,8 @@ registerStyles(
       pointer-events: none;
       width: 0;
       height: 0;
-      border: 3px solid var(--lumo-primary-contrast-color);
+      border: var(--vaadin-radio-button-dot-size, 3px) solid
+        var(--vaadin-radio-button-dot-color, var(--lumo-primary-contrast-color));
       border-radius: 50%;
       position: absolute;
       top: 50%;
@@ -73,8 +81,12 @@ registerStyles(
       background-clip: content-box;
     }
 
+    :host([checked]) {
+      --vaadin-input-field-border-color: transparent;
+    }
+
     :host([checked]) [part='radio'] {
-      background-color: var(--lumo-primary-color);
+      background-color: var(--_selection-color);
     }
 
     :host([checked]) [part='radio']::after {
@@ -82,7 +94,7 @@ registerStyles(
     }
 
     :host(:not([checked]):not([disabled]):hover) [part='radio'] {
-      background-color: var(--lumo-contrast-30pct);
+      background: var(--vaadin-radio-button-background-hover, var(--lumo-contrast-30pct));
     }
 
     :host([active]) [part='radio'] {
@@ -101,12 +113,14 @@ registerStyles(
     }
 
     :host([focus-ring]) [part='radio'] {
-      box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 3px var(--lumo-primary-color-50pct);
+      box-shadow: 0 0 0 1px var(--lumo-base-color), 0 0 0 calc(var(--_focus-ring-width) + 1px) var(--_focus-ring-color),
+        inset 0 0 0 var(--_input-border-width, 0) var(--_input-border-color);
     }
 
     :host([disabled]) {
       pointer-events: none;
       color: var(--lumo-disabled-text-color);
+      --vaadin-input-field-border-color: var(--lumo-contrast-20pct);
     }
 
     :host([disabled]) ::slotted(label) {

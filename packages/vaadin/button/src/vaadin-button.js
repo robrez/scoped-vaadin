@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -40,8 +40,9 @@ registerStyles('vaadin24-button', buttonStyles, { moduleId: 'vaadin-button-style
  * `focus-ring` | Set when the button is focused using the keyboard.
  * `focused`    | Set when the button is focused.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ButtonMixin
  * @mixes ControllerMixin
@@ -66,6 +67,6 @@ class Button extends ButtonMixin(ElementMixin(ThemableMixin(ControllerMixin(Poly
   }
 }
 
-internalCustomElements.define(Button.is, Button);
+defineCustomElement(Button);
 
 export { Button };

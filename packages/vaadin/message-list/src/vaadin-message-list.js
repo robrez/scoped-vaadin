@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -7,8 +6,9 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
 import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html, render } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { Message } from './vaadin-message.js';
 
@@ -43,8 +43,9 @@ import { Message } from './vaadin-message.js';
  * See the [`<vaadin24-message>`](#/elements/vaadin-message) documentation for the available
  * state attributes and stylable shadow parts of message elements.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @mixes ElementMixin
@@ -68,6 +69,7 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
        *   userAbbr: string,
        *   userImg: string,
        *   userColorIndex: number,
+       *   className: string,
        *   theme: string
        * }>
        * ```
@@ -159,6 +161,7 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
                 .userImg="${item.userImg}"
                 .userColorIndex="${item.userColorIndex}"
                 theme="${ifDefined(item.theme)}"
+                class="${ifDefined(item.className)}"
                 @focusin="${this._onMessageFocusIn}"
                 >${item.text}</vaadin24-message
               >
@@ -206,6 +209,6 @@ class MessageList extends KeyboardDirectionMixin(ElementMixin(ThemableMixin(Poly
   }
 }
 
-internalCustomElements.define(MessageList.is, MessageList);
+defineCustomElement(MessageList);
 
 export { MessageList };

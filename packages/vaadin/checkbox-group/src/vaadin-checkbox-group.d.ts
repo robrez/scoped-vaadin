@@ -3,9 +3,9 @@
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -70,7 +70,7 @@ export interface CheckboxGroupEventMap extends HTMLElementEventMap, CheckboxGrou
  * `has-helper`        | Set when the element has helper text      | :host
  * `has-error-message` | Set when the element has an error message | :host
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.

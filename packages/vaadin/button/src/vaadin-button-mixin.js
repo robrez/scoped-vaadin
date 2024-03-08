@@ -3,9 +3,9 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import { TabindexMixin } from '@scoped-vaadin/component-base/src/tabindex-mixin.js';
+import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import { TabindexMixin } from '@scoped-vaadin/a11y-base/src/tabindex-mixin.js';
 
 /**
  * A mixin providing common button functionality.
@@ -73,6 +73,10 @@ export const ButtonMixin = (superClass) =>
      */
     _onKeyDown(event) {
       super._onKeyDown(event);
+
+      if (event.altKey || event.shiftKey || event.ctrlKey || event.metaKey) {
+        return;
+      }
 
       if (this._activeKeys.includes(event.key)) {
         event.preventDefault();

@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -6,9 +5,10 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -39,8 +39,9 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `focus-ring` | Set when the message is focused using the keyboard.
  * `focused`    | Set when the message is focused.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ControllerMixin
  * @mixes FocusMixin
@@ -206,6 +207,6 @@ class Message extends FocusMixin(ElementMixin(ThemableMixin(ControllerMixin(Poly
   }
 }
 
-internalCustomElements.define(Message.is, Message);
+defineCustomElement(Message);
 
 export { Message };

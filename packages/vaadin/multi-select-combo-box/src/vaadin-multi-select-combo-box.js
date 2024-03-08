@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -8,7 +7,8 @@ import './vaadin-multi-select-combo-box-chip.js';
 import './vaadin-multi-select-combo-box-container.js';
 import './vaadin-multi-select-combo-box-internal.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
+import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
@@ -23,6 +23,7 @@ import { css, registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themab
 const multiSelectComboBox = css`
   :host {
     --input-min-width: var(--vaadin-multi-select-combo-box-input-min-width, 4em);
+    --_chip-min-width: var(--vaadin-multi-select-combo-box-chip-min-width, 50px);
   }
 
   #chips {
@@ -40,10 +41,22 @@ const multiSelectComboBox = css`
     flex: 0 1 auto;
   }
 
+  ::slotted([slot='chip']) {
+    overflow: hidden;
+  }
+
   :host(:is([readonly], [disabled])) ::slotted(input) {
     flex-grow: 0;
     flex-basis: 0;
     padding: 0;
+  }
+
+  :host([auto-expand-vertically]) #chips {
+    display: contents;
+  }
+
+  :host([auto-expand-horizontally]) [class$='container'] {
+    width: auto;
   }
 `;
 
@@ -103,6 +116,7 @@ registerStyles('vaadin24-multi-select-combo-box', [inputFieldShared, multiSelect
  * `--vaadin-field-default-width`                       | Default width of the field | `12em`
  * `--vaadin-multi-select-combo-box-overlay-width`      | Width of the overlay       | `auto`
  * `--vaadin-multi-select-combo-box-overlay-max-height` | Max height of the overlay  | `65vh`
+ * `--vaadin-multi-select-combo-box-chip-min-width`     | Min width of the chip      | `50px`
  * `--vaadin-multi-select-combo-box-input-min-width`    | Min width of the input     | `4em`
  *
  * ### Internal components
@@ -117,15 +131,17 @@ registerStyles('vaadin24-multi-select-combo-box', [inputFieldShared, multiSelect
  * Note: the `theme` attribute value set on `<vaadin24-multi-select-combo-box>` is
  * propagated to these components.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} custom-value-set - Fired when the user sets a custom value.
  * @fires {CustomEvent} filter-changed - Fired when the `filter` property changes.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
+ * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} selected-items-changed - Fired when the `selectedItems` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -163,6 +179,8 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
           size="{{size}}"
           filtered-items="[[__effectiveFilteredItems]]"
           selected-items="[[selectedItems]]"
+          selected-items-on-top="[[selectedItemsOnTop]]"
+          top-group="[[_topGroup]]"
           opened="{{opened}}"
           renderer="[[renderer]]"
           theme$="[[_theme]]"
@@ -173,6 +191,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
         >
           <vaadin24-multi-select-combo-box-container
             part="input-field"
+            auto-expand-vertically="[[autoExpandVertically]]"
             readonly="[[readonly]]"
             disabled="[[disabled]]"
             invalid="[[invalid]]"
@@ -209,6 +228,31 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
 
   static get properties() {
     return {
+      /**
+       * Set to true to auto expand horizontally, causing input field to
+       * grow until max width is reached.
+       * @attr {boolean} auto-expand-horizontally
+       */
+      autoExpandHorizontally: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: '_autoExpandHorizontallyChanged',
+      },
+
+      /**
+       * Set to true to not collapse selected items chips into the overflow
+       * chip and instead always expand vertically, causing input field to
+       * wrap into multiple lines when width is limited.
+       * @attr {boolean} auto-expand-vertically
+       */
+      autoExpandVertically: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: '_autoExpandVerticallyChanged',
+      },
+
       /**
        * Set true to prevent the overlay from opening automatically.
        * @attr {boolean} auto-open-disabled
@@ -428,6 +472,15 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
        */
       filteredItems: Array,
 
+      /**
+       * Set to true to group selected items at the top of the overlay.
+       * @attr {boolean} selected-items-on-top
+       */
+      selectedItemsOnTop: {
+        type: Boolean,
+        value: false,
+      },
+
       /** @private */
       value: {
         type: String,
@@ -462,6 +515,11 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
       _lastFilter: {
         type: String,
       },
+
+      /** @private */
+      _topGroup: {
+        type: Array,
+      },
     };
   }
 
@@ -469,6 +527,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     return [
       '_selectedItemsChanged(selectedItems, selectedItems.*)',
       '__updateOverflowChip(_overflow, _overflowItems, disabled, readonly)',
+      '__updateTopGroup(selectedItemsOnTop, selectedItems, opened)',
     ];
   }
 
@@ -480,6 +539,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
       `
         ${tag}[has-value] input::placeholder {
           color: transparent !important;
+          forced-color-adjust: none;
         }
       `,
     ];
@@ -527,6 +587,7 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
     this._tooltipController.setPosition('top');
+    this._tooltipController.setAriaTarget(this.inputElement);
     this._tooltipController.setShouldShow((target) => !target.opened);
 
     this._inputField = this.shadowRoot.querySelector('[part="input-field"]');
@@ -616,7 +677,9 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   _setFocused(focused) {
     super._setFocused(focused);
 
-    if (!focused) {
+    // Do not validate when focusout is caused by document
+    // losing focus, which happens on browser tab switch.
+    if (!focused && document.hasFocus()) {
       this._focusedChipIndex = -1;
       this.validate();
     }
@@ -649,6 +712,20 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
     }
 
     super._delegateAttribute(name, value);
+  }
+
+  /** @private */
+  _autoExpandHorizontallyChanged(autoExpand, oldAutoExpand) {
+    if (autoExpand || oldAutoExpand) {
+      this.__updateChips();
+    }
+  }
+
+  /** @private */
+  _autoExpandVerticallyChanged(autoExpand, oldAutoExpand) {
+    if (autoExpand || oldAutoExpand) {
+      this.__updateChips();
+    }
   }
 
   /**
@@ -729,6 +806,10 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
 
     // Update selected for dropdown items
     this.requestContentUpdate();
+
+    if (this.opened) {
+      this.$.comboBox.$.overlay._updateOverlayWidth();
+    }
   }
 
   /** @private */
@@ -818,6 +899,15 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   }
 
   /** @private */
+  __updateTopGroup(selectedItemsOnTop, selectedItems, opened) {
+    if (!selectedItemsOnTop) {
+      this._topGroup = [];
+    } else if (!opened) {
+      this._topGroup = [...selectedItems];
+    }
+  }
+
+  /** @private */
   __createChip(item) {
     const chip = document.createElement('vaadin24-multi-select-combo-box-chip');
     chip.setAttribute('slot', 'chip');
@@ -881,14 +971,60 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
       remainingWidth -= this.__getOverflowWidth();
     }
 
+    const chipMinWidth = parseInt(getComputedStyle(this).getPropertyValue('--_chip-min-width'));
+
+    if (this.autoExpandHorizontally) {
+      const chips = [];
+
+      // First, add all chips to make the field fully expand
+      for (let i = items.length - 1, refNode = null; i >= 0; i--) {
+        const chip = this.__createChip(items[i]);
+        this.insertBefore(chip, refNode);
+        refNode = chip;
+        chips.unshift(chip);
+      }
+
+      const overflowItems = [];
+      const availableWidth = this._inputField.$.wrapper.clientWidth - this.$.chips.clientWidth;
+
+      // When auto expanding vertically, no need to measure width
+      if (!this.autoExpandVertically && availableWidth < inputWidth) {
+        // Always show at least last item as a chip
+        while (chips.length > 1) {
+          const lastChip = chips.pop();
+          lastChip.remove();
+          overflowItems.unshift(items.pop());
+
+          // Remove chips until there is enough width for the input element to fit
+          const neededWidth = overflowItems.length > 0 ? inputWidth + this.__getOverflowWidth() : inputWidth;
+          if (this._inputField.$.wrapper.clientWidth - this.$.chips.clientWidth >= neededWidth) {
+            break;
+          }
+        }
+
+        if (chips.length === 1) {
+          chips[0].style.maxWidth = `${Math.max(chipMinWidth, remainingWidth)}px`;
+        }
+      }
+
+      this._overflowItems = overflowItems;
+      return;
+    }
+
     // Add chips until remaining width is exceeded
     for (let i = items.length - 1, refNode = null; i >= 0; i--) {
       const chip = this.__createChip(items[i]);
       this.insertBefore(chip, refNode);
 
-      if (this.$.chips.clientWidth > remainingWidth) {
-        chip.remove();
-        break;
+      // When auto expanding vertically, no need to measure remaining width
+      if (!this.autoExpandVertically && this.$.chips.clientWidth > remainingWidth) {
+        // Always show at least last selected item as a chip
+        if (refNode === null) {
+          chip.style.maxWidth = `${Math.max(chipMinWidth, remainingWidth)}px`;
+        } else {
+          chip.remove();
+          break;
+        }
       }
 
       items.pop();
@@ -917,6 +1053,9 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   _onClearButtonTouchend(event) {
     // Cancel the following click and focus events
     event.preventDefault();
+    // Prevent default combo box behavior which can otherwise unnecessarily
+    // clear the input and filter
+    event.stopPropagation();
 
     this.clear();
   }
@@ -1142,6 +1281,6 @@ class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(El
   }
 }
 
-internalCustomElements.define(MultiSelectComboBox.is, MultiSelectComboBox);
+defineCustomElement(MultiSelectComboBox);
 
 export { MultiSelectComboBox };

@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ItemMixin } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -12,6 +12,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 /**
  * An element used internally by `<vaadin24-context-menu>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes DirMixin
  * @mixes ItemMixin
@@ -49,6 +50,6 @@ class ContextMenuItem extends ItemMixin(ThemableMixin(DirMixin(PolymerElement)))
   }
 }
 
-internalCustomElements.define(ContextMenuItem.is, ContextMenuItem);
+defineCustomElement(ContextMenuItem);
 
 export { ContextMenuItem };

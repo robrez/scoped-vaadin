@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -11,11 +10,13 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ComboBoxDataProviderMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-data-provider-mixin.js';
 import { ComboBoxMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-mixin.js';
 import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
  * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ComboBoxDataProviderMixin
  * @mixes ComboBoxMixin
@@ -88,12 +89,29 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
       },
 
       /**
+       * Set to true to group selected items at the top of the overlay.
+       * @attr {boolean} selected-items-on-top
+       */
+      selectedItemsOnTop: {
+        type: Boolean,
+        value: false,
+      },
+
+      /**
        * Last input value entered by the user before value is updated.
        * Used to store `filter` property value before clearing it.
        */
       lastFilter: {
         type: String,
         notify: true,
+      },
+
+      /**
+       * A subset of items to be shown at the top of the overlay.
+       */
+      topGroup: {
+        type: Array,
+        observer: '_topGroupChanged',
       },
 
       _target: {
@@ -140,6 +158,44 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
   }
 
   /**
+   * Override combo-box method to group selected
+   * items at the top of the overlay.
+   *
+   * @protected
+   * @override
+   */
+  _setDropdownItems(items) {
+    if (this.readonly) {
+      this._dropdownItems = this.selectedItems;
+      return;
+    }
+
+    if (this.filter || !this.selectedItemsOnTop) {
+      this._dropdownItems = items;
+      return;
+    }
+
+    if (items && items.length && this.topGroup && this.topGroup.length) {
+      // Filter out items included to the top group.
+      const filteredItems = items.filter(
+        (item) => this._comboBox._findIndex(item, this.topGroup, this.itemIdPath) === -1,
+      );
+
+      this._dropdownItems = this.topGroup.concat(filteredItems);
+      return;
+    }
+
+    this._dropdownItems = items;
+  }
+
+  /** @private */
+  _topGroupChanged(topGroup) {
+    if (topGroup) {
+      this._setDropdownItems(this.filteredItems);
+    }
+  }
+
+  /**
    * Override combo-box method to set correct owner for using by item renderers.
    * This needs to be done before the scroller gets added to the DOM to ensure
    * Lit directive works in case when combo-box is opened using attribute.
@@ -149,6 +205,8 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
    */
   _initScroller() {
     const comboBox = this.getRootNode().host;
+
+    this._comboBox = comboBox;
 
     super._initScroller(comboBox);
   }
@@ -161,33 +219,44 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
    * @override
    */
   _onEnter(event) {
-    this.__enterPressed = true;
+    if (this.opened) {
+      // Do not submit the surrounding form.
+      event.preventDefault();
+      // Do not trigger global listeners.
+      event.stopPropagation();
+
+      if (this.readonly) {
+        this.close();
+      } else if (this._hasValidInputValue()) {
+        // Keep selected item focused after committing on Enter.
+        const focusedItem = this._dropdownItems[this._focusedIndex];
+        this._commitValue();
+        this._focusedIndex = this._dropdownItems.indexOf(focusedItem);
+      }
+
+      return;
+    }
 
     super._onEnter(event);
   }
 
   /**
+   * Override Escape handler to not clear
+   * selected items when readonly.
+   * @param {!Event} event
    * @protected
    * @override
    */
-  _closeOrCommit() {
+  _onEscape(event) {
     if (this.readonly) {
-      this.close();
+      event.stopPropagation();
+      if (this.opened) {
+        this.close();
+      }
       return;
     }
 
-    if (this.__enterPressed) {
-      this.__enterPressed = null;
-
-      // Keep selected item focused after committing on Enter.
-      const focusedItem = this.filteredItems[this._focusedIndex];
-      this._commitValue();
-      this._focusedIndex = this.filteredItems.indexOf(focusedItem);
-
-      return;
-    }
-
-    super._closeOrCommit();
+    super._onEscape(event);
   }
 
   /**
@@ -233,18 +302,20 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
   /**
    * Override method inherited from the combo-box
    * to close dropdown on blur when readonly.
-   * @param {FocusEvent} event
+   * @param {boolean} focused
    * @protected
    * @override
    */
-  _onFocusout(event) {
+  _setFocused(focused) {
     // Disable combo-box logic that updates selectedItem
     // based on the overlay focused index on input blur
-    this._ignoreCommitValue = true;
+    if (!focused) {
+      this._ignoreCommitValue = true;
+    }
 
-    super._onFocusout(event);
+    super._setFocused(focused);
 
-    if (this.readonly && !this._closeOnBlurIsPrevented) {
+    if (!focused && this.readonly && !this._closeOnBlurIsPrevented) {
       this.close();
     }
   }
@@ -330,4 +401,4 @@ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixi
   }
 }
 
-internalCustomElements.define(MultiSelectComboBoxInternal.is, MultiSelectComboBoxInternal);
+defineCustomElement(MultiSelectComboBoxInternal);

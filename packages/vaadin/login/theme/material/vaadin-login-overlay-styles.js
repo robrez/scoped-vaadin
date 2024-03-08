@@ -1,15 +1,11 @@
 import '@scoped-vaadin/vaadin-material-styles/color.js';
-import './vaadin-login-form-styles.js';
 import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
 import { typography } from '@scoped-vaadin/vaadin-material-styles/typography.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const loginOverlayWrapper = css`
   :host {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
   }
 
   [part='backdrop'] {
@@ -341,9 +337,7 @@ const loginFormWrapper = css`
     }
 
     :host([theme~='with-overlay']) [part='form'] ::slotted(form) {
-      justify-content: space-around;
-      margin-top: 20px;
-      min-height: 250px;
+      margin-top: 15px;
     }
   }
 

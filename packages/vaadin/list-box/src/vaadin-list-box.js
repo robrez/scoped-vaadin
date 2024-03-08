@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -31,12 +31,13 @@ import { MultiSelectListMixin } from './vaadin-multi-select-list-mixin.js';
  * ------------------|------------------------
  * `items`           | The items container
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} items-changed - Fired when the `items` property changes.
  * @fires {CustomEvent} selected-changed - Fired when the `selected` property changes.
  * @fires {CustomEvent} selected-values-changed - Fired when the `selectedValues` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes MultiSelectListMixin
  * @mixes ThemableMixin
@@ -126,6 +127,6 @@ class ListBox extends ElementMixin(MultiSelectListMixin(ThemableMixin(Controller
   }
 }
 
-internalCustomElements.define(ListBox.is, ListBox);
+defineCustomElement(ListBox);
 
 export { ListBox };

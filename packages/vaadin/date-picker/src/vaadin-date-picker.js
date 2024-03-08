@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
@@ -8,6 +7,7 @@ import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
 import './vaadin-date-picker-overlay.js';
 import './vaadin-date-picker-overlay-content.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { InputControlMixin } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -16,8 +16,9 @@ import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-
 import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
+import { datePickerStyles } from './vaadin-date-picker-styles.js';
 
-registerStyles('vaadin24-date-picker', inputFieldShared, { moduleId: 'vaadin-date-picker-styles' });
+registerStyles('vaadin24-date-picker', [inputFieldShared, datePickerStyles], { moduleId: 'vaadin-date-picker-styles' });
 
 /**
  * `<vaadin24-date-picker>` is an input field that allows to enter a date by typing or by selecting from a calendar overlay.
@@ -115,14 +116,32 @@ registerStyles('vaadin24-date-picker', inputFieldShared, { moduleId: 'vaadin-dat
  * Note: the `theme` attribute value set on `<vaadin24-date-picker>` is
  * propagated to the internal components listed above.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+ *
+ * ### Change events
+ *
+ * Depending on the nature of the value change that the user attempts to commit e.g. by pressing Enter,
+ * the component can fire either a `change` event or an `unparsable-change` event:
+ *
+ * Value change             | Event
+ * :------------------------|:------------------
+ * empty => parsable        | change
+ * empty => unparsable      | unparsable-change
+ * parsable => empty        | change
+ * parsable => parsable     | change
+ * parsable => unparsable   | change
+ * unparsable => empty      | unparsable-change
+ * unparsable => parsable   | change
+ * unparsable => unparsable | unparsable-change
  *
  * @fires {Event} change - Fired when the user commits a value change.
+ * @fires {Event} unparsable-change Fired when the user commits an unparsable value change and there is no change event.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -136,21 +155,6 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
 
   static get template() {
     return html`
-      <style>
-        :host([opened]) {
-          pointer-events: auto;
-        }
-
-        :host([dir='rtl']) [part='input-field'] {
-          direction: ltr;
-        }
-
-        :host([dir='rtl']) [part='input-field'] ::slotted(input)::placeholder {
-          direction: rtl;
-          text-align: left;
-        }
-      </style>
-
       <div class="vaadin-date-picker-container">
         <div part="label">
           <slot name="label"></slot>
@@ -221,6 +225,7 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
     this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
     this._tooltipController.setPosition('top');
+    this._tooltipController.setAriaTarget(this.inputElement);
     this._tooltipController.setShouldShow((target) => !target.opened);
 
     const toggleButton = this.shadowRoot.querySelector('[part="toggle-button"]');
@@ -256,6 +261,6 @@ class DatePicker extends DatePickerMixin(InputControlMixin(ThemableMixin(Element
   }
 }
 
-internalCustomElements.define(DatePicker.is, DatePicker);
+defineCustomElement(DatePicker);
 
 export { DatePicker };

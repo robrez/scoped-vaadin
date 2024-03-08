@@ -1,13 +1,13 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2020 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -27,6 +27,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `focused`    | Set when the element is focused.
  * `overflow`   | Set to `top`, `bottom`, `start`, `end`, all of them, or none.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @mixes ControllerMixin
@@ -111,6 +112,6 @@ class Scroller extends FocusMixin(ElementMixin(ControllerMixin(ThemableMixin(Pol
   }
 }
 
-internalCustomElements.define(Scroller.is, Scroller);
+defineCustomElement(Scroller);
 
 export { Scroller };

@@ -1,17 +1,17 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import './safe-area-inset.js';
 import './detect-ios-navbar.js';
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+import './safe-area-inset.js';
 import { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { AriaModalController } from '@scoped-vaadin/a11y-base/src/aria-modal-controller.js';
+import { FocusTrapController } from '@scoped-vaadin/a11y-base/src/focus-trap-controller.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusTrapController } from '@scoped-vaadin/component-base/src/focus-trap-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
@@ -60,7 +60,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `navbar`      | Container for the navigation bar
  * `drawer`      | Container for the drawer area
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Component's slots
  *
@@ -105,6 +105,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * @fires {CustomEvent} overlay-changed - Fired when the `overlay` property changes.
  * @fires {CustomEvent} primary-section-changed - Fired when the `primarySection` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -120,17 +121,12 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           height: 100%;
           --vaadin-app-layout-transition: 200ms;
           transition: padding var(--vaadin-app-layout-transition);
+          --_vaadin-app-layout-drawer-width: var(--vaadin-app-layout-drawer-width, 16em);
           --vaadin-app-layout-touch-optimized: false;
           --vaadin-app-layout-navbar-offset-top: var(--_vaadin-app-layout-navbar-offset-size);
           --vaadin-app-layout-navbar-offset-bottom: var(--_vaadin-app-layout-navbar-offset-size-bottom);
-          padding-top: var(--vaadin-app-layout-navbar-offset-top);
-          padding-bottom: var(--vaadin-app-layout-navbar-offset-bottom);
-          padding-left: var(--vaadin-app-layout-navbar-offset-left);
-        }
-
-        :host([dir='rtl']) {
-          padding-left: 0;
-          padding-right: var(--vaadin-app-layout-navbar-offset-left);
+          padding-block: var(--vaadin-app-layout-navbar-offset-top) var(--vaadin-app-layout-navbar-offset-bottom);
+          padding-inline-start: var(--vaadin-app-layout-navbar-offset-left);
         }
 
         :host([hidden]),
@@ -170,21 +166,16 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           display: flex;
           align-items: center;
           top: 0;
-          right: 0;
-          left: 0;
-          transition: left var(--vaadin-app-layout-transition);
+          inset-inline: 0;
+          transition: inset-inline-start var(--vaadin-app-layout-transition);
           padding-top: var(--safe-area-inset-top);
           padding-left: var(--safe-area-inset-left);
           padding-right: var(--safe-area-inset-right);
           z-index: 1;
         }
 
-        :host(:not([dir='rtl'])[primary-section='drawer'][drawer-opened]:not([overlay])) [part='navbar'] {
-          left: var(--vaadin-app-layout-drawer-offset-left, 0);
-        }
-
-        :host([dir='rtl'][primary-section='drawer'][drawer-opened]:not([overlay])) [part='navbar'] {
-          right: var(--vaadin-app-layout-drawer-offset-left, 0);
+        :host([primary-section='drawer'][drawer-opened]:not([overlay])) [part='navbar'] {
+          inset-inline-start: var(--vaadin-app-layout-drawer-offset-left, 0);
         }
 
         :host([primary-section='drawer']) [part='drawer'] {
@@ -201,13 +192,12 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
           overflow: auto;
           position: fixed;
           top: var(--vaadin-app-layout-navbar-offset-top, 0);
-          right: auto;
           bottom: var(--vaadin-app-layout-navbar-offset-bottom, var(--vaadin-viewport-offset-bottom, 0));
-          left: var(--vaadin-app-layout-navbar-offset-left, 0);
+          inset-inline: var(--vaadin-app-layout-navbar-offset-left, 0) auto;
           transition: transform var(--vaadin-app-layout-transition), visibility var(--vaadin-app-layout-transition);
           transform: translateX(-100%);
           max-width: 90%;
-          width: 16em;
+          width: var(--_vaadin-app-layout-drawer-width);
           box-sizing: border-box;
           padding: var(--safe-area-inset-top) 0 var(--safe-area-inset-bottom) var(--safe-area-inset-left);
           outline: none;
@@ -235,10 +225,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
 
         :host([overlay]) [part='backdrop'] {
           position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
+          inset: 0;
           pointer-events: none;
           transition: opacity var(--vaadin-app-layout-transition);
           -webkit-tap-highlight-color: transparent;
@@ -260,34 +247,21 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
         }
 
         :host([dir='rtl']) [part='drawer'] {
-          left: auto;
-          right: var(--vaadin-app-layout-navbar-offset-start, 0);
           transform: translateX(100%);
-        }
-
-        :host([dir='rtl']) [part='navbar'] {
-          transition: right var(--vaadin-app-layout-transition);
         }
 
         :host([dir='rtl'][drawer-opened]) [part='drawer'] {
           transform: translateX(0%);
         }
 
-        :host(:not([dir='rtl'])[drawer-opened]:not([overlay])) {
-          padding-left: var(--vaadin-app-layout-drawer-offset-left);
-        }
-
-        :host([dir='rtl'][drawer-opened]:not([overlay])) {
-          padding-right: var(--vaadin-app-layout-drawer-offset-left);
+        :host([drawer-opened]:not([overlay])) {
+          padding-inline-start: var(--vaadin-app-layout-drawer-offset-left);
         }
 
         @media (max-width: 800px), (max-height: 600px) {
           :host {
             --vaadin-app-layout-drawer-overlay: true;
-          }
-
-          [part='drawer'] {
-            width: 20em;
+            --_vaadin-app-layout-drawer-width: var(--vaadin-app-layout-drawer-width, 20em);
           }
         }
 
@@ -298,11 +272,11 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
         }
       </style>
       <div part="navbar" id="navbarTop">
-        <slot name="navbar"></slot>
+        <slot name="navbar" on-slotchange="_updateTouchOptimizedMode"></slot>
       </div>
       <div part="backdrop" on-click="_onBackdropClick" on-touchend="_onBackdropTouchend"></div>
-      <div part="drawer" id="drawer" on-keydown="__onDrawerKeyDown">
-        <slot name="drawer" id="drawerSlot"></slot>
+      <div part="drawer" id="drawer">
+        <slot name="drawer" id="drawerSlot" on-slotchange="_updateDrawerSize"></slot>
       </div>
       <div content>
         <slot></slot>
@@ -310,7 +284,9 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
       <div part="navbar" id="navbarBottom" bottom hidden>
         <slot name="navbar-bottom"></slot>
       </div>
-      <div hidden><slot id="touchSlot" name="navbar touch-optimized"></slot></div>
+      <div hidden>
+        <slot id="touchSlot" name="navbar touch-optimized" on-slotchange="_updateTouchOptimizedMode"></slot>
+      </div>
     `;
   }
 
@@ -424,9 +400,15 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     // TODO(jouni): might want to debounce
     this.__boundResizeListener = this._resize.bind(this);
     this.__drawerToggleClickListener = this._drawerToggleClick.bind(this);
+    this.__onDrawerKeyDown = this.__onDrawerKeyDown.bind(this);
     this.__closeOverlayDrawerListener = this.__closeOverlayDrawer.bind(this);
     this.__trapFocusInDrawer = this.__trapFocusInDrawer.bind(this);
     this.__releaseFocusFromDrawer = this.__releaseFocusFromDrawer.bind(this);
+
+    // Hide all the elements except the drawer toggle and drawer content
+    this.__ariaModalController = new AriaModalController(this, () => [
+      ...this.querySelectorAll('vaadin24-drawer-toggle, [slot="drawer"]'),
+    ]);
     this.__focusTrapController = new FocusTrapController(this);
   }
 
@@ -442,30 +424,25 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     beforeNextRender(this, this._afterFirstRender);
 
     this._updateTouchOptimizedMode();
-
-    const navbarSlot = this.$.navbarTop.firstElementChild;
-    this._navbarChildObserver = new FlattenedNodesObserver(navbarSlot, () => {
-      this._updateTouchOptimizedMode();
-    });
-
-    this._touchChildObserver = new FlattenedNodesObserver(this.$.touchSlot, () => {
-      this._updateTouchOptimizedMode();
-    });
-
-    this._drawerChildObserver = new FlattenedNodesObserver(this.$.drawerSlot, () => {
-      this._updateDrawerSize();
-    });
     this._updateDrawerSize();
     this._updateOverlayMode();
 
     this._navbarSizeObserver = new ResizeObserver(() => {
-      this._blockAnimationUntilAfterNextRender();
-      this._updateOffsetSize();
+      requestAnimationFrame(() => {
+        // Prevent updating offset size multiple times
+        // during the drawer open / close transition.
+        if (this.__isDrawerAnimating) {
+          this.__updateOffsetSizePending = true;
+        } else {
+          this._updateOffsetSize();
+        }
+      });
     });
     this._navbarSizeObserver.observe(this.$.navbarTop);
     this._navbarSizeObserver.observe(this.$.navbarBottom);
 
     window.addEventListener('close-overlay-drawer', this.__closeOverlayDrawerListener);
+    window.addEventListener('keydown', this.__onDrawerKeyDown);
   }
 
   /** @protected */
@@ -473,25 +450,34 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     super.ready();
     this.addController(this.__focusTrapController);
     this.__setAriaExpanded();
+
+    this.$.drawer.addEventListener('transitionstart', () => {
+      this.__isDrawerAnimating = true;
+    });
+
+    this.$.drawer.addEventListener('transitionend', () => {
+      // Update offset size after drawer animation.
+      if (this.__updateOffsetSizePending) {
+        this.__updateOffsetSizePending = false;
+        this._updateOffsetSize();
+      }
+
+      // Delay resetting the flag until animation frame
+      // to avoid updating offset size again on resize.
+      requestAnimationFrame(() => {
+        this.__isDrawerAnimating = false;
+      });
+    });
   }
 
   /** @protected */
   disconnectedCallback() {
     super.disconnectedCallback();
 
-    if (this._navbarChildObserver) {
-      this._navbarChildObserver.disconnect();
-    }
-    if (this._drawerChildObserver) {
-      this._drawerChildObserver.disconnect();
-    }
-    if (this._touchChildObserver) {
-      this._touchChildObserver.disconnect();
-    }
-
     window.removeEventListener('resize', this.__boundResizeListener);
     this.removeEventListener('drawer-toggle-click', this.__drawerToggleClickListener);
     window.removeEventListener('close-overlay-drawer', this.__drawerToggleClickListener);
+    window.removeEventListener('keydown', this.__onDrawerKeyDown);
   }
 
   /**
@@ -580,8 +566,10 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
 
     if (childCount === 0) {
       drawer.setAttribute('hidden', '');
+      this.style.setProperty('--_vaadin-app-layout-drawer-width', 0);
     } else {
       drawer.removeAttribute('hidden');
+      this.style.removeProperty('--_vaadin-app-layout-drawer-width');
     }
     this._updateOffsetSize();
   }
@@ -601,12 +589,11 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     const navbarBottom = this.$.navbarBottom;
     const navbarBottomRect = navbarBottom.getBoundingClientRect();
 
-    this.style.setProperty('--_vaadin-app-layout-navbar-offset-size', `${navbarRect.height}px`);
-    this.style.setProperty('--_vaadin-app-layout-navbar-offset-size-bottom', `${navbarBottomRect.height}px`);
-
     const drawer = this.$.drawer;
     const drawerRect = drawer.getBoundingClientRect();
 
+    this.style.setProperty('--_vaadin-app-layout-navbar-offset-size', `${navbarRect.height}px`);
+    this.style.setProperty('--_vaadin-app-layout-navbar-offset-size-bottom', `${navbarBottomRect.height}px`);
     this.style.setProperty('--_vaadin-app-layout-drawer-offset-size', `${drawerRect.width}px`);
   }
 
@@ -685,6 +672,8 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
     }
 
     this.$.drawer.setAttribute('tabindex', '0');
+
+    this.__ariaModalController.showModal();
     this.__focusTrapController.trapFocus(this.$.drawer);
   }
 
@@ -699,6 +688,7 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
       return;
     }
 
+    this.__ariaModalController.close();
     this.__focusTrapController.releaseFocus();
     this.$.drawer.removeAttribute('tabindex');
 
@@ -783,10 +773,10 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
       this.$.navbarTop.removeAttribute('hidden');
     }
 
-    if (touchOptimized) {
-      this.$.navbarBottom.removeAttribute('hidden');
-    } else {
+    if (this.$.navbarBottom.querySelector('[name=navbar-bottom]').assignedNodes().length === 0) {
       this.$.navbarBottom.setAttribute('hidden', '');
+    } else {
+      this.$.navbarBottom.removeAttribute('hidden');
     }
 
     this._updateOffsetSize();
@@ -812,6 +802,6 @@ class AppLayout extends ElementMixin(ThemableMixin(ControllerMixin(PolymerElemen
    */
 }
 
-internalCustomElements.define(AppLayout.is, AppLayout);
+defineCustomElement(AppLayout);
 
 export { AppLayout };

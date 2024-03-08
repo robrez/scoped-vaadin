@@ -4,11 +4,9 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
-import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { CollapsibleMixin } from './collapsible-mixin.js';
+import { DetailsBaseMixin } from './vaadin-details-base-mixin.js';
 
 /**
  * Fired when the `opened` property changes.
@@ -40,9 +38,6 @@ export type DetailsEventMap = DetailsCustomEventMap & HTMLElementEventMap;
  *
  * Part name        | Description
  * -----------------|----------------
- * `summary`        | The element used to open and close collapsible content.
- * `toggle`         | The element used as indicator, can represent an icon.
- * `summary-content`| The wrapper for the slotted summary content.
  * `content`        | The wrapper for the collapsible details content.
  *
  * The following attributes are exposed for styling:
@@ -54,19 +49,11 @@ export type DetailsEventMap = DetailsCustomEventMap & HTMLElementEventMap;
  * `focus-ring` | Set when the element is focused using the keyboard.
  * `focused`    | Set when the element is focused.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class Details extends CollapsibleMixin(
-  DelegateStateMixin(DelegateFocusMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement))))),
-) {
-  /**
-   * A text that is displayed in the summary, if no
-   * element is assigned to the `summary` slot.
-   */
-  summary: string | null | undefined;
-
+declare class Details extends DetailsBaseMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))) {
   addEventListener<K extends keyof DetailsEventMap>(
     type: K,
     listener: (this: Details, ev: DetailsEventMap[K]) => void,

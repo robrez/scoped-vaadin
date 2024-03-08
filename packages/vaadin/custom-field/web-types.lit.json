@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/custom-field",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -16,7 +16,7 @@
       "elements": [
         {
           "name": "vaadin24-custom-field",
-          "description": "`<vaadin24-custom-field>` is a web component for wrapping multiple components as a single field.\n\n```\n<vaadin24-custom-field label=\"Appointment time\">\n  <vaadin24-date-picker></vaadin24-date-picker>\n  <vaadin24-time-picker></vaadin24-time-picker>\n</vaadin24-custom-field>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nYou may also manually set `disabled` or `readonly` attribute on this component to make the label\npart look visually the same as on a `<vaadin24-text-field>` when it is disabled or readonly.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-custom-field>` is a web component for wrapping multiple components as a single field.\n\n```\n<vaadin24-custom-field label=\"Appointment time\">\n  <vaadin24-date-picker></vaadin24-date-picker>\n  <vaadin24-time-picker></vaadin24-time-picker>\n</vaadin24-custom-field>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n`input-fields`       | The slotted input elements wrapper\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nYou may also manually set `disabled` or `readonly` attribute on this component to make the label\npart look visually the same as on a `<vaadin24-text-field>` when it is disabled or readonly.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "extension": true,
           "attributes": [
             {
@@ -55,6 +55,20 @@
               }
             },
             {
+              "name": ".accessibleName",
+              "description": "String used to label the component to screen reader users.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".accessibleNameRef",
+              "description": "Id of the element used as label of the component to screen reader users.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": ".name",
               "description": "The name of the control, which is submitted with the form data.",
               "value": {
@@ -63,7 +77,7 @@
             },
             {
               "name": ".value",
-              "description": "The value of the field. When wrapping several inputs, it will contain `\\t`\n(Tab character) as a delimiter indicating parts intended to be used as the\ncorresponding inputs values.\nUse the [`formatValue`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-custom-field#property-formatValue)\nand [`parseValue`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-custom-field#property-parseValue)\nproperties to customize this behavior.",
+              "description": "The value of the field. When wrapping several inputs, it will contain `\\t`\n(Tab character) as a delimiter indicating parts intended to be used as the\ncorresponding inputs values.\nUse the [`formatValue`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-custom-field#property-formatValue)\nand [`parseValue`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-custom-field#property-parseValue)\nproperties to customize this behavior.",
               "value": {
                 "kind": "expression"
               }
@@ -97,15 +111,15 @@
               }
             },
             {
-              "name": "@value-changed",
-              "description": "Fired when the `value` property changes.",
+              "name": "@invalid-changed",
+              "description": "Fired when the `invalid` property changes.",
               "value": {
                 "kind": "expression"
               }
             },
             {
-              "name": "@invalid-changed",
-              "description": "Fired when the `invalid` property changes.",
+              "name": "@value-changed",
+              "description": "Fired when the `value` property changes.",
               "value": {
                 "kind": "expression"
               }

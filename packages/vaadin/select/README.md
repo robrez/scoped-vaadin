@@ -32,7 +32,7 @@ A web component for selecting a single value from a list of options presented in
 </script>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/select/screenshot.png" width="231" alt="Screenshot of vaadin-select">](https://vaadin.com/docs/latest/components/select)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/select/screenshot.png" width="231" alt="Screenshot of vaadin-select">](https://vaadin.com/docs/latest/components/select)
 
 ## Installation
 
@@ -51,7 +51,7 @@ import '@scoped-vaadin/select';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/select/vaadin-select.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/select/vaadin-select.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

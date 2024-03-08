@@ -1,5 +1,4 @@
 export { CheckedMixin } from './src/checked-mixin.js';
-export { FieldAriaController } from './src/field-aria-controller.js';
 export { FieldMixin } from './src/field-mixin.js';
 export { InputController } from './src/input-controller.js';
 export { InputControlMixin } from './src/input-control-mixin.js';
@@ -8,6 +7,5 @@ export { InputMixin } from './src/input-mixin.js';
 export { LabelledInputController } from './src/labelled-input-controller.js';
 export { LabelMixin } from './src/label-mixin.js';
 export { PatternMixin } from './src/pattern-mixin.js';
-export { SlotStylesMixin } from './src/slot-styles-mixin.js';
 export { TextAreaController } from './src/text-area-controller.js';
 export { ValidateMixin } from './src/validate-mixin.js';

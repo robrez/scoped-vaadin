@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
@@ -6,13 +5,17 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import './vaadin-accordion-heading.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { CollapsibleMixin } from '@scoped-vaadin/details/src/collapsible-mixin.js';
 import { SummaryController } from '@scoped-vaadin/details/src/summary-controller.js';
-import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { accordionPanel } from './vaadin-accordion-panel-styles.js';
+
+registerStyles('vaadin24-accordion-panel', accordionPanel, { moduleId: 'vaadin-accordion-panel-styles' });
 
 /**
  * The accordion panel element.
@@ -34,10 +37,11 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `focus-ring` | Set when the element is focused using the keyboard.
  * `focused`    | Set when the element is focused.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes CollapsibleMixin
  * @mixes ControllerMixin
@@ -54,26 +58,6 @@ class AccordionPanel extends CollapsibleMixin(
 
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
-
-        :host([hidden]) {
-          display: none !important;
-        }
-
-        [part='content'] {
-          display: none;
-          overflow: hidden;
-        }
-
-        :host([opened]) [part='content'] {
-          display: block;
-          overflow: visible;
-        }
-      </style>
-
       <slot name="summary"></slot>
 
       <div part="content">
@@ -169,6 +153,6 @@ class AccordionPanel extends CollapsibleMixin(
   }
 }
 
-internalCustomElements.define(AccordionPanel.is, AccordionPanel);
+defineCustomElement(AccordionPanel);
 
 export { AccordionPanel };

@@ -3,100 +3,11 @@
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
+import { microTask, timeOut } from '@scoped-vaadin/component-base/src/async.js';
+import { DataProviderController } from '@scoped-vaadin/component-base/src/data-provider-controller/data-provider-controller.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
-import { getBodyRowCells, iterateChildren, updateCellsPart, updateState } from './vaadin-grid-helpers.js';
-
-/**
- * @private
- */
-export const ItemCache = class ItemCache {
-  /**
-   * @param {!HTMLElement} grid
-   * @param {!ItemCache | undefined} parentCache
-   * @param {!GridItem | undefined} parentItem
-   */
-  constructor(grid, parentCache, parentItem) {
-    /** @type {!HTMLElement} */
-    this.grid = grid;
-    /** @type {!ItemCache | undefined} */
-    this.parentCache = parentCache;
-    /** @type {!GridItem | undefined} */
-    this.parentItem = parentItem;
-    /** @type {object} */
-    this.itemCaches = {};
-    /** @type {object} */
-    this.items = {};
-    /** @type {number} */
-    this.effectiveSize = 0;
-    /** @type {number} */
-    this.size = 0;
-    /** @type {object} */
-    this.pendingRequests = {};
-  }
-
-  /**
-   * @return {boolean}
-   */
-  isLoading() {
-    return Boolean(
-      Object.keys(this.pendingRequests).length ||
-        Object.keys(this.itemCaches).filter((index) => {
-          return this.itemCaches[index].isLoading();
-        })[0],
-    );
-  }
-
-  /**
-   * @param {number} index
-   * @return {!GridItem | undefined}
-   */
-  getItemForIndex(index) {
-    const { cache, scaledIndex } = this.getCacheAndIndex(index);
-    return cache.items[scaledIndex];
-  }
-
-  updateSize() {
-    this.effectiveSize =
-      !this.parentItem || this.grid._isExpanded(this.parentItem)
-        ? this.size +
-          Object.keys(this.itemCaches).reduce((prev, curr) => {
-            const subCache = this.itemCaches[curr];
-            subCache.updateSize();
-            return prev + subCache.effectiveSize;
-          }, 0)
-        : 0;
-  }
-
-  /**
-   * @param {number} scaledIndex
-   */
-  ensureSubCacheForScaledIndex(scaledIndex) {
-    if (!this.itemCaches[scaledIndex]) {
-      const subCache = new ItemCache(this.grid, this, this.items[scaledIndex]);
-      this.itemCaches[scaledIndex] = subCache;
-      this.grid._loadPage(0, subCache);
-    }
-  }
-
-  /**
-   * @param {number} index
-   * @return {{cache: !ItemCache, scaledIndex: number}}
-   */
-  getCacheAndIndex(index) {
-    let thisLevelIndex = index;
-    for (const [index, subCache] of Object.entries(this.itemCaches)) {
-      const numberIndex = Number(index);
-      if (thisLevelIndex <= numberIndex) {
-        return { cache: this, scaledIndex: thisLevelIndex };
-      } else if (thisLevelIndex <= numberIndex + subCache.effectiveSize) {
-        return subCache.getCacheAndIndex(thisLevelIndex - numberIndex - 1);
-      }
-      thisLevelIndex -= subCache.effectiveSize;
-    }
-    return { cache: this, scaledIndex: thisLevelIndex };
-  }
-};
+import { get } from '@scoped-vaadin/component-base/src/path-utils.js';
+import { getBodyRowCells, updateCellsPart, updateState } from './vaadin-grid-helpers.js';
 
 /**
  * @polymerMixin
@@ -113,6 +24,16 @@ export const DataProviderMixin = (superClass) =>
         size: {
           type: Number,
           notify: true,
+          sync: true,
+        },
+
+        /**
+         * @type {number}
+         * @protected
+         */
+        _flatSize: {
+          type: Number,
+          sync: true,
         },
 
         /**
@@ -124,6 +45,7 @@ export const DataProviderMixin = (superClass) =>
           type: Number,
           value: 50,
           observer: '_pageSizeChanged',
+          sync: true,
         },
 
         /**
@@ -153,6 +75,7 @@ export const DataProviderMixin = (superClass) =>
           type: Object,
           notify: true,
           observer: '_dataProviderChanged',
+          sync: true,
         },
 
         /**
@@ -166,23 +89,12 @@ export const DataProviderMixin = (superClass) =>
         },
 
         /**
-         * @type {!ItemCache}
-         * @protected
-         */
-        _cache: {
-          type: Object,
-          value() {
-            const cache = new ItemCache(this);
-            return cache;
-          },
-        },
-
-        /**
          * @protected
          */
         _hasData: {
           type: Boolean,
           value: false,
+          sync: true,
         },
 
         /**
@@ -193,6 +105,7 @@ export const DataProviderMixin = (superClass) =>
           type: String,
           value: 'children',
           observer: '__itemHasChildrenPathChanged',
+          sync: true,
         },
 
         /**
@@ -202,6 +115,7 @@ export const DataProviderMixin = (superClass) =>
         itemIdPath: {
           type: String,
           value: null,
+          sync: true,
         },
 
         /**
@@ -212,6 +126,7 @@ export const DataProviderMixin = (superClass) =>
           type: Object,
           notify: true,
           value: () => [],
+          sync: true,
         },
 
         /**
@@ -219,21 +134,61 @@ export const DataProviderMixin = (superClass) =>
          */
         __expandedKeys: {
           type: Object,
-          computed: '__computeExpandedKeys(itemIdPath, expandedItems.*)',
+          computed: '__computeExpandedKeys(itemIdPath, expandedItems)',
         },
       };
     }
 
     static get observers() {
-      return ['_sizeChanged(size)', '_expandedItemsChanged(expandedItems.*)'];
+      return ['_sizeChanged(size)', '_expandedItemsChanged(expandedItems)'];
+    }
+
+    constructor() {
+      super();
+
+      /** @type {DataProviderController} */
+      this._dataProviderController = new DataProviderController(this, {
+        size: this.size,
+        pageSize: this.pageSize,
+        getItemId: this.getItemId.bind(this),
+        isExpanded: this._isExpanded.bind(this),
+        dataProvider: this.dataProvider ? this.dataProvider.bind(this) : null,
+        dataProviderParams: () => {
+          return {
+            sortOrders: this._mapSorters(),
+            filters: this._mapFilters(),
+          };
+        },
+      });
+
+      this._dataProviderController.addEventListener('page-requested', this._onDataProviderPageRequested.bind(this));
+      this._dataProviderController.addEventListener('page-received', this._onDataProviderPageReceived.bind(this));
+      this._dataProviderController.addEventListener('page-loaded', this._onDataProviderPageLoaded.bind(this));
+    }
+
+    /**
+     * @protected
+     * @deprecated since 24.3 and will be removed in Vaadin 25.
+     */
+    get _cache() {
+      console.warn('<vaadin24-grid> The `_cache` property is deprecated and will be removed in Vaadin 25.');
+      return this._dataProviderController.rootCache;
+    }
+
+    /**
+     * @protected
+     * @deprecated since 24.3 and will be removed in Vaadin 25.
+     */
+    get _effectiveSize() {
+      console.warn('<vaadin24-grid> The `_effectiveSize` property is deprecated and will be removed in Vaadin 25.');
+      return this._flatSize;
     }
 
     /** @private */
     _sizeChanged(size) {
-      const delta = size - this._cache.size;
-      this._cache.size += delta;
-      this._cache.effectiveSize += delta;
-      this._effectiveSize = this._cache.effectiveSize;
+      this._dataProviderController.rootCache.size = size;
+      this._dataProviderController.recalculateFlatSize();
+      this._flatSize = this._dataProviderController.flatSize;
     }
 
     /** @private */
@@ -251,22 +206,22 @@ export const DataProviderMixin = (superClass) =>
      * @protected
      */
     _getItem(index, el) {
-      if (index >= this._effectiveSize) {
+      if (index >= this._flatSize) {
         return;
       }
 
       el.index = index;
-      const { cache, scaledIndex } = this._cache.getCacheAndIndex(index);
-      const item = cache.items[scaledIndex];
+
+      const { item } = this._dataProviderController.getFlatIndexContext(index);
       if (item) {
         this.__updateLoading(el, false);
         this._updateItem(el, item);
         if (this._isExpanded(item)) {
-          cache.ensureSubCacheForScaledIndex(scaledIndex);
+          this._dataProviderController.ensureFlatIndexHierarchy(index);
         }
       } else {
         this.__updateLoading(el, true);
-        this._loadPage(this._getPageForIndex(scaledIndex), cache);
+        this._dataProviderController.ensureFlatIndexLoaded(index);
       }
     }
 
@@ -292,7 +247,7 @@ export const DataProviderMixin = (superClass) =>
      * @return {!GridItem | !unknown}
      */
     getItemId(item) {
-      return this.itemIdPath ? this.get(this.itemIdPath, item) : item;
+      return this.itemIdPath ? get(this.itemIdPath, item) : item;
     }
 
     /**
@@ -301,19 +256,19 @@ export const DataProviderMixin = (superClass) =>
      * @protected
      */
     _isExpanded(item) {
-      return this.__expandedKeys.has(this.getItemId(item));
+      return this.__expandedKeys && this.__expandedKeys.has(this.getItemId(item));
     }
 
     /** @private */
     _expandedItemsChanged() {
-      this._cache.updateSize();
-      this._effectiveSize = this._cache.effectiveSize;
+      this._dataProviderController.recalculateFlatSize();
+      this._flatSize = this._dataProviderController.flatSize;
       this.__updateVisibleRows();
     }
 
     /** @private */
     __computeExpandedKeys(itemIdPath, expandedItems) {
-      const expanded = expandedItems.base || [];
+      const expanded = expandedItems || [];
       const expandedKeys = new Set();
       expanded.forEach((item) => {
         expandedKeys.add(this.getItemId(item));
@@ -347,13 +302,8 @@ export const DataProviderMixin = (superClass) =>
      * @return {number}
      * @protected
      */
-    _getIndexLevel(index) {
-      let { cache } = this._cache.getCacheAndIndex(index);
-      let level = 0;
-      while (cache.parentCache) {
-        cache = cache.parentCache;
-        level += 1;
-      }
+    _getIndexLevel(index = 0) {
+      const { level } = this._dataProviderController.getFlatIndexContext(index);
       return level;
     }
 
@@ -361,95 +311,78 @@ export const DataProviderMixin = (superClass) =>
      * @param {number} page
      * @param {ItemCache} cache
      * @protected
+     * @deprecated since 24.3 and will be removed in Vaadin 25.
      */
     _loadPage(page, cache) {
-      // Make sure same page isn't requested multiple times.
-      if (!cache.pendingRequests[page] && this.dataProvider) {
-        this._setLoading(true);
-        cache.pendingRequests[page] = true;
-        const params = {
-          page,
-          pageSize: this.pageSize,
-          sortOrders: this._mapSorters(),
-          filters: this._mapFilters(),
-          parentItem: cache.parentItem,
-        };
+      console.warn('<vaadin24-grid> The `_loadPage` method is deprecated and will be removed in Vaadin 25.');
+      this._dataProviderController.__loadCachePage(cache, page);
+    }
 
-        this.dataProvider(params, (items, size) => {
-          if (size !== undefined) {
-            cache.size = size;
-          } else if (params.parentItem) {
-            cache.size = items.length;
+    /** @protected */
+    _onDataProviderPageRequested() {
+      this._setLoading(true);
+    }
+
+    /** @protected */
+    _onDataProviderPageReceived() {
+      // With the new items added, update the cache size and the grid's effective size
+      this._flatSize = this._dataProviderController.flatSize;
+
+      // After updating the cache, check if some of the expanded items should have sub-caches loaded
+      this._getRenderedRows().forEach((row) => {
+        this._dataProviderController.ensureFlatIndexHierarchy(row.index);
+      });
+
+      this._hasData = true;
+    }
+
+    /** @protected */
+    _onDataProviderPageLoaded() {
+      // Schedule a debouncer to update the visible rows
+      this._debouncerApplyCachedData = Debouncer.debounce(this._debouncerApplyCachedData, timeOut.after(0), () => {
+        this._setLoading(false);
+
+        this._getRenderedRows().forEach((row) => {
+          const { item } = this._dataProviderController.getFlatIndexContext(row.index);
+          if (item) {
+            this._getItem(row.index, row);
           }
-
-          const currentItems = Array.from(this.$.items.children).map((row) => row._item);
-
-          // Populate the cache with new items
-          items.forEach((item, itemsIndex) => {
-            const itemIndex = page * this.pageSize + itemsIndex;
-            cache.items[itemIndex] = item;
-            if (this._isExpanded(item) && currentItems.indexOf(item) > -1) {
-              // Force synchronous data request for expanded item sub-cache
-              cache.ensureSubCacheForScaledIndex(itemIndex);
-            }
-          });
-
-          this._hasData = true;
-
-          delete cache.pendingRequests[page];
-
-          this._debouncerApplyCachedData = Debouncer.debounce(this._debouncerApplyCachedData, timeOut.after(0), () => {
-            this._setLoading(false);
-            this._cache.updateSize();
-            this._effectiveSize = this._cache.effectiveSize;
-
-            iterateChildren(this.$.items, (row) => {
-              if (!row.hidden) {
-                const cachedItem = this._cache.getItemForIndex(row.index);
-                if (cachedItem) {
-                  this._getItem(row.index, row);
-                }
-              }
-            });
-
-            this.__scrollToPendingIndex();
-          });
-
-          if (!this._cache.isLoading()) {
-            this._debouncerApplyCachedData.flush();
-          }
-
-          this.__itemsReceived();
         });
+
+        this.__scrollToPendingIndexes();
+        this.__dispatchPendingBodyCellFocus();
+      });
+
+      // If the grid is not loading anything, flush the debouncer immediately
+      if (!this._dataProviderController.isLoading()) {
+        this._debouncerApplyCachedData.flush();
       }
     }
 
-    /**
-     * @param {number} index
-     * @return {number}
-     * @private
-     */
-    _getPageForIndex(index) {
-      return Math.floor(index / this.pageSize);
+    /** @private */
+    __debounceClearCache() {
+      this.__clearCacheDebouncer = Debouncer.debounce(this.__clearCacheDebouncer, microTask, () => this.clearCache());
     }
 
     /**
      * Clears the cached pages and reloads data from dataprovider when needed.
      */
     clearCache() {
-      this._cache = new ItemCache(this);
-      this._cache.size = this.size || 0;
-      this._cache.updateSize();
+      this._dataProviderController.clearCache();
+      this._dataProviderController.rootCache.size = this.size;
+      this._dataProviderController.recalculateFlatSize();
       this._hasData = false;
       this.__updateVisibleRows();
 
-      if (!this._effectiveSize) {
-        this._loadPage(0, this._cache);
+      if (!this.__virtualizer || !this.__virtualizer.size) {
+        this._dataProviderController.loadFirstPage();
       }
     }
 
     /** @private */
     _pageSizeChanged(pageSize, oldPageSize) {
+      this._dataProviderController.setPageSize(pageSize);
+
       if (oldPageSize !== undefined && pageSize !== oldPageSize) {
         this.clearCache();
       }
@@ -457,7 +390,7 @@ export const DataProviderMixin = (superClass) =>
 
     /** @protected */
     _checkSize() {
-      if (this.size === undefined && this._effectiveSize === 0) {
+      if (this.size === undefined && this._flatSize === 0) {
         console.warn(
           'The <vaadin24-grid> needs the total number of items in' +
             ' order to display rows, which you can specify either by setting' +
@@ -469,6 +402,8 @@ export const DataProviderMixin = (superClass) =>
 
     /** @private */
     _dataProviderChanged(dataProvider, oldDataProvider) {
+      this._dataProviderController.setDataProvider(dataProvider ? dataProvider.bind(this) : null);
+
       if (oldDataProvider !== undefined) {
         this.clearCache();
       }
@@ -487,7 +422,7 @@ export const DataProviderMixin = (superClass) =>
       if (!this._hasData) {
         // Load data before adding rows to make sure they have content when
         // rendered for the first time.
-        this._loadPage(0, this._cache);
+        this._dataProviderController.loadFirstPage();
       }
     }
 
@@ -517,19 +452,41 @@ export const DataProviderMixin = (superClass) =>
       return result;
     }
 
-    scrollToIndex(index) {
-      super.scrollToIndex(index);
-      if (!isNaN(index) && (this._cache.isLoading() || !this.clientHeight)) {
-        this.__pendingScrollToIndex = index;
+    /**
+     * Scroll to a specific row index in the virtual list. Note that the row index is
+     * not always the same for any particular item. For example, sorting or filtering
+     * items can affect the row index related to an item.
+     *
+     * The `indexes` parameter can be either a single number or multiple numbers.
+     * The grid will first try to scroll to the item at the first index on the top level.
+     * In case the item at the first index is expanded, the grid will then try scroll to the
+     * item at the second index within the children of the expanded first item, and so on.
+     * Each given index points to a child of the item at the previous index.
+     *
+     * Using `Infinity` as an index will point to the last item on the level.
+     *
+     * @param indexes {...number} Row indexes to scroll to
+     */
+    scrollToIndex(...indexes) {
+      // Synchronous data provider may cause changes to the cache on scroll without
+      // ending up in a loading state. Try scrolling to the index until the target
+      // index stabilizes.
+      let targetIndex;
+      while (targetIndex !== (targetIndex = this._dataProviderController.getFlatIndexByPath(indexes))) {
+        this._scrollToFlatIndex(targetIndex);
+      }
+
+      if (this._dataProviderController.isLoading() || !this.clientHeight) {
+        this.__pendingScrollToIndexes = indexes;
       }
     }
 
     /** @private */
-    __scrollToPendingIndex() {
-      if (this.__pendingScrollToIndex && this.$.items.children.length) {
-        const index = this.__pendingScrollToIndex;
-        delete this.__pendingScrollToIndex;
-        this.scrollToIndex(index);
+    __scrollToPendingIndexes() {
+      if (this.__pendingScrollToIndexes && this.$.items.children.length) {
+        const indexes = this.__pendingScrollToIndexes;
+        delete this.__pendingScrollToIndexes;
+        this.scrollToIndex(...indexes);
       }
     }
 

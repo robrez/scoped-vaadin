@@ -1,17 +1,17 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2022 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import './vaadin-tabsheet-scroller.js';
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
 import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
 import { Tabs } from '@scoped-vaadin/tabs/src/vaadin-tabs.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -101,11 +101,12 @@ class TabsSlotController extends SlotController {
  * @fires {CustomEvent} items-changed - Fired when the `items` property changes.
  * @fires {CustomEvent} selected-changed - Fired when the `selected` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
  * @mixes ControllerMixin
- * @mises DelegateStateMixin
+ * @mixes DelegateStateMixin
  */
 class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableMixin(PolymerElement)))) {
   static get template() {
@@ -223,7 +224,7 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
 
     // Observe the panels slot for nodes. Set the assigned element nodes as the __panels array.
     const panelSlot = this.shadowRoot.querySelector('#panel-slot');
-    this.__panelsObserver = new FlattenedNodesObserver(panelSlot, () => {
+    this.__panelsObserver = new SlotObserver(panelSlot, () => {
       this.__panels = Array.from(panelSlot.assignedNodes({ flatten: true })).filter(
         (node) => node.nodeType === Node.ELEMENT_NODE,
       );
@@ -289,6 +290,6 @@ class TabSheet extends ControllerMixin(DelegateStateMixin(ElementMixin(ThemableM
   }
 }
 
-internalCustomElements.define(TabSheet.is, TabSheet);
+defineCustomElement(TabSheet);
 
 export { TabSheet };

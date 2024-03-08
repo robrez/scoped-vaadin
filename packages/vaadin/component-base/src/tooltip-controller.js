@@ -26,6 +26,10 @@ export class TooltipController extends SlotController {
   initCustomNode(tooltipNode) {
     tooltipNode.target = this.target;
 
+    if (this.ariaTarget !== undefined) {
+      tooltipNode.ariaTarget = this.ariaTarget;
+    }
+
     if (this.context !== undefined) {
       tooltipNode.context = this.context;
     }
@@ -44,6 +48,33 @@ export class TooltipController extends SlotController {
 
     if (this.shouldShow !== undefined) {
       tooltipNode.shouldShow = this.shouldShow;
+    }
+
+    this.__notifyChange();
+  }
+
+  /**
+   * Override to notify the host when the tooltip is removed.
+   *
+   * @param {Node} tooltipNode
+   * @protected
+   * @override
+   */
+  teardownNode() {
+    this.__notifyChange();
+  }
+
+  /**
+   * Set an HTML element for linking with the tooltip overlay
+   * via `aria-describedby` attribute used by screen readers.
+   * @param {HTMLElement} ariaTarget
+   */
+  setAriaTarget(ariaTarget) {
+    this.ariaTarget = ariaTarget;
+
+    const tooltipNode = this.node;
+    if (tooltipNode) {
+      tooltipNode.ariaTarget = ariaTarget;
     }
   }
 
@@ -126,5 +157,10 @@ export class TooltipController extends SlotController {
     if (tooltipNode) {
       tooltipNode.target = target;
     }
+  }
+
+  /** @private */
+  __notifyChange() {
+    this.dispatchEvent(new CustomEvent('tooltip-changed', { detail: { node: this.node } }));
   }
 }

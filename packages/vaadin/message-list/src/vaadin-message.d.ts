@@ -3,9 +3,9 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
@@ -35,7 +35,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `focus-ring` | Set when the message is focused using the keyboard.
  * `focused`    | Set when the message is focused.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  */
 declare class Message extends FocusMixin(ThemableMixin(ElementMixin(ControllerMixin(HTMLElement)))) {
   /**

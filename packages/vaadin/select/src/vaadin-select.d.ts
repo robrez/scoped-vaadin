@@ -3,19 +3,16 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
-import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
-import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
-import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { SelectBaseMixin } from './vaadin-select-base-mixin.js';
 
 export interface SelectItem {
   label?: string;
   value?: string;
   component?: string;
   disabled?: boolean;
+  className?: string;
 }
 
 /**
@@ -84,8 +81,8 @@ export interface SelectEventMap extends HTMLElementEventMap, SelectCustomEventMa
  * select.items = [
  *   { label: 'Most recent first', value: 'recent' },
  *   { component: 'hr' },
- *   { label: 'Rating: low to high', value: 'rating-asc' },
- *   { label: 'Rating: high to low', value: 'rating-desc' },
+ *   { label: 'Rating: low to high', value: 'rating-asc', className: 'asc' },
+ *   { label: 'Rating: high to low', value: 'rating-desc', className: 'desc' },
  *   { component: 'hr' },
  *   { label: 'Price: low to high', value: 'price-asc', disabled: true },
  *   { label: 'Price: high to low', value: 'price-desc', disabled: true }
@@ -166,7 +163,7 @@ export interface SelectEventMap extends HTMLElementEventMap, SelectCustomEventMa
  * Note: the `theme` attribute value set on `<vaadin24-select>` is
  * propagated to the internal components listed above.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
@@ -174,87 +171,7 @@ export interface SelectEventMap extends HTMLElementEventMap, SelectCustomEventMa
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  */
-declare class Select extends OverlayClassMixin(
-  DelegateFocusMixin(DelegateStateMixin(KeyboardMixin(FieldMixin(ElementMixin(ThemableMixin(HTMLElement)))))),
-) {
-  /**
-   * An array containing items that will be rendered as the options of the select.
-   *
-   * #### Example
-   * ```js
-   * select.items = [
-   *   { label: 'Most recent first', value: 'recent' },
-   *   { component: 'hr' },
-   *   { label: 'Rating: low to high', value: 'rating-asc' },
-   *   { label: 'Rating: high to low', value: 'rating-desc' },
-   *   { component: 'hr' },
-   *   { label: 'Price: low to high', value: 'price-asc', disabled: true },
-   *   { label: 'Price: high to low', value: 'price-desc', disabled: true }
-   * ];
-   * ```
-   *
-   * Note: each item is rendered by default as the internal `<vaadin24-select-item>` that is an extension of `<vaadin24-item>`.
-   * To render the item with a custom component, provide a tag name by the `component` property.
-   *
-   * @type {!Array<!SelectItem>}
-   */
-  items: SelectItem[] | null | undefined;
-
-  /**
-   * Set when the select is open
-   */
-  opened: boolean;
-
-  /**
-   * Custom function for rendering the content of the `<vaadin24-select>`.
-   * Receives two arguments:
-   *
-   * - `root` The `<vaadin24-select-overlay>` internal container
-   *   DOM element. Append your content to it.
-   * - `select` The reference to the `<vaadin24-select>` element.
-   */
-  renderer: SelectRenderer | undefined;
-
-  /**
-   * The `value` property of the selected item, or an empty string
-   * if no item is selected.
-   * On change or initialization, the component finds the item which matches the
-   * value and displays it.
-   * If no value is provided to the component, it selects the first item without
-   * value or empty value.
-   * Hint: If you do not want to select any item by default, you can either set all
-   * the values of inner vaadin-items, or set the vaadin-select value to
-   * an inexistent value in the items list.
-   */
-  value: string;
-
-  /**
-   * The name of this element.
-   */
-  name: string | null | undefined;
-
-  /**
-   * A hint to the user of what can be entered in the control.
-   * The placeholder will be displayed in the case that there
-   * is no item selected, or the selected item has an empty
-   * string label, or the selected item has no label and it's
-   * DOM content is empty.
-   */
-  placeholder: string | null | undefined;
-
-  /**
-   * When present, it specifies that the element is read-only.
-   */
-  readonly: boolean;
-
-  /**
-   * Requests an update for the content of the select.
-   * While performing the update, it invokes the renderer passed in the `renderer` property.
-   *
-   * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
-   */
-  requestContentUpdate(): void;
-
+declare class Select extends SelectBaseMixin(ElementMixin(ThemableMixin(HTMLElement))) {
   addEventListener<K extends keyof SelectEventMap>(
     type: K,
     listener: (this: Select, ev: SelectEventMap[K]) => void,

@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2020 - 2023 Vaadin Ltd.
@@ -12,8 +11,10 @@ import { calculateSplices } from '@polymer/polymer/lib/utils/array-splice.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { html, render } from 'lit';
-import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
@@ -51,7 +52,7 @@ const MINIMUM_DISPLAYED_AVATARS = 2;
  * See the [`<vaadin24-avatar>`](#/elements/vaadin-avatar) documentation for the available
  * state attributes and stylable shadow parts of avatar elements.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Internal components
  *
@@ -62,6 +63,7 @@ const MINIMUM_DISPLAYED_AVATARS = 2;
  * - `<vaadin24-avatar-group-menu>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
  * - `<vaadin24-avatar-group-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ControllerMixin
  * @mixes ElementMixin
@@ -144,7 +146,7 @@ class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMix
        * The items objects allow to configure [`name`](#/elements/vaadin-avatar#property-name),
        * [`abbr`](#/elements/vaadin-avatar#property-abbr), [`img`](#/elements/vaadin-avatar#property-img)
        * and [`colorIndex`](#/elements/vaadin-avatar#property-colorIndex) properties on the
-       * stamped avatars.
+       * stamped avatars, and set `className` to provide CSS class names.
        *
        * #### Example
        *
@@ -152,11 +154,13 @@ class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMix
        * group.items = [
        *   {
        *     name: 'User name',
-       *     img: 'url-to-image.png'
+       *     img: 'url-to-image.png',
+       *     className: 'even'
        *   },
        *   {
        *     abbr: 'JD',
-       *     colorIndex: 1
+       *     colorIndex: 1,
+       *     className: 'odd'
        *   },
        * ];
        * ```
@@ -367,6 +371,9 @@ class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMix
     avatar.abbr = item.abbr;
     avatar.img = item.img;
     avatar.colorIndex = item.colorIndex;
+    if (item.className) {
+      avatar.className = item.className;
+    }
 
     if (item.name) {
       const text = document.createTextNode(item.name);
@@ -431,6 +438,7 @@ class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMix
                 .img="${item.img}"
                 .colorIndex="${item.colorIndex}"
                 .i18n="${this.i18n}"
+                class="${ifDefined(item.className)}"
                 with-tooltip
               ></vaadin24-avatar>
             `,
@@ -668,6 +676,6 @@ class AvatarGroup extends ResizeMixin(OverlayClassMixin(ElementMixin(ThemableMix
   }
 }
 
-internalCustomElements.define(AvatarGroup.is, AvatarGroup);
+defineCustomElement(AvatarGroup);
 
 export { AvatarGroup };

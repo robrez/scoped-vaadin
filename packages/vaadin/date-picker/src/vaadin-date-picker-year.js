@@ -1,20 +1,23 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { DatePickerYearMixin } from './vaadin-date-picker-year-mixin.js';
 
 /**
  * An element used internally by `<vaadin24-date-picker>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
+ * @mixes DatePickerYearMixin
  * @private
  */
-export class DatePickerYear extends ThemableMixin(PolymerElement) {
+export class DatePickerYear extends ThemableMixin(DatePickerYearMixin(PolymerElement)) {
   static get is() {
     return 'vaadin24-date-picker-year';
   }
@@ -31,28 +34,6 @@ export class DatePickerYear extends ThemableMixin(PolymerElement) {
       <div part="year-separator" aria-hidden="true"></div>
     `;
   }
-
-  static get properties() {
-    return {
-      year: {
-        type: String,
-      },
-
-      selectedDate: {
-        type: Object,
-      },
-    };
-  }
-
-  static get observers() {
-    return ['__updateSelected(year, selectedDate)'];
-  }
-
-  /** @private */
-  __updateSelected(year, selectedDate) {
-    this.toggleAttribute('selected', selectedDate && selectedDate.getFullYear() === year);
-    this.toggleAttribute('current', year === new Date().getFullYear());
-  }
 }
 
-internalCustomElements.define(DatePickerYear.is, DatePickerYear);
+defineCustomElement(DatePickerYear);

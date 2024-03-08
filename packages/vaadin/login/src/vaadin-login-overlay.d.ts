@@ -4,9 +4,9 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { LoginMixin } from './vaadin-login-mixin.js';
+import { LoginOverlayMixin } from './vaadin-login-overlay-mixin.js';
+
 export { LoginI18n } from './vaadin-login-mixin.js';
 
 /**
@@ -27,7 +27,11 @@ export type LoginOverlayErrorChangedEvent = CustomEvent<{ value: boolean }>;
 /**
  * Fired when a user submits the login.
  */
-export type LoginOverlayLoginEvent = CustomEvent<{ username: string; password: string }>;
+export type LoginOverlayLoginEvent = CustomEvent<{
+  username: string;
+  password: string;
+  custom?: Record<string, unknown>;
+}>;
 
 export interface LoginOverlayCustomEventMap {
   'description-changed': LoginOverlayDescriptionChangedEvent;
@@ -65,7 +69,7 @@ export interface LoginOverlayEventMap extends HTMLElementEventMap, LoginOverlayC
  * `brand`         | Container for application title and description
  * `form`          | Container for the `<vaadin24-login-form>` component
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * See [`<vaadin24-login-form>`](#/elements/vaadin-login-form)
  * documentation for  `<vaadin24-login-form-wrapper>` stylable parts.
@@ -76,22 +80,7 @@ export interface LoginOverlayEventMap extends HTMLElementEventMap, LoginOverlayC
  * @fires {CustomEvent} forgot-password - Fired when user clicks on the "Forgot password" button.
  * @fires {CustomEvent} login - Fired when a user submits the login.
  */
-declare class LoginOverlay extends LoginMixin(OverlayClassMixin(ElementMixin(ThemableMixin(HTMLElement)))) {
-  /**
-   * Defines the application description
-   */
-  description: string;
-
-  /**
-   * True if the overlay is currently displayed.
-   */
-  opened: boolean;
-
-  /**
-   * Defines the application title
-   */
-  title: string;
-
+declare class LoginOverlay extends LoginOverlayMixin(ElementMixin(ThemableMixin(HTMLElement))) {
   addEventListener<K extends keyof LoginOverlayEventMap>(
     type: K,
     listener: (this: LoginOverlay, ev: LoginOverlayEventMap[K]) => void,

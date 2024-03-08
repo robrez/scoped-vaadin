@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
@@ -6,10 +5,14 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
-import { ItemMixin } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
-import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { TabMixin } from './vaadin-tab-mixin.js';
+import { tabStyles } from './vaadin-tab-styles.js';
+
+registerStyles('vaadin24-tab', tabStyles, { moduleId: 'vaadin-tab-styles' });
 
 /**
  * `<vaadin24-tab>` is a Web Component providing an accessible and customizable tab.
@@ -31,26 +34,18 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `active` | Set when mousedown or enter/spacebar pressed | :host
  * `orientation` | Set to `horizontal` or `vertical` depending on the direction of items  | :host
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ControllerMixin
  * @mixes ElementMixin
  * @mixes ThemableMixin
- * @mixes ItemMixin
+ * @mixes TabMixin
  */
-class Tab extends ElementMixin(ThemableMixin(ItemMixin(ControllerMixin(PolymerElement)))) {
+class Tab extends ElementMixin(ThemableMixin(TabMixin(ControllerMixin(PolymerElement)))) {
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
-
-        :host([hidden]) {
-          display: none !important;
-        }
-      </style>
       <slot></slot>
       <slot name="tooltip"></slot>
     `;
@@ -63,33 +58,12 @@ class Tab extends ElementMixin(ThemableMixin(ItemMixin(ControllerMixin(PolymerEl
   /** @protected */
   ready() {
     super.ready();
-    this.setAttribute('role', 'tab');
 
     this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
   }
-
-  /**
-   * Override an event listener from `KeyboardMixin`
-   * to handle clicking anchors inside the tabs.
-   * @param {!KeyboardEvent} event
-   * @protected
-   * @override
-   */
-  _onKeyUp(event) {
-    const willClick = this.hasAttribute('active');
-
-    super._onKeyUp(event);
-
-    if (willClick) {
-      const anchor = this.querySelector('a');
-      if (anchor) {
-        anchor.click();
-      }
-    }
-  }
 }
 
-internalCustomElements.define(Tab.is, Tab);
+defineCustomElement(Tab);
 
 export { Tab };

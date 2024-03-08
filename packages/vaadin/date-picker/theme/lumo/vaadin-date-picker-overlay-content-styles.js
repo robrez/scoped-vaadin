@@ -3,7 +3,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
-import '@scoped-vaadin/button/theme/lumo/vaadin-button.js';
+import '@scoped-vaadin/button/theme/lumo/vaadin-button-styles.js';
 import './vaadin-date-picker-year-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 

@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
@@ -7,6 +6,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
 import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
 import './vaadin-time-picker-combo-box.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { InputControlMixin } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -70,7 +70,23 @@ registerStyles('vaadin24-time-picker', inputFieldShared, { moduleId: 'vaadin-tim
  * Note: the `theme` attribute value set on `<vaadin24-time-picker>` is
  * propagated to the internal components listed above.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+ *
+ * ### Change events
+ *
+ * Depending on the nature of the value change that the user attempts to commit e.g. by pressing Enter,
+ * the component can fire either a `change` event or an `unparsable-change` event:
+ *
+ * Value change             | Event
+ * :------------------------|:------------------
+ * empty => parsable        | change
+ * empty => unparsable      | unparsable-change
+ * parsable => empty        | change
+ * parsable => parsable     | change
+ * parsable => unparsable   | change
+ * unparsable => empty      | unparsable-change
+ * unparsable => parsable   | change
+ * unparsable => unparsable | unparsable-change
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
@@ -78,6 +94,7 @@ registerStyles('vaadin24-time-picker', inputFieldShared, { moduleId: 'vaadin-tim
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -126,6 +143,7 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
           position-target="[[_inputContainer]]"
           theme$="[[_theme]]"
           on-change="__onComboBoxChange"
+          on-has-input-value-changed="__onComboBoxHasInputValueChanged"
         >
           <vaadin24-input-container
             part="input-field"
@@ -353,6 +371,20 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
     return this.$.clearButton;
   }
 
+  /**
+   * The input element's value when it cannot be parsed as a time, and an empty string otherwise.
+   *
+   * @private
+   * @return {string}
+   */
+  get __unparsableValue() {
+    if (this._inputElementValue && !this.i18n.parseTime(this._inputElementValue)) {
+      return this._inputElementValue;
+    }
+
+    return '';
+  }
+
   /** @protected */
   ready() {
     super.ready();
@@ -371,6 +403,7 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
     this._tooltipController = new TooltipController(this);
     this._tooltipController.setShouldShow((timePicker) => !timePicker.opened);
     this._tooltipController.setPosition('top');
+    this._tooltipController.setAriaTarget(this.inputElement);
     this.addController(this._tooltipController);
   }
 
@@ -418,15 +451,21 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
   }
 
   /**
-   * Override method inherited from `FocusMixin` to validate on blur.
    * @param {boolean} focused
+   * @override
    * @protected
    */
   _setFocused(focused) {
     super._setFocused(focused);
 
     if (!focused) {
-      this.validate();
+      this.__commitValueChange();
+
+      // Do not validate when focusout is caused by document
+      // losing focus, which happens on browser tab switch.
+      if (document.hasFocus()) {
+        this.validate();
+      }
     }
   }
 
@@ -472,13 +511,47 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
   __onArrowPressWithStep(step) {
     const objWithStep = this.__addStep(this.__getMsec(this.__memoValue), step, true);
     this.__memoValue = objWithStep;
-    this.inputElement.value = this.i18n.formatTime(this.__validateTime(objWithStep));
-    this.__dispatchChange();
+
+    // Setting `_comboBoxValue` property triggers the synchronous
+    // observer where the value can be parsed again, so we set
+    // this flag to ensure it does not alter the value.
+    this.__useMemo = true;
+    this._comboBoxValue = this.i18n.formatTime(objWithStep);
+    this.__useMemo = false;
+
+    this.__commitValueChange();
   }
 
-  /** @private */
-  __dispatchChange() {
-    this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
+  /**
+   * Depending on the nature of the value change that has occurred since
+   * the last commit attempt, triggers validation and fires an event:
+   *
+   * Value change             | Event
+   * -------------------------|-------------------
+   * empty => parsable        | change
+   * empty => unparsable      | unparsable-change
+   * parsable => empty        | change
+   * parsable => parsable     | change
+   * parsable => unparsable   | change
+   * unparsable => empty      | unparsable-change
+   * unparsable => parsable   | change
+   * unparsable => unparsable | unparsable-change
+   *
+   * @private
+   */
+  __commitValueChange() {
+    const unparsableValue = this.__unparsableValue;
+
+    if (this.__committedValue !== this.value) {
+      this.validate();
+      this.dispatchEvent(new CustomEvent('change', { bubbles: true }));
+    } else if (this.__committedUnparsableValue !== unparsableValue) {
+      this.validate();
+      this.dispatchEvent(new CustomEvent('unparsable-change'));
+    }
+
+    this.__committedValue = this.value;
+    this.__committedUnparsableValue = unparsableValue;
   }
 
   /**
@@ -593,6 +666,13 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
     const parsedObj = (this.__memoValue = this.__parseISO(value));
     const newValue = this.__formatISO(parsedObj) || '';
 
+    // Mark value set programmatically by the user
+    // as committed for the change event detection.
+    if (!this.__keepCommittedValue) {
+      this.__committedValue = value;
+      this.__committedUnparsableValue = '';
+    }
+
     if (value !== '' && value !== null && !parsedObj) {
       // Value can not be parsed, reset to the old one.
       this.value = oldValue === undefined ? '' : oldValue;
@@ -616,32 +696,44 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
       return;
     }
 
-    const parsedObj = this.i18n.parseTime(value);
+    const parsedObj = this.__useMemo ? this.__memoValue : this.i18n.parseTime(value);
     const newValue = this.i18n.formatTime(parsedObj) || '';
 
     if (parsedObj) {
       if (value !== newValue) {
         this._comboBoxValue = newValue;
       } else {
+        this.__keepCommittedValue = true;
         this.__updateValue(parsedObj);
+        this.__keepCommittedValue = false;
       }
     } else {
-      // If user input can not be parsed, keep it.
-      if (value !== '') {
+      // If the user input can not be parsed, set a flag
+      // that prevents `__valueChanged` from removing the input
+      // after setting the value property to an empty string below.
+      if (this.value !== '' && value !== '') {
         this.__keepInvalidInput = true;
       }
 
+      this.__keepCommittedValue = true;
       this.value = '';
+      this.__keepCommittedValue = false;
     }
   }
 
   /** @private */
   __onComboBoxChange(event) {
     event.stopPropagation();
+    this.__commitValueChange();
+  }
 
-    this.validate();
-
-    this.__dispatchChange();
+  /**
+   * Synchronizes the `_hasInputValue` property with the internal combo-box's one.
+   *
+   * @private
+   */
+  __onComboBoxHasInputValueChanged() {
+    this._hasInputValue = this.$.comboBox._hasInputValue;
   }
 
   /** @private */
@@ -740,6 +832,6 @@ class TimePicker extends PatternMixin(InputControlMixin(ThemableMixin(ElementMix
    */
 }
 
-internalCustomElements.define(TimePicker.is, TimePicker);
+defineCustomElement(TimePicker);
 
 export { TimePicker };

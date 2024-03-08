@@ -1,14 +1,14 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
-import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
+import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { AccordionPanel } from './vaadin-accordion-panel.js';
 
@@ -51,11 +51,12 @@ import { AccordionPanel } from './vaadin-accordion-panel.js';
  * }
  * ```
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} items-changed - Fired when the `items` property changes.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes KeyboardDirectionMixin
@@ -146,7 +147,8 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
   ready() {
     super.ready();
 
-    this._observer = new FlattenedNodesObserver(this, (info) => {
+    const slot = this.shadowRoot.querySelector('slot');
+    this._observer = new SlotObserver(slot, (info) => {
       this._setItems(this._filterItems(Array.from(this.children)));
 
       this._filterItems(info.addedNodes).forEach((el) => {
@@ -219,6 +221,6 @@ class Accordion extends KeyboardDirectionMixin(ThemableMixin(ElementMixin(Polyme
   }
 }
 
-internalCustomElements.define(Accordion.is, Accordion);
+defineCustomElement(Accordion);
 
 export { Accordion };

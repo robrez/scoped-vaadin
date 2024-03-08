@@ -3,14 +3,17 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
+import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 
 /**
  * A mixin providing `focused`, `focus-ring`, `active`, `disabled` and `selected`.
  *
  * `focused`, `active` and `focus-ring` are set as only as attributes.
+ *
  * @polymerMixin
+ * @mixes ActiveMixin
+ * @mixes FocusMixin
  */
 export const ItemMixin = (superClass) =>
   class VaadinItemMixin extends ActiveMixin(FocusMixin(superClass)) {

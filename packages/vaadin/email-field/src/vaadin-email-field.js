@@ -1,9 +1,9 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
 import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { emailFieldStyles } from './vaadin-email-field-styles.js';
@@ -22,7 +22,7 @@ registerStyles('vaadin24-email-field', emailFieldStyles, { moduleId: 'vaadin-ema
  * `<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
  * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} input - Fired when the value is changed by the user: on every typing keystroke, and the value is cleared using the clear button.
  * @fires {Event} change - Fired when the user commits a value change.
@@ -30,6 +30,7 @@ registerStyles('vaadin24-email-field', emailFieldStyles, { moduleId: 'vaadin-ema
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends TextField
  */
 export class EmailField extends TextField {
@@ -40,7 +41,7 @@ export class EmailField extends TextField {
   constructor() {
     super();
     this._setType('email');
-    this.pattern = '^([a-zA-Z0-9_\\.\\-+])+@[a-zA-Z0-9-.]+\\.[a-zA-Z0-9-]{2,}$';
+    this.pattern = '^([a-zA-Z0-9_\\.\\-+])+@[a-zA-Z0-9\\-.]+\\.[a-zA-Z0-9\\-]{2,}$';
   }
 
   /** @protected */
@@ -53,4 +54,4 @@ export class EmailField extends TextField {
   }
 }
 
-internalCustomElements.define('vaadin24-email-field', EmailField);
+defineCustomElement(EmailField);

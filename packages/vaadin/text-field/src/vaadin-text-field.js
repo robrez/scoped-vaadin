@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import '@scoped-vaadin/input-container/src/vaadin-input-container.js';
 import { html, PolymerElement } from '@polymer/polymer';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
@@ -69,7 +69,7 @@ registerStyles('vaadin24-text-field', inputFieldShared, { moduleId: 'vaadin-text
  * `focus-ring`        | Set when the element is keyboard focused | :host
  * `readonly`          | Set to a readonly text field | :host
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} input - Fired when the value is changed by the user: on every typing keystroke, and the value is cleared using the clear button.
  * @fires {Event} change - Fired when the user commits a value change.
@@ -77,6 +77,7 @@ registerStyles('vaadin24-text-field', inputFieldShared, { moduleId: 'vaadin-text
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -150,8 +151,9 @@ export class TextField extends TextFieldMixin(ThemableMixin(ElementMixin(Polymer
 
     this._tooltipController = new TooltipController(this);
     this._tooltipController.setPosition('top');
+    this._tooltipController.setAriaTarget(this.inputElement);
     this.addController(this._tooltipController);
   }
 }
 
-internalCustomElements.define(TextField.is, TextField);
+defineCustomElement(TextField);

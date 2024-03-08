@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ComboBoxItemMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-item-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -28,8 +28,9 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `selected`   | Set when the item is selected
  * `focused`    | Set when the item is focused
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @mixes ComboBoxItemMixin
  * @mixes ThemableMixin
  * @mixes DirMixin
@@ -59,4 +60,4 @@ export class TimePickerItem extends ComboBoxItemMixin(ThemableMixin(DirMixin(Pol
   }
 }
 
-internalCustomElements.define(TimePickerItem.is, TimePickerItem);
+defineCustomElement(TimePickerItem);

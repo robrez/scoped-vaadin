@@ -1,12 +1,11 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { isEmptyTextNode } from '@scoped-vaadin/component-base/src/dom-utils.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -64,6 +63,7 @@ registerStyles(
  * </vaadin24-app-layout>
  * ```
  *
+ * @customElement
  * @extends Button
  */
 class DrawerToggle extends Button {
@@ -109,7 +109,9 @@ class DrawerToggle extends Button {
   ready() {
     super.ready();
 
-    this._observer = new FlattenedNodesObserver(this, () => {
+    this._toggleFallbackIcon();
+
+    this.$.slot.addEventListener('slotchange', () => {
       this._toggleFallbackIcon();
     });
   }
@@ -123,6 +125,6 @@ class DrawerToggle extends Button {
   }
 }
 
-internalCustomElements.define(DrawerToggle.is, DrawerToggle);
+defineCustomElement(DrawerToggle);
 
 export { DrawerToggle };
