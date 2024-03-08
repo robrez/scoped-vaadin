@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -40,11 +40,13 @@ registerStyles('vaadin24-checkbox', checkboxStyles, { moduleId: 'vaadin-checkbox
  * `indeterminate` | Set when the checkbox is in the indeterminate state.
  * `has-label`     | Set when the checkbox has a label.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @fires {Event} change - Fired when the checkbox is checked or unchecked by the user.
  * @fires {CustomEvent} checked-changed - Fired when the `checked` property changes.
  * @fires {CustomEvent} indeterminate-changed - Fired when the `indeterminate` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes CheckboxMixin
  * @mixes ThemableMixin
@@ -71,8 +73,9 @@ export class Checkbox extends CheckboxMixin(ElementMixin(ThemableMixin(PolymerEl
     super.ready();
 
     this._tooltipController = new TooltipController(this);
+    this._tooltipController.setAriaTarget(this.inputElement);
     this.addController(this._tooltipController);
   }
 }
 
-internalCustomElements.define(Checkbox.is, Checkbox);
+defineCustomElement(Checkbox);

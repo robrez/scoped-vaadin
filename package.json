@@ -1,5 +1,5 @@
 {
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "name": "@robrez/scoped-vaadin-web-components",
   "description": "",
   "type": "module",
@@ -8,7 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "web-dev-server --node-resolve --open /dev",
-    "build": "node scripts/build.js",
+    "build": "npm run build-element-meta && npm run build-packages",
+    "build-packages": "node scripts/build.js",
     "build-demos": "node scripts/build-demos.js",
     "build-element-meta": "node scripts/build-element-meta.js"
   },

@@ -3,7 +3,7 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ListMixin } from '@scoped-vaadin/component-base/src/list-mixin.js';
+import { ListMixin } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
 
 /**
  * A mixin for `nav` elements, facilitating multiple selection of childNodes.
@@ -39,7 +39,7 @@ export const MultiSelectListMixin = (superClass) =>
     }
 
     static get observers() {
-      return [`_enhanceMultipleItems(items, multiple, selected, selectedValues, selectedValues.*)`];
+      return ['_enhanceMultipleItems(items, multiple, selected, disabled, selectedValues, selectedValues.*)'];
     }
 
     /** @protected */
@@ -51,7 +51,7 @@ export const MultiSelectListMixin = (superClass) =>
     }
 
     /** @private */
-    _enhanceMultipleItems(items, multiple, selected, selectedValues) {
+    _enhanceMultipleItems(items, multiple, selected, disabled, selectedValues) {
       if (!items || !multiple) {
         return;
       }

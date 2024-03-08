@@ -1,11 +1,16 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { loginFormWrapperStyles } from './vaadin-login-form-wrapper-styles.js';
+
+registerStyles('vaadin24-login-form-wrapper', loginFormWrapperStyles, {
+  moduleId: 'vaadin-login-form-wrapper-styles',
+});
 
 /**
  * An element used internally by `<vaadin24-login-form>`. Not intended to be used separately.
@@ -17,31 +22,6 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
 class LoginFormWrapper extends ThemableMixin(PolymerElement) {
   static get template() {
     return html`
-      <style>
-        :host {
-          overflow: hidden;
-          display: inline-block;
-        }
-
-        :host([hidden]) {
-          display: none !important;
-        }
-
-        [part='form'] {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          box-sizing: border-box;
-        }
-
-        [part='form-title'] {
-          margin: 0;
-        }
-
-        [part='error-message'] {
-          position: relative;
-        }
-      </style>
       <section part="form">
         <h2 part="form-title">[[i18n.form.title]]</h2>
         <div part="error-message" hidden$="[[!error]]">
@@ -51,9 +31,14 @@ class LoginFormWrapper extends ThemableMixin(PolymerElement) {
 
         <slot name="form"></slot>
 
+        <slot name="custom-form-area"></slot>
+
+        <slot name="submit"></slot>
+
         <slot name="forgot-password"></slot>
 
         <div part="footer">
+          <slot name="footer"></slot>
           <p>[[i18n.additionalInformation]]</p>
         </div>
       </section>
@@ -87,6 +72,6 @@ class LoginFormWrapper extends ThemableMixin(PolymerElement) {
   }
 }
 
-internalCustomElements.define(LoginFormWrapper.is, LoginFormWrapper);
+defineCustomElement(LoginFormWrapper);
 
 export { LoginFormWrapper };

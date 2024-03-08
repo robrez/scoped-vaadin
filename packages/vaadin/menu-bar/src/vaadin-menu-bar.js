@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
@@ -7,7 +6,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
 import './vaadin-menu-bar-submenu.js';
 import './vaadin-menu-bar-button.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
@@ -45,7 +44,7 @@ import { MenuBarMixin } from './vaadin-menu-bar-mixin.js';
  * `disabled`          | Set when the menu bar is disabled
  * `has-single-button` | Set when there is only one button visible
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Internal components
  *
@@ -59,13 +58,13 @@ import { MenuBarMixin } from './vaadin-menu-bar-mixin.js';
  *
  * @fires {CustomEvent<boolean>} item-selected - Fired when a submenu item or menu bar button without children is clicked.
  *
+ * @customElement
  * @extends HTMLElement
- * @mixes DisabledMixin
  * @mixes ElementMixin
  * @mixes MenuBarMixin
  * @mixes ThemableMixin
  */
-class MenuBar extends MenuBarMixin(DisabledMixin(ElementMixin(ThemableMixin(PolymerElement)))) {
+class MenuBar extends MenuBarMixin(ElementMixin(ThemableMixin(PolymerElement))) {
   static get template() {
     return html`
       <style>
@@ -100,115 +99,6 @@ class MenuBar extends MenuBarMixin(DisabledMixin(ElementMixin(ThemableMixin(Poly
     return 'vaadin24-menu-bar';
   }
 
-  static get properties() {
-    return {
-      /**
-       * @typedef MenuBarItem
-       * @type {object}
-       * @property {string} text - Text to be set as the menu button component's textContent.
-       * @property {string} tooltip - Text to be set as the menu button's tooltip.
-       * Requires a `<vaadin24-tooltip slot="tooltip">` element to be added inside the `<vaadin24-menu-bar>`.
-       * @property {union: string | object} component - The component to represent the button content.
-       * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
-       * @property {boolean} disabled - If true, the button is disabled and cannot be activated.
-       * @property {union: string | string[]} theme - Theme(s) to be set as the theme attribute of the button, overriding any theme set on the menu bar.
-       * @property {SubMenuItem[]} children - Array of submenu items.
-       */
-
-      /**
-       * @typedef SubMenuItem
-       * @type {object}
-       * @property {string} text - Text to be set as the menu item component's textContent.
-       * @property {union: string | object} component - The component to represent the item.
-       * Either a tagName or an element instance. Defaults to "vaadin24-menu-bar-item".
-       * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
-       * @property {boolean} checked - If true, the item shows a checkmark next to it.
-       * @property {SubMenuItem[]} children - Array of child submenu items.
-       */
-
-      /**
-       * Defines a hierarchical structure, where root level items represent menu bar buttons,
-       * and `children` property configures a submenu with items to be opened below
-       * the button on click, Enter, Space, Up and Down arrow keys.
-       *
-       * #### Example
-       *
-       * ```js
-       * menubar.items = [
-       *   {
-       *     text: 'File',
-       *     children: [
-       *       {text: 'Open'}
-       *       {text: 'Auto Save', checked: true},
-       *     ]
-       *   },
-       *   {component: 'hr'},
-       *   {
-       *     text: 'Edit',
-       *     children: [
-       *       {text: 'Undo', disabled: true},
-       *       {text: 'Redo'}
-       *     ]
-       *   },
-       *   {text: 'Help'}
-       * ];
-       * ```
-       *
-       * @type {!Array<!MenuBarItem>}
-       */
-      items: {
-        type: Array,
-        value: () => [],
-      },
-
-      /**
-       * The object used to localize this component.
-       * To change the default localization, replace the entire
-       * `i18n` object with a custom one.
-       *
-       * To update individual properties, extend the existing i18n object like so:
-       * ```
-       * menuBar.i18n = {
-       *   ...menuBar.i18n,
-       *   moreOptions: 'More options'
-       * }
-       * ```
-       *
-       * The object has the following JSON structure and default values:
-       * ```
-       * {
-       *   moreOptions: 'More options'
-       * }
-       * ```
-       *
-       * @type {!MenuBarI18n}
-       * @default {English/US}
-       */
-      i18n: {
-        type: Object,
-        value: () => {
-          return {
-            moreOptions: 'More options',
-          };
-        },
-      },
-
-      /**
-       * A space-delimited list of CSS class names
-       * to set on each sub-menu overlay element.
-       *
-       * @attr {string} overlay-class
-       */
-      overlayClass: {
-        type: String,
-      },
-    };
-  }
-
-  static get observers() {
-    return ['_themeChanged(_theme, _overflow, _container)'];
-  }
-
   /** @protected */
   ready() {
     super.ready();
@@ -216,51 +106,6 @@ class MenuBar extends MenuBarMixin(DisabledMixin(ElementMixin(ThemableMixin(Poly
     this._tooltipController = new TooltipController(this);
     this._tooltipController.setManual(true);
     this.addController(this._tooltipController);
-  }
-
-  /**
-   * Override method inherited from `DisabledMixin`
-   * to update the `disabled` property for the buttons
-   * whenever the property changes on the menu bar.
-   *
-   * @param {boolean} newValue the new disabled value
-   * @param {boolean} oldValue the previous disabled value
-   * @override
-   * @protected
-   */
-  _disabledChanged(newValue, oldValue) {
-    super._disabledChanged(newValue, oldValue);
-    if (oldValue !== newValue) {
-      this.__updateButtonsDisabled(newValue);
-    }
-  }
-
-  /**
-   * A callback for the `_theme` property observer.
-   * It propagates the host theme to the buttons and the sub menu.
-   *
-   * @param {string | null} theme
-   * @protected
-   */
-  _themeChanged(theme, overflow, container) {
-    if (overflow && container) {
-      this._buttons.forEach((btn) => this._setButtonTheme(btn, theme));
-      this.__detectOverflow();
-    }
-
-    if (theme) {
-      this._subMenu.setAttribute('theme', theme);
-    } else {
-      this._subMenu.removeAttribute('theme');
-    }
-  }
-
-  /** @private */
-  __updateButtonsDisabled(disabled) {
-    this._buttons.forEach((btn) => {
-      // Disable the button if the entire menu-bar is disabled or the item alone is disabled
-      btn.disabled = disabled || (btn.item && btn.item.disabled);
-    });
   }
 
   /**
@@ -272,6 +117,6 @@ class MenuBar extends MenuBarMixin(DisabledMixin(ElementMixin(ThemableMixin(Poly
    */
 }
 
-internalCustomElements.define(MenuBar.is, MenuBar);
+defineCustomElement(MenuBar);
 
 export { MenuBar };

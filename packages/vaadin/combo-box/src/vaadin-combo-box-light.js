@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
@@ -10,6 +9,7 @@ import './vaadin-combo-box-scroller.js';
 import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
 import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ComboBoxDataProviderMixin } from './vaadin-combo-box-data-provider-mixin.js';
@@ -61,6 +61,7 @@ import { ComboBoxMixin } from './vaadin-combo-box-mixin.js';
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ComboBoxDataProviderMixin
  * @mixes ComboBoxMixin
@@ -119,10 +120,15 @@ class ComboBoxLight extends ComboBoxDataProviderMixin(ComboBoxMixin(ValidateMixi
   }
 
   /**
-   * @return {string}
+   * Override this getter from `InputMixin` to allow using
+   * an arbitrary property name instead of `value`
+   * for accessing the input element's value.
+   *
    * @protected
+   * @override
+   * @return {string}
    */
-  get _propertyForValue() {
+  get _inputElementValueProperty() {
     return dashToCamelCase(this.attrForValue);
   }
 
@@ -176,7 +182,7 @@ class ComboBoxLight extends ComboBoxDataProviderMixin(ComboBoxMixin(ValidateMixi
    * @return {boolean}
    */
   checkValidity() {
-    if (this.inputElement.validate) {
+    if (this.inputElement && this.inputElement.validate) {
       return this.inputElement.validate();
     }
     return super.checkValidity();
@@ -192,18 +198,22 @@ class ComboBoxLight extends ComboBoxDataProviderMixin(ComboBoxMixin(ValidateMixi
   }
 
   /**
-   * @param {!Event} event
    * @protected
+   * @override
    */
-  _onChange(event) {
-    super._onChange(event);
+  _shouldRemoveFocus(event) {
+    const isBlurringControlButtons = event.target === this._toggleElement || event.target === this.clearElement;
+    const isFocusingInputElement = event.relatedTarget && event.relatedTarget === this._nativeInput;
 
-    if (this._isClearButton(event)) {
-      this._onClearAction();
+    // prevent closing the overlay when moving focus from clear or toggle buttons to the internal input
+    if (isBlurringControlButtons && isFocusingInputElement) {
+      return false;
     }
+
+    return super._shouldRemoveFocus(event);
   }
 }
 
-internalCustomElements.define(ComboBoxLight.is, ComboBoxLight);
+defineCustomElement(ComboBoxLight);
 
 export { ComboBoxLight };

@@ -53,10 +53,12 @@ const dialogOverlay = css`
 
   /* No padding */
   :host([theme~='no-padding']) [part='content'] {
-    padding: 0;
+    padding: 0 !important;
   }
 `;
 
 registerStyles('vaadin24-dialog-overlay', [overlay, dialogOverlay], {
   moduleId: 'material-dialog',
 });
+
+export { dialogOverlay };

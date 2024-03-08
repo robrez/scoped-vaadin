@@ -61,6 +61,31 @@ export const typography = css`
     font-weight: 900;
   }
 
+  /* === Line clamp === */
+  [class*='line-clamp-'] {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+  .line-clamp-1 {
+    -webkit-line-clamp: 1;
+  }
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+  .line-clamp-3 {
+    -webkit-line-clamp: 3;
+  }
+  .line-clamp-4 {
+    -webkit-line-clamp: 4;
+  }
+  .line-clamp-5 {
+    -webkit-line-clamp: 5;
+  }
+  .line-clamp-6 {
+    -webkit-line-clamp: 6;
+  }
+
   /* === Line height === */
   .leading-none {
     line-height: 1;
@@ -128,6 +153,23 @@ export const typography = css`
   .text-success-contrast {
     color: var(--lumo-success-contrast-color);
   }
+  .text-warning {
+    color: var(--lumo-warning-text-color);
+  }
+  .text-warning-contrast {
+    color: var(--lumo-warning-contrast-color);
+  }
+
+  /* == Text decoration === */
+  .line-through {
+    text-decoration-line: line-through;
+  }
+  .no-underline {
+    text-decoration-line: none;
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
 
   /* === Text overflow === */
   .overflow-clip {
@@ -150,6 +192,9 @@ export const typography = css`
 
   /* === Whitespace === */
   .whitespace-normal {
+    white-space: normal;
+  }
+  .whitespace-break-spaces {
     white-space: normal;
   }
   .whitespace-nowrap {

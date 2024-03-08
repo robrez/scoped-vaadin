@@ -2,7 +2,7 @@ import '@scoped-vaadin/vaadin-material-styles/color.js';
 import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import '@scoped-vaadin/vaadin-material-styles/typography.js';
 import '@scoped-vaadin/vaadin-material-styles/shadow.js';
-import '@scoped-vaadin/button/theme/material/vaadin-button.js';
+import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
 import './vaadin-date-picker-year-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 

@@ -4,18 +4,14 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { GridDefaultItem } from './vaadin-grid.js';
-import { GridColumn } from './vaadin-grid-column.js';
+import type { GridColumnMixin } from './vaadin-grid-column.js';
+import type { GridColumn } from './vaadin-grid-column.js';
+import type {
+  GridSelectionColumnEventMap,
+  GridSelectionColumnMixinClass,
+} from './vaadin-grid-selection-column-mixin.js';
 
-/**
- * Fired when the `selectAll` property changes.
- */
-export type GridSelectionColumnSelectAllChangedEvent = CustomEvent<{ value: boolean }>;
-
-export interface GridSelectionColumnCustomEventMap {
-  'select-all-changed': GridSelectionColumnSelectAllChangedEvent;
-}
-
-export interface GridSelectionColumnEventMap extends HTMLElementEventMap, GridSelectionColumnCustomEventMap {}
+export * from './vaadin-grid-selection-column-mixin.js';
 
 /**
  * `<vaadin24-grid-selection-column>` is a helper element for the `<vaadin24-grid>`
@@ -38,22 +34,13 @@ export interface GridSelectionColumnEventMap extends HTMLElementEventMap, GridSe
  * selection for all the items at once.
  *
  * __The default content can also be overridden__
- *
- * @fires {CustomEvent} select-all-changed - Fired when the `selectAll` property changes.
  */
-declare class GridSelectionColumn<TItem = GridDefaultItem> extends GridColumn<TItem> {
-  /**
-   * When true, all the items are selected.
-   * @attr {boolean} select-all
-   */
-  selectAll: boolean;
+declare class GridSelectionColumn<TItem = GridDefaultItem> extends HTMLElement {}
 
-  /**
-   * When true, the active gets automatically selected.
-   * @attr {boolean} auto-select
-   */
-  autoSelect: boolean;
-
+interface GridSelectionColumn<TItem = GridDefaultItem>
+  extends GridSelectionColumnMixinClass<TItem>,
+    GridColumnMixin<TItem, GridColumn<TItem>>,
+    GridColumn<TItem> {
   addEventListener<K extends keyof GridSelectionColumnEventMap>(
     type: K,
     listener: (this: GridSelectionColumn<TItem>, ev: GridSelectionColumnEventMap[K]) => void,

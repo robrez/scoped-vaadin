@@ -20,19 +20,21 @@ registerStyles(
     [part~='cell'] {
       min-height: 48px;
       -webkit-tap-highlight-color: transparent;
+      --_cell-padding: var(--vaadin-grid-cell-padding, var(--_cell-default-padding));
+      --_cell-default-padding: 8px 16px;
     }
 
     [part~='cell'] ::slotted(vaadin-grid-cell-content) {
-      padding: 8px 16px;
+      padding: var(--_cell-padding);
     }
 
-    [part~='details-cell'] ::slotted(vaadin-grid-cell-content) {
-      padding: 14px 16px;
+    [part~='details-cell'] {
+      --_cell-default-padding: 14px 16px;
     }
 
     [part~='header-cell'],
     [part~='footer-cell'] {
-      background-color: var(--material-background-color);
+      background-color: var(--vaadin-grid-cell-background, var(--material-background-color));
       color: var(--material-secondary-text-color);
       font-size: var(--material-caption-font-size);
       font-weight: 500;
@@ -53,15 +55,18 @@ registerStyles(
     /* Body rows/cells */
 
     [part~='body-cell'] {
-      background-color: var(--material-background-color);
+      background-color: var(--vaadin-grid-cell-background, var(--material-background-color));
     }
 
     [part~='row']:hover > [part~='body-cell'] {
-      background: linear-gradient(
-          var(--_material-grid-row-hover-background-color, rgba(0, 0, 0, 0.04)),
-          var(--_material-grid-row-hover-background-color, rgba(0, 0, 0, 0.04))
-        )
-        var(--material-background-color);
+      background: var(
+        --vaadin-grid-cell-background,
+        linear-gradient(
+            var(--_material-grid-row-hover-background-color, rgba(0, 0, 0, 0.04)),
+            var(--_material-grid-row-hover-background-color, rgba(0, 0, 0, 0.04))
+          )
+          var(--material-background-color)
+      );
     }
 
     @media (hover: none) {
@@ -76,10 +81,7 @@ registerStyles(
       content: '';
       pointer-events: none;
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       background-color: var(--material-primary-color);
       opacity: 0;
       transition: opacity 0.1s cubic-bezier(0.4, 0, 0.2, 0.1);
@@ -143,10 +145,7 @@ registerStyles(
     :host([navigating]) [part~='row']:focus::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       pointer-events: none;
       transform: translateX(calc(-1 * var(--_grid-horizontal-scroll-position)));
       z-index: 3;
@@ -157,10 +156,7 @@ registerStyles(
       content: '';
       position: absolute;
       z-index: 100;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       pointer-events: none;
       box-shadow: inset 0 0 0 2px var(--material-primary-color);
     }
@@ -176,10 +172,7 @@ registerStyles(
     [part~='row'][dragover] [part~='cell']::after {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       height: 3px;
       pointer-events: none;
       background: var(--material-primary-color);

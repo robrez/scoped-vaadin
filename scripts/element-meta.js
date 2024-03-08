@@ -1,5 +1,13 @@
 export const elementMeta = [
   {
+    "package": "@vaadin/a11y-base",
+    "elementNames": [],
+    "eventNames": [
+      "blur",
+      "focus"
+    ]
+  },
+  {
     "package": "@vaadin/accordion",
     "elementNames": [
       "vaadin-accordion",
@@ -55,6 +63,7 @@ export const elementMeta = [
       "vaadin-checkbox"
     ],
     "eventNames": [
+      "change",
       "checked-changed",
       "indeterminate-changed",
       "value-changed"
@@ -100,9 +109,11 @@ export const elementMeta = [
     "package": "@vaadin/component-base",
     "elementNames": [],
     "eventNames": [
-      "blur",
-      "focus",
-      "slot-content-changed"
+      "page-loaded",
+      "page-received",
+      "page-requested",
+      "slot-content-changed",
+      "tooltip-changed"
     ]
   },
   {
@@ -173,6 +184,7 @@ export const elementMeta = [
       "invalid-changed",
       "opened-changed",
       "scroll-animation-finished",
+      "unparsable-change",
       "validated",
       "value-changed"
     ]
@@ -279,6 +291,7 @@ export const elementMeta = [
       "expanded-changed",
       "expanded-items-changed",
       "filter-changed",
+      "focusin",
       "grid-dragend",
       "grid-dragstart",
       "grid-drop",
@@ -445,6 +458,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "unparsable-change",
       "validated",
       "value-changed"
     ]
@@ -600,6 +614,7 @@ export const elementMeta = [
       "input",
       "invalid-changed",
       "opened-changed",
+      "unparsable-change",
       "validated",
       "value-changed"
     ]

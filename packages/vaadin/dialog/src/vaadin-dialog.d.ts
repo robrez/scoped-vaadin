@@ -6,7 +6,9 @@
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+import { DialogBaseMixin } from './vaadin-dialog-base-mixin.js';
 import { DialogDraggableMixin } from './vaadin-dialog-draggable-mixin.js';
+import { DialogRendererMixin } from './vaadin-dialog-renderer-mixin.js';
 import { DialogResizableMixin } from './vaadin-dialog-resizable-mixin.js';
 
 export { DialogOverlay, DialogOverlayBounds, DialogOverlayBoundsParam } from './vaadin-dialog-overlay.js';
@@ -96,97 +98,22 @@ export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
  * Note: the `theme` attribute value set on `<vaadin24-dialog>` is
  * propagated to the internal `<vaadin24-dialog-overlay>` component.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} resize - Fired when the dialog resize is finished.
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  */
-declare class Dialog extends OverlayClassMixin(
-  ThemePropertyMixin(ElementMixin(DialogDraggableMixin(DialogResizableMixin(HTMLElement)))),
+declare class Dialog extends DialogDraggableMixin(
+  DialogResizableMixin(
+    DialogRendererMixin(DialogBaseMixin(OverlayClassMixin(ThemePropertyMixin(ElementMixin(HTMLElement))))),
+  ),
 ) {
-  /**
-   * True if the overlay is currently displayed.
-   */
-  opened: boolean;
-
-  /**
-   * Set to true to disable closing dialog on outside click
-   * @attr {boolean} no-close-on-outside-click
-   */
-  noCloseOnOutsideClick: boolean;
-
-  /**
-   * Set to true to disable closing dialog on Escape press
-   * @attr {boolean} no-close-on-esc
-   */
-  noCloseOnEsc: boolean;
-
   /**
    * Set the `aria-label` attribute for assistive technologies like
    * screen readers. An empty string value for this property (the
    * default) means that the `aria-label` attribute is not present.
    */
   ariaLabel: string;
-
-  /**
-   * Custom function for rendering the content of the dialog.
-   * Receives two arguments:
-   *
-   * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin24-dialog>` element.
-   */
-  renderer: DialogRenderer | null | undefined;
-
-  /**
-   * String used for rendering a dialog title.
-   *
-   * If both `headerTitle` and `headerRenderer` are defined, the title
-   * and the elements created by the renderer will be placed next to
-   * each other, with the title coming first.
-   *
-   * When `headerTitle` is set, the attribute `has-title` is added to the overlay element.
-   * @attr {string} header-title
-   */
-  headerTitle: string | null | undefined;
-
-  /**
-   * Custom function for rendering the dialog header.
-   * Receives two arguments:
-   *
-   * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin24-dialog>` element.
-   *
-   * If both `headerTitle` and `headerRenderer` are defined, the title
-   * and the elements created by the renderer will be placed next to
-   * each other, with the title coming first.
-   *
-   * When `headerRenderer` is set, the attribute `has-header` is added to the overlay element.
-   */
-  headerRenderer: DialogRenderer | null | undefined;
-
-  /**
-   * Custom function for rendering the dialog footer.
-   * Receives two arguments:
-   *
-   * - `root` The root container DOM element. Append your content to it.
-   * - `dialog` The reference to the `<vaadin24-dialog>` element.
-   *
-   * When `footerRenderer` is set, the attribute `has-footer` is added to the overlay element.
-   */
-  footerRenderer: DialogRenderer | null | undefined;
-
-  /**
-   * Set to true to remove backdrop and allow click events on background elements.
-   */
-  modeless: boolean;
-
-  /**
-   * While performing the update, it invokes the renderer passed in the `renderer` property,
-   * as well as `headerRender` and `footerRenderer` properties, if these are defined.
-   *
-   * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
-   */
-  requestContentUpdate(): void;
 
   addEventListener<K extends keyof DialogEventMap>(
     type: K,

@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ComboBoxItemMixin } from './vaadin-combo-box-item-mixin.js';
@@ -28,8 +28,9 @@ import { ComboBoxItemMixin } from './vaadin-combo-box-item-mixin.js';
  * `selected`   | Set when the item is selected
  * `focused`    | Set when the item is focused
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @mixes ComboBoxItemMixin
  * @mixes ThemableMixin
  * @mixes DirMixin
@@ -59,4 +60,4 @@ export class ComboBoxItem extends ComboBoxItemMixin(ThemableMixin(DirMixin(Polym
   }
 }
 
-internalCustomElements.define(ComboBoxItem.is, ComboBoxItem);
+defineCustomElement(ComboBoxItem);

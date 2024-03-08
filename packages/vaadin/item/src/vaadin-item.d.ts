@@ -43,13 +43,18 @@ import { ItemMixin } from './vaadin-item-mixin.js';
  * `focused`    | Set when the item is focused.
  * `selected`   | Set when the item is selected
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  */
 declare class Item extends ItemMixin(ThemableMixin(DirMixin(HTMLElement))) {
   /**
    * Submittable string value. The default value is the trimmed text content of the element.
    */
   value: string;
+
+  /**
+   * String that can be set to visually represent the selected item in `vaadin24-select`.
+   */
+  label: string | undefined;
 }
 
 declare global {

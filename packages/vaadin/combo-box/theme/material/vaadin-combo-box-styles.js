@@ -1,3 +1,4 @@
+import '@scoped-vaadin/input-container/theme/material/vaadin-input-container-styles.js';
 import '@scoped-vaadin/vaadin-material-styles/color.js';
 import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import { inputFieldShared } from '@scoped-vaadin/vaadin-material-styles/mixins/input-field-shared.js';

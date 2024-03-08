@@ -3,7 +3,8 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
+import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
 import { InputMixin } from './input-mixin.js';
 
 /**
@@ -51,6 +52,7 @@ export const ClearButtonMixin = (superclass) =>
       super.ready();
 
       if (this.clearElement) {
+        this.clearElement.addEventListener('mousedown', (event) => this._onClearButtonMouseDown(event));
         this.clearElement.addEventListener('click', (event) => this._onClearButtonClick(event));
       }
     }
@@ -61,8 +63,18 @@ export const ClearButtonMixin = (superclass) =>
      */
     _onClearButtonClick(event) {
       event.preventDefault();
-      this.inputElement.focus();
       this._onClearAction();
+    }
+
+    /**
+     * @param {MouseEvent} event
+     * @protected
+     */
+    _onClearButtonMouseDown(event) {
+      event.preventDefault();
+      if (!isTouch) {
+        this.inputElement.focus();
+      }
     }
 
     /**
@@ -91,7 +103,7 @@ export const ClearButtonMixin = (superclass) =>
      * @protected
      */
     _onClearAction() {
-      this.clear();
+      this._inputElementValue = '';
       // Note, according to the HTML spec, the native change event isn't composed
       // while the input event is composed.
       this.inputElement.dispatchEvent(new Event('input', { bubbles: true, composed: true }));

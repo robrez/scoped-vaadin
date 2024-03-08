@@ -1,13 +1,13 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import './vaadin-date-picker-overlay.js';
 import './vaadin-date-picker-overlay-content.js';
+import './vaadin-date-picker-overlay.js';
 import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
@@ -29,7 +29,7 @@ import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
  *
  * ### Styling
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * In addition to `<vaadin24-date-picker-light>` itself, the following
  * internal components are themable:
@@ -46,6 +46,7 @@ import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @mixes DatePickerMixin
@@ -97,15 +98,16 @@ class DatePickerLight extends ThemableMixin(DatePickerMixin(ValidateMixin(Polyme
     };
   }
 
-  /** @return {string | undefined} */
-  get _inputValue() {
-    return this.inputElement && this.inputElement[dashToCamelCase(this.attrForValue)];
-  }
-
-  set _inputValue(value) {
-    if (this.inputElement) {
-      this.inputElement[dashToCamelCase(this.attrForValue)] = value;
-    }
+  /**
+   * This method from InputMixin is overridden to make
+   * the input element value property customizable.
+   *
+   * @protected
+   * @override
+   * @return {string}
+   */
+  get _inputElementValueProperty() {
+    return dashToCamelCase(this.attrForValue);
   }
 
   /** @protected */
@@ -126,6 +128,6 @@ class DatePickerLight extends ThemableMixin(DatePickerMixin(ValidateMixin(Polyme
   }
 }
 
-internalCustomElements.define(DatePickerLight.is, DatePickerLight);
+defineCustomElement(DatePickerLight);
 
 export { DatePickerLight };

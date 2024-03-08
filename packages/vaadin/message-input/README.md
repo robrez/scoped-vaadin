@@ -10,7 +10,7 @@ A web component that allows users to author and send messages.
 <vaadin24-message-input></vaadin24-message-input>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/message-input/screenshot.png" width="656" alt="Screenshot of vaadin-message-input">](https://vaadin.com/docs/latest/components/message-input)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/message-input/screenshot.png" width="656" alt="Screenshot of vaadin-message-input">](https://vaadin.com/docs/latest/components/message-input)
 
 ## Installation
 
@@ -29,7 +29,7 @@ import '@scoped-vaadin/message-input';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/message-input/vaadin-message-input.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/message-input/vaadin-message-input.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

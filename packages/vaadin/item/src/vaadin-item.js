@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ItemMixin } from './vaadin-item-mixin.js';
@@ -45,8 +45,9 @@ import { ItemMixin } from './vaadin-item-mixin.js';
  * `focused`    | Set when the item is focused.
  * `selected`   | Set when the item is selected
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ItemMixin
  * @mixes ThemableMixin
@@ -82,8 +83,13 @@ class Item extends ItemMixin(ThemableMixin(DirMixin(PolymerElement))) {
      * Submittable string value. The default value is the trimmed text content of the element.
      * @type {string}
      */
-    // eslint-disable-next-line no-unused-expressions
     this.value;
+
+    /**
+     * String that can be set to visually represent the selected item in `vaadin24-select`.
+     * @type {string}
+     */
+    this.label;
   }
 
   /** @protected */
@@ -94,6 +100,6 @@ class Item extends ItemMixin(ThemableMixin(DirMixin(PolymerElement))) {
   }
 }
 
-internalCustomElements.define(Item.is, Item);
+defineCustomElement(Item);
 
 export { Item };

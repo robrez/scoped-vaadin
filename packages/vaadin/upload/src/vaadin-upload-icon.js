@@ -1,15 +1,16 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 /**
  * An element used internally by `<vaadin24-upload>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @private
  */
@@ -33,6 +34,6 @@ class UploadIcon extends ThemableMixin(PolymerElement) {
   }
 }
 
-internalCustomElements.define(UploadIcon.is, UploadIcon);
+defineCustomElement(UploadIcon);
 
 export { UploadIcon };

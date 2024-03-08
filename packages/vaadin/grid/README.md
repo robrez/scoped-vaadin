@@ -31,7 +31,7 @@ A web component for showing tabular data.
 </script>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/grid/screenshot.png" alt="Screenshot of vaadin-grid">](https://vaadin.com/docs/latest/components/grid)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/grid/screenshot.png" alt="Screenshot of vaadin-grid">](https://vaadin.com/docs/latest/components/grid)
 
 ## Installation
 
@@ -55,7 +55,7 @@ import '@scoped-vaadin/grid/vaadin-grid-tree-column.js';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/grid/vaadin-grid.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/grid/vaadin-grid.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the components from the `theme/material` folder:
 

@@ -15,7 +15,7 @@ An accessible and customizable button that allows users to perform actions.
 <vaadin24-button theme="tertiary">Tertiary</vaadin24-button>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/button/screenshot.png" width="296" alt="Screenshot of vaadin-button">](https://vaadin.com/docs/latest/components/button)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/button/screenshot.png" width="296" alt="Screenshot of vaadin-button">](https://vaadin.com/docs/latest/components/button)
 
 ## Installation
 
@@ -34,7 +34,7 @@ import '@scoped-vaadin/button';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/button/vaadin-button.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/button/vaadin-button.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

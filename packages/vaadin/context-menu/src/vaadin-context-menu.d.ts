@@ -6,7 +6,8 @@
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
-import { ContextMenuItem, ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
+import { ContextMenuMixin } from './vaadin-context-menu-mixin.js';
+import { ContextMenuItem } from './vaadin-contextmenu-items-mixin.js';
 
 export { ContextMenuItem };
 
@@ -54,12 +55,13 @@ export interface ContextMenuEventMap extends HTMLElementEventMap, ContextMenuCus
  *
  * When an item is selected, `<vaadin24-context-menu>` dispatches an "item-selected" event
  * with the selected item as `event.detail.value` property.
+ * If item does not have `keepOpen` property the menu will be closed.
  *
  * ```javascript
  * contextMenu.items = [
- *   { text: 'Menu Item 1', theme: 'primary', children:
+ *   { text: 'Menu Item 1', theme: 'primary', className: 'first', children:
  *     [
- *       { text: 'Menu Item 1-1', checked: true },
+ *       { text: 'Menu Item 1-1', checked: true, keepOpen: true },
  *       { text: 'Menu Item 1-2' }
  *     ]
  *   },
@@ -70,7 +72,7 @@ export interface ContextMenuEventMap extends HTMLElementEventMap, ContextMenuCus
  *       { text: 'Menu Item 2-2', disabled: true }
  *     ]
  *   },
- *   { text: 'Menu Item 3', disabled: true }
+ *   { text: 'Menu Item 3', disabled: true, className: 'last' }
  * ];
  *
  * contextMenu.addEventListener('item-selected', e => {
@@ -208,7 +210,7 @@ export interface ContextMenuEventMap extends HTMLElementEventMap, ContextMenuCus
  * See [`<vaadin24-overlay>`](#/elements/vaadin-overlay)
  * documentation for `<vaadin24-context-menu-overlay>` stylable parts.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Internal components
  *
@@ -224,74 +226,7 @@ export interface ContextMenuEventMap extends HTMLElementEventMap, ContextMenuCus
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  * @fires {CustomEvent} item-selected - Fired when an item is selected when the context menu is populated using the `items` API.
  */
-declare class ContextMenu extends OverlayClassMixin(ElementMixin(ThemePropertyMixin(ItemsMixin(HTMLElement)))) {
-  /**
-   * CSS selector that can be used to target any child element
-   * of the context menu to listen for `openOn` events.
-   */
-  selector: string | null | undefined;
-
-  /**
-   * True if the overlay is currently displayed.
-   */
-  readonly opened: boolean;
-
-  /**
-   * Event name to listen for opening the context menu.
-   * @attr {string} open-on
-   */
-  openOn: string;
-
-  /**
-   * The target element that's listened to for context menu opening events.
-   * By default the vaadin-context-menu listens to the target's `vaadin-contextmenu`
-   * events.
-   */
-  listenOn: HTMLElement;
-
-  /**
-   * Event name to listen for closing the context menu.
-   * @attr {string} close-on
-   */
-  closeOn: string;
-
-  /**
-   * Custom function for rendering the content of the menu overlay.
-   * Receives three arguments:
-   *
-   * - `root` The root container DOM element. Append your content to it.
-   * - `contextMenu` The reference to the `<vaadin24-context-menu>` element.
-   * - `context` The object with the menu context, contains:
-   *   - `context.target`  the target of the menu opening event,
-   *   - `context.detail` the menu opening event detail.
-   */
-  renderer: ContextMenuRenderer | null | undefined;
-
-  /**
-   * When true, the menu overlay is modeless.
-   */
-  protected _modeless: boolean;
-
-  /**
-   * Requests an update for the content of the menu overlay.
-   * While performing the update, it invokes the renderer passed in the `renderer` property.
-   *
-   * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
-   */
-  requestContentUpdate(): void;
-
-  /**
-   * Closes the overlay.
-   */
-  close(): void;
-
-  /**
-   * Opens the overlay.
-   *
-   * @param e used as the context for the menu. Overlay coordinates are taken from this event.
-   */
-  open(e: Event | undefined): void;
-
+declare class ContextMenu extends ContextMenuMixin(OverlayClassMixin(ElementMixin(ThemePropertyMixin(HTMLElement)))) {
   addEventListener<K extends keyof ContextMenuEventMap>(
     type: K,
     listener: (this: ContextMenu, ev: ContextMenuEventMap[K]) => void,

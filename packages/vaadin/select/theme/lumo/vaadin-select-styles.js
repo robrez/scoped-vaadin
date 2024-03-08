@@ -3,6 +3,7 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
 import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
@@ -30,7 +31,7 @@ const select = css`
   }
 
   [part='input-field'] ::slotted([slot='value']:not([placeholder])) {
-    color: var(--lumo-body-text-color);
+    color: var(--vaadin-input-field-value-color, var(--lumo-body-text-color));
   }
 
   :host([readonly]) [part='input-field'] ::slotted([slot='value']:not([placeholder])) {
@@ -39,7 +40,7 @@ const select = css`
 
   /* placeholder styles */
   [part='input-field'] ::slotted([slot='value'][placeholder]) {
-    color: var(--lumo-secondary-text-color);
+    color: var(--vaadin-input-field-placeholder-color, var(--lumo-secondary-text-color));
   }
 
   :host(:is([readonly], [disabled])) ::slotted([slot='value'][placeholder]) {
@@ -68,7 +69,7 @@ registerStyles(
   css`
     :host {
       font-family: var(--lumo-font-family);
-      font-size: var(--lumo-font-size-m);
+      font-size: var(--vaadin-input-field-value-font-size, var(--lumo-font-size-m));
       padding: 0 0.25em;
       --_lumo-selected-item-height: var(--lumo-size-m);
       --_lumo-selected-item-padding: 0.5em;
@@ -98,10 +99,12 @@ const selectOverlay = css`
 
   /* Small viewport adjustment */
   :host([phone]) {
+    /* stylelint-disable declaration-block-no-redundant-longhand-properties */
     top: 0 !important;
     right: 0 !important;
     bottom: var(--vaadin-overlay-viewport-bottom, 0) !important;
     left: 0 !important;
+    /* stylelint-enable declaration-block-no-redundant-longhand-properties */
     align-items: stretch;
     justify-content: flex-end;
   }

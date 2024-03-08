@@ -4,9 +4,9 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 import { DelegateStateMixin } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
-import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
-import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
 import { InputMixin } from './input-mixin.js';
 
 /**
@@ -48,12 +48,6 @@ export const CheckedMixin = dedupingMixin(
         const input = event.target;
 
         this._toggleChecked(input.checked);
-
-        // Clicking the checkbox or radio-button in Safari
-        // does not make it focused, so we do it manually.
-        if (!isElementFocused(input)) {
-          input.focus();
-        }
       }
 
       /** @protected */

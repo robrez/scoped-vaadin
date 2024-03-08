@@ -17,7 +17,7 @@ A web component for wrapping multiple components as a single field.
 </vaadin24-custom-field>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/custom-field/screenshot.png" width="401" alt="Screenshot of vaadin-custom-field">](https://vaadin.com/docs/latest/components/custom-field)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/custom-field/screenshot.png" width="401" alt="Screenshot of vaadin-custom-field">](https://vaadin.com/docs/latest/components/custom-field)
 
 ## Installation
 
@@ -36,7 +36,7 @@ import '@scoped-vaadin/custom-field';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/custom-field/vaadin-custom-field.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/custom-field/vaadin-custom-field.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

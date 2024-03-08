@@ -14,6 +14,29 @@
 export function getAncestorRootNodes(node: Node): Node[];
 
 /**
+ * Returns the list of flattened elements for the given `node`.
+ * This list consists of a node's children and, for any children that are
+ * `<slot>` elements, the expanded flattened list of `assignedElements`.
+ */
+export function getFlattenedElements(node: Node): Element[];
+
+/**
+ * Traverses the given node and its parents, including those that are across
+ * the shadow root boundaries, until it finds a node that matches the selector.
+ */
+export function getClosestElement(selector: string, node: Node): Node | null;
+
+/**
+ * Takes a string with values separated by space and returns a set the values
+ */
+export function deserializeAttributeValue(value: string): Set<string>;
+
+/**
+ * Takes a set of string values and returns a string with values separated by space
+ */
+export function serializeAttributeValue(values: Set<string>): string;
+
+/**
  * Adds a value to an attribute containing space-delimited values.
  */
 export function addValueToAttribute(element: HTMLElement, attr: string, value: string): void;

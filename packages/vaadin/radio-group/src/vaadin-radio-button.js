@@ -1,19 +1,17 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
-import { InputController } from '@scoped-vaadin/field-base/src/input-controller.js';
-import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
-import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-input-controller.js';
-import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { RadioButtonMixin } from './vaadin-radio-button-mixin.js';
+import { radioButtonStyles } from './vaadin-radio-button-styles.js';
+
+registerStyles('vaadin24-radio-button', radioButtonStyles, { moduleId: 'vaadin-radio-button-styles' });
 
 /**
  * `<vaadin24-radio-button>` is a web component representing a choice in a radio group.
@@ -46,78 +44,23 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `checked`    | Set when the radio button is checked. | `:host`
  * `has-label`  | Set when the radio button has a label. | `:host`
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} checked-changed - Fired when the `checked` property changes.
  *
+ * @customElement
  * @extends HTMLElement
- * @mixes ControllerMixin
  * @mixes ThemableMixin
  * @mixes ElementMixin
- * @mixes ActiveMixin
- * @mixes CheckedMixin
- * @mixes LabelMixin
+ * @mixes RadioButtonMixin
  */
-class RadioButton extends LabelMixin(
-  CheckedMixin(DelegateFocusMixin(ActiveMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement)))))),
-) {
+class RadioButton extends RadioButtonMixin(ElementMixin(ThemableMixin(ControllerMixin(PolymerElement)))) {
   static get is() {
     return 'vaadin24-radio-button';
   }
 
   static get template() {
     return html`
-      <style>
-        :host {
-          display: inline-block;
-        }
-
-        :host([hidden]) {
-          display: none !important;
-        }
-
-        :host([disabled]) {
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        .vaadin-radio-button-container {
-          display: grid;
-          grid-template-columns: auto 1fr;
-          align-items: baseline;
-        }
-
-        [part='radio'],
-        ::slotted(input),
-        ::slotted(label) {
-          grid-row: 1;
-        }
-
-        [part='radio'],
-        ::slotted(input) {
-          grid-column: 1;
-        }
-
-        [part='radio'] {
-          width: var(--vaadin-radio-button-size, 1em);
-          height: var(--vaadin-radio-button-size, 1em);
-        }
-
-        [part='radio']::before {
-          display: block;
-          content: '\\202F';
-          line-height: var(--vaadin-radio-button-size, 1em);
-          contain: paint;
-        }
-
-        /* visually hidden */
-        ::slotted(input) {
-          opacity: 0;
-          cursor: inherit;
-          margin: 0;
-          align-self: stretch;
-          -webkit-appearance: none;
-        }
-      </style>
       <div class="vaadin-radio-button-container">
         <div part="radio" aria-hidden="true"></div>
         <slot name="input"></slot>
@@ -125,52 +68,8 @@ class RadioButton extends LabelMixin(
       </div>
     `;
   }
-
-  static get properties() {
-    return {
-      /**
-       * The name of the radio button.
-       *
-       * @type {string}
-       */
-      name: {
-        type: String,
-        value: '',
-      },
-    };
-  }
-
-  /** @override */
-  static get delegateAttrs() {
-    return [...super.delegateAttrs, 'name'];
-  }
-
-  constructor() {
-    super();
-
-    this._setType('radio');
-
-    // Set the string "on" as the default value for the radio button following the HTML specification:
-    // https://html.spec.whatwg.org/multipage/input.html#dom-input-value-default-on
-    this.value = 'on';
-  }
-
-  /** @protected */
-  ready() {
-    super.ready();
-
-    this.addController(
-      new InputController(this, (input) => {
-        this._setInputElement(input);
-        this._setFocusElement(input);
-        this.stateTarget = input;
-        this.ariaTarget = input;
-      }),
-    );
-    this.addController(new LabelledInputController(this.inputElement, this._labelController));
-  }
 }
 
-internalCustomElements.define(RadioButton.is, RadioButton);
+defineCustomElement(RadioButton);
 
 export { RadioButton };

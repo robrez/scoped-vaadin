@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -6,6 +5,7 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { PolymerElement } from '@polymer/polymer';
 import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 
 export class Templatizer extends PolymerElement {
   static get is() {
@@ -143,4 +143,4 @@ export class Templatizer extends PolymerElement {
   }
 }
 
-internalCustomElements.define(Templatizer.is, Templatizer);
+defineCustomElement(Templatizer);

@@ -3,8 +3,9 @@
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
-import { isKeyboardActive } from '@scoped-vaadin/component-base/src/focus-utils.js';
+import { get } from '@scoped-vaadin/component-base/src/path-utils.js';
 
 /**
  * @polymerMixin
@@ -17,6 +18,7 @@ export const KeyboardNavigationMixin = (superClass) =>
         _headerFocusable: {
           type: Object,
           observer: '_focusableChanged',
+          sync: true,
         },
 
         /**
@@ -26,12 +28,14 @@ export const KeyboardNavigationMixin = (superClass) =>
         _itemsFocusable: {
           type: Object,
           observer: '_focusableChanged',
+          sync: true,
         },
 
         /** @private */
         _footerFocusable: {
           type: Object,
           observer: '_focusableChanged',
+          sync: true,
         },
 
         /** @private */
@@ -53,6 +57,7 @@ export const KeyboardNavigationMixin = (superClass) =>
         _focusedCell: {
           type: Object,
           observer: '_focusedCellChanged',
+          sync: true,
         },
 
         /**
@@ -102,6 +107,11 @@ export const KeyboardNavigationMixin = (superClass) =>
           this[prop] = cell._focusButton || cell;
         }
       });
+    }
+
+    /** @private */
+    get _visibleItemsCount() {
+      return this._lastVisibleIndex - this._firstVisibleIndex - 1;
     }
 
     /** @protected */
@@ -177,7 +187,7 @@ export const KeyboardNavigationMixin = (superClass) =>
 
       const wasFocused = this.shadowRoot.activeElement === this._itemsFocusable;
 
-      this._getVisibleRows().forEach((row) => {
+      this._getRenderedRows().forEach((row) => {
         if (row.index === this._focusedItemIndex) {
           if (this.__rowFocusMode) {
             // Row focus mode
@@ -266,7 +276,7 @@ export const KeyboardNavigationMixin = (superClass) =>
     __isRowExpandable(row) {
       if (this.itemHasChildrenPath) {
         const item = row._item;
-        return item && this.get(this.itemHasChildrenPath, item) && !this._isExpanded(item);
+        return !!(item && get(this.itemHasChildrenPath, item) && !this._isExpanded(item));
       }
     }
 
@@ -299,8 +309,9 @@ export const KeyboardNavigationMixin = (superClass) =>
     _onNavigationKeyDown(e, key) {
       e.preventDefault();
 
-      const visibleItemsCount = this._lastVisibleIndex - this._firstVisibleIndex - 1;
       const isRTL = this.__isRTL;
+      const activeRow = e.composedPath().find((el) => this.__isRow(el));
+      const activeCell = e.composedPath().find((el) => this.__isCell(el));
 
       // Handle keyboard interaction as defined in:
       // https://w3c.github.io/aria-practices/#keyboard-interaction-24
@@ -345,17 +356,21 @@ export const KeyboardNavigationMixin = (superClass) =>
           dy = -1;
           break;
         case 'PageDown':
-          dy = visibleItemsCount;
+          // Check if the active group is body
+          if (this.$.items.contains(activeRow)) {
+            const currentRowIndex = this.__getIndexInGroup(activeRow, this._focusedItemIndex);
+            // Scroll the current row to the top...
+            this._scrollToFlatIndex(currentRowIndex);
+          }
+          // ...only then measure the visible items count
+          dy = this._visibleItemsCount;
           break;
         case 'PageUp':
-          dy = -visibleItemsCount;
+          dy = -this._visibleItemsCount;
           break;
         default:
           break;
       }
-
-      const activeRow = e.composedPath().find((el) => this.__isRow(el));
-      const activeCell = e.composedPath().find((el) => this.__isCell(el));
 
       if ((this.__rowFocusMode && !activeRow) || (!this.__rowFocusMode && !activeCell)) {
         // When using a screen reader, it's possible that neither a cell nor a row is focused.
@@ -442,7 +457,7 @@ export const KeyboardNavigationMixin = (superClass) =>
     __navigateRows(dy, activeRow, activeCell) {
       const currentRowIndex = this.__getIndexInGroup(activeRow, this._focusedItemIndex);
       const activeRowGroup = activeRow.parentNode;
-      const maxRowIndex = (activeRowGroup === this.$.items ? this._effectiveSize : activeRowGroup.children.length) - 1;
+      const maxRowIndex = (activeRowGroup === this.$.items ? this._flatSize : activeRowGroup.children.length) - 1;
 
       // Index of the destination row
       let dstRowIndex = Math.max(0, Math.min(currentRowIndex + dy, maxRowIndex));
@@ -475,7 +490,7 @@ export const KeyboardNavigationMixin = (superClass) =>
         // Row details navigation logic
         if (activeRowGroup === this.$.items) {
           const item = activeRow._item;
-          const dstItem = this._cache.getItemForIndex(dstRowIndex);
+          const { item: dstItem } = this._dataProviderController.getFlatIndexContext(dstRowIndex);
           // Should we navigate to row details?
           if (isRowDetails) {
             dstIsRowDetails = dy === 0;
@@ -521,7 +536,12 @@ export const KeyboardNavigationMixin = (superClass) =>
         return;
       }
 
-      const columnIndex = this.__getIndexOfChildElement(activeCell);
+      let columnIndex = this.__getIndexOfChildElement(activeCell);
+      if (this.$.items.contains(activeCell)) {
+        // lazy column rendering may be enabled, so we need use the always visible sizer cells to find the column index
+        columnIndex = [...this.$.sizer.children].findIndex((sizerCell) => sizerCell._column === activeCell._column);
+      }
+
       const isCurrentCellRowDetails = this.__isDetailsCell(activeCell);
       const activeRowGroup = activeRow.parentNode;
       const currentRowIndex = this.__getIndexInGroup(activeRow, this._focusedItemIndex);
@@ -574,9 +594,27 @@ export const KeyboardNavigationMixin = (superClass) =>
           return acc;
         }, {});
         const dstColumnIndex = columnIndexByOrder[dstSortedColumnOrders[dstOrderedColumnIndex]];
-        const dstCell = dstRow.children[dstColumnIndex];
 
-        this._scrollHorizontallyToCell(dstCell);
+        let dstCell;
+        if (this.$.items.contains(activeCell)) {
+          const dstSizerCell = this.$.sizer.children[dstColumnIndex];
+          if (this._lazyColumns) {
+            // If the column is not in the viewport, scroll it into view.
+            if (!this.__isColumnInViewport(dstSizerCell._column)) {
+              dstSizerCell.scrollIntoView();
+            }
+            this.__updateColumnsBodyContentHidden();
+            this.__updateHorizontalScrollPosition();
+          }
+
+          dstCell = [...dstRow.children].find((cell) => cell._column === dstSizerCell._column);
+          // Ensure correct horizontal scroll position once the destination cell is available.
+          this._scrollHorizontallyToCell(dstCell);
+        } else {
+          dstCell = dstRow.children[dstColumnIndex];
+          this._scrollHorizontallyToCell(dstCell);
+        }
+
         dstCell.focus();
       }
     }
@@ -658,7 +696,26 @@ export const KeyboardNavigationMixin = (superClass) =>
         }
       }
 
-      return tabOrder[index];
+      let focusStepTarget = tabOrder[index];
+
+      // If the target focusable is tied to a column that is not visible,
+      // find the first visible column and update the target in order to
+      // prevent scrolling to the start of the row.
+      if (focusStepTarget && !this.__isHorizontallyInViewport(focusStepTarget)) {
+        const firstVisibleColumn = this._getColumnsInOrder().find((column) => this.__isColumnInViewport(column));
+        if (firstVisibleColumn) {
+          if (focusStepTarget === this._headerFocusable) {
+            focusStepTarget = firstVisibleColumn._headerCell;
+          } else if (focusStepTarget === this._itemsFocusable) {
+            const rowIndex = focusStepTarget._column._cells.indexOf(focusStepTarget);
+            focusStepTarget = firstVisibleColumn._cells[rowIndex];
+          } else if (focusStepTarget === this._footerFocusable) {
+            focusStepTarget = firstVisibleColumn._footerCell;
+          }
+        }
+      }
+
+      return focusStepTarget;
     }
 
     /** @private */
@@ -799,9 +856,12 @@ export const KeyboardNavigationMixin = (superClass) =>
         }
 
         if (cell) {
-          // Fire a public event for cell.
           const context = this.getEventContext(e);
-          cell.dispatchEvent(new CustomEvent('cell-focus', { bubbles: true, composed: true, detail: { context } }));
+          this.__pendingBodyCellFocus = this.loading && context.section === 'body';
+          if (!this.__pendingBodyCellFocus) {
+            // Fire a cell-focus event for the cell
+            cell.dispatchEvent(new CustomEvent('cell-focus', { bubbles: true, composed: true, detail: { context } }));
+          }
           this._focusedCell = cell._focusButton || cell;
 
           if (isKeyboardActive() && e.target === cell) {
@@ -813,6 +873,16 @@ export const KeyboardNavigationMixin = (superClass) =>
       }
 
       this._detectFocusedItemIndex(e);
+    }
+
+    /**
+     * @private
+     */
+    __dispatchPendingBodyCellFocus() {
+      // If the body cell focus was pending, dispatch the event once loading is done
+      if (this.__pendingBodyCellFocus && this.shadowRoot.activeElement === this._itemsFocusable) {
+        this._itemsFocusable.dispatchEvent(new Event('focusin', { bubbles: true, composed: true }));
+      }
     }
 
     /**
@@ -911,6 +981,9 @@ export const KeyboardNavigationMixin = (superClass) =>
 
     /** @protected */
     _resetKeyboardNavigation() {
+      if (!this.$ && this.performUpdate) {
+        this.performUpdate();
+      }
       // Header / footer
       ['header', 'footer'].forEach((section) => {
         if (!this.__isValidFocusable(this[`_${section}Focusable`])) {
@@ -929,7 +1002,7 @@ export const KeyboardNavigationMixin = (superClass) =>
 
         if (firstVisibleCell && firstVisibleRow) {
           // Reset memoized column
-          delete this._focusedColumnOrder;
+          this._focusedColumnOrder = undefined;
           this._itemsFocusable = this.__getFocusable(firstVisibleRow, firstVisibleCell);
         }
       } else {

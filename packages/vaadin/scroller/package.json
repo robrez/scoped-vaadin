@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/scroller",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -40,10 +40,11 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/component-base": "^24.0.0-alpha.1",
-    "@scoped-vaadin/vaadin-lumo-styles": "^24.0.0-alpha.1",
-    "@scoped-vaadin/vaadin-material-styles": "^24.0.0-alpha.1",
-    "@scoped-vaadin/vaadin-themable-mixin": "^24.0.0-alpha.1",
-    "@scoped-vaadin/internal-custom-elements-registry": "^24.0.0-alpha.1"
+    "@scoped-vaadin/a11y-base": "^24.3.6-alpha.1",
+    "@scoped-vaadin/component-base": "^24.3.6-alpha.1",
+    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.6-alpha.1",
+    "@scoped-vaadin/vaadin-material-styles": "^24.3.6-alpha.1",
+    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.6-alpha.1",
+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.6-alpha.1"
   }
 }

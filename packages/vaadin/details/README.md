@@ -1,4 +1,4 @@
-# @scoped-vaadin/custom-field
+# @scoped-vaadin/details
 
 This component is based on [@vaadin/details](https://www.npmjs.com/package/@vaadin/details)
 
@@ -16,7 +16,7 @@ A web component that provides an expandable panel for showing and hiding content
 </vaadin24-details>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/details/screenshot.png" alt="Screenshot of vaadin-details" width="320">](https://vaadin.com/docs/latest/components/details)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/details/screenshot.png" alt="Screenshot of vaadin-details" width="320">](https://vaadin.com/docs/latest/components/details)
 
 ## Installation
 
@@ -35,7 +35,7 @@ import '@scoped-vaadin/details';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/details/vaadin-details.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/details/vaadin-details.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

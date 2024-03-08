@@ -21,11 +21,6 @@ export declare function FieldMixin<T extends Constructor<HTMLElement>>(
 
 export declare class FieldMixinClass {
   /**
-   * A target element to which ARIA attributes are set.
-   */
-  ariaTarget: HTMLElement;
-
-  /**
    * String used for the helper text.
    *
    * @attr {string} helper-text
@@ -38,6 +33,23 @@ export declare class FieldMixinClass {
    * @attr {string} error-message
    */
   errorMessage: string | null | undefined;
+
+  /**
+   * String used to label the component to screen reader users.
+   * @attr {string} accessible-name
+   */
+  accessibleName: string | null | undefined;
+
+  /**
+   * Id of the element used as label of the component to screen reader users.
+   * @attr {string} accessible-name-ref
+   */
+  accessibleNameRef: string | null | undefined;
+
+  /**
+   * A target element to which ARIA attributes are set.
+   */
+  protected ariaTarget: HTMLElement;
 
   protected readonly _errorNode: HTMLElement;
 

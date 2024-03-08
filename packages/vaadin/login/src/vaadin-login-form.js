@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2018 - 2023 Vaadin Ltd.
@@ -9,9 +8,10 @@ import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
 import '@scoped-vaadin/password-field/src/vaadin-password-field.js';
 import './vaadin-login-form-wrapper.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { LoginMixin } from './vaadin-login-mixin.js';
+import { LoginFormMixin } from './vaadin-login-form-mixin.js';
 
 /**
  * `<vaadin24-login-form>` is a Web Component providing an easy way to require users
@@ -40,19 +40,20 @@ import { LoginMixin } from './vaadin-login-mixin.js';
  * `error-message-description` | Container for error message description
  * `footer`  | Container additional information text from `i18n` object
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {CustomEvent} disabled-changed - Fired when the `disabled` property changes.
  * @fires {CustomEvent} error-changed - Fired when the `error` property changes.
  * @fires {CustomEvent} forgot-password - Fired when user clicks on the "Forgot password" button.
  * @fires {CustomEvent} login - Fired when a user submits the login.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
- * @mixes LoginMixin
+ * @mixes LoginFormMixin
  */
-class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+class LoginForm extends LoginFormMixin(ElementMixin(ThemableMixin(PolymerElement))) {
   static get template() {
     return html`
       <style>
@@ -60,12 +61,13 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
           width: 100%;
         }
       </style>
-      <vaadin24-login-form-wrapper theme$="[[_theme]]" error="[[error]]" i18n="[[i18n]]">
-        <form method="POST" action$="[[action]]" slot="form">
+      <vaadin24-login-form-wrapper id="vaadinLoginFormWrapper" theme$="[[_theme]]" error="[[error]]" i18n="[[i18n]]">
+        <form method="POST" action$="[[action]]" on-formdata="_onFormData" slot="form">
           <input id="csrf" type="hidden" />
           <vaadin24-text-field
             name="username"
             label="[[i18n.form.username]]"
+            error-message="[[i18n.errorMessage.username]]"
             id="vaadinLoginUsername"
             required
             on-keydown="_handleInputKeydown"
@@ -80,6 +82,7 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
           <vaadin24-password-field
             name="password"
             label="[[i18n.form.password]]"
+            error-message="[[i18n.errorMessage.password]]"
             id="vaadinLoginPassword"
             required
             on-keydown="_handleInputKeydown"
@@ -88,11 +91,11 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
           >
             <input type="password" slot="input" on-keyup="_handleInputKeyup" />
           </vaadin24-password-field>
-
-          <vaadin24-button theme="primary contained submit" on-click="submit" disabled$="[[disabled]]">
-            [[i18n.form.submit]]
-          </vaadin24-button>
         </form>
+
+        <vaadin24-button slot="submit" theme="primary contained submit" on-click="submit" disabled$="[[disabled]]">
+          [[i18n.form.submit]]
+        </vaadin24-button>
 
         <vaadin24-button
           slot="forgot-password"
@@ -110,19 +113,6 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
     return 'vaadin24-login-form';
   }
 
-  static get observers() {
-    return ['_errorChanged(error)'];
-  }
-
-  /** @protected */
-  connectedCallback() {
-    super.connectedCallback();
-
-    if (!this.noAutofocus) {
-      this.$.vaadinLoginUsername.focus();
-    }
-  }
-
   /**
    * @param {StampedTemplate} dom
    * @return {null}
@@ -131,76 +121,8 @@ class LoginForm extends LoginMixin(ElementMixin(ThemableMixin(PolymerElement))) 
   _attachDom(dom) {
     this.appendChild(dom);
   }
-
-  /** @private */
-  _errorChanged() {
-    if (this.error && !this._preventAutoEnable) {
-      this.disabled = false;
-    }
-  }
-
-  submit() {
-    const userName = this.$.vaadinLoginUsername;
-    const password = this.$.vaadinLoginPassword;
-
-    if (this.disabled || !(userName.validate() && password.validate())) {
-      return;
-    }
-
-    this.error = false;
-    this.disabled = true;
-
-    const loginEventDetails = {
-      bubbles: true,
-      cancelable: true,
-      detail: {
-        username: userName.value,
-        password: password.value,
-      },
-    };
-
-    const firedEvent = this.dispatchEvent(new CustomEvent('login', loginEventDetails));
-    if (this.action && firedEvent) {
-      const csrfMetaName = document.querySelector('meta[name=_csrf_parameter]');
-      const csrfMetaValue = document.querySelector('meta[name=_csrf]');
-      if (csrfMetaName && csrfMetaValue) {
-        this.$.csrf.name = csrfMetaName.content;
-        this.$.csrf.value = csrfMetaValue.content;
-      }
-      this.querySelector('form').submit();
-    }
-  }
-
-  /** @private */
-  _handleInputKeydown(e) {
-    if (e.key === 'Enter') {
-      const { currentTarget: inputActive } = e;
-      const nextInput =
-        inputActive.id === 'vaadinLoginUsername' ? this.$.vaadinLoginPassword : this.$.vaadinLoginUsername;
-      if (inputActive.validate()) {
-        if (nextInput.validate()) {
-          this.submit();
-        } else {
-          nextInput.focus();
-        }
-      }
-    }
-  }
-
-  /** @private */
-  _handleInputKeyup(e) {
-    const input = e.currentTarget;
-    if (e.key === 'Tab' && input instanceof HTMLInputElement) {
-      input.select();
-    }
-  }
-
-  /** @private */
-  _onForgotPasswordClick() {
-    this.dispatchEvent(new CustomEvent('forgot-password'));
-  }
 }
 
-internalCustomElements.define(LoginForm.is, LoginForm);
+defineCustomElement(LoginForm);
 
 export { LoginForm };

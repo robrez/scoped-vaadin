@@ -4,6 +4,7 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
+import { get, set } from './path-utils.js';
 
 const caseMap = {};
 
@@ -92,15 +93,22 @@ const PolylitMixinImplementation = (superclass) => {
 
       let result = defaultDescriptor;
 
-      if ('value' in options) {
-        // Set the default value
-        this.addCheckedInitializer((instance) => {
-          if (typeof options.value === 'function') {
-            instance[name] = options.value.call(instance);
-          } else {
-            instance[name] = options.value;
-          }
-        });
+      if (options.sync) {
+        result = {
+          get: defaultDescriptor.get,
+          set(value) {
+            const oldValue = this[name];
+            this[key] = value;
+            this.requestUpdate(name, oldValue, options);
+
+            // Enforce synchronous update
+            if (this.hasUpdated) {
+              this.performUpdate();
+            }
+          },
+          configurable: true,
+          enumerable: true,
+        };
       }
 
       if (options.readOnly) {
@@ -110,6 +118,10 @@ const PolylitMixinImplementation = (superclass) => {
           // This is run during construction of the element
           instance[`_set${upper(name)}`] = function (value) {
             setter.call(instance, value);
+
+            if (options.sync) {
+              this.performUpdate();
+            }
           };
         });
 
@@ -121,6 +133,19 @@ const PolylitMixinImplementation = (superclass) => {
           configurable: true,
           enumerable: true,
         };
+      }
+
+      if ('value' in options) {
+        // Set the default value
+        this.addCheckedInitializer((instance) => {
+          const value = typeof options.value === 'function' ? options.value.call(instance) : options.value;
+
+          if (options.readOnly) {
+            instance[`_set${upper(name)}`](value);
+          } else {
+            instance[name] = value;
+          }
+        });
       }
 
       if (options.observer) {
@@ -175,7 +200,7 @@ const PolylitMixinImplementation = (superclass) => {
         this.$ = {};
       }
 
-      this.shadowRoot.querySelectorAll('[id]').forEach((node) => {
+      this.renderRoot.querySelectorAll('[id]').forEach((node) => {
         this.$[node.id] = node;
       });
     }
@@ -202,8 +227,8 @@ const PolylitMixinImplementation = (superclass) => {
       }
 
       if (!this.__isReadyInvoked) {
-        this.ready();
         this.__isReadyInvoked = true;
+        this.ready();
       }
     }
 
@@ -254,15 +279,12 @@ const PolylitMixinImplementation = (superclass) => {
 
     /** @protected */
     _get(path, object) {
-      return path.split('.').reduce((obj, property) => (obj ? obj[property] : undefined), object);
+      return get(path, object);
     }
 
     /** @protected */
     _set(path, value, object) {
-      const pathParts = path.split('.');
-      const lastPart = pathParts.pop();
-      const target = pathParts.reduce((target, part) => target[part], object);
-      target[lastPart] = value;
+      set(path, value, object);
     }
   }
 

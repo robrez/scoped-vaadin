@@ -18,7 +18,7 @@ A web component for organizing and grouping content into sections.
 </vaadin24-tabs>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/tabs/screenshot.png" width="355" alt="Screenshot of vaadin-tabs">](https://vaadin.com/docs/latest/components/tabs)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/tabs/screenshot.png" width="355" alt="Screenshot of vaadin-tabs">](https://vaadin.com/docs/latest/components/tabs)
 
 ## Installation
 
@@ -37,7 +37,7 @@ import '@scoped-vaadin/tabs';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/tabs/vaadin-tabs.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/tabs/vaadin-tabs.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

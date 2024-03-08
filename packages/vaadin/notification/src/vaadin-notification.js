@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
@@ -8,6 +7,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { render } from 'lit';
 import { isTemplateResult } from 'lit/directive-helpers.js';
 import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
@@ -17,6 +17,7 @@ import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-
 /**
  * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -167,6 +168,7 @@ class NotificationContainer extends ThemableMixin(ElementMixin(PolymerElement)) 
 /**
  * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @private
@@ -181,6 +183,12 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
 
         [part='overlay'] {
           pointer-events: auto;
+        }
+
+        @media (forced-colors: active) {
+          [part='overlay'] {
+            outline: 3px solid;
+          }
         }
       </style>
 
@@ -243,13 +251,14 @@ class NotificationCard extends ThemableMixin(PolymerElement) {
  * `overlay` | The notification container
  * `content` | The content of the notification
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * Note: the `theme` attribute value set on `<vaadin24-notification>` is
  * propagated to the internal `<vaadin24-notification-card>`.
  *
  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemePropertyMixin
  * @mixes ElementMixin
@@ -405,7 +414,11 @@ class Notification extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(Pol
   /** @protected */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.opened = false;
+    queueMicrotask(() => {
+      if (!this.isConnected) {
+        this.opened = false;
+      }
+    });
   }
 
   /**
@@ -556,8 +569,8 @@ class Notification extends OverlayClassMixin(ThemePropertyMixin(ElementMixin(Pol
   }
 }
 
-internalCustomElements.define(NotificationContainer.is, NotificationContainer);
-internalCustomElements.define(NotificationCard.is, NotificationCard);
-internalCustomElements.define(Notification.is, Notification);
+defineCustomElement(NotificationContainer);
+defineCustomElement(NotificationCard);
+defineCustomElement(Notification);
 
 export { Notification };

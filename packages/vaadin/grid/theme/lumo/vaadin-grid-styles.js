@@ -4,7 +4,7 @@ import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
-import '@scoped-vaadin/checkbox/theme/lumo/vaadin-checkbox.js';
+import '@scoped-vaadin/checkbox/theme/lumo/vaadin-checkbox-styles.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 registerStyles(
@@ -21,7 +21,8 @@ registerStyles(
       -webkit-tap-highlight-color: transparent;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-
+      --_focus-ring-color: var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+      --_focus-ring-width: var(--vaadin-focus-ring-width, 2px);
       /* For internal use only */
       --_lumo-grid-border-color: var(--lumo-contrast-20pct);
       --_lumo-grid-secondary-border-color: var(--lumo-contrast-10pct);
@@ -43,12 +44,15 @@ registerStyles(
 
     [part~='cell'] {
       min-height: var(--lumo-size-m);
-      background-color: var(--lumo-base-color);
+      background-color: var(--vaadin-grid-cell-background, var(--lumo-base-color));
+      cursor: default;
+      --_cell-padding: var(--vaadin-grid-cell-padding, var(--_cell-default-padding));
+      --_cell-default-padding: var(--lumo-space-xs) var(--lumo-space-m);
     }
 
     [part~='cell'] ::slotted(vaadin-grid-cell-content) {
-      cursor: default;
-      padding: var(--lumo-space-xs) var(--lumo-space-m);
+      cursor: inherit;
+      padding: var(--_cell-padding);
     }
 
     /* Apply row borders by default and introduce the "no-row-borders" variant */
@@ -77,12 +81,9 @@ registerStyles(
     :host([navigating]) [part~='focused-cell']:focus::before {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       pointer-events: none;
-      box-shadow: inset 0 0 0 2px var(--lumo-primary-color-50pct);
+      box-shadow: inset 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
     }
 
     :host([navigating]) [part~='row']:focus::before {
@@ -95,12 +96,9 @@ registerStyles(
       content: '';
       position: absolute;
       z-index: 100;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       pointer-events: none;
-      box-shadow: inset 0 0 0 2px var(--lumo-primary-color-50pct);
+      box-shadow: inset 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
     }
 
     [part~='row'][dragover] {
@@ -114,10 +112,7 @@ registerStyles(
     [part~='row'][dragover] [part~='cell']::after {
       content: '';
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      inset: 0;
       height: calc(var(--_lumo-grid-border-width) + 2px);
       pointer-events: none;
       background: var(--lumo-primary-color-50pct);
@@ -196,14 +191,14 @@ registerStyles(
 
     /* Headers and footers */
 
-    [part~='header-cell'] ::slotted(vaadin-grid-cell-content),
-    [part~='footer-cell'] ::slotted(vaadin-grid-cell-content),
+    [part~='header-cell'],
+    [part~='footer-cell'],
     [part~='reorder-ghost'] {
       font-size: var(--lumo-font-size-s);
       font-weight: 500;
     }
 
-    [part~='footer-cell'] ::slotted(vaadin-grid-cell-content) {
+    [part~='footer-cell'] {
       font-weight: 400;
     }
 
@@ -215,6 +210,11 @@ registerStyles(
 
     /* Hide first header row top border */
     :host(:not([theme~='no-row-borders'])) [part~='row']:first-child [part~='header-cell'] {
+      border-top: 0;
+    }
+
+    /* Hide header row top border if previous row is hidden */
+    [part~='row'][hidden] + [part~='row'] [part~='header-cell'] {
       border-top: 0;
     }
 
@@ -340,14 +340,11 @@ registerStyles(
 
     :host([theme~='compact']) [part~='cell'] {
       min-height: var(--lumo-size-s);
+      --_cell-default-padding: var(--lumo-space-xs) var(--lumo-space-s);
     }
 
     :host([theme~='compact']) [part~='first-row'] [part~='cell']:not([part~='details-cell']) {
       min-height: calc(var(--lumo-size-s) - var(--_lumo-grid-border-width));
-    }
-
-    :host([theme~='compact']) [part~='cell'] ::slotted(vaadin-grid-cell-content) {
-      padding: var(--lumo-space-xs) var(--lumo-space-s);
     }
 
     /* Wrap cell contents */

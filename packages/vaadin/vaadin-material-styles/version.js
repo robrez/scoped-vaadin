@@ -1,9 +1,9 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 
 /**
  * Dummy custom element used for collecting
@@ -12,11 +12,11 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  * @private
  */
 class Material extends HTMLElement {
-  static get version() {
-    return '24.0.0';
+  static get is() {
+    return 'vaadin24-material-styles';
   }
 }
 
-internalCustomElements.define('vaadin24-material-styles', Material);
+defineCustomElement(Material);
 
 export { Material };

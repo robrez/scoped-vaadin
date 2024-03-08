@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
@@ -6,11 +5,16 @@ import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { ensureSvgLiteral, renderSvg } from './vaadin-icon-svg.js';
+import { IconFontSizeMixin } from './vaadin-icon-font-size-mixin.js';
+import { ensureSvgLiteral, renderSvg, unsafeSvgLiteral } from './vaadin-icon-svg.js';
 import { Iconset } from './vaadin-iconset.js';
+
+const srcCache = new Map();
 
 /**
  * `<vaadin24-icon>` is a Web Component for displaying SVG icons.
@@ -51,12 +55,15 @@ import { Iconset } from './vaadin-iconset.js';
  * }
  * ```
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ControllerMixin
  * @mixes ThemableMixin
  * @mixes ElementMixin
+ * @mixes SlotStylesMixin
+ * @mixes IconFontSizeMixin
  */
-class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) {
+class Icon extends ThemableMixin(ElementMixin(ControllerMixin(SlotStylesMixin(IconFontSizeMixin(PolymerElement))))) {
   static get template() {
     return html`
       <style>
@@ -69,6 +76,16 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
           width: 24px;
           height: 24px;
           fill: currentColor;
+          container-type: size;
+        }
+
+        :host::after,
+        :host::before {
+          line-height: 1;
+          font-size: 100cqh;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          -moz-osx-font-smoothing: grayscale;
         }
 
         :host([hidden]) {
@@ -80,15 +97,33 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
           width: 100%;
           height: 100%;
         }
+
+        :host(:is([icon-class], [font-icon-content])) svg {
+          display: none;
+        }
+
+        :host([font-icon-content])::before {
+          content: attr(font-icon-content);
+        }
       </style>
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="[[__computeViewBox(size, __viewBox)]]"
-        preserveAspectRatio="xMidYMid meet"
+        preserveAspectRatio="[[__computePAR(__defaultPAR, __preserveAspectRatio)]]"
+        fill$="[[__fill]]"
+        stroke$="[[__stroke]]"
+        stroke-width$="[[__strokeWidth]]"
+        stroke-linecap$="[[__strokeLinecap]]"
+        stroke-linejoin$="[[__strokeLinejoin]]"
         aria-hidden="true"
-      ></svg>
+      >
+        <g id="svg-group"></g>
+        <g id="use-group" visibility$="[[__computeVisibility(__useRef, svg)]]">
+          <use href$="[[__useRef]]" />
+        </g>
+      </svg>
 
       <slot name="tooltip"></slot>
     `;
@@ -109,9 +144,13 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
        * values provided by the corresponding `vaadin24-iconset` element.
        *
        * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin24-iconset`.
+       *
+       * @attr {string} icon
+       * @type {string}
        */
       icon: {
         type: String,
+        reflectToAttribute: true,
         observer: '__iconChanged',
       },
 
@@ -123,6 +162,75 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
       },
 
       /**
+       * The SVG source to be loaded as the icon. It can be:
+       * - an URL to a file containing the icon
+       * - an URL in the format "/path/to/file.svg#objectID", where the "objectID" refers to an ID attribute contained
+       *   inside the SVG referenced by the path. Note that the file needs to follow the same-origin policy.
+       * - a string in the format "data:image/svg+xml,<svg>...</svg>". You may need to use the "encodeURIComponent"
+       *   function for the SVG content passed
+       *
+       * @type {string}
+       */
+      src: {
+        type: String,
+      },
+
+      /**
+       * The symbol identifier that references an ID of an element contained in the SVG element assigned to the
+       * `src` property
+       *
+       * @type {string}
+       */
+      symbol: {
+        type: String,
+      },
+
+      /**
+       * Class names defining an icon font and/or a specific glyph inside an icon font.
+       *
+       * Example: "fa-solid fa-user"
+       *
+       * @attr {string} icon-class
+       * @type {string}
+       */
+      iconClass: {
+        type: String,
+        reflectToAttribute: true,
+      },
+
+      /**
+       * A hexadecimal code point that specifies a glyph from an icon font.
+       *
+       * Example: "e001"
+       *
+       * @type {string}
+       */
+      char: {
+        type: String,
+      },
+
+      /**
+       * A ligature name that specifies an icon from an icon font with support for ligatures.
+       *
+       * Example: "home".
+       *
+       * @type {string}
+       */
+      ligature: {
+        type: String,
+      },
+
+      /**
+       * The font family to use for the font icon.
+       *
+       * @type {string}
+       */
+      fontFamily: {
+        type: String,
+        observer: '__fontFamilyChanged',
+      },
+
+      /**
        * The size of an icon, used to set the `viewBox` attribute.
        */
       size: {
@@ -131,21 +239,77 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
       },
 
       /** @private */
-      __svgElement: Object,
+      __defaultPAR: {
+        type: String,
+        value: 'xMidYMid meet',
+      },
+
+      /** @private */
+      __preserveAspectRatio: String,
+
+      /** @private */
+      __useRef: Object,
+
+      /** @private */
+      __svgElement: String,
 
       /** @private */
       __viewBox: String,
+
+      /** @private */
+      __fill: String,
+
+      /** @private */
+      __stroke: String,
+
+      /** @private */
+      __strokeWidth: String,
+
+      /** @private */
+      __strokeLinecap: String,
+
+      /** @private */
+      __strokeLinejoin: String,
     };
   }
 
   static get observers() {
-    return ['__svgChanged(svg, __svgElement)'];
+    return ['__svgChanged(svg, __svgElement)', '__fontChanged(iconClass, char, ligature)', '__srcChanged(src, symbol)'];
+  }
+
+  static get observedAttributes() {
+    return [...super.observedAttributes, 'class'];
+  }
+
+  constructor() {
+    super();
+
+    this.__fetch = fetch.bind(window);
+  }
+
+  /** @protected */
+  get slotStyles() {
+    const tag = this.localName;
+    return [
+      `
+        ${tag}[icon-class] {
+          display: inline-flex;
+          vertical-align: middle;
+          font-size: inherit;
+        }
+      `,
+    ];
+  }
+
+  /** @private */
+  get __iconClasses() {
+    return this.iconClass ? this.iconClass.split(' ') : [];
   }
 
   /** @protected */
   ready() {
     super.ready();
-    this.__svgElement = this.shadowRoot.querySelector('svg');
+    this.__svgElement = this.shadowRoot.querySelector('#svg-group');
 
     this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
@@ -167,10 +331,14 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
 
   /** @protected */
   _applyIcon() {
-    const { svg, size, viewBox } = Iconset.getIconSvg(this.icon);
+    const { preserveAspectRatio, svg, size, viewBox } = Iconset.getIconSvg(this.icon);
 
     if (viewBox) {
       this.__viewBox = viewBox;
+    }
+
+    if (preserveAspectRatio) {
+      this.__preserveAspectRatio = preserveAspectRatio;
     }
 
     if (size && size !== this.size) {
@@ -190,6 +358,64 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
   }
 
   /** @private */
+  async __srcChanged(src, symbol) {
+    if (!src) {
+      this.svg = null;
+      return;
+    }
+
+    // Need to add the "icon" attribute to avoid issues as described in
+    // https://github.com/vaadin/web-components/issues/6301
+    this.icon = '';
+
+    if (!src.startsWith('data:') && (symbol || src.includes('#'))) {
+      const [path, iconId] = src.split('#');
+      this.__useRef = `${path}#${symbol || iconId}`;
+    } else {
+      try {
+        if (!srcCache.has(src)) {
+          srcCache.set(
+            src,
+            this.__fetch(src, { mode: 'cors' }).then((data) => {
+              if (!data.ok) {
+                throw new Error('Error loading icon');
+              }
+              return data.text();
+            }),
+          );
+        }
+        const svgData = await srcCache.get(src);
+
+        if (!Icon.__domParser) {
+          Icon.__domParser = new DOMParser();
+        }
+        const parsedResponse = Icon.__domParser.parseFromString(svgData, 'text/html');
+
+        const svgElement = parsedResponse.querySelector('svg');
+        if (!svgElement) {
+          throw new Error(`SVG element not found on path: ${src}`);
+        }
+
+        this.svg = unsafeSvgLiteral(svgElement.innerHTML);
+
+        if (symbol) {
+          this.__useRef = `#${symbol}`;
+        }
+
+        this.__viewBox = svgElement.getAttribute('viewBox');
+        this.__fill = svgElement.getAttribute('fill');
+        this.__stroke = svgElement.getAttribute('stroke');
+        this.__strokeWidth = svgElement.getAttribute('stroke-width');
+        this.__strokeLinecap = svgElement.getAttribute('stroke-linecap');
+        this.__strokeLinejoin = svgElement.getAttribute('stroke-linejoin');
+      } catch (e) {
+        console.error(e);
+        this.svg = null;
+      }
+    }
+  }
+
+  /** @private */
   __svgChanged(svg, svgElement) {
     if (!svgElement) {
       return;
@@ -199,11 +425,59 @@ class Icon extends ThemableMixin(ElementMixin(ControllerMixin(PolymerElement))) 
   }
 
   /** @private */
+  __computePAR(defaultPAR, preserveAspectRatio) {
+    return preserveAspectRatio || defaultPAR;
+  }
+
+  /** @private */
+  __computeVisibility(__useRef) {
+    return __useRef ? 'visible' : 'hidden';
+  }
+
+  /** @private */
   __computeViewBox(size, viewBox) {
     return viewBox || `0 0 ${size} ${size}`;
   }
+
+  /** @private */
+  __fontChanged(iconClass, char, ligature) {
+    this.classList.remove(...(this.__addedIconClasses || []));
+    if (iconClass) {
+      this.__addedIconClasses = [...this.__iconClasses];
+      this.classList.add(...this.__addedIconClasses);
+    }
+
+    if (char) {
+      this.setAttribute('font-icon-content', char.length > 1 ? String.fromCodePoint(parseInt(char, 16)) : char);
+    } else if (ligature) {
+      this.setAttribute('font-icon-content', ligature);
+    } else {
+      this.removeAttribute('font-icon-content');
+    }
+
+    if ((iconClass || char || ligature) && !this.icon) {
+      // The "icon" attribute needs to be set on the host also when using font icons
+      // to avoid issues such as https://github.com/vaadin/web-components/issues/6301
+      this.icon = '';
+    }
+  }
+
+  /** @protected */
+  attributeChangedCallback(name, oldValue, newValue) {
+    super.attributeChangedCallback(name, oldValue, newValue);
+
+    // Make sure class list always contains all the font class names
+    if (name === 'class' && this.__iconClasses.some((className) => !this.classList.contains(className))) {
+      this.classList.add(...this.__iconClasses);
+    }
+  }
+
+  /** @private */
+  __fontFamilyChanged(fontFamily) {
+    this.style.fontFamily = `'${fontFamily}'`;
+  }
 }
 
-internalCustomElements.define(Icon.is, Icon);
+defineCustomElement(Icon);
 
 export { Icon };

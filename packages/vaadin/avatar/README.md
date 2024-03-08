@@ -15,7 +15,7 @@ A web component for graphical representation of an object or entity, for example
 <vaadin24-avatar abbr="SK"></vaadin24-avatar>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/avatar/screenshot.png" width="132" alt="Screenshot of vaadin-avatar">](https://vaadin.com/docs/latest/components/avatar)
+[<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/avatar/screenshot.png" width="132" alt="Screenshot of vaadin-avatar">](https://vaadin.com/docs/latest/components/avatar)
 
 ## Installation
 
@@ -34,7 +34,7 @@ import '@scoped-vaadin/avatar';
 ## Themes
 
 Vaadin components come with two built-in [themes](https://vaadin.com/docs/latest/styling), Lumo and Material.
-The [main entrypoint](https://github.com/vaadin/web-components/blob/master/packages/avatar/vaadin-avatar.js) of the package uses the Lumo theme.
+The [main entrypoint](https://github.com/vaadin/web-components/blob/main/packages/avatar/vaadin-avatar.js) of the package uses the Lumo theme.
 
 To use the Material theme, import the component from the `theme/material` folder:
 

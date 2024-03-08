@@ -1,64 +1,57 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
-import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
+import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
+import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
+import { css, registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ComboBoxOverlayMixin } from './vaadin-combo-box-overlay-mixin.js';
 
-registerStyles(
-  'vaadin24-combo-box-overlay',
-  css`
-    #overlay {
-      width: var(--vaadin-combo-box-overlay-width, var(--_vaadin-combo-box-overlay-default-width, auto));
-    }
+const comboBoxOverlayStyles = css`
+  #overlay {
+    width: var(--vaadin-combo-box-overlay-width, var(--_vaadin-combo-box-overlay-default-width, auto));
+  }
 
-    [part='content'] {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-  `,
-  { moduleId: 'vaadin-combo-box-overlay-styles' },
-);
+  [part='content'] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+`;
 
-let memoizedTemplate;
+registerStyles('vaadin24-combo-box-overlay', [overlayStyles, comboBoxOverlayStyles], {
+  moduleId: 'vaadin-combo-box-overlay-styles',
+});
 
 /**
  * An element used internally by `<vaadin24-combo-box>`. Not intended to be used separately.
  *
- * @extends Overlay
+ * @customElement
+ * @extends HTMLElement
  * @mixes ComboBoxOverlayMixin
+ * @mixes DirMixin
+ * @mixes OverlayMixin
+ * @mixes ThemableMixin
  * @private
  */
-export class ComboBoxOverlay extends ComboBoxOverlayMixin(Overlay) {
+export class ComboBoxOverlay extends ComboBoxOverlayMixin(OverlayMixin(DirMixin(ThemableMixin(PolymerElement)))) {
   static get is() {
     return 'vaadin24-combo-box-overlay';
   }
 
   static get template() {
-    if (!memoizedTemplate) {
-      memoizedTemplate = super.template.cloneNode(true);
-
-      const overlay = memoizedTemplate.content.querySelector('[part~="overlay"]');
-      overlay.removeAttribute('tabindex');
-
-      const loader = document.createElement('div');
-      loader.setAttribute('part', 'loader');
-
-      overlay.insertBefore(loader, overlay.firstElementChild);
-    }
-
-    return memoizedTemplate;
-  }
-
-  constructor() {
-    super();
-
-    this.requiredVerticalSpace = 200;
+    return html`
+      <div id="backdrop" part="backdrop" hidden></div>
+      <div part="overlay" id="overlay">
+        <div part="loader"></div>
+        <div part="content" id="content"><slot></slot></div>
+      </div>
+    `;
   }
 }
 
-internalCustomElements.define(ComboBoxOverlay.is, ComboBoxOverlay);
+defineCustomElement(ComboBoxOverlay);

@@ -3,6 +3,7 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import '@scoped-vaadin/input-container/theme/material/vaadin-input-container-styles.js';
 import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import { item } from '@scoped-vaadin/item/theme/material/vaadin-item-styles.js';
 import { listBox } from '@scoped-vaadin/list-box/theme/material/vaadin-list-box-styles.js';

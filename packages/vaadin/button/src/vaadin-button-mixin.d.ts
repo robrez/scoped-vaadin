@@ -4,11 +4,11 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
-import type { ActiveMixinClass } from '@scoped-vaadin/component-base/src/active-mixin.js';
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
-import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
-import type { TabindexMixinClass } from '@scoped-vaadin/component-base/src/tabindex-mixin.js';
+import type { ActiveMixinClass } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
+import type { TabindexMixinClass } from '@scoped-vaadin/a11y-base/src/tabindex-mixin.js';
 
 /**
  * A mixin providing common button functionality.

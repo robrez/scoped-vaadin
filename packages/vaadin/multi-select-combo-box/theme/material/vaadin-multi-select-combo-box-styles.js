@@ -3,6 +3,7 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import '@scoped-vaadin/input-container/theme/material/vaadin-input-container-styles.js';
 import '@scoped-vaadin/vaadin-material-styles/color.js';
 import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 import '@scoped-vaadin/vaadin-material-styles/typography.js';
@@ -53,6 +54,11 @@ const multiSelectComboBox = css`
   ::slotted([slot='chip']),
   ::slotted([slot='overflow']) {
     padding: 0 0.5rem;
+  }
+
+  :host([auto-expand-vertically]) ::slotted([slot='chip']) {
+    margin-top: 0.25rem;
+    align-self: flex-start;
   }
 
   ::slotted([slot='chip']:not([readonly]):not([disabled])) {

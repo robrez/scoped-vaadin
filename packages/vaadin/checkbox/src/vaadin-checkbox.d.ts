@@ -3,13 +3,20 @@
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { ActiveMixin } from '@scoped-vaadin/component-base/src/active-mixin.js';
+import { ActiveMixin } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
+import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
 import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { CheckedMixin } from '@scoped-vaadin/field-base/src/checked-mixin.js';
 import { LabelMixin } from '@scoped-vaadin/field-base/src/label-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+
+/**
+ * Fired when the checkbox is checked or unchecked by the user.
+ */
+export type CheckboxChangeEvent = Event & {
+  target: Checkbox;
+};
 
 /**
  * Fired when the `checked` property changes.
@@ -27,7 +34,9 @@ export interface CheckboxCustomEventMap {
   'indeterminate-changed': CheckboxIndeterminateChangedEvent;
 }
 
-export interface CheckboxEventMap extends HTMLElementEventMap, CheckboxCustomEventMap {}
+export interface CheckboxEventMap extends HTMLElementEventMap, CheckboxCustomEventMap {
+  change: CheckboxChangeEvent;
+}
 
 /**
  * `<vaadin24-checkbox>` is an input field representing a binary choice.
@@ -56,8 +65,9 @@ export interface CheckboxEventMap extends HTMLElementEventMap, CheckboxCustomEve
  * `indeterminate` | Set when the checkbox is in the indeterminate state.
  * `has-label`     | Set when the checkbox has a label.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
+ * @fires {Event} change - Fired when the checkbox is checked or unchecked by the user.
  * @fires {CustomEvent} checked-changed - Fired when the `checked` property changes.
  * @fires {CustomEvent} indeterminate-changed - Fired when the `indeterminate` property changes.
  */

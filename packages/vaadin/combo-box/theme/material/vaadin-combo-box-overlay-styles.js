@@ -1,5 +1,4 @@
 import '@scoped-vaadin/vaadin-material-styles/color.js';
-import '@scoped-vaadin/overlay/theme/material/vaadin-overlay.js';
 import { loader } from '@scoped-vaadin/vaadin-material-styles/mixins/loader.js';
 import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

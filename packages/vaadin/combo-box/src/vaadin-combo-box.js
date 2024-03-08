@@ -1,4 +1,3 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2015 - 2023 Vaadin Ltd.
@@ -9,6 +8,7 @@ import './vaadin-combo-box-item.js';
 import './vaadin-combo-box-overlay.js';
 import './vaadin-combo-box-scroller.js';
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { InputControlMixin } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
@@ -136,7 +136,7 @@ registerStyles('vaadin24-combo-box', inputFieldShared, { moduleId: 'vaadin-combo
  * Note: the `theme` attribute value set on `<vaadin24-combo-box>` is
  * propagated to the internal components listed above.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} custom-value-set - Fired when the user sets a custom value.
@@ -147,6 +147,7 @@ registerStyles('vaadin24-combo-box', inputFieldShared, { moduleId: 'vaadin-combo
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -249,42 +250,11 @@ class ComboBox extends ComboBoxDataProviderMixin(
     this._tooltipController = new TooltipController(this);
     this.addController(this._tooltipController);
     this._tooltipController.setPosition('top');
+    this._tooltipController.setAriaTarget(this.inputElement);
     this._tooltipController.setShouldShow((target) => !target.opened);
 
     this._positionTarget = this.shadowRoot.querySelector('[part="input-field"]');
     this._toggleElement = this.$.toggleButton;
-  }
-
-  /**
-   * Override method inherited from `FocusMixin` to validate on blur.
-   * @param {boolean} focused
-   * @protected
-   * @override
-   */
-  _setFocused(focused) {
-    super._setFocused(focused);
-
-    if (!focused) {
-      this.validate();
-    }
-  }
-
-  /**
-   * Override method inherited from `FocusMixin` to not remove focused
-   * state when focus moves to the overlay.
-   * @param {FocusEvent} event
-   * @return {boolean}
-   * @protected
-   * @override
-   */
-  _shouldRemoveFocus(event) {
-    // Do not blur when focus moves to the overlay
-    if (event.relatedTarget === this._overlayElement) {
-      event.composedPath()[0].focus();
-      return false;
-    }
-
-    return true;
   }
 
   /**
@@ -315,6 +285,6 @@ class ComboBox extends ComboBoxDataProviderMixin(
   }
 }
 
-internalCustomElements.define(ComboBox.is, ComboBox);
+defineCustomElement(ComboBox);
 
 export { ComboBox };

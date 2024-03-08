@@ -63,8 +63,19 @@ export const CollapsibleMixin = (superClass) =>
 
       // Only handle click and not keydown, because `vaadin24-details-summary` uses `ButtonMixin`
       // that already covers this logic, and `vaadin24-accordion-heading` uses native `<button>`.
-      this.addEventListener('click', (event) => {
-        if (event.target === this.focusElement) {
+      this.addEventListener('click', ({ target }) => {
+        if (this.disabled) {
+          return;
+        }
+
+        // Do not change opened on link click
+        if (target.localName === 'a') {
+          return;
+        }
+
+        const summary = this.focusElement;
+
+        if (summary && (target === summary || summary.contains(target))) {
           this.opened = !this.opened;
         }
       });

@@ -1,13 +1,16 @@
 import '@scoped-vaadin/vaadin-lumo-styles/color.js';
+import '@scoped-vaadin/vaadin-lumo-styles/style.js';
 import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const scroller = css`
   :host {
     outline: none;
+    --_focus-ring-color: var(--vaadin-focus-ring-color, var(--lumo-primary-color-50pct));
+    --_focus-ring-width: var(--vaadin-focus-ring-width, 2px);
   }
 
   :host([focus-ring]) {
-    box-shadow: 0 0 0 2px var(--lumo-primary-color-50pct);
+    box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
   }
 
   /* Show dividers when content overflows */
@@ -17,10 +20,7 @@ const scroller = css`
     content: '';
     display: none;
     position: sticky;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     z-index: 9999;
     height: 1px;
     margin-bottom: -1px;

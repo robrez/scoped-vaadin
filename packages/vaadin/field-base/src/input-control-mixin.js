@@ -3,14 +3,14 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
+import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
 import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
-import { DelegateFocusMixin } from '@scoped-vaadin/component-base/src/delegate-focus-mixin.js';
-import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 import { ClearButtonMixin } from './clear-button-mixin.js';
 import { FieldMixin } from './field-mixin.js';
 import { InputConstraintsMixin } from './input-constraints-mixin.js';
-import { SlotStylesMixin } from './slot-styles-mixin.js';
 
 /**
  * A mixin to provide shared logic for the editable form input controls.

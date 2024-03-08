@@ -38,6 +38,9 @@ export const checkboxStyles = css`
   [part='checkbox'] {
     width: var(--vaadin-checkbox-size, 1em);
     height: var(--vaadin-checkbox-size, 1em);
+    --_input-border-width: var(--vaadin-input-field-border-width, 0);
+    --_input-border-color: var(--vaadin-input-field-border-color, transparent);
+    box-shadow: inset 0 0 0 var(--_input-border-width, 0) var(--_input-border-color);
   }
 
   [part='checkbox']::before {
@@ -54,5 +57,30 @@ export const checkboxStyles = css`
     margin: 0;
     align-self: stretch;
     -webkit-appearance: none;
+    width: initial;
+    height: initial;
+  }
+
+  @media (forced-colors: active) {
+    [part='checkbox'] {
+      outline: 1px solid;
+      outline-offset: -1px;
+    }
+
+    :host([disabled]) [part='checkbox'],
+    :host([disabled]) [part='checkbox']::after {
+      outline-color: GrayText;
+    }
+
+    :host(:is([checked], [indeterminate])) [part='checkbox']::after {
+      outline: 1px solid;
+      outline-offset: -1px;
+      border-radius: inherit;
+    }
+
+    :host([focused]) [part='checkbox'],
+    :host([focused]) [part='checkbox']::after {
+      outline-width: 2px;
+    }
   }
 `;

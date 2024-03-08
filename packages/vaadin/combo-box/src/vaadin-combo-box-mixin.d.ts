@@ -4,10 +4,12 @@
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import type { Constructor } from '@open-wc/dedupe-mixin';
-import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
-import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
+import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 import type { ComboBox } from './vaadin-combo-box.js';
 import type { ComboBoxDefaultItem, ComboBoxItemModel, ComboBoxItemRenderer } from './vaadin-combo-box-item-mixin.js';
 
@@ -19,9 +21,11 @@ export declare function ComboBoxMixin<TItem, T extends Constructor<HTMLElement>>
   base: T,
 ): Constructor<ComboBoxMixinClass<TItem>> &
   Constructor<DisabledMixinClass> &
+  Constructor<FocusMixinClass> &
   Constructor<InputMixinClass> &
   Constructor<KeyboardMixinClass> &
   Constructor<OverlayClassMixinClass> &
+  Constructor<ValidateMixinClass> &
   T;
 
 export declare class ComboBoxMixinClass<TItem> {
@@ -132,10 +136,6 @@ export declare class ComboBoxMixinClass<TItem> {
    */
   itemIdPath: string | null | undefined;
 
-  protected readonly _propertyForValue: string;
-
-  protected _inputElementValue: string | undefined;
-
   /**
    * Tag name prefix used by scroller and items.
    */
@@ -158,6 +158,4 @@ export declare class ComboBoxMixinClass<TItem> {
    * Closes the dropdown list.
    */
   close(): void;
-
-  protected _revertInputValue(): void;
 }

@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2017 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -28,6 +28,7 @@ import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-thema
  * `theme="padding"` | Applies the default amount of CSS padding for the host element (specified by the theme)
  * `theme="spacing"` | Applies the default amount of CSS margin between items (specified by the theme)
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ThemableMixin
  * @mixes ElementMixin
@@ -70,6 +71,6 @@ class VerticalLayout extends ElementMixin(ThemableMixin(PolymerElement)) {
   }
 }
 
-internalCustomElements.define(VerticalLayout.is, VerticalLayout);
+defineCustomElement(VerticalLayout);
 
 export { VerticalLayout };

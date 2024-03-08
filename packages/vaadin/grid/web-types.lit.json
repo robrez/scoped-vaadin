@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/grid",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "framework": "lit",
   "framework-config": {
@@ -15,8 +15,8 @@
     "html": {
       "elements": [
         {
-          "name": "vaadin24-grid-column",
-          "description": "A `<vaadin24-grid-column>` is used to configure how a column in `<vaadin24-grid>`\nshould look like.\n\nSee [`<vaadin24-grid>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid) documentation for instructions on how\nto configure the `<vaadin24-grid-column>`.",
+          "name": "vaadin24-grid-column-group",
+          "description": "A `<vaadin24-grid-column-group>` is used to make groups of columns in `<vaadin24-grid>` and\nto configure additional headers and footers.\n\nGroups can be nested to create complex header and footer configurations.\n\n#### Example:\n```html\n<vaadin24-grid-column-group resizable id=\"columnGroup\">\n  <vaadin24-grid-column id=\"column1\"></vaadin24-grid-column>\n  <vaadin24-grid-column id=\"column2\"></vaadin24-grid-column>\n</vaadin24-grid-column-group>\n```\n```js\nconst columnGroup = document.querySelector('#columnGroup');\ncolumnGroup.headerRenderer = (root, columnGroup) => {\n  root.textContent = 'header';\n}\n\nconst column1 = document.querySelector('#column1');\ncolumn1.headerRenderer = (root, column) => { ... };\ncolumn1.renderer = (root, column, model) => { ... };\n\nconst column2 = document.querySelector('#column2');\ncolumn2.headerRenderer = (root, column) => { ... };\ncolumn2.renderer = (root, column, model) => { ... };\n```",
           "extension": true,
           "attributes": [
             {
@@ -36,6 +36,97 @@
             {
               "name": "?frozenToEnd",
               "description": "When true, the column is frozen to end of grid.\n\nWhen a column inside of a column group is frozen to end, all of the sibling columns\ninside the group will get frozen to end also.\n\nColumn can not be set as `frozen` and `frozenToEnd` at the same time.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?hidden",
+              "description": "When set to true, the cells for this column are hidden.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".header",
+              "description": "Text content to display in the header cell of the column.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".textAlign",
+              "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerRenderer",
+              "description": "Custom function for rendering the header content.\nReceives two arguments:\n\n- `root` The header cell content DOM element. Append your content to it.\n- `column` The `<vaadin24-grid-column>` element.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerRenderer",
+              "description": "Custom function for rendering the footer content.\nReceives two arguments:\n\n- `root` The footer cell content DOM element. Append your content to it.\n- `column` The `<vaadin24-grid-column>` element.",
+              "value": {
+                "kind": "expression"
+              }
+            }
+          ]
+        },
+        {
+          "name": "vaadin24-grid-column",
+          "description": "A `<vaadin24-grid-column>` is used to configure how a column in `<vaadin24-grid>`\nshould look like.\n\nSee [`<vaadin24-grid>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid) documentation for instructions on how\nto configure the `<vaadin24-grid-column>`.",
+          "extension": true,
+          "attributes": [
+            {
+              "name": "?resizable",
+              "description": "When set to true, the column is user-resizable.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?frozen",
+              "description": "When true, the column is frozen. When a column inside of a column group is frozen,\nall of the sibling columns inside the group will get frozen also.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?frozenToEnd",
+              "description": "When true, the column is frozen to end of grid.\n\nWhen a column inside of a column group is frozen to end, all of the sibling columns\ninside the group will get frozen to end also.\n\nColumn can not be set as `frozen` and `frozenToEnd` at the same time.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
               "value": {
                 "kind": "expression"
               }
@@ -64,6 +155,20 @@
             {
               "name": ".textAlign",
               "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
               "value": {
                 "kind": "expression"
               }
@@ -106,69 +211,6 @@
             {
               "name": ".path",
               "description": "Path to an item sub-property whose value gets displayed in the column body cells.\nThe property name is also shown in the column header if an explicit header or renderer isn't defined.",
-              "value": {
-                "kind": "expression"
-              }
-            }
-          ]
-        },
-        {
-          "name": "vaadin24-grid-column-group",
-          "description": "A `<vaadin24-grid-column-group>` is used to make groups of columns in `<vaadin24-grid>` and\nto configure additional headers and footers.\n\nGroups can be nested to create complex header and footer configurations.\n\n#### Example:\n```html\n<vaadin24-grid-column-group resizable id=\"columnGroup\">\n  <vaadin24-grid-column id=\"column1\"></vaadin24-grid-column>\n  <vaadin24-grid-column id=\"column2\"></vaadin24-grid-column>\n</vaadin24-grid-column-group>\n```\n```js\nconst columnGroup = document.querySelector('#columnGroup');\ncolumnGroup.headerRenderer = (root, columnGroup) => {\n  root.textContent = 'header';\n}\n\nconst column1 = document.querySelector('#column1');\ncolumn1.headerRenderer = (root, column) => { ... };\ncolumn1.renderer = (root, column, model) => { ... };\n\nconst column2 = document.querySelector('#column2');\ncolumn2.headerRenderer = (root, column) => { ... };\ncolumn2.renderer = (root, column, model) => { ... };\n```",
-          "extension": true,
-          "attributes": [
-            {
-              "name": "?resizable",
-              "description": "When set to true, the column is user-resizable.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": "?frozen",
-              "description": "When true, the column is frozen. When a column inside of a column group is frozen,\nall of the sibling columns inside the group will get frozen also.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": "?frozenToEnd",
-              "description": "When true, the column is frozen to end of grid.\n\nWhen a column inside of a column group is frozen to end, all of the sibling columns\ninside the group will get frozen to end also.\n\nColumn can not be set as `frozen` and `frozenToEnd` at the same time.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": "?hidden",
-              "description": "When set to true, the cells for this column are hidden.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".header",
-              "description": "Text content to display in the header cell of the column.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".textAlign",
-              "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".headerRenderer",
-              "description": "Custom function for rendering the header content.\nReceives two arguments:\n\n- `root` The header cell content DOM element. Append your content to it.\n- `column` The `<vaadin24-grid-column>` element.",
-              "value": {
-                "kind": "expression"
-              }
-            },
-            {
-              "name": ".footerRenderer",
-              "description": "Custom function for rendering the footer content.\nReceives two arguments:\n\n- `root` The footer cell content DOM element. Append your content to it.\n- `column` The `<vaadin24-grid-column>` element.",
               "value": {
                 "kind": "expression"
               }
@@ -230,6 +272,13 @@
               }
             },
             {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": "?hidden",
               "description": "When set to true, the cells for this column are hidden.",
               "value": {
@@ -253,6 +302,20 @@
             {
               "name": ".textAlign",
               "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
               "value": {
                 "kind": "expression"
               }
@@ -303,7 +366,7 @@
         },
         {
           "name": "vaadin24-grid-selection-column",
-          "description": "`<vaadin24-grid-selection-column>` is a helper element for the `<vaadin24-grid>`\nthat provides default renderers and functionality for item selection.\n\n#### Example:\n```html\n<vaadin24-grid items=\"[[items]]\">\n <vaadin24-grid-selection-column frozen auto-select></vaadin24-grid-selection-column>\n\n <vaadin24-grid-column>\n   ...\n```\n\nBy default the selection column displays `<vaadin24-checkbox>` elements in the\ncolumn cells. The checkboxes in the body rows toggle selection of the corresponding row items.\n\nWhen the grid data is provided as an array of [`items`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid#property-items),\nthe column header gets an additional checkbox that can be used for toggling\nselection for all the items at once.\n\n__The default content can also be overridden__",
+          "description": "`<vaadin24-grid-selection-column>` is a helper element for the `<vaadin24-grid>`\nthat provides default renderers and functionality for item selection.\n\n#### Example:\n```html\n<vaadin24-grid items=\"[[items]]\">\n <vaadin24-grid-selection-column frozen auto-select></vaadin24-grid-selection-column>\n\n <vaadin24-grid-column>\n   ...\n```\n\nBy default the selection column displays `<vaadin24-checkbox>` elements in the\ncolumn cells. The checkboxes in the body rows toggle selection of the corresponding row items.\n\nWhen the grid data is provided as an array of [`items`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid#property-items),\nthe column header gets an additional checkbox that can be used for toggling\nselection for all the items at once.\n\n__The default content can also be overridden__",
           "extension": true,
           "attributes": [
             {
@@ -323,6 +386,13 @@
             {
               "name": "?frozenToEnd",
               "description": "When true, the column is frozen to end of grid.\n\nWhen a column inside of a column group is frozen to end, all of the sibling columns\ninside the group will get frozen to end also.\n\nColumn can not be set as `frozen` and `frozenToEnd` at the same time.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
               "value": {
                 "kind": "expression"
               }
@@ -356,6 +426,13 @@
               }
             },
             {
+              "name": "?dragSelect",
+              "description": "When true, rows can be selected by dragging over the selection column.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": ".header",
               "description": "Text content to display in the header cell of the column.",
               "value": {
@@ -365,6 +442,20 @@
             {
               "name": ".textAlign",
               "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
               "value": {
                 "kind": "expression"
               }
@@ -475,6 +566,13 @@
               }
             },
             {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": "?hidden",
               "description": "When set to true, the cells for this column are hidden.",
               "value": {
@@ -498,6 +596,20 @@
             {
               "name": ".textAlign",
               "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
               "value": {
                 "kind": "expression"
               }
@@ -622,6 +734,13 @@
               }
             },
             {
+              "name": "?rowHeader",
+              "description": "When true, the cells for this column will be rendered with the `role` attribute\nset as `rowheader`, instead of the `gridcell` role value used by default.\n\nWhen a column is set as row header, its cells will be announced by screen readers\nwhile navigating to help user identify the current row as uniquely as possible.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
               "name": "?hidden",
               "description": "When set to true, the cells for this column are hidden.",
               "value": {
@@ -645,6 +764,20 @@
             {
               "name": ".textAlign",
               "description": "Aligns the columns cell content horizontally.\nSupported values: \"start\", \"center\" and \"end\".",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".headerPartName",
+              "description": "Custom part name for the header cell.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".footerPartName",
+              "description": "Custom part name for the footer cell.",
               "value": {
                 "kind": "expression"
               }
@@ -695,7 +828,7 @@
         },
         {
           "name": "vaadin24-grid",
-          "description": "`<vaadin24-grid>` is a free, high quality data grid / data table Web Component. The content of the\nthe grid can be populated by using renderer callback function.\n\n### Quick Start\n\nStart with an assigning an array to the [`items`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid#property-items) property to visualize your data.\n\nUse the [`<vaadin24-grid-column>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`\nshorthand properties for the columns to define what gets rendered in the cells of the column.\n\n#### Example:\n```html\n<vaadin24-grid>\n  <vaadin24-grid-column path=\"name.first\" header=\"First name\"></vaadin24-grid-column>\n  <vaadin24-grid-column path=\"name.last\" header=\"Last name\"></vaadin24-grid-column>\n  <vaadin24-grid-column path=\"email\"></vaadin24-grid-column>\n</vaadin24-grid>\n```\n\nFor custom content `vaadin24-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,\n`renderer` and `footerRenderer`.\n\nEach of those renderer functions provides `root`, `column`, `model` arguments when applicable.\nGenerate DOM content, append it to the `root` element and control the state\nof the host element by accessing `column`. Before generating new content,\nusers are able to check if there is already content in `root` for reusing it.\n\nRenderers are called on initialization of new column cells and each time the\nrelated row model is updated. DOM generated during the renderer call can be reused\nin the next renderer call and will be provided with the `root` argument.\nOn first call it will be empty.\n\n#### Example:\n```html\n<vaadin24-grid>\n  <vaadin24-grid-column></vaadin24-grid-column>\n  <vaadin24-grid-column></vaadin24-grid-column>\n  <vaadin24-grid-column></vaadin24-grid-column>\n</vaadin24-grid>\n```\n```js\nconst grid = document.querySelector('vaadin24-grid');\ngrid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},\n              {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];\n\nconst columns = grid.querySelectorAll('vaadin24-grid-column');\n\ncolumns[0].headerRenderer = function(root) {\n  root.textContent = 'Name';\n};\ncolumns[0].renderer = function(root, column, model) {\n  root.textContent = model.item.name;\n};\n\ncolumns[1].headerRenderer = function(root) {\n  root.textContent = 'Surname';\n};\ncolumns[1].renderer = function(root, column, model) {\n  root.textContent = model.item.surname;\n};\n\ncolumns[2].headerRenderer = function(root) {\n  root.textContent = 'Role';\n};\ncolumns[2].renderer = function(root, column, model) {\n  root.textContent = model.item.role;\n};\n```\n\nThe following properties are available in the `model` argument:\n\nProperty name | Type | Description\n--------------|------|------------\n`index`| Number | The index of the item.\n`item` | String or Object | The item.\n`level` | Number | Number of the item's tree sublevel, starts from 0.\n`expanded` | Boolean | True if the item's tree sublevel is expanded.\n`selected` | Boolean | True if the item is selected.\n`detailsOpened` | Boolean | True if the item's row details are open.\n\nThe following helper elements can be used for further customization:\n- [`<vaadin24-grid-column-group>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-column-group)\n- [`<vaadin24-grid-filter>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-filter)\n- [`<vaadin24-grid-sorter>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-sorter)\n- [`<vaadin24-grid-selection-column>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-selection-column)\n- [`<vaadin24-grid-tree-toggle>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid-tree-toggle)\n\n__Note that the helper elements must be explicitly imported.__\nIf you want to import everything at once you can use the `all-imports.html` bundle.\n\n### Lazy Loading with Function Data Provider\n\nIn addition to assigning an array to the items property, you can alternatively\nprovide the `<vaadin24-grid>` data through the\n[`dataProvider`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid#property-dataProvider) function property.\nThe `<vaadin24-grid>` calls this function lazily, only when it needs more data\nto be displayed.\n\nSee the [`dataProvider`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-grid#property-dataProvider) property\ndocumentation for the detailed data provider arguments description.\n\n__Note that expanding the tree grid's item will trigger a call to the `dataProvider`.__\n\n__Also, note that when using function data providers, the total number of items\nneeds to be set manually. The total number of items can be returned\nin the second argument of the data provider callback:__\n\n```javascript\ngrid.dataProvider = ({page, pageSize}, callback) => {\n  // page: the requested page index\n  // pageSize: number of items on one page\n  const url = `https://api.example/data?page=${page}&per_page=${pageSize}`;\n\n  fetch(url)\n    .then((res) => res.json())\n    .then(({ employees, totalSize }) => {\n      callback(employees, totalSize);\n    });\n};\n```\n\n__Alternatively, you can use the `size` property to set the total number of items:__\n\n```javascript\ngrid.size = 200; // The total number of items\ngrid.dataProvider = ({page, pageSize}, callback) => {\n  const url = `https://api.example/data?page=${page}&per_page=${pageSize}`;\n\n  fetch(url)\n    .then((res) => res.json())\n    .then((resJson) => callback(resJson.employees));\n};\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name                  | Description\n---------------------------|----------------\n`row`                      | Row in the internal table\n`expanded-row`             | Expanded row\n`selected-row`             | Selected row\n`details-opened-row`       | Row with details open\n`odd-row`                  | Odd row\n`even-row`                 | Even row\n`first-row`                | The first body row\n`last-row`                 | The last body row\n`dragstart-row`            | Set on the row for one frame when drag is starting.\n`dragover-above-row`       | Set on the row when the a row is dragged over above\n`dragover-below-row`       | Set on the row when the a row is dragged over below\n`dragover-on-top-row`      | Set on the row when the a row is dragged over on top\n`drag-disabled-row`        | Set to a row that isn't available for dragging\n`drop-disabled-row`        | Set to a row that can't be dropped on top of\n`cell`                     | Cell in the internal table\n`header-cell`              | Header cell in the internal table\n`body-cell`                | Body cell in the internal table\n`footer-cell`              | Footer cell in the internal table\n`details-cell`             | Row details cell in the internal table\n`focused-cell`             | Focused cell in the internal table\n`odd-row-cell`             | Cell in an odd row\n`even-row-cell`            | Cell in an even row\n`first-row-cell`           | Cell in the first body row\n`last-row-cell`            | Cell in the last body row\n`first-header-row-cell`    | Cell in the first header row\n`first-footer-row-cell`    | Cell in the first footer row\n`last-header-row-cell`     | Cell in the last header row\n`last-footer-row-cell`     | Cell in the last footer row\n`loading-row-cell`         | Cell in a row that is waiting for data from data provider\n`selected-row-cell`        | Cell in a selected row\n`expanded-row-cell`        | Cell in an expanded row\n`details-opened-row-cell`  | Cell in an row with details open\n`dragstart-row-cell`       | Cell in a row that user started to drag (set for one frame)\n`dragover-above-row-cell`  | Cell in a row that has another row dragged over above\n`dragover-below-row-cell`  | Cell in a row that has another row dragged over below\n`dragover-on-top-row-cell` | Cell in a row that has another row dragged over on top\n`drag-disabled-row-cell`   | Cell in a row that isn't available for dragging\n`drop-disabled-row-cell`   | Cell in a row that can't be dropped on top of\n`frozen-cell`              | Frozen cell in the internal table\n`frozen-to-end-cell`       | Frozen to end cell in the internal table\n`last-frozen-cell`         | Last frozen cell\n`first-frozen-to-end-cell` | First cell frozen to end\n`first-column-cell`        | First visible cell on a row\n`last-column-cell`         | Last visible cell on a row\n`reorder-allowed-cell`     | Cell in a column where another column can be reordered\n`reorder-dragging-cell`    | Cell in a column currently being reordered\n`resize-handle`            | Handle for resizing the columns\n`reorder-ghost`            | Ghost element of the header cell being dragged\n\nThe following state attributes are available for styling:\n\nAttribute             | Description                                                                                       | Part name\n----------------------|---------------------------------------------------------------------------------------------------|-----------\n`loading`             | Set when the grid is loading data from data provider                                              | :host\n`interacting`         | Keyboard navigation in interaction mode                                                           | :host\n`navigating`          | Keyboard navigation in navigation mode                                                            | :host\n`overflow`            | Set when rows are overflowing the grid viewport. Possible values: `top`, `bottom`, `start`, `end` | :host\n`reordering`          | Set when the grid's columns are being reordered                                                   | :host\n`dragover`            | Set when the grid (not a specific row) is dragged over                                            | :host\n`dragging-rows`       | Set when grid rows are dragged                                                                    | :host\n`reorder-status`      | Reflects the status of a cell while columns are being reordered                                   | cell\n`frozen`              | Frozen cell                                                                                       | cell\n`frozen-to-end`       | Cell frozen to end                                                                                | cell\n`last-frozen`         | Last frozen cell                                                                                  | cell\n`first-frozen-to-end` | First cell frozen to end                                                                          | cell\n`first-column`        | First visible cell on a row                                                                       | cell\n`last-column`         | Last visible cell on a row                                                                        | cell\n`selected`            | Selected row                                                                                      | row\n`expanded`            | Expanded row                                                                                      | row\n`details-opened`      | Row with details open                                                                             | row\n`loading`             | Row that is waiting for data from data provider                                                   | row\n`odd`                 | Odd row                                                                                           | row\n`first`               | The first body row                                                                                | row\n`last`                | The last body row                                                                                 | row\n`dragstart`           | Set for one frame when starting to drag a row. The value is a number when dragging multiple rows  | row\n`dragover`            | Set when the row is dragged over                                                                  | row\n`drag-disabled`       | Set to a row that isn't available for dragging                                                    | row\n`drop-disabled`       | Set to a row that can't be dropped on top of                                                      | row\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-grid>` is a free, high quality data grid / data table Web Component. The content of the\nthe grid can be populated by using renderer callback function.\n\n### Quick Start\n\nStart with an assigning an array to the [`items`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid#property-items) property to visualize your data.\n\nUse the [`<vaadin24-grid-column>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`\nshorthand properties for the columns to define what gets rendered in the cells of the column.\n\n#### Example:\n```html\n<vaadin24-grid>\n  <vaadin24-grid-column path=\"name.first\" header=\"First name\"></vaadin24-grid-column>\n  <vaadin24-grid-column path=\"name.last\" header=\"Last name\"></vaadin24-grid-column>\n  <vaadin24-grid-column path=\"email\"></vaadin24-grid-column>\n</vaadin24-grid>\n```\n\nFor custom content `vaadin24-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,\n`renderer` and `footerRenderer`.\n\nEach of those renderer functions provides `root`, `column`, `model` arguments when applicable.\nGenerate DOM content, append it to the `root` element and control the state\nof the host element by accessing `column`. Before generating new content,\nusers are able to check if there is already content in `root` for reusing it.\n\nRenderers are called on initialization of new column cells and each time the\nrelated row model is updated. DOM generated during the renderer call can be reused\nin the next renderer call and will be provided with the `root` argument.\nOn first call it will be empty.\n\n#### Example:\n```html\n<vaadin24-grid>\n  <vaadin24-grid-column></vaadin24-grid-column>\n  <vaadin24-grid-column></vaadin24-grid-column>\n  <vaadin24-grid-column></vaadin24-grid-column>\n</vaadin24-grid>\n```\n```js\nconst grid = document.querySelector('vaadin24-grid');\ngrid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},\n              {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];\n\nconst columns = grid.querySelectorAll('vaadin24-grid-column');\n\ncolumns[0].headerRenderer = function(root) {\n  root.textContent = 'Name';\n};\ncolumns[0].renderer = function(root, column, model) {\n  root.textContent = model.item.name;\n};\n\ncolumns[1].headerRenderer = function(root) {\n  root.textContent = 'Surname';\n};\ncolumns[1].renderer = function(root, column, model) {\n  root.textContent = model.item.surname;\n};\n\ncolumns[2].headerRenderer = function(root) {\n  root.textContent = 'Role';\n};\ncolumns[2].renderer = function(root, column, model) {\n  root.textContent = model.item.role;\n};\n```\n\nThe following properties are available in the `model` argument:\n\nProperty name | Type | Description\n--------------|------|------------\n`index`| Number | The index of the item.\n`item` | String or Object | The item.\n`level` | Number | Number of the item's tree sublevel, starts from 0.\n`expanded` | Boolean | True if the item's tree sublevel is expanded.\n`selected` | Boolean | True if the item is selected.\n`detailsOpened` | Boolean | True if the item's row details are open.\n\nThe following helper elements can be used for further customization:\n- [`<vaadin24-grid-column-group>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-column-group)\n- [`<vaadin24-grid-filter>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-filter)\n- [`<vaadin24-grid-sorter>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-sorter)\n- [`<vaadin24-grid-selection-column>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-selection-column)\n- [`<vaadin24-grid-tree-toggle>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid-tree-toggle)\n\n__Note that the helper elements must be explicitly imported.__\nIf you want to import everything at once you can use the `all-imports.html` bundle.\n\n### Lazy Loading with Function Data Provider\n\nIn addition to assigning an array to the items property, you can alternatively\nprovide the `<vaadin24-grid>` data through the\n[`dataProvider`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid#property-dataProvider) function property.\nThe `<vaadin24-grid>` calls this function lazily, only when it needs more data\nto be displayed.\n\nSee the [`dataProvider`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-grid#property-dataProvider) property\ndocumentation for the detailed data provider arguments description.\n\n__Note that expanding the tree grid's item will trigger a call to the `dataProvider`.__\n\n__Also, note that when using function data providers, the total number of items\nneeds to be set manually. The total number of items can be returned\nin the second argument of the data provider callback:__\n\n```javascript\ngrid.dataProvider = ({page, pageSize}, callback) => {\n  // page: the requested page index\n  // pageSize: number of items on one page\n  const url = `https://api.example/data?page=${page}&per_page=${pageSize}`;\n\n  fetch(url)\n    .then((res) => res.json())\n    .then(({ employees, totalSize }) => {\n      callback(employees, totalSize);\n    });\n};\n```\n\n__Alternatively, you can use the `size` property to set the total number of items:__\n\n```javascript\ngrid.size = 200; // The total number of items\ngrid.dataProvider = ({page, pageSize}, callback) => {\n  const url = `https://api.example/data?page=${page}&per_page=${pageSize}`;\n\n  fetch(url)\n    .then((res) => res.json())\n    .then((resJson) => callback(resJson.employees));\n};\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name                  | Description\n---------------------------|----------------\n`row`                      | Row in the internal table\n`body-row`                 | Body row in the internal table\n`collapsed-row`            | Collapsed row\n`expanded-row`             | Expanded row\n`selected-row`             | Selected row\n`details-opened-row`       | Row with details open\n`odd-row`                  | Odd row\n`even-row`                 | Even row\n`first-row`                | The first body row\n`last-row`                 | The last body row\n`dragstart-row`            | Set on the row for one frame when drag is starting.\n`dragover-above-row`       | Set on the row when the a row is dragged over above\n`dragover-below-row`       | Set on the row when the a row is dragged over below\n`dragover-on-top-row`      | Set on the row when the a row is dragged over on top\n`drag-disabled-row`        | Set to a row that isn't available for dragging\n`drop-disabled-row`        | Set to a row that can't be dropped on top of\n`cell`                     | Cell in the internal table\n`header-cell`              | Header cell in the internal table\n`body-cell`                | Body cell in the internal table\n`footer-cell`              | Footer cell in the internal table\n`details-cell`             | Row details cell in the internal table\n`focused-cell`             | Focused cell in the internal table\n`odd-row-cell`             | Cell in an odd row\n`even-row-cell`            | Cell in an even row\n`first-row-cell`           | Cell in the first body row\n`last-row-cell`            | Cell in the last body row\n`first-header-row-cell`    | Cell in the first header row\n`first-footer-row-cell`    | Cell in the first footer row\n`last-header-row-cell`     | Cell in the last header row\n`last-footer-row-cell`     | Cell in the last footer row\n`loading-row-cell`         | Cell in a row that is waiting for data from data provider\n`selected-row-cell`        | Cell in a selected row\n`collapsed-row-cell`       | Cell in a collapsed row\n`expanded-row-cell`        | Cell in an expanded row\n`details-opened-row-cell`  | Cell in an row with details open\n`dragstart-row-cell`       | Cell in a row that user started to drag (set for one frame)\n`dragover-above-row-cell`  | Cell in a row that has another row dragged over above\n`dragover-below-row-cell`  | Cell in a row that has another row dragged over below\n`dragover-on-top-row-cell` | Cell in a row that has another row dragged over on top\n`drag-disabled-row-cell`   | Cell in a row that isn't available for dragging\n`drop-disabled-row-cell`   | Cell in a row that can't be dropped on top of\n`frozen-cell`              | Frozen cell in the internal table\n`frozen-to-end-cell`       | Frozen to end cell in the internal table\n`last-frozen-cell`         | Last frozen cell\n`first-frozen-to-end-cell` | First cell frozen to end\n`first-column-cell`        | First visible cell on a row\n`last-column-cell`         | Last visible cell on a row\n`reorder-allowed-cell`     | Cell in a column where another column can be reordered\n`reorder-dragging-cell`    | Cell in a column currently being reordered\n`resize-handle`            | Handle for resizing the columns\n`reorder-ghost`            | Ghost element of the header cell being dragged\n\nThe following state attributes are available for styling:\n\nAttribute             | Description                                                                                       | Part name\n----------------------|---------------------------------------------------------------------------------------------------|-----------\n`loading`             | Set when the grid is loading data from data provider                                              | :host\n`interacting`         | Keyboard navigation in interaction mode                                                           | :host\n`navigating`          | Keyboard navigation in navigation mode                                                            | :host\n`overflow`            | Set when rows are overflowing the grid viewport. Possible values: `top`, `bottom`, `start`, `end` | :host\n`reordering`          | Set when the grid's columns are being reordered                                                   | :host\n`dragover`            | Set when the grid (not a specific row) is dragged over                                            | :host\n`dragging-rows`       | Set when grid rows are dragged                                                                    | :host\n`reorder-status`      | Reflects the status of a cell while columns are being reordered                                   | cell\n`frozen`              | Frozen cell                                                                                       | cell\n`frozen-to-end`       | Cell frozen to end                                                                                | cell\n`last-frozen`         | Last frozen cell                                                                                  | cell\n`first-frozen-to-end` | First cell frozen to end                                                                          | cell\n`first-column`        | First visible cell on a row                                                                       | cell\n`last-column`         | Last visible cell on a row                                                                        | cell\n`selected`            | Selected row                                                                                      | row\n`expanded`            | Expanded row                                                                                      | row\n`details-opened`      | Row with details open                                                                             | row\n`loading`             | Row that is waiting for data from data provider                                                   | row\n`odd`                 | Odd row                                                                                           | row\n`first`               | The first body row                                                                                | row\n`last`                | The last body row                                                                                 | row\n`dragstart`           | Set for one frame when starting to drag a row. The value is a number when dragging multiple rows  | row\n`dragover`            | Set when the row is dragged over                                                                  | row\n`drag-disabled`       | Set to a row that isn't available for dragging                                                    | row\n`drop-disabled`       | Set to a row that can't be dropped on top of                                                      | row\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "extension": true,
           "attributes": [
             {
@@ -799,6 +932,13 @@
             {
               "name": ".rowDetailsRenderer",
               "description": "Custom function for rendering the content of the row details.\nReceives three arguments:\n\n- `root` The row details content DOM element. Append your content to it.\n- `grid` The `<vaadin24-grid>` element.\n- `model` The object with the properties related with\n  the rendered item, contains:\n  - `model.index` The index of the item.\n  - `model.item` The item.\n  - `model.level` The number of the item's tree sublevel, starts from 0.\n  - `model.expanded` True if the item's tree sublevel is expanded.\n  - `model.selected` True if the item is selected.",
+              "value": {
+                "kind": "expression"
+              }
+            },
+            {
+              "name": ".columnRendering",
+              "description": "Allows you to choose between modes for rendering columns in the grid:\n\n\"eager\" (default): All columns are rendered upfront, regardless of their visibility within the viewport.\nThis mode should generally be preferred, as it avoids the limitations imposed by the \"lazy\" mode.\nUse this mode unless the grid has a large number of columns and performance outweighs the limitations\nin priority.\n\n\"lazy\": Optimizes the rendering of cells when there are multiple columns in the grid by virtualizing\nhorizontal scrolling. In this mode, body cells are rendered only when their corresponding columns are\ninside the visible viewport.\n\nUsing \"lazy\" rendering should be used only if you're dealing with a large number of columns and performance\nis your highest priority. For most use cases, the default \"eager\" mode is recommended due to the\nlimitations imposed by the \"lazy\" mode.\n\nWhen using the \"lazy\" mode, keep the following limitations in mind:\n\n- Row Height: When only a number of columns are visible at once, the height of a row can only be that of\nthe highest cell currently visible on that row. Make sure each cell on a single row has the same height\nas all other cells on that row. If row cells have different heights, users may experience jumpiness when\nscrolling the grid horizontally as lazily rendered cells with different heights are scrolled into view.\n\n- Auto-width Columns: For the columns that are initially outside the visible viewport but still use auto-width,\nonly the header content is taken into account when calculating the column width because the body cells\nof the columns outside the viewport are not initially rendered.\n\n- Screen Reader Compatibility: Screen readers may not be able to associate the focused cells with the correct\nheaders when only a subset of the body cells on a row is rendered.\n\n- Keyboard Navigation: Tabbing through focusable elements inside the grid body may not work as expected because\nsome of the columns that would include focusable elements in the body cells may be outside the visible viewport\nand thus not rendered.",
               "value": {
                 "kind": "expression"
               }

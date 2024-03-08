@@ -1,13 +1,13 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2019 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
 import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 import { DatePicker } from '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
@@ -106,13 +106,14 @@ class PickerSlotController extends SlotController {
  * Note: the `theme` attribute value set on `<vaadin24-date-time-picker>` is
  * propagated to these components.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * @fires {Event} change - Fired when the user commits a value change.
  * @fires {CustomEvent} invalid-changed - Fired when the `invalid` property changes.
  * @fires {CustomEvent} value-changed - Fired when the `value` property changes.
  * @fires {CustomEvent} validated - Fired whenever the field is validated.
  *
+ * @customElement
  * @extends HTMLElement
  * @mixes ElementMixin
  * @mixes ThemableMixin
@@ -396,6 +397,7 @@ class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(E
       '__themeChanged(_theme, __datePicker, __timePicker)',
       '__overlayClassChanged(overlayClass, __datePicker, __timePicker)',
       '__pickersChanged(__datePicker, __timePicker)',
+      '__labelOrAccessibleNameChanged(label, accessibleName, i18n, __datePicker, __timePicker)',
     ];
   }
 
@@ -465,7 +467,9 @@ class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(E
   _setFocused(focused) {
     super._setFocused(focused);
 
-    if (!focused) {
+    // Do not validate when focusout is caused by document
+    // losing focus, which happens on browser tab switch.
+    if (!focused && document.hasFocus()) {
       this.validate();
     }
   }
@@ -508,8 +512,8 @@ class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(E
     event.stopPropagation();
 
     if (this.__dispatchChangeForValue === this.value) {
-      this.__dispatchChange();
       this.validate();
+      this.__dispatchChange();
     }
     this.__dispatchChangeForValue = undefined;
   }
@@ -639,6 +643,19 @@ class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(E
 
     if (timePicker) {
       timePicker.i18n = { ...timePicker.i18n, ...i18n };
+    }
+  }
+
+  /** @private */
+  __labelOrAccessibleNameChanged(label, accessibleName, i18n, datePicker, timePicker) {
+    const name = accessibleName || label || '';
+
+    if (datePicker) {
+      datePicker.accessibleName = `${name} ${i18n.dateLabel || ''}`.trim();
+    }
+
+    if (timePicker) {
+      timePicker.accessibleName = `${name} ${i18n.timeLabel || ''}`.trim();
     }
   }
 
@@ -1072,6 +1089,6 @@ class DateTimePicker extends FieldMixin(DisabledMixin(FocusMixin(ThemableMixin(E
    */
 }
 
-internalCustomElements.define(DateTimePicker.is, DateTimePicker);
+defineCustomElement(DateTimePicker);
 
 export { DateTimePicker };

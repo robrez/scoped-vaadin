@@ -1,10 +1,10 @@
-import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
 /**
  * @license
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
@@ -28,10 +28,7 @@ export class FieldOutline extends ThemableMixin(DirMixin(PolymerElement)) {
           display: block;
           box-sizing: border-box;
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          inset: 0;
           width: 100%;
           height: 100%;
           pointer-events: none;
@@ -86,4 +83,4 @@ export class FieldOutline extends ThemableMixin(DirMixin(PolymerElement)) {
   }
 }
 
-internalCustomElements.define(FieldOutline.is, FieldOutline);
+defineCustomElement(FieldOutline);

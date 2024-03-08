@@ -27,8 +27,12 @@ const radioGroup = css`
   }
 
   :host([theme~='vertical']) [part='group-field'] {
-    display: flex;
     flex-direction: column;
+  }
+
+  :host([disabled]) [part='label'] {
+    color: var(--lumo-disabled-text-color);
+    -webkit-text-fill-color: var(--lumo-disabled-text-color);
   }
 
   :host([focused]:not([readonly])) [part='label'] {

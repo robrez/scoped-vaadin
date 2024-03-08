@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@scoped-vaadin/tooltip",
-  "version": "24.0.0-alpha.1",
+  "version": "24.3.6-alpha.1",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
           "name": "vaadin24-tooltip",
-          "description": "`<vaadin24-tooltip>` is a Web Component for creating tooltips.\n\n```html\n<button id=\"confirm\">Confirm</button>\n<vaadin24-tooltip text=\"Click to save changes\" for=\"confirm\"></vaadin24-tooltip>\n```\n\n### Styling\n\n`<vaadin24-tooltip>` uses `<vaadin24-tooltip-overlay>` internal\nthemable component as the actual visible overlay.\n\nSee [`<vaadin24-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.0.0/#/elements/vaadin-overlay) documentation\nfor `<vaadin24-tooltip-overlay>` parts.\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|----------------------------------------\n`position`       | Reflects the `position` property value.\n\nNote: the `theme` attribute value set on `<vaadin24-tooltip>` is\npropagated to the internal `<vaadin24-tooltip-overlay>` component.\n\n### Custom CSS Properties\n\nThe following custom CSS properties are available on the `<vaadin24-tooltip>` element:\n\nCustom CSS property              | Description\n---------------------------------|-------------\n`--vaadin-tooltip-offset-top`    | Used as an offset when the tooltip is aligned vertically below the target\n`--vaadin-tooltip-offset-bottom` | Used as an offset when the tooltip is aligned vertically above the target\n`--vaadin-tooltip-offset-start`  | Used as an offset when the tooltip is aligned horizontally after the target\n`--vaadin-tooltip-offset-end`    | Used as an offset when the tooltip is aligned horizontally before the target\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+          "description": "`<vaadin24-tooltip>` is a Web Component for creating tooltips.\n\n```html\n<button id=\"confirm\">Confirm</button>\n<vaadin24-tooltip text=\"Click to save changes\" for=\"confirm\"></vaadin24-tooltip>\n```\n\n### Styling\n\n`<vaadin24-tooltip>` uses `<vaadin24-tooltip-overlay>` internal\nthemable component as the actual visible overlay.\n\nSee [`<vaadin24-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-overlay) documentation\nfor `<vaadin24-tooltip-overlay>` parts.\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|----------------------------------------\n`position`       | Reflects the `position` property value.\n\nNote: the `theme` attribute value set on `<vaadin24-tooltip>` is\npropagated to the internal `<vaadin24-tooltip-overlay>` component.\n\n### Custom CSS Properties\n\nThe following custom CSS properties are available on the `<vaadin24-tooltip>` element:\n\nCustom CSS property              | Description\n---------------------------------|-------------\n`--vaadin-tooltip-offset-top`    | Used as an offset when the tooltip is aligned vertically below the target\n`--vaadin-tooltip-offset-bottom` | Used as an offset when the tooltip is aligned vertically above the target\n`--vaadin-tooltip-offset-start`  | Used as an offset when the tooltip is aligned horizontally after the target\n`--vaadin-tooltip-offset-end`    | Used as an offset when the tooltip is aligned horizontally before the target\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
           "attributes": [
             {
               "name": "overlay-class",
@@ -135,6 +135,17 @@
                 }
               },
               {
+                "name": "ariaTarget",
+                "description": "Element used to link with the `aria-describedby`\nattribute. Supports array of multiple elements.\nWhen not set, defaults to `target`.",
+                "value": {
+                  "type": [
+                    "Object",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
                 "name": "context",
                 "description": "Object with properties passed to `generator` and\n`shouldShow` functions for generating tooltip text\nor detecting whether to show the tooltip or not.",
                 "value": {
@@ -162,6 +173,17 @@
                 "value": {
                   "type": [
                     "string",
+                    "null",
+                    "undefined"
+                  ]
+                }
+              },
+              {
+                "name": "generator",
+                "description": "Function used to generate the tooltip content.\nWhen provided, it overrides the `text` property.\nUse the `context` property to provide argument\nthat can be passed to the generator function.",
+                "value": {
+                  "type": [
+                    "Object",
                     "null",
                     "undefined"
                   ]
@@ -250,17 +272,6 @@
                 "value": {
                   "type": [
                     "string",
-                    "null",
-                    "undefined"
-                  ]
-                }
-              },
-              {
-                "name": "generator",
-                "description": "Function used to generate the tooltip content.\nWhen provided, it overrides the `text` property.\nUse the `context` property to provide argument\nthat can be passed to the generator function.",
-                "value": {
-                  "type": [
-                    "Object",
                     "null",
                     "undefined"
                   ]

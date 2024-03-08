@@ -3,6 +3,7 @@
  * Copyright (c) 2021 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
+import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
 import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
 import { fieldButton } from '@scoped-vaadin/vaadin-lumo-styles/mixins/field-button.js';
 import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';

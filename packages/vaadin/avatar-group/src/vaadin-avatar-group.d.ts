@@ -26,6 +26,7 @@ export interface AvatarGroupItem {
   abbr?: string;
   img?: string;
   colorIndex?: number;
+  className?: string;
 }
 
 /**
@@ -57,7 +58,7 @@ export interface AvatarGroupItem {
  * See the [`<vaadin24-avatar>`](#/elements/vaadin-avatar) documentation for the available
  * state attributes and stylable shadow parts of avatar elements.
  *
- * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+ * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
  *
  * ### Internal components
  *
@@ -71,15 +72,13 @@ export interface AvatarGroupItem {
 declare class AvatarGroup extends ResizeMixin(
   OverlayClassMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))),
 ) {
-  readonly _avatars: HTMLElement[];
-
   /**
    * An array containing the items which will be stamped as avatars.
    *
    * The items objects allow to configure [`name`](#/elements/vaadin-avatar#property-name),
    * [`abbr`](#/elements/vaadin-avatar#property-abbr), [`img`](#/elements/vaadin-avatar#property-img)
    * and [`colorIndex`](#/elements/vaadin-avatar#property-colorIndex) properties on the
-   * stamped avatars.
+   * stamped avatars, and set `className` to provide CSS class names.
    *
    * #### Example
    *
@@ -87,11 +86,13 @@ declare class AvatarGroup extends ResizeMixin(
    * group.items = [
    *   {
    *     name: 'User name',
-   *     img: 'url-to-image.png'
+   *     img: 'url-to-image.png',
+   *     className: 'even'
    *   },
    *   {
    *     abbr: 'JD',
-   *     colorIndex: 1
+   *     colorIndex: 1,
+   *     className: 'odd'
    *   },
    * ];
    * ```

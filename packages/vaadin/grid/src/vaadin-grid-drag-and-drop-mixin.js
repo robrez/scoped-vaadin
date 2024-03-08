@@ -3,7 +3,12 @@
  * Copyright (c) 2016 - 2023 Vaadin Ltd.
  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
  */
-import { iterateChildren, updateRowStates } from './vaadin-grid-helpers.js';
+import {
+  iterateChildren,
+  iterateRowCells,
+  updateBooleanRowStates,
+  updateStringRowStates,
+} from './vaadin-grid-helpers.js';
 
 const DropMode = {
   BETWEEN: 'between',
@@ -40,13 +45,19 @@ export const DragAndDropMixin = (superClass) =>
          * @attr {between|on-top|on-top-or-between|on-grid} drop-mode
          * @type {GridDropMode | null | undefined}
          */
-        dropMode: String,
+        dropMode: {
+          type: String,
+          sync: true,
+        },
 
         /**
          * Marks the grid's rows to be available for dragging.
          * @attr {boolean} rows-draggable
          */
-        rowsDraggable: Boolean,
+        rowsDraggable: {
+          type: Boolean,
+          sync: true,
+        },
 
         /**
          * A function that filters dragging of specific grid rows. The return value should be false
@@ -63,7 +74,10 @@ export const DragAndDropMixin = (superClass) =>
          *
          * @type {GridDragAndDropFilter | null | undefined}
          */
-        dragFilter: Function,
+        dragFilter: {
+          type: Function,
+          sync: true,
+        },
 
         /**
          * A function that filters dropping on specific grid rows. The return value should be false
@@ -80,7 +94,10 @@ export const DragAndDropMixin = (superClass) =>
          *
          * @type {GridDragAndDropFilter | null | undefined}
          */
-        dropFilter: Function,
+        dropFilter: {
+          type: Function,
+          sync: true,
+        },
 
         /** @private */
         __dndAutoScrollThreshold: {
@@ -156,12 +173,12 @@ export const DragAndDropMixin = (superClass) =>
         // Set the default transfer data
         e.dataTransfer.setData('text', this.__formatDefaultTransferData(rows));
 
-        updateRowStates(row, { dragstart: rows.length > 1 ? `${rows.length}` : '' });
+        updateBooleanRowStates(row, { dragstart: rows.length > 1 ? `${rows.length}` : '' });
         this.style.setProperty('--_grid-drag-start-x', `${e.clientX - rowRect.left + 20}px`);
         this.style.setProperty('--_grid-drag-start-y', `${e.clientY - rowRect.top + 10}px`);
 
         requestAnimationFrame(() => {
-          updateRowStates(row, { dragstart: null });
+          updateBooleanRowStates(row, { dragstart: false });
           this.style.setProperty('--_grid-drag-start-x', '');
           this.style.setProperty('--_grid-drag-start-y', '');
         });
@@ -206,7 +223,7 @@ export const DragAndDropMixin = (superClass) =>
 
         let row = e.composedPath().find((node) => node.localName === 'tr');
 
-        if (!this._effectiveSize || this.dropMode === DropMode.ON_GRID) {
+        if (!this._flatSize || this.dropMode === DropMode.ON_GRID) {
           // The grid is empty or "on-grid" drop mode was used, always default to "empty"
           this._dropLocation = DropLocation.EMPTY;
         } else if (!row || row.parentNode !== this.$.items) {
@@ -255,7 +272,7 @@ export const DragAndDropMixin = (superClass) =>
         } else if (row) {
           this._dragOverItem = row._item;
           if (row.getAttribute('dragover') !== this._dropLocation) {
-            updateRowStates(row, { dragover: this._dropLocation }, true);
+            updateStringRowStates(row, { dragover: this._dropLocation });
           }
         } else {
           this._clearDragStyles();
@@ -310,7 +327,7 @@ export const DragAndDropMixin = (superClass) =>
     _clearDragStyles() {
       this.removeAttribute('dragover');
       iterateChildren(this.$.items, (row) => {
-        updateRowStates(row, { dragover: null }, true);
+        updateStringRowStates(row, { dragover: null });
       });
     }
 
@@ -390,7 +407,7 @@ export const DragAndDropMixin = (superClass) =>
       const dragDisabled = !this.rowsDraggable || loading || (this.dragFilter && !this.dragFilter(model));
       const dropDisabled = !this.dropMode || loading || (this.dropFilter && !this.dropFilter(model));
 
-      iterateChildren(row, (cell) => {
+      iterateRowCells(row, (cell) => {
         if (dragDisabled) {
           cell._content.removeAttribute('draggable');
         } else {
@@ -398,7 +415,7 @@ export const DragAndDropMixin = (superClass) =>
         }
       });
 
-      updateRowStates(row, {
+      updateBooleanRowStates(row, {
         'drag-disabled': !!dragDisabled,
         'drop-disabled': !!dropDisabled,
       });
