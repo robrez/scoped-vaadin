@@ -1,0 +1,11 @@
+Index: confirm-dialog/theme/lumo/vaadin-confirm-dialog.js
+===================================================================
+--- confirm-dialog/theme/lumo/vaadin-confirm-dialog.js
++++ confirm-dialog/theme/lumo/vaadin-confirm-dialog.js
+@@ -1,4 +1,4 @@
+-import '@vaadin/dialog/theme/lumo/vaadin-dialog.js';
+-import '@vaadin/button/theme/lumo/vaadin-button.js';
++import '@scoped-vaadin/dialog/theme/lumo/vaadin-dialog.js';
++import '@scoped-vaadin/button/theme/lumo/vaadin-button.js';
+ import './vaadin-confirm-dialog-styles.js';
+ import '../../src/vaadin-confirm-dialog.js';

@@ -1,0 +1,25 @@
+Index: integer-field/web-types.lit.json
+===================================================================
+--- integer-field/web-types.lit.json
++++ integer-field/web-types.lit.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/integer-field",
+-  "version": "24.3.7",
++  "name": "@scoped-vaadin/integer-field",
++  "version": "24.3.6-alpha.1",
+   "description-markup": "markdown",
+   "framework": "lit",
+   "framework-config": {
+@@ -15,8 +15,8 @@
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-integer-field",
+-          "description": "`<vaadin-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin-integer-field label=\"X\"></vaadin-integer-field>\n```\n\n### Styling\n\n`<vaadin-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.\nSee [`<vaadin-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\n### Change events\n\nDepending on the nature of the value change that the user attempts to commit e.g. by pressing Enter,\nthe component can fire either a `change` event or an `unparsable-change` event:\n\nValue change             | Event\n:------------------------|:------------------\nempty => parsable        | change\nempty => unparsable      | unparsable-change\nparsable => empty        | change\nparsable => parsable     | change\nparsable => unparsable   | change\nunparsable => empty      | unparsable-change\nunparsable => parsable   | change\nunparsable => unparsable | -\n\nNote, there is currently no way to detect unparsable => unparsable changes because the browser\ndoesn't provide access to unparsable values of native [type=number] inputs.",
++          "name": "vaadin24-integer-field",
++          "description": "`<vaadin24-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin24-integer-field label=\"X\"></vaadin24-integer-field>\n```\n\n### Styling\n\n`<vaadin24-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin24-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\n### Change events\n\nDepending on the nature of the value change that the user attempts to commit e.g. by pressing Enter,\nthe component can fire either a `change` event or an `unparsable-change` event:\n\nValue change             | Event\n:------------------------|:------------------\nempty => parsable        | change\nempty => unparsable      | unparsable-change\nparsable => empty        | change\nparsable => parsable     | change\nparsable => unparsable   | change\nunparsable => empty      | unparsable-change\nunparsable => parsable   | change\nunparsable => unparsable | -\n\nNote, there is currently no way to detect unparsable => unparsable changes because the browser\ndoesn't provide access to unparsable values of native [type=number] inputs.",
+           "extension": true,
+           "attributes": [
+             {

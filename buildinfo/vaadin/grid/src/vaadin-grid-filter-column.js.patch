@@ -1,0 +1,39 @@
+Index: grid/src/vaadin-grid-filter-column.js
+===================================================================
+--- grid/src/vaadin-grid-filter-column.js
++++ grid/src/vaadin-grid-filter-column.js
+@@ -4,20 +4,20 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import './vaadin-grid-filter.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { GridColumn } from './vaadin-grid-column.js';
+ import { GridFilterColumnMixin } from './vaadin-grid-filter-column-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-filter-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-filter-column>` is a helper element for the `<vaadin24-grid>`
+  * that provides default header renderer and functionality for filtering.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-filter-column path="name.first"></vaadin-grid-filter-column>
++ * <vaadin24-grid items="[[items]]">
++ *  <vaadin24-grid-filter-column path="name.first"></vaadin24-grid-filter-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin24-grid-column>
+  *    ...
+  * ```
+  *
+@@ -27,7 +27,7 @@
+  */
+ class GridFilterColumn extends GridFilterColumnMixin(GridColumn) {
+   static get is() {
+-    return 'vaadin-grid-filter-column';
++    return 'vaadin24-grid-filter-column';
+   }
+ }
+ 

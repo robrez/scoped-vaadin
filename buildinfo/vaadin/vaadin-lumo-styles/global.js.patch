@@ -1,0 +1,10 @@
+Index: vaadin-lumo-styles/global.js
+===================================================================
+--- vaadin-lumo-styles/global.js
++++ vaadin-lumo-styles/global.js
+@@ -1,4 +1,4 @@
+-import { addGlobalThemeStyles } from '@vaadin/vaadin-themable-mixin/register-styles.js';
++import { addGlobalThemeStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';
+ 
+ export const addLumoGlobalStyles = (id, ...styles) => {
+   addGlobalThemeStyles(`lumo-${id}`, styles);

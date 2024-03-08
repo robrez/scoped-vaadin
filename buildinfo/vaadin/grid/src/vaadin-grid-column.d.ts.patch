@@ -1,0 +1,28 @@
+Index: grid/src/vaadin-grid-column.d.ts
+===================================================================
+--- grid/src/vaadin-grid-column.d.ts
++++ grid/src/vaadin-grid-column.d.ts
+@@ -16,11 +16,11 @@
+ export type GridHeaderFooterRenderer<TItem = GridDefaultItem> = GridMixinHeaderFooterRenderer<TItem, GridColumn<TItem>>;
+ 
+ /**
+- * A `<vaadin-grid-column>` is used to configure how a column in `<vaadin-grid>`
++ * A `<vaadin24-grid-column>` is used to configure how a column in `<vaadin24-grid>`
+  * should look like.
+  *
+- * See [`<vaadin-grid>`](#/elements/vaadin-grid) documentation for instructions on how
+- * to configure the `<vaadin-grid-column>`.
++ * See [`<vaadin24-grid>`](#/elements/vaadin-grid) documentation for instructions on how
++ * to configure the `<vaadin24-grid-column>`.
+  */
+ declare class GridColumn<TItem = GridDefaultItem> extends HTMLElement {}
+ 
+@@ -28,7 +28,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-column': GridColumn<GridDefaultItem>;
++    'vaadin24-grid-column': GridColumn<GridDefaultItem>;
+   }
+ }
+ 

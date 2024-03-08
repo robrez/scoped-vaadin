@@ -1,0 +1,25 @@
+Index: dialog/theme/material/vaadin-dialog-styles.js
+===================================================================
+--- dialog/theme/material/vaadin-dialog-styles.js
++++ dialog/theme/material/vaadin-dialog-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const dialogOverlay = css`
+   [part='overlay'] {
+@@ -57,7 +57,7 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-dialog-overlay', [overlay, dialogOverlay], {
++registerStyles('vaadin24-dialog-overlay', [overlay, dialogOverlay], {
+   moduleId: 'material-dialog',
+ });
+ 

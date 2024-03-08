@@ -1,0 +1,45 @@
+Index: grid/src/vaadin-grid-sorter.js
+===================================================================
+--- grid/src/vaadin-grid-sorter.js
++++ grid/src/vaadin-grid-sorter.js
+@@ -4,25 +4,25 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { GridSorterMixin } from './vaadin-grid-sorter-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-sorter>` is a helper element for the `<vaadin-grid>` that provides out-of-the-box UI controls,
++ * `<vaadin24-grid-sorter>` is a helper element for the `<vaadin24-grid>` that provides out-of-the-box UI controls,
+  * visual feedback, and handlers for sorting the grid data.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid-column id="column"></vaadin-grid-column>
++ * <vaadin24-grid-column id="column"></vaadin24-grid-column>
+  * ```
+  * ```js
+  * const column = document.querySelector('#column');
+  * column.renderer = (root, column, model) => {
+  *   let sorter = root.firstElementChild;
+  *   if (!sorter) {
+- *     sorter = document.createElement('vaadin-grid-sorter');
++ *     sorter = document.createElement('vaadin24-grid-sorter');
+  *     root.appendChild(sorter);
+  *   }
+  *   sorter.path = 'name.first';
+@@ -67,7 +67,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-grid-sorter';
++    return 'vaadin24-grid-sorter';
+   }
+ }
+ 

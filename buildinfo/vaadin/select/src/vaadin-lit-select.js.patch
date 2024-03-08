@@ -1,0 +1,82 @@
+Index: select/src/vaadin-lit-select.js
+===================================================================
+--- select/src/vaadin-lit-select.js
++++ select/src/vaadin-lit-select.js
+@@ -3,23 +3,23 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/src/vaadin-lit-input-container.js';
++import '@scoped-vaadin/input-container/src/vaadin-lit-input-container.js';
+ import './vaadin-lit-select-item.js';
+ import './vaadin-lit-select-list-box.js';
+ import './vaadin-lit-select-overlay.js';
+ import './vaadin-lit-select-value-button.js';
+ import { css, html, LitElement } from 'lit';
+-import { screenReaderOnly } from '@vaadin/a11y-base/src/styles/sr-only-styles.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { fieldShared } from '@vaadin/field-base/src/styles/field-shared-styles.js';
+-import { inputFieldContainer } from '@vaadin/field-base/src/styles/input-field-container-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { screenReaderOnly } from '@scoped-vaadin/a11y-base/src/styles/sr-only-styles.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { fieldShared } from '@scoped-vaadin/field-base/src/styles/field-shared-styles.js';
++import { inputFieldContainer } from '@scoped-vaadin/field-base/src/styles/input-field-container-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { SelectBaseMixin } from './vaadin-select-base-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-select>` web component.
++ * LitElement based version of `<vaadin24-select>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -31,7 +31,7 @@
+  */
+ class Select extends SelectBaseMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-select';
++    return 'vaadin24-select';
+   }
+ 
+   static get styles() {
+@@ -60,7 +60,7 @@
+           <span part="required-indicator" aria-hidden="true" @click="${this.focus}"></span>
+         </div>
+ 
+-        <vaadin-input-container
++        <vaadin24-input-container
+           part="input-field"
+           .readonly="${this.readonly}"
+           .disabled="${this.disabled}"
+@@ -71,7 +71,7 @@
+           <slot name="prefix" slot="prefix"></slot>
+           <slot name="value"></slot>
+           <div part="toggle-button" slot="suffix" aria-hidden="true" @mousedown="${this._onToggleMouseDown}"></div>
+-        </vaadin-input-container>
++        </vaadin24-input-container>
+ 
+         <div part="helper-text">
+           <slot name="helper"></slot>
+@@ -82,7 +82,7 @@
+         </div>
+       </div>
+ 
+-      <vaadin-select-overlay
++      <vaadin24-select-overlay
+         .owner="${this}"
+         .positionTarget="${this._inputContainer}"
+         .opened="${this.opened}"
+@@ -92,7 +92,7 @@
+         theme="${this._theme}"
+         @opened-changed="${this._onOpenedChanged}"
+         @vaadin-overlay-open="${this._onOverlayOpen}"
+-      ></vaadin-select-overlay>
++      ></vaadin24-select-overlay>
+ 
+       <slot name="tooltip"></slot>
+       <div class="sr-only">

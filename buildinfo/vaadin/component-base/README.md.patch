@@ -1,0 +1,13 @@
+Index: component-base/README.md
+===================================================================
+--- component-base/README.md
++++ component-base/README.md
+@@ -1,5 +1,7 @@
+-# @vaadin/component-base
++# @scoped-vaadin/component-base
+ 
++This component is based on [@vaadin/component-base](https://www.npmjs.com/package/@vaadin/component-base)
++
+ A set of helpers and mixins used by Vaadin components.
+ 
+ ## Contributing

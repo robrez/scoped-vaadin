@@ -1,0 +1,42 @@
+Index: context-menu/src/vaadin-contextmenu-items-mixin.js
+===================================================================
+--- context-menu/src/vaadin-contextmenu-items-mixin.js
++++ context-menu/src/vaadin-contextmenu-items-mixin.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ 
+ /**
+  * @polymerMixin
+@@ -17,7 +17,7 @@
+          * @type {object}
+          * @property {string} text - Text to be set as the menu item component's textContent
+          * @property {union: string | object} component - The component to represent the item.
+-         * Either a tagName or an element instance. Defaults to "vaadin-context-menu-item".
++         * Either a tagName or an element instance. Defaults to "vaadin24-context-menu-item".
+          * @property {boolean} disabled - If true, the item is disabled and cannot be selected
+          * @property {boolean} checked - If true, the item shows a checkmark next to it
+          * @property {boolean} keepOpen - If true, the menu will not be closed on item selection
+@@ -59,8 +59,8 @@
+          *
+          * ### Styling
+          *
+-         * The `<vaadin-context-menu-item>` sub-menu elements have the following additional state attributes on top of
+-         * the built-in `<vaadin-item>` state attributes (see `<vaadin-item>` documentation for full listing).
++         * The `<vaadin24-context-menu-item>` sub-menu elements have the following additional state attributes on top of
++         * the built-in `<vaadin24-item>` state attributes (see `<vaadin24-item>` documentation for full listing).
+          *
+          * Part name | Attribute | Description
+          * ----------------|----------------|----------------
+@@ -94,7 +94,7 @@
+      * @return {string}
+      */
+     get _tagNamePrefix() {
+-      return 'vaadin-context-menu';
++      return 'vaadin24-context-menu';
+     }
+ 
+     /** @protected */

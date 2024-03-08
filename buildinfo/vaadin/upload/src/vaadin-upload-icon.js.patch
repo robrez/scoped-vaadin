@@ -1,0 +1,28 @@
+Index: upload/src/vaadin-upload-icon.js
+===================================================================
+--- upload/src/vaadin-upload-icon.js
++++ upload/src/vaadin-upload-icon.js
+@@ -4,11 +4,11 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-upload>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-upload>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -16,7 +16,7 @@
+  */
+ class UploadIcon extends ThemableMixin(PolymerElement) {
+   static get is() {
+-    return 'vaadin-upload-icon';
++    return 'vaadin24-upload-icon';
+   }
+ 
+   static get template() {

@@ -1,0 +1,13 @@
+Index: grid/src/vaadin-grid-a11y-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-a11y-mixin.js
++++ grid/src/vaadin-grid-a11y-mixin.js
+@@ -129,7 +129,7 @@
+ 
+     /** @protected */
+     _a11yUpdateSorters() {
+-      Array.from(this.querySelectorAll('vaadin-grid-sorter')).forEach((sorter) => {
++      Array.from(this.querySelectorAll('vaadin24-grid-sorter')).forEach((sorter) => {
+         let cellContent = sorter.parentNode;
+         while (cellContent && cellContent.localName !== 'vaadin-grid-cell-content') {
+           cellContent = cellContent.parentNode;

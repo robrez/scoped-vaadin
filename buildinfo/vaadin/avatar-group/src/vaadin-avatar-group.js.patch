@@ -1,0 +1,176 @@
+Index: avatar-group/src/vaadin-avatar-group.js
+===================================================================
+--- avatar-group/src/vaadin-avatar-group.js
++++ avatar-group/src/vaadin-avatar-group.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2020 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/avatar/src/vaadin-avatar.js';
++import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
+ import './vaadin-avatar-group-menu.js';
+ import './vaadin-avatar-group-menu-item.js';
+ import './vaadin-avatar-group-overlay.js';
+@@ -12,30 +12,30 @@
+ import { html as legacyHtml, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { html, render } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
+-import { announce } from '@vaadin/a11y-base/src/announce.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const MINIMUM_DISPLAYED_AVATARS = 2;
+ 
+ /**
+- * `<vaadin-avatar-group>` is a Web Component providing avatar group displaying functionality.
++ * `<vaadin24-avatar-group>` is a Web Component providing avatar group displaying functionality.
+  *
+  * To create the avatar group, first add the component to the page:
+  *
+  * ```
+- * <vaadin-avatar-group></vaadin-avatar-group>
++ * <vaadin24-avatar-group></vaadin24-avatar-group>
+  * ```
+  *
+  * And then use [`items`](#/elements/vaadin-avatar-group#property-items) property to initialize the structure:
+  *
+  * ```
+- * document.querySelector('vaadin-avatar-group').items = [
++ * document.querySelector('vaadin24-avatar-group').items = [
+  *   {name: 'John Doe'},
+  *   {abbr: 'AB'}
+  * ];
+@@ -49,19 +49,19 @@
+  * ----------- | ---------------
+  * `container` | The container element
+  *
+- * See the [`<vaadin-avatar>`](#/elements/vaadin-avatar) documentation for the available
++ * See the [`<vaadin24-avatar>`](#/elements/vaadin-avatar) documentation for the available
+  * state attributes and stylable shadow parts of avatar elements.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-avatar-group>` itself, the following internal
++ * In addition to `<vaadin24-avatar-group>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-avatar-group-overlay>` - has the same API as [`<vaadin-overlay>`](#/elements/vaadin-overlay).
+- * - `<vaadin-avatar-group-menu>` - has the same API as [`<vaadin-list-box>`](#/elements/vaadin-list-box).
+- * - `<vaadin-avatar-group-menu-item>` - has the same API as [`<vaadin-item>`](#/elements/vaadin-item).
++ * - `<vaadin24-avatar-group-overlay>` - has the same API as [`<vaadin24-overlay>`](#/elements/vaadin-overlay).
++ * - `<vaadin24-avatar-group-menu>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
++ * - `<vaadin24-avatar-group-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -124,18 +124,18 @@
+         <slot></slot>
+         <slot name="overflow"></slot>
+       </div>
+-      <vaadin-avatar-group-overlay
++      <vaadin24-avatar-group-overlay
+         id="overlay"
+         opened="{{_opened}}"
+         position-target="[[_overflow]]"
+         no-vertical-overlap
+         on-vaadin-overlay-close="_onVaadinOverlayClose"
+-      ></vaadin-avatar-group-overlay>
++      ></vaadin24-avatar-group-overlay>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-avatar-group';
++    return 'vaadin24-avatar-group';
+   }
+ 
+   static get properties() {
+@@ -289,14 +289,14 @@
+   ready() {
+     super.ready();
+ 
+-    this._overflowController = new SlotController(this, 'overflow', 'vaadin-avatar', {
++    this._overflowController = new SlotController(this, 'overflow', 'vaadin24-avatar', {
+       initializer: (overflow) => {
+         overflow.setAttribute('aria-haspopup', 'menu');
+         overflow.setAttribute('aria-expanded', 'false');
+         overflow.addEventListener('click', (e) => this._onOverflowClick(e));
+         overflow.addEventListener('keydown', (e) => this._onOverflowKeyDown(e));
+ 
+-        const tooltip = document.createElement('vaadin-tooltip');
++        const tooltip = document.createElement('vaadin24-tooltip');
+         tooltip.setAttribute('slot', 'tooltip');
+         overflow.appendChild(tooltip);
+ 
+@@ -336,7 +336,7 @@
+   __overlayRenderer(root) {
+     let menu = root.firstElementChild;
+     if (!menu) {
+-      menu = document.createElement('vaadin-avatar-group-menu');
++      menu = document.createElement('vaadin24-avatar-group-menu');
+       menu.addEventListener('keydown', (event) => this._onListKeyDown(event));
+       root.appendChild(menu);
+     }
+@@ -354,9 +354,9 @@
+ 
+   /** @private */
+   __createItemElement(item) {
+-    const itemElement = document.createElement('vaadin-avatar-group-menu-item');
++    const itemElement = document.createElement('vaadin24-avatar-group-menu-item');
+ 
+-    const avatar = document.createElement('vaadin-avatar');
++    const avatar = document.createElement('vaadin24-avatar');
+     itemElement.appendChild(avatar);
+ 
+     avatar.setAttribute('aria-hidden', 'true');
+@@ -432,7 +432,7 @@
+         ${items.map(
+           (item) =>
+             html`
+-              <vaadin-avatar
++              <vaadin24-avatar
+                 .name="${item.name}"
+                 .abbr="${item.abbr}"
+                 .img="${item.img}"
+@@ -440,7 +440,7 @@
+                 .i18n="${this.i18n}"
+                 class="${ifDefined(item.className)}"
+                 with-tooltip
+-              ></vaadin-avatar>
++              ></vaadin24-avatar>
+             `,
+         )}
+       `,
+@@ -460,7 +460,7 @@
+ 
+     this.__renderAvatars(limit ? items.slice(0, limit) : items);
+ 
+-    this._avatars = [...this.querySelectorAll('vaadin-avatar')];
++    this._avatars = [...this.querySelectorAll('vaadin24-avatar')];
+   }
+ 
+   /** @private */
+@@ -604,7 +604,7 @@
+   __openedChanged(opened, wasOpened) {
+     if (opened) {
+       if (!this._menuElement) {
+-        this._menuElement = this.$.overlay.querySelector('vaadin-avatar-group-menu');
++        this._menuElement = this.$.overlay.querySelector('vaadin24-avatar-group-menu');
+       }
+ 
+       this._openedWithFocusRing = this._overflow.hasAttribute('focus-ring');

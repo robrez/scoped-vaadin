@@ -1,0 +1,31 @@
+Index: upload/src/vaadin-upload-file-list-mixin.js
+===================================================================
+--- upload/src/vaadin-upload-file-list-mixin.js
++++ upload/src/vaadin-upload-file-list-mixin.js
+@@ -40,7 +40,7 @@
+     }
+ 
+     /**
+-     * Requests an update for the `vaadin-upload-file` elements.
++     * Requests an update for the `vaadin24-upload-file` elements.
+      *
+      * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
+      */
+@@ -52,7 +52,7 @@
+           ${items.map(
+             (file) => html`
+               <li>
+-                <vaadin-upload-file
++                <vaadin24-upload-file
+                   .file="${file}"
+                   .complete="${file.complete}"
+                   .errorMessage="${file.error}"
+@@ -63,7 +63,7 @@
+                   .status="${file.status}"
+                   .uploading="${file.uploading}"
+                   .i18n="${i18n}"
+-                ></vaadin-upload-file>
++                ></vaadin24-upload-file>
+               </li>
+             `,
+           )}

@@ -1,0 +1,10 @@
+Index: grid/theme/lumo/vaadin-lit-grid-filter.js
+===================================================================
+--- grid/theme/lumo/vaadin-lit-grid-filter.js
++++ grid/theme/lumo/vaadin-lit-grid-filter.js
+@@ -1,3 +1,3 @@
+-import '@vaadin/text-field/theme/lumo/vaadin-text-field-styles.js';
+-import '@vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
++import '@scoped-vaadin/text-field/theme/lumo/vaadin-text-field-styles.js';
++import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
+ import '../../src/vaadin-lit-grid-filter.js';

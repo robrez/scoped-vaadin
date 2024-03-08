@@ -1,0 +1,99 @@
+Index: app-layout/README.md
+===================================================================
+--- app-layout/README.md
++++ app-layout/README.md
+@@ -1,32 +1,34 @@
+-# @vaadin/app-layout
++# @scoped-vaadin/app-layout
+ 
++This component is based on [@vaadin/app-layout](https://www.npmjs.com/package/@vaadin/app-layout)
++
+ A web component for building common application layouts.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/app-layout)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/app-layout)](https://www.npmjs.com/package/@vaadin/app-layout)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/app-layout)](https://www.npmjs.com/package/@scoped-vaadin/app-layout)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-app-layout>
+-  <vaadin-drawer-toggle slot="navbar touch-optimized"></vaadin-drawer-toggle>
++<vaadin24-app-layout>
++  <vaadin24-drawer-toggle slot="navbar touch-optimized"></vaadin24-drawer-toggle>
+   <h3 slot="navbar touch-optimized">Application Name</h3>
+-  <vaadin-tabs orientation="vertical" slot="drawer">
+-    <vaadin-tab>
++  <vaadin24-tabs orientation="vertical" slot="drawer">
++    <vaadin24-tab>
+       <a href="/profile">
+-        <vaadin-icon icon="lumo:user"></vaadin-icon>
++        <vaadin24-icon icon="lumo:user"></vaadin24-icon>
+         Profile
+       </a>
+-    </vaadin-tab>
+-    <vaadin-tab>
++    </vaadin24-tab>
++    <vaadin24-tab>
+       <a href="/contact">
+-        <vaadin-icon icon="lumo:phone"></vaadin-icon>
++        <vaadin24-icon icon="lumo:phone"></vaadin24-icon>
+         Contact
+       </a>
+-    </vaadin-tab>
+-  </vaadin-tabs>
++    </vaadin24-tab>
++  </vaadin24-tabs>
+   <div>Page content</div>
+-</vaadin-app-layout>
++</vaadin24-app-layout>
+ ```
+ 
+ [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/app-layout/screenshot.png" width="900" alt="Screenshot of vaadin-app-layout">](https://vaadin.com/docs/latest/components/app-layout)
+@@ -38,14 +40,14 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/app-layout
++npm i @scoped-vaadin/app-layout
+ ```
+ 
+ Once installed, import the components in your application:
+ 
+ ```js
+-import '@vaadin/app-layout';
+-import '@vaadin/app-layout/vaadin-drawer-toggle.js';
++import '@scoped-vaadin/app-layout';
++import '@scoped-vaadin/app-layout/vaadin-drawer-toggle.js';
+ ```
+ 
+ ## Themes
+@@ -56,22 +58,22 @@
+ To use the Material theme, import the components from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/app-layout/theme/material/vaadin-app-layout.js';
+-import '@vaadin/app-layout/theme/material/vaadin-drawer-toggle.js';
++import '@scoped-vaadin/app-layout/theme/material/vaadin-app-layout.js';
++import '@scoped-vaadin/app-layout/theme/material/vaadin-drawer-toggle.js';
+ ```
+ 
+ You can also import the Lumo version of the components explicitly:
+ 
+ ```js
+-import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
+-import '@vaadin/app-layout/theme/lumo/vaadin-drawer-toggle.js';
++import '@scoped-vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
++import '@scoped-vaadin/app-layout/theme/lumo/vaadin-drawer-toggle.js';
+ ```
+ 
+ Finally, you can import the un-themed components from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/app-layout/src/vaadin-app-layout.js';
+-import '@vaadin/app-layout/src/vaadin-drawer-toggle.js';
++import '@scoped-vaadin/app-layout/src/vaadin-app-layout.js';
++import '@scoped-vaadin/app-layout/src/vaadin-drawer-toggle.js';
+ ```
+ 
+ ## Contributing

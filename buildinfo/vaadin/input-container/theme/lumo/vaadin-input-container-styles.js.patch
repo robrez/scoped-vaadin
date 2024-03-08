@@ -1,0 +1,22 @@
+Index: input-container/theme/lumo/vaadin-input-container-styles.js
+===================================================================
+--- input-container/theme/lumo/vaadin-input-container-styles.js
++++ input-container/theme/lumo/vaadin-input-container-styles.js
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-input-container',
++  'vaadin24-input-container',
+   css`
+     :host {
+       background: var(--_background);

@@ -1,0 +1,37 @@
+Index: avatar/src/vaadin-avatar.d.ts
+===================================================================
+--- avatar/src/vaadin-avatar.d.ts
++++ avatar/src/vaadin-avatar.d.ts
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2020 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { AvatarMixin } from './vaadin-avatar-mixin.js';
+ 
+ export { AvatarI18n } from './vaadin-avatar-mixin.js';
+ 
+ /**
+- * `<vaadin-avatar>` is a Web Component providing avatar displaying functionality.
++ * `<vaadin24-avatar>` is a Web Component providing avatar displaying functionality.
+  *
+  * ```html
+- * <vaadin-avatar img="avatars/avatar-1.jpg"></vaadin-avatar>
++ * <vaadin24-avatar img="avatars/avatar-1.jpg"></vaadin24-avatar>
+  * ```
+  *
+  * ### Styling
+@@ -40,7 +40,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-avatar': Avatar;
++    'vaadin24-avatar': Avatar;
+   }
+ }
+ 

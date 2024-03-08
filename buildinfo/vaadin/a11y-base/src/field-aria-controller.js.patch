@@ -1,0 +1,13 @@
+Index: a11y-base/src/field-aria-controller.js
+===================================================================
+--- a11y-base/src/field-aria-controller.js
++++ a11y-base/src/field-aria-controller.js
+@@ -7,7 +7,7 @@
+   removeAriaIDReference,
+   restoreGeneratedAriaIDReference,
+   setAriaIDReference,
+-} from '@vaadin/a11y-base/src/aria-id-reference.js';
++} from '@scoped-vaadin/a11y-base/src/aria-id-reference.js';
+ 
+ /**
+  * A controller for managing ARIA attributes for a field element:

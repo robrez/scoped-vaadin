@@ -1,0 +1,22 @@
+Index: menu-bar/theme/material/vaadin-menu-bar-item-styles.js
+===================================================================
+--- menu-bar/theme/material/vaadin-menu-bar-item-styles.js
++++ menu-bar/theme/material/vaadin-menu-bar-item-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { contextMenuItem } from '@vaadin/context-menu/theme/material/vaadin-context-menu-item-styles.js';
+-import { item } from '@vaadin/item/theme/material/vaadin-item-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { contextMenuItem } from '@scoped-vaadin/context-menu/theme/material/vaadin-context-menu-item-styles.js';
++import { item } from '@scoped-vaadin/item/theme/material/vaadin-item-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const menuBarItem = css`
+   [part='content'] {
+@@ -20,4 +20,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-menu-bar-item', [item, contextMenuItem, menuBarItem], { moduleId: 'material-menu-bar-item' });
++registerStyles('vaadin24-menu-bar-item', [item, contextMenuItem, menuBarItem], { moduleId: 'material-menu-bar-item' });

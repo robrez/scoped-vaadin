@@ -1,0 +1,37 @@
+Index: context-menu/src/vaadin-lit-context-menu.js
+===================================================================
+--- context-menu/src/vaadin-lit-context-menu.js
++++ context-menu/src/vaadin-lit-context-menu.js
+@@ -8,16 +8,16 @@
+ import './vaadin-lit-context-menu-list-box.js';
+ import './vaadin-lit-context-menu-overlay.js';
+ import { css, html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import { ContextMenuMixin } from './vaadin-context-menu-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-context-menu>` web component.
++ * LitElement based version of `<vaadin24-context-menu>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -29,7 +29,7 @@
+   OverlayClassMixin(ElementMixin(ThemePropertyMixin(PolylitMixin(LitElement)))),
+ ) {
+   static get is() {
+-    return 'vaadin-context-menu';
++    return 'vaadin24-context-menu';
+   }
+ 
+   static get styles() {

@@ -17,10 +17,12 @@ import {
 } from "./replacement-helpers.js";
 import { allElementNames, allEventNames, allPackageNames } from "./meta.js";
 import { versionMeta } from "../version.js";
+import { createPatch } from "diff";
 
 export const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
 const localPackagesRoot = "packages/vaadin";
+const localDiffsRoot = "buildinfo/vaadin";
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -250,6 +252,7 @@ async function processFile(filePath) {
     inputFileName.replace(nodePackagesRoot, localPackagesRoot)
   );
   let content = fs.readFileSync(inputFileName, "utf-8");
+  const _origContent = content;
 
   if (filePath.base === "package.json") {
     content = processPackageJson(content, filePath);
@@ -272,6 +275,31 @@ async function processFile(filePath) {
     filePath.name.indexOf("web-types") === 0
   ) {
     content = processWebTypes(content, filePath);
+  }
+
+  const nameForPatch = outputFileName.split("/").splice(2).join("/");
+  const diff = createPatch(
+    nameForPatch,
+    _origContent,
+    content,
+    undefined,
+    undefined,
+    {
+      context: 3,
+    }
+  );
+  if (diff.trim().split(/\r?\n/).length > 4) {
+    const patchDestination = filePath.dir.replace(
+      nodePackagesRoot,
+      localDiffsRoot
+    );
+    if (!fs.existsSync(patchDestination)) {
+      fs.mkdirSync(patchDestination, { recursive: true });
+    }
+    const patchFilePath =
+      posixify(inputFileName.replace(nodePackagesRoot, localDiffsRoot)) +
+      ".patch";
+    fs.writeFileSync(patchFilePath, diff);
   }
 
   fs.writeFileSync(outputFileName, content);

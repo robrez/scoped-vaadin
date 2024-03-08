@@ -1,0 +1,63 @@
+Index: multi-select-combo-box/README.md
+===================================================================
+--- multi-select-combo-box/README.md
++++ multi-select-combo-box/README.md
+@@ -1,13 +1,15 @@
+-# @vaadin/multi-select-combo-box
++# @scoped-vaadin/multi-select-combo-box
+ 
+-A web component that wraps `<vaadin-combo-box>` and allows selecting multiple items.
++This component is based on [@vaadin/multi-select-combo-box](https://www.npmjs.com/package/@vaadin/multi-select-combo-box)
+ 
++A web component that wraps `<vaadin24-combo-box>` and allows selecting multiple items.
++
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/multi-select-combo-box)
+ 
+ ```html
+-<vaadin-multi-select-combo-box style="width: 300px"></vaadin-multi-select-combo-box>
++<vaadin24-multi-select-combo-box style="width: 300px"></vaadin24-multi-select-combo-box>
+ <script>
+-  const comboBox = document.querySelector('vaadin-multi-select-combo-box');
++  const comboBox = document.querySelector('vaadin24-multi-select-combo-box');
+   comboBox.items = ['apple', 'banana', 'lemon', 'orange'];
+   comboBox.selectedItems = ['apple', 'banana'];
+ </script>
+@@ -20,13 +22,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/multi-select-combo-box
++npm i @scoped-vaadin/multi-select-combo-box
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/multi-select-combo-box';
++import '@scoped-vaadin/multi-select-combo-box';
+ ```
+ 
+ ## Themes
+@@ -37,19 +39,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/multi-select-combo-box/theme/material/vaadin-multi-select-combo-box.js';
++import '@scoped-vaadin/multi-select-combo-box/theme/material/vaadin-multi-select-combo-box.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/multi-select-combo-box/theme/lumo/vaadin-multi-select-combo-box.js';
++import '@scoped-vaadin/multi-select-combo-box/theme/lumo/vaadin-multi-select-combo-box.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/multi-select-combo-box/src/vaadin-multi-select-combo-box.js';
++import '@scoped-vaadin/multi-select-combo-box/src/vaadin-multi-select-combo-box.js';
+ ```
+ 
+ ## Contributing

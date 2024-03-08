@@ -1,0 +1,13 @@
+Index: a11y-base/src/aria-id-reference.js
+===================================================================
+--- a11y-base/src/aria-id-reference.js
++++ a11y-base/src/aria-id-reference.js
+@@ -8,7 +8,7 @@
+   deserializeAttributeValue,
+   removeValueFromAttribute,
+   serializeAttributeValue,
+-} from '@vaadin/component-base/src/dom-utils.js';
++} from '@scoped-vaadin/component-base/src/dom-utils.js';
+ 
+ const attributeToTargets = new Map();
+ 

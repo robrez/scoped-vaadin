@@ -1,0 +1,33 @@
+Index: grid/src/vaadin-grid-sort-column.d.ts
+===================================================================
+--- grid/src/vaadin-grid-sort-column.d.ts
++++ grid/src/vaadin-grid-sort-column.d.ts
+@@ -10,15 +10,15 @@
+ export * from './vaadin-grid-sort-column-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-sort-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-sort-column>` is a helper element for the `<vaadin24-grid>`
+  * that provides default header renderer and functionality for sorting.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-sort-column path="name.first" direction="asc"></vaadin-grid-sort-column>
++ * <vaadin24-grid items="[[items]]">
++ *  <vaadin24-grid-sort-column path="name.first" direction="asc"></vaadin24-grid-sort-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin24-grid-column>
+  *    ...
+  * ```
+  */
+@@ -43,7 +43,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-sort-column': GridSortColumn<GridDefaultItem>;
++    'vaadin24-grid-sort-column': GridSortColumn<GridDefaultItem>;
+   }
+ }
+ 

@@ -1,0 +1,85 @@
+Index: combo-box/src/vaadin-combo-box-light.d.ts
+===================================================================
+--- combo-box/src/vaadin-combo-box-light.d.ts
++++ combo-box/src/vaadin-combo-box-light.d.ts
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import type { ComboBoxDataProviderMixinClass } from './vaadin-combo-box-data-provider-mixin.js';
+ import type { ComboBoxDefaultItem, ComboBoxMixinClass } from './vaadin-combo-box-mixin.js';
+ export {
+@@ -80,19 +80,19 @@
+ }
+ 
+ /**
+- * `<vaadin-combo-box-light>` is a customizable version of the `<vaadin-combo-box>` providing
++ * `<vaadin24-combo-box-light>` is a customizable version of the `<vaadin24-combo-box>` providing
+  * only the dropdown functionality and leaving the input field definition to the user.
+  *
+- * The element has the same API as `<vaadin-combo-box>`.
++ * The element has the same API as `<vaadin24-combo-box>`.
+  *
+  * To create a custom input field, you need to add a child element which has a two-way
+  * data-bindable property representing the input value. The property name is expected
+- * to be `value` by default. For example, you can use `<vaadin-text-field>` element:
++ * to be `value` by default. For example, you can use `<vaadin24-text-field>` element:
+  *
+  * ```html
+- * <vaadin-combo-box-light>
+- *   <vaadin-text-field></vaadin-text-field>
+- * </vaadin-combo-box-light>
++ * <vaadin24-combo-box-light>
++ *   <vaadin24-text-field></vaadin24-text-field>
++ * </vaadin24-combo-box-light>
+  * ```
+  *
+  * If you are using custom input field that has other property for value,
+@@ -100,20 +100,20 @@
+  * attribute to specify which property to use:
+  *
+  * ```html
+- * <vaadin-combo-box-light attr-for-value="input-value">
++ * <vaadin24-combo-box-light attr-for-value="input-value">
+  *   <custom-input class="input"></custom-input>
+- * </vaadin-combo-box-light>
++ * </vaadin24-combo-box-light>
+  * ```
+  *
+  * You can also pass custom toggle and clear buttons with corresponding classes:
+  *
+  * ```html
+- * <vaadin-combo-box-light>
++ * <vaadin24-combo-box-light>
+  *   <custom-input class="input" attr-for-value="input-value">
+  *     <button slot="suffix" class="clear-button">Clear</button>
+  *     <button slot="suffix" class="toggle-button">Toggle</button>
+  *   </custom-input>
+- * </vaadin-combo-box-light>
++ * </vaadin24-combo-box-light>
+  * ```
+  *
+  * @fires {Event} change - Fired when the user commits a value change.
+@@ -159,7 +159,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-combo-box-light': ComboBoxLight;
++    'vaadin24-combo-box-light': ComboBoxLight;
+   }
+ }
+ 

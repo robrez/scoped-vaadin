@@ -1,0 +1,13 @@
+Index: field-base/README.md
+===================================================================
+--- field-base/README.md
++++ field-base/README.md
+@@ -1,5 +1,7 @@
+-# @vaadin/field-base
++# @scoped-vaadin/field-base
+ 
++This component is based on [@vaadin/field-base](https://www.npmjs.com/package/@vaadin/field-base)
++
+ A set of mixins and controllers used by Vaadin field components.
+ 
+ ## Contributing

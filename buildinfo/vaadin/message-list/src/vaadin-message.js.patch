@@ -1,0 +1,56 @@
+Index: message-list/src/vaadin-message.js
+===================================================================
+--- message-list/src/vaadin-message.js
++++ message-list/src/vaadin-message.js
+@@ -3,23 +3,23 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/avatar/src/vaadin-avatar.js';
++import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-message>` is a Web Component for showing a single message with an author, message and time.
++ * `<vaadin24-message>` is a Web Component for showing a single message with an author, message and time.
+  *
+  * ```html
+- * <vaadin-message time="2021-01-28 10:43"
++ * <vaadin24-message time="2021-01-28 10:43"
+  *     user-name = "Bob Ross"
+  *     user-abbr = "BR"
+- *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin-message>
++ *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin24-message>
+  * ```
+  *
+  * ### Styling
+@@ -173,7 +173,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-message';
++    return 'vaadin24-message';
+   }
+ 
+   static get observers() {
+@@ -184,7 +184,7 @@
+   ready() {
+     super.ready();
+ 
+-    this._avatarController = new SlotController(this, 'avatar', 'vaadin-avatar', {
++    this._avatarController = new SlotController(this, 'avatar', 'vaadin24-avatar', {
+       initializer: (avatar) => {
+         avatar.setAttribute('tabindex', '-1');
+         avatar.setAttribute('aria-hidden', 'true');

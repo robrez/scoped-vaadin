@@ -1,0 +1,46 @@
+Index: radio-group/src/vaadin-radio-button.d.ts
+===================================================================
+--- radio-group/src/vaadin-radio-button.d.ts
++++ radio-group/src/vaadin-radio-button.d.ts
+@@ -3,23 +3,23 @@
+  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { type RadioButtonEventMap, RadioButtonMixin } from './vaadin-radio-button-mixin.js';
+ 
+ export * from './vaadin-radio-button-mixin.js';
+ 
+ /**
+- * `<vaadin-radio-button>` is a web component representing a choice in a radio group.
++ * `<vaadin24-radio-button>` is a web component representing a choice in a radio group.
+  * Only one radio button in the group can be selected at the same time.
+  *
+  * ```html
+- * <vaadin-radio-group label="Travel class">
+- *   <vaadin-radio-button value="economy" label="Economy"></vaadin-radio-button>
+- *   <vaadin-radio-button value="business" label="Business"></vaadin-radio-button>
+- *   <vaadin-radio-button value="firstClass" label="First Class"></vaadin-radio-button>
+- * </vaadin-radio-group>
++ * <vaadin24-radio-group label="Travel class">
++ *   <vaadin24-radio-button value="economy" label="Economy"></vaadin24-radio-button>
++ *   <vaadin24-radio-button value="business" label="Business"></vaadin24-radio-button>
++ *   <vaadin24-radio-button value="firstClass" label="First Class"></vaadin24-radio-button>
++ * </vaadin24-radio-group>
+  * ```
+  *
+  * ### Styling
+@@ -61,7 +61,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-radio-button': RadioButton;
++    'vaadin24-radio-button': RadioButton;
+   }
+ }
+ 

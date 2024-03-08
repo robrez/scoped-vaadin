@@ -1,0 +1,34 @@
+Index: combo-box/src/vaadin-combo-box-mixin.d.ts
+===================================================================
+--- combo-box/src/vaadin-combo-box-mixin.d.ts
++++ combo-box/src/vaadin-combo-box-mixin.d.ts
+@@ -4,12 +4,12 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
+ import type { ComboBox } from './vaadin-combo-box.js';
+ import type { ComboBoxDefaultItem, ComboBoxItemModel, ComboBoxItemRenderer } from './vaadin-combo-box-item-mixin.js';
+ 
+@@ -49,8 +49,8 @@
+    * Custom function for rendering the content of every item.
+    * Receives three arguments:
+    *
+-   * - `root` The `<vaadin-combo-box-item>` internal container DOM element.
+-   * - `comboBox` The reference to the `<vaadin-combo-box>` element.
++   * - `root` The `<vaadin24-combo-box-item>` internal container DOM element.
++   * - `comboBox` The reference to the `<vaadin24-combo-box>` element.
+    * - `model` The object with the properties related with the rendered
+    *   item, contains:
+    *   - `model.index` The index of the rendered item.

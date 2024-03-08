@@ -1,0 +1,16 @@
+Index: progress-bar/theme/material/vaadin-progress-bar-styles.js
+===================================================================
+--- progress-bar/theme/material/vaadin-progress-bar-styles.js
++++ progress-bar/theme/material/vaadin-progress-bar-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-progress-bar',
++  'vaadin24-progress-bar',
+   css`
+     :host {
+       height: 4px;

@@ -1,0 +1,13 @@
+Index: vaadin-lumo-styles/mixins/input-field-shared.js
+===================================================================
+--- vaadin-lumo-styles/mixins/input-field-shared.js
++++ vaadin-lumo-styles/mixins/input-field-shared.js
+@@ -9,7 +9,7 @@
+ import '../spacing.js';
+ import '../style.js';
+ import '../typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { fieldButton } from './field-button.js';
+ import { helper } from './helper.js';
+ import { requiredField } from './required-field.js';

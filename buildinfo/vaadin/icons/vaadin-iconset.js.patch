@@ -1,0 +1,13 @@
+Index: icons/vaadin-iconset.js
+===================================================================
+--- icons/vaadin-iconset.js
++++ icons/vaadin-iconset.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Iconset } from '@vaadin/icon/vaadin-iconset.js';
++import { Iconset } from '@scoped-vaadin/icon/vaadin-iconset.js';
+ 
+ const template = document.createElement('template');
+ 

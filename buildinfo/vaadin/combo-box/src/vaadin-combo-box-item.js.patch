@@ -1,0 +1,31 @@
+Index: combo-box/src/vaadin-combo-box-item.js
+===================================================================
+--- combo-box/src/vaadin-combo-box-item.js
++++ combo-box/src/vaadin-combo-box-item.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { ComboBoxItemMixin } from './vaadin-combo-box-item-mixin.js';
+ 
+ /**
+- * An item element used by the `<vaadin-combo-box>` dropdown.
++ * An item element used by the `<vaadin24-combo-box>` dropdown.
+  *
+  * ### Styling
+  *
+@@ -56,7 +56,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-combo-box-item';
++    return 'vaadin24-combo-box-item';
+   }
+ }
+ 

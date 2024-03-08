@@ -1,0 +1,13 @@
+Index: icon/src/vaadin-icon-helpers.js
+===================================================================
+--- icon/src/vaadin-icon-helpers.js
++++ icon/src/vaadin-icon-helpers.js
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ 
+-import { isSafari } from '@vaadin/component-base/src/browser-utils.js';
++import { isSafari } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ 
+ /**
+  * Checks if the current browser supports CSS Container Query units for pseudo elements.

@@ -1,0 +1,46 @@
+Index: integer-field/src/vaadin-integer-field.d.ts
+===================================================================
+--- integer-field/src/vaadin-integer-field.d.ts
++++ integer-field/src/vaadin-integer-field.d.ts
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { NumberField } from '@vaadin/number-field/src/vaadin-number-field.js';
++import { NumberField } from '@scoped-vaadin/number-field/src/vaadin-number-field.js';
+ 
+ /**
+  * Fired when the user commits a value change.
+@@ -47,18 +47,18 @@
+ }
+ 
+ /**
+- * `<vaadin-integer-field>` is an input field web component that only accepts entering integer numbers.
++ * `<vaadin24-integer-field>` is an input field web component that only accepts entering integer numbers.
+  *
+  * ```html
+- * <vaadin-integer-field label="X"></vaadin-integer-field>
++ * <vaadin24-integer-field label="X"></vaadin24-integer-field>
+  * ```
+  *
+  * ### Styling
+  *
+- * `<vaadin-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin24-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name         | Description
+  * ------------------|-------------------------
+@@ -109,7 +109,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-integer-field': IntegerField;
++    'vaadin24-integer-field': IntegerField;
+   }
+ }
+ 

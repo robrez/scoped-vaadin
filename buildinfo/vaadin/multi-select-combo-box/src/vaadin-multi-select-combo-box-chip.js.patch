@@ -1,0 +1,28 @@
+Index: multi-select-combo-box/src/vaadin-multi-select-combo-box-chip.js
+===================================================================
+--- multi-select-combo-box/src/vaadin-multi-select-combo-box-chip.js
++++ multi-select-combo-box/src/vaadin-multi-select-combo-box-chip.js
+@@ -4,11 +4,11 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used by `<vaadin-multi-select-combo-box>` to display selected items.
++ * An element used by `<vaadin24-multi-select-combo-box>` to display selected items.
+  *
+  * ### Styling
+  *
+@@ -27,7 +27,7 @@
+  */
+ class MultiSelectComboBoxChip extends ThemableMixin(PolymerElement) {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-chip';
++    return 'vaadin24-multi-select-combo-box-chip';
+   }
+ 
+   static get properties() {

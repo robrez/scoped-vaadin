@@ -1,0 +1,49 @@
+Index: tabs/src/vaadin-tabs.js
+===================================================================
+--- tabs/src/vaadin-tabs.js
++++ tabs/src/vaadin-tabs.js
+@@ -5,24 +5,24 @@
+  */
+ import './vaadin-tab.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { TabsMixin } from './vaadin-tabs-mixin.js';
+ import { tabsStyles } from './vaadin-tabs-styles.js';
+ 
+-registerStyles('vaadin-tabs', tabsStyles, { moduleId: 'vaadin-tabs-styles' });
++registerStyles('vaadin24-tabs', tabsStyles, { moduleId: 'vaadin-tabs-styles' });
+ 
+ /**
+- * `<vaadin-tabs>` is a Web Component for organizing and grouping content into sections.
++ * `<vaadin24-tabs>` is a Web Component for organizing and grouping content into sections.
+  *
+  * ```
+- *   <vaadin-tabs selected="4">
+- *     <vaadin-tab>Page 1</vaadin-tab>
+- *     <vaadin-tab>Page 2</vaadin-tab>
+- *     <vaadin-tab>Page 3</vaadin-tab>
+- *     <vaadin-tab>Page 4</vaadin-tab>
+- *   </vaadin-tabs>
++ *   <vaadin24-tabs selected="4">
++ *     <vaadin24-tab>Page 1</vaadin24-tab>
++ *     <vaadin24-tab>Page 2</vaadin24-tab>
++ *     <vaadin24-tab>Page 3</vaadin24-tab>
++ *     <vaadin24-tab>Page 4</vaadin24-tab>
++ *   </vaadin24-tabs>
+  * ```
+  *
+  * ### Styling
+@@ -67,7 +67,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-tabs';
++    return 'vaadin24-tabs';
+   }
+ }
+ 

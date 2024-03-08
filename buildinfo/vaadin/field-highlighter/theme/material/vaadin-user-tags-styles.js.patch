@@ -1,0 +1,30 @@
+Index: field-highlighter/theme/material/vaadin-user-tags-styles.js
+===================================================================
+--- field-highlighter/theme/material/vaadin-user-tags-styles.js
++++ field-highlighter/theme/material/vaadin-user-tags-styles.js
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+-registerStyles('vaadin-user-tags-overlay', [overlay], {
++registerStyles('vaadin24-user-tags-overlay', [overlay], {
+   moduleId: 'material-user-tags-overlay',
+ });
+ 
+ registerStyles(
+-  'vaadin-user-tag',
++  'vaadin24-user-tag',
+   css`
+     :host {
+       font-family: var(--material-font-family);

@@ -1,0 +1,22 @@
+Index: polymer-legacy-adapter/src/template-renderer-grid-templatizer.js
+===================================================================
+--- polymer-legacy-adapter/src/template-renderer-grid-templatizer.js
++++ polymer-legacy-adapter/src/template-renderer-grid-templatizer.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { Templatizer } from './template-renderer-templatizer.js';
+ 
+ export class GridTemplatizer extends Templatizer {
+@@ -11,7 +11,7 @@
+    * @override
+    */
+   static get is() {
+-    return 'vaadin-template-renderer-grid-templatizer';
++    return 'vaadin24-template-renderer-grid-templatizer';
+   }
+ 
+   /**

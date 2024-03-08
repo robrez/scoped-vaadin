@@ -1,0 +1,53 @@
+Index: dialog/src/lit/renderer-directives.js
+===================================================================
+--- dialog/src/lit/renderer-directives.js
++++ dialog/src/lit/renderer-directives.js
+@@ -5,9 +5,9 @@
+  */
+ /* eslint-disable max-classes-per-file */
+ import { directive } from 'lit/directive.js';
+-import { microTask } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import { microTask } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ 
+ const CONTENT_UPDATE_DEBOUNCER = Symbol('contentUpdateDebouncer');
+ 
+@@ -87,9 +87,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-dialog
++ * `<vaadin24-dialog
+  *   ${dialogRenderer((dialog) => html`...`)}
+- * ></vaadin-dialog>`
++ * ></vaadin24-dialog>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.
+@@ -115,9 +115,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-dialog
++ * `<vaadin24-dialog
+  *   ${dialogHeaderRenderer((dialog) => html`...`)}
+- * ></vaadin-dialog>`
++ * ></vaadin24-dialog>`
+  * ```
+  *
+  * @param renderer the renderer callback.
+@@ -143,9 +143,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-dialog
++ * `<vaadin24-dialog
+  *   ${dialogFooterRenderer((dialog) => html`...`)}
+- * ></vaadin-dialog>`
++ * ></vaadin24-dialog>`
+  * ```
+  *
+  * @param renderer the renderer callback.

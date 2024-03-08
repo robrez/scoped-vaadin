@@ -1,0 +1,66 @@
+Index: upload/README.md
+===================================================================
+--- upload/README.md
++++ upload/README.md
+@@ -1,16 +1,18 @@
+-# @vaadin/upload
++# @scoped-vaadin/upload
+ 
++This component is based on [@vaadin/upload](https://www.npmjs.com/package/@vaadin/upload)
++
+ A web component for uploading files.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/upload)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/upload)](https://www.npmjs.com/package/@vaadin/upload)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/upload)](https://www.npmjs.com/package/@scoped-vaadin/upload)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-upload accept=".pdf">
++<vaadin24-upload accept=".pdf">
+   <span slot="drop-label">Drop your favourite Novels here (PDF files only)</span>
+-</vaadin-upload>
++</vaadin24-upload>
+ ```
+ 
+ [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/upload/screenshot.png" width="656" alt="Screenshot of vaadin-upload">](https://vaadin.com/docs/latest/components/upload)
+@@ -20,13 +22,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/upload
++npm i @scoped-vaadin/upload
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/upload';
++import '@scoped-vaadin/upload';
+ ```
+ 
+ ## Themes
+@@ -37,19 +39,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/upload/theme/material/vaadin-upload.js';
++import '@scoped-vaadin/upload/theme/material/vaadin-upload.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/upload/theme/lumo/vaadin-upload.js';
++import '@scoped-vaadin/upload/theme/lumo/vaadin-upload.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/upload/src/vaadin-upload.js';
++import '@scoped-vaadin/upload/src/vaadin-upload.js';
+ ```
+ 
+ ## Contributing

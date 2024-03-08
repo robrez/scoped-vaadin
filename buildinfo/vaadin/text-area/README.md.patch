@@ -1,0 +1,63 @@
+Index: text-area/README.md
+===================================================================
+--- text-area/README.md
++++ text-area/README.md
+@@ -1,14 +1,16 @@
+-# @vaadin/text-area
++# @scoped-vaadin/text-area
+ 
++This component is based on [@vaadin/text-area](https://www.npmjs.com/package/@vaadin/text-area)
++
+ An input field component for multi-line text input.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/text-area)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/text-area)](https://www.npmjs.com/package/@vaadin/text-area)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/text-area)](https://www.npmjs.com/package/@scoped-vaadin/text-area)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-text-area label="Comment"></vaadin-text-area>
++<vaadin24-text-area label="Comment"></vaadin24-text-area>
+ ```
+ 
+ ## Installation
+@@ -16,13 +18,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/text-area
++npm i @scoped-vaadin/text-area
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/text-area';
++import '@scoped-vaadin/text-area';
+ ```
+ 
+ ## Themes
+@@ -33,19 +35,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/text-area/theme/material/vaadin-text-area.js';
++import '@scoped-vaadin/text-area/theme/material/vaadin-text-area.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/text-area/theme/lumo/vaadin-text-area.js';
++import '@scoped-vaadin/text-area/theme/lumo/vaadin-text-area.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/text-area/src/vaadin-text-area.js';
++import '@scoped-vaadin/text-area/src/vaadin-text-area.js';
+ ```
+ 
+ ## Contributing

@@ -1,0 +1,80 @@
+Index: combo-box/src/vaadin-combo-box-mixin.js
+===================================================================
+--- combo-box/src/vaadin-combo-box-mixin.js
++++ combo-box/src/vaadin-combo-box-mixin.js
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { KeyboardMixin } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { get } from '@vaadin/component-base/src/path-utils.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { InputMixin } from '@vaadin/field-base/src/input-mixin.js';
+-import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
+-import { VirtualKeyboardController } from '@vaadin/field-base/src/virtual-keyboard-controller.js';
++import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { get } from '@scoped-vaadin/component-base/src/path-utils.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { InputMixin } from '@scoped-vaadin/field-base/src/input-mixin.js';
++import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import { VirtualKeyboardController } from '@scoped-vaadin/field-base/src/virtual-keyboard-controller.js';
+ import { ComboBoxPlaceholder } from './vaadin-combo-box-placeholder.js';
+ 
+ /**
+@@ -96,8 +96,8 @@
+          * Custom function for rendering the content of every item.
+          * Receives three arguments:
+          *
+-         * - `root` The `<vaadin-combo-box-item>` internal container DOM element.
+-         * - `comboBox` The reference to the `<vaadin-combo-box>` element.
++         * - `root` The `<vaadin24-combo-box-item>` internal container DOM element.
++         * - `comboBox` The reference to the `<vaadin24-combo-box>` element.
+          * - `model` The object with the properties related with the rendered
+          *   item, contains:
+          *   - `model.index` The index of the rendered item.
+@@ -279,7 +279,7 @@
+      * @return {string}
+      */
+     get _tagNamePrefix() {
+-      return 'vaadin-combo-box';
++      return 'vaadin24-combo-box';
+     }
+ 
+     /**
+@@ -610,7 +610,7 @@
+      * @private
+      */
+     _onToggleButtonClick(event) {
+-      // Prevent parent components such as `vaadin-grid`
++      // Prevent parent components such as `vaadin24-grid`
+       // from handling the click event after it bubbles.
+       event.preventDefault();
+ 
+@@ -1351,13 +1351,13 @@
+      */
+ 
+     /**
+-     * Fired after the `vaadin-combo-box-overlay` opens.
++     * Fired after the `vaadin24-combo-box-overlay` opens.
+      *
+      * @event vaadin-combo-box-dropdown-opened
+      */
+ 
+     /**
+-     * Fired after the `vaadin-combo-box-overlay` closes.
++     * Fired after the `vaadin24-combo-box-overlay` closes.
+      *
+      * @event vaadin-combo-box-dropdown-closed
+      */

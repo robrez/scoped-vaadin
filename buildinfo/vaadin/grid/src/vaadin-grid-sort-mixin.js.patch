@@ -1,0 +1,13 @@
+Index: grid/src/vaadin-grid-sort-mixin.js
+===================================================================
+--- grid/src/vaadin-grid-sort-mixin.js
++++ grid/src/vaadin-grid-sort-mixin.js
+@@ -14,7 +14,7 @@
+     static get properties() {
+       return {
+         /**
+-         * When `true`, all `<vaadin-grid-sorter>` are applied for sorting.
++         * When `true`, all `<vaadin24-grid-sorter>` are applied for sorting.
+          * @attr {boolean} multi-sort
+          * @type {boolean}
+          */

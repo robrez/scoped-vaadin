@@ -1,0 +1,20 @@
+Index: app-layout/theme/material/vaadin-app-layout-styles.js
+===================================================================
+--- app-layout/theme/material/vaadin-app-layout-styles.js
++++ app-layout/theme/material/vaadin-app-layout-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-app-layout',
++  'vaadin24-app-layout',
+   css`
+     :host {
+       background-color: var(--material-background-color);

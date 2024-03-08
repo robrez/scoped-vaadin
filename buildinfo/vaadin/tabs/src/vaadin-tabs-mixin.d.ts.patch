@@ -1,0 +1,19 @@
+Index: tabs/src/vaadin-tabs-mixin.d.ts
+===================================================================
+--- tabs/src/vaadin-tabs-mixin.d.ts
++++ tabs/src/vaadin-tabs-mixin.d.ts
+@@ -4,10 +4,10 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { KeyboardDirectionMixinClass } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { ListMixinClass } from '@vaadin/a11y-base/src/list-mixin.js';
+-import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
++import type { KeyboardDirectionMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { ListMixinClass } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
++import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+ 
+ export type TabsOrientation = 'horizontal' | 'vertical';
+ 

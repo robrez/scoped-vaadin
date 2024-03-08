@@ -1,0 +1,62 @@
+Index: message-list/README.md
+===================================================================
+--- message-list/README.md
++++ message-list/README.md
+@@ -1,13 +1,15 @@
+-# @vaadin/message-list
++# @scoped-vaadin/message-list
+ 
++This component is based on [@vaadin/message-list](https://www.npmjs.com/package/@vaadin/message-list)
++
+ A web component that allows you to show a list of messages, for example, a chat log.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/message-list)
+ 
+ ```html
+-<vaadin-message-list></vaadin-message-list>
++<vaadin24-message-list></vaadin24-message-list>
+ <script>
+-  document.querySelector('vaadin-message-list').items = [
++  document.querySelector('vaadin24-message-list').items = [
+     { userName: 'Alice', time: '8 Minutes ago', text: 'Lunch at the usual place?' },
+     { userName: 'Bob', time: '6 Minutes ago', text: `Yeah, let's go together.` },
+     { userName: 'Alice', time: '2 Minutes ago', text: 'Great! What about you, Charlie?' },
+@@ -23,13 +25,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/message-list
++npm i @scoped-vaadin/message-list
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/message-list';
++import '@scoped-vaadin/message-list';
+ ```
+ 
+ ## Themes
+@@ -40,19 +42,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/message-list/theme/material/vaadin-message-list.js';
++import '@scoped-vaadin/message-list/theme/material/vaadin-message-list.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/message-list/theme/lumo/vaadin-message-list.js';
++import '@scoped-vaadin/message-list/theme/lumo/vaadin-message-list.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/message-list/src/vaadin-message-list.js';
++import '@scoped-vaadin/message-list/src/vaadin-message-list.js';
+ ```
+ 
+ ## Contributing

@@ -1,0 +1,39 @@
+Index: dialog/src/vaadin-dialog-overlay.js
+===================================================================
+--- dialog/src/vaadin-dialog-overlay.js
++++ dialog/src/vaadin-dialog-overlay.js
+@@ -4,19 +4,19 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DialogOverlayMixin } from './vaadin-dialog-overlay-mixin.js';
+ import { dialogOverlay, resizableOverlay } from './vaadin-dialog-styles.js';
+ 
+-registerStyles('vaadin-dialog-overlay', [overlayStyles, dialogOverlay, resizableOverlay], {
++registerStyles('vaadin24-dialog-overlay', [overlayStyles, dialogOverlay, resizableOverlay], {
+   moduleId: 'vaadin-dialog-overlay-styles',
+ });
+ 
+ /**
+- * An element used internally by `<vaadin-dialog>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-dialog>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -27,7 +27,7 @@
+  */
+ export class DialogOverlay extends DialogOverlayMixin(DirMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-dialog-overlay';
++    return 'vaadin24-dialog-overlay';
+   }
+ 
+   static get template() {

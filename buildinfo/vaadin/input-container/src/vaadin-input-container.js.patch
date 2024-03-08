@@ -1,0 +1,31 @@
+Index: input-container/src/vaadin-input-container.js
+===================================================================
+--- input-container/src/vaadin-input-container.js
++++ input-container/src/vaadin-input-container.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { InputContainerMixin } from './vaadin-input-container-mixin.js';
+ import { inputContainerStyles } from './vaadin-input-container-styles.js';
+ 
+-registerStyles('vaadin-input-container', inputContainerStyles, { moduleId: 'vaadin-input-container-styles' });
++registerStyles('vaadin24-input-container', inputContainerStyles, { moduleId: 'vaadin-input-container-styles' });
+ 
+ /**
+  * @customElement
+@@ -21,7 +21,7 @@
+  */
+ export class InputContainer extends InputContainerMixin(ThemableMixin(DirMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-input-container';
++    return 'vaadin24-input-container';
+   }
+ 
+   static get template() {

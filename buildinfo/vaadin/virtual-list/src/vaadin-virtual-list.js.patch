@@ -1,0 +1,44 @@
+Index: virtual-list/src/vaadin-virtual-list.js
+===================================================================
+--- virtual-list/src/vaadin-virtual-list.js
++++ virtual-list/src/vaadin-virtual-list.js
+@@ -4,23 +4,23 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { VirtualListMixin } from './vaadin-virtual-list-mixin.js';
+ import { virtualListStyles } from './vaadin-virtual-list-styles.js';
+ 
+-registerStyles('vaadin-virtual-list', virtualListStyles, { moduleId: 'vaadin-virtual-list-styles' });
++registerStyles('vaadin24-virtual-list', virtualListStyles, { moduleId: 'vaadin-virtual-list-styles' });
+ 
+ /**
+- * `<vaadin-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.
++ * `<vaadin24-virtual-list>` is a Web Component for displaying a virtual/infinite list of items.
+  *
+  * ```html
+- * <vaadin-virtual-list></vaadin-virtual-list>
++ * <vaadin24-virtual-list></vaadin24-virtual-list>
+  * ```
+  *
+  * ```js
+- * const list = document.querySelector('vaadin-virtual-list');
++ * const list = document.querySelector('vaadin24-virtual-list');
+  * list.items = items; // An array of data items
+  * list.renderer = (root, list, {item, index}) => {
+  *   root.textContent = `#${index}: ${item.name}`
+@@ -51,7 +51,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-virtual-list';
++    return 'vaadin24-virtual-list';
+   }
+ }
+ 

@@ -1,0 +1,39 @@
+Index: grid/src/vaadin-grid-sort-column.js
+===================================================================
+--- grid/src/vaadin-grid-sort-column.js
++++ grid/src/vaadin-grid-sort-column.js
+@@ -4,20 +4,20 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import './vaadin-grid-sorter.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { GridColumn } from './vaadin-grid-column.js';
+ import { GridSortColumnMixin } from './vaadin-grid-sort-column-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-sort-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-sort-column>` is a helper element for the `<vaadin24-grid>`
+  * that provides default header renderer and functionality for sorting.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-sort-column path="name.first" direction="asc"></vaadin-grid-sort-column>
++ * <vaadin24-grid items="[[items]]">
++ *  <vaadin24-grid-sort-column path="name.first" direction="asc"></vaadin24-grid-sort-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin24-grid-column>
+  *    ...
+  * ```
+  *
+@@ -29,7 +29,7 @@
+  */
+ class GridSortColumn extends GridSortColumnMixin(GridColumn) {
+   static get is() {
+-    return 'vaadin-grid-sort-column';
++    return 'vaadin24-grid-sort-column';
+   }
+ }
+ 

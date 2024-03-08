@@ -1,0 +1,56 @@
+Index: field-highlighter/src/vaadin-field-highlighter.js
+===================================================================
+--- field-highlighter/src/vaadin-field-highlighter.js
++++ field-highlighter/src/vaadin-field-highlighter.js
+@@ -5,8 +5,8 @@
+  */
+ import './vaadin-field-outline.js';
+ import './vaadin-user-tags.js';
+-import { announce } from '@vaadin/a11y-base/src/announce.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { CheckboxGroupObserver } from './fields/vaadin-checkbox-group-observer.js';
+ import { DatePickerObserver } from './fields/vaadin-date-picker-observer.js';
+ import { DateTimePickerObserver } from './fields/vaadin-date-time-picker-observer.js';
+@@ -19,25 +19,25 @@
+   let result;
+   switch (field.tagName.toLowerCase()) {
+     /* c8 ignore next */
+-    case 'vaadin-date-picker':
++    case 'vaadin24-date-picker':
+       result = new DatePickerObserver(field);
+       break;
+     /* c8 ignore next */
+-    case 'vaadin-date-time-picker':
++    case 'vaadin24-date-time-picker':
+       result = new DateTimePickerObserver(field);
+       break;
+     /* c8 ignore next */
+-    case 'vaadin-select':
++    case 'vaadin24-select':
+       result = new SelectObserver(field);
+       break;
+     /* c8 ignore next 2 */
+-    case 'vaadin-checkbox-group':
++    case 'vaadin24-checkbox-group':
+       result = new CheckboxGroupObserver(field);
+       break;
+-    case 'vaadin-radio-group':
++    case 'vaadin24-radio-group':
+       result = new RadioGroupObserver(field);
+       break;
+-    case 'vaadin-list-box':
++    case 'vaadin24-list-box':
+       result = new ListBoxObserver(field);
+       break;
+     default:
+@@ -157,7 +157,7 @@
+  */
+ export class FieldHighlighter extends HTMLElement {
+   static get is() {
+-    return 'vaadin-field-highlighter';
++    return 'vaadin24-field-highlighter';
+   }
+ 
+   static init(field) {

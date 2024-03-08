@@ -1,0 +1,67 @@
+Index: virtual-list/README.md
+===================================================================
+--- virtual-list/README.md
++++ virtual-list/README.md
+@@ -1,17 +1,19 @@
+-# @vaadin/virtual-list
++# @scoped-vaadin/virtual-list
+ 
++This component is based on [@vaadin/virtual-list](https://www.npmjs.com/package/@vaadin/virtual-list)
++
+ A web component for rendering a long list of items without sacrificing performance.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/virtual-list)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/virtual-list)](https://www.npmjs.com/package/@vaadin/virtual-list)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/virtual-list)](https://www.npmjs.com/package/@scoped-vaadin/virtual-list)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-virtual-list></vaadin-virtual-list>
++<vaadin24-virtual-list></vaadin24-virtual-list>
+ 
+ <script>
+-  const list = document.querySelector('vaadin-virtual-list');
++  const list = document.querySelector('vaadin24-virtual-list');
+   list.items = items; // An array of data items
+   list.renderer = (root, list, { item, index }) => {
+     root.textContent = `#${index}: ${item.name}`;
+@@ -24,13 +26,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/virtual-list
++npm i @scoped-vaadin/virtual-list
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/virtual-list';
++import '@scoped-vaadin/virtual-list';
+ ```
+ 
+ ## Themes
+@@ -41,19 +43,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/virtual-list/theme/material/vaadin-virtual-list.js';
++import '@scoped-vaadin/virtual-list/theme/material/vaadin-virtual-list.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/virtual-list/theme/lumo/vaadin-virtual-list.js';
++import '@scoped-vaadin/virtual-list/theme/lumo/vaadin-virtual-list.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/virtual-list/src/vaadin-virtual-list.js';
++import '@scoped-vaadin/virtual-list/src/vaadin-virtual-list.js';
+ ```
+ 
+ ## Contributing

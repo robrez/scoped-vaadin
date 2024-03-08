@@ -1,0 +1,23 @@
+Index: menu-bar/web-types.json
+===================================================================
+--- menu-bar/web-types.json
++++ menu-bar/web-types.json
+@@ -1,14 +1,14 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/menu-bar",
+-  "version": "24.3.7",
++  "name": "@scoped-vaadin/menu-bar",
++  "version": "24.3.6-alpha.1",
+   "description-markup": "markdown",
+   "contributions": {
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-menu-bar",
+-          "description": "`<vaadin-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering\nthe user quick access to a consistent set of commands. Each button can toggle a submenu with\nsupport for additional levels of nested menus.\n\nTo create the menu bar, first add the component to the page:\n\n```\n<vaadin-menu-bar></vaadin-menu-bar>\n```\n\nAnd then use [`items`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-menu-bar#property-items) property to initialize the structure:\n\n```\ndocument.querySelector('vaadin-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name         | Description\n------------------|----------------\n`container`       | The container wrapping menu bar buttons.\n\nThe following state attributes are available for styling:\n\nAttribute           | Description\n--------------------|----------------------------------\n`disabled`          | Set when the menu bar is disabled\n`has-single-button` | Set when there is only one button visible\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin-menu-bar>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin-menu-bar-button>` - has the same API as [`<vaadin-button>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-button).\n- `<vaadin-menu-bar-item>` - has the same API as [`<vaadin-item>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-item).\n- `<vaadin-menu-bar-list-box>` - has the same API as [`<vaadin-list-box>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-list-box).\n- `<vaadin-menu-bar-overlay>` - has the same API as [`<vaadin-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-overlay).",
++          "name": "vaadin24-menu-bar",
++          "description": "`<vaadin24-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering\nthe user quick access to a consistent set of commands. Each button can toggle a submenu with\nsupport for additional levels of nested menus.\n\nTo create the menu bar, first add the component to the page:\n\n```\n<vaadin24-menu-bar></vaadin24-menu-bar>\n```\n\nAnd then use [`items`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-menu-bar#property-items) property to initialize the structure:\n\n```\ndocument.querySelector('vaadin24-menu-bar').items = [{text: 'File'}, {text: 'Edit'}];\n```\n\n### Styling\n\nThe following shadow DOM parts are exposed for styling:\n\nPart name         | Description\n------------------|----------------\n`container`       | The container wrapping menu bar buttons.\n\nThe following state attributes are available for styling:\n\nAttribute           | Description\n--------------------|----------------------------------\n`disabled`          | Set when the menu bar is disabled\n`has-single-button` | Set when there is only one button visible\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin24-menu-bar>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin24-menu-bar-button>` - has the same API as [`<vaadin24-button>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-button).\n- `<vaadin24-menu-bar-item>` - has the same API as [`<vaadin24-item>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-item).\n- `<vaadin24-menu-bar-list-box>` - has the same API as [`<vaadin24-list-box>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-list-box).\n- `<vaadin24-menu-bar-overlay>` - has the same API as [`<vaadin24-overlay>`](https://cdn.vaadin.com/vaadin-web-components/24.3.7/#/elements/vaadin-overlay).",
+           "attributes": [
+             {
+               "name": "disabled",

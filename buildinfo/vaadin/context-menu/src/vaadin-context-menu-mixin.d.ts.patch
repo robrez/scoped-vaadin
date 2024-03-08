@@ -1,0 +1,13 @@
+Index: context-menu/src/vaadin-context-menu-mixin.d.ts
+===================================================================
+--- context-menu/src/vaadin-context-menu-mixin.d.ts
++++ context-menu/src/vaadin-context-menu-mixin.d.ts
+@@ -47,7 +47,7 @@
+    * Receives three arguments:
+    *
+    * - `root` The root container DOM element. Append your content to it.
+-   * - `contextMenu` The reference to the `<vaadin-context-menu>` element.
++   * - `contextMenu` The reference to the `<vaadin24-context-menu>` element.
+    * - `context` The object with the menu context, contains:
+    *   - `context.target`  the target of the menu opening event,
+    *   - `context.detail` the menu opening event detail.

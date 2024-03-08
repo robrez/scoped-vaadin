@@ -1,0 +1,31 @@
+Index: login/theme/material/vaadin-login-overlay-styles.js
+===================================================================
+--- login/theme/material/vaadin-login-overlay-styles.js
++++ login/theme/material/vaadin-login-overlay-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { typography } from '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { typography } from '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const loginOverlayWrapper = css`
+   :host {
+@@ -297,7 +297,7 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-login-overlay-wrapper', [overlay, typography, loginOverlayWrapper], {
++registerStyles('vaadin24-login-overlay-wrapper', [overlay, typography, loginOverlayWrapper], {
+   moduleId: 'material-login-overlay-wrapper',
+ });
+ 
+@@ -347,4 +347,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-login-form-wrapper', [typography, loginFormWrapper], { moduleId: 'material-login-overlay' });
++registerStyles('vaadin24-login-form-wrapper', [typography, loginFormWrapper], { moduleId: 'material-login-overlay' });

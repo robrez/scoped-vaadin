@@ -1,0 +1,33 @@
+Index: grid/src/vaadin-grid-filter-column.d.ts
+===================================================================
+--- grid/src/vaadin-grid-filter-column.d.ts
++++ grid/src/vaadin-grid-filter-column.d.ts
+@@ -10,15 +10,15 @@
+ export * from './vaadin-grid-filter-column-mixin.js';
+ 
+ /**
+- * `<vaadin-grid-filter-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin24-grid-filter-column>` is a helper element for the `<vaadin24-grid>`
+  * that provides default header renderer and functionality for filtering.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-filter-column path="name.first"></vaadin-grid-filter-column>
++ * <vaadin24-grid items="[[items]]">
++ *  <vaadin24-grid-filter-column path="name.first"></vaadin24-grid-filter-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin24-grid-column>
+  *    ...
+  * ```
+  */
+@@ -31,7 +31,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-filter-column': GridFilterColumn<GridDefaultItem>;
++    'vaadin24-grid-filter-column': GridFilterColumn<GridDefaultItem>;
+   }
+ }
+ 

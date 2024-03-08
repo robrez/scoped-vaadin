@@ -1,0 +1,13 @@
+Index: details/src/collapsible-mixin.d.ts
+===================================================================
+--- details/src/collapsible-mixin.d.ts
++++ details/src/collapsible-mixin.d.ts
+@@ -7,7 +7,7 @@
+ 
+ /**
+  * A mixin providing common functionality for making content collapsible,
+- * used by `<vaadin-details>` and `<vaadin-accordion-panel>` elements.
++ * used by `<vaadin24-details>` and `<vaadin24-accordion-panel>` elements.
+  */
+ export declare function CollapsibleMixin<T extends Constructor<HTMLElement>>(
+   base: T,

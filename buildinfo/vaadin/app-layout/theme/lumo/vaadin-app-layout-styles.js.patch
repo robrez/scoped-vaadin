@@ -1,0 +1,20 @@
+Index: app-layout/theme/lumo/vaadin-app-layout-styles.js
+===================================================================
+--- app-layout/theme/lumo/vaadin-app-layout-styles.js
++++ app-layout/theme/lumo/vaadin-app-layout-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-app-layout',
++  'vaadin24-app-layout',
+   css`
+     [part='navbar'],
+     [part='drawer'] {

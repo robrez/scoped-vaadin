@@ -1,0 +1,24 @@
+Index: overlay/src/vaadin-overlay-mixin.js
+===================================================================
+--- overlay/src/vaadin-overlay-mixin.js
++++ overlay/src/vaadin-overlay-mixin.js
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ import { OverlayFocusMixin } from './vaadin-overlay-focus-mixin.js';
+ import { OverlayStackMixin } from './vaadin-overlay-stack-mixin.js';
+ 
+@@ -114,8 +114,8 @@
+ 
+       // Need to add dummy click listeners to this and the backdrop or else
+       // the document click event listener (_outsideClickListener) may never
+-      // get invoked on iOS Safari (reproducible in <vaadin-dialog>
+-      // and <vaadin-context-menu>).
++      // get invoked on iOS Safari (reproducible in <vaadin24-dialog>
++      // and <vaadin24-context-menu>).
+       this.addEventListener('click', () => {});
+       this.$.backdrop.addEventListener('click', () => {});
+ 

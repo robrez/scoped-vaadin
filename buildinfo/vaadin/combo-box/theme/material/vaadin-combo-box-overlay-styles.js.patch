@@ -1,0 +1,25 @@
+Index: combo-box/theme/material/vaadin-combo-box-overlay-styles.js
+===================================================================
+--- combo-box/theme/material/vaadin-combo-box-overlay-styles.js
++++ combo-box/theme/material/vaadin-combo-box-overlay-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { loader } from '@vaadin/vaadin-material-styles/mixins/loader.js';
+-import { menuOverlay } from '@vaadin/vaadin-material-styles/mixins/menu-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { loader } from '@scoped-vaadin/vaadin-material-styles/mixins/loader.js';
++import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const comboBoxOverlay = css`
+   [part='overlay'] {
+@@ -27,7 +27,7 @@
+ `;
+ 
+ registerStyles(
+-  'vaadin-combo-box-overlay',
++  'vaadin24-combo-box-overlay',
+   [
+     menuOverlay,
+     comboBoxOverlay,

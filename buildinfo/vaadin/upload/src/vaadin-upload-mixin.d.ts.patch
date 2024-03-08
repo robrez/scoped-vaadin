@@ -1,0 +1,13 @@
+Index: upload/src/vaadin-upload-mixin.d.ts
+===================================================================
+--- upload/src/vaadin-upload-mixin.d.ts
++++ upload/src/vaadin-upload-mixin.d.ts
+@@ -92,7 +92,7 @@
+    * Key-Value map to send to the server. If you set this property as an
+    * attribute, use a valid JSON string, for example:
+    * ```
+-   * <vaadin-upload headers='{"X-Foo": "Bar"}'></vaadin-upload>
++   * <vaadin24-upload headers='{"X-Foo": "Bar"}'></vaadin24-upload>
+    * ```
+    */
+   headers: object | string | null;

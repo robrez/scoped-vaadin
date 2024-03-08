@@ -1,0 +1,32 @@
+Index: select/src/vaadin-select-item.js
+===================================================================
+--- select/src/vaadin-select-item.js
++++ select/src/vaadin-select-item.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ItemMixin } from '@vaadin/item/src/vaadin-item-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ItemMixin } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-select>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-select>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -21,7 +21,7 @@
+  */
+ class SelectItem extends ItemMixin(ThemableMixin(DirMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-select-item';
++    return 'vaadin24-select-item';
+   }
+ 
+   static get template() {

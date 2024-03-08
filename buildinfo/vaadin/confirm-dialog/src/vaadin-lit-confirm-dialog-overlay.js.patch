@@ -1,0 +1,81 @@
+Index: confirm-dialog/src/vaadin-lit-confirm-dialog-overlay.js
+===================================================================
+--- confirm-dialog/src/vaadin-lit-confirm-dialog-overlay.js
++++ confirm-dialog/src/vaadin-lit-confirm-dialog-overlay.js
+@@ -5,21 +5,21 @@
+  */
+ import { css, html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { DialogBaseMixin } from '@vaadin/dialog/src/vaadin-dialog-base-mixin.js';
+-import { dialogOverlay } from '@vaadin/dialog/src/vaadin-dialog-styles.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { DialogBaseMixin } from '@scoped-vaadin/dialog/src/vaadin-dialog-base-mixin.js';
++import { dialogOverlay } from '@scoped-vaadin/dialog/src/vaadin-dialog-styles.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import { ConfirmDialogBaseMixin } from './vaadin-confirm-dialog-base-mixin.js';
+ import { confirmDialogOverlay } from './vaadin-confirm-dialog-overlay-styles.js';
+ 
+ /**
+- * An element used internally by `<vaadin-confirm-dialog>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-confirm-dialog>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -30,7 +30,7 @@
+  */
+ class ConfirmDialogOverlay extends OverlayMixin(DirMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-confirm-dialog-overlay';
++    return 'vaadin24-confirm-dialog-overlay';
+   }
+ 
+   static get styles() {
+@@ -79,14 +79,14 @@
+ defineCustomElement(ConfirmDialogOverlay);
+ 
+ /**
+- * An element used internally by `<vaadin-confirm-dialog>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-confirm-dialog>`. Not intended to be used separately.
+  * @private
+  */
+ class ConfirmDialogDialog extends ConfirmDialogBaseMixin(
+   DialogBaseMixin(OverlayClassMixin(ThemePropertyMixin(PolylitMixin(LitElement)))),
+ ) {
+   static get is() {
+-    return 'vaadin-confirm-dialog-dialog';
++    return 'vaadin24-confirm-dialog-dialog';
+   }
+ 
+   static get styles() {
+@@ -100,7 +100,7 @@
+   /** @protected */
+   render() {
+     return html`
+-      <vaadin-confirm-dialog-overlay
++      <vaadin24-confirm-dialog-overlay
+         id="overlay"
+         .owner="${this}"
+         .opened="${this.opened}"
+@@ -113,7 +113,7 @@
+         ?resizable="${this.resizable}"
+         restore-focus-on-close
+         focus-trap
+-      ></vaadin-confirm-dialog-overlay>
++      ></vaadin24-confirm-dialog-overlay>
+     `;
+   }
+ }

@@ -1,0 +1,77 @@
+Index: split-layout/README.md
+===================================================================
+--- split-layout/README.md
++++ split-layout/README.md
+@@ -1,23 +1,25 @@
+-# @vaadin/split-layout
++# @scoped-vaadin/split-layout
+ 
++This component is based on [@vaadin/split-layout](https://www.npmjs.com/package/@vaadin/split-layout)
++
+ A web component with two content areas and a draggable split handle between them.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/split-layout)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/split-layout)](https://www.npmjs.com/package/@vaadin/split-layout)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/split-layout)](https://www.npmjs.com/package/@scoped-vaadin/split-layout)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-split-layout>
+-  <vaadin-split-layout orientation="vertical">
++<vaadin24-split-layout>
++  <vaadin24-split-layout orientation="vertical">
+     <div>First layout content</div>
+     <div>Second layout content</div>
+-  </vaadin-split-layout>
+-  <vaadin-split-layout orientation="vertical">
++  </vaadin24-split-layout>
++  <vaadin24-split-layout orientation="vertical">
+     <div>Third layout content</div>
+     <div>Fourth layout content</div>
+-  </vaadin-split-layout>
+-</vaadin-split-layout>
++  </vaadin24-split-layout>
++</vaadin24-split-layout>
+ ```
+ 
+ [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/split-layout/screenshot.png" width="616" alt="Screenshot of vaadin-split-layout">](https://vaadin.com/docs/latest/components/split-layout)
+@@ -27,13 +29,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/split-layout
++npm i @scoped-vaadin/split-layout
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/split-layout';
++import '@scoped-vaadin/split-layout';
+ ```
+ 
+ ## Themes
+@@ -44,19 +46,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/split-layout/theme/material/vaadin-split-layout.js';
++import '@scoped-vaadin/split-layout/theme/material/vaadin-split-layout.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/split-layout/theme/lumo/vaadin-split-layout.js';
++import '@scoped-vaadin/split-layout/theme/lumo/vaadin-split-layout.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/split-layout/src/vaadin-split-layout.js';
++import '@scoped-vaadin/split-layout/src/vaadin-split-layout.js';
+ ```
+ 
+ ## Contributing

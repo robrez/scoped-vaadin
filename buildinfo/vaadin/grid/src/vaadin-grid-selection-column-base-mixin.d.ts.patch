@@ -1,0 +1,20 @@
+Index: grid/src/vaadin-grid-selection-column-base-mixin.d.ts
+===================================================================
+--- grid/src/vaadin-grid-selection-column-base-mixin.d.ts
++++ grid/src/vaadin-grid-selection-column-base-mixin.d.ts
+@@ -11,13 +11,13 @@
+ 
+ /**
+  * A mixin that provides basic functionality for the
+- * `<vaadin-grid-selection-column>`. This includes properties, cell rendering,
++ * `<vaadin24-grid-selection-column>`. This includes properties, cell rendering,
+  * and overridable methods for handling changes to the selection state.
+  *
+  * **NOTE**: This mixin is re-used by the Flow component, and as such must not
+  * implement any selection state updates for the column element or the grid.
+  * Web component-specific selection state updates must be implemented in the
+- * `<vaadin-grid-selection-column>` itself, by overriding the protected methods
++ * `<vaadin24-grid-selection-column>` itself, by overriding the protected methods
+  * provided by this mixin.
+  */
+ export declare class GridSelectionColumnBaseMixinClass<TItem> {

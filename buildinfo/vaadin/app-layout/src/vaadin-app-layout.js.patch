@@ -1,0 +1,105 @@
+Index: app-layout/src/vaadin-app-layout.js
+===================================================================
+--- app-layout/src/vaadin-app-layout.js
++++ app-layout/src/vaadin-app-layout.js
+@@ -7,33 +7,33 @@
+ import './safe-area-inset.js';
+ import { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { AriaModalController } from '@vaadin/a11y-base/src/aria-modal-controller.js';
+-import { FocusTrapController } from '@vaadin/a11y-base/src/focus-trap-controller.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { AriaModalController } from '@scoped-vaadin/a11y-base/src/aria-modal-controller.js';
++import { FocusTrapController } from '@scoped-vaadin/a11y-base/src/focus-trap-controller.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * @typedef {import('./vaadin-app-layout.js').AppLayoutI18n} AppLayoutI18n
+  */
+ 
+ /**
+- * `<vaadin-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
++ * `<vaadin24-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
+  *
+  * ```
+- * <vaadin-app-layout primary-section="navbar|drawer">
+- *  <vaadin-drawer-toggle slot="navbar [touch-optimized]"></vaadin-drawer-toggle>
++ * <vaadin24-app-layout primary-section="navbar|drawer">
++ *  <vaadin24-drawer-toggle slot="navbar [touch-optimized]"></vaadin24-drawer-toggle>
+  *  <h3 slot="navbar [touch-optimized]">Company Name</h3>
+- *  <vaadin-tabs orientation="vertical" slot="drawer">
+- *    <vaadin-tab>Menu item 1</vaadin-tab>
+- *  </vaadin-tabs>
++ *  <vaadin24-tabs orientation="vertical" slot="drawer">
++ *    <vaadin24-tab>Menu item 1</vaadin24-tab>
++ *  </vaadin24-tabs>
+  *  <!-- Everything else will be the page content -->
+  *  <div>
+  *    <h3>Page title</h3>
+  *    <p>Page content</p>
+  *  </div>
+- * </vaadin-app-layout>
++ * </vaadin24-app-layout>
+  * ```
+  *
+  * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
+@@ -53,7 +53,7 @@
+  *
+  * ### Styling
+  *
+- * The following Shadow DOM parts of the `<vaadin-app-layout>` are available for styling:
++ * The following Shadow DOM parts of the `<vaadin24-app-layout>` are available for styling:
+  *
+  * Part name     | Description
+  * --------------|---------------------------------------------------------|
+@@ -86,7 +86,7 @@
+  * If you are using Vaadin Router, this will happen automatically unless you change the `closeDrawerOn` event name.
+  *
+  * In order to do so, there are two options:
+- * - If the `vaadin-app-layout` instance is available, then `drawerOpened` can be set to `false`
++ * - If the `vaadin24-app-layout` instance is available, then `drawerOpened` can be set to `false`
+  * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
+  *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
+  *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
+@@ -291,7 +291,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-app-layout';
++    return 'vaadin24-app-layout';
+   }
+ 
+   static get properties() {
+@@ -407,7 +407,7 @@
+ 
+     // Hide all the elements except the drawer toggle and drawer content
+     this.__ariaModalController = new AriaModalController(this, () => [
+-      ...this.querySelectorAll('vaadin-drawer-toggle, [slot="drawer"]'),
++      ...this.querySelectorAll('vaadin24-drawer-toggle, [slot="drawer"]'),
+     ]);
+     this.__focusTrapController = new FocusTrapController(this);
+   }
+@@ -553,7 +553,7 @@
+ 
+   /** @private */
+   __setAriaExpanded() {
+-    const toggle = this.querySelector('vaadin-drawer-toggle');
++    const toggle = this.querySelector('vaadin24-drawer-toggle');
+     if (toggle) {
+       toggle.setAttribute('aria-expanded', this.drawerOpened);
+     }
+@@ -693,7 +693,7 @@
+     this.$.drawer.removeAttribute('tabindex');
+ 
+     // Move focus to the drawer toggle when closing the drawer.
+-    const toggle = this.querySelector('vaadin-drawer-toggle');
++    const toggle = this.querySelector('vaadin24-drawer-toggle');
+     if (toggle) {
+       toggle.focus();
+       toggle.setAttribute('focus-ring', 'focus');

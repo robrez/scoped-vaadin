@@ -1,0 +1,65 @@
+Index: text-area/src/vaadin-text-area.d.ts
+===================================================================
+--- text-area/src/vaadin-text-area.d.ts
++++ text-area/src/vaadin-text-area.d.ts
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { TextAreaMixin } from './vaadin-text-area-mixin.js';
+ 
+ /**
+@@ -42,24 +42,24 @@
+ }
+ 
+ /**
+- * `<vaadin-text-area>` is a web component for multi-line text input.
++ * `<vaadin24-text-area>` is a web component for multi-line text input.
+  *
+  * ```html
+- * <vaadin-text-area label="Comment"></vaadin-text-area>
++ * <vaadin24-text-area label="Comment"></vaadin24-text-area>
+  * ```
+  *
+  * ### Prefixes and suffixes
+  *
+- * These are child elements of a `<vaadin-text-area>` that are displayed
++ * These are child elements of a `<vaadin24-text-area>` that are displayed
+  * inline with the input, before or after.
+  * In order for an element to be considered as a prefix, it must have the slot
+  * attribute set to `prefix` (and similarly for `suffix`).
+  *
+  * ```html
+- * <vaadin-text-area label="Description">
++ * <vaadin24-text-area label="Description">
+  *   <div slot="prefix">Details:</div>
+  *   <div slot="suffix">The end!</div>
+- * </vaadin-text-area>
++ * </vaadin24-text-area>
+  * ```
+  *
+  * ### Styling
+@@ -72,8 +72,8 @@
+  *
+  * The following shadow DOM parts are available for styling:
+  *
+- * `<vaadin-text-area>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-text-area>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+@@ -99,7 +99,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-text-area': TextArea;
++    'vaadin24-text-area': TextArea;
+   }
+ }
+ 

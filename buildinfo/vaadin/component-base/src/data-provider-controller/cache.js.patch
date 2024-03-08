@@ -1,0 +1,67 @@
+Index: component-base/src/data-provider-controller/cache.js
+===================================================================
+--- component-base/src/data-provider-controller/cache.js
++++ component-base/src/data-provider-controller/cache.js
+@@ -131,7 +131,7 @@
+    */
+   get effectiveSize() {
+     console.warn(
+-      '<vaadin-grid> The `effectiveSize` property of ItemCache is deprecated and will be removed in Vaadin 25.',
++      '<vaadin24-grid> The `effectiveSize` property of ItemCache is deprecated and will be removed in Vaadin 25.',
+     );
+     return this.flatSize;
+   }
+@@ -226,7 +226,7 @@
+    */
+   getItemForIndex(index) {
+     console.warn(
+-      '<vaadin-grid> The `getItemForIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
++      '<vaadin24-grid> The `getItemForIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
+     );
+     const { item } = getFlatIndexContext(this, index);
+     return item;
+@@ -237,7 +237,7 @@
+    */
+   getCacheAndIndex(index) {
+     console.warn(
+-      '<vaadin-grid> The `getCacheAndIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
++      '<vaadin24-grid> The `getCacheAndIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
+     );
+     const { cache, index: scaledIndex } = getFlatIndexContext(this, index);
+     return { cache, scaledIndex };
+@@ -247,7 +247,7 @@
+    * @deprecated since 24.3 and will be removed in Vaadin 25.
+    */
+   updateSize() {
+-    console.warn('<vaadin-grid> The `updateSize` method of ItemCache is deprecated and will be removed in Vaadin 25.');
++    console.warn('<vaadin24-grid> The `updateSize` method of ItemCache is deprecated and will be removed in Vaadin 25.');
+     this.recalculateFlatSize();
+   }
+ 
+@@ -256,7 +256,7 @@
+    */
+   ensureSubCacheForScaledIndex(scaledIndex) {
+     console.warn(
+-      '<vaadin-grid> The `ensureSubCacheForScaledIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
++      '<vaadin24-grid> The `ensureSubCacheForScaledIndex` method of ItemCache is deprecated and will be removed in Vaadin 25.',
+     );
+ 
+     if (!this.getSubCache(scaledIndex)) {
+@@ -269,7 +269,7 @@
+    * @deprecated since 24.3 and will be removed in Vaadin 25.
+    */
+   get grid() {
+-    console.warn('<vaadin-grid> The `grid` property of ItemCache is deprecated and will be removed in Vaadin 25.');
++    console.warn('<vaadin24-grid> The `grid` property of ItemCache is deprecated and will be removed in Vaadin 25.');
+     return this.context.__controller.host;
+   }
+ 
+@@ -278,7 +278,7 @@
+    */
+   get itemCaches() {
+     console.warn(
+-      '<vaadin-grid> The `itemCaches` property of ItemCache is deprecated and will be removed in Vaadin 25.',
++      '<vaadin24-grid> The `itemCaches` property of ItemCache is deprecated and will be removed in Vaadin 25.',
+     );
+     return this.__subCacheByIndex;
+   }

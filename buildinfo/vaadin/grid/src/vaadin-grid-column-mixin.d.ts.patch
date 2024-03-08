@@ -1,0 +1,31 @@
+Index: grid/src/vaadin-grid-column-mixin.d.ts
+===================================================================
+--- grid/src/vaadin-grid-column-mixin.d.ts
++++ grid/src/vaadin-grid-column-mixin.d.ts
+@@ -81,7 +81,7 @@
+    * Receives two arguments:
+    *
+    * - `root` The header cell content DOM element. Append your content to it.
+-   * - `column` The `<vaadin-grid-column>` element.
++   * - `column` The `<vaadin24-grid-column>` element.
+    */
+   headerRenderer: GridHeaderFooterRenderer<TItem, Column> | null | undefined;
+ 
+@@ -90,7 +90,7 @@
+    * Receives two arguments:
+    *
+    * - `root` The footer cell content DOM element. Append your content to it.
+-   * - `column` The `<vaadin-grid-column>` element.
++   * - `column` The `<vaadin24-grid-column>` element.
+    */
+   footerRenderer: GridHeaderFooterRenderer<TItem, Column> | null | undefined;
+ 
+@@ -132,7 +132,7 @@
+    * Receives three arguments:
+    *
+    * - `root` The cell content DOM element. Append your content to it.
+-   * - `column` The `<vaadin-grid-column>` element.
++   * - `column` The `<vaadin24-grid-column>` element.
+    * - `model` The object with the properties related with
+    *   the rendered item, contains:
+    *   - `model.index` The index of the item.

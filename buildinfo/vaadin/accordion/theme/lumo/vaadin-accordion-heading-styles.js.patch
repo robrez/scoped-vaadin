@@ -1,0 +1,18 @@
+Index: accordion/theme/lumo/vaadin-accordion-heading-styles.js
+===================================================================
+--- accordion/theme/lumo/vaadin-accordion-heading-styles.js
++++ accordion/theme/lumo/vaadin-accordion-heading-styles.js
+@@ -1,5 +1,5 @@
+-import { detailsSummary } from '@vaadin/details/theme/lumo/vaadin-details-summary-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { detailsSummary } from '@scoped-vaadin/details/theme/lumo/vaadin-details-summary-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const accordionHeading = css`
+   :host {
+@@ -16,4 +16,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-accordion-heading', [detailsSummary, accordionHeading], { moduleId: 'lumo-accordion-heading' });
++registerStyles('vaadin24-accordion-heading', [detailsSummary, accordionHeading], { moduleId: 'lumo-accordion-heading' });

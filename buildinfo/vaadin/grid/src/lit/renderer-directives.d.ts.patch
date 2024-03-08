@@ -1,0 +1,27 @@
+Index: grid/src/lit/renderer-directives.d.ts
+===================================================================
+--- grid/src/lit/renderer-directives.d.ts
++++ grid/src/lit/renderer-directives.d.ts
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { DirectiveResult } from 'lit/directive';
+-import type { LitRendererResult } from '@vaadin/lit-renderer';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import type { LitRendererResult } from '@scoped-vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { Grid, GridItemModel } from '../vaadin-grid.js';
+ 
+ export type GridRowDetailsLitRenderer<TItem> = (
+@@ -51,9 +51,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-grid
++ * `<vaadin24-grid
+  *   ${gridRowDetailsRenderer((item, model, grid) => html`...`)}
+- * ></vaadin-grid>`
++ * ></vaadin24-grid>`
+  * ```
+  *
+  * @param renderer the renderer callback.

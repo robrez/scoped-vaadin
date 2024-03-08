@@ -1,0 +1,45 @@
+Index: details/src/vaadin-details.js
+===================================================================
+--- details/src/vaadin-details.js
++++ details/src/vaadin-details.js
+@@ -5,23 +5,23 @@
+  */
+ import './vaadin-details-summary.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DetailsBaseMixin } from './vaadin-details-base-mixin.js';
+ 
+ /**
+- * `<vaadin-details>` is a Web Component which the creates an
++ * `<vaadin24-details>` is a Web Component which the creates an
+  * expandable panel similar to `<details>` HTML element.
+  *
+  * ```
+- * <vaadin-details>
+- *   <vaadin-details-summary slot="summary">Expandable Details</vaadin-details-summary>
++ * <vaadin24-details>
++ *   <vaadin24-details-summary slot="summary">Expandable Details</vaadin24-details-summary>
+  *   <div>
+  *     Toggle using mouse, Enter and Space keys.
+  *   </div>
+- * </vaadin-details>
++ * </vaadin24-details>
+  * ```
+  *
+  * ### Styling
+@@ -84,7 +84,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-details';
++    return 'vaadin24-details';
+   }
+ }
+ 

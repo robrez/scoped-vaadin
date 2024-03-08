@@ -1,0 +1,48 @@
+Index: upload/src/vaadin-upload-mixin.js
+===================================================================
+--- upload/src/vaadin-upload-mixin.js
++++ upload/src/vaadin-upload-mixin.js
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { announce } from '@vaadin/a11y-base/src/announce.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
++import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+ 
+ class AddButtonController extends SlotController {
+   constructor(host) {
+-    super(host, 'add-button', 'vaadin-button');
++    super(host, 'add-button', 'vaadin24-button');
+   }
+ 
+   /**
+@@ -106,7 +106,7 @@
+          * Key-Value map to send to the server. If you set this property as an
+          * attribute, use a valid JSON string, for example:
+          * ```
+-         * <vaadin-upload headers='{"X-Foo": "Bar"}'></vaadin-upload>
++         * <vaadin24-upload headers='{"X-Foo": "Bar"}'></vaadin24-upload>
+          * ```
+          * @type {object | string}
+          */
+@@ -440,14 +440,14 @@
+       this.addController(this._dropLabelController);
+ 
+       this.addController(
+-        new SlotController(this, 'file-list', 'vaadin-upload-file-list', {
++        new SlotController(this, 'file-list', 'vaadin24-upload-file-list', {
+           initializer: (list) => {
+             this._fileList = list;
+           },
+         }),
+       );
+ 
+-      this.addController(new SlotController(this, 'drop-label-icon', 'vaadin-upload-icon'));
++      this.addController(new SlotController(this, 'drop-label-icon', 'vaadin24-upload-icon'));
+     }
+ 
+     /** @private */

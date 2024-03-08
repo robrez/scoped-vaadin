@@ -1,0 +1,77 @@
+Index: message-input/src/vaadin-message-input.js
+===================================================================
+--- message-input/src/vaadin-message-input.js
++++ message-input/src/vaadin-message-input.js
+@@ -3,18 +3,18 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/button/src/vaadin-button.js';
+-import '@vaadin/text-area/src/vaadin-text-area.js';
++import '@scoped-vaadin/button/src/vaadin-button.js';
++import '@scoped-vaadin/text-area/src/vaadin-text-area.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-message-input>` is a Web Component for sending messages.
++ * `<vaadin24-message-input>` is a Web Component for sending messages.
+  * It consists of a text area that grows on along with the content, and a send button to send message.
+  *
+  * The message can be sent by one of the following actions:
+@@ -22,7 +22,7 @@
+  * - by clicking `submit` button.
+  *
+  * ```html
+- * <vaadin-message-input></vaadin-message-input>
++ * <vaadin24-message-input></vaadin24-message-input>
+  * ```
+  *
+  * @customElement
+@@ -126,7 +126,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-message-input';
++    return 'vaadin24-message-input';
+   }
+ 
+   static get observers() {
+@@ -140,7 +140,7 @@
+   ready() {
+     super.ready();
+ 
+-    this._buttonController = new SlotController(this, 'button', 'vaadin-button', {
++    this._buttonController = new SlotController(this, 'button', 'vaadin24-button', {
+       initializer: (btn) => {
+         btn.setAttribute('theme', 'primary contained');
+ 
+@@ -153,7 +153,7 @@
+     });
+     this.addController(this._buttonController);
+ 
+-    this._textAreaController = new SlotController(this, 'textarea', 'vaadin-text-area', {
++    this._textAreaController = new SlotController(this, 'textarea', 'vaadin24-text-area', {
+       initializer: (textarea) => {
+         textarea.addEventListener('value-changed', (event) => {
+           this.value = event.detail.value;
+@@ -223,7 +223,7 @@
+   }
+ 
+   /**
+-   * Fired when a new message is submitted with `<vaadin-message-input>`, either
++   * Fired when a new message is submitted with `<vaadin24-message-input>`, either
+    * by clicking the "send" button, or pressing the Enter key.
+    * @event submit
+    */

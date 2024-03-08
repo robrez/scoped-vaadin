@@ -1,0 +1,58 @@
+Index: list-box/src/vaadin-list-box.js
+===================================================================
+--- list-box/src/vaadin-list-box.js
++++ list-box/src/vaadin-list-box.js
+@@ -4,23 +4,23 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { MultiSelectListMixin } from './vaadin-multi-select-list-mixin.js';
+ 
+ /**
+- * `<vaadin-list-box>` is a Web Component for creating menus.
++ * `<vaadin24-list-box>` is a Web Component for creating menus.
+  *
+  * ```
+- *   <vaadin-list-box selected="2">
+- *     <vaadin-item>Item 1</vaadin-item>
+- *     <vaadin-item>Item 2</vaadin-item>
+- *     <vaadin-item>Item 3</vaadin-item>
+- *     <vaadin-item>Item 4</vaadin-item>
+- *   </vaadin-list-box>
++ *   <vaadin24-list-box selected="2">
++ *     <vaadin24-item>Item 1</vaadin24-item>
++ *     <vaadin24-item>Item 2</vaadin24-item>
++ *     <vaadin24-item>Item 3</vaadin24-item>
++ *     <vaadin24-item>Item 4</vaadin24-item>
++ *   </vaadin24-list-box>
+  * ```
+  *
+  * ### Styling
+@@ -72,7 +72,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-list-box';
++    return 'vaadin24-list-box';
+   }
+ 
+   static get properties() {
+@@ -120,7 +120,7 @@
+ 
+   /** @private */
+   _checkImport() {
+-    const item = this.querySelector('vaadin-item');
++    const item = this.querySelector('vaadin24-item');
+     if (item && !(item instanceof PolymerElement)) {
+       console.warn(`Make sure you have imported the vaadin-item element.`);
+     }

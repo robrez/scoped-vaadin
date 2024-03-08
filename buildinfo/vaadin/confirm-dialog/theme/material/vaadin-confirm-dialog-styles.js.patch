@@ -1,0 +1,20 @@
+Index: confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
+===================================================================
+--- confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
++++ confirm-dialog/theme/material/vaadin-confirm-dialog-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/button/theme/material/vaadin-button-styles.js';
+-import { dialogOverlay } from '@vaadin/dialog/theme/material/vaadin-dialog-styles.js';
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
++import { dialogOverlay } from '@scoped-vaadin/dialog/theme/material/vaadin-dialog-styles.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-confirm-dialog-overlay',
++  'vaadin24-confirm-dialog-overlay',
+   [
+     overlay,
+     dialogOverlay,

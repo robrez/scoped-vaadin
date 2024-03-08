@@ -1,0 +1,35 @@
+Index: date-picker/src/vaadin-lit-date-picker-overlay-content.js
+===================================================================
+--- date-picker/src/vaadin-lit-date-picker-overlay-content.js
++++ date-picker/src/vaadin-lit-date-picker-overlay-content.js
+@@ -3,16 +3,16 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/button/src/vaadin-lit-button.js';
++import '@scoped-vaadin/button/src/vaadin-lit-button.js';
+ import './vaadin-date-picker-month-scroller.js';
+ import './vaadin-date-picker-year-scroller.js';
+ import './vaadin-lit-date-picker-year.js';
+ import './vaadin-lit-month-calendar.js';
+ import { html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DatePickerOverlayContentMixin } from './vaadin-date-picker-overlay-content-mixin.js';
+ import { overlayContentStyles } from './vaadin-date-picker-overlay-content-styles.js';
+ 
+@@ -24,7 +24,7 @@
+   ThemableMixin(DirMixin(PolylitMixin(LitElement))),
+ ) {
+   static get is() {
+-    return 'vaadin-date-picker-overlay-content';
++    return 'vaadin24-date-picker-overlay-content';
+   }
+ 
+   static get styles() {

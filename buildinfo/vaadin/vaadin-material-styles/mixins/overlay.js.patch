@@ -1,0 +1,13 @@
+Index: vaadin-material-styles/mixins/overlay.js
+===================================================================
+--- vaadin-material-styles/mixins/overlay.js
++++ vaadin-material-styles/mixins/overlay.js
+@@ -6,7 +6,7 @@
+ import '../color.js';
+ import '../typography.js';
+ import '../shadow.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const overlay = css`
+   :host {

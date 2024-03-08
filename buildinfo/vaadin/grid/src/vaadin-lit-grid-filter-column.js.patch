@@ -1,0 +1,28 @@
+Index: grid/src/vaadin-lit-grid-filter-column.js
+===================================================================
+--- grid/src/vaadin-lit-grid-filter-column.js
++++ grid/src/vaadin-lit-grid-filter-column.js
+@@ -4,12 +4,12 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import './vaadin-lit-grid-filter.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
+ import { GridFilterColumnMixin } from './vaadin-grid-filter-column-mixin.js';
+ import { GridColumn } from './vaadin-lit-grid-column.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-grid-filter-column>` web component.
++ * LitElement based version of `<vaadin24-grid-filter-column>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -19,7 +19,7 @@
+  */
+ class GridFilterColumn extends GridFilterColumnMixin(GridColumn) {
+   static get is() {
+-    return 'vaadin-grid-filter-column';
++    return 'vaadin24-grid-filter-column';
+   }
+ }
+ 

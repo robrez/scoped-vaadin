@@ -1,0 +1,41 @@
+Index: checkbox/src/vaadin-checkbox.js
+===================================================================
+--- checkbox/src/vaadin-checkbox.js
++++ checkbox/src/vaadin-checkbox.js
+@@ -4,20 +4,20 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { CheckboxMixin } from './vaadin-checkbox-mixin.js';
+ import { checkboxStyles } from './vaadin-checkbox-styles.js';
+ 
+-registerStyles('vaadin-checkbox', checkboxStyles, { moduleId: 'vaadin-checkbox-styles' });
++registerStyles('vaadin24-checkbox', checkboxStyles, { moduleId: 'vaadin-checkbox-styles' });
+ 
+ /**
+- * `<vaadin-checkbox>` is an input field representing a binary choice.
++ * `<vaadin24-checkbox>` is an input field representing a binary choice.
+  *
+  * ```html
+- * <vaadin-checkbox label="I accept the terms and conditions"></vaadin-checkbox>
++ * <vaadin24-checkbox label="I accept the terms and conditions"></vaadin24-checkbox>
+  * ```
+  *
+  * ### Styling
+@@ -54,7 +54,7 @@
+  */
+ export class Checkbox extends CheckboxMixin(ElementMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-checkbox';
++    return 'vaadin24-checkbox';
+   }
+ 
+   static get template() {

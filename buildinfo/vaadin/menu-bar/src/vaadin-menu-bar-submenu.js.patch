@@ -1,0 +1,37 @@
+Index: menu-bar/src/vaadin-menu-bar-submenu.js
+===================================================================
+--- menu-bar/src/vaadin-menu-bar-submenu.js
++++ menu-bar/src/vaadin-menu-bar-submenu.js
+@@ -7,11 +7,11 @@
+ import './vaadin-menu-bar-list-box.js';
+ import './vaadin-menu-bar-overlay.js';
+ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ContextMenu } from '@vaadin/context-menu/src/vaadin-context-menu.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ContextMenu } from '@scoped-vaadin/context-menu/src/vaadin-context-menu.js';
+ 
+ /**
+- * An element used internally by `<vaadin-menu-bar>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-menu-bar>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends ContextMenu
+@@ -19,7 +19,7 @@
+  */
+ class MenuBarSubmenu extends ContextMenu {
+   static get is() {
+-    return 'vaadin-menu-bar-submenu';
++    return 'vaadin24-menu-bar-submenu';
+   }
+ 
+   static get template() {
+@@ -50,7 +50,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-menu-bar';
++    return 'vaadin24-menu-bar';
+   }
+ 
+   /**

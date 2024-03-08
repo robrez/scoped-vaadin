@@ -1,0 +1,34 @@
+Index: login/src/vaadin-login-form-wrapper.js
+===================================================================
+--- login/src/vaadin-login-form-wrapper.js
++++ login/src/vaadin-login-form-wrapper.js
+@@ -4,16 +4,16 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { loginFormWrapperStyles } from './vaadin-login-form-wrapper-styles.js';
+ 
+-registerStyles('vaadin-login-form-wrapper', loginFormWrapperStyles, {
++registerStyles('vaadin24-login-form-wrapper', loginFormWrapperStyles, {
+   moduleId: 'vaadin-login-form-wrapper-styles',
+ });
+ 
+ /**
+- * An element used internally by `<vaadin-login-form>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-login-form>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ThemableMixin
+@@ -46,7 +46,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-login-form-wrapper';
++    return 'vaadin24-login-form-wrapper';
+   }
+ 
+   static get properties() {

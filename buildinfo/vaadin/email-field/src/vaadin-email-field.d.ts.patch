@@ -1,0 +1,43 @@
+Index: email-field/src/vaadin-email-field.d.ts
+===================================================================
+--- email-field/src/vaadin-email-field.d.ts
++++ email-field/src/vaadin-email-field.d.ts
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { TextField } from '@vaadin/text-field/src/vaadin-text-field.js';
++import { TextField } from '@scoped-vaadin/text-field/src/vaadin-text-field.js';
+ 
+ /**
+  * Fired when the user commits a value change.
+@@ -40,16 +40,16 @@
+ }
+ 
+ /**
+- * `<vaadin-email-field>` is a Web Component for email field control in forms.
++ * `<vaadin24-email-field>` is a Web Component for email field control in forms.
+  *
+  * ```html
+- * <vaadin-email-field label="Email"></vaadin-email-field>
++ * <vaadin24-email-field label="Email"></vaadin24-email-field>
+  * ```
+  *
+  * ### Styling
+  *
+- * `<vaadin-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.
++ * See [`<vaadin24-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+@@ -75,7 +75,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-email-field': EmailField;
++    'vaadin24-email-field': EmailField;
+   }
+ }
+ 

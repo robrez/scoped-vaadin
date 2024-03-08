@@ -1,0 +1,20 @@
+Index: message-list/theme/material/vaadin-message-styles.js
+===================================================================
+--- message-list/theme/material/vaadin-message-styles.js
++++ message-list/theme/material/vaadin-message-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import '@vaadin/avatar/theme/material/vaadin-avatar-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/avatar/theme/material/vaadin-avatar-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message',
++  'vaadin24-message',
+   css`
+     :host {
+       color: var(--material-body-text-color);

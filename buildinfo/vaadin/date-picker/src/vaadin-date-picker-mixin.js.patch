@@ -1,0 +1,47 @@
+Index: date-picker/src/vaadin-date-picker-mixin.js
+===================================================================
+--- date-picker/src/vaadin-date-picker-mixin.js
++++ date-picker/src/vaadin-date-picker-mixin.js
+@@ -3,15 +3,15 @@
+  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { hideOthers } from '@vaadin/a11y-base/src/aria-hidden.js';
+-import { DelegateFocusMixin } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
+-import { KeyboardMixin } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { InputConstraintsMixin } from '@vaadin/field-base/src/input-constraints-mixin.js';
+-import { VirtualKeyboardController } from '@vaadin/field-base/src/virtual-keyboard-controller.js';
++import { hideOthers } from '@scoped-vaadin/a11y-base/src/aria-hidden.js';
++import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
++import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { InputConstraintsMixin } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
++import { VirtualKeyboardController } from '@scoped-vaadin/field-base/src/virtual-keyboard-controller.js';
+ import {
+   dateAllowed,
+   dateEquals,
+@@ -410,7 +410,7 @@
+     /**
+      * Override a getter from `InputControlMixin` to make it optional
+      * and to prevent warning when a clear button is missing,
+-     * for example when using <vaadin-date-picker-light>.
++     * for example when using <vaadin24-date-picker-light>.
+      * @protected
+      * @return {Element | null | undefined}
+      */
+@@ -524,7 +524,7 @@
+       }
+ 
+       // Create and store document content element
+-      const content = document.createElement('vaadin-date-picker-overlay-content');
++      const content = document.createElement('vaadin24-date-picker-overlay-content');
+       root.appendChild(content);
+ 
+       this._overlayContent = content;

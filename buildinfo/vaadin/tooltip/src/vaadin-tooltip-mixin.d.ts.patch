@@ -1,0 +1,13 @@
+Index: tooltip/src/vaadin-tooltip-mixin.d.ts
+===================================================================
+--- tooltip/src/vaadin-tooltip-mixin.d.ts
++++ tooltip/src/vaadin-tooltip-mixin.d.ts
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
++import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
+ 
+ export type TooltipPosition =
+   | 'bottom-end'

@@ -1,0 +1,22 @@
+Index: grid/src/vaadin-grid-styling-mixin.d.ts
+===================================================================
+--- grid/src/vaadin-grid-styling-mixin.d.ts
++++ grid/src/vaadin-grid-styling-mixin.d.ts
+@@ -26,7 +26,7 @@
+    * characters.
+    *
+    * Receives two arguments:
+-   * - `column` The `<vaadin-grid-column>` element (`undefined` for details-cell).
++   * - `column` The `<vaadin24-grid-column>` element (`undefined` for details-cell).
+    * - `model` The object with the properties related with
+    *   the rendered item, contains:
+    *   - `model.index` The index of the item.
+@@ -47,7 +47,7 @@
+    * separated by whitespace characters.
+    *
+    * Receives two arguments:
+-   * - `column` The `<vaadin-grid-column>` element (`undefined` for details-cell).
++   * - `column` The `<vaadin24-grid-column>` element (`undefined` for details-cell).
+    * - `model` The object with the properties related with
+    *   the rendered item, contains:
+    *   - `model.index` The index of the item.

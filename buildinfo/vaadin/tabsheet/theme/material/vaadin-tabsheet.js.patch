@@ -1,0 +1,11 @@
+Index: tabsheet/theme/material/vaadin-tabsheet.js
+===================================================================
+--- tabsheet/theme/material/vaadin-tabsheet.js
++++ tabsheet/theme/material/vaadin-tabsheet.js
+@@ -1,4 +1,4 @@
+-import '@vaadin/tabs/theme/material/vaadin-tabs.js';
+-import '@vaadin/scroller/theme/material/vaadin-scroller.js';
++import '@scoped-vaadin/tabs/theme/material/vaadin-tabs.js';
++import '@scoped-vaadin/scroller/theme/material/vaadin-scroller.js';
+ import './vaadin-tabsheet-styles.js';
+ import '../../src/vaadin-tabsheet.js';

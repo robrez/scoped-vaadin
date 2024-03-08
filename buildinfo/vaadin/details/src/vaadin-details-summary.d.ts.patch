@@ -1,0 +1,26 @@
+Index: details/src/vaadin-details-summary.d.ts
+===================================================================
+--- details/src/vaadin-details-summary.d.ts
++++ details/src/vaadin-details-summary.d.ts
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2019 - 2023 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ButtonMixin } from '@vaadin/button/src/vaadin-button-mixin.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ButtonMixin } from '@scoped-vaadin/button/src/vaadin-button-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * The details summary element.
+@@ -40,7 +40,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-details-summary': DetailsSummary;
++    'vaadin24-details-summary': DetailsSummary;
+   }
+ }
+ 

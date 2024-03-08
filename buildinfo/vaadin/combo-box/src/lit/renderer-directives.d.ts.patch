@@ -1,0 +1,36 @@
+Index: combo-box/src/lit/renderer-directives.d.ts
+===================================================================
+--- combo-box/src/lit/renderer-directives.d.ts
++++ combo-box/src/lit/renderer-directives.d.ts
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { DirectiveResult } from 'lit/directive.js';
+-import type { LitRendererResult } from '@vaadin/lit-renderer';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import type { LitRendererResult } from '@scoped-vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { ComboBox, ComboBoxItemModel } from '../vaadin-combo-box.js';
+ 
+ export type ComboBoxLitRenderer<TItem> = (
+@@ -32,7 +32,7 @@
+ }
+ 
+ /**
+- * A Lit directive for rendering the content of the `<vaadin-combo-box-item>` elements.
++ * A Lit directive for rendering the content of the `<vaadin24-combo-box-item>` elements.
+  *
+  * The directive accepts a renderer callback returning a Lit template and assigns it to the combo-box
+  * via the `renderer` property. The renderer is called for each combo-box item when assigned
+@@ -48,9 +48,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-combo-box
++ * `<vaadin24-combo-box
+  *   ${comboBoxRenderer((item, model, comboBox) => html`...`)}
+- * ></vaadin-combo-box>`
++ * ></vaadin24-combo-box>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

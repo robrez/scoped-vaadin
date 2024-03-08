@@ -1,0 +1,22 @@
+Index: a11y-base/src/focus-mixin.js
+===================================================================
+--- a11y-base/src/focus-mixin.js
++++ a11y-base/src/focus-mixin.js
+@@ -38,7 +38,7 @@
+ 
+         // In super.ready() other 'focusin' and 'focusout' listeners might be
+         // added, so we call it after our own ones to ensure they execute first.
+-        // Issue to watch out: when incorrect, <vaadin-combo-box> refocuses the
++        // Issue to watch out: when incorrect, <vaadin24-combo-box> refocuses the
+         // input field on iOS after "Done" is pressed.
+         super.ready();
+       }
+@@ -48,7 +48,7 @@
+         super.disconnectedCallback();
+ 
+         // In non-Chrome browsers, blur does not fire on the element when it is disconnected.
+-        // reproducible in `<vaadin-date-picker>` when closing on `Cancel` or `Today` click.
++        // reproducible in `<vaadin24-date-picker>` when closing on `Cancel` or `Today` click.
+         if (this.hasAttribute('focused')) {
+           this._setFocused(false);
+         }

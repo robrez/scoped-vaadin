@@ -1,0 +1,46 @@
+Index: overlay/src/vaadin-overlay.js
+===================================================================
+--- overlay/src/vaadin-overlay.js
++++ overlay/src/vaadin-overlay.js
+@@ -4,17 +4,17 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { OverlayMixin } from './vaadin-overlay-mixin.js';
+ import { overlayStyles } from './vaadin-overlay-styles.js';
+ 
+-registerStyles('vaadin-overlay', overlayStyles, { moduleId: 'vaadin-overlay-styles' });
++registerStyles('vaadin24-overlay', overlayStyles, { moduleId: 'vaadin-overlay-styles' });
+ 
+ /**
+- * `<vaadin-overlay>` is a Web Component for creating overlays. The content of the overlay
++ * `<vaadin24-overlay>` is a Web Component for creating overlays. The content of the overlay
+  * can be populated imperatively by using `renderer` callback function.
+  *
+  * ### Rendering
+@@ -25,7 +25,7 @@
+  * content, users are able to check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-overlay id="overlay"></vaadin-overlay>
++ * <vaadin24-overlay id="overlay"></vaadin24-overlay>
+  * ```
+  * ```js
+  * const overlay = document.querySelector('#overlay');
+@@ -91,7 +91,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-overlay';
++    return 'vaadin24-overlay';
+   }
+ 
+   /** @protected */
