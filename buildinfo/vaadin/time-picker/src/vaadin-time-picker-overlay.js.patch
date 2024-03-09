@@ -1,7 +1,7 @@
-Index: time-picker/src/vaadin-time-picker-overlay.js
+Index: src/vaadin-time-picker-overlay.js
 ===================================================================
---- time-picker/src/vaadin-time-picker-overlay.js
-+++ time-picker/src/vaadin-time-picker-overlay.js
+--- src/vaadin-time-picker-overlay.js
++++ src/vaadin-time-picker-overlay.js
 @@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

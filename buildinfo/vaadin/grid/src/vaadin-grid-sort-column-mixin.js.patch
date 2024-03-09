@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-sort-column-mixin.js
+Index: src/vaadin-grid-sort-column-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-sort-column-mixin.js
-+++ grid/src/vaadin-grid-sort-column-mixin.js
+--- src/vaadin-grid-sort-column-mixin.js
++++ src/vaadin-grid-sort-column-mixin.js
 @@ -51,7 +51,7 @@
      _defaultHeaderRenderer(root, _column) {
        let sorter = root.firstElementChild;

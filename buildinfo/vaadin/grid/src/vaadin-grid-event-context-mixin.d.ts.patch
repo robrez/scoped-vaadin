@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-event-context-mixin.d.ts
+Index: src/vaadin-grid-event-context-mixin.d.ts
 ===================================================================
---- grid/src/vaadin-grid-event-context-mixin.d.ts
-+++ grid/src/vaadin-grid-event-context-mixin.d.ts
+--- src/vaadin-grid-event-context-mixin.d.ts
++++ src/vaadin-grid-event-context-mixin.d.ts
 @@ -37,7 +37,7 @@
     *
     * The returned object is populated only when a grid cell, header, footer or row details is found in `event.composedPath()`.

@@ -1,7 +1,7 @@
-Index: login/src/vaadin-login-mixin.js
+Index: src/vaadin-login-mixin.js
 ===================================================================
---- login/src/vaadin-login-mixin.js
-+++ login/src/vaadin-login-mixin.js
+--- src/vaadin-login-mixin.js
++++ src/vaadin-login-mixin.js
 @@ -85,7 +85,7 @@
           *
           * The object has the following JSON structure (by default it doesn't include `additionalInformation`

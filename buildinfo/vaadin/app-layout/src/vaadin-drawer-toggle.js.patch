@@ -1,7 +1,7 @@
-Index: app-layout/src/vaadin-drawer-toggle.js
+Index: src/vaadin-drawer-toggle.js
 ===================================================================
---- app-layout/src/vaadin-drawer-toggle.js
-+++ app-layout/src/vaadin-drawer-toggle.js
+--- src/vaadin-drawer-toggle.js
++++ src/vaadin-drawer-toggle.js
 @@ -4,17 +4,17 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

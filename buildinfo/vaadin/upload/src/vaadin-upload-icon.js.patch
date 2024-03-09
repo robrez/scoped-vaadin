@@ -1,7 +1,7 @@
-Index: upload/src/vaadin-upload-icon.js
+Index: src/vaadin-upload-icon.js
 ===================================================================
---- upload/src/vaadin-upload-icon.js
-+++ upload/src/vaadin-upload-icon.js
+--- src/vaadin-upload-icon.js
++++ src/vaadin-upload-icon.js
 @@ -4,11 +4,11 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

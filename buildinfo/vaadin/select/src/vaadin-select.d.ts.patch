@@ -1,7 +1,7 @@
-Index: select/src/vaadin-select.d.ts
+Index: src/vaadin-select.d.ts
 ===================================================================
---- select/src/vaadin-select.d.ts
-+++ select/src/vaadin-select.d.ts
+--- src/vaadin-select.d.ts
++++ src/vaadin-select.d.ts
 @@ -3,8 +3,8 @@
   * Copyright (c) 2017 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

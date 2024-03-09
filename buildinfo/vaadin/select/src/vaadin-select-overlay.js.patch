@@ -1,7 +1,7 @@
-Index: select/src/vaadin-select-overlay.js
+Index: src/vaadin-select-overlay.js
 ===================================================================
---- select/src/vaadin-select-overlay.js
-+++ select/src/vaadin-select-overlay.js
+--- src/vaadin-select-overlay.js
++++ src/vaadin-select-overlay.js
 @@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

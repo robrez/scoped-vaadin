@@ -1,7 +1,7 @@
-Index: avatar/README.md
+Index: README.md
 ===================================================================
---- avatar/README.md
-+++ avatar/README.md
+--- README.md
++++ README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/avatar
 +# @scoped-vaadin/avatar

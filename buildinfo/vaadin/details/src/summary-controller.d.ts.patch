@@ -1,7 +1,7 @@
-Index: details/src/summary-controller.d.ts
+Index: src/summary-controller.d.ts
 ===================================================================
---- details/src/summary-controller.d.ts
-+++ details/src/summary-controller.d.ts
+--- src/summary-controller.d.ts
++++ src/summary-controller.d.ts
 @@ -3,7 +3,7 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

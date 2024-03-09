@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/mixins/field-button.js
+Index: mixins/field-button.js
 ===================================================================
---- vaadin-lumo-styles/mixins/field-button.js
-+++ vaadin-lumo-styles/mixins/field-button.js
+--- mixins/field-button.js
++++ mixins/field-button.js
 @@ -7,7 +7,7 @@
  import '../font-icons.js';
  import '../sizing.js';

@@ -1,7 +1,7 @@
-Index: grid/README.md
+Index: README.md
 ===================================================================
---- grid/README.md
-+++ grid/README.md
+--- README.md
++++ README.md
 @@ -1,19 +1,21 @@
 -# @vaadin/grid
 +# @scoped-vaadin/grid

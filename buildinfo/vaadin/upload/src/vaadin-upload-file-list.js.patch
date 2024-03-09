@@ -1,7 +1,7 @@
-Index: upload/src/vaadin-upload-file-list.js
+Index: src/vaadin-upload-file-list.js
 ===================================================================
---- upload/src/vaadin-upload-file-list.js
-+++ upload/src/vaadin-upload-file-list.js
+--- src/vaadin-upload-file-list.js
++++ src/vaadin-upload-file-list.js
 @@ -5,12 +5,12 @@
   */
  import './vaadin-upload-file.js';

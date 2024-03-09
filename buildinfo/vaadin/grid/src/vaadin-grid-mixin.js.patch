@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-mixin.js
+Index: src/vaadin-grid-mixin.js
 ===================================================================
---- grid/src/vaadin-grid-mixin.js
-+++ grid/src/vaadin-grid-mixin.js
+--- src/vaadin-grid-mixin.js
++++ src/vaadin-grid-mixin.js
 @@ -3,15 +3,15 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
@@ -27,7 +27,7 @@ Index: grid/src/vaadin-grid-mixin.js
  import { A11yMixin } from './vaadin-grid-a11y-mixin.js';
  import { ActiveItemMixin } from './vaadin-grid-active-item-mixin.js';
  import { ArrayDataProviderMixin } from './vaadin-grid-array-data-provider-mixin.js';
-@@ -695,7 +695,7 @@
+@@ -704,7 +704,7 @@
            } else {
              // Header & footer
              const tagName = section === 'header' ? 'th' : 'td';

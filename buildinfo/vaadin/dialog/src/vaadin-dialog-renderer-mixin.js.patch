@@ -1,7 +1,7 @@
-Index: dialog/src/vaadin-dialog-renderer-mixin.js
+Index: src/vaadin-dialog-renderer-mixin.js
 ===================================================================
---- dialog/src/vaadin-dialog-renderer-mixin.js
-+++ dialog/src/vaadin-dialog-renderer-mixin.js
+--- src/vaadin-dialog-renderer-mixin.js
++++ src/vaadin-dialog-renderer-mixin.js
 @@ -16,7 +16,7 @@
           * Receives two arguments:
           *

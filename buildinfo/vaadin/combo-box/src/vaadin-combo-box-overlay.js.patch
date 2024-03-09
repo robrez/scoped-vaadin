@@ -1,7 +1,7 @@
-Index: combo-box/src/vaadin-combo-box-overlay.js
+Index: src/vaadin-combo-box-overlay.js
 ===================================================================
---- combo-box/src/vaadin-combo-box-overlay.js
-+++ combo-box/src/vaadin-combo-box-overlay.js
+--- src/vaadin-combo-box-overlay.js
++++ src/vaadin-combo-box-overlay.js
 @@ -4,11 +4,11 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

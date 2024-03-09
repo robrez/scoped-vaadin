@@ -1,7 +1,7 @@
-Index: field-highlighter/README.md
+Index: README.md
 ===================================================================
---- field-highlighter/README.md
-+++ field-highlighter/README.md
+--- README.md
++++ README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/field-highlighter
 +# @scoped-vaadin/field-highlighter

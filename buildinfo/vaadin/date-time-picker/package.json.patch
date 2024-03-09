@@ -1,17 +1,17 @@
-Index: date-time-picker/package.json
+Index: package.json
 ===================================================================
---- date-time-picker/package.json
-+++ date-time-picker/package.json
+--- package.json
++++ package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/date-time-picker",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/date-time-picker",
 +  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
-+    "directory": "packages/vaadin/date-time-picker"
++    "directory": "packages/date-time-picker"
 +  },
 +  "bugs": {
 +    "url": "https://github.com/robrez/scoped-vaadin/issues"
@@ -40,15 +40,15 @@ Index: date-time-picker/package.json
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/a11y-base": "~24.3.7",
--    "@vaadin/component-base": "~24.3.7",
--    "@vaadin/custom-field": "~24.3.7",
--    "@vaadin/date-picker": "~24.3.7",
--    "@vaadin/field-base": "~24.3.7",
--    "@vaadin/time-picker": "~24.3.7",
--    "@vaadin/vaadin-lumo-styles": "~24.3.7",
--    "@vaadin/vaadin-material-styles": "~24.3.7",
--    "@vaadin/vaadin-themable-mixin": "~24.3.7"
+-    "@vaadin/a11y-base": "~24.3.8",
+-    "@vaadin/component-base": "~24.3.8",
+-    "@vaadin/custom-field": "~24.3.8",
+-    "@vaadin/date-picker": "~24.3.8",
+-    "@vaadin/field-base": "~24.3.8",
+-    "@vaadin/time-picker": "~24.3.8",
+-    "@vaadin/vaadin-lumo-styles": "~24.3.8",
+-    "@vaadin/vaadin-material-styles": "~24.3.8",
+-    "@vaadin/vaadin-themable-mixin": "~24.3.8"
 -  },
 -  "devDependencies": {
 -    "@esm-bundle/chai": "^4.3.4",
@@ -59,7 +59,7 @@ Index: date-time-picker/package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
+-  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
 +    "@scoped-vaadin/a11y-base": "^24.3.7-alpha.1",

@@ -1,7 +1,7 @@
-Index: multi-select-combo-box/src/vaadin-multi-select-combo-box-internal.js
+Index: src/vaadin-multi-select-combo-box-internal.js
 ===================================================================
---- multi-select-combo-box/src/vaadin-multi-select-combo-box-internal.js
-+++ multi-select-combo-box/src/vaadin-multi-select-combo-box-internal.js
+--- src/vaadin-multi-select-combo-box-internal.js
++++ src/vaadin-multi-select-combo-box-internal.js
 @@ -7,14 +7,14 @@
  import './vaadin-multi-select-combo-box-overlay.js';
  import './vaadin-multi-select-combo-box-scroller.js';

@@ -1,7 +1,7 @@
-Index: form-layout/README.md
+Index: README.md
 ===================================================================
---- form-layout/README.md
-+++ form-layout/README.md
+--- README.md
++++ README.md
 @@ -1,18 +1,20 @@
 -# @vaadin/form-layout
 +# @scoped-vaadin/form-layout

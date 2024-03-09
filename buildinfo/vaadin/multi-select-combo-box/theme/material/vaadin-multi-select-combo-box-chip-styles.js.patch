@@ -1,7 +1,7 @@
-Index: multi-select-combo-box/theme/material/vaadin-multi-select-combo-box-chip-styles.js
+Index: theme/material/vaadin-multi-select-combo-box-chip-styles.js
 ===================================================================
---- multi-select-combo-box/theme/material/vaadin-multi-select-combo-box-chip-styles.js
-+++ multi-select-combo-box/theme/material/vaadin-multi-select-combo-box-chip-styles.js
+--- theme/material/vaadin-multi-select-combo-box-chip-styles.js
++++ theme/material/vaadin-multi-select-combo-box-chip-styles.js
 @@ -3,11 +3,11 @@
   * Copyright (c) 2021 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

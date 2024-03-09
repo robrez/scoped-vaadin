@@ -1,7 +1,7 @@
-Index: overlay/src/vaadin-overlay.js
+Index: src/vaadin-overlay.js
 ===================================================================
---- overlay/src/vaadin-overlay.js
-+++ overlay/src/vaadin-overlay.js
+--- src/vaadin-overlay.js
++++ src/vaadin-overlay.js
 @@ -4,17 +4,17 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

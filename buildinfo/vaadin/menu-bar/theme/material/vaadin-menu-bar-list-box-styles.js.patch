@@ -1,7 +1,7 @@
-Index: menu-bar/theme/material/vaadin-menu-bar-list-box-styles.js
+Index: theme/material/vaadin-menu-bar-list-box-styles.js
 ===================================================================
---- menu-bar/theme/material/vaadin-menu-bar-list-box-styles.js
-+++ menu-bar/theme/material/vaadin-menu-bar-list-box-styles.js
+--- theme/material/vaadin-menu-bar-list-box-styles.js
++++ theme/material/vaadin-menu-bar-list-box-styles.js
 @@ -1,5 +1,5 @@
 -import { contextMenuListBox } from '@vaadin/context-menu/theme/material/vaadin-context-menu-list-box-styles.js';
 -import { listBox } from '@vaadin/list-box/theme/material/vaadin-list-box-styles.js';

@@ -1,7 +1,7 @@
-Index: vaadin-material-styles/mixins/field-button.js
+Index: mixins/field-button.js
 ===================================================================
---- vaadin-material-styles/mixins/field-button.js
-+++ vaadin-material-styles/mixins/field-button.js
+--- mixins/field-button.js
++++ mixins/field-button.js
 @@ -4,7 +4,7 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

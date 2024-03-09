@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/mixins/required-field.js
+Index: mixins/required-field.js
 ===================================================================
---- vaadin-lumo-styles/mixins/required-field.js
-+++ vaadin-lumo-styles/mixins/required-field.js
+--- mixins/required-field.js
++++ mixins/required-field.js
 @@ -7,7 +7,7 @@
  import '../spacing.js';
  import '../style.js';

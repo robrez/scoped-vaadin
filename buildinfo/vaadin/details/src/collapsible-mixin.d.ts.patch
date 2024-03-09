@@ -1,7 +1,7 @@
-Index: details/src/collapsible-mixin.d.ts
+Index: src/collapsible-mixin.d.ts
 ===================================================================
---- details/src/collapsible-mixin.d.ts
-+++ details/src/collapsible-mixin.d.ts
+--- src/collapsible-mixin.d.ts
++++ src/collapsible-mixin.d.ts
 @@ -7,7 +7,7 @@
  
  /**

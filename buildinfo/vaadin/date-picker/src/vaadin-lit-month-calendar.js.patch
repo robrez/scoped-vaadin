@@ -1,7 +1,7 @@
-Index: date-picker/src/vaadin-lit-month-calendar.js
+Index: src/vaadin-lit-month-calendar.js
 ===================================================================
---- date-picker/src/vaadin-lit-month-calendar.js
-+++ date-picker/src/vaadin-lit-month-calendar.js
+--- src/vaadin-lit-month-calendar.js
++++ src/vaadin-lit-month-calendar.js
 @@ -4,9 +4,9 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

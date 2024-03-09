@@ -1,7 +1,7 @@
-Index: custom-field/theme/material/vaadin-custom-field-styles.js
+Index: theme/material/vaadin-custom-field-styles.js
 ===================================================================
---- custom-field/theme/material/vaadin-custom-field-styles.js
-+++ custom-field/theme/material/vaadin-custom-field-styles.js
+--- theme/material/vaadin-custom-field-styles.js
++++ theme/material/vaadin-custom-field-styles.js
 @@ -3,11 +3,11 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

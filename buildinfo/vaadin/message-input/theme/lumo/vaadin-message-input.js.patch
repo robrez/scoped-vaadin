@@ -1,7 +1,7 @@
-Index: message-input/theme/lumo/vaadin-message-input.js
+Index: theme/lumo/vaadin-message-input.js
 ===================================================================
---- message-input/theme/lumo/vaadin-message-input.js
-+++ message-input/theme/lumo/vaadin-message-input.js
+--- theme/lumo/vaadin-message-input.js
++++ theme/lumo/vaadin-message-input.js
 @@ -1,4 +1,4 @@
 -import '@vaadin/button/theme/lumo/vaadin-button.js';
 -import '@vaadin/text-area/theme/lumo/vaadin-text-area.js';

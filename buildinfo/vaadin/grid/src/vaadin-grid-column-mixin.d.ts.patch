@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-column-mixin.d.ts
+Index: src/vaadin-grid-column-mixin.d.ts
 ===================================================================
---- grid/src/vaadin-grid-column-mixin.d.ts
-+++ grid/src/vaadin-grid-column-mixin.d.ts
+--- src/vaadin-grid-column-mixin.d.ts
++++ src/vaadin-grid-column-mixin.d.ts
 @@ -81,7 +81,7 @@
     * Receives two arguments:
     *

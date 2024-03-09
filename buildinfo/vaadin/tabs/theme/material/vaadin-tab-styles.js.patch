@@ -1,7 +1,7 @@
-Index: tabs/theme/material/vaadin-tab-styles.js
+Index: theme/material/vaadin-tab-styles.js
 ===================================================================
---- tabs/theme/material/vaadin-tab-styles.js
-+++ tabs/theme/material/vaadin-tab-styles.js
+--- theme/material/vaadin-tab-styles.js
++++ theme/material/vaadin-tab-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/typography.js';

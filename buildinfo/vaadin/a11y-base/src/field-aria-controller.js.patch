@@ -1,7 +1,7 @@
-Index: a11y-base/src/field-aria-controller.js
+Index: src/field-aria-controller.js
 ===================================================================
---- a11y-base/src/field-aria-controller.js
-+++ a11y-base/src/field-aria-controller.js
+--- src/field-aria-controller.js
++++ src/field-aria-controller.js
 @@ -7,7 +7,7 @@
    removeAriaIDReference,
    restoreGeneratedAriaIDReference,

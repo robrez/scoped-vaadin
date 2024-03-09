@@ -1,7 +1,7 @@
-Index: avatar-group/theme/lumo/vaadin-avatar-group-styles.js
+Index: theme/lumo/vaadin-avatar-group-styles.js
 ===================================================================
---- avatar-group/theme/lumo/vaadin-avatar-group-styles.js
-+++ avatar-group/theme/lumo/vaadin-avatar-group-styles.js
+--- theme/lumo/vaadin-avatar-group-styles.js
++++ theme/lumo/vaadin-avatar-group-styles.js
 @@ -1,14 +1,14 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

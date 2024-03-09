@@ -1,7 +1,7 @@
-Index: date-time-picker/README.md
+Index: README.md
 ===================================================================
---- date-time-picker/README.md
-+++ date-time-picker/README.md
+--- README.md
++++ README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/date-time-picker
 +# @scoped-vaadin/date-time-picker

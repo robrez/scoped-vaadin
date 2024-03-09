@@ -1,7 +1,7 @@
-Index: upload/src/vaadin-upload-file-list-mixin.js
+Index: src/vaadin-upload-file-list-mixin.js
 ===================================================================
---- upload/src/vaadin-upload-file-list-mixin.js
-+++ upload/src/vaadin-upload-file-list-mixin.js
+--- src/vaadin-upload-file-list-mixin.js
++++ src/vaadin-upload-file-list-mixin.js
 @@ -40,7 +40,7 @@
      }
  

@@ -1,7 +1,7 @@
-Index: grid/theme/lumo/vaadin-grid-tree-toggle-styles.js
+Index: theme/lumo/vaadin-grid-tree-toggle-styles.js
 ===================================================================
---- grid/theme/lumo/vaadin-grid-tree-toggle-styles.js
-+++ grid/theme/lumo/vaadin-grid-tree-toggle-styles.js
+--- theme/lumo/vaadin-grid-tree-toggle-styles.js
++++ theme/lumo/vaadin-grid-tree-toggle-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

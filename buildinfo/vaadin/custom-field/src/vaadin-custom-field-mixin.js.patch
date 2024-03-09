@@ -1,7 +1,7 @@
-Index: custom-field/src/vaadin-custom-field-mixin.js
+Index: src/vaadin-custom-field-mixin.js
 ===================================================================
---- custom-field/src/vaadin-custom-field-mixin.js
-+++ custom-field/src/vaadin-custom-field-mixin.js
+--- src/vaadin-custom-field-mixin.js
++++ src/vaadin-custom-field-mixin.js
 @@ -3,11 +3,11 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

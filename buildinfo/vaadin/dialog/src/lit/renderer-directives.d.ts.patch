@@ -1,7 +1,7 @@
-Index: dialog/src/lit/renderer-directives.d.ts
+Index: src/lit/renderer-directives.d.ts
 ===================================================================
---- dialog/src/lit/renderer-directives.d.ts
-+++ dialog/src/lit/renderer-directives.d.ts
+--- src/lit/renderer-directives.d.ts
++++ src/lit/renderer-directives.d.ts
 @@ -5,8 +5,8 @@
   */
  /* eslint-disable max-classes-per-file */

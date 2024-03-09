@@ -1,7 +1,7 @@
-Index: context-menu/src/vaadin-menu-overlay-styles.js
+Index: src/vaadin-menu-overlay-styles.js
 ===================================================================
---- context-menu/src/vaadin-menu-overlay-styles.js
-+++ context-menu/src/vaadin-menu-overlay-styles.js
+--- src/vaadin-menu-overlay-styles.js
++++ src/vaadin-menu-overlay-styles.js
 @@ -3,7 +3,7 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

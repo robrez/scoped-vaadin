@@ -1,7 +1,7 @@
-Index: field-highlighter/src/fields/outline.js
+Index: src/fields/outline.js
 ===================================================================
---- field-highlighter/src/fields/outline.js
-+++ field-highlighter/src/fields/outline.js
+--- src/fields/outline.js
++++ src/fields/outline.js
 @@ -8,22 +8,22 @@
    switch (tagName) {
      /* c8 ignore next */

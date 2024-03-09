@@ -1,7 +1,7 @@
-Index: combo-box/src/vaadin-combo-box-scroller.js
+Index: src/vaadin-combo-box-scroller.js
 ===================================================================
---- combo-box/src/vaadin-combo-box-scroller.js
-+++ combo-box/src/vaadin-combo-box-scroller.js
+--- src/vaadin-combo-box-scroller.js
++++ src/vaadin-combo-box-scroller.js
 @@ -4,11 +4,11 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

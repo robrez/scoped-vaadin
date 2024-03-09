@@ -1,7 +1,7 @@
-Index: vaadin-material-styles/global.js
+Index: global.js
 ===================================================================
---- vaadin-material-styles/global.js
-+++ vaadin-material-styles/global.js
+--- global.js
++++ global.js
 @@ -1,4 +1,4 @@
 -import { addGlobalThemeStyles } from '@vaadin/vaadin-themable-mixin/register-styles.js';
 +import { addGlobalThemeStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';

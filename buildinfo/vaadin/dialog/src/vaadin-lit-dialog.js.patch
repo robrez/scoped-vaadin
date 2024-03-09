@@ -1,7 +1,7 @@
-Index: dialog/src/vaadin-lit-dialog.js
+Index: src/vaadin-lit-dialog.js
 ===================================================================
---- dialog/src/vaadin-lit-dialog.js
-+++ dialog/src/vaadin-lit-dialog.js
+--- src/vaadin-lit-dialog.js
++++ src/vaadin-lit-dialog.js
 @@ -6,11 +6,11 @@
  import './vaadin-lit-dialog-overlay.js';
  import { css, html, LitElement } from 'lit';

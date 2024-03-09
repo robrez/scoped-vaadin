@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/badge.js
+Index: badge.js
 ===================================================================
---- vaadin-lumo-styles/badge.js
-+++ vaadin-lumo-styles/badge.js
+--- badge.js
++++ badge.js
 @@ -6,7 +6,7 @@
  import './style.js';
  import './color.js';

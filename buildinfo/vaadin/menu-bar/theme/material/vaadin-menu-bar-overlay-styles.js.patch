@@ -1,7 +1,7 @@
-Index: menu-bar/theme/material/vaadin-menu-bar-overlay-styles.js
+Index: theme/material/vaadin-menu-bar-overlay-styles.js
 ===================================================================
---- menu-bar/theme/material/vaadin-menu-bar-overlay-styles.js
-+++ menu-bar/theme/material/vaadin-menu-bar-overlay-styles.js
+--- theme/material/vaadin-menu-bar-overlay-styles.js
++++ theme/material/vaadin-menu-bar-overlay-styles.js
 @@ -1,6 +1,6 @@
 -import { contextMenuOverlay } from '@vaadin/context-menu/theme/material/vaadin-context-menu-overlay-styles.js';
 -import { menuOverlay } from '@vaadin/vaadin-material-styles/mixins/menu-overlay.js';

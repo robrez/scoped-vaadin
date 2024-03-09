@@ -7,7 +7,7 @@ import fs from "fs";
 import { minify } from "terser";
 
 const nodePackagesRoot = "node_modules/@vaadin";
-const localPackagesRoot = "packages/vaadin";
+const localPackagesRoot = "packages";
 
 const regexes = [
   { re: /static get is\(\){return\'([a-z\-]+)'/g, pos: 1 },

@@ -1,7 +1,7 @@
-Index: select/src/vaadin-select-item.js
+Index: src/vaadin-select-item.js
 ===================================================================
---- select/src/vaadin-select-item.js
-+++ select/src/vaadin-select-item.js
+--- src/vaadin-select-item.js
++++ src/vaadin-select-item.js
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

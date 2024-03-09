@@ -1,7 +1,7 @@
-Index: custom-field/src/vaadin-custom-field.d.ts
+Index: src/vaadin-custom-field.d.ts
 ===================================================================
---- custom-field/src/vaadin-custom-field.d.ts
-+++ custom-field/src/vaadin-custom-field.d.ts
+--- src/vaadin-custom-field.d.ts
++++ src/vaadin-custom-field.d.ts
 @@ -3,8 +3,8 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

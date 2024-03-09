@@ -1,7 +1,7 @@
-Index: avatar-group/src/vaadin-avatar-group-overlay.js
+Index: src/vaadin-avatar-group-overlay.js
 ===================================================================
---- avatar-group/src/vaadin-avatar-group-overlay.js
-+++ avatar-group/src/vaadin-avatar-group-overlay.js
+--- src/vaadin-avatar-group-overlay.js
++++ src/vaadin-avatar-group-overlay.js
 @@ -4,19 +4,19 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

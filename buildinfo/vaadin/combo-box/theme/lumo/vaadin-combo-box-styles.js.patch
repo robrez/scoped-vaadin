@@ -1,7 +1,7 @@
-Index: combo-box/theme/lumo/vaadin-combo-box-styles.js
+Index: theme/lumo/vaadin-combo-box-styles.js
 ===================================================================
---- combo-box/theme/lumo/vaadin-combo-box-styles.js
-+++ combo-box/theme/lumo/vaadin-combo-box-styles.js
+--- theme/lumo/vaadin-combo-box-styles.js
++++ theme/lumo/vaadin-combo-box-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
 -import '@vaadin/vaadin-lumo-styles/font-icons.js';

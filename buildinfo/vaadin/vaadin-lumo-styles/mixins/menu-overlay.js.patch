@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/mixins/menu-overlay.js
+Index: mixins/menu-overlay.js
 ===================================================================
---- vaadin-lumo-styles/mixins/menu-overlay.js
-+++ vaadin-lumo-styles/mixins/menu-overlay.js
+--- mixins/menu-overlay.js
++++ mixins/menu-overlay.js
 @@ -5,7 +5,7 @@
   */
  import '../spacing.js';

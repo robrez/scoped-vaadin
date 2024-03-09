@@ -1,7 +1,7 @@
-Index: app-layout/theme/material/vaadin-app-layout-styles.js
+Index: theme/material/vaadin-app-layout-styles.js
 ===================================================================
---- app-layout/theme/material/vaadin-app-layout-styles.js
-+++ app-layout/theme/material/vaadin-app-layout-styles.js
+--- theme/material/vaadin-app-layout-styles.js
++++ theme/material/vaadin-app-layout-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/shadow.js';

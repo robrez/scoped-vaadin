@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-sorter.d.ts
+Index: src/vaadin-grid-sorter.d.ts
 ===================================================================
---- grid/src/vaadin-grid-sorter.d.ts
-+++ grid/src/vaadin-grid-sorter.d.ts
+--- src/vaadin-grid-sorter.d.ts
++++ src/vaadin-grid-sorter.d.ts
 @@ -3,26 +3,26 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

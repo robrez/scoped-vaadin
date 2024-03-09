@@ -1,7 +1,7 @@
-Index: tooltip/src/vaadin-lit-tooltip-overlay.js
+Index: src/vaadin-lit-tooltip-overlay.js
 ===================================================================
---- tooltip/src/vaadin-lit-tooltip-overlay.js
-+++ tooltip/src/vaadin-lit-tooltip-overlay.js
+--- src/vaadin-lit-tooltip-overlay.js
++++ src/vaadin-lit-tooltip-overlay.js
 @@ -4,16 +4,16 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

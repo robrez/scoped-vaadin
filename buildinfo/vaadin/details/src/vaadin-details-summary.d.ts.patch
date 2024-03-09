@@ -1,7 +1,7 @@
-Index: details/src/vaadin-details-summary.d.ts
+Index: src/vaadin-details-summary.d.ts
 ===================================================================
---- details/src/vaadin-details-summary.d.ts
-+++ details/src/vaadin-details-summary.d.ts
+--- src/vaadin-details-summary.d.ts
++++ src/vaadin-details-summary.d.ts
 @@ -3,9 +3,9 @@
   * Copyright (c) 2019 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

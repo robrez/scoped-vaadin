@@ -1,7 +1,7 @@
-Index: button/theme/lumo/vaadin-button-styles.js
+Index: theme/lumo/vaadin-button-styles.js
 ===================================================================
---- button/theme/lumo/vaadin-button-styles.js
-+++ button/theme/lumo/vaadin-button-styles.js
+--- theme/lumo/vaadin-button-styles.js
++++ theme/lumo/vaadin-button-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

@@ -1,7 +1,7 @@
-Index: time-picker/src/vaadin-time-picker-combo-box.js
+Index: src/vaadin-time-picker-combo-box.js
 ===================================================================
---- time-picker/src/vaadin-time-picker-combo-box.js
-+++ time-picker/src/vaadin-time-picker-combo-box.js
+--- src/vaadin-time-picker-combo-box.js
++++ src/vaadin-time-picker-combo-box.js
 @@ -7,12 +7,12 @@
  import './vaadin-time-picker-overlay.js';
  import './vaadin-time-picker-scroller.js';
