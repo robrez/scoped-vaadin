@@ -1,0 +1,42 @@
+{
+  "name": "@scoped-vaadin/icons",
+  "version": "24.3.7-alpha.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin/icons"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Collection of 600+ unique icons designed for web applications",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/icons",
+  "main": "vaadin-iconset.js",
+  "module": "vaadin-iconset.js",
+  "type": "module",
+  "scripts": {
+    "icons": "gulp icons --gulpfile gulpfile.cjs"
+  },
+  "files": [
+    "assets/**/*",
+    "vaadin-icons.js",
+    "vaadin-iconset.js"
+  ],
+  "keywords": [
+    "Vaadin",
+    "icons",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@scoped-vaadin/icon": "^24.3.7-alpha.1",
+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
+  }
+}

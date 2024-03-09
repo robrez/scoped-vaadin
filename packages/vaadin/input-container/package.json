@@ -1,0 +1,42 @@
+{
+  "name": "@scoped-vaadin/input-container",
+  "version": "24.3.7-alpha.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin/input-container"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "vaadin-input-container",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/components",
+  "main": "vaadin-input-container.js",
+  "module": "vaadin-input-container.js",
+  "type": "module",
+  "files": [
+    "src",
+    "theme",
+    "vaadin-*.d.ts",
+    "vaadin-*.js"
+  ],
+  "keywords": [
+    "Vaadin",
+    "web-components",
+    "web-component"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
+    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.7-alpha.1",
+    "@scoped-vaadin/vaadin-material-styles": "^24.3.7-alpha.1",
+    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.7-alpha.1",
+    "lit": "^3.0.0",
+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
+  }
+}
