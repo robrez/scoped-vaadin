@@ -1,12 +1,12 @@
-Index: details/web-types.json
+Index: web-types.json
 ===================================================================
---- details/web-types.json
-+++ details/web-types.json
+--- web-types.json
++++ web-types.json
 @@ -1,13 +1,13 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/details",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/details",
 +  "version": "24.3.7-alpha.1",
    "description-markup": "markdown",

@@ -1,7 +1,7 @@
-Index: radio-group/src/vaadin-radio-group.js
+Index: src/vaadin-radio-group.js
 ===================================================================
---- radio-group/src/vaadin-radio-group.js
-+++ radio-group/src/vaadin-radio-group.js
+--- src/vaadin-radio-group.js
++++ src/vaadin-radio-group.js
 @@ -5,23 +5,23 @@
   */
  import './vaadin-radio-button.js';

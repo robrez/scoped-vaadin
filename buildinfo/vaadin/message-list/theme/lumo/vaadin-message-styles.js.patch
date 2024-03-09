@@ -1,7 +1,7 @@
-Index: message-list/theme/lumo/vaadin-message-styles.js
+Index: theme/lumo/vaadin-message-styles.js
 ===================================================================
---- message-list/theme/lumo/vaadin-message-styles.js
-+++ message-list/theme/lumo/vaadin-message-styles.js
+--- theme/lumo/vaadin-message-styles.js
++++ theme/lumo/vaadin-message-styles.js
 @@ -1,13 +1,13 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

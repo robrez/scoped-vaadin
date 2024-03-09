@@ -1,7 +1,7 @@
-Index: notification/theme/material/vaadin-notification-styles.js
+Index: theme/material/vaadin-notification-styles.js
 ===================================================================
---- notification/theme/material/vaadin-notification-styles.js
-+++ notification/theme/material/vaadin-notification-styles.js
+--- theme/material/vaadin-notification-styles.js
++++ theme/material/vaadin-notification-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-material-styles/typography.js';
 -import '@vaadin/vaadin-material-styles/shadow.js';

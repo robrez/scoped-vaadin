@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-column-group.d.ts
+Index: src/vaadin-grid-column-group.d.ts
 ===================================================================
---- grid/src/vaadin-grid-column-group.d.ts
-+++ grid/src/vaadin-grid-column-group.d.ts
+--- src/vaadin-grid-column-group.d.ts
++++ src/vaadin-grid-column-group.d.ts
 @@ -8,17 +8,17 @@
  export * from './vaadin-grid-column-group-mixin.js';
  

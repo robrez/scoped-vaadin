@@ -1,7 +1,7 @@
-Index: login/theme/lumo/vaadin-login-overlay.js
+Index: theme/lumo/vaadin-login-overlay.js
 ===================================================================
---- login/theme/lumo/vaadin-login-overlay.js
-+++ login/theme/lumo/vaadin-login-overlay.js
+--- theme/lumo/vaadin-login-overlay.js
++++ theme/lumo/vaadin-login-overlay.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/text-field/theme/lumo/vaadin-text-field.js';
 -import '@vaadin/password-field/theme/lumo/vaadin-password-field.js';

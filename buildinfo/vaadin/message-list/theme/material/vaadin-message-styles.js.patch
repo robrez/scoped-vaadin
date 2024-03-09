@@ -1,7 +1,7 @@
-Index: message-list/theme/material/vaadin-message-styles.js
+Index: theme/material/vaadin-message-styles.js
 ===================================================================
---- message-list/theme/material/vaadin-message-styles.js
-+++ message-list/theme/material/vaadin-message-styles.js
+--- theme/material/vaadin-message-styles.js
++++ theme/material/vaadin-message-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/typography.js';

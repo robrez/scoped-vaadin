@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-selection-column.d.ts
+Index: src/vaadin-grid-selection-column.d.ts
 ===================================================================
---- grid/src/vaadin-grid-selection-column.d.ts
-+++ grid/src/vaadin-grid-selection-column.d.ts
+--- src/vaadin-grid-selection-column.d.ts
++++ src/vaadin-grid-selection-column.d.ts
 @@ -14,19 +14,19 @@
  export * from './vaadin-grid-selection-column-mixin.js';
  

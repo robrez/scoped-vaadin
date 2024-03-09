@@ -1,17 +1,17 @@
-Index: time-picker/package.json
+Index: package.json
 ===================================================================
---- time-picker/package.json
-+++ time-picker/package.json
+--- package.json
++++ package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/time-picker",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/time-picker",
 +  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
-+    "directory": "packages/vaadin/time-picker"
++    "directory": "packages/time-picker"
 +  },
 +  "bugs": {
 +    "url": "https://github.com/robrez/scoped-vaadin/issues"
@@ -40,15 +40,15 @@ Index: time-picker/package.json
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/combo-box": "~24.3.7",
--    "@vaadin/component-base": "~24.3.7",
--    "@vaadin/field-base": "~24.3.7",
--    "@vaadin/input-container": "~24.3.7",
--    "@vaadin/item": "~24.3.7",
--    "@vaadin/overlay": "~24.3.7",
--    "@vaadin/vaadin-lumo-styles": "~24.3.7",
--    "@vaadin/vaadin-material-styles": "~24.3.7",
--    "@vaadin/vaadin-themable-mixin": "~24.3.7"
+-    "@vaadin/combo-box": "~24.3.8",
+-    "@vaadin/component-base": "~24.3.8",
+-    "@vaadin/field-base": "~24.3.8",
+-    "@vaadin/input-container": "~24.3.8",
+-    "@vaadin/item": "~24.3.8",
+-    "@vaadin/overlay": "~24.3.8",
+-    "@vaadin/vaadin-lumo-styles": "~24.3.8",
+-    "@vaadin/vaadin-material-styles": "~24.3.8",
+-    "@vaadin/vaadin-themable-mixin": "~24.3.8"
 -  },
 -  "devDependencies": {
 -    "@esm-bundle/chai": "^4.3.4",
@@ -59,7 +59,7 @@ Index: time-picker/package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
+-  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
 +    "@scoped-vaadin/combo-box": "^24.3.7-alpha.1",

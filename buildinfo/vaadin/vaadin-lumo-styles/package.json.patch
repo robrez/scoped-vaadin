@@ -1,17 +1,17 @@
-Index: vaadin-lumo-styles/package.json
+Index: package.json
 ===================================================================
---- vaadin-lumo-styles/package.json
-+++ vaadin-lumo-styles/package.json
+--- package.json
++++ package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-lumo-styles",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/vaadin-lumo-styles",
 +  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
-+    "directory": "packages/vaadin/vaadin-lumo-styles"
++    "directory": "packages/vaadin-lumo-styles"
 +  },
 +  "bugs": {
 +    "url": "https://github.com/robrez/scoped-vaadin/issues"
@@ -38,9 +38,9 @@ Index: vaadin-lumo-styles/package.json
    ],
    "dependencies": {
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/component-base": "~24.3.7",
--    "@vaadin/icon": "~24.3.7",
--    "@vaadin/vaadin-themable-mixin": "~24.3.7"
+-    "@vaadin/component-base": "~24.3.8",
+-    "@vaadin/icon": "~24.3.8",
+-    "@vaadin/vaadin-themable-mixin": "~24.3.8"
 -  },
 -  "devDependencies": {
 -    "gulp": "^4.0.2",
@@ -49,7 +49,7 @@ Index: vaadin-lumo-styles/package.json
 -    "gulp-sort": "^2.0.0",
 -    "gulp-svgmin": "^4.1.0"
 -  },
--  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
+-  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
 +    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
 +    "@scoped-vaadin/icon": "^24.3.7-alpha.1",
 +    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.7-alpha.1",

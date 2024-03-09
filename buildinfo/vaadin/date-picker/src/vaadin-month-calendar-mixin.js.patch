@@ -1,7 +1,7 @@
-Index: date-picker/src/vaadin-month-calendar-mixin.js
+Index: src/vaadin-month-calendar-mixin.js
 ===================================================================
---- date-picker/src/vaadin-month-calendar-mixin.js
-+++ date-picker/src/vaadin-month-calendar-mixin.js
+--- src/vaadin-month-calendar-mixin.js
++++ src/vaadin-month-calendar-mixin.js
 @@ -3,8 +3,8 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

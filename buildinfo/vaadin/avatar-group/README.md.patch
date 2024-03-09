@@ -1,7 +1,7 @@
-Index: avatar-group/README.md
+Index: README.md
 ===================================================================
---- avatar-group/README.md
-+++ avatar-group/README.md
+--- README.md
++++ README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/avatar-group
 +# @scoped-vaadin/avatar-group

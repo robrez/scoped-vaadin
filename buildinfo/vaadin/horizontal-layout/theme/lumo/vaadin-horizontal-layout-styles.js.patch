@@ -1,7 +1,7 @@
-Index: horizontal-layout/theme/lumo/vaadin-horizontal-layout-styles.js
+Index: theme/lumo/vaadin-horizontal-layout-styles.js
 ===================================================================
---- horizontal-layout/theme/lumo/vaadin-horizontal-layout-styles.js
-+++ horizontal-layout/theme/lumo/vaadin-horizontal-layout-styles.js
+--- theme/lumo/vaadin-horizontal-layout-styles.js
++++ theme/lumo/vaadin-horizontal-layout-styles.js
 @@ -1,5 +1,5 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

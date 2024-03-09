@@ -1,6 +1,6 @@
 /**
  * Reads files in `node_modules/@vaadin/**`
- * Writes them to `packages/vaadin/**`
+ * Writes them to `packages/**`
  * Performs replacement tagNames: `vaadin-` => `vaadin{majorVersion}-`
  */
 
@@ -21,7 +21,7 @@ import { createPatch } from "diff";
 
 export const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
-const localPackagesRoot = "packages/vaadin";
+const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
 
 function findPackages(dir) {
@@ -124,7 +124,7 @@ function processPackageJson(content, filePath) {
       ...newRepository,
       directory: oldRepository.directory.replace(
         "packages/",
-        "packages/vaadin/"
+        "packages/"
       ),
     };
   }

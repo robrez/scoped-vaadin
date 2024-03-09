@@ -1,7 +1,7 @@
-Index: scroller/src/vaadin-scroller.js
+Index: src/vaadin-scroller.js
 ===================================================================
---- scroller/src/vaadin-scroller.js
-+++ scroller/src/vaadin-scroller.js
+--- src/vaadin-scroller.js
++++ src/vaadin-scroller.js
 @@ -4,20 +4,20 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

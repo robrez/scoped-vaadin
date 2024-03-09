@@ -1,7 +1,7 @@
-Index: checkbox-group/theme/material/vaadin-checkbox-group-styles.js
+Index: theme/material/vaadin-checkbox-group-styles.js
 ===================================================================
---- checkbox-group/theme/material/vaadin-checkbox-group-styles.js
-+++ checkbox-group/theme/material/vaadin-checkbox-group-styles.js
+--- theme/material/vaadin-checkbox-group-styles.js
++++ theme/material/vaadin-checkbox-group-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { helper } from '@vaadin/vaadin-material-styles/mixins/helper.js';

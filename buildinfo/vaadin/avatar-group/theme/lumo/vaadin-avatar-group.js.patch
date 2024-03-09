@@ -1,7 +1,7 @@
-Index: avatar-group/theme/lumo/vaadin-avatar-group.js
+Index: theme/lumo/vaadin-avatar-group.js
 ===================================================================
---- avatar-group/theme/lumo/vaadin-avatar-group.js
-+++ avatar-group/theme/lumo/vaadin-avatar-group.js
+--- theme/lumo/vaadin-avatar-group.js
++++ theme/lumo/vaadin-avatar-group.js
 @@ -1,3 +1,3 @@
 -import '@vaadin/avatar/theme/lumo/vaadin-avatar.js';
 +import '@scoped-vaadin/avatar/theme/lumo/vaadin-avatar.js';

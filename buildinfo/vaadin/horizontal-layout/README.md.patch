@@ -1,7 +1,7 @@
-Index: horizontal-layout/README.md
+Index: README.md
 ===================================================================
---- horizontal-layout/README.md
-+++ horizontal-layout/README.md
+--- README.md
++++ README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/horizontal-layout
 +# @scoped-vaadin/horizontal-layout

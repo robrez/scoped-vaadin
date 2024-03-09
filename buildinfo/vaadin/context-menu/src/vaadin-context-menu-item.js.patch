@@ -1,7 +1,7 @@
-Index: context-menu/src/vaadin-context-menu-item.js
+Index: src/vaadin-context-menu-item.js
 ===================================================================
---- context-menu/src/vaadin-context-menu-item.js
-+++ context-menu/src/vaadin-context-menu-item.js
+--- src/vaadin-context-menu-item.js
++++ src/vaadin-context-menu-item.js
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

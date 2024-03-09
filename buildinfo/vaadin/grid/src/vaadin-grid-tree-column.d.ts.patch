@@ -1,7 +1,7 @@
-Index: grid/src/vaadin-grid-tree-column.d.ts
+Index: src/vaadin-grid-tree-column.d.ts
 ===================================================================
---- grid/src/vaadin-grid-tree-column.d.ts
-+++ grid/src/vaadin-grid-tree-column.d.ts
+--- src/vaadin-grid-tree-column.d.ts
++++ src/vaadin-grid-tree-column.d.ts
 @@ -8,15 +8,15 @@
  import type { GridTreeColumnMixinClass } from './vaadin-grid-tree-column-mixin.js';
  

@@ -1,7 +1,7 @@
-Index: grid/theme/material/vaadin-grid-tree-toggle-styles.js
+Index: theme/material/vaadin-grid-tree-toggle-styles.js
 ===================================================================
---- grid/theme/material/vaadin-grid-tree-toggle-styles.js
-+++ grid/theme/material/vaadin-grid-tree-toggle-styles.js
+--- theme/material/vaadin-grid-tree-toggle-styles.js
++++ theme/material/vaadin-grid-tree-toggle-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/font-icons.js';

@@ -1,7 +1,7 @@
-Index: notification/src/vaadin-notification.js
+Index: src/vaadin-notification.js
 ===================================================================
---- notification/src/vaadin-notification.js
-+++ notification/src/vaadin-notification.js
+--- src/vaadin-notification.js
++++ src/vaadin-notification.js
 @@ -6,16 +6,16 @@
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
  import { render } from 'lit';

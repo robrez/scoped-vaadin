@@ -1,7 +1,7 @@
-Index: polymer-legacy-adapter/src/template-renderer-templatizer.js
+Index: src/template-renderer-templatizer.js
 ===================================================================
---- polymer-legacy-adapter/src/template-renderer-templatizer.js
-+++ polymer-legacy-adapter/src/template-renderer-templatizer.js
+--- src/template-renderer-templatizer.js
++++ src/template-renderer-templatizer.js
 @@ -5,11 +5,11 @@
   */
  import { PolymerElement } from '@polymer/polymer';

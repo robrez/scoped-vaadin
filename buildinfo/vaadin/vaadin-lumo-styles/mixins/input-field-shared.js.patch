@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/mixins/input-field-shared.js
+Index: mixins/input-field-shared.js
 ===================================================================
---- vaadin-lumo-styles/mixins/input-field-shared.js
-+++ vaadin-lumo-styles/mixins/input-field-shared.js
+--- mixins/input-field-shared.js
++++ mixins/input-field-shared.js
 @@ -9,7 +9,7 @@
  import '../spacing.js';
  import '../style.js';

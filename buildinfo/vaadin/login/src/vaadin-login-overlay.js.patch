@@ -1,7 +1,7 @@
-Index: login/src/vaadin-login-overlay.js
+Index: src/vaadin-login-overlay.js
 ===================================================================
---- login/src/vaadin-login-overlay.js
-+++ login/src/vaadin-login-overlay.js
+--- src/vaadin-login-overlay.js
++++ src/vaadin-login-overlay.js
 @@ -6,37 +6,37 @@
  import './vaadin-login-form.js';
  import './vaadin-login-overlay-wrapper.js';

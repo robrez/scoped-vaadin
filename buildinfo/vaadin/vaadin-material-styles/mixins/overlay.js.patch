@@ -1,7 +1,7 @@
-Index: vaadin-material-styles/mixins/overlay.js
+Index: mixins/overlay.js
 ===================================================================
---- vaadin-material-styles/mixins/overlay.js
-+++ vaadin-material-styles/mixins/overlay.js
+--- mixins/overlay.js
++++ mixins/overlay.js
 @@ -6,7 +6,7 @@
  import '../color.js';
  import '../typography.js';

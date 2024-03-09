@@ -1,7 +1,7 @@
-Index: scroller/theme/lumo/vaadin-scroller-styles.js
+Index: theme/lumo/vaadin-scroller-styles.js
 ===================================================================
---- scroller/theme/lumo/vaadin-scroller-styles.js
-+++ scroller/theme/lumo/vaadin-scroller-styles.js
+--- theme/lumo/vaadin-scroller-styles.js
++++ theme/lumo/vaadin-scroller-styles.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/style.js';

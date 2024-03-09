@@ -1,7 +1,7 @@
-Index: item/README.md
+Index: README.md
 ===================================================================
---- item/README.md
-+++ item/README.md
+--- README.md
++++ README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/item
 +# @scoped-vaadin/item

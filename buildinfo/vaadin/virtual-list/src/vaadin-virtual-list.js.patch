@@ -1,7 +1,7 @@
-Index: virtual-list/src/vaadin-virtual-list.js
+Index: src/vaadin-virtual-list.js
 ===================================================================
---- virtual-list/src/vaadin-virtual-list.js
-+++ virtual-list/src/vaadin-virtual-list.js
+--- src/vaadin-virtual-list.js
++++ src/vaadin-virtual-list.js
 @@ -4,23 +4,23 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

@@ -1,12 +1,12 @@
-Index: tabs/web-types.json
+Index: web-types.json
 ===================================================================
---- tabs/web-types.json
-+++ tabs/web-types.json
+--- web-types.json
++++ web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/tabs",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/tabs",
 +  "version": "24.3.7-alpha.1",
    "description-markup": "markdown",

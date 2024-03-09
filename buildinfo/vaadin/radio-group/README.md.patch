@@ -1,7 +1,7 @@
-Index: radio-group/README.md
+Index: README.md
 ===================================================================
---- radio-group/README.md
-+++ radio-group/README.md
+--- README.md
++++ README.md
 @@ -1,15 +1,17 @@
 -# @vaadin/radio-group
 +# @scoped-vaadin/radio-group

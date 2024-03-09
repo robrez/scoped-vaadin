@@ -1,7 +1,7 @@
-Index: select/src/vaadin-select-base-mixin.js
+Index: src/vaadin-select-base-mixin.js
 ===================================================================
---- select/src/vaadin-select-base-mixin.js
-+++ select/src/vaadin-select-base-mixin.js
+--- src/vaadin-select-base-mixin.js
++++ src/vaadin-select-base-mixin.js
 @@ -3,16 +3,16 @@
   * Copyright (c) 2017 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

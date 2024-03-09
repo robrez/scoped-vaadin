@@ -1,7 +1,7 @@
-Index: a11y-base/src/aria-id-reference.js
+Index: src/aria-id-reference.js
 ===================================================================
---- a11y-base/src/aria-id-reference.js
-+++ a11y-base/src/aria-id-reference.js
+--- src/aria-id-reference.js
++++ src/aria-id-reference.js
 @@ -8,7 +8,7 @@
    deserializeAttributeValue,
    removeValueFromAttribute,

@@ -1,17 +1,17 @@
-Index: icon/package.json
+Index: package.json
 ===================================================================
---- icon/package.json
-+++ icon/package.json
+--- package.json
++++ package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/icon",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/icon",
 +  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
-+    "directory": "packages/vaadin/icon"
++    "directory": "packages/icon"
 +  },
 +  "bugs": {
 +    "url": "https://github.com/robrez/scoped-vaadin/issues"
@@ -41,9 +41,9 @@ Index: icon/package.json
 -  "dependencies": {
 -    "@open-wc/dedupe-mixin": "^1.3.0",
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/component-base": "~24.3.7",
--    "@vaadin/vaadin-lumo-styles": "~24.3.7",
--    "@vaadin/vaadin-themable-mixin": "~24.3.7",
+-    "@vaadin/component-base": "~24.3.8",
+-    "@vaadin/vaadin-lumo-styles": "~24.3.8",
+-    "@vaadin/vaadin-themable-mixin": "~24.3.8",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
@@ -55,7 +55,7 @@ Index: icon/package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
+-  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
 +  "dependencies": {
 +    "@open-wc/dedupe-mixin": "^1.3.0",
 +    "@polymer/polymer": "^3.0.0",

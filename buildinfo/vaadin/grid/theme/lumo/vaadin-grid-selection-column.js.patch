@@ -1,7 +1,7 @@
-Index: grid/theme/lumo/vaadin-grid-selection-column.js
+Index: theme/lumo/vaadin-grid-selection-column.js
 ===================================================================
---- grid/theme/lumo/vaadin-grid-selection-column.js
-+++ grid/theme/lumo/vaadin-grid-selection-column.js
+--- theme/lumo/vaadin-grid-selection-column.js
++++ theme/lumo/vaadin-grid-selection-column.js
 @@ -1,2 +1,2 @@
 -import '@vaadin/checkbox/theme/lumo/vaadin-checkbox.js';
 +import '@scoped-vaadin/checkbox/theme/lumo/vaadin-checkbox.js';

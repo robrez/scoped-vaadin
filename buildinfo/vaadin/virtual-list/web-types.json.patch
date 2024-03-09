@@ -1,12 +1,12 @@
-Index: virtual-list/web-types.json
+Index: web-types.json
 ===================================================================
---- virtual-list/web-types.json
-+++ virtual-list/web-types.json
+--- web-types.json
++++ web-types.json
 @@ -1,14 +1,14 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/virtual-list",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/virtual-list",
 +  "version": "24.3.7-alpha.1",
    "description-markup": "markdown",

@@ -1,7 +1,7 @@
-Index: date-picker/src/vaadin-date-picker-overlay-content-mixin.js
+Index: src/vaadin-date-picker-overlay-content-mixin.js
 ===================================================================
---- date-picker/src/vaadin-date-picker-overlay-content-mixin.js
-+++ date-picker/src/vaadin-date-picker-overlay-content-mixin.js
+--- src/vaadin-date-picker-overlay-content-mixin.js
++++ src/vaadin-date-picker-overlay-content-mixin.js
 @@ -5,11 +5,11 @@
   */
  import { flush } from '@polymer/polymer/lib/utils/flush.js';

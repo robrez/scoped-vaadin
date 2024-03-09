@@ -1,7 +1,7 @@
-Index: message-input/theme/lumo/vaadin-message-input-styles.js
+Index: theme/lumo/vaadin-message-input-styles.js
 ===================================================================
---- message-input/theme/lumo/vaadin-message-input-styles.js
-+++ message-input/theme/lumo/vaadin-message-input-styles.js
+--- theme/lumo/vaadin-message-input-styles.js
++++ theme/lumo/vaadin-message-input-styles.js
 @@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/sizing.js';

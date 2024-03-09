@@ -1,7 +1,7 @@
-Index: combo-box/src/vaadin-combo-box-light.js
+Index: src/vaadin-combo-box-light.js
 ===================================================================
---- combo-box/src/vaadin-combo-box-light.js
-+++ combo-box/src/vaadin-combo-box-light.js
+--- src/vaadin-combo-box-light.js
++++ src/vaadin-combo-box-light.js
 @@ -9,26 +9,26 @@
  import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
  import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';

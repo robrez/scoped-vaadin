@@ -1,7 +1,7 @@
-Index: tabsheet/theme/lumo/vaadin-tabsheet.js
+Index: theme/lumo/vaadin-tabsheet.js
 ===================================================================
---- tabsheet/theme/lumo/vaadin-tabsheet.js
-+++ tabsheet/theme/lumo/vaadin-tabsheet.js
+--- theme/lumo/vaadin-tabsheet.js
++++ theme/lumo/vaadin-tabsheet.js
 @@ -1,4 +1,4 @@
 -import '@vaadin/tabs/theme/lumo/vaadin-tabs.js';
 -import '@vaadin/scroller/theme/lumo/vaadin-scroller.js';

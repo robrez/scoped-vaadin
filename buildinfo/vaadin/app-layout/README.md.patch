@@ -1,7 +1,7 @@
-Index: app-layout/README.md
+Index: README.md
 ===================================================================
---- app-layout/README.md
-+++ app-layout/README.md
+--- README.md
++++ README.md
 @@ -1,32 +1,34 @@
 -# @vaadin/app-layout
 +# @scoped-vaadin/app-layout

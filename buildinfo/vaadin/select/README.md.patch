@@ -1,7 +1,7 @@
-Index: select/README.md
+Index: README.md
 ===================================================================
---- select/README.md
-+++ select/README.md
+--- README.md
++++ README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/select
 +# @scoped-vaadin/select

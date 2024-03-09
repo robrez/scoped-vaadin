@@ -1,7 +1,7 @@
-Index: context-menu/src/vaadin-lit-context-menu-overlay.js
+Index: src/vaadin-lit-context-menu-overlay.js
 ===================================================================
---- context-menu/src/vaadin-lit-context-menu-overlay.js
-+++ context-menu/src/vaadin-lit-context-menu-overlay.js
+--- src/vaadin-lit-context-menu-overlay.js
++++ src/vaadin-lit-context-menu-overlay.js
 @@ -4,17 +4,17 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

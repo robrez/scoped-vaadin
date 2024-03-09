@@ -1,7 +1,7 @@
-Index: field-base/src/pattern-mixin.d.ts
+Index: src/pattern-mixin.d.ts
 ===================================================================
---- field-base/src/pattern-mixin.d.ts
-+++ field-base/src/pattern-mixin.d.ts
+--- src/pattern-mixin.d.ts
++++ src/pattern-mixin.d.ts
 @@ -4,7 +4,7 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

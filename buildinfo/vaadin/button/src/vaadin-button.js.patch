@@ -1,7 +1,7 @@
-Index: button/src/vaadin-button.js
+Index: src/vaadin-button.js
 ===================================================================
---- button/src/vaadin-button.js
-+++ button/src/vaadin-button.js
+--- src/vaadin-button.js
++++ src/vaadin-button.js
 @@ -4,21 +4,21 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

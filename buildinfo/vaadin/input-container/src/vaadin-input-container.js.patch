@@ -1,7 +1,7 @@
-Index: input-container/src/vaadin-input-container.js
+Index: src/vaadin-input-container.js
 ===================================================================
---- input-container/src/vaadin-input-container.js
-+++ input-container/src/vaadin-input-container.js
+--- src/vaadin-input-container.js
++++ src/vaadin-input-container.js
 @@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
