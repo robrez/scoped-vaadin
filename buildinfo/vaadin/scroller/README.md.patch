@@ -1,7 +1,7 @@
-Index: scroller/README.md
+Index: README.md
 ===================================================================
---- scroller/README.md
-+++ scroller/README.md
+--- README.md
++++ README.md
 @@ -1,23 +1,25 @@
 -# @vaadin/scroller
 +# @scoped-vaadin/scroller

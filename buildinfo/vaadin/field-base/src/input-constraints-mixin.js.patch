@@ -1,7 +1,7 @@
-Index: field-base/src/input-constraints-mixin.js
+Index: src/input-constraints-mixin.js
 ===================================================================
---- field-base/src/input-constraints-mixin.js
-+++ field-base/src/input-constraints-mixin.js
+--- src/input-constraints-mixin.js
++++ src/input-constraints-mixin.js
 @@ -4,7 +4,7 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

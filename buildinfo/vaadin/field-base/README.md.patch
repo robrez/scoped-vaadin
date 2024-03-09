@@ -1,7 +1,7 @@
-Index: field-base/README.md
+Index: README.md
 ===================================================================
---- field-base/README.md
-+++ field-base/README.md
+--- README.md
++++ README.md
 @@ -1,5 +1,7 @@
 -# @vaadin/field-base
 +# @scoped-vaadin/field-base

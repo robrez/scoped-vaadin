@@ -1,7 +1,7 @@
-Index: confirm-dialog/src/vaadin-confirm-dialog-overlay.js
+Index: src/vaadin-confirm-dialog-overlay.js
 ===================================================================
---- confirm-dialog/src/vaadin-confirm-dialog-overlay.js
-+++ confirm-dialog/src/vaadin-confirm-dialog-overlay.js
+--- src/vaadin-confirm-dialog-overlay.js
++++ src/vaadin-confirm-dialog-overlay.js
 @@ -4,24 +4,24 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

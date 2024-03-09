@@ -1,7 +1,7 @@
-Index: dialog/theme/lumo/vaadin-dialog-styles.js
+Index: theme/lumo/vaadin-dialog-styles.js
 ===================================================================
---- dialog/theme/lumo/vaadin-dialog-styles.js
-+++ dialog/theme/lumo/vaadin-dialog-styles.js
+--- theme/lumo/vaadin-dialog-styles.js
++++ theme/lumo/vaadin-dialog-styles.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';

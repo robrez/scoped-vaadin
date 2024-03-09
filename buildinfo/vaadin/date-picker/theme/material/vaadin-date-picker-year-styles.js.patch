@@ -1,7 +1,7 @@
-Index: date-picker/theme/material/vaadin-date-picker-year-styles.js
+Index: theme/material/vaadin-date-picker-year-styles.js
 ===================================================================
---- date-picker/theme/material/vaadin-date-picker-year-styles.js
-+++ date-picker/theme/material/vaadin-date-picker-year-styles.js
+--- theme/material/vaadin-date-picker-year-styles.js
++++ theme/material/vaadin-date-picker-year-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-material-styles/typography.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

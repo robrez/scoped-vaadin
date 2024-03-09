@@ -1,7 +1,7 @@
-Index: icon/src/vaadin-iconset.d.ts
+Index: src/vaadin-iconset.d.ts
 ===================================================================
---- icon/src/vaadin-iconset.d.ts
-+++ icon/src/vaadin-iconset.d.ts
+--- src/vaadin-iconset.d.ts
++++ src/vaadin-iconset.d.ts
 @@ -3,16 +3,16 @@
   * Copyright (c) 2021 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

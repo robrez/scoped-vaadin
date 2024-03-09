@@ -1,7 +1,7 @@
-Index: details/src/collapsible-mixin.js
+Index: src/collapsible-mixin.js
 ===================================================================
---- details/src/collapsible-mixin.js
-+++ details/src/collapsible-mixin.js
+--- src/collapsible-mixin.js
++++ src/collapsible-mixin.js
 @@ -7,7 +7,7 @@
  
  /**

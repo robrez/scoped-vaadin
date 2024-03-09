@@ -1,7 +1,7 @@
-Index: context-menu/src/vaadin-context-menu-item.d.ts
+Index: src/vaadin-context-menu-item.d.ts
 ===================================================================
---- context-menu/src/vaadin-context-menu-item.d.ts
-+++ context-menu/src/vaadin-context-menu-item.d.ts
+--- src/vaadin-context-menu-item.d.ts
++++ src/vaadin-context-menu-item.d.ts
 @@ -3,18 +3,18 @@
   * Copyright (c) 2016 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

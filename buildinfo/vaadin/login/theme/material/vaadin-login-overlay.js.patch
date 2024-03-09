@@ -1,7 +1,7 @@
-Index: login/theme/material/vaadin-login-overlay.js
+Index: theme/material/vaadin-login-overlay.js
 ===================================================================
---- login/theme/material/vaadin-login-overlay.js
-+++ login/theme/material/vaadin-login-overlay.js
+--- theme/material/vaadin-login-overlay.js
++++ theme/material/vaadin-login-overlay.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/text-field/theme/material/vaadin-text-field.js';
 -import '@vaadin/password-field/theme/material/vaadin-password-field.js';

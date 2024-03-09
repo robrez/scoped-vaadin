@@ -1,7 +1,7 @@
-Index: combo-box/theme/lumo/vaadin-combo-box-overlay-styles.js
+Index: theme/lumo/vaadin-combo-box-overlay-styles.js
 ===================================================================
---- combo-box/theme/lumo/vaadin-combo-box-overlay-styles.js
-+++ combo-box/theme/lumo/vaadin-combo-box-overlay-styles.js
+--- theme/lumo/vaadin-combo-box-overlay-styles.js
++++ theme/lumo/vaadin-combo-box-overlay-styles.js
 @@ -1,10 +1,10 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

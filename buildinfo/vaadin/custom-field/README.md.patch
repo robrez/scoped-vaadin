@@ -1,7 +1,7 @@
-Index: custom-field/README.md
+Index: README.md
 ===================================================================
---- custom-field/README.md
-+++ custom-field/README.md
+--- README.md
++++ README.md
 @@ -1,18 +1,20 @@
 -# @vaadin/custom-field
 +# @scoped-vaadin/custom-field

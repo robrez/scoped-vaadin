@@ -1,7 +1,7 @@
-Index: progress-bar/src/vaadin-progress-bar.js
+Index: src/vaadin-progress-bar.js
 ===================================================================
---- progress-bar/src/vaadin-progress-bar.js
-+++ progress-bar/src/vaadin-progress-bar.js
+--- src/vaadin-progress-bar.js
++++ src/vaadin-progress-bar.js
 @@ -4,20 +4,20 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

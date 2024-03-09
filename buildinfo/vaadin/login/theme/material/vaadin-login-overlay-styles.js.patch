@@ -1,7 +1,7 @@
-Index: login/theme/material/vaadin-login-overlay-styles.js
+Index: theme/material/vaadin-login-overlay-styles.js
 ===================================================================
---- login/theme/material/vaadin-login-overlay-styles.js
-+++ login/theme/material/vaadin-login-overlay-styles.js
+--- theme/material/vaadin-login-overlay-styles.js
++++ theme/material/vaadin-login-overlay-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';

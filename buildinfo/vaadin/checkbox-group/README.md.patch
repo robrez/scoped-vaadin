@@ -1,7 +1,7 @@
-Index: checkbox-group/README.md
+Index: README.md
 ===================================================================
---- checkbox-group/README.md
-+++ checkbox-group/README.md
+--- README.md
++++ README.md
 @@ -1,19 +1,21 @@
 -# @vaadin/checkbox-group
 +# @scoped-vaadin/checkbox-group

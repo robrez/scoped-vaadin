@@ -1,7 +1,7 @@
-Index: vertical-layout/theme/material/vaadin-vertical-layout-styles.js
+Index: theme/material/vaadin-vertical-layout-styles.js
 ===================================================================
---- vertical-layout/theme/material/vaadin-vertical-layout-styles.js
-+++ vertical-layout/theme/material/vaadin-vertical-layout-styles.js
+--- theme/material/vaadin-vertical-layout-styles.js
++++ theme/material/vaadin-vertical-layout-styles.js
 @@ -1,4 +1,4 @@
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

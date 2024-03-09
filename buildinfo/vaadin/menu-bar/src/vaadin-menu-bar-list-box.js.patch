@@ -1,7 +1,7 @@
-Index: menu-bar/src/vaadin-menu-bar-list-box.js
+Index: src/vaadin-menu-bar-list-box.js
 ===================================================================
---- menu-bar/src/vaadin-menu-bar-list-box.js
-+++ menu-bar/src/vaadin-menu-bar-list-box.js
+--- src/vaadin-menu-bar-list-box.js
++++ src/vaadin-menu-bar-list-box.js
 @@ -4,14 +4,14 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

@@ -1,7 +1,7 @@
-Index: notification/src/vaadin-notification.d.ts
+Index: src/vaadin-notification.d.ts
 ===================================================================
---- notification/src/vaadin-notification.d.ts
-+++ notification/src/vaadin-notification.d.ts
+--- src/vaadin-notification.d.ts
++++ src/vaadin-notification.d.ts
 @@ -4,10 +4,10 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

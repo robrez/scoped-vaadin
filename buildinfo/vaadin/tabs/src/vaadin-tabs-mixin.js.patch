@@ -1,7 +1,7 @@
-Index: tabs/src/vaadin-tabs-mixin.js
+Index: src/vaadin-tabs-mixin.js
 ===================================================================
---- tabs/src/vaadin-tabs-mixin.js
-+++ tabs/src/vaadin-tabs-mixin.js
+--- src/vaadin-tabs-mixin.js
++++ src/vaadin-tabs-mixin.js
 @@ -4,9 +4,9 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

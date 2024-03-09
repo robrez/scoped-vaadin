@@ -1,7 +1,7 @@
-Index: password-field/README.md
+Index: README.md
 ===================================================================
---- password-field/README.md
-+++ password-field/README.md
+--- README.md
++++ README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/password-field
 +# @scoped-vaadin/password-field

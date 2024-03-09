@@ -1,7 +1,7 @@
-Index: form-layout/src/vaadin-form-item.js
+Index: src/vaadin-form-item.js
 ===================================================================
---- form-layout/src/vaadin-form-item.js
-+++ form-layout/src/vaadin-form-item.js
+--- src/vaadin-form-item.js
++++ src/vaadin-form-item.js
 @@ -4,59 +4,59 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

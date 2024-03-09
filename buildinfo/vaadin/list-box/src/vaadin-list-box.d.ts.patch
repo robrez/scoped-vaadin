@@ -1,7 +1,7 @@
-Index: list-box/src/vaadin-list-box.d.ts
+Index: src/vaadin-list-box.d.ts
 ===================================================================
---- list-box/src/vaadin-list-box.d.ts
-+++ list-box/src/vaadin-list-box.d.ts
+--- src/vaadin-list-box.d.ts
++++ src/vaadin-list-box.d.ts
 @@ -3,9 +3,9 @@
   * Copyright (c) 2017 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

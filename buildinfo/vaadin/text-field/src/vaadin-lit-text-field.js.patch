@@ -1,7 +1,7 @@
-Index: text-field/src/vaadin-lit-text-field.js
+Index: src/vaadin-lit-text-field.js
 ===================================================================
---- text-field/src/vaadin-lit-text-field.js
-+++ text-field/src/vaadin-lit-text-field.js
+--- src/vaadin-lit-text-field.js
++++ src/vaadin-lit-text-field.js
 @@ -3,18 +3,18 @@
   * Copyright (c) 2021 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

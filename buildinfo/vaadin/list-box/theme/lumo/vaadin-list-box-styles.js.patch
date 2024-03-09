@@ -1,7 +1,7 @@
-Index: list-box/theme/lumo/vaadin-list-box-styles.js
+Index: theme/lumo/vaadin-list-box-styles.js
 ===================================================================
---- list-box/theme/lumo/vaadin-list-box-styles.js
-+++ list-box/theme/lumo/vaadin-list-box-styles.js
+--- theme/lumo/vaadin-list-box-styles.js
++++ theme/lumo/vaadin-list-box-styles.js
 @@ -1,7 +1,7 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

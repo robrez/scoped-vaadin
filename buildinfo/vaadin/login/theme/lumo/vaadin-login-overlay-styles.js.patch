@@ -1,7 +1,7 @@
-Index: login/theme/lumo/vaadin-login-overlay-styles.js
+Index: theme/lumo/vaadin-login-overlay-styles.js
 ===================================================================
---- login/theme/lumo/vaadin-login-overlay-styles.js
-+++ login/theme/lumo/vaadin-login-overlay-styles.js
+--- theme/lumo/vaadin-login-overlay-styles.js
++++ theme/lumo/vaadin-login-overlay-styles.js
 @@ -1,9 +1,9 @@
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 +import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

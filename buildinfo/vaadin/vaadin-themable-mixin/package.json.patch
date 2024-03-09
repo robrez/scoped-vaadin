@@ -1,17 +1,17 @@
-Index: vaadin-themable-mixin/package.json
+Index: package.json
 ===================================================================
---- vaadin-themable-mixin/package.json
-+++ vaadin-themable-mixin/package.json
+--- package.json
++++ package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-themable-mixin",
--  "version": "24.3.7",
+-  "version": "24.3.8",
 +  "name": "@scoped-vaadin/vaadin-themable-mixin",
 +  "version": "24.3.7-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
-+    "directory": "packages/vaadin/vaadin-themable-mixin"
++    "directory": "packages/vaadin-themable-mixin"
 +  },
 +  "bugs": {
 +    "url": "https://github.com/robrez/scoped-vaadin/issues"
@@ -46,7 +46,7 @@ Index: vaadin-themable-mixin/package.json
 -    "@vaadin/testing-helpers": "^0.6.0",
 -    "sinon": "^13.0.2"
 -  },
--  "gitHead": "d4dfa8f9b8621e4d33033464393dd811de6d19d8"
+-  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
 +    "lit": "^3.0.0",
 +    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
 +  }

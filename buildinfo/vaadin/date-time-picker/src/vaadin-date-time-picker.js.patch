@@ -1,7 +1,7 @@
-Index: date-time-picker/src/vaadin-date-time-picker.js
+Index: src/vaadin-date-time-picker.js
 ===================================================================
---- date-time-picker/src/vaadin-date-time-picker.js
-+++ date-time-picker/src/vaadin-date-time-picker.js
+--- src/vaadin-date-time-picker.js
++++ src/vaadin-date-time-picker.js
 @@ -4,20 +4,20 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
@@ -84,7 +84,7 @@ Index: date-time-picker/src/vaadin-date-time-picker.js
    }
  
    static get properties() {
-@@ -338,8 +338,8 @@
+@@ -339,8 +339,8 @@
         * `i18n` object or just the properties you want to modify.
         *
         * The object is a combination of the i18n properties supported by
@@ -95,7 +95,7 @@ Index: date-time-picker/src/vaadin-date-time-picker.js
         * @type {!DateTimePickerI18n}
         */
        i18n: {
-@@ -349,10 +349,10 @@
+@@ -350,10 +350,10 @@
  
        /**
         * A space-delimited list of CSS class names to set on the overlay elements

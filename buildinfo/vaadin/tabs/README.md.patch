@@ -1,7 +1,7 @@
-Index: tabs/README.md
+Index: README.md
 ===================================================================
---- tabs/README.md
-+++ tabs/README.md
+--- README.md
++++ README.md
 @@ -1,19 +1,21 @@
 -# @vaadin/tabs
 +# @scoped-vaadin/tabs

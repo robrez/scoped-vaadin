@@ -1,7 +1,7 @@
-Index: vaadin-lumo-styles/mixins/overlay.js
+Index: mixins/overlay.js
 ===================================================================
---- vaadin-lumo-styles/mixins/overlay.js
-+++ vaadin-lumo-styles/mixins/overlay.js
+--- mixins/overlay.js
++++ mixins/overlay.js
 @@ -7,7 +7,7 @@
  import '../spacing.js';
  import '../style.js';

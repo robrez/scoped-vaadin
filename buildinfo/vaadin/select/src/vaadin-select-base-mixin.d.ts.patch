@@ -1,7 +1,7 @@
-Index: select/src/vaadin-select-base-mixin.d.ts
+Index: src/vaadin-select-base-mixin.d.ts
 ===================================================================
---- select/src/vaadin-select-base-mixin.d.ts
-+++ select/src/vaadin-select-base-mixin.d.ts
+--- src/vaadin-select-base-mixin.d.ts
++++ src/vaadin-select-base-mixin.d.ts
 @@ -4,16 +4,16 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

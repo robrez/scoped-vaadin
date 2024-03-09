@@ -1,7 +1,7 @@
-Index: app-layout/src/vaadin-app-layout.js
+Index: src/vaadin-app-layout.js
 ===================================================================
---- app-layout/src/vaadin-app-layout.js
-+++ app-layout/src/vaadin-app-layout.js
+--- src/vaadin-app-layout.js
++++ src/vaadin-app-layout.js
 @@ -7,33 +7,33 @@
  import './safe-area-inset.js';
  import { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';

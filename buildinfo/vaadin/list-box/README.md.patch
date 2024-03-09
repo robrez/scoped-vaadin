@@ -1,7 +1,7 @@
-Index: list-box/README.md
+Index: README.md
 ===================================================================
---- list-box/README.md
-+++ list-box/README.md
+--- README.md
++++ README.md
 @@ -1,21 +1,23 @@
 -# @vaadin/list-box
 +# @scoped-vaadin/list-box

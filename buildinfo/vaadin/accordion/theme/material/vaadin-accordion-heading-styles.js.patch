@@ -1,7 +1,7 @@
-Index: accordion/theme/material/vaadin-accordion-heading-styles.js
+Index: theme/material/vaadin-accordion-heading-styles.js
 ===================================================================
---- accordion/theme/material/vaadin-accordion-heading-styles.js
-+++ accordion/theme/material/vaadin-accordion-heading-styles.js
+--- theme/material/vaadin-accordion-heading-styles.js
++++ theme/material/vaadin-accordion-heading-styles.js
 @@ -1,6 +1,6 @@
 -import '@vaadin/vaadin-material-styles/color.js';
 -import { detailsSummary } from '@vaadin/details/theme/material/vaadin-details-summary-styles.js';

@@ -1,7 +1,7 @@
-Index: field-highlighter/src/vaadin-field-highlighter.js
+Index: src/vaadin-field-highlighter.js
 ===================================================================
---- field-highlighter/src/vaadin-field-highlighter.js
-+++ field-highlighter/src/vaadin-field-highlighter.js
+--- src/vaadin-field-highlighter.js
++++ src/vaadin-field-highlighter.js
 @@ -5,8 +5,8 @@
   */
  import './vaadin-field-outline.js';

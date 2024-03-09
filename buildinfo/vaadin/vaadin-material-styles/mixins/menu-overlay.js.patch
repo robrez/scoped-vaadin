@@ -1,7 +1,7 @@
-Index: vaadin-material-styles/mixins/menu-overlay.js
+Index: mixins/menu-overlay.js
 ===================================================================
---- vaadin-material-styles/mixins/menu-overlay.js
-+++ vaadin-material-styles/mixins/menu-overlay.js
+--- mixins/menu-overlay.js
++++ mixins/menu-overlay.js
 @@ -4,7 +4,7 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

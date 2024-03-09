@@ -1,7 +1,7 @@
-Index: checkbox-group/src/vaadin-checkbox-group.js
+Index: src/vaadin-checkbox-group.js
 ===================================================================
---- checkbox-group/src/vaadin-checkbox-group.js
-+++ checkbox-group/src/vaadin-checkbox-group.js
+--- src/vaadin-checkbox-group.js
++++ src/vaadin-checkbox-group.js
 @@ -4,26 +4,26 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

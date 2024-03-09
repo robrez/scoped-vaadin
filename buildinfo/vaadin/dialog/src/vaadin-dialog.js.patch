@@ -1,7 +1,7 @@
-Index: dialog/src/vaadin-dialog.js
+Index: src/vaadin-dialog.js
 ===================================================================
---- dialog/src/vaadin-dialog.js
-+++ dialog/src/vaadin-dialog.js
+--- src/vaadin-dialog.js
++++ src/vaadin-dialog.js
 @@ -5,11 +5,11 @@
   */
  import './vaadin-dialog-overlay.js';

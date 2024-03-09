@@ -1,7 +1,7 @@
-Index: combo-box/README.md
+Index: README.md
 ===================================================================
---- combo-box/README.md
-+++ combo-box/README.md
+--- README.md
++++ README.md
 @@ -1,22 +1,24 @@
 -# @vaadin/combo-box
 +# @scoped-vaadin/combo-box

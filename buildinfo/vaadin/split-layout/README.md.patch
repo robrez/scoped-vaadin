@@ -1,7 +1,7 @@
-Index: split-layout/README.md
+Index: README.md
 ===================================================================
---- split-layout/README.md
-+++ split-layout/README.md
+--- README.md
++++ README.md
 @@ -1,23 +1,25 @@
 -# @vaadin/split-layout
 +# @scoped-vaadin/split-layout

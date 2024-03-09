@@ -1,7 +1,7 @@
-Index: button/README.md
+Index: README.md
 ===================================================================
---- button/README.md
-+++ button/README.md
+--- README.md
++++ README.md
 @@ -1,16 +1,18 @@
 -# @vaadin/button
 +# @scoped-vaadin/button

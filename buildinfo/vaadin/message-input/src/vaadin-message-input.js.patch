@@ -1,7 +1,7 @@
-Index: message-input/src/vaadin-message-input.js
+Index: src/vaadin-message-input.js
 ===================================================================
---- message-input/src/vaadin-message-input.js
-+++ message-input/src/vaadin-message-input.js
+--- src/vaadin-message-input.js
++++ src/vaadin-message-input.js
 @@ -3,18 +3,18 @@
   * Copyright (c) 2021 - 2023 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/

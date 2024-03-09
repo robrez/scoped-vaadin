@@ -1,7 +1,7 @@
-Index: tabsheet/theme/lumo/vaadin-tabsheet-styles.js
+Index: theme/lumo/vaadin-tabsheet-styles.js
 ===================================================================
---- tabsheet/theme/lumo/vaadin-tabsheet-styles.js
-+++ tabsheet/theme/lumo/vaadin-tabsheet-styles.js
+--- theme/lumo/vaadin-tabsheet-styles.js
++++ theme/lumo/vaadin-tabsheet-styles.js
 @@ -1,8 +1,8 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';

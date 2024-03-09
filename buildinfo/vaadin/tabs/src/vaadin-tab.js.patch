@@ -1,7 +1,7 @@
-Index: tabs/src/vaadin-tab.js
+Index: src/vaadin-tab.js
 ===================================================================
---- tabs/src/vaadin-tab.js
-+++ tabs/src/vaadin-tab.js
+--- src/vaadin-tab.js
++++ src/vaadin-tab.js
 @@ -4,23 +4,23 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */

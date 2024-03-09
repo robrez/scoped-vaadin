@@ -1,7 +1,7 @@
-Index: text-field/README.md
+Index: README.md
 ===================================================================
---- text-field/README.md
-+++ text-field/README.md
+--- README.md
++++ README.md
 @@ -1,14 +1,16 @@
 -# @vaadin/text-field
 +# @scoped-vaadin/text-field
