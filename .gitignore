@@ -1,2 +1,3 @@
 node_modules
-packages/vaadin
+packages/vaadin/*
+!packages/vaadin/*/package.json
