@@ -1,4 +1,4 @@
 node_modules
-remote/
+git_modules/
 packages/*/**
 !packages/*/package.json

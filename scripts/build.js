@@ -18,12 +18,17 @@ import {
 import { allElementNames, allEventNames, allPackageNames } from "./meta.js";
 import { versionMeta } from "../version.js";
 import { createPatch } from "diff";
+import _ignoreTests from "./ignore-tests.js";
 
 export const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
-const clonePackagesRoot = "remote/@vaadin/web-components/packages";
+const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
+
+const ignoreTests = new Set(
+  _ignoreTests.map((test) => test.replace("packages", clonePackagesRoot))
+);
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -56,6 +61,9 @@ const findTestFiles = (dir) => {
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
+    // note -- could have provided ignoredTests as negation globs
+    // but choosing to - instead - not create the ignored tests 
+    .filter((name) => !ignoreTests.has(name))
     .sort()
     .map((name) => Path.parse(name));
   return paths;
