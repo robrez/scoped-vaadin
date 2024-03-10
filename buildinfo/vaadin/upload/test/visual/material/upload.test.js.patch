@@ -1,0 +1,40 @@
+Index: test/visual/material/upload.test.js
+===================================================================
+--- test/visual/material/upload.test.js
++++ test/visual/material/upload.test.js
+@@ -18,7 +18,7 @@
+       });
+ 
+       beforeEach(() => {
+-        element = fixtureSync('<vaadin-upload></vaadin-upload>', div);
++        element = fixtureSync('<vaadin24-upload></vaadin24-upload>', div);
+       });
+ 
+       after(() => {
+@@ -46,7 +46,7 @@
+ 
+   describe('focus', () => {
+     beforeEach(() => {
+-      element = fixtureSync('<vaadin-upload></vaadin-upload>', div);
++      element = fixtureSync('<vaadin24-upload></vaadin24-upload>', div);
+       element.files = [
+         {
+           name: 'Don Quixote.pdf',
+@@ -105,7 +105,7 @@
+ 
+   describe('states', () => {
+     beforeEach(() => {
+-      element = fixtureSync('<vaadin-upload></vaadin-upload>', div);
++      element = fixtureSync('<vaadin24-upload></vaadin24-upload>', div);
+     });
+ 
+     it('max files reached', async () => {
+@@ -118,7 +118,7 @@
+ 
+   describe('width', () => {
+     beforeEach(() => {
+-      element = fixtureSync('<vaadin-upload style="width: 400px"></vaadin-upload>', div);
++      element = fixtureSync('<vaadin24-upload style="width: 400px"></vaadin24-upload>', div);
+     });
+ 
+     it('width', async () => {

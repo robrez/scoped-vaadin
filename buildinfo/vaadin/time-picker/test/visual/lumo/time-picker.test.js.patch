@@ -1,0 +1,13 @@
+Index: test/visual/lumo/time-picker.test.js
+===================================================================
+--- test/visual/lumo/time-picker.test.js
++++ test/visual/lumo/time-picker.test.js
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-time-picker></vaadin-time-picker>', div);
++    element = fixtureSync('<vaadin24-time-picker></vaadin24-time-picker>', div);
+   });
+ 
+   it('basic', async () => {

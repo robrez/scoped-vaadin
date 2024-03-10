@@ -1,0 +1,97 @@
+Index: test/dom/__snapshots__/button.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/button.test.snap.js
++++ test/dom/__snapshots__/button.test.snap.js
+@@ -2,78 +2,78 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-button host default"] = 
+-`<vaadin-button
++`<vaadin24-button
+   role="button"
+   tabindex="0"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host default */
+ 
+ snapshots["vaadin-button host disabled"] = 
+-`<vaadin-button
++`<vaadin24-button
+   aria-disabled="true"
+   disabled=""
+   role="button"
+   tabindex="-1"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host disabled */
+ 
+ snapshots["vaadin-button host tabIndex"] = 
+-`<vaadin-button
++`<vaadin24-button
+   role="button"
+   tabindex="1"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host tabIndex */
+ 
+ snapshots["vaadin-button host tabindex"] = 
+-`<vaadin-button
++`<vaadin24-button
+   role="button"
+   tabindex="1"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host tabindex */
+ 
+ snapshots["vaadin-button host focused"] = 
+-`<vaadin-button
++`<vaadin24-button
+   focused=""
+   role="button"
+   tabindex="0"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host focused */
+ 
+ snapshots["vaadin-button host focus-ring"] = 
+-`<vaadin-button
++`<vaadin24-button
+   focus-ring=""
+   focused=""
+   role="button"
+   tabindex="0"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host focus-ring */
+ 
+ snapshots["vaadin-button host active"] = 
+-`<vaadin-button
++`<vaadin24-button
+   active=""
+   role="button"
+   tabindex="0"
+ >
+   Confirm
+-</vaadin-button>
++</vaadin24-button>
+ `;
+ /* end snapshot vaadin-button host active */
+ 

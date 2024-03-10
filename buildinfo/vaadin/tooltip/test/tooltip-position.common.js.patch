@@ -1,0 +1,31 @@
+Index: test/tooltip-position.common.js
+===================================================================
+--- test/tooltip-position.common.js
++++ test/tooltip-position.common.js
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fire, fixtureSync, nextRender, nextUpdate, oneEvent } from '@vaadin/testing-helpers';
+ 
+ describe('position', () => {
+   let tooltip, target, overlay;
+ 
+-  const Tooltip = customElements.get('vaadin-tooltip');
++  const Tooltip = internalCustomElements.get('vaadin24-tooltip');
+ 
+   before(() => {
+     Tooltip.setDefaultFocusDelay(0);
+@@ -13,11 +14,11 @@
+   });
+ 
+   beforeEach(async () => {
+-    tooltip = fixtureSync('<vaadin-tooltip text="tooltip"></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin24-tooltip text="tooltip"></vaadin24-tooltip>');
+     await nextRender();
+     target = fixtureSync('<div style="width: 100px; height: 100px; margin: 100px; outline: 1px solid red;"></div>');
+     tooltip.target = target;
+-    overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+   });
+ 
+   async function openAndMeasure() {

@@ -1,0 +1,97 @@
+Index: test/tabs.test.js
+===================================================================
+--- test/tabs.test.js
++++ test/tabs.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { arrowRight, aTimeout, enter, fixtureSync, listenOnce, nextFrame, space } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -28,16 +29,16 @@
+ 
+   beforeEach(() => {
+     tabs = fixtureSync(`
+-      <vaadin-tabs>
+-        <vaadin-tab>Foo</vaadin-tab>
+-        <vaadin-tab>Bar</vaadin-tab>
+-        <vaadin-tab>Some</vaadin-tab>
++      <vaadin24-tabs>
++        <vaadin24-tab>Foo</vaadin24-tab>
++        <vaadin24-tab>Bar</vaadin24-tab>
++        <vaadin24-tab>Some</vaadin24-tab>
+         <span></span>
+-        <vaadin-tab disabled>Baz</vaadin-tab>
+-        <vaadin-tab>
++        <vaadin24-tab disabled>Baz</vaadin24-tab>
++        <vaadin24-tab>
+           <a>Baz</a>
+-        </vaadin-tab>
+-      </vaadin-tabs>
++        </vaadin24-tab>
++      </vaadin24-tabs>
+     `);
+     tabs._observer.flush();
+   });
+@@ -50,11 +51,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -62,7 +63,7 @@
+     it('should only add vaadin-tab components to items', () => {
+       expect(tabs.items.length).to.equal(5);
+       tabs.items.forEach((item) => {
+-        expect(item.tagName.toLowerCase()).to.equal('vaadin-tab');
++        expect(item.tagName.toLowerCase()).to.equal('vaadin24-tab');
+       });
+     });
+ 
+@@ -237,13 +238,13 @@
+   beforeEach(() => {
+     wrapper = fixtureSync(`
+       <div style="display: flex; width: 400px;">
+-        <vaadin-tabs>
+-          <vaadin-tab>Foo</vaadin-tab>
+-          <vaadin-tab>Bar</vaadin-tab>
+-        </vaadin-tabs>
++        <vaadin24-tabs>
++          <vaadin24-tab>Foo</vaadin24-tab>
++          <vaadin24-tab>Bar</vaadin24-tab>
++        </vaadin24-tabs>
+       </div>
+     `);
+-    tabs = wrapper.querySelector('vaadin-tabs');
++    tabs = wrapper.querySelector('vaadin24-tabs');
+   });
+ 
+   it('should have width above zero', () => {
+@@ -261,14 +262,14 @@
+   beforeEach(() => {
+     wrapper = fixtureSync(`
+       <div style="display: flex; justify-content: center; width: 400px;">
+-        <vaadin-tabs theme="equal-width-tabs">
+-          <vaadin-tab>Tab one</vaadin-tab>
+-          <vaadin-tab>Tab two with a longer title</vaadin-tab>
+-          <vaadin-tab>Tab three</vaadin-tab>
+-        </vaadin-tabs>
++        <vaadin24-tabs theme="equal-width-tabs">
++          <vaadin24-tab>Tab one</vaadin24-tab>
++          <vaadin24-tab>Tab two with a longer title</vaadin24-tab>
++          <vaadin24-tab>Tab three</vaadin24-tab>
++        </vaadin24-tabs>
+       </div>
+     `);
+-    tabs = wrapper.querySelector('vaadin-tabs');
++    tabs = wrapper.querySelector('vaadin24-tabs');
+     tabs._observer.flush();
+   });
+ 

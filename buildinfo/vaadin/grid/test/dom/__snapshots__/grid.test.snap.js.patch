@@ -1,0 +1,69 @@
+Index: test/dom/__snapshots__/grid.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/grid.test.snap.js
++++ test/dom/__snapshots__/grid.test.snap.js
+@@ -2,38 +2,38 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-grid host default"] = 
+-`<vaadin-grid style="touch-action: none;">
+-  <vaadin-grid-column path="name.first">
+-  </vaadin-grid-column>
+-  <vaadin-grid-column path="name.last">
+-  </vaadin-grid-column>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-0">
++`<vaadin24-grid style="touch-action: none;">
++  <vaadin24-grid-column path="name.first">
++  </vaadin24-grid-column>
++  <vaadin24-grid-column path="name.last">
++  </vaadin24-grid-column>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-0">
+     First
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-1">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-1">
+     Last
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-2">
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-3">
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-4">
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-5">
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-6">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-2">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-3">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-4">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-5">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-6">
+     Laura
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-7">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-7">
+     Arnaud
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-8">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-8">
+     Fabien
+-  </vaadin-grid-cell-content>
+-  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-9">
++  </vaadin24-grid-cell-content>
++  <vaadin24-grid-cell-content slot="vaadin-grid-cell-content-9">
+     Le gall
+-  </vaadin-grid-cell-content>
+-</vaadin-grid>
++  </vaadin24-grid-cell-content>
++</vaadin24-grid>
+ `;
+ /* end snapshot vaadin-grid host default */
+ 

@@ -1,0 +1,22 @@
+Index: test/dom/number-field.test.js
+===================================================================
+--- test/dom/number-field.test.js
++++ test/dom/number-field.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-number-field.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-number-field', () => {
++describe('vaadin24-number-field', () => {
+   let field;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++    field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+   });
+ 
+   describe('host', () => {

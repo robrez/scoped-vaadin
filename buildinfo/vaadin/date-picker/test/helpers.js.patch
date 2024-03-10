@@ -1,0 +1,13 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -109,7 +109,7 @@
+ }
+ 
+ export function getFocusedMonth(overlayContent) {
+-  const months = [...overlayContent.querySelectorAll('vaadin-month-calendar')];
++  const months = [...overlayContent.querySelectorAll('vaadin24-month-calendar')];
+   return months.find((month) => {
+     return !!month.shadowRoot.querySelector('[part~="focused"]');
+   });

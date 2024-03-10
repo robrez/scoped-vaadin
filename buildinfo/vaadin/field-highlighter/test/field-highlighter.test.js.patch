@@ -1,0 +1,26 @@
+Index: test/field-highlighter.test.js
+===================================================================
+--- test/field-highlighter.test.js
++++ test/field-highlighter.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/text-field';
++import '@scoped-vaadin/text-field';
+ import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
+ 
+ async function waitForIntersectionObserver() {
+@@ -17,10 +17,10 @@
+   let overlay;
+ 
+   beforeEach(async () => {
+-    field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++    field = fixtureSync(`<vaadin24-text-field></vaadin24-text-field>`);
+     highlighter = FieldHighlighter.init(field);
+     outline = field.shadowRoot.querySelector('[part="outline"]');
+-    wrapper = field.shadowRoot.querySelector('vaadin-user-tags');
++    wrapper = field.shadowRoot.querySelector('vaadin24-user-tags');
+     overlay = wrapper.$.overlay;
+     await waitForIntersectionObserver();
+   });

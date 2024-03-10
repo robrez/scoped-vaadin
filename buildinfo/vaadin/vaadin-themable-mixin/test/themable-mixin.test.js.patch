@@ -1,0 +1,27 @@
+Index: test/themable-mixin.test.js
+===================================================================
+--- test/themable-mixin.test.js
++++ test/themable-mixin.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -13,7 +14,7 @@
+   window.defineCustomElementFunction ||
+   // eslint-disable-next-line max-params
+   ((name, parentName, content, styles, noIs) => {
+-    const parentElement = parentName ? customElements.get(parentName) : PolymerElement;
++    const parentElement = parentName ? internalCustomElements.get(parentName) : PolymerElement;
+     class CustomElement extends ThemableMixin(parentElement) {}
+ 
+     if (content) {
+@@ -39,7 +40,7 @@
+       });
+     }
+ 
+-    customElements.define(name, CustomElement);
++    internalCustomElements.define(name, CustomElement);
+   });
+ 
+ createStyles(

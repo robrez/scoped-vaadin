@@ -575,6 +575,11 @@ export const elementMeta = [
     ]
   },
   {
+    "package": "@vaadin/testing-helpers",
+    "elementNames": [],
+    "eventNames": []
+  },
+  {
     "package": "@vaadin/text-area",
     "elementNames": [
       "vaadin-text-area"

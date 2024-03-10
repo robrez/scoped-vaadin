@@ -1,0 +1,17 @@
+Index: test/visual/material/split-layout.test.js
+===================================================================
+--- test/visual/material/split-layout.test.js
++++ test/visual/material/split-layout.test.js
+@@ -7,10 +7,10 @@
+ 
+   beforeEach(() => {
+     element = fixtureSync(`
+-      <vaadin-split-layout style="width: 200px; height: 100px">
++      <vaadin24-split-layout style="width: 200px; height: 100px">
+         <div></div>
+         <div></div>
+-      </vaadin-split-layout>
++      </vaadin24-split-layout>
+     `);
+   });
+ 

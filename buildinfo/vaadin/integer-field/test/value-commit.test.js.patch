@@ -1,0 +1,13 @@
+Index: test/value-commit.test.js
+===================================================================
+--- test/value-commit.test.js
++++ test/value-commit.test.js
+@@ -39,7 +39,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    integerField = fixtureSync(`<vaadin-integer-field></vaadin-integer-field>`);
++    integerField = fixtureSync(`<vaadin24-integer-field></vaadin24-integer-field>`);
+     await nextRender();
+     validateSpy = sinon.spy(integerField, 'validate').named('validateSpy');
+ 

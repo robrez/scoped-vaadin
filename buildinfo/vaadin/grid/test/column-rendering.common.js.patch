@@ -1,0 +1,19 @@
+Index: test/column-rendering.common.js
+===================================================================
+--- test/column-rendering.common.js
++++ test/column-rendering.common.js
+@@ -77,12 +77,12 @@
+     });
+ 
+     beforeEach(async () => {
+-      grid = fixtureSync(`<vaadin-grid style="width: 400px;"></vaadin-grid>`);
++      grid = fixtureSync(`<vaadin24-grid style="width: 400px;"></vaadin24-grid>`);
+       cellContent = 'cell';
+ 
+       columns = [];
+       for (let i = 0; i < 10; i++) {
+-        const column = document.createElement('vaadin-grid-column');
++        const column = document.createElement('vaadin24-grid-column');
+         column.header = `Col ${i}`;
+ 
+         // eslint-disable-next-line @typescript-eslint/no-loop-func

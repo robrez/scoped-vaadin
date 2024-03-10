@@ -1,0 +1,31 @@
+Index: test/keyboard-navigation.test.js
+===================================================================
+--- test/keyboard-navigation.test.js
++++ test/keyboard-navigation.test.js
+@@ -8,7 +8,7 @@
+   let timePicker, comboBox, inputElement;
+ 
+   beforeEach(() => {
+-    timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
++    timePicker = fixtureSync(`<vaadin24-time-picker></vaadin24-time-picker>`);
+     comboBox = timePicker.$.comboBox;
+     inputElement = timePicker.inputElement;
+   });
+@@ -191,7 +191,7 @@
+ 
+     it('should open the overlay on arrow up', () => {
+       arrowUp(inputElement);
+-      expect(document.querySelector('vaadin-time-picker-overlay')).to.be.ok;
++      expect(document.querySelector('vaadin24-time-picker-overlay')).to.be.ok;
+     });
+   });
+ 
+@@ -219,7 +219,7 @@
+     it('should not open the overlay on arrow up', () => {
+       timePicker.step = 0.5;
+       arrowUp(inputElement);
+-      expect(document.querySelector('vaadin-combo-box-overlay')).not.to.be.ok;
++      expect(document.querySelector('vaadin24-combo-box-overlay')).not.to.be.ok;
+     });
+   });
+ });

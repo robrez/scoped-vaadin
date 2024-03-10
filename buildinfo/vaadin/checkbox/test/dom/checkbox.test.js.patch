@@ -1,0 +1,22 @@
+Index: test/dom/checkbox.test.js
+===================================================================
+--- test/dom/checkbox.test.js
++++ test/dom/checkbox.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-checkbox.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-checkbox', () => {
++describe('vaadin24-checkbox', () => {
+   let checkbox;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    checkbox = fixtureSync('<vaadin-checkbox></vaadin-checkbox>');
++    checkbox = fixtureSync('<vaadin24-checkbox></vaadin24-checkbox>');
+   });
+ 
+   describe('host', () => {

@@ -1,0 +1,30 @@
+Index: test/visual/material/radio-group.test.js
+===================================================================
+--- test/visual/material/radio-group.test.js
++++ test/visual/material/radio-group.test.js
+@@ -13,11 +13,11 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-radio-group>
+-          <vaadin-radio-button value="a" label="A"></vaadin-radio-button>
+-          <vaadin-radio-button value="b" label="B"></vaadin-radio-button>
+-          <vaadin-radio-button value="c" label="C"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin24-radio-group>
++          <vaadin24-radio-button value="a" label="A"></vaadin24-radio-button>
++          <vaadin24-radio-button value="b" label="B"></vaadin24-radio-button>
++          <vaadin24-radio-button value="c" label="C"></vaadin24-radio-button>
++        </vaadin24-radio-group>
+       `,
+       div,
+     );
+@@ -88,7 +88,7 @@
+       div.style.width = '300px';
+       div.style.padding = '0';
+       element.style.width = '100%';
+-      element.querySelectorAll('vaadin-radio-button').forEach((radio) => {
++      element.querySelectorAll('vaadin24-radio-button').forEach((radio) => {
+         radio.style.width = '33%';
+         // Compensate inline-block whitespace
+         radio.style.marginRight = '-3px';

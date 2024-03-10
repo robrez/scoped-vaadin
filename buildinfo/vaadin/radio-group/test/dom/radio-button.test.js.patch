@@ -1,0 +1,22 @@
+Index: test/dom/radio-button.test.js
+===================================================================
+--- test/dom/radio-button.test.js
++++ test/dom/radio-button.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-radio-button.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-radio-button', () => {
++describe('vaadin24-radio-button', () => {
+   let radio;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    radio = fixtureSync('<vaadin-radio-button label="Radio button"></vaadin-radio-button>');
++    radio = fixtureSync('<vaadin24-radio-button label="Radio button"></vaadin24-radio-button>');
+   });
+ 
+   describe('host', () => {

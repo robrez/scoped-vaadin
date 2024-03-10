@@ -1,0 +1,17 @@
+Index: test/typings/tabs.types.ts
+===================================================================
+--- test/typings/tabs.types.ts
++++ test/typings/tabs.types.ts
+@@ -1,9 +1,9 @@
+ import '../../vaadin-tabs.js';
+-import type { ListMixinClass } from '@vaadin/a11y-base/src/list-mixin.js';
+-import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
++import type { ListMixinClass } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
++import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+ import type { TabsItemsChangedEvent, TabsSelectedChangedEvent } from '../../vaadin-tabs.js';
+ 
+-const tabs = document.createElement('vaadin-tabs');
++const tabs = document.createElement('vaadin24-tabs');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 

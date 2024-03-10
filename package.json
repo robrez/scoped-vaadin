@@ -1,6 +1,7 @@
 {
   "version": "24.3.7-alpha.1",
   "name": "@robrez/scoped-vaadin-web-components",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "web-dev-server --node-resolve --open /dev",
@@ -9,15 +10,8 @@
     "build-demos": "node scripts/build-demos.js",
     "build-element-meta": "node scripts/build-element-meta.js",
     "test": "web-test-runner",
-    "test:firefox": "web-test-runner --config web-test-runner-firefox.config.js",
-    "test:it": "web-test-runner --config web-test-runner-it.config.js",
-    "test:lumo": "web-test-runner --config web-test-runner-lumo.config.js",
-    "test:material": "web-test-runner --config web-test-runner-material.config.js",
-    "test:snapshots": "web-test-runner --config web-test-runner-snapshots.config.js",
-    "test:webkit": "web-test-runner --config web-test-runner-webkit.config.js",
-    "update:lumo": "TEST_ENV=update web-test-runner --config web-test-runner-lumo.config.js",
-    "update:material": "TEST_ENV=update web-test-runner --config web-test-runner-material.config.js",
-    "update:snapshots": "web-test-runner --config web-test-runner-snapshots.config.js --update-snapshots"
+    "test:watch": "web-test-runner --watch",
+    "clone": "rimraf ./remote/ && git clone --single-branch --branch v24.3.8 https://github.com/vaadin/web-components.git ./remote/@vaadin/web-components"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -26,6 +20,8 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4",
+    "@vaadin/testing-helpers": "^0.6.0",
     "@web/dev-server": "^0.2.1",
     "@web/dev-server-esbuild": "^1.0.1",
     "@web/rollup-plugin-html": "^2.0.0",
@@ -37,7 +33,12 @@
     "diff": "^5.2.0",
     "dotenv": "^16.4.5",
     "es-module-lexer": "^1.4.1",
+    "puppeteer": "19.9.0",
+    "puppeteer-core": "19.9.0",
     "glob": "^10.3.10",
+    "rimraf": "^5.0.5",
+    "simple-git": "^3.22.0",
+    "sinon": "^13.0.2",
     "terser": "^5.28.1"
   }
 }

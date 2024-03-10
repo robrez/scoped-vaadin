@@ -1,0 +1,15 @@
+Index: test/list-mixin.test.js
+===================================================================
+--- test/list-mixin.test.js
++++ test/list-mixin.test.js
+@@ -15,8 +15,8 @@
+   oneEvent,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
+ import { ListMixin } from '../src/list-mixin.js';
+ 
+ const runTests = (defineHelper, baseMixin) => {

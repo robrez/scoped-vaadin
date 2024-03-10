@@ -1,0 +1,18 @@
+Index: test/visual/material/details.test.js
+===================================================================
+--- test/visual/material/details.test.js
++++ test/visual/material/details.test.js
+@@ -11,10 +11,10 @@
+ 
+     element = fixtureSync(
+       `
+-      <vaadin-details>
+-        <vaadin-details-summary slot="summary">Summary</vaadin-details-summary>
++      <vaadin24-details>
++        <vaadin24-details-summary slot="summary">Summary</vaadin24-details-summary>
+         <span>Content</span>
+-      </vaadin-details>
++      </vaadin24-details>
+       `,
+       div,
+     );

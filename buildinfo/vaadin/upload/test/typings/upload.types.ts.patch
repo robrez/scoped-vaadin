@@ -1,0 +1,13 @@
+Index: test/typings/upload.types.ts
+===================================================================
+--- test/typings/upload.types.ts
++++ test/typings/upload.types.ts
+@@ -19,7 +19,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const upload = document.createElement('vaadin-upload');
++const upload = document.createElement('vaadin24-upload');
+ 
+ // Properties
+ assertType<boolean>(upload.nodrop);

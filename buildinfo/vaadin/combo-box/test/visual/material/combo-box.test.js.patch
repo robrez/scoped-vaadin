@@ -1,0 +1,13 @@
+Index: test/visual/material/combo-box.test.js
+===================================================================
+--- test/visual/material/combo-box.test.js
++++ test/visual/material/combo-box.test.js
+@@ -12,7 +12,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-combo-box></vaadin-combo-box>', div);
++    element = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>', div);
+   });
+ 
+   it('basic', async () => {

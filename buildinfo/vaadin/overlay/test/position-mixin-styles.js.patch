@@ -1,0 +1,11 @@
+Index: test/position-mixin-styles.js
+===================================================================
+--- test/position-mixin-styles.js
++++ test/position-mixin-styles.js
+@@ -1,5 +1,5 @@
+ import { css } from 'lit';
+-import { registerStyles } from '@vaadin/vaadin-themable-mixin/register-styles';
++import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles';
+ 
+ registerStyles(
+   'vaadin-positioned-overlay',

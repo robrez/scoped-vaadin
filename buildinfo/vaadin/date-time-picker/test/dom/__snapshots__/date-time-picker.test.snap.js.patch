@@ -1,0 +1,710 @@
+Index: test/dom/__snapshots__/date-time-picker.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/date-time-picker.test.snap.js
++++ test/dom/__snapshots__/date-time-picker.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-date-time-picker host default"] = 
+-`<vaadin-date-time-picker role="group">
++`<vaadin24-date-time-picker role="group">
+   <label
+     id="label-vaadin-date-time-picker-0"
+     slot="label"
+@@ -14,7 +14,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker slot="date-picker">
++  <vaadin24-date-picker slot="date-picker">
+     <label
+       for="input-vaadin-date-picker-6"
+       id="label-vaadin-date-picker-3"
+@@ -35,8 +35,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker slot="time-picker">
++  </vaadin24-date-picker>
++  <vaadin24-time-picker slot="time-picker">
+     <label
+       for="input-vaadin-time-picker-11"
+       id="label-vaadin-time-picker-7"
+@@ -60,13 +60,13 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host default */
+ 
+ snapshots["vaadin-date-time-picker host disabled"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   aria-disabled="true"
+   disabled=""
+   role="group"
+@@ -82,7 +82,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker
++  <vaadin24-date-picker
+     aria-disabled="true"
+     disabled=""
+     slot="date-picker"
+@@ -109,8 +109,8 @@
+       slot="input"
+       tabindex="-1"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker
++  </vaadin24-date-picker>
++  <vaadin24-time-picker
+     aria-disabled="true"
+     disabled=""
+     slot="time-picker"
+@@ -140,13 +140,13 @@
+       spellcheck="false"
+       tabindex="-1"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host disabled */
+ 
+ snapshots["vaadin-date-time-picker host readonly"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   readonly=""
+   role="group"
+ >
+@@ -161,7 +161,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker
++  <vaadin24-date-picker
+     readonly=""
+     slot="date-picker"
+   >
+@@ -186,8 +186,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker
++  </vaadin24-date-picker>
++  <vaadin24-time-picker
+     readonly=""
+     slot="time-picker"
+   >
+@@ -215,13 +215,13 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host readonly */
+ 
+ snapshots["vaadin-date-time-picker host required"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   aria-required="true"
+   required=""
+   role="group"
+@@ -237,7 +237,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker
++  <vaadin24-date-picker
+     required=""
+     slot="date-picker"
+   >
+@@ -262,8 +262,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker
++  </vaadin24-date-picker>
++  <vaadin24-time-picker
+     required=""
+     slot="time-picker"
+   >
+@@ -291,13 +291,13 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host required */
+ 
+ snapshots["vaadin-date-time-picker host label"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   aria-labelledby="label-vaadin-date-time-picker-0"
+   has-label=""
+   role="group"
+@@ -314,7 +314,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker slot="date-picker">
++  <vaadin24-date-picker slot="date-picker">
+     <label
+       for="input-vaadin-date-picker-6"
+       id="label-vaadin-date-picker-3"
+@@ -336,8 +336,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker slot="time-picker">
++  </vaadin24-date-picker>
++  <vaadin24-time-picker slot="time-picker">
+     <label
+       for="input-vaadin-time-picker-11"
+       id="label-vaadin-time-picker-7"
+@@ -362,13 +362,13 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host label */
+ 
+ snapshots["vaadin-date-time-picker host helper"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   aria-describedby="helper-vaadin-date-time-picker-1"
+   has-helper=""
+   role="group"
+@@ -384,7 +384,7 @@
+     slot="error-message"
+   >
+   </div>
+-  <vaadin-date-picker slot="date-picker">
++  <vaadin24-date-picker slot="date-picker">
+     <label
+       for="input-vaadin-date-picker-6"
+       id="label-vaadin-date-picker-3"
+@@ -405,8 +405,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker slot="time-picker">
++  </vaadin24-date-picker>
++  <vaadin24-time-picker slot="time-picker">
+     <label
+       for="input-vaadin-time-picker-11"
+       id="label-vaadin-time-picker-7"
+@@ -430,19 +430,19 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
++  </vaadin24-time-picker>
+   <div
+     id="helper-vaadin-date-time-picker-1"
+     slot="helper"
+   >
+     Helper
+   </div>
+-</vaadin-date-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host helper */
+ 
+ snapshots["vaadin-date-time-picker host error"] = 
+-`<vaadin-date-time-picker
++`<vaadin24-date-time-picker
+   aria-describedby="error-message-vaadin-date-time-picker-2"
+   has-error-message=""
+   invalid=""
+@@ -460,7 +460,7 @@
+   >
+     Error
+   </div>
+-  <vaadin-date-picker
++  <vaadin24-date-picker
+     invalid=""
+     slot="date-picker"
+   >
+@@ -487,8 +487,8 @@
+       role="combobox"
+       slot="input"
+     >
+-  </vaadin-date-picker>
+-  <vaadin-time-picker
++  </vaadin24-date-picker>
++  <vaadin24-time-picker
+     invalid=""
+     slot="time-picker"
+   >
+@@ -518,13 +518,13 @@
+       slot="input"
+       spellcheck="false"
+     >
+-  </vaadin-time-picker>
+-</vaadin-date-time-picker>
++  </vaadin24-time-picker>
++</vaadin24-date-time-picker>
+ `;
+ /* end snapshot vaadin-date-time-picker host error */
+ 
+ snapshots["vaadin-date-time-picker host overlay class date-picker"] = 
+-`<vaadin-date-picker-overlay
++`<vaadin24-date-picker-overlay
+   class="custom date-time-picker-overlay"
+   dir="ltr"
+   id="overlay"
+@@ -533,72 +533,72 @@
+   start-aligned=""
+   top-aligned=""
+ >
+-  <vaadin-date-picker-overlay-content
++  <vaadin24-date-picker-overlay-content
+     class="animate"
+     desktop=""
+     role="dialog"
+   >
+-    <vaadin-button
++    <vaadin24-button
+       role="button"
+       slot="today-button"
+       tabindex="0"
+       theme="tertiary"
+     >
+       Today
+-    </vaadin-button>
+-    <vaadin-button
++    </vaadin24-button>
++    <vaadin24-button
+       role="button"
+       slot="cancel-button"
+       tabindex="0"
+       theme="tertiary"
+     >
+       Cancel
+-    </vaadin-button>
+-    <vaadin-date-picker-month-scroller slot="months">
++    </vaadin24-button>
++    <vaadin24-date-picker-month-scroller slot="months">
+       <div slot="vaadin-infinite-scroller-item-content-12">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-13">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-14">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-15">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-16">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-17">
+-        <vaadin-month-calendar aria-hidden="true">
+-        </vaadin-month-calendar>
++        <vaadin24-month-calendar aria-hidden="true">
++        </vaadin24-month-calendar>
+       </div>
+-    </vaadin-date-picker-month-scroller>
+-    <vaadin-date-picker-year-scroller
++    </vaadin24-date-picker-month-scroller>
++    <vaadin24-date-picker-year-scroller
+       aria-hidden="true"
+       slot="years"
+     >
+       <div slot="vaadin-infinite-scroller-item-content-18">
+-        <vaadin-date-picker-year>
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year>
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-19">
+-        <vaadin-date-picker-year>
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year>
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-20">
+-        <vaadin-date-picker-year>
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year>
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-21">
+-        <vaadin-date-picker-year>
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year>
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-22">
+       </div>
+@@ -617,23 +617,23 @@
+       <div slot="vaadin-infinite-scroller-item-content-29">
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-30">
+-        <vaadin-date-picker-year
++        <vaadin24-date-picker-year
+           current=""
+           selected=""
+         >
+-        </vaadin-date-picker-year>
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-31">
+-        <vaadin-date-picker-year selected="">
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year selected="">
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-32">
+-        <vaadin-date-picker-year selected="">
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year selected="">
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-33">
+-        <vaadin-date-picker-year selected="">
+-        </vaadin-date-picker-year>
++        <vaadin24-date-picker-year selected="">
++        </vaadin24-date-picker-year>
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-34">
+       </div>
+@@ -651,14 +651,14 @@
+       </div>
+       <div slot="vaadin-infinite-scroller-item-content-41">
+       </div>
+-    </vaadin-date-picker-year-scroller>
+-  </vaadin-date-picker-overlay-content>
+-</vaadin-date-picker-overlay>
++    </vaadin24-date-picker-year-scroller>
++  </vaadin24-date-picker-overlay-content>
++</vaadin24-date-picker-overlay>
+ `;
+ /* end snapshot vaadin-date-time-picker host overlay class date-picker */
+ 
+ snapshots["vaadin-date-time-picker host overlay class time-picker"] = 
+-`<vaadin-time-picker-overlay
++`<vaadin24-time-picker-overlay
+   class="custom date-time-picker-overlay"
+   dir="ltr"
+   id="overlay"
+@@ -667,11 +667,11 @@
+   start-aligned=""
+   top-aligned=""
+ >
+-  <vaadin-time-picker-scroller
++  <vaadin24-time-picker-scroller
+     id="vaadin-time-picker-scroller-10"
+     role="listbox"
+   >
+-    <vaadin-time-picker-item
++    <vaadin24-time-picker-item
+       aria-posinset="1"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -681,8 +681,8 @@
+       tabindex="-1"
+     >
+       00:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="2"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -692,8 +692,8 @@
+       tabindex="-1"
+     >
+       01:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="3"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -703,8 +703,8 @@
+       tabindex="-1"
+     >
+       02:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="4"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -714,8 +714,8 @@
+       tabindex="-1"
+     >
+       03:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="5"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -725,8 +725,8 @@
+       tabindex="-1"
+     >
+       04:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="6"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -736,8 +736,8 @@
+       tabindex="-1"
+     >
+       05:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="7"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -747,8 +747,8 @@
+       tabindex="-1"
+     >
+       06:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="8"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -758,8 +758,8 @@
+       tabindex="-1"
+     >
+       07:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="9"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -769,8 +769,8 @@
+       tabindex="-1"
+     >
+       08:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="10"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -780,8 +780,8 @@
+       tabindex="-1"
+     >
+       09:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="11"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -791,8 +791,8 @@
+       tabindex="-1"
+     >
+       10:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="12"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -802,8 +802,8 @@
+       tabindex="-1"
+     >
+       11:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="13"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -813,8 +813,8 @@
+       tabindex="-1"
+     >
+       12:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="14"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -824,8 +824,8 @@
+       tabindex="-1"
+     >
+       13:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="15"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -835,8 +835,8 @@
+       tabindex="-1"
+     >
+       14:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="16"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -846,8 +846,8 @@
+       tabindex="-1"
+     >
+       15:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="17"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -857,8 +857,8 @@
+       tabindex="-1"
+     >
+       16:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="18"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -868,8 +868,8 @@
+       tabindex="-1"
+     >
+       17:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="19"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -879,8 +879,8 @@
+       tabindex="-1"
+     >
+       18:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="20"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -890,8 +890,8 @@
+       tabindex="-1"
+     >
+       19:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="21"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -901,8 +901,8 @@
+       tabindex="-1"
+     >
+       20:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="22"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -912,8 +912,8 @@
+       tabindex="-1"
+     >
+       21:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="23"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -923,8 +923,8 @@
+       tabindex="-1"
+     >
+       22:00
+-    </vaadin-time-picker-item>
+-    <vaadin-time-picker-item
++    </vaadin24-time-picker-item>
++    <vaadin24-time-picker-item
+       aria-posinset="24"
+       aria-selected="false"
+       aria-setsize="24"
+@@ -934,9 +934,9 @@
+       tabindex="-1"
+     >
+       23:00
+-    </vaadin-time-picker-item>
+-  </vaadin-time-picker-scroller>
+-</vaadin-time-picker-overlay>
++    </vaadin24-time-picker-item>
++  </vaadin24-time-picker-scroller>
++</vaadin24-time-picker-overlay>
+ `;
+ /* end snapshot vaadin-date-time-picker host overlay class time-picker */
+ 

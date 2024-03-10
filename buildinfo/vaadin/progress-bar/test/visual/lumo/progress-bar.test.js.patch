@@ -1,0 +1,13 @@
+Index: test/visual/lumo/progress-bar.test.js
+===================================================================
+--- test/visual/lumo/progress-bar.test.js
++++ test/visual/lumo/progress-bar.test.js
+@@ -9,7 +9,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.width = '200px';
+-    element = fixtureSync('<vaadin-progress-bar value="0.1"></vaadin-progress-bar>', div);
++    element = fixtureSync('<vaadin24-progress-bar value="0.1"></vaadin24-progress-bar>', div);
+   });
+ 
+   it('basic', async () => {

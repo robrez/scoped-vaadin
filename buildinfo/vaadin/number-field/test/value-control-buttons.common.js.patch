@@ -1,0 +1,13 @@
+Index: test/value-control-buttons.common.js
+===================================================================
+--- test/value-control-buttons.common.js
++++ test/value-control-buttons.common.js
+@@ -6,7 +6,7 @@
+   let numberField, input, decreaseButton, increaseButton;
+ 
+   beforeEach(async () => {
+-    numberField = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++    numberField = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+     await nextRender();
+     input = numberField.inputElement;
+     decreaseButton = numberField.shadowRoot.querySelector('[part=decrease-button]');

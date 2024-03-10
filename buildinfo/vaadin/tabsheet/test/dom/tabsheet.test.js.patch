@@ -1,0 +1,42 @@
+Index: test/dom/tabsheet.test.js
+===================================================================
+--- test/dom/tabsheet.test.js
++++ test/dom/tabsheet.test.js
+@@ -1,28 +1,28 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import '../../vaadin-tabsheet.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-tabsheet', () => {
++describe('vaadin24-tabsheet', () => {
+   let tabsheet;
+ 
+   beforeEach(async () => {
+     resetUniqueId();
+     tabsheet = fixtureSync(`
+-      <vaadin-tabsheet>
++      <vaadin24-tabsheet>
+         <div slot="prefix">Prefix</div>
+         <div slot="suffix">Suffix</div>
+ 
+-        <vaadin-tabs slot="tabs">
+-          <vaadin-tab id="tab-1">Tab 1</vaadin-tab>
+-          <vaadin-tab id="tab-2">Tab 2</vaadin-tab>
+-          <vaadin-tab id="tab-3">Tab 3</vaadin-tab>
+-        </vaadin-tabs>
++        <vaadin24-tabs slot="tabs">
++          <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
++          <vaadin24-tab id="tab-2">Tab 2</vaadin24-tab>
++          <vaadin24-tab id="tab-3">Tab 3</vaadin24-tab>
++        </vaadin24-tabs>
+ 
+         <div tab="tab-1"></div>
+         <div tab="tab-2"></div>
+         <div tab="tab-3"></div>
+-      </vaadin-tabsheet>
++      </vaadin24-tabsheet>
+     `);
+ 
+     await nextFrame();

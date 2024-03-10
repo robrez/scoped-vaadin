@@ -1,0 +1,30 @@
+Index: test/visual/lumo/checkbox-group.test.js
+===================================================================
+--- test/visual/lumo/checkbox-group.test.js
++++ test/visual/lumo/checkbox-group.test.js
+@@ -13,11 +13,11 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="a" label="A"></vaadin-checkbox>
+-          <vaadin-checkbox value="b" label="B"></vaadin-checkbox>
+-          <vaadin-checkbox value="c" label="C"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin24-checkbox-group>
++          <vaadin24-checkbox value="a" label="A"></vaadin24-checkbox>
++          <vaadin24-checkbox value="b" label="B"></vaadin24-checkbox>
++          <vaadin24-checkbox value="c" label="C"></vaadin24-checkbox>
++        </vaadin24-checkbox-group>
+       `,
+       div,
+     );
+@@ -98,7 +98,7 @@
+       div.style.width = '300px';
+       div.style.padding = '0';
+       element.style.width = '100%';
+-      element.querySelectorAll('vaadin-checkbox').forEach((checkbox) => {
++      element.querySelectorAll('vaadin24-checkbox').forEach((checkbox) => {
+         checkbox.style.width = '33%';
+         // Compensate inline-block whitespace
+         checkbox.style.marginRight = '-3px';

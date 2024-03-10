@@ -1,0 +1,15 @@
+Index: test/validate-mixin.test.js
+===================================================================
+--- test/validate-mixin.test.js
++++ test/validate-mixin.test.js
+@@ -1,8 +1,8 @@
+ import { expect } from '@esm-bundle/chai';
+ import { defineLit, definePolymer, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
+ import { ValidateMixin } from '../src/validate-mixin.js';
+ 
+ const runTests = (defineHelper, baseMixin) => {

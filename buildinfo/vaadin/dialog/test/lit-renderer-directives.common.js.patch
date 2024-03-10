@@ -1,0 +1,60 @@
+Index: test/lit-renderer-directives.common.js
+===================================================================
+--- test/lit-renderer-directives.common.js
++++ test/lit-renderer-directives.common.js
+@@ -6,16 +6,16 @@
+ 
+ async function renderOpenedDialog(container, { header, content, footer }) {
+   render(
+-    html`<vaadin-dialog
++    html`<vaadin24-dialog
+       opened
+       ${content ? dialogRenderer(() => html`${content}`, content) : null}
+       ${header ? dialogHeaderRenderer(() => html`${header}`, header) : null}
+       ${footer ? dialogFooterRenderer(() => html`${footer}`, footer) : null}
+-    ></vaadin-dialog>`,
++    ></vaadin24-dialog>`,
+     container,
+   );
+   await nextFrame();
+-  return container.querySelector('vaadin-dialog');
++  return container.querySelector('vaadin24-dialog');
+ }
+ 
+ describe('lit renderer directives', () => {
+@@ -56,9 +56,9 @@
+ 
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+-        render(html`<vaadin-dialog opened ${dialogRenderer(rendererSpy)}></vaadin-dialog>`, container);
++        render(html`<vaadin24-dialog opened ${dialogRenderer(rendererSpy)}></vaadin24-dialog>`, container);
+         await nextFrame();
+-        dialog = container.querySelector('vaadin-dialog');
++        dialog = container.querySelector('vaadin24-dialog');
+       });
+ 
+       it('should pass the dialog instance to the renderer', () => {
+@@ -102,9 +102,9 @@
+ 
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+-        render(html`<vaadin-dialog opened ${dialogHeaderRenderer(rendererSpy)}></vaadin-dialog>`, container);
++        render(html`<vaadin24-dialog opened ${dialogHeaderRenderer(rendererSpy)}></vaadin24-dialog>`, container);
+         await nextFrame();
+-        dialog = container.querySelector('vaadin-dialog');
++        dialog = container.querySelector('vaadin24-dialog');
+       });
+ 
+       it('should pass the dialog instance to the renderer', () => {
+@@ -148,9 +148,9 @@
+ 
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+-        render(html`<vaadin-dialog opened ${dialogFooterRenderer(rendererSpy)}></vaadin-dialog>`, container);
++        render(html`<vaadin24-dialog opened ${dialogFooterRenderer(rendererSpy)}></vaadin24-dialog>`, container);
+         await nextFrame();
+-        dialog = container.querySelector('vaadin-dialog');
++        dialog = container.querySelector('vaadin24-dialog');
+       });
+ 
+       it('should pass the dialog instance to the renderer', () => {

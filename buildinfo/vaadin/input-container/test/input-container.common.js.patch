@@ -1,0 +1,23 @@
+Index: test/input-container.common.js
+===================================================================
+--- test/input-container.common.js
++++ test/input-container.common.js
+@@ -2,15 +2,15 @@
+ import { fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ 
+-describe('vaadin-input-container', () => {
++describe('vaadin24-input-container', () => {
+   let container;
+   let input;
+ 
+   beforeEach(async () => {
+     container = fixtureSync(`
+-      <vaadin-input-container>
++      <vaadin24-input-container>
+         <input>
+-      </vaadin-input-container>
++      </vaadin24-input-container>
+     `);
+     await nextRender();
+     input = container.firstElementChild;

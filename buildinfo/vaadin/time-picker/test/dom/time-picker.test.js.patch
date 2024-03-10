@@ -1,0 +1,22 @@
+Index: test/dom/time-picker.test.js
+===================================================================
+--- test/dom/time-picker.test.js
++++ test/dom/time-picker.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-time-picker.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-time-picker', () => {
++describe('vaadin24-time-picker', () => {
+   let timePicker, comboBox;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    timePicker = fixtureSync('<vaadin-time-picker></vaadin-time-picker>');
++    timePicker = fixtureSync('<vaadin24-time-picker></vaadin24-time-picker>');
+     comboBox = timePicker.$.comboBox;
+   });
+ 

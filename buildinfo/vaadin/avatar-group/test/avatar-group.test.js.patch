@@ -1,0 +1,261 @@
+Index: test/avatar-group.test.js
+===================================================================
+--- test/avatar-group.test.js
++++ test/avatar-group.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   enterKeyDown,
+@@ -35,7 +36,7 @@
+   let group;
+ 
+   beforeEach(() => {
+-    group = fixtureSync('<vaadin-avatar-group></vaadin-avatar-group>');
++    group = fixtureSync('<vaadin24-avatar-group></vaadin24-avatar-group>');
+   });
+ 
+   describe('custom element definition', () => {
+@@ -46,11 +47,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -61,35 +62,35 @@
+     });
+ 
+     it('should render avatar for each item, plus overflow avatar', () => {
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items.length).to.equal(group.items.length + 1);
+     });
+ 
+     it('should propagate theme attribute to all avatars', () => {
+       group.setAttribute('theme', 'small');
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       items.forEach((avatar) => expect(avatar.getAttribute('theme')).to.equal('small'));
+     });
+ 
+     it('should append vaadin-avatar elements for items added at the end', async () => {
+       group.items = [group.items[1], group.items[2], { abbr: 'GG' }];
+       await nextRender();
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items[2].abbr).to.equal('GG');
+     });
+ 
+     it('should insert vaadin-avatar elements for items added in the middle', async () => {
+       group.items = [group.items[1], { abbr: 'GG' }, group.items[2]];
+       await nextRender();
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items[1].abbr).to.equal('GG');
+     });
+ 
+     it('should reuse existing vaadin-avatar element when updating items', async () => {
+-      const avatar = group.querySelector('vaadin-avatar');
++      const avatar = group.querySelector('vaadin24-avatar');
+       group.items = [group.items[1], group.items[2]];
+       await nextRender();
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items.length).to.equal(3);
+       expect(items[0]).to.eql(avatar);
+       expect(items[1]).to.not.eql(avatar);
+@@ -104,7 +105,7 @@
+     });
+ 
+     it('should render avatar based on maxItemsVisible, including overflow avatar', () => {
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items.length).to.equal(group.maxItemsVisible);
+     });
+ 
+@@ -116,8 +117,8 @@
+     it('should set generator on the overflow avatar tooltip', () => {
+       const overflow = group._overflow;
+       const items = group.items;
+-      const tooltip = overflow.querySelector('vaadin-tooltip');
+-      const overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      const tooltip = overflow.querySelector('vaadin24-tooltip');
++      const overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+       expect(overlay.textContent).to.equal([items[2].name, items[3].abbr, 'anonymous'].join('\n'));
+     });
+ 
+@@ -129,7 +130,7 @@
+     it('should show at least two avatars if maxItemsVisible is below 2', async () => {
+       group.maxItemsVisible = 1;
+       await nextRender(group);
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items.length).to.equal(2);
+     });
+ 
+@@ -177,7 +178,7 @@
+       group.items = [];
+       group.items = items;
+       await nextRender(group);
+-      const renderedElements = group.querySelectorAll('vaadin-avatar');
++      const renderedElements = group.querySelectorAll('vaadin24-avatar');
+       expect(renderedElements.length).to.equal(maxItemsVisible);
+     });
+ 
+@@ -191,7 +192,7 @@
+         group.style.width = '100px';
+         await onceResized(group);
+ 
+-        const items = group.querySelectorAll('vaadin-avatar');
++        const items = group.querySelectorAll('vaadin24-avatar');
+         expect(items.length).to.equal(3);
+       });
+ 
+@@ -218,7 +219,7 @@
+     it('should render avatars to fit width on resize', async () => {
+       group.style.width = '110px';
+       await onceResized(group);
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items.length).to.equal(3);
+       expect(overflow.abbr).to.equal('+3');
+     });
+@@ -251,7 +252,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const items = overlay.querySelectorAll('vaadin-avatar-group-menu-item');
++      const items = overlay.querySelectorAll('vaadin24-avatar-group-menu-item');
+       expect(items.length).to.equal(3);
+     });
+ 
+@@ -265,7 +266,7 @@
+       group.style.width = '75px';
+       await onceResized(group);
+ 
+-      const items = overlay.querySelectorAll('vaadin-avatar-group-menu-item');
++      const items = overlay.querySelectorAll('vaadin24-avatar-group-menu-item');
+       expect(items.length).to.equal(4);
+     });
+ 
+@@ -335,7 +336,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const menu = overlay.querySelector('vaadin-avatar-group-menu');
++      const menu = overlay.querySelector('vaadin24-avatar-group-menu');
+       escKeyDown(menu);
+ 
+       await nextRender();
+@@ -346,7 +347,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const menu = overlay.querySelector('vaadin-avatar-group-menu');
++      const menu = overlay.querySelector('vaadin24-avatar-group-menu');
+       tabKeyDown(menu);
+ 
+       await nextRender();
+@@ -382,7 +383,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const menu = overlay.querySelector('vaadin-avatar-group-menu');
++      const menu = overlay.querySelector('vaadin24-avatar-group-menu');
+       escKeyDown(menu);
+ 
+       await nextRender();
+@@ -393,7 +394,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      overlay.querySelector('vaadin-avatar-group-menu-item').click();
++      overlay.querySelector('vaadin24-avatar-group-menu-item').click();
+ 
+       await nextRender();
+       expect(overflow.hasAttribute('focus-ring')).to.be.false;
+@@ -403,11 +404,11 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const avatars = overlay.querySelectorAll('vaadin-avatar');
++      const avatars = overlay.querySelectorAll('vaadin24-avatar');
+ 
+       avatars.forEach((avatar) => {
+         expect(avatar.withTooltip).to.be.false;
+-        expect(avatar.querySelector('vaadin-tooltip')).to.be.not.ok;
++        expect(avatar.querySelector('vaadin24-tooltip')).to.be.not.ok;
+       });
+     });
+   });
+@@ -427,7 +428,7 @@
+     });
+ 
+     it('should pass color index to avatars', () => {
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items[0].colorIndex).to.equal(0);
+       expect(items[1].colorIndex).to.equal(1);
+       expect(items[2].colorIndex).to.equal(2);
+@@ -439,7 +440,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const avatars = overlay.querySelectorAll('vaadin-avatar');
++      const avatars = overlay.querySelectorAll('vaadin24-avatar');
+       expect(avatars[0].colorIndex).to.equal(group.items[1].colorIndex);
+       expect(avatars[1].colorIndex).to.equal(group.items[2].colorIndex);
+     });
+@@ -460,7 +461,7 @@
+     });
+ 
+     it('should pass class name to avatars', () => {
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items[0].getAttribute('class')).to.equal('foo');
+       expect(items[1].getAttribute('class')).to.equal('bar');
+       expect(items[2].getAttribute('class')).to.equal('baz');
+@@ -472,7 +473,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const avatars = overlay.querySelectorAll('vaadin-avatar');
++      const avatars = overlay.querySelectorAll('vaadin24-avatar');
+       expect(avatars[0].getAttribute('class')).to.equal(group.items[1].className);
+       expect(avatars[1].getAttribute('class')).to.equal(group.items[2].className);
+     });
+@@ -521,7 +522,7 @@
+ 
+     it('should pass i18n property to avatars', () => {
+       group.i18n = customI18n;
+-      const items = group.querySelectorAll('vaadin-avatar');
++      const items = group.querySelectorAll('vaadin24-avatar');
+       expect(items[0].i18n).to.deep.equal(customI18n);
+       expect(items[1].i18n).to.deep.equal(customI18n);
+       expect(items[2].i18n).to.deep.equal(customI18n);
+@@ -534,7 +535,7 @@
+       overflow.click();
+       await oneEvent(overlay, 'vaadin-overlay-open');
+ 
+-      const avatars = overlay.querySelectorAll('vaadin-avatar');
++      const avatars = overlay.querySelectorAll('vaadin24-avatar');
+       expect(avatars[0].i18n).to.deep.equal(customI18n);
+       expect(avatars[1].i18n).to.deep.equal(customI18n);
+     });
+@@ -652,7 +653,7 @@
+   beforeEach(async () => {
+     layout = fixtureSync(`
+       <div style="display: flex; width: 200px; flex-direction: column; align-items: flex-start;">
+-        <vaadin-avatar-group></vaadin-avatar-group>
++        <vaadin24-avatar-group></vaadin24-avatar-group>
+       </div>
+     `);
+     group = layout.firstElementChild;

@@ -1,0 +1,22 @@
+Index: test/dom/dialog.test.js
+===================================================================
+--- test/dom/dialog.test.js
++++ test/dom/dialog.test.js
+@@ -2,7 +2,7 @@
+ import { fixtureSync, nextRender, oneEvent } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-dialog.js';
+ 
+-describe('vaadin-dialog', () => {
++describe('vaadin24-dialog', () => {
+   let dialog, overlay;
+ 
+   const SNAPSHOT_CONFIG = {
+@@ -12,7 +12,7 @@
+   };
+ 
+   beforeEach(async () => {
+-    dialog = fixtureSync('<vaadin-dialog></vaadin-dialog>');
++    dialog = fixtureSync('<vaadin24-dialog></vaadin24-dialog>');
+     await nextRender();
+     overlay = dialog.$.overlay;
+     dialog.renderer = (root) => {

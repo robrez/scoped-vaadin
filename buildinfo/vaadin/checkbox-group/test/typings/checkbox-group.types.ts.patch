@@ -1,0 +1,13 @@
+Index: test/typings/checkbox-group.types.ts
+===================================================================
+--- test/typings/checkbox-group.types.ts
++++ test/typings/checkbox-group.types.ts
+@@ -7,7 +7,7 @@
+ 
+ const assertType = <TExpected>(value: TExpected) => value;
+ 
+-const group = document.createElement('vaadin-checkbox-group');
++const group = document.createElement('vaadin24-checkbox-group');
+ 
+ group.addEventListener('invalid-changed', (event) => {
+   assertType<CheckboxGroupInvalidChangedEvent>(event);

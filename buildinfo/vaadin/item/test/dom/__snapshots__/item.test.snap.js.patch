@@ -1,0 +1,43 @@
+Index: test/dom/__snapshots__/item.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/item.test.snap.js
++++ test/dom/__snapshots__/item.test.snap.js
+@@ -2,32 +2,32 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-item host default"] = 
+-`<vaadin-item
++`<vaadin24-item
+   aria-selected="false"
+   role="option"
+ >
+-</vaadin-item>
++</vaadin24-item>
+ `;
+ /* end snapshot vaadin-item host default */
+ 
+ snapshots["vaadin-item host selected"] = 
+-`<vaadin-item
++`<vaadin24-item
+   aria-selected="true"
+   role="option"
+   selected=""
+ >
+-</vaadin-item>
++</vaadin24-item>
+ `;
+ /* end snapshot vaadin-item host selected */
+ 
+ snapshots["vaadin-item host disabled"] = 
+-`<vaadin-item
++`<vaadin24-item
+   aria-disabled="true"
+   aria-selected="false"
+   disabled=""
+   role="option"
+ >
+-</vaadin-item>
++</vaadin24-item>
+ `;
+ /* end snapshot vaadin-item host disabled */
+ 

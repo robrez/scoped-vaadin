@@ -1,0 +1,41 @@
+Index: test/visual/material/input-container.test.js
+===================================================================
+--- test/visual/material/input-container.test.js
++++ test/visual/material/input-container.test.js
+@@ -1,7 +1,7 @@
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/icon/vaadin-icon.js';
+-import '@vaadin/vaadin-lumo-styles/vaadin-iconset.js';
++import '@scoped-vaadin/icon/vaadin-icon.js';
++import '@scoped-vaadin/vaadin-lumo-styles/vaadin-iconset.js';
+ import '../../../theme/material/vaadin-input-container.js';
+ 
+ describe('input-container', () => {
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-input-container><input></vaadin-input-container>', div);
++    element = fixtureSync('<vaadin24-input-container><input></vaadin24-input-container>', div);
+   });
+ 
+   it('basic', async () => {
+@@ -29,7 +29,7 @@
+   });
+ 
+   it('prefix icon', async () => {
+-    const icon = document.createElement('vaadin-icon');
++    const icon = document.createElement('vaadin24-icon');
+     icon.setAttribute('slot', 'prefix');
+     icon.icon = 'lumo:user';
+     element.appendChild(icon);
+@@ -37,7 +37,7 @@
+   });
+ 
+   it('suffix icon', async () => {
+-    const icon = document.createElement('vaadin-icon');
++    const icon = document.createElement('vaadin24-icon');
+     icon.setAttribute('slot', 'suffix');
+     icon.icon = 'lumo:user';
+     element.appendChild(icon);

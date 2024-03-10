@@ -1,0 +1,163 @@
+Index: test/dom/__snapshots__/menu-bar.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/menu-bar.test.snap.js
++++ test/dom/__snapshots__/menu-bar.test.snap.js
+@@ -2,42 +2,42 @@
+ export const snapshots = {};
+ 
+ snapshots["menu-bar basic"] = 
+-`<vaadin-menu-bar role="menubar">
+-  <vaadin-menu-bar-button
++`<vaadin24-menu-bar role="menubar">
++  <vaadin24-menu-bar-button
+     class="home"
+     role="menuitem"
+     tabindex="0"
+   >
+     Home
+-  </vaadin-menu-bar-button>
+-  <vaadin-menu-bar-button
++  </vaadin24-menu-bar-button>
++  <vaadin24-menu-bar-button
+     aria-expanded="false"
+     aria-haspopup="true"
+     role="menuitem"
+     tabindex="0"
+   >
+     Reports
+-  </vaadin-menu-bar-button>
+-  <vaadin-menu-bar-button
++  </vaadin24-menu-bar-button>
++  <vaadin24-menu-bar-button
+     aria-disabled="true"
+     disabled=""
+     role="menuitem"
+     tabindex="-1"
+   >
+     Dashboard
+-  </vaadin-menu-bar-button>
+-  <vaadin-menu-bar-button
++  </vaadin24-menu-bar-button>
++  <vaadin24-menu-bar-button
+     class="help"
+     role="menuitem"
+     tabindex="0"
+   >
+-    <vaadin-menu-bar-item aria-selected="false">
++    <vaadin24-menu-bar-item aria-selected="false">
+       <strong>
+         Help
+       </strong>
+-    </vaadin-menu-bar-item>
+-  </vaadin-menu-bar-button>
+-  <vaadin-menu-bar-button
++    </vaadin24-menu-bar-item>
++  </vaadin24-menu-bar-button>
++  <vaadin24-menu-bar-button
+     aria-expanded="false"
+     aria-haspopup="true"
+     aria-label="More options"
+@@ -49,32 +49,32 @@
+     <div aria-hidden="true">
+       ···
+     </div>
+-  </vaadin-menu-bar-button>
+-</vaadin-menu-bar>
++  </vaadin24-menu-bar-button>
++</vaadin24-menu-bar>
+ `;
+ /* end snapshot menu-bar basic */
+ 
+ snapshots["menu-bar overlay"] = 
+-`<vaadin-menu-bar-overlay
++`<vaadin24-menu-bar-overlay
+   dir="ltr"
+   opened=""
+   right-aligned=""
+   start-aligned=""
+   top-aligned=""
+ >
+-  <vaadin-menu-bar-list-box
++  <vaadin24-menu-bar-list-box
+     aria-orientation="vertical"
+     role="menu"
+   >
+-    <vaadin-menu-bar-item
++    <vaadin24-menu-bar-item
+       aria-haspopup="false"
+       aria-selected="false"
+       role="menuitem"
+       tabindex="0"
+     >
+       View Reports
+-    </vaadin-menu-bar-item>
+-    <vaadin-menu-bar-item
++    </vaadin24-menu-bar-item>
++    <vaadin24-menu-bar-item
+       aria-haspopup="false"
+       aria-selected="false"
+       class="generate reports"
+@@ -82,16 +82,16 @@
+       tabindex="-1"
+     >
+       Generate Report
+-    </vaadin-menu-bar-item>
+-  </vaadin-menu-bar-list-box>
+-  <vaadin-menu-bar-submenu hidden="">
+-  </vaadin-menu-bar-submenu>
+-</vaadin-menu-bar-overlay>
++    </vaadin24-menu-bar-item>
++  </vaadin24-menu-bar-list-box>
++  <vaadin24-menu-bar-submenu hidden="">
++  </vaadin24-menu-bar-submenu>
++</vaadin24-menu-bar-overlay>
+ `;
+ /* end snapshot menu-bar overlay */
+ 
+ snapshots["menu-bar overlay class"] = 
+-`<vaadin-menu-bar-overlay
++`<vaadin24-menu-bar-overlay
+   class="custom menu-bar-overlay"
+   dir="ltr"
+   opened=""
+@@ -99,19 +99,19 @@
+   start-aligned=""
+   top-aligned=""
+ >
+-  <vaadin-menu-bar-list-box
++  <vaadin24-menu-bar-list-box
+     aria-orientation="vertical"
+     role="menu"
+   >
+-    <vaadin-menu-bar-item
++    <vaadin24-menu-bar-item
+       aria-haspopup="false"
+       aria-selected="false"
+       role="menuitem"
+       tabindex="0"
+     >
+       View Reports
+-    </vaadin-menu-bar-item>
+-    <vaadin-menu-bar-item
++    </vaadin24-menu-bar-item>
++    <vaadin24-menu-bar-item
+       aria-haspopup="false"
+       aria-selected="false"
+       class="generate reports"
+@@ -119,11 +119,11 @@
+       tabindex="-1"
+     >
+       Generate Report
+-    </vaadin-menu-bar-item>
+-  </vaadin-menu-bar-list-box>
+-  <vaadin-menu-bar-submenu hidden="">
+-  </vaadin-menu-bar-submenu>
+-</vaadin-menu-bar-overlay>
++    </vaadin24-menu-bar-item>
++  </vaadin24-menu-bar-list-box>
++  <vaadin24-menu-bar-submenu hidden="">
++  </vaadin24-menu-bar-submenu>
++</vaadin24-menu-bar-overlay>
+ `;
+ /* end snapshot menu-bar overlay class */
+ 

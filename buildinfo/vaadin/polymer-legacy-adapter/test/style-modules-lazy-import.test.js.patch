@@ -1,0 +1,20 @@
+Index: test/style-modules-lazy-import.test.js
+===================================================================
+--- test/style-modules-lazy-import.test.js
++++ test/style-modules-lazy-import.test.js
+@@ -1,11 +1,12 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ function defineCustomElement(name) {
+-  customElements.define(
++  internalCustomElements.define(
+     name,
+     class extends ThemableMixin(PolymerElement) {
+       static get is() {

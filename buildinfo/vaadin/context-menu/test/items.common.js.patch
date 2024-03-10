@@ -1,0 +1,38 @@
+Index: test/items.common.js
+===================================================================
+--- test/items.common.js
++++ test/items.common.js
+@@ -14,9 +14,9 @@
+   tabKeyDown,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ import { getMenuItems, getSubMenu, openMenu } from './helpers.js';
+ 
+ describe('items', () => {
+@@ -24,9 +24,9 @@
+ 
+   beforeEach(async () => {
+     rootMenu = fixtureSync(`
+-      <vaadin-context-menu>
++      <vaadin24-context-menu>
+         <button id="target"></button>
+-      </vaadin-context-menu>
++      </vaadin24-context-menu>
+     `);
+     rootMenu.openOn = isTouch ? 'click' : 'mouseover';
+     target = rootMenu.firstElementChild;
+@@ -173,7 +173,7 @@
+   });
+ 
+   it('should have default item type', () => {
+-    expect(getMenuItems(rootMenu)[0].localName).to.equal('vaadin-context-menu-item');
++    expect(getMenuItems(rootMenu)[0].localName).to.equal('vaadin24-context-menu-item');
+   });
+ 
+   it('should accept component items', async () => {

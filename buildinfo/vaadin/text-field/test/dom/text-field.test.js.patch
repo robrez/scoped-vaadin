@@ -1,0 +1,22 @@
+Index: test/dom/text-field.test.js
+===================================================================
+--- test/dom/text-field.test.js
++++ test/dom/text-field.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-text-field.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-text-field', () => {
++describe('vaadin24-text-field', () => {
+   let field;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++    field = fixtureSync('<vaadin24-text-field></vaadin24-text-field>');
+   });
+ 
+   describe('host', () => {

@@ -1,0 +1,13 @@
+Index: test/toggling-dropdown.test.js
+===================================================================
+--- test/toggling-dropdown.test.js
++++ test/toggling-dropdown.test.js
+@@ -20,7 +20,7 @@
+   let comboBox, overlay, input;
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync('<vaadin-combo-box label="Label" items="[1, 2]"></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box label="Label" items="[1, 2]"></vaadin24-combo-box>');
+     input = comboBox.inputElement;
+     overlay = comboBox.$.overlay;
+   });

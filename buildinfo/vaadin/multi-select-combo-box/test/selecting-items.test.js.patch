@@ -1,0 +1,40 @@
+Index: test/selecting-items.test.js
+===================================================================
+--- test/selecting-items.test.js
++++ test/selecting-items.test.js
+@@ -10,7 +10,7 @@
+   let comboBox, internal, inputElement;
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
++    comboBox = fixtureSync(`<vaadin24-multi-select-combo-box></vaadin24-multi-select-combo-box>`);
+     internal = comboBox.$.comboBox;
+     inputElement = comboBox.inputElement;
+     inputElement.focus();
+@@ -37,7 +37,7 @@
+ 
+     it('should update selectedItems when selecting an item on click', async () => {
+       await sendKeys({ down: 'ArrowDown' });
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin24-multi-select-combo-box-item');
+       item.click();
+       expect(comboBox.selectedItems).to.deep.equal(['apple']);
+     });
+@@ -92,7 +92,7 @@
+       await sendKeys({ down: 'ArrowDown' });
+       await sendKeys({ down: 'ArrowDown' });
+       await sendKeys({ down: 'Enter' });
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin24-multi-select-combo-box-item');
+       expect(item.hasAttribute('focused')).to.be.true;
+     });
+ 
+@@ -100,7 +100,7 @@
+       await sendKeys({ down: 'ArrowDown' });
+       await sendKeys({ type: 'banana' });
+       await sendKeys({ down: 'Enter' });
+-      const item = document.querySelectorAll('vaadin-multi-select-combo-box-item')[1];
++      const item = document.querySelectorAll('vaadin24-multi-select-combo-box-item')[1];
+       expect(item.hasAttribute('focused')).to.be.true;
+     });
+ 

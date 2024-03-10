@@ -1,0 +1,33 @@
+Index: test/typings/message-list.types.ts
+===================================================================
+--- test/typings/message-list.types.ts
++++ test/typings/message-list.types.ts
+@@ -1,14 +1,14 @@
+ import '../../vaadin-message.js';
+ import '../../vaadin-message-list.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { MessageListItem } from '../../vaadin-message-list.js';
+ 
+ const assertType = <TExpected>(value: TExpected) => value;
+ 
+-const list = document.createElement('vaadin-message-list');
++const list = document.createElement('vaadin24-message-list');
+ 
+ // Properties
+ assertType<MessageListItem[] | null | undefined>(list.items);
+@@ -28,7 +28,7 @@
+ assertType<ElementMixinClass>(list);
+ assertType<ThemableMixinClass>(list);
+ 
+-const message = document.createElement('vaadin-message');
++const message = document.createElement('vaadin24-message');
+ 
+ // Message properties
+ assertType<string | null | undefined>(message.time);

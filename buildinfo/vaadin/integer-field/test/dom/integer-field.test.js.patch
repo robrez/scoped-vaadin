@@ -1,0 +1,22 @@
+Index: test/dom/integer-field.test.js
+===================================================================
+--- test/dom/integer-field.test.js
++++ test/dom/integer-field.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-integer-field.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-integer-field', () => {
++describe('vaadin24-integer-field', () => {
+   let field;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    field = fixtureSync('<vaadin-integer-field></vaadin-integer-field>');
++    field = fixtureSync('<vaadin24-integer-field></vaadin24-integer-field>');
+   });
+ 
+   describe('host', () => {

@@ -1,0 +1,398 @@
+Index: test/dom/__snapshots__/multi-select-combo-box.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/multi-select-combo-box.test.snap.js
++++ test/dom/__snapshots__/multi-select-combo-box.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-multi-select-combo-box host default"] = 
+-`<vaadin-multi-select-combo-box placeholder="">
++`<vaadin24-multi-select-combo-box placeholder="">
+   <label
+     for="input-vaadin-multi-select-combo-box-4"
+     id="label-vaadin-multi-select-combo-box-0"
+@@ -26,19 +26,19 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host default */
+ 
+ snapshots["vaadin-multi-select-combo-box host label"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   has-label=""
+   placeholder=""
+ >
+@@ -67,19 +67,19 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host label */
+ 
+ snapshots["vaadin-multi-select-combo-box host helper"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   has-helper=""
+   placeholder=""
+ >
+@@ -107,25 +107,25 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
++  </vaadin24-multi-select-combo-box-chip>
+   <div
+     id="helper-vaadin-multi-select-combo-box-1"
+     slot="helper"
+   >
+     Helper
+   </div>
+-</vaadin-multi-select-combo-box>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host helper */
+ 
+ snapshots["vaadin-multi-select-combo-box host error"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   has-error-message=""
+   invalid=""
+   placeholder=""
+@@ -157,19 +157,19 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host error */
+ 
+ snapshots["vaadin-multi-select-combo-box host required"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   placeholder=""
+   required=""
+ >
+@@ -197,19 +197,19 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host required */
+ 
+ snapshots["vaadin-multi-select-combo-box host disabled"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   aria-disabled="true"
+   disabled=""
+   placeholder=""
+@@ -239,20 +239,20 @@
+     spellcheck="false"
+     tabindex="-1"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     disabled=""
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host disabled */
+ 
+ snapshots["vaadin-multi-select-combo-box host readonly"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   placeholder=""
+   readonly=""
+ >
+@@ -280,20 +280,20 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     readonly=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host readonly */
+ 
+ snapshots["vaadin-multi-select-combo-box host placeholder"] = 
+-`<vaadin-multi-select-combo-box placeholder="Placeholder">
++`<vaadin24-multi-select-combo-box placeholder="Placeholder">
+   <label
+     for="input-vaadin-multi-select-combo-box-4"
+     id="label-vaadin-multi-select-combo-box-0"
+@@ -318,19 +318,19 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host placeholder */
+ 
+ snapshots["vaadin-multi-select-combo-box host opened default"] = 
+-`<vaadin-multi-select-combo-box
++`<vaadin24-multi-select-combo-box
+   focused=""
+   opened=""
+   placeholder=""
+@@ -359,50 +359,50 @@
+     slot="input"
+     spellcheck="false"
+   >
+-  <vaadin-multi-select-combo-box-chip
++  <vaadin24-multi-select-combo-box-chip
+     count="0"
+     hidden=""
+     slot="overflow"
+     title=""
+   >
+-  </vaadin-multi-select-combo-box-chip>
+-</vaadin-multi-select-combo-box>
++  </vaadin24-multi-select-combo-box-chip>
++</vaadin24-multi-select-combo-box>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host opened default */
+ 
+ snapshots["vaadin-multi-select-combo-box host opened overlay"] = 
+-`<vaadin-multi-select-combo-box-overlay
++`<vaadin24-multi-select-combo-box-overlay
+   id="overlay"
+   no-vertical-overlap=""
+ >
+-  <vaadin-multi-select-combo-box-scroller
++  <vaadin24-multi-select-combo-box-scroller
+     aria-multiselectable="true"
+     id="vaadin-multi-select-combo-box-scroller-3"
+     role="listbox"
+   >
+-  </vaadin-multi-select-combo-box-scroller>
+-</vaadin-multi-select-combo-box-overlay>
++  </vaadin24-multi-select-combo-box-scroller>
++</vaadin24-multi-select-combo-box-overlay>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host opened overlay */
+ 
+ snapshots["vaadin-multi-select-combo-box host opened overlay class"] = 
+-`<vaadin-multi-select-combo-box-overlay
++`<vaadin24-multi-select-combo-box-overlay
+   class="custom multi-select-combo-box-overlay"
+   id="overlay"
+   no-vertical-overlap=""
+ >
+-  <vaadin-multi-select-combo-box-scroller
++  <vaadin24-multi-select-combo-box-scroller
+     aria-multiselectable="true"
+     id="vaadin-multi-select-combo-box-scroller-3"
+     role="listbox"
+   >
+-  </vaadin-multi-select-combo-box-scroller>
+-</vaadin-multi-select-combo-box-overlay>
++  </vaadin24-multi-select-combo-box-scroller>
++</vaadin24-multi-select-combo-box-overlay>
+ `;
+ /* end snapshot vaadin-multi-select-combo-box host opened overlay class */
+ 
+ snapshots["vaadin-multi-select-combo-box shadow default"] = 
+-`<div class="vaadin-multi-select-combo-box-container">
++`<div class="vaadin24-multi-select-combo-box-container">
+   <div part="label">
+     <slot name="label">
+     </slot>
+@@ -412,8 +412,8 @@
+     >
+     </span>
+   </div>
+-  <vaadin-multi-select-combo-box-internal id="comboBox">
+-    <vaadin-multi-select-combo-box-container part="input-field">
++  <vaadin24-multi-select-combo-box-internal id="comboBox">
++    <vaadin24-multi-select-combo-box-container part="input-field">
+       <slot
+         name="overflow"
+         slot="prefix"
+@@ -444,8 +444,8 @@
+         slot="suffix"
+       >
+       </div>
+-    </vaadin-multi-select-combo-box-container>
+-  </vaadin-multi-select-combo-box-internal>
++    </vaadin24-multi-select-combo-box-container>
++  </vaadin24-multi-select-combo-box-internal>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -461,7 +461,7 @@
+ /* end snapshot vaadin-multi-select-combo-box shadow default */
+ 
+ snapshots["vaadin-multi-select-combo-box shadow disabled"] = 
+-`<div class="vaadin-multi-select-combo-box-container">
++`<div class="vaadin24-multi-select-combo-box-container">
+   <div part="label">
+     <slot name="label">
+     </slot>
+@@ -471,12 +471,12 @@
+     >
+     </span>
+   </div>
+-  <vaadin-multi-select-combo-box-internal
++  <vaadin24-multi-select-combo-box-internal
+     aria-disabled="true"
+     disabled=""
+     id="comboBox"
+   >
+-    <vaadin-multi-select-combo-box-container
++    <vaadin24-multi-select-combo-box-container
+       disabled=""
+       part="input-field"
+     >
+@@ -510,8 +510,8 @@
+         slot="suffix"
+       >
+       </div>
+-    </vaadin-multi-select-combo-box-container>
+-  </vaadin-multi-select-combo-box-internal>
++    </vaadin24-multi-select-combo-box-container>
++  </vaadin24-multi-select-combo-box-internal>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -527,7 +527,7 @@
+ /* end snapshot vaadin-multi-select-combo-box shadow disabled */
+ 
+ snapshots["vaadin-multi-select-combo-box shadow readonly"] = 
+-`<div class="vaadin-multi-select-combo-box-container">
++`<div class="vaadin24-multi-select-combo-box-container">
+   <div part="label">
+     <slot name="label">
+     </slot>
+@@ -537,11 +537,11 @@
+     >
+     </span>
+   </div>
+-  <vaadin-multi-select-combo-box-internal
++  <vaadin24-multi-select-combo-box-internal
+     id="comboBox"
+     readonly=""
+   >
+-    <vaadin-multi-select-combo-box-container
++    <vaadin24-multi-select-combo-box-container
+       part="input-field"
+       readonly=""
+     >
+@@ -575,8 +575,8 @@
+         slot="suffix"
+       >
+       </div>
+-    </vaadin-multi-select-combo-box-container>
+-  </vaadin-multi-select-combo-box-internal>
++    </vaadin24-multi-select-combo-box-container>
++  </vaadin24-multi-select-combo-box-internal>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -592,7 +592,7 @@
+ /* end snapshot vaadin-multi-select-combo-box shadow readonly */
+ 
+ snapshots["vaadin-multi-select-combo-box shadow invalid"] = 
+-`<div class="vaadin-multi-select-combo-box-container">
++`<div class="vaadin24-multi-select-combo-box-container">
+   <div part="label">
+     <slot name="label">
+     </slot>
+@@ -602,8 +602,8 @@
+     >
+     </span>
+   </div>
+-  <vaadin-multi-select-combo-box-internal id="comboBox">
+-    <vaadin-multi-select-combo-box-container
++  <vaadin24-multi-select-combo-box-internal id="comboBox">
++    <vaadin24-multi-select-combo-box-container
+       invalid=""
+       part="input-field"
+     >
+@@ -637,8 +637,8 @@
+         slot="suffix"
+       >
+       </div>
+-    </vaadin-multi-select-combo-box-container>
+-  </vaadin-multi-select-combo-box-internal>
++    </vaadin24-multi-select-combo-box-container>
++  </vaadin24-multi-select-combo-box-internal>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>

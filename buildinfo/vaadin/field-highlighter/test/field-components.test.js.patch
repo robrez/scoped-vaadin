@@ -1,0 +1,152 @@
+Index: test/field-components.test.js
+===================================================================
+--- test/field-components.test.js
++++ test/field-components.test.js
+@@ -2,16 +2,16 @@
+ import { arrowDown, fixtureSync, nextFrame, nextRender, oneEvent, outsideClick } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+-import '@vaadin/checkbox-group';
+-import '@vaadin/date-picker';
+-import '@vaadin/date-time-picker';
+-import '@vaadin/item';
+-import '@vaadin/list-box';
+-import '@vaadin/radio-group';
+-import '@vaadin/select';
+-import '@vaadin/text-field';
++import '@scoped-vaadin/checkbox-group';
++import '@scoped-vaadin/date-picker';
++import '@scoped-vaadin/date-time-picker';
++import '@scoped-vaadin/item';
++import '@scoped-vaadin/list-box';
++import '@scoped-vaadin/radio-group';
++import '@scoped-vaadin/select';
++import '@scoped-vaadin/text-field';
+ import { html, render } from 'lit';
+-import { close, waitForOverlayRender } from '@vaadin/date-picker/test/helpers.js';
++import { close, waitForOverlayRender } from '@scoped-vaadin/date-picker/test/helpers.js';
+ import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
+ 
+ async function waitForIntersectionObserver() {
+@@ -37,7 +37,7 @@
+ 
+   describe('text field', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++      field = fixtureSync(`<vaadin24-text-field></vaadin24-text-field>`);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+       hideSpy = sinon.spy();
+@@ -60,7 +60,7 @@
+ 
+   describe('date picker', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++      field = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
+       FieldHighlighter.init(field);
+       overlay = field.$.overlay;
+       showSpy = sinon.spy();
+@@ -177,7 +177,7 @@
+ 
+   describe('select', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-select></vaadin-select>`);
++      field = fixtureSync(`<vaadin24-select></vaadin24-select>`);
+       field.renderer = (root) => {
+         if (root.firstChild) {
+           return;
+@@ -185,11 +185,11 @@
+ 
+         render(
+           html`
+-            <vaadin-list-box>
+-              <vaadin-item>Foo</vaadin-item>
+-              <vaadin-item>Bar</vaadin-item>
+-              <vaadin-item>Baz</vaadin-item>
+-            </vaadin-list-box>
++            <vaadin24-list-box>
++              <vaadin24-item>Foo</vaadin24-item>
++              <vaadin24-item>Bar</vaadin24-item>
++              <vaadin24-item>Baz</vaadin24-item>
++            </vaadin24-list-box>
+           `,
+           root,
+         );
+@@ -225,7 +225,7 @@
+         field.focus();
+         await open(field);
+ 
+-        overlay.querySelector('vaadin-item').click();
++        overlay.querySelector('vaadin24-item').click();
+         await nextRender();
+ 
+         expect(hideSpy.callCount).to.equal(0);
+@@ -270,7 +270,7 @@
+         field.focus();
+         await open(field);
+ 
+-        overlay.querySelector('vaadin-item').click();
++        overlay.querySelector('vaadin24-item').click();
+         await nextRender();
+ 
+         expect(hideSpy.callCount).to.equal(1);
+@@ -283,11 +283,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="2" label="Checkbox 2"></vaadin-checkbox>
+-          <vaadin-checkbox value="3" label="Checkbox 3"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin24-checkbox-group>
++          <vaadin24-checkbox value="1" label="Checkbox 1"></vaadin24-checkbox>
++          <vaadin24-checkbox value="2" label="Checkbox 2"></vaadin24-checkbox>
++          <vaadin24-checkbox value="3" label="Checkbox 3"></vaadin24-checkbox>
++        </vaadin24-checkbox-group>
+       `);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+@@ -340,11 +340,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button value="1" label="Radio 1"></vaadin-radio-button>
+-          <vaadin-radio-button value="2" label="Radio 2"></vaadin-radio-button>
+-          <vaadin-radio-button value="3" label="Radio 3"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin24-radio-group>
++          <vaadin24-radio-button value="1" label="Radio 1"></vaadin24-radio-button>
++          <vaadin24-radio-button value="2" label="Radio 2"></vaadin24-radio-button>
++          <vaadin24-radio-button value="3" label="Radio 3"></vaadin24-radio-button>
++        </vaadin24-radio-group>
+       `);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+@@ -397,7 +397,7 @@
+     let time;
+ 
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-date-time-picker></vaadin-date-time-picker>`);
++      field = fixtureSync(`<vaadin24-date-time-picker></vaadin24-date-time-picker>`);
+       FieldHighlighter.init(field);
+       date = field.__inputs[0];
+       time = field.__inputs[1];
+@@ -497,11 +497,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-list-box>
+-          <vaadin-item>Option 1</vaadin-item>
+-          <vaadin-item>Option 2</vaadin-item>
+-          <vaadin-item>Option 3</vaadin-item>
+-        </vaadin-list-box>
++        <vaadin24-list-box>
++          <vaadin24-item>Option 1</vaadin24-item>
++          <vaadin24-item>Option 2</vaadin24-item>
++          <vaadin24-item>Option 3</vaadin24-item>
++        </vaadin24-list-box>
+       `);
+       await nextFrame();
+       FieldHighlighter.init(field);

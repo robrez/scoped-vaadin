@@ -1,0 +1,36 @@
+Index: test/message-input.test.js
+===================================================================
+--- test/message-input.test.js
++++ test/message-input.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { enterKeyDown, fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -7,9 +8,9 @@
+   let messageInput, textArea, button;
+ 
+   beforeEach(() => {
+-    messageInput = fixtureSync('<vaadin-message-input></vaadin-message-input>');
+-    textArea = messageInput.querySelector('vaadin-text-area');
+-    button = messageInput.querySelector('vaadin-button');
++    messageInput = fixtureSync('<vaadin24-message-input></vaadin24-message-input>');
++    textArea = messageInput.querySelector('vaadin24-text-area');
++    button = messageInput.querySelector('vaadin24-button');
+   });
+ 
+   describe('custom element definition', () => {
+@@ -20,11 +21,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 

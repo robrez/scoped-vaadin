@@ -1,0 +1,39 @@
+Index: test/lit-renderer-directives.common.js
+===================================================================
+--- test/lit-renderer-directives.common.js
++++ test/lit-renderer-directives.common.js
+@@ -6,11 +6,11 @@
+ 
+ async function renderOpenedSelect(container, { content }) {
+   render(
+-    html`<vaadin-select opened ${content ? selectRenderer(() => html`${content}`, content) : null}></vaadin-select>`,
++    html`<vaadin24-select opened ${content ? selectRenderer(() => html`${content}`, content) : null}></vaadin24-select>`,
+     container,
+   );
+   await nextFrame();
+-  return container.querySelector('vaadin-select');
++  return container.querySelector('vaadin24-select');
+ }
+ 
+ describe('lit renderer directives', () => {
+@@ -24,7 +24,7 @@
+     describe('basic', () => {
+       beforeEach(async () => {
+         select = await renderOpenedSelect(container, { content: 'Content' });
+-        overlay = select.shadowRoot.querySelector('vaadin-select-overlay');
++        overlay = select.shadowRoot.querySelector('vaadin24-select-overlay');
+       });
+ 
+       it('should set `renderer` property when the directive is attached', () => {
+@@ -51,9 +51,9 @@
+ 
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+-        render(html`<vaadin-select opened ${selectRenderer(rendererSpy)}></vaadin-select>`, container);
++        render(html`<vaadin24-select opened ${selectRenderer(rendererSpy)}></vaadin24-select>`, container);
+         await nextFrame();
+-        select = container.querySelector('vaadin-select');
++        select = container.querySelector('vaadin24-select');
+       });
+ 
+       it('should pass the select instance to the renderer', () => {
