@@ -2,7 +2,9 @@
 const { playwrightLauncher } = require("@web/test-runner-playwright");
 const { createUnitTestsConfig } = require("./wtr-utils.cjs");
 const devServerConfig = require("./web-dev-server.config.cjs");
-
+/**
+ * @typedef {import('@web/test-runner').TestRunnerConfig} TestRunnerConfig
+ */
 const allPackages = [
   "a11y-base",
   "accordion",
@@ -68,10 +70,14 @@ const allPackages = [
 ];
 
 let packageFilter = null;
-packageFilter = ["avatar-group"];
+// packageFilter = ["avatar-group"];
 // console.log("packages", packageFilter.join(', '));
 
-const unitTestsConfig = createUnitTestsConfig({
+/**
+ * @type {TestRunnerConfig}
+ */
+const baseConfig = {
+  staticLogging: true,
   browsers: [playwrightLauncher()],
   packageFilter,
   coverageConfig: {
@@ -83,7 +89,8 @@ const unitTestsConfig = createUnitTestsConfig({
       lines: 95,
     },
   },
-});
+};
+const unitTestsConfig = createUnitTestsConfig(baseConfig);
 
 module.exports = {
   ...unitTestsConfig,
