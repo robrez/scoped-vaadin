@@ -1,0 +1,19 @@
+Index: test/keyboard.common.js
+===================================================================
+--- test/keyboard.common.js
++++ test/keyboard.common.js
+@@ -8,12 +8,12 @@
+   describe('default', () => {
+     beforeEach(async () => {
+       customField = fixtureSync(`
+-        <vaadin-custom-field>
++        <vaadin24-custom-field>
+           <input type="text">
+           <input type="text">
+           <input type="number">
+           <input type="number">
+-        </vaadin-custom-field>
++        </vaadin24-custom-field>
+       `);
+       await nextRender();
+     });

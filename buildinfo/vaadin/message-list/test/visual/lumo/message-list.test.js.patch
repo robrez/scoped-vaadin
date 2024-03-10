@@ -1,0 +1,22 @@
+Index: test/visual/lumo/message-list.test.js
+===================================================================
+--- test/visual/lumo/message-list.test.js
++++ test/visual/lumo/message-list.test.js
+@@ -21,7 +21,7 @@
+           div = document.createElement('div');
+           div.style.padding = '10px';
+ 
+-          element = fixtureSync('<vaadin-message-list></vaadin-message-list>', div);
++          element = fixtureSync('<vaadin24-message-list></vaadin24-message-list>', div);
+           element.items = [
+             {
+               text: 'Hello list',
+@@ -55,7 +55,7 @@
+         });
+ 
+         it('focused', async () => {
+-          element.querySelectorAll('vaadin-message')[0].focus();
++          element.querySelectorAll('vaadin24-message')[0].focus();
+           await sendKeys({ press: 'ArrowDown' });
+           await visualDiff(div, `${dir}-focused`);
+         });

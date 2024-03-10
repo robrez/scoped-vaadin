@@ -1,0 +1,19 @@
+Index: test/keyboard-navigation.common.js
+===================================================================
+--- test/keyboard-navigation.common.js
++++ test/keyboard-navigation.common.js
+@@ -27,12 +27,12 @@
+   });
+ 
+   beforeEach(async () => {
+-    uploadElement = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    uploadElement = fixtureSync(`<vaadin24-upload></vaadin24-upload>`);
+     uploadElement.files = [FAKE_FILE];
+ 
+     await nextRender();
+ 
+-    fileElement = uploadElement.querySelector('vaadin-upload-file');
++    fileElement = uploadElement.querySelector('vaadin24-upload-file');
+   });
+ 
+   afterEach(() => {

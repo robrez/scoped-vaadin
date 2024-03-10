@@ -1,0 +1,22 @@
+Index: test/events.common.js
+===================================================================
+--- test/events.common.js
++++ test/events.common.js
+@@ -11,7 +11,7 @@
+     let changeSpy;
+ 
+     beforeEach(async () => {
+-      datePicker = fixtureSync('<vaadin-date-picker></vaadin-date-picker>');
++      datePicker = fixtureSync('<vaadin24-date-picker></vaadin24-date-picker>');
+       await nextRender();
+       changeSpy = sinon.spy();
+       datePicker.addEventListener('change', changeSpy);
+@@ -40,7 +40,7 @@
+     beforeEach(async () => {
+       hasInputValueChangedSpy = sinon.spy();
+       valueChangedSpy = sinon.spy();
+-      datePicker = fixtureSync('<vaadin-date-picker clear-button-visible></vaadin-date-picker>');
++      datePicker = fixtureSync('<vaadin24-date-picker clear-button-visible></vaadin24-date-picker>');
+       await nextRender();
+       clearButton = datePicker.shadowRoot.querySelector('[part=clear-button]');
+       datePicker.addEventListener('has-input-value-changed', hasInputValueChangedSpy);

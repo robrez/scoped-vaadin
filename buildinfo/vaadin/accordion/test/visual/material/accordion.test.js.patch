@@ -1,0 +1,36 @@
+Index: test/visual/material/accordion.test.js
+===================================================================
+--- test/visual/material/accordion.test.js
++++ test/visual/material/accordion.test.js
+@@ -11,20 +11,20 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-accordion>
+-          <vaadin-accordion-panel>
+-            <vaadin-accordion-heading slot="summary">Panel 1</vaadin-accordion-heading>
++        <vaadin24-accordion>
++          <vaadin24-accordion-panel>
++            <vaadin24-accordion-heading slot="summary">Panel 1</vaadin24-accordion-heading>
+             <div>Content 1</div>
+-          </vaadin-accordion-panel>
+-          <vaadin-accordion-panel>
+-            <vaadin-accordion-heading slot="summary">Panel 2</vaadin-accordion-heading>
++          </vaadin24-accordion-panel>
++          <vaadin24-accordion-panel>
++            <vaadin24-accordion-heading slot="summary">Panel 2</vaadin24-accordion-heading>
+             <div>Content 2</div>
+-          </vaadin-accordion-panel>
+-          <vaadin-accordion-panel>
+-            <vaadin-accordion-heading slot="summary">Panel 3</vaadin-accordion-heading>
++          </vaadin24-accordion-panel>
++          <vaadin24-accordion-panel>
++            <vaadin24-accordion-heading slot="summary">Panel 3</vaadin24-accordion-heading>
+             <div>Content 3</div>
+-          </vaadin-accordion-panel>
+-        </vaadin-accordion>
++          </vaadin24-accordion-panel>
++        </vaadin24-accordion>
+       `,
+       div,
+     );

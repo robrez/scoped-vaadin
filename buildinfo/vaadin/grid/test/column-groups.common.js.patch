@@ -1,0 +1,491 @@
+Index: test/column-groups.common.js
+===================================================================
+--- test/column-groups.common.js
++++ test/column-groups.common.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -14,7 +15,7 @@
+ } from './helpers.js';
+ 
+ const createColumn = () => {
+-  const column = document.createElement('vaadin-grid-column');
++  const column = document.createElement('vaadin24-grid-column');
+   column.footerRenderer = (root) => {
+     root.textContent = 'Footer';
+   };
+@@ -55,16 +56,16 @@
+   describe('No header/footer renderers', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid size="10">
+-          <vaadin-grid-column prefix="body-0"></vaadin-grid-column>
+-          <vaadin-grid-column-group>
+-            <vaadin-grid-column prefix="body-1"></vaadin-grid-column>
+-            <vaadin-grid-column prefix="body-2"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid size="10">
++          <vaadin24-grid-column prefix="body-0"></vaadin24-grid-column>
++          <vaadin24-grid-column-group>
++            <vaadin24-grid-column prefix="body-1"></vaadin24-grid-column>
++            <vaadin24-grid-column prefix="body-2"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+ 
+-      grid.querySelectorAll('vaadin-grid-column').forEach((col) => {
++      grid.querySelectorAll('vaadin24-grid-column').forEach((col) => {
+         col.renderer = attributeRenderer('prefix');
+       });
+ 
+@@ -93,7 +94,7 @@
+       let emptyGroup;
+ 
+       beforeEach(() => {
+-        emptyGroup = grid.querySelector('vaadin-grid-column-group');
++        emptyGroup = grid.querySelector('vaadin24-grid-column-group');
+         emptyGroup.header = 'Header';
+       });
+ 
+@@ -123,7 +124,7 @@
+       let emptyGroup;
+ 
+       beforeEach(() => {
+-        emptyGroup = grid.querySelector('vaadin-grid-column-group');
++        emptyGroup = grid.querySelector('vaadin24-grid-column-group');
+         emptyGroup.headerRenderer = (root) => {
+           root.textContent = 'header';
+         };
+@@ -158,16 +159,16 @@
+       //  |          | group-0             |
+       //  | header-0 | header-1 | header-2 |
+       grid = fixtureSync(`
+-        <vaadin-grid size="10">
+-          <vaadin-grid-column frozen header="header-0" prefix="body-0"></vaadin-grid-column>
+-          <vaadin-grid-column-group frozen header="group-0">
+-            <vaadin-grid-column header="header-1" prefix="body-1"></vaadin-grid-column>
+-            <vaadin-grid-column header="header-2" prefix="body-2"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid size="10">
++          <vaadin24-grid-column frozen header="header-0" prefix="body-0"></vaadin24-grid-column>
++          <vaadin24-grid-column-group frozen header="group-0">
++            <vaadin24-grid-column header="header-1" prefix="body-1"></vaadin24-grid-column>
++            <vaadin24-grid-column header="header-2" prefix="body-2"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+ 
+-      grid.querySelectorAll('vaadin-grid-column').forEach((col) => {
++      grid.querySelectorAll('vaadin24-grid-column').forEach((col) => {
+         col.renderer = attributeRenderer('prefix');
+       });
+ 
+@@ -233,7 +234,7 @@
+     });
+ 
+     it('should have a column frozen to end', () => {
+-      const col = grid.querySelector('vaadin-grid-column');
++      const col = grid.querySelector('vaadin24-grid-column');
+       col.frozen = false;
+       col.frozenToEnd = true;
+       expect(getHeaderCell(0, 0).hasAttribute('frozen-to-end')).to.be.true;
+@@ -241,7 +242,7 @@
+     });
+ 
+     it('should have a group frozen to end', () => {
+-      const group = grid.querySelector('vaadin-grid-column-group');
++      const group = grid.querySelector('vaadin24-grid-column-group');
+       group.frozen = false;
+       group.frozenToEnd = true;
+       expect(getHeaderCell(0, 1).hasAttribute('frozen-to-end')).to.be.true;
+@@ -250,7 +251,7 @@
+     });
+ 
+     it('should add frozen-to-end to cell part attribute', () => {
+-      const col = grid.querySelector('vaadin-grid-column');
++      const col = grid.querySelector('vaadin24-grid-column');
+       col.frozen = false;
+       col.frozenToEnd = true;
+       expect(getHeaderCell(0, 0).getAttribute('part')).to.contain('frozen-to-end-cell');
+@@ -295,34 +296,34 @@
+       //  |           |         | group-2            | group-3             |          |
+       //  | group-0             | group-1                                  |          |
+       grid = fixtureSync(`
+-        <vaadin-grid size="100">
+-          <vaadin-grid-column-group header="group-0" footer="group-0">
+-            <vaadin-grid-column prefix="body-0"></vaadin-grid-column>
+-            <vaadin-grid-column prefix="body-1"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
++        <vaadin24-grid size="100">
++          <vaadin24-grid-column-group header="group-0" footer="group-0">
++            <vaadin24-grid-column prefix="body-0"></vaadin24-grid-column>
++            <vaadin24-grid-column prefix="body-1"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
+ 
+-          <vaadin-grid-column-group header="group-1" footer="group-1">
+-            <vaadin-grid-column-group header="group-2" footer="group-2">
+-              <vaadin-grid-column prefix="body-2"></vaadin-grid-column>
+-              <vaadin-grid-column prefix="body-3"></vaadin-grid-column>
+-            </vaadin-grid-column-group>
++          <vaadin24-grid-column-group header="group-1" footer="group-1">
++            <vaadin24-grid-column-group header="group-2" footer="group-2">
++              <vaadin24-grid-column prefix="body-2"></vaadin24-grid-column>
++              <vaadin24-grid-column prefix="body-3"></vaadin24-grid-column>
++            </vaadin24-grid-column-group>
+ 
+-            <vaadin-grid-column-group frozen header="group-3" footer="group-3">
+-              <vaadin-grid-column prefix="body-4" header="header-4" footer="footer-4"></vaadin-grid-column>
+-              <vaadin-grid-column prefix="body-5" header="header-5" footer="footer-5"></vaadin-grid-column>
+-            </vaadin-grid-column-group>
+-          </vaadin-grid-column-group>
++            <vaadin24-grid-column-group frozen header="group-3" footer="group-3">
++              <vaadin24-grid-column prefix="body-4" header="header-4" footer="footer-4"></vaadin24-grid-column>
++              <vaadin24-grid-column prefix="body-5" header="header-5" footer="footer-5"></vaadin24-grid-column>
++            </vaadin24-grid-column-group>
++          </vaadin24-grid-column-group>
+ 
+-          <vaadin-grid-column prefix="body-6" header="header-6" footer="footer-6"></vaadin-grid-column>
+-        </vaadin-grid>
++          <vaadin24-grid-column prefix="body-6" header="header-6" footer="footer-6"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+ 
+-      grid.querySelectorAll('vaadin-grid-column').forEach((col) => {
++      grid.querySelectorAll('vaadin24-grid-column').forEach((col) => {
+         col.renderer = attributeRenderer('prefix');
+         col.footerRenderer = attributeRenderer('footer');
+       });
+ 
+-      grid.querySelectorAll('vaadin-grid-column-group').forEach((group) => {
++      grid.querySelectorAll('vaadin24-grid-column-group').forEach((group) => {
+         group.footerRenderer = attributeRenderer('footer');
+       });
+ 
+@@ -448,30 +449,30 @@
+   describe('hidden group', () => {
+     it('should hide children', async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column-group hidden>
+-            <vaadin-grid-column></vaadin-grid-column>
+-            <vaadin-grid-column></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column-group hidden>
++            <vaadin24-grid-column></vaadin24-grid-column>
++            <vaadin24-grid-column></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+       await nextFrame();
+-      expect(grid.querySelector('vaadin-grid-column').hidden).to.be.true;
+-      expect(grid.querySelector('vaadin-grid-column-group').hidden).to.be.true;
++      expect(grid.querySelector('vaadin24-grid-column').hidden).to.be.true;
++      expect(grid.querySelector('vaadin24-grid-column-group').hidden).to.be.true;
+     });
+ 
+     it('should hide self', async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column-group>
+-            <vaadin-grid-column hidden></vaadin-grid-column>
+-            <vaadin-grid-column></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column-group>
++            <vaadin24-grid-column hidden></vaadin24-grid-column>
++            <vaadin24-grid-column></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+       await nextFrame();
+-      expect(grid.querySelector('vaadin-grid-column-group').hidden).not.to.be.true;
+-      const columns = grid.querySelectorAll('vaadin-grid-column');
++      expect(grid.querySelector('vaadin24-grid-column-group').hidden).not.to.be.true;
++      const columns = grid.querySelectorAll('vaadin24-grid-column');
+       expect(columns[0].hidden).to.be.true;
+       expect(columns[1].hidden).not.to.be.true;
+     });
+@@ -482,22 +483,22 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column-group header="groupA">
++        <vaadin24-grid>
++          <vaadin24-grid-column-group header="groupA">
+             ${Array.from(Array(13).keys())
+               .slice(1)
+               .map((group) => {
+                 const col = (group - 1) * 2;
+                 return `
+-                  <vaadin-grid-column-group header="group${group - 1}">
+-                    <vaadin-grid-column id="col${col}" header="Col ${col}"></vaadin-grid-column>
+-                    <vaadin-grid-column id="col${col + 1}" header="Col ${col + 1}"></vaadin-grid-column>
+-                  </vaadin-grid-column-group>
++                  <vaadin24-grid-column-group header="group${group - 1}">
++                    <vaadin24-grid-column id="col${col}" header="Col ${col}"></vaadin24-grid-column>
++                    <vaadin24-grid-column id="col${col + 1}" header="Col ${col + 1}"></vaadin24-grid-column>
++                  </vaadin24-grid-column-group>
+                 `;
+               })
+               .join('')}
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+     });
+ 
+@@ -514,17 +515,17 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
++        <vaadin24-grid>
+           ${Array.from(Array(101).keys())
+             .map(
+               (col) => `
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column id="col${col}" header="Col ${col}"></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column id="col${col}" header="Col ${col}"></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+               `,
+             )
+             .join('')}
+-        </vaadin-grid>
++        </vaadin24-grid>
+       `);
+     });
+ 
+@@ -541,14 +542,14 @@
+       describe(frozenAttr, () => {
+         it('should not warn when grouping frozen only columns', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -558,14 +559,14 @@
+ 
+         it('should not warn when freezing a root level group', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group ${frozenAttr}>
+-                <vaadin-grid-column></vaadin-grid-column>
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group ${frozenAttr}>
++                <vaadin24-grid-column></vaadin24-grid-column>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -575,14 +576,14 @@
+ 
+         it('should not warn when freezing a root level column', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column></vaadin-grid-column>
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column></vaadin24-grid-column>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -591,17 +592,17 @@
+         });
+ 
+         it('should not warn when grouping a frozen column with unimported frozen column', async () => {
+-          expect(customElements.get('vaadin-grid-selection-column')).to.be.undefined;
++          expect(internalCustomElements.get('vaadin24-grid-selection-column')).to.be.undefined;
+ 
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-selection-column ${frozenAttr}></vaadin-grid-selection-column>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-selection-column ${frozenAttr}></vaadin24-grid-selection-column>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -611,14 +612,14 @@
+ 
+         it('should warn when grouping frozen and non-frozen columns', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -627,20 +628,20 @@
+         });
+ 
+         it('should warn when grouping a frozen column with an unimported column', async () => {
+-          expect(customElements.get('vaadin-grid-selection-column')).to.be.undefined;
++          expect(internalCustomElements.get('vaadin24-grid-selection-column')).to.be.undefined;
+ 
+           // Testing the other way around (frozen unimported column with non-frozen column)
+           // is not feasible because an unimported column never notifies its parent group
+           // of its frozen state. A warning about the missing import is logged instead.
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column></vaadin-grid-column>
+-            </vaadin-grid>
++              <vaadin24-grid-column></vaadin24-grid-column>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -650,16 +651,16 @@
+ 
+         it('should warn when grouping frozen group and non-frozen column', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column-group ${frozenAttr}>
+-                  <vaadin-grid-column></vaadin-grid-column>
+-                  <vaadin-grid-column></vaadin-grid-column>
+-                </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column-group ${frozenAttr}>
++                  <vaadin24-grid-column></vaadin24-grid-column>
++                  <vaadin24-grid-column></vaadin24-grid-column>
++                </vaadin24-grid-column-group>
+ 
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-            </vaadin-grid>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -669,16 +670,16 @@
+ 
+         it('should not warn when grouping frozen group and frozen column', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column-group ${frozenAttr}>
+-                  <vaadin-grid-column></vaadin-grid-column>
+-                  <vaadin-grid-column></vaadin-grid-column>
+-                </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column-group ${frozenAttr}>
++                  <vaadin24-grid-column></vaadin24-grid-column>
++                  <vaadin24-grid-column></vaadin24-grid-column>
++                </vaadin24-grid-column-group>
+ 
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-            </vaadin-grid>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();
+@@ -688,17 +689,17 @@
+ 
+         it('should only warn once', async () => {
+           fixtureSync(`
+-            <vaadin-grid>
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
++            <vaadin24-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
+ 
+-              <vaadin-grid-column-group>
+-                <vaadin-grid-column ${frozenAttr}></vaadin-grid-column>
+-                <vaadin-grid-column></vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-            </vaadin-grid>
++              <vaadin24-grid-column-group>
++                <vaadin24-grid-column ${frozenAttr}></vaadin24-grid-column>
++                <vaadin24-grid-column></vaadin24-grid-column>
++              </vaadin24-grid-column-group>
++            </vaadin24-grid>
+           `);
+ 
+           await nextFrame();

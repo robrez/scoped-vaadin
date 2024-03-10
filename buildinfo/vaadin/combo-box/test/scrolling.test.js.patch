@@ -1,0 +1,13 @@
+Index: test/scrolling.test.js
+===================================================================
+--- test/scrolling.test.js
++++ test/scrolling.test.js
+@@ -7,7 +7,7 @@
+   let comboBox, overlay, scroller, input;
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     overlay = comboBox.$.overlay;
+     input = comboBox.inputElement;
+     scroller = comboBox._scroller;

@@ -1,0 +1,23 @@
+Index: test/dom/form-item.test.js
+===================================================================
+--- test/dom/form-item.test.js
++++ test/dom/form-item.test.js
+@@ -2,15 +2,15 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-form-item.js';
+ 
+-describe('vaadin-form-item', () => {
++describe('vaadin24-form-item', () => {
+   let field;
+ 
+   beforeEach(() => {
+     field = fixtureSync(`
+-      <vaadin-form-item>
++      <vaadin24-form-item>
+         <label slot="label">First name</label>
+         <input>
+-      </vaadin-form-item>
++      </vaadin24-form-item>
+     `);
+   });
+ 

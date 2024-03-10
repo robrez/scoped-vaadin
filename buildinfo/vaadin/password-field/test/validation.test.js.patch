@@ -1,0 +1,40 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -10,7 +10,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      passwordField = document.createElement('vaadin-password-field');
++      passwordField = document.createElement('vaadin24-password-field');
+       validateSpy = sinon.spy(passwordField, 'validate');
+     });
+ 
+@@ -42,7 +42,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      passwordField = fixtureSync('<vaadin-password-field></vaadin-password-field>');
++      passwordField = fixtureSync('<vaadin24-password-field></vaadin24-password-field>');
+     });
+ 
+     it('should fire a validated event on validation success', () => {
+@@ -69,7 +69,7 @@
+ 
+   describe('invalid', () => {
+     beforeEach(() => {
+-      passwordField = fixtureSync('<vaadin-password-field invalid></vaadin-password-field>');
++      passwordField = fixtureSync('<vaadin24-password-field invalid></vaadin24-password-field>');
+     });
+ 
+     it('should not remove "invalid" state when ready', () => {
+@@ -79,7 +79,7 @@
+ 
+   describe('invalid with value', () => {
+     beforeEach(() => {
+-      passwordField = fixtureSync('<vaadin-password-field invalid value="123456"></vaadin-password-field>');
++      passwordField = fixtureSync('<vaadin24-password-field invalid value="123456"></vaadin24-password-field>');
+     });
+ 
+     it('should not remove "invalid" state when ready', () => {

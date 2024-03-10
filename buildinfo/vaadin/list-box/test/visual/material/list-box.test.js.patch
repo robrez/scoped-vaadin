@@ -1,0 +1,34 @@
+Index: test/visual/material/list-box.test.js
+===================================================================
+--- test/visual/material/list-box.test.js
++++ test/visual/material/list-box.test.js
+@@ -1,6 +1,6 @@
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/item/theme/material/vaadin-item.js';
++import '@scoped-vaadin/item/theme/material/vaadin-item.js';
+ import '../../../theme/material/vaadin-list-box.js';
+ 
+ describe('list-box', () => {
+@@ -13,14 +13,14 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-list-box>
+-          <vaadin-item focused focus-ring>Item 0</vaadin-item>
+-          <vaadin-item>Item 1</vaadin-item>
+-          <vaadin-item>Item 2</vaadin-item>
+-          <vaadin-item disabled>Item 3</vaadin-item>
++        <vaadin24-list-box>
++          <vaadin24-item focused focus-ring>Item 0</vaadin24-item>
++          <vaadin24-item>Item 1</vaadin24-item>
++          <vaadin24-item>Item 2</vaadin24-item>
++          <vaadin24-item disabled>Item 3</vaadin24-item>
+           <hr>
+-          <vaadin-item>Item 4</vaadin-item>
+-        </vaadin-list-box>
++          <vaadin24-item>Item 4</vaadin24-item>
++        </vaadin24-list-box>
+       `,
+       div,
+     );

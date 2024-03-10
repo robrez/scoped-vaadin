@@ -1,0 +1,24 @@
+Index: test/typings/app-layout.types.ts
+===================================================================
+--- test/typings/app-layout.types.ts
++++ test/typings/app-layout.types.ts
+@@ -1,7 +1,7 @@
+ import '../../vaadin-app-layout.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type {
+   AppLayoutDrawerOpenedChangedEvent,
+   AppLayoutI18n,
+@@ -11,7 +11,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const layout = document.createElement('vaadin-app-layout');
++const layout = document.createElement('vaadin24-app-layout');
+ 
+ // Mixins
+ assertType<ElementMixinClass>(layout);

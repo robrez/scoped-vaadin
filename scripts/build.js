@@ -18,11 +18,17 @@ import {
 import { allElementNames, allEventNames, allPackageNames } from "./meta.js";
 import { versionMeta } from "../version.js";
 import { createPatch } from "diff";
+import _ignoreTests from "./ignore-tests.js";
 
 export const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
+const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
+
+const ignoreTests = new Set(
+  _ignoreTests.map((test) => test.replace("packages", clonePackagesRoot))
+);
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -49,6 +55,19 @@ function findFiles(dir) {
     .map((name) => Path.parse(name));
   return paths;
 }
+
+const findTestFiles = (dir) => {
+  const files = glob.sync(dir + "/test/**/*", { dot: true, posix: true });
+  const paths = files
+    .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .map((name) => posixify(name))
+    // note -- could have provided ignoredTests as negation globs
+    // but choosing to - instead - not create the ignored tests 
+    .filter((name) => !ignoreTests.has(name))
+    .sort()
+    .map((name) => Path.parse(name));
+  return paths;
+};
 
 function posixify(pathString) {
   return pathString.split(Path.sep).join(Path.posix.sep);
@@ -122,10 +141,7 @@ function processPackageJson(content, filePath) {
   if (oldRepository.directory) {
     newRepository = {
       ...newRepository,
-      directory: oldRepository.directory.replace(
-        "packages/",
-        "packages/"
-      ),
+      directory: oldRepository.directory.replace("packages/", "packages/"),
     };
   }
 
@@ -240,8 +256,12 @@ function processWebTypes(content, filePath) {
  * @returns {Promise<void>}
  */
 async function processFile(filePath) {
+  const inputFilePackageRoot =
+    filePath.dir.indexOf(clonePackagesRoot) > -1
+      ? clonePackagesRoot
+      : nodePackagesRoot;
   const destinationDir = filePath.dir.replace(
-    nodePackagesRoot,
+    inputFilePackageRoot,
     localPackagesRoot
   );
   if (!fs.existsSync(destinationDir)) {
@@ -249,7 +269,7 @@ async function processFile(filePath) {
   }
   const inputFileName = posixify(Path.format(filePath));
   const outputFileName = posixify(
-    inputFileName.replace(nodePackagesRoot, localPackagesRoot)
+    inputFileName.replace(inputFilePackageRoot, localPackagesRoot)
   );
   let content = fs.readFileSync(inputFileName, "utf-8");
   const _origContent = content;
@@ -290,14 +310,14 @@ async function processFile(filePath) {
   );
   if (diff.trim().split(/\r?\n/).length > 4) {
     const patchDestination = filePath.dir.replace(
-      nodePackagesRoot,
+      inputFilePackageRoot,
       localDiffsRoot
     );
     if (!fs.existsSync(patchDestination)) {
       fs.mkdirSync(patchDestination, { recursive: true });
     }
     const patchFilePath =
-      posixify(inputFileName.replace(nodePackagesRoot, localDiffsRoot)) +
+      posixify(inputFileName.replace(inputFilePackageRoot, localDiffsRoot)) +
       ".patch";
     fs.writeFileSync(patchFilePath, diff);
   }
@@ -308,6 +328,13 @@ async function processFile(filePath) {
 
 function processPackage(packagePath) {
   const files = findFiles(packagePath.dir + "/" + packagePath.name);
+  files.forEach((filePath) => processFile(filePath));
+  processPackageTests(packagePath);
+}
+
+function processPackageTests(packagePath) {
+  const packageTestsDir = `${clonePackagesRoot}/${packagePath.name}`;
+  const files = findTestFiles(packageTestsDir);
   files.forEach((filePath) => processFile(filePath));
 }
 

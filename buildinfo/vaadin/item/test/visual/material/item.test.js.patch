@@ -1,0 +1,13 @@
+Index: test/visual/material/item.test.js
+===================================================================
+--- test/visual/material/item.test.js
++++ test/visual/material/item.test.js
+@@ -12,7 +12,7 @@
+   beforeEach(() => {
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+-    element = fixtureSync('<vaadin-item>Basic item</vaadin-item>', div);
++    element = fixtureSync('<vaadin24-item>Basic item</vaadin24-item>', div);
+   });
+ 
+   ['ltr', 'rtl'].forEach((dir) => {

@@ -1,0 +1,71 @@
+Index: test/typings/combo-box.types.ts
+===================================================================
+--- test/typings/combo-box.types.ts
++++ test/typings/combo-box.types.ts
+@@ -1,21 +1,21 @@
+-import type { DelegateFocusMixinClass } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
+-import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { DelegateStateMixinClass } from '@vaadin/component-base/src/delegate-state-mixin.js';
+-import type { DirMixinClass } from '@vaadin/component-base/src/dir-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import type { ClearButtonMixinClass } from '@vaadin/field-base/src/clear-button-mixin.js';
+-import type { FieldMixinClass } from '@vaadin/field-base/src/field-mixin.js';
+-import type { InputConstraintsMixinClass } from '@vaadin/field-base/src/input-constraints-mixin.js';
+-import type { InputControlMixinClass } from '@vaadin/field-base/src/input-control-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
+-import type { LabelMixinClass } from '@vaadin/field-base/src/label-mixin.js';
+-import type { PatternMixinClass } from '@vaadin/field-base/src/pattern-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin';
++import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
++import type { DirMixinClass } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
++import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
++import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
++import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
++import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
++import type { PatternMixinClass } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin';
+ import type { ComboBoxDataProviderMixinClass } from '../../src/vaadin-combo-box-data-provider-mixin';
+ import type { ComboBoxItem } from '../../src/vaadin-combo-box-item';
+ import type { ComboBoxItemMixinClass, ComboBoxItemRenderer } from '../../src/vaadin-combo-box-item-mixin';
+@@ -51,7 +51,7 @@
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+ /* ComboBox */
+-const genericComboBox = document.createElement('vaadin-combo-box');
++const genericComboBox = document.createElement('vaadin24-combo-box');
+ assertType<ComboBox>(genericComboBox);
+ 
+ const narrowedComboBox = genericComboBox as ComboBox<TestComboBoxItem>;
+@@ -153,7 +153,7 @@
+ assertType<ThemableMixinClass>(narrowedComboBox);
+ 
+ /* ComboBoxLight */
+-const genericComboBoxLight = document.createElement('vaadin-combo-box-light');
++const genericComboBoxLight = document.createElement('vaadin24-combo-box-light');
+ assertType<ComboBoxLight>(genericComboBoxLight);
+ 
+ const narrowedComboBoxLight = genericComboBoxLight as ComboBoxLight<TestComboBoxItem>;
+@@ -220,7 +220,7 @@
+ assertType<ValidateMixinClass>(narrowedComboBoxLight);
+ 
+ // Item
+-const genericItem = document.createElement('vaadin-combo-box-item');
++const genericItem = document.createElement('vaadin24-combo-box-item');
+ assertType<ComboBoxItem>(genericItem);
+ 
+ const narrowedItem = genericItem as ComboBoxItem<TestComboBoxItem>;

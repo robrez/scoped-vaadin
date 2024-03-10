@@ -1,0 +1,13 @@
+Index: test/value-commit-auto-open-disabled.common.js
+===================================================================
+--- test/value-commit-auto-open-disabled.common.js
++++ test/value-commit-auto-open-disabled.common.js
+@@ -42,7 +42,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    datePicker = fixtureSync(`<vaadin-date-picker auto-open-disabled></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin24-date-picker auto-open-disabled></vaadin24-date-picker>`);
+     await nextRender();
+     validateSpy = sinon.spy(datePicker, 'validate').named('validateSpy');
+ 

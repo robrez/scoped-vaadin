@@ -1,0 +1,52 @@
+Index: test/column-group.common.js
+===================================================================
+--- test/column-group.common.js
++++ test/column-group.common.js
+@@ -8,12 +8,12 @@
+ 
+   beforeEach(async () => {
+     group = fixtureSync(`
+-      <vaadin-grid-column-group>
+-        <vaadin-grid-column flex-grow="1" width="20%"></vaadin-grid-column>
+-        <vaadin-grid-column flex-grow="2" width="200px"></vaadin-grid-column>
+-      </vaadin-grid-column-group>
++      <vaadin24-grid-column-group>
++        <vaadin24-grid-column flex-grow="1" width="20%"></vaadin24-grid-column>
++        <vaadin24-grid-column flex-grow="2" width="200px"></vaadin24-grid-column>
++      </vaadin24-grid-column-group>
+     `);
+-    columns = group.querySelectorAll('vaadin-grid-column');
++    columns = group.querySelectorAll('vaadin24-grid-column');
+     await nextFrame();
+   });
+ 
+@@ -138,9 +138,9 @@
+ 
+   // Regression test for https://github.com/vaadin/flow-components/issues/2959
+   it('should not unhide columns when attached to DOM', () => {
+-    const group = document.createElement('vaadin-grid-column-group');
+-    const visibleColumn = document.createElement('vaadin-grid-column');
+-    const hiddenColumn = document.createElement('vaadin-grid-column');
++    const group = document.createElement('vaadin24-grid-column-group');
++    const visibleColumn = document.createElement('vaadin24-grid-column');
++    const hiddenColumn = document.createElement('vaadin24-grid-column');
+     hiddenColumn.hidden = true;
+ 
+     group.appendChild(visibleColumn);
+@@ -168,11 +168,11 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column-group>
+-            <vaadin-grid-column></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column-group>
++            <vaadin24-grid-column></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `);
+ 
+       grid.items = ['item1', 'item2'];

@@ -1,0 +1,13 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -1,7 +1,7 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ 
+ export function createOverlay(text) {
+-  const overlay = fixtureSync('<vaadin-overlay></vaadin-overlay');
++  const overlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay');
+   overlay.renderer = (root) => {
+     if (!root.firstChild) {
+       const div = document.createElement('div');

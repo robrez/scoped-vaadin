@@ -1,0 +1,79 @@
+Index: test/renderer.common.js
+===================================================================
+--- test/renderer.common.js
++++ test/renderer.common.js
+@@ -1,8 +1,8 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
+ 
+ describe('renderer', () => {
+   let select;
+@@ -18,9 +18,9 @@
+         return;
+       }
+ 
+-      const listBox = document.createElement('vaadin-list-box');
++      const listBox = document.createElement('vaadin24-list-box');
+       items.forEach((text) => {
+-        const item = document.createElement('vaadin-item');
++        const item = document.createElement('vaadin24-item');
+         item.textContent = text + (select.__testVar || '');
+         item.value = text;
+         listBox.appendChild(item);
+@@ -30,11 +30,11 @@
+   }
+ 
+   beforeEach(async () => {
+-    select = fixtureSync(`<vaadin-select></vaadin-select>`);
++    select = fixtureSync(`<vaadin24-select></vaadin24-select>`);
+     await nextRender();
+-    overlay = select.shadowRoot.querySelector('vaadin-select-overlay');
+-    rendererContent = document.createElement('vaadin-list-box');
+-    const rendererItem = document.createElement('vaadin-item');
++    overlay = select.shadowRoot.querySelector('vaadin24-select-overlay');
++    rendererContent = document.createElement('vaadin24-list-box');
++    const rendererItem = document.createElement('vaadin24-item');
+     rendererItem.textContent = 'renderer item';
+     rendererContent.appendChild(rendererItem);
+   });
+@@ -78,7 +78,7 @@
+   });
+ 
+   it('should not throw when requesting content update before attaching to the DOM', () => {
+-    const select = document.createElement('vaadin-select');
++    const select = document.createElement('vaadin24-select');
+     expect(() => select.requestContentUpdate()).not.to.throw(Error);
+   });
+ 
+@@ -119,7 +119,7 @@
+     select.requestContentUpdate();
+     await nextUpdate(select);
+     expect(select._menuElement.selected).to.be.equal(1);
+-    const valueButton = select.querySelector('vaadin-select-value-button');
++    const valueButton = select.querySelector('vaadin24-select-value-button');
+     expect(valueButton.textContent.trim()).to.be.equal('barbaz');
+   });
+ 
+@@ -136,7 +136,7 @@
+ 
+   it('should not throw when setting renderer before overlay is ready', () => {
+     expect(() => {
+-      const select = document.createElement('vaadin-select');
++      const select = document.createElement('vaadin24-select');
+       select.renderer = () => {};
+       document.body.appendChild(select);
+       document.body.removeChild(select);
+@@ -153,7 +153,7 @@
+ 
+     it('should work with list-box connected before renderer is set', async () => {
+       select.renderer = (root) => {
+-        const listBox = Array.from(select.children).find((el) => el.tagName.toLowerCase() === 'vaadin-list-box');
++        const listBox = Array.from(select.children).find((el) => el.tagName.toLowerCase() === 'vaadin24-list-box');
+         if (listBox) {
+           if (root.firstChild) {
+             root.removeChild(root.firstChild);

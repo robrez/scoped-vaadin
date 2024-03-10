@@ -1,0 +1,48 @@
+Index: test/typings/menu-bar.types.ts
+===================================================================
+--- test/typings/menu-bar.types.ts
++++ test/typings/menu-bar.types.ts
+@@ -1,17 +1,17 @@
+ import '../../vaadin-menu-bar.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { ListMixinClass } from '@vaadin/a11y-base/src/list-mixin.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { DirMixinClass } from '@vaadin/component-base/src/dir-mixin.js';
+-import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
+-import type { ItemMixinClass } from '@vaadin/item/src/vaadin-item-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { ListMixinClass } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { DirMixinClass } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import type { ItemMixinClass } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { MenuBarItem } from '../../src/vaadin-menu-bar-item.js';
+ import type { MenuBarListBox } from '../../src/vaadin-menu-bar-list-box.js';
+ import type { MenuBarMixinClass } from '../../src/vaadin-menu-bar-mixin.js';
+ import type { MenuBarItem as MenuItem, MenuBarItemSelectedEvent } from '../../vaadin-menu-bar.js';
+ 
+-const menu = document.createElement('vaadin-menu-bar');
++const menu = document.createElement('vaadin24-menu-bar');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+@@ -39,7 +39,7 @@
+ assertType<HTMLElement | string | undefined>(menuItem.component);
+ 
+ // Item
+-const item = document.createElement('vaadin-menu-bar-item');
++const item = document.createElement('vaadin24-menu-bar-item');
+ 
+ assertType<MenuBarItem>(item);
+ assertType<ItemMixinClass>(item);
+@@ -47,7 +47,7 @@
+ assertType<ThemableMixinClass>(item);
+ 
+ // List-box
+-const listBox = document.createElement('vaadin-menu-bar-list-box');
++const listBox = document.createElement('vaadin24-menu-bar-list-box');
+ 
+ assertType<MenuBarListBox>(listBox);
+ assertType<DirMixinClass>(listBox);

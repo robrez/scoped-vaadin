@@ -1,0 +1,173 @@
+Index: test/dom/__snapshots__/vaadin-upload.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/vaadin-upload.test.snap.js
++++ test/dom/__snapshots__/vaadin-upload.test.snap.js
+@@ -2,70 +2,70 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-upload host default"] = 
+-`<vaadin-upload>
+-  <vaadin-button
++`<vaadin24-upload>
++  <vaadin24-button
+     role="button"
+     slot="add-button"
+     tabindex="0"
+   >
+     Upload Files...
+-  </vaadin-button>
++  </vaadin24-button>
+   <span slot="drop-label">
+     Drop files here
+   </span>
+-  <vaadin-upload-file-list slot="file-list">
++  <vaadin24-upload-file-list slot="file-list">
+     <li>
+-      <vaadin-upload-file
++      <vaadin24-upload-file
+         complete=""
+         tabindex="0"
+       >
+-        <vaadin-progress-bar
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+     <li>
+-      <vaadin-upload-file tabindex="0">
+-        <vaadin-progress-bar
++      <vaadin24-upload-file tabindex="0">
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0.6"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+     <li>
+-      <vaadin-upload-file
++      <vaadin24-upload-file
+         error=""
+         tabindex="0"
+       >
+-        <vaadin-progress-bar
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+-  </vaadin-upload-file-list>
+-  <vaadin-upload-icon slot="drop-label-icon">
+-  </vaadin-upload-icon>
+-</vaadin-upload>
++  </vaadin24-upload-file-list>
++  <vaadin24-upload-icon slot="drop-label-icon">
++  </vaadin24-upload-icon>
++</vaadin24-upload>
+ `;
+ /* end snapshot vaadin-upload host default */
+ 
+ snapshots["vaadin-upload host max files"] = 
+-`<vaadin-upload max-files-reached="">
+-  <vaadin-button
++`<vaadin24-upload max-files-reached="">
++  <vaadin24-button
+     aria-disabled="true"
+     disabled=""
+     role="button"
+@@ -73,57 +73,57 @@
+     tabindex="-1"
+   >
+     Upload File...
+-  </vaadin-button>
++  </vaadin24-button>
+   <span slot="drop-label">
+     Drop file here
+   </span>
+-  <vaadin-upload-file-list slot="file-list">
++  <vaadin24-upload-file-list slot="file-list">
+     <li>
+-      <vaadin-upload-file
++      <vaadin24-upload-file
+         complete=""
+         tabindex="0"
+       >
+-        <vaadin-progress-bar
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+     <li>
+-      <vaadin-upload-file tabindex="0">
+-        <vaadin-progress-bar
++      <vaadin24-upload-file tabindex="0">
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0.6"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+     <li>
+-      <vaadin-upload-file
++      <vaadin24-upload-file
+         error=""
+         tabindex="0"
+       >
+-        <vaadin-progress-bar
++        <vaadin24-progress-bar
+           aria-valuemax="1"
+           aria-valuemin="0"
+           aria-valuenow="0"
+           role="progressbar"
+           slot="progress"
+         >
+-        </vaadin-progress-bar>
+-      </vaadin-upload-file>
++        </vaadin24-progress-bar>
++      </vaadin24-upload-file>
+     </li>
+-  </vaadin-upload-file-list>
+-  <vaadin-upload-icon slot="drop-label-icon">
+-  </vaadin-upload-icon>
+-</vaadin-upload>
++  </vaadin24-upload-file-list>
++  <vaadin24-upload-icon slot="drop-label-icon">
++  </vaadin24-upload-icon>
++</vaadin24-upload>
+ `;
+ /* end snapshot vaadin-upload host max files */
+ 

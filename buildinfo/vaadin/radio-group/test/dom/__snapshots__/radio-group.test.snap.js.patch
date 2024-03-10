@@ -1,0 +1,251 @@
+Index: test/dom/__snapshots__/radio-group.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/radio-group.test.snap.js
++++ test/dom/__snapshots__/radio-group.test.snap.js
+@@ -2,8 +2,8 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-radio-group host default"] = 
+-`<vaadin-radio-group role="radiogroup">
+-  <vaadin-radio-button
++`<vaadin24-radio-group role="radiogroup">
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 1"
+@@ -24,8 +24,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 2"
+@@ -46,7 +46,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -58,17 +58,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host default */
+ 
+ snapshots["vaadin-radio-group host label"] = 
+-`<vaadin-radio-group
++`<vaadin24-radio-group
+   aria-labelledby="label-vaadin-radio-group-0"
+   has-label=""
+   role="radiogroup"
+ >
+-  <vaadin-radio-button
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 1"
+@@ -89,8 +89,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 2"
+@@ -111,7 +111,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -124,17 +124,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host label */
+ 
+ snapshots["vaadin-radio-group host disabled"] = 
+-`<vaadin-radio-group
++`<vaadin24-radio-group
+   aria-disabled="true"
+   disabled=""
+   role="radiogroup"
+ >
+-  <vaadin-radio-button
++  <vaadin24-radio-button
+     aria-disabled="true"
+     disabled=""
+     has-label=""
+@@ -158,8 +158,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     aria-disabled="true"
+     disabled=""
+     has-label=""
+@@ -183,7 +183,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -195,17 +195,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host disabled */
+ 
+ snapshots["vaadin-radio-group host required"] = 
+-`<vaadin-radio-group
++`<vaadin24-radio-group
+   aria-required="true"
+   required=""
+   role="radiogroup"
+ >
+-  <vaadin-radio-button
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 1"
+@@ -226,8 +226,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 2"
+@@ -248,7 +248,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -260,17 +260,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host required */
+ 
+ snapshots["vaadin-radio-group host helper"] = 
+-`<vaadin-radio-group
++`<vaadin24-radio-group
+   aria-describedby="helper-vaadin-radio-group-1"
+   has-helper=""
+   role="radiogroup"
+ >
+-  <vaadin-radio-button
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 1"
+@@ -291,8 +291,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 2"
+@@ -313,7 +313,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -331,19 +331,19 @@
+   >
+     Helper
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host helper */
+ 
+ snapshots["vaadin-radio-group host error"] = 
+-`<vaadin-radio-group
++`<vaadin24-radio-group
+   aria-describedby="error-message-vaadin-radio-group-2"
+   aria-invalid="true"
+   has-error-message=""
+   invalid=""
+   role="radiogroup"
+ >
+-  <vaadin-radio-button
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 1"
+@@ -364,8 +364,8 @@
+       type="radio"
+       value="1"
+     >
+-  </vaadin-radio-button>
+-  <vaadin-radio-button
++  </vaadin24-radio-button>
++  <vaadin24-radio-button
+     has-label=""
+     has-value=""
+     label="Radio 2"
+@@ -386,7 +386,7 @@
+       type="radio"
+       value="2"
+     >
+-  </vaadin-radio-button>
++  </vaadin24-radio-button>
+   <label
+     id="label-vaadin-radio-group-0"
+     slot="label"
+@@ -399,7 +399,7 @@
+   >
+     Error
+   </div>
+-</vaadin-radio-group>
++</vaadin24-radio-group>
+ `;
+ /* end snapshot vaadin-radio-group host error */
+ 

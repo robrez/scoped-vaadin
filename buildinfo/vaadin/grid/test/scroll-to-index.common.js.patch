@@ -1,0 +1,30 @@
+Index: test/scroll-to-index.common.js
+===================================================================
+--- test/scroll-to-index.common.js
++++ test/scroll-to-index.common.js
+@@ -12,9 +12,9 @@
+ 
+ const createGrid = (height, size) => {
+   const grid = fixtureSync(`
+-    <vaadin-grid style="width: 200px; height: ${height}px;" size="${size}">
+-      <vaadin-grid-column header="foo"></vaadin-grid-column>
+-    </vaadin-grid>
++    <vaadin24-grid style="width: 200px; height: ${height}px;" size="${size}">
++      <vaadin24-grid-column header="foo"></vaadin24-grid-column>
++    </vaadin24-grid>
+   `);
+   grid.firstElementChild.renderer = (root, _, model) => {
+     root.textContent = model.index;
+@@ -223,9 +223,9 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 500px;" item-has-children-path="hasChildren">
+-          <vaadin-grid-tree-column path="name" header="foo"></vaadin-grid-tree-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 500px;" item-has-children-path="hasChildren">
++          <vaadin24-grid-tree-column path="name" header="foo"></vaadin24-grid-tree-column>
++        </vaadin24-grid>
+       `);
+     });
+ 

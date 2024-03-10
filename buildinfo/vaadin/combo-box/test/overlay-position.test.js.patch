@@ -1,0 +1,51 @@
+Index: test/overlay-position.test.js
+===================================================================
+--- test/overlay-position.test.js
++++ test/overlay-position.test.js
+@@ -29,7 +29,7 @@
+       </style>
+     `);
+ 
+-    comboBox = fixtureSync(`<vaadin-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin-combo-box>`);
++    comboBox = fixtureSync(`<vaadin24-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin24-combo-box>`);
+     const comboBoxRect = comboBox.getBoundingClientRect();
+     comboBox.items = makeItems(20);
+     inputField = comboBox.shadowRoot.querySelector('[part="input-field"]');
+@@ -50,7 +50,7 @@
+     await aTimeout(0);
+   });
+ 
+-  // Clean out <vaadin-overlay> elements from body.
++  // Clean out <vaadin24-overlay> elements from body.
+   afterEach(() => {
+     comboBox.close();
+   });
+@@ -251,12 +251,12 @@
+       parent = fixtureSync(`
+         <div style="position: fixed;">
+           <div>
+-            <vaadin-combo-box label='comboBox' style='width: 300px;'></vaadin-combo-box>
++            <vaadin24-combo-box label='comboBox' style='width: 300px;'></vaadin24-combo-box>
+           </div>
+         </div>
+       `);
+ 
+-      comboBox = parent.querySelector('vaadin-combo-box');
++      comboBox = parent.querySelector('vaadin24-combo-box');
+       overlay = comboBox.$.overlay;
+     });
+ 
+@@ -273,11 +273,11 @@
+     beforeEach(() => {
+       parent = fixtureSync(`
+         <x-fixed>
+-          <vaadin-combo-box label='comboBox' style='width: 300px;'></vaadin-combo-box>
++          <vaadin24-combo-box label='comboBox' style='width: 300px;'></vaadin24-combo-box>
+         </x-fixed>
+       `);
+ 
+-      comboBox = parent.querySelector('vaadin-combo-box');
++      comboBox = parent.querySelector('vaadin24-combo-box');
+       overlay = comboBox.$.overlay;
+     });
+ 

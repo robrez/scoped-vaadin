@@ -1,0 +1,30 @@
+Index: test/typings/details.types.ts
+===================================================================
+--- test/typings/details.types.ts
++++ test/typings/details.types.ts
+@@ -1,17 +1,17 @@
+ import '../../vaadin-details.js';
+-import type { DelegateFocusMixinClass } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
+-import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { TabindexMixinClass } from '@vaadin/a11y-base/src/tabindex-mixin.js';
+-import type { DelegateStateMixinClass } from '@vaadin/component-base/src/delegate-state-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { TabindexMixinClass } from '@scoped-vaadin/a11y-base/src/tabindex-mixin.js';
++import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { CollapsibleMixinClass } from '../../src/collapsible-mixin.js';
+ import type { DetailsOpenedChangedEvent } from '../../vaadin-details.js';
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const details = document.createElement('vaadin-details');
++const details = document.createElement('vaadin24-details');
+ 
+ details.addEventListener('opened-changed', (event) => {
+   assertType<DetailsOpenedChangedEvent>(event);

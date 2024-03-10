@@ -1,0 +1,22 @@
+Index: test/visual/lumo/login-overlay.test.js
+===================================================================
+--- test/visual/lumo/login-overlay.test.js
++++ test/visual/lumo/login-overlay.test.js
+@@ -9,7 +9,7 @@
+   beforeEach(() => {
+     div = document.createElement('div');
+     div.style.height = '100%';
+-    element = fixtureSync('<vaadin-login-overlay></vaadin-login-overlay>', div);
++    element = fixtureSync('<vaadin24-login-overlay></vaadin24-login-overlay>', div);
+   });
+ 
+   it('basic', async () => {
+@@ -24,7 +24,7 @@
+   });
+ 
+   it('additional field', async () => {
+-    const field = document.createElement('vaadin-text-field');
++    const field = document.createElement('vaadin24-text-field');
+     field.setAttribute('slot', 'custom-form-area');
+     field.label = 'One-time code';
+     element.appendChild(field);

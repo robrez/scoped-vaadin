@@ -1,0 +1,33 @@
+Index: test/typings/overlay.types.ts
+===================================================================
+--- test/typings/overlay.types.ts
++++ test/typings/overlay.types.ts
+@@ -1,6 +1,7 @@
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { DirMixinClass } from '@vaadin/component-base/src/dir-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { DirMixinClass } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { PositionMixinClass } from '../../src/vaadin-overlay-position-mixin.js';
+ import { PositionMixin } from '../../src/vaadin-overlay-position-mixin.js';
+ import type {
+@@ -15,7 +16,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const overlay = document.createElement('vaadin-overlay');
++const overlay = document.createElement('vaadin24-overlay');
+ 
+ assertType<boolean>(overlay.restoreFocusOnClose);
+ assertType<HTMLElement | undefined>(overlay.restoreFocusNode);
+@@ -56,7 +57,7 @@
+   }
+ }
+ 
+-customElements.define('custom-overlay', CustomOverlay);
++internalCustomElements.define('custom-overlay', CustomOverlay);
+ 
+ const customOverlay = new CustomOverlay();
+ 

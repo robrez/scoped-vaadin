@@ -1,0 +1,13 @@
+Index: test/typings/custom-field.types.ts
+===================================================================
+--- test/typings/custom-field.types.ts
++++ test/typings/custom-field.types.ts
+@@ -8,7 +8,7 @@
+   CustomFieldValueChangedEvent,
+ } from '../../vaadin-custom-field.js';
+ 
+-const customField = document.createElement('vaadin-custom-field');
++const customField = document.createElement('vaadin24-custom-field');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 

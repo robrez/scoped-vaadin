@@ -1,0 +1,28 @@
+Index: test/drag-and-drop.common.js
+===================================================================
+--- test/drag-and-drop.common.js
++++ test/drag-and-drop.common.js
+@@ -106,10 +106,10 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid hidden>
+-        <vaadin-grid-column path="first" header="First name"></vaadin-grid-column>
+-        <vaadin-grid-column path="last" header="Last name"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid hidden>
++        <vaadin24-grid-column path="first" header="First name"></vaadin24-grid-column>
++        <vaadin24-grid-column path="last" header="Last name"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     await nextFrame();
+     grid.hidden = false;
+@@ -335,7 +335,7 @@
+ 
+       it('should auto generate data transfer text data in order', () => {
+         grid.selectedItems = grid.items;
+-        const columns = grid.querySelectorAll('vaadin-grid-column');
++        const columns = grid.querySelectorAll('vaadin24-grid-column');
+         grid._swapColumnOrders(columns[0], columns[1]);
+         fireDragStart();
+         fireDrop();

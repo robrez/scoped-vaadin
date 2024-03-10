@@ -1,0 +1,13 @@
+Index: test/keyboard.test.js
+===================================================================
+--- test/keyboard.test.js
++++ test/keyboard.test.js
+@@ -22,7 +22,7 @@
+   }
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     comboBox.items = ['foo', 'bar', 'baz'];
+     input = comboBox.inputElement;
+   });

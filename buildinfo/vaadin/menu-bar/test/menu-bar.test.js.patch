@@ -1,0 +1,150 @@
+Index: test/menu-bar.test.js
+===================================================================
+--- test/menu-bar.test.js
++++ test/menu-bar.test.js
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { arrowLeft, arrowRight, end, fixtureSync, focusin, home, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import './not-animated-styles.js';
+ import '../vaadin-menu-bar.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-menu-bar',
++  'vaadin24-menu-bar',
+   css`
+     :host([theme='big']) ::slotted(vaadin-menu-bar-button) {
+       width: 100px;
+@@ -53,16 +54,16 @@
+   let menu, tagName;
+ 
+   beforeEach(() => {
+-    menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++    menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+     tagName = menu.tagName.toLowerCase();
+   });
+ 
+   it('should be defined in custom element registry', () => {
+-    expect(customElements.get(tagName)).to.be.ok;
++    expect(internalCustomElements.get(tagName)).to.be.ok;
+   });
+ 
+   it('should have a valid static "is" getter', () => {
+-    expect(customElements.get(tagName).is).to.equal(tagName);
++    expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+   });
+ });
+ 
+@@ -75,7 +76,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++    menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+     menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3', disabled: true }, { text: 'Item 4' }];
+     await nextRender(menu);
+     buttons = menu._buttons;
+@@ -125,7 +126,7 @@
+ 
+   it('should not throw when changing items before the menu bar is attached', () => {
+     expect(() => {
+-      const menuBar = document.createElement('vaadin-menu-bar');
++      const menuBar = document.createElement('vaadin24-menu-bar');
+       menuBar.items = [{ text: 'Item 1' }];
+     }).to.not.throw(Error);
+   });
+@@ -329,10 +330,10 @@
+     wrapper = fixtureSync(`
+       <div style="display: flex">
+         <div style="width: 100px;"></div>
+-        <vaadin-menu-bar style="width: 250px"></vaadin-menu-bar>
++        <vaadin24-menu-bar style="width: 250px"></vaadin24-menu-bar>
+       </div>
+     `);
+-    menu = wrapper.querySelector('vaadin-menu-bar');
++    menu = wrapper.querySelector('vaadin24-menu-bar');
+ 
+     menu.items = [
+       { text: 'Item 1' },
+@@ -481,7 +482,7 @@
+   let menu, buttons, overflow;
+ 
+   beforeEach(async () => {
+-    menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++    menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+     menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
+     await nextRender(menu);
+     buttons = menu._buttons;
+@@ -549,7 +550,7 @@
+ 
+   beforeEach(async () => {
+     container = fixtureSync(
+-      '<div style="display: flex;"><vaadin-menu-bar style="min-width: 100%"></vaadin-menu-bar></div>',
++      '<div style="display: flex;"><vaadin24-menu-bar style="min-width: 100%"></vaadin24-menu-bar></div>',
+     );
+     menu = container.firstChild;
+ 
+@@ -608,7 +609,7 @@
+     container = fixtureSync('<div style="display: flex; max-width: 300px"></div>');
+     text = document.createElement('div');
+     text.textContent = 'Sibling';
+-    menu = document.createElement('vaadin-menu-bar');
++    menu = document.createElement('vaadin24-menu-bar');
+     menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
+     menu.style.minWidth = '100px';
+   });
+@@ -678,13 +679,13 @@
+   }
+ 
+   beforeEach(async () => {
+-    menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++    menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+     menu.items = [
+       { text: 'Item 1' },
+       { text: 'Item 2' },
+       { component: makeComponent('3') },
+       { text: 'Item 4 text', component: makeComponent('4') },
+-      { text: 'Item 5', component: document.createElement('vaadin-menu-bar-item') },
++      { text: 'Item 5', component: document.createElement('vaadin24-menu-bar-item') },
+       { component: makeComponent('6'), children: [{ text: 'SubItem6.1' }, { text: 'SubItem6.2' }] },
+     ];
+     await nextRender(menu);
+@@ -695,7 +696,7 @@
+   it('should render the component inside the menu-bar item', () => {
+     const item = buttons[2].firstChild;
+     expect(item).to.equal(buttons[2].item.component);
+-    expect(item.localName).to.equal('vaadin-menu-bar-item');
++    expect(item.localName).to.equal('vaadin24-menu-bar-item');
+     const div = item.firstChild;
+     expect(div).to.equal(menu.items[2].component);
+     expect(div.localName).to.equal('div');
+@@ -706,7 +707,7 @@
+   it('should override the component text when defined on the item', () => {
+     const item = buttons[3].firstChild;
+     expect(item).to.equal(buttons[3].item.component);
+-    expect(item.localName).to.equal('vaadin-menu-bar-item');
++    expect(item.localName).to.equal('vaadin24-menu-bar-item');
+     const div = item.firstChild;
+     expect(div).to.equal(menu.items[3].component);
+     expect(div.localName).to.equal('div');
+@@ -751,7 +752,7 @@
+     it('should teleport the same component to overflow sub-menu and back', async () => {
+       overflow.click();
+       await nextRender(subMenu);
+-      const listBox = subMenu._overlayElement.querySelector('vaadin-menu-bar-list-box');
++      const listBox = subMenu._overlayElement.querySelector('vaadin24-menu-bar-list-box');
+       expect(listBox.items[0]).to.equal(buttons[2].item.component);
+       expect(listBox.items[0].firstChild).to.equal(menu.items[2].component);
+       expect(listBox.items[0].firstChild.localName).to.equal('div');
+@@ -795,7 +796,7 @@
+   beforeEach(() => {
+     wrapper = fixtureSync(`
+       <div style="display: flex; width: 400px;">
+-        <vaadin-menu-bar></vaadin-menu-bar>
++        <vaadin24-menu-bar></vaadin24-menu-bar>
+       </div>
+     `);
+     menu = wrapper.firstElementChild;

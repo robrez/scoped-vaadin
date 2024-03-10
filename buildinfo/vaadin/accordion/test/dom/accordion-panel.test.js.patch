@@ -1,0 +1,28 @@
+Index: test/dom/accordion-panel.test.js
+===================================================================
+--- test/dom/accordion-panel.test.js
++++ test/dom/accordion-panel.test.js
+@@ -1,18 +1,18 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-accordion-panel.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-accordion-panel', () => {
++describe('vaadin24-accordion-panel', () => {
+   let panel;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+     panel = fixtureSync(`
+-      <vaadin-accordion-panel>
+-        <vaadin-accordion-heading slot="summary">Summary</vaadin-accordion-heading>
++      <vaadin24-accordion-panel>
++        <vaadin24-accordion-heading slot="summary">Summary</vaadin24-accordion-heading>
+         <div>Content</div>
+-      </vaadin-accordion-panel>
++      </vaadin24-accordion-panel>
+     `);
+   });
+ 

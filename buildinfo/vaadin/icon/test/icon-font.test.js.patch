@@ -1,0 +1,250 @@
+Index: test/icon-font.test.js
+===================================================================
+--- test/icon-font.test.js
++++ test/icon-font.test.js
+@@ -40,7 +40,7 @@
+     let icon;
+ 
+     beforeEach(async () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       await onceResized(icon);
+     });
+ 
+@@ -85,26 +85,26 @@
+     let icon;
+ 
+     it('should add the icon class to element class list', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       expect(icon.classList.contains('my-icon-font')).to.be.true;
+       expect(icon.classList.contains('icon-before')).to.be.true;
+     });
+ 
+     it('should not overwrite existing classes', () => {
+-      icon = fixtureSync('<vaadin-icon class="foo"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon class="foo"></vaadin24-icon>');
+       icon.iconClass = 'my-icon-font icon-before';
+       expect(icon.classList.contains('foo')).to.be.true;
+     });
+ 
+     it('should change icon classes', () => {
+-      icon = fixtureSync('<vaadin-icon class="foo" icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon class="foo" icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       icon.iconClass = 'my-icon-font icon-after';
+       expect(icon.classList.contains('icon-before')).to.be.false;
+       expect(icon.classList.contains('icon-after')).to.be.true;
+     });
+ 
+     it('should remove all icon classes', () => {
+-      icon = fixtureSync('<vaadin-icon class="foo" icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon class="foo" icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       icon.iconClass = '';
+       expect(icon.classList.contains('my-icon-font')).to.be.false;
+       expect(icon.classList.contains('icon-before')).to.be.false;
+@@ -112,7 +112,7 @@
+     });
+ 
+     it('should restore the icon class to element class list', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       icon.className = 'foo';
+       expect(icon.classList.contains('my-icon-font')).to.be.true;
+       expect(icon.classList.contains('icon-before')).to.be.true;
+@@ -120,39 +120,39 @@
+     });
+ 
+     it('should restore the missing icon class to element class list', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       icon.className = 'my-icon-font';
+       expect(icon.classList.contains('my-icon-font')).to.be.true;
+       expect(icon.classList.contains('icon-before')).to.be.true;
+     });
+ 
+     it('should restore the removed icon class to element class list', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
+       icon.classList.remove('my-icon-font');
+       expect(icon.classList.contains('my-icon-font')).to.be.true;
+       expect(icon.classList.contains('icon-before')).to.be.true;
+     });
+ 
+     it('should reflect icon class as an attribute', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.iconClass = 'my-icon-font icon-before';
+       expect(icon.getAttribute('icon-class')).to.equal('my-icon-font icon-before');
+     });
+ 
+     it('should add icon attribute if icon class is set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.iconClass = 'my-icon-font icon-before';
+       expect(icon.hasAttribute('icon')).to.be.true;
+     });
+ 
+     it('should not add icon attribute if icon class is not set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.iconClass = null;
+       expect(icon.hasAttribute('icon')).to.be.false;
+     });
+ 
+     it('should not override existing icon', () => {
+-      icon = fixtureSync('<vaadin-icon icon="foo:bar"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon="foo:bar"></vaadin24-icon>');
+       icon.iconClass = 'my-icon-font icon-before';
+       expect(icon.icon).to.equal('foo:bar');
+     });
+@@ -162,40 +162,40 @@
+     let icon;
+ 
+     it('should reflect unprefixed char as font-icon-content attribute', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font"></vaadin24-icon>');
+       icon.char = 'e900';
+       expect(icon.getAttribute('font-icon-content')).to.equal('\ue900');
+     });
+ 
+     it('should reflect prefixed char as font-icon-content attribute', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font"></vaadin24-icon>');
+       icon.char = '\ue900';
+       expect(icon.getAttribute('font-icon-content')).to.equal('\ue900');
+     });
+ 
+     it('should remove font-icon-content attribute', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font"></vaadin24-icon>');
+       icon.char = 'e900';
+       icon.char = null;
+       expect(icon.hasAttribute('font-icon-content')).to.be.false;
+     });
+ 
+     it('should add icon attribute if char is set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.char = '\ue900';
+       icon.style.fontFamily = 'My icons';
+       expect(icon.hasAttribute('icon')).to.be.true;
+     });
+ 
+     it('should not add icon attribute if char is not set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.char = null;
+       icon.style.fontFamily = 'My icons';
+       expect(icon.hasAttribute('icon')).to.be.false;
+     });
+ 
+     it('should not override existing icon', () => {
+-      icon = fixtureSync('<vaadin-icon icon="foo:bar"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon="foo:bar"></vaadin24-icon>');
+       icon.char = '\ue900';
+       icon.style.fontFamily = 'My icons';
+       expect(icon.icon).to.equal('foo:bar');
+@@ -206,34 +206,34 @@
+     let icon;
+ 
+     it('should reflect ligature as font-icon-content attribute', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font"></vaadin24-icon>');
+       icon.ligature = 'foo';
+       expect(icon.getAttribute('font-icon-content')).to.equal('foo');
+     });
+ 
+     it('should remove font-icon-content attribute', () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font"></vaadin24-icon>');
+       icon.ligature = 'foo';
+       icon.ligature = null;
+       expect(icon.hasAttribute('font-icon-content')).to.be.false;
+     });
+ 
+     it('should add icon attribute if ligature is set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.ligature = '\ue900';
+       icon.style.fontFamily = 'My icons';
+       expect(icon.hasAttribute('icon')).to.be.true;
+     });
+ 
+     it('should not add icon attribute if ligature is not set', () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       icon.ligature = null;
+       icon.style.fontFamily = 'My icons';
+       expect(icon.hasAttribute('icon')).to.be.false;
+     });
+ 
+     it('should not override existing icon', () => {
+-      icon = fixtureSync('<vaadin-icon icon="foo:bar"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon="foo:bar"></vaadin24-icon>');
+       icon.ligature = 'foo';
+       icon.style.fontFamily = 'My icons';
+       expect(icon.icon).to.equal('foo:bar');
+@@ -244,14 +244,14 @@
+     let icon;
+ 
+     it('should set font-family for the icon element', () => {
+-      icon = fixtureSync('<vaadin-icon char="e900"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon char="e900"></vaadin24-icon>');
+       icon.fontFamily = 'My icons';
+       const fontIconStyle = getComputedStyle(icon, ':before');
+       expect(['"My icons"', 'My icons']).to.include(fontIconStyle.fontFamily);
+     });
+ 
+     it('should set font-family with numbers for the icon element', () => {
+-      icon = fixtureSync('<vaadin-icon char="e900"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon char="e900"></vaadin24-icon>');
+       icon.fontFamily = 'My icons 6';
+       const fontIconStyle = getComputedStyle(icon, ':before');
+       expect(['"My icons 6"', 'My icons 6']).to.include(fontIconStyle.fontFamily);
+@@ -281,32 +281,32 @@
+     });
+ 
+     fallBackIt('should have the custom property (iconClass)', async () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="foo"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="foo"></vaadin24-icon>');
+       await nextFrame();
+       expect(icon.style.getPropertyValue('--_vaadin-font-icon-size')).to.equal('24px');
+     });
+ 
+     fallBackIt('should have the custom property (char)', async () => {
+-      icon = fixtureSync('<vaadin-icon char="foo"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon char="foo"></vaadin24-icon>');
+       await nextFrame();
+       expect(icon.style.getPropertyValue('--_vaadin-font-icon-size')).to.equal('24px');
+     });
+ 
+     fallBackIt('should not have the custom property', async () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       await nextFrame();
+       expect(icon.style.getPropertyValue('--_vaadin-font-icon-size')).to.equal('');
+     });
+ 
+     fallBackIt('should set the custom property', async () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       await nextFrame();
+       icon.iconClass = 'foo';
+       expect(icon.style.getPropertyValue('--_vaadin-font-icon-size')).to.equal('24px');
+     });
+ 
+     fallBackIt('should update the custom property', async () => {
+-      icon = fixtureSync('<vaadin-icon icon-class="foo"></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon icon-class="foo"></vaadin24-icon>');
+       await nextFrame();
+       icon.style.width = '100px';
+       icon.style.height = '100px';
+@@ -315,7 +315,7 @@
+     });
+ 
+     fallBackIt('should not update the custom property', async () => {
+-      icon = fixtureSync('<vaadin-icon></vaadin-icon>');
++      icon = fixtureSync('<vaadin24-icon></vaadin24-icon>');
+       await nextFrame();
+       icon.style.width = '100px';
+       icon.style.height = '100px';

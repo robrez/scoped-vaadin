@@ -1,0 +1,91 @@
+Index: test/basic.test.js
+===================================================================
+--- test/basic.test.js
++++ test/basic.test.js
+@@ -9,7 +9,7 @@
+   let comboBox, overlay, input;
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     overlay = comboBox.$.overlay;
+     input = comboBox.inputElement;
+   });
+@@ -294,13 +294,13 @@
+   beforeEach(() => {
+     container = fixtureSync(`
+       <div style="display: flex; flex-direction: column; width:500px;">
+-        <vaadin-combo-box></vaadin-combo-box>
++        <vaadin24-combo-box></vaadin24-combo-box>
+       </div>
+     `);
+   });
+ 
+   it('combo-box should stretch to fit the flex container', () => {
+-    const combobox = container.querySelector('vaadin-combo-box');
++    const combobox = container.querySelector('vaadin24-combo-box');
+     expect(window.getComputedStyle(container).width).to.eql('500px');
+     expect(window.getComputedStyle(combobox).width).to.eql('500px');
+   });
+@@ -311,7 +311,7 @@
+ 
+   describe('default', () => {
+     beforeEach(() => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     });
+ 
+     it('should not have clear button visible by default', () => {
+@@ -321,7 +321,7 @@
+ 
+   describe('visible', () => {
+     beforeEach(() => {
+-      comboBox = fixtureSync('<vaadin-combo-box clear-button-visible></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box clear-button-visible></vaadin24-combo-box>');
+       clearButton = comboBox.$.clearButton;
+     });
+ 
+@@ -345,7 +345,7 @@
+   let comboBox;
+ 
+   beforeEach(() => {
+-    comboBox = document.createElement('vaadin-combo-box');
++    comboBox = document.createElement('vaadin24-combo-box');
+   });
+ 
+   afterEach(() => {
+@@ -362,15 +362,15 @@
+ 
+ describe('pre-opened', () => {
+   it('should not throw error when adding a pre-opened combo-box', () => {
+-    expect(() => fixtureSync(`<vaadin-combo-box opened></vaadin-combo-box>`)).to.not.throw(Error);
++    expect(() => fixtureSync(`<vaadin24-combo-box opened></vaadin24-combo-box>`)).to.not.throw(Error);
+   });
+ 
+   it('should not throw error when adding a pre-opened combo-box with items', () => {
+-    expect(() => fixtureSync(`<vaadin-combo-box opened items="[0]"></vaadin-combo-box>`)).to.not.throw(Error);
++    expect(() => fixtureSync(`<vaadin24-combo-box opened items="[0]"></vaadin24-combo-box>`)).to.not.throw(Error);
+   });
+ 
+   it('should have overlay with correct width', () => {
+-    const comboBox = fixtureSync(`<vaadin-combo-box opened items="[0]"></vaadin-combo-box>`);
++    const comboBox = fixtureSync(`<vaadin24-combo-box opened items="[0]"></vaadin24-combo-box>`);
+     const expectedOverlayWidth = comboBox.clientWidth;
+     const actualOverlayWidth = comboBox.$.overlay.$.content.clientWidth;
+     expect(actualOverlayWidth).to.eq(expectedOverlayWidth);
+@@ -378,12 +378,12 @@
+ 
+   it('should have overlay with correct width', () => {
+     const comboBox = fixtureSync(`
+-      <vaadin-combo-box
++      <vaadin24-combo-box
+         opened
+         items="[0]"
+         style="--vaadin-combo-box-overlay-max-height: 200px"
+-      ></vaadin-combo-box>`);
+-    const scroller = comboBox.$.overlay.querySelector('vaadin-combo-box-scroller');
++      ></vaadin24-combo-box>`);
++    const scroller = comboBox.$.overlay.querySelector('vaadin24-combo-box-scroller');
+     expect(scroller.style.maxHeight).to.equal('200px');
+   });
+ });

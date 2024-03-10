@@ -1,0 +1,181 @@
+Index: test/visual/material/custom-field.test.js
+===================================================================
+--- test/visual/material/custom-field.test.js
++++ test/visual/material/custom-field.test.js
+@@ -1,16 +1,16 @@
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/combo-box/theme/material/vaadin-combo-box.js';
+-import '@vaadin/date-picker/theme/material/vaadin-date-picker.js';
+-import '@vaadin/form-layout/theme/material/vaadin-form-item.js';
+-import '@vaadin/form-layout/theme/material/vaadin-form-layout.js';
+-import '@vaadin/email-field/theme/material/vaadin-email-field.js';
+-import '@vaadin/number-field/theme/material/vaadin-number-field.js';
+-import '@vaadin/password-field/theme/material/vaadin-password-field.js';
+-import '@vaadin/select/theme/material/vaadin-select.js';
+-import '@vaadin/text-area/theme/material/vaadin-text-area.js';
+-import '@vaadin/text-field/theme/material/vaadin-text-field.js';
+-import '@vaadin/time-picker/theme/material/vaadin-time-picker.js';
++import '@scoped-vaadin/combo-box/theme/material/vaadin-combo-box.js';
++import '@scoped-vaadin/date-picker/theme/material/vaadin-date-picker.js';
++import '@scoped-vaadin/form-layout/theme/material/vaadin-form-item.js';
++import '@scoped-vaadin/form-layout/theme/material/vaadin-form-layout.js';
++import '@scoped-vaadin/email-field/theme/material/vaadin-email-field.js';
++import '@scoped-vaadin/number-field/theme/material/vaadin-number-field.js';
++import '@scoped-vaadin/password-field/theme/material/vaadin-password-field.js';
++import '@scoped-vaadin/select/theme/material/vaadin-select.js';
++import '@scoped-vaadin/text-area/theme/material/vaadin-text-area.js';
++import '@scoped-vaadin/text-field/theme/material/vaadin-text-field.js';
++import '@scoped-vaadin/time-picker/theme/material/vaadin-time-picker.js';
+ import '../../../theme/material/vaadin-custom-field.js';
+ 
+ describe('custom-field', () => {
+@@ -19,10 +19,10 @@
+ 
+     beforeEach(() => {
+       element = fixtureSync(`
+-        <vaadin-custom-field>
++        <vaadin24-custom-field>
+           <input type="text" />
+           <input type="number" />
+-        </vaadin-custom-field>
++        </vaadin24-custom-field>
+       `);
+       inputs = element.querySelectorAll('input');
+     });
+@@ -93,12 +93,12 @@
+       beforeEach(() => {
+         wrapper = fixtureSync(`
+           <div>
+-            <vaadin-custom-field invalid error-message="Invalid">
+-              <vaadin-number-field value="1"></vaadin-number-field>
+-              <vaadin-password-field value="password"></vaadin-password-field>
+-            </vaadin-custom-field>
+-            <vaadin-text-field invalid error-message="Invalid"></vaadin-text-field>
+-            <vaadin-time-picker value="09:00"></vaadin-time-picker>
++            <vaadin24-custom-field invalid error-message="Invalid">
++              <vaadin24-number-field value="1"></vaadin24-number-field>
++              <vaadin24-password-field value="password"></vaadin24-password-field>
++            </vaadin24-custom-field>
++            <vaadin24-text-field invalid error-message="Invalid"></vaadin24-text-field>
++            <vaadin24-time-picker value="09:00"></vaadin24-time-picker>
+           </div>
+         `);
+       });
+@@ -112,19 +112,19 @@
+       beforeEach(() => {
+         wrapper = fixtureSync(`
+           <div>
+-            <vaadin-custom-field label="Custom field">
+-              <vaadin-select
++            <vaadin24-custom-field label="Custom field">
++              <vaadin24-select
+                 value="+358"
+                 items='[{ "label": "+358" }, { "label": "+46" }, { "label": "+34" }]'
+-              ></vaadin-select>
+-              <vaadin-text-field></vaadin-text-field>
+-            </vaadin-custom-field>
+-            <vaadin-text-field label="Text field" value="Text"></vaadin-text-field>
+-            <vaadin-select
++              ></vaadin24-select>
++              <vaadin24-text-field></vaadin24-text-field>
++            </vaadin24-custom-field>
++            <vaadin24-text-field label="Text field" value="Text"></vaadin24-text-field>
++            <vaadin24-select
+               label="Plain select"
+               value="Option one"
+               items='[{ "label": "Option one" }, { "label": "Option two" }]'
+-            ></vaadin-select>
++            ></vaadin24-select>
+           </div>
+         `);
+       });
+@@ -138,12 +138,12 @@
+       beforeEach(() => {
+         wrapper = fixtureSync(`
+           <div>
+-            <vaadin-custom-field label="Custom field" invalid error-message="Invalid">
+-              <vaadin-email-field value="user@example.com"></vaadin-email-field>
+-              <vaadin-date-picker value="1980-08-14" clear-button-visible></vaadin-date-picker>
+-            </vaadin-custom-field>
+-            <vaadin-number-field label="Number" value="2" invalid error-message="Invalid"></vaadin-number-field>
+-            <vaadin-date-picker label="Date" invalid error-message="Invalid"></vaadin-date-picker>
++            <vaadin24-custom-field label="Custom field" invalid error-message="Invalid">
++              <vaadin24-email-field value="user@example.com"></vaadin24-email-field>
++              <vaadin24-date-picker value="1980-08-14" clear-button-visible></vaadin24-date-picker>
++            </vaadin24-custom-field>
++            <vaadin24-number-field label="Number" value="2" invalid error-message="Invalid"></vaadin24-number-field>
++            <vaadin24-date-picker label="Date" invalid error-message="Invalid"></vaadin24-date-picker>
+           </div>
+         `);
+       });
+@@ -157,12 +157,12 @@
+       beforeEach(() => {
+         wrapper = fixtureSync(`
+           <div>
+-            <vaadin-custom-field label="Custom field" helper-text="Helper">
+-              <vaadin-combo-box value="Combo item" allow-custom-value clear-button-visible></vaadin-combo-box>
+-              <vaadin-time-picker value="09:00"></vaadin-time-picker>
+-            </vaadin-custom-field>
+-            <vaadin-combo-box label="Combo" value="Combo item" allow-custom-value helper-text="Helper"></vaadin-combo-box>
+-            <vaadin-password-field value="password"></vaadin-password-field>
++            <vaadin24-custom-field label="Custom field" helper-text="Helper">
++              <vaadin24-combo-box value="Combo item" allow-custom-value clear-button-visible></vaadin24-combo-box>
++              <vaadin24-time-picker value="09:00"></vaadin24-time-picker>
++            </vaadin24-custom-field>
++            <vaadin24-combo-box label="Combo" value="Combo item" allow-custom-value helper-text="Helper"></vaadin24-combo-box>
++            <vaadin24-password-field value="password"></vaadin24-password-field>
+           </div>
+         `);
+       });
+@@ -179,12 +179,12 @@
+     describe('label + error message', () => {
+       beforeEach(() => {
+         layout = fixtureSync(`
+-          <vaadin-form-layout style="width: 60em">
+-            <vaadin-text-field label="Text field" invalid error-message="Error"></vaadin-text-field>
+-            <vaadin-custom-field label="Custom field" invalid error-message="Error">
+-              <vaadin-text-field></vaadin-text-field>
+-            </vaadin-custom-field>
+-          </vaadin-form-layout>
++          <vaadin24-form-layout style="width: 60em">
++            <vaadin24-text-field label="Text field" invalid error-message="Error"></vaadin24-text-field>
++            <vaadin24-custom-field label="Custom field" invalid error-message="Error">
++              <vaadin24-text-field></vaadin24-text-field>
++            </vaadin24-custom-field>
++          </vaadin24-form-layout>
+         `);
+       });
+ 
+@@ -196,20 +196,20 @@
+     describe('form-item', () => {
+       beforeEach(() => {
+         layout = fixtureSync(`
+-          <vaadin-form-layout style="width: 60em">
+-            <vaadin-form-item>
++          <vaadin24-form-layout style="width: 60em">
++            <vaadin24-form-item>
+               <label slot="label">Custom field with text area</label>
+-              <vaadin-custom-field>
+-                <vaadin-text-area
++              <vaadin24-custom-field>
++                <vaadin24-text-area
+                   value="Sed libero enim, sed faucibus turpis in eu? Euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit, scelerisque in dictum!"
+-                ></vaadin-text-area>
+-              </vaadin-custom-field>
+-            </vaadin-form-item>
+-            <vaadin-form-item>
++                ></vaadin24-text-area>
++              </vaadin24-custom-field>
++            </vaadin24-form-item>
++            <vaadin24-form-item>
+               <label slot="label">Text field</label>
+-              <vaadin-text-field></vaadin-text-field>
+-            </vaadin-form-item>
+-          </vaadin-form-layout>
++              <vaadin24-text-field></vaadin24-text-field>
++            </vaadin24-form-item>
++          </vaadin24-form-layout>
+         `);
+       });
+ 

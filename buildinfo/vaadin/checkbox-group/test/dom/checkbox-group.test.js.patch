@@ -1,0 +1,29 @@
+Index: test/dom/checkbox-group.test.js
+===================================================================
+--- test/dom/checkbox-group.test.js
++++ test/dom/checkbox-group.test.js
+@@ -1,18 +1,18 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-checkbox-group.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-checkbox-group', () => {
++describe('vaadin24-checkbox-group', () => {
+   let group;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+     group = fixtureSync(`
+-      <vaadin-checkbox-group>
+-        <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-        <vaadin-checkbox value="2" label="Checkbox 2"></vaadin-checkbox>
+-      </vaadin-checkbox-group>
++      <vaadin24-checkbox-group>
++        <vaadin24-checkbox value="1" label="Checkbox 1"></vaadin24-checkbox>
++        <vaadin24-checkbox value="2" label="Checkbox 2"></vaadin24-checkbox>
++      </vaadin24-checkbox-group>
+     `);
+   });
+ 

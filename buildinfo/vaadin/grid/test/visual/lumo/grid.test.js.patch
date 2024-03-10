@@ -1,0 +1,21 @@
+Index: test/visual/lumo/grid.test.js
+===================================================================
+--- test/visual/lumo/grid.test.js
++++ test/visual/lumo/grid.test.js
+@@ -14,11 +14,11 @@
+ 
+   beforeEach(async () => {
+     element = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name.first" header="First name"></vaadin-grid-column>
+-          <vaadin-grid-column path="name.last" header="Last name"></vaadin-grid-column>
+-          <vaadin-grid-column path="email"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="name.first" header="First name"></vaadin24-grid-column>
++          <vaadin24-grid-column path="name.last" header="Last name"></vaadin24-grid-column>
++          <vaadin24-grid-column path="email"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+     element.items = users;
+     flushGrid(element);

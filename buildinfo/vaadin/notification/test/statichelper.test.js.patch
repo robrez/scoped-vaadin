@@ -1,0 +1,22 @@
+Index: test/statichelper.test.js
+===================================================================
+--- test/statichelper.test.js
++++ test/statichelper.test.js
+@@ -7,7 +7,7 @@
+ describe('static helpers', () => {
+   it('show should show a text notification', () => {
+     const notification = Notification.show('Hello world');
+-    const notificationDom = document.body.querySelector('vaadin-notification');
++    const notificationDom = document.body.querySelector('vaadin24-notification');
+     expect(notification).to.equal(notificationDom);
+ 
+     expect(notification._card.innerText.trim()).to.equal('Hello world');
+@@ -17,7 +17,7 @@
+     const notification = Notification.show(html`Hello world`);
+ 
+     // FIXME: This causes 'TypeError: Converting circular structure to JSON'
+-    // const notificationDom = document.body.querySelector('vaadin-notification');
++    // const notificationDom = document.body.querySelector('vaadin24-notification');
+     // expect(notification).to.equal(notificationDom);
+ 
+     expect(notification._card.innerText.trim()).to.equal('Hello world');

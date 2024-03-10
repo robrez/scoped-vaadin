@@ -1,0 +1,15 @@
+Index: test/dom/__snapshots__/month-calendar.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/month-calendar.test.snap.js
++++ test/dom/__snapshots__/month-calendar.test.snap.js
+@@ -2,8 +2,8 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-month-calendar host default"] = 
+-`<vaadin-month-calendar aria-hidden="true">
+-</vaadin-month-calendar>
++`<vaadin24-month-calendar aria-hidden="true">
++</vaadin24-month-calendar>
+ `;
+ /* end snapshot vaadin-month-calendar host default */
+ 

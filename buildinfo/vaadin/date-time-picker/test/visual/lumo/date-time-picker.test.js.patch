@@ -1,0 +1,13 @@
+Index: test/visual/lumo/date-time-picker.test.js
+===================================================================
+--- test/visual/lumo/date-time-picker.test.js
++++ test/visual/lumo/date-time-picker.test.js
+@@ -10,7 +10,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-date-time-picker></vaadin-date-time-picker>', div);
++    element = fixtureSync('<vaadin24-date-time-picker></vaadin24-date-time-picker>', div);
+   });
+ 
+   describe('default', () => {

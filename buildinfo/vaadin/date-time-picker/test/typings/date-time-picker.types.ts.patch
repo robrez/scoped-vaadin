@@ -1,0 +1,13 @@
+Index: test/typings/date-time-picker.types.ts
+===================================================================
+--- test/typings/date-time-picker.types.ts
++++ test/typings/date-time-picker.types.ts
+@@ -9,7 +9,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const picker = document.createElement('vaadin-date-time-picker');
++const picker = document.createElement('vaadin24-date-time-picker');
+ 
+ picker.addEventListener('change', (event) => {
+   assertType<DateTimePickerChangeEvent>(event);

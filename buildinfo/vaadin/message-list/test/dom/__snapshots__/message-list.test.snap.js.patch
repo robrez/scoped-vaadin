@@ -1,0 +1,129 @@
+Index: test/dom/__snapshots__/message-list.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/message-list.test.snap.js
++++ test/dom/__snapshots__/message-list.test.snap.js
+@@ -2,25 +2,25 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-message-list default"] = 
+-`<vaadin-message-list
++`<vaadin24-message-list
+   aria-relevant="additions"
+   role="log"
+ >
+-</vaadin-message-list>
++</vaadin24-message-list>
+ `;
+ /* end snapshot vaadin-message-list default */
+ 
+ snapshots["vaadin-message-list items"] = 
+-`<vaadin-message-list
++`<vaadin24-message-list
+   aria-relevant="additions"
+   role="log"
+ >
+-  <vaadin-message
++  <vaadin24-message
+     role="listitem"
+     tabindex="0"
+   >
+     Hi folks!
+-    <vaadin-avatar
++    <vaadin24-avatar
+       abbr="JD"
+       aria-hidden="true"
+       name="Jane Doe"
+@@ -28,14 +28,14 @@
+       slot="avatar"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
+-  </vaadin-message>
+-  <vaadin-message
++    </vaadin24-avatar>
++  </vaadin24-message>
++  <vaadin24-message
+     role="listitem"
+     tabindex="-1"
+   >
+     Good morning!
+-    <vaadin-avatar
++    <vaadin24-avatar
+       abbr="LR"
+       aria-hidden="true"
+       name="Lina Roy"
+@@ -43,24 +43,24 @@
+       slot="avatar"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
+-  </vaadin-message>
+-</vaadin-message-list>
++    </vaadin24-avatar>
++  </vaadin24-message>
++</vaadin24-message-list>
+ `;
+ /* end snapshot vaadin-message-list items */
+ 
+ snapshots["vaadin-message-list theme"] = 
+-`<vaadin-message-list
++`<vaadin24-message-list
+   aria-relevant="additions"
+   role="log"
+ >
+-  <vaadin-message
++  <vaadin24-message
+     role="listitem"
+     tabindex="0"
+     theme="danger"
+   >
+     Partial service outage.
+-    <vaadin-avatar
++    <vaadin24-avatar
+       abbr="A"
+       aria-hidden="true"
+       name="Admin"
+@@ -68,24 +68,24 @@
+       slot="avatar"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
+-  </vaadin-message>
+-</vaadin-message-list>
++    </vaadin24-avatar>
++  </vaadin24-message>
++</vaadin24-message-list>
+ `;
+ /* end snapshot vaadin-message-list theme */
+ 
+ snapshots["vaadin-message-list className"] = 
+-`<vaadin-message-list
++`<vaadin24-message-list
+   aria-relevant="additions"
+   role="log"
+ >
+-  <vaadin-message
++  <vaadin24-message
+     class="pinned"
+     role="listitem"
+     tabindex="0"
+   >
+     Where to start
+-    <vaadin-avatar
++    <vaadin24-avatar
+       abbr="A"
+       aria-hidden="true"
+       name="Admin"
+@@ -93,9 +93,9 @@
+       slot="avatar"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
+-  </vaadin-message>
+-</vaadin-message-list>
++    </vaadin24-avatar>
++  </vaadin24-message>
++</vaadin24-message-list>
+ `;
+ /* end snapshot vaadin-message-list className */
+ 

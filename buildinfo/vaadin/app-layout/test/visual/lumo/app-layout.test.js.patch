@@ -1,0 +1,20 @@
+Index: test/visual/lumo/app-layout.test.js
+===================================================================
+--- test/visual/lumo/app-layout.test.js
++++ test/visual/lumo/app-layout.test.js
+@@ -12,12 +12,12 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-app-layout>
+-          <vaadin-drawer-toggle slot="navbar"></vaadin-drawer-toggle>
++        <vaadin24-app-layout>
++          <vaadin24-drawer-toggle slot="navbar"></vaadin24-drawer-toggle>
+           <h2 slot="navbar">App Name</h2>
+           <section slot="drawer">Drawer content</section>
+           <main>Page content</main>
+-        </vaadin-app-layout>
++        </vaadin24-app-layout>
+       `,
+       div,
+     );

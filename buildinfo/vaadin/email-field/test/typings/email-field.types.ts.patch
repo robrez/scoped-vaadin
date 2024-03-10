@@ -1,0 +1,13 @@
+Index: test/typings/email-field.types.ts
+===================================================================
+--- test/typings/email-field.types.ts
++++ test/typings/email-field.types.ts
+@@ -9,7 +9,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const field = document.createElement('vaadin-email-field');
++const field = document.createElement('vaadin24-email-field');
+ 
+ field.addEventListener('change', (event) => {
+   assertType<EmailFieldChangeEvent>(event);

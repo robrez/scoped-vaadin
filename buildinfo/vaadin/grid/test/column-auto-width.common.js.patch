@@ -1,0 +1,281 @@
+Index: test/column-auto-width.common.js
+===================================================================
+--- test/column-auto-width.common.js
++++ test/column-auto-width.common.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -51,19 +52,19 @@
+     }
+   }
+ 
+-  customElements.define('test-container', TestContainer);
++  internalCustomElements.define('test-container', TestContainer);
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 600px; height: 200px;" hidden>
+-        <vaadin-grid-column auto-width flex-grow="0" path="a"></vaadin-grid-column>
+-        <vaadin-grid-column auto-width flex-grow="0" path="b"></vaadin-grid-column>
+-        <vaadin-grid-column auto-width flex-grow="0" path="c"></vaadin-grid-column>
+-        <vaadin-grid-column auto-width flex-grow="0" path="d" header="foo bar baz"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 600px; height: 200px;" hidden>
++        <vaadin24-grid-column auto-width flex-grow="0" path="a"></vaadin24-grid-column>
++        <vaadin24-grid-column auto-width flex-grow="0" path="b"></vaadin24-grid-column>
++        <vaadin24-grid-column auto-width flex-grow="0" path="c"></vaadin24-grid-column>
++        <vaadin24-grid-column auto-width flex-grow="0" path="d" header="foo bar baz"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     spy = sinon.spy(grid, '_recalculateColumnWidths');
+-    columns = grid.querySelectorAll('vaadin-grid-column');
++    columns = grid.querySelectorAll('vaadin24-grid-column');
+     // Show the grid and wait for animationend event ("vaadin-grid-appear")
+     // to ensure the grid is in a consistent state before starting each test
+     grid.hidden = false;
+@@ -86,7 +87,7 @@
+     grid.items = [{ a: 'a' }, { a: 'aaaaaaaa' }];
+     await nextFrame();
+ 
+-    expectColumnWidthsToBeOk(grid.querySelectorAll('vaadin-grid-column'), [101]);
++    expectColumnWidthsToBeOk(grid.querySelectorAll('vaadin24-grid-column'), [101]);
+   });
+ 
+   it('should have correct column widths when the grid is visually scaled', async () => {
+@@ -228,9 +229,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-tree-column auto-width path="name" flex-grow="0"></vaadin-grid-tree-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-tree-column auto-width path="name" flex-grow="0"></vaadin24-grid-tree-column>
++      </vaadin24-grid>
+     `);
+ 
+     const data = [
+@@ -258,9 +259,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-tree-column auto-width path="name"></vaadin-grid-tree-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-tree-column auto-width path="name"></vaadin24-grid-tree-column>
++      </vaadin24-grid>
+     `);
+   });
+ 
+@@ -327,7 +328,7 @@
+   const num = (str) => parseInt(str, 10);
+ 
+   function expectColumnsWidthToBeOk(grid, ws, delta = 5) {
+-    const columns = grid.querySelectorAll('vaadin-grid-column');
++    const columns = grid.querySelectorAll('vaadin24-grid-column');
+ 
+     Array.from(columns).forEach((col, i) => {
+       const columnWidth = num(col.width);
+@@ -345,23 +346,23 @@
+ 
+   it('should consider column group when calculating column width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group header="a lengthy header that should change the width of the column">
+-          <vaadin-grid-column auto-width path="a" header="small header"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group header="a lengthy header that should change the width of the column">
++          <vaadin24-grid-column auto-width path="a" header="small header"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+     expectColumnsWidthToBeOk(grid, [420], 25);
+   });
+ 
+   it('should distribute the excess space to all columns', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group header="a lengthy header that should change the width of the column">
+-          <vaadin-grid-column auto-width path="a" header="small header"></vaadin-grid-column>
+-          <vaadin-grid-column auto-width path="b" header="small header"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group header="a lengthy header that should change the width of the column">
++          <vaadin24-grid-column auto-width path="a" header="small header"></vaadin24-grid-column>
++          <vaadin24-grid-column auto-width path="b" header="small header"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+ 
+     expectColumnsWidthToBeOk(grid, [217, 217], 20);
+@@ -372,30 +373,30 @@
+ 
+     const grid = createGrid(
+       `
+-        <vaadin-grid style="width: 200px">
+-          <vaadin-grid-column-group header="HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader">
+-            <vaadin-grid-column auto-width path="first"></vaadin-grid-column>
+-            <vaadin-grid-column auto-width path="last"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px">
++          <vaadin24-grid-column-group header="HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader">
++            <vaadin24-grid-column auto-width path="first"></vaadin24-grid-column>
++            <vaadin24-grid-column auto-width path="last"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `,
+       items,
+     );
+ 
+     const gridWithFlexGrow = createGrid(
+       `
+-        <vaadin-grid style="width: 200px">
+-          <vaadin-grid-column-group header="HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader">
+-            <vaadin-grid-column auto-width flex-grow="3" path="first"></vaadin-grid-column>
+-            <vaadin-grid-column auto-width path="last"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px">
++          <vaadin24-grid-column-group header="HeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeaderHeader">
++            <vaadin24-grid-column auto-width flex-grow="3" path="first"></vaadin24-grid-column>
++            <vaadin24-grid-column auto-width path="last"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid>
+       `,
+       items,
+     );
+ 
+-    const [columnA, columnB] = grid.querySelectorAll('vaadin-grid-column');
+-    const [columnA2, columnB2] = gridWithFlexGrow.querySelectorAll('vaadin-grid-column');
++    const [columnA, columnB] = grid.querySelectorAll('vaadin24-grid-column');
++    const [columnA2, columnB2] = gridWithFlexGrow.querySelectorAll('vaadin24-grid-column');
+ 
+     expect(columnA.width).to.equal(columnA2.width);
+     expect(columnB.width).to.equal(columnB2.width);
+@@ -403,53 +404,53 @@
+ 
+   it('should distribute the excess space to all columns according to their initial width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group header="a lengthy header that should change the width of the column">
+-          <vaadin-grid-column auto-width path="a" header="header"></vaadin-grid-column>
+-          <vaadin-grid-column auto-width path="b" header="headerheader"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group header="a lengthy header that should change the width of the column">
++          <vaadin24-grid-column auto-width path="a" header="header"></vaadin24-grid-column>
++          <vaadin24-grid-column auto-width path="b" header="headerheader"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+ 
+-    const [columnA, columnB] = grid.querySelectorAll('vaadin-grid-column');
++    const [columnA, columnB] = grid.querySelectorAll('vaadin24-grid-column');
+     expect(num(columnB.width)).to.be.greaterThan(num(columnA.width));
+   });
+ 
+   it('should consider all the parent vaadin-grid-column-groups when calculating the necessary width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group header="a lengthy header, greater than immediate column-group">
+-          <vaadin-grid-column-group header="immediate column-group">
+-            <vaadin-grid-column auto-width path="a" header="header"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group header="a lengthy header, greater than immediate column-group">
++          <vaadin24-grid-column-group header="immediate column-group">
++            <vaadin24-grid-column auto-width path="a" header="header"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+     expectColumnsWidthToBeOk(grid, [403], 30);
+   });
+ 
+   it('should consider vaadin-grid-column header when calculating column width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group header="small header">
+-          <vaadin-grid-column auto-width path="a" header="a lengthy header that should change the width of the column"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group header="small header">
++          <vaadin24-grid-column auto-width path="a" header="a lengthy header that should change the width of the column"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+     expectColumnsWidthToBeOk(grid, [420], 25);
+   });
+ 
+   it('should consider vaadin-grid-column-group footer when calculating column width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group>
+-          <vaadin-grid-column auto-width path="a" header="header"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group>
++          <vaadin24-grid-column auto-width path="a" header="header"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+ 
+-    const columnGroup = document.querySelector('vaadin-grid-column-group');
+-    const column = document.querySelector('vaadin-grid-column');
++    const columnGroup = document.querySelector('vaadin24-grid-column-group');
++    const column = document.querySelector('vaadin24-grid-column');
+ 
+     columnGroup.footerRenderer = (root) => {
+       const footer = document.createElement('footer');
+@@ -471,15 +472,15 @@
+ 
+   it('should consider vaadin-grid-column footer when calculating column width', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column-group>
+-          <vaadin-grid-column auto-width path="a" header="header"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column-group>
++          <vaadin24-grid-column auto-width path="a" header="header"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+ 
+-    const columnGroup = document.querySelector('vaadin-grid-column-group');
+-    const column = document.querySelector('vaadin-grid-column');
++    const columnGroup = document.querySelector('vaadin24-grid-column-group');
++    const column = document.querySelector('vaadin24-grid-column');
+ 
+     columnGroup.footerRenderer = (root) => {
+       const footer = document.createElement('footer');
+@@ -501,12 +502,12 @@
+ 
+   it('should not error when there is no vaadin-grid-column-group', () => {
+     const grid = createGrid(`
+-      <vaadin-grid style="width: 200px">
+-        <vaadin-grid-column auto-width path="a" header="header"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px">
++        <vaadin24-grid-column auto-width path="a" header="header"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+-    const column = document.querySelector('vaadin-grid-column');
++    const column = document.querySelector('vaadin24-grid-column');
+ 
+     column.footerRenderer = (root) => {
+       const footer = document.createElement('footer');

@@ -1,0 +1,118 @@
+Index: test/filtering.common.js
+===================================================================
+--- test/filtering.common.js
++++ test/filtering.common.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fire, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -25,9 +26,9 @@
+           display: block;
+         }
+       </style>
+-      <vaadin-grid-filter path="foo" .value="${this._filterValue}">
++      <vaadin24-grid-filter path="foo" .value="${this._filterValue}">
+         <input @input="${this._onFilterInput}" />
+-      </vaadin-grid-filter>
++      </vaadin24-grid-filter>
+     `;
+   }
+ 
+@@ -36,10 +37,10 @@
+   }
+ }
+ 
+-customElements.define('filter-wrapper', FilterWrapper);
++internalCustomElements.define('filter-wrapper', FilterWrapper);
+ 
+ function flushFilters(grid) {
+-  Array.from(grid.querySelectorAll('vaadin-grid-filter')).forEach(
++  Array.from(grid.querySelectorAll('vaadin24-grid-filter')).forEach(
+     (filter) => filter._debouncerFilterChanged && filter._debouncerFilterChanged.flush(),
+   );
+ }
+@@ -52,7 +53,7 @@
+   beforeEach(async () => {
+     filterWrapper = fixtureSync('<filter-wrapper></filter-wrapper>');
+     await filterWrapper.updateComplete;
+-    filter = filterWrapper.shadowRoot.querySelector('vaadin-grid-filter');
++    filter = filterWrapper.shadowRoot.querySelector('vaadin24-grid-filter');
+     clock = sinon.useFakeTimers();
+   });
+ 
+@@ -100,25 +101,25 @@
+ 
+ function gridFiltersFixture() {
+   const grid = fixtureSync(`
+-    <vaadin-grid>
+-      <vaadin-grid-column path="first"></vaadin-grid-column>
+-      <vaadin-grid-column path="last"></vaadin-grid-column>
+-      <vaadin-grid-filter-column></vaadin-grid-filter-column>
+-    </vaadin-grid>
++    <vaadin24-grid>
++      <vaadin24-grid-column path="first"></vaadin24-grid-column>
++      <vaadin24-grid-column path="last"></vaadin24-grid-column>
++      <vaadin24-grid-filter-column></vaadin24-grid-filter-column>
++    </vaadin24-grid>
+   `);
+ 
+-  const columns = grid.querySelectorAll('vaadin-grid-column');
++  const columns = grid.querySelectorAll('vaadin24-grid-column');
+   columns[0].headerRenderer = (root) => {
+     if (!root.firstChild) {
+       root.innerHTML = `
+-        <vaadin-grid-filter path="first" value="bar"></vaadin-grid-filter>
+-        <vaadin-grid-sorter path="first"></vaadin-grid-sorter>
++        <vaadin24-grid-filter path="first" value="bar"></vaadin24-grid-filter>
++        <vaadin24-grid-sorter path="first"></vaadin24-grid-sorter>
+       `;
+     }
+   };
+   columns[1].headerRenderer = (root) => {
+     if (!root.firstChild) {
+-      root.innerHTML = '<vaadin-grid-filter path="last" value="qux"></vaadin-grid-filter>';
++      root.innerHTML = '<vaadin24-grid-filter path="last" value="qux"></vaadin24-grid-filter>';
+     }
+   };
+ 
+@@ -147,7 +148,7 @@
+ 
+   it('should have default inputs', () => {
+     grid._filters.forEach((filter) => {
+-      const field = filter.querySelector('vaadin-text-field');
++      const field = filter.querySelector('vaadin24-text-field');
+       expect(field.clientHeight).to.be.greaterThan(0);
+     });
+   });
+@@ -214,7 +215,7 @@
+     flushFilters(grid);
+     grid.style.width = '200px';
+     const filterWidth = grid._filters[0].parentElement.offsetWidth;
+-    const textFieldWidth = grid._filters[0].querySelector('vaadin-text-field').offsetWidth;
++    const textFieldWidth = grid._filters[0].querySelector('vaadin24-text-field').offsetWidth;
+     expect(filterWidth).to.be.greaterThan(textFieldWidth);
+   });
+ 
+@@ -222,10 +223,10 @@
+     let filterColumn, filterCellContent, filter, filterTextField;
+ 
+     beforeEach(() => {
+-      filterColumn = grid.querySelector('vaadin-grid-filter-column');
++      filterColumn = grid.querySelector('vaadin24-grid-filter-column');
+       filterCellContent = getHeaderCellContent(grid, 0, 2);
+ 
+-      filter = filterCellContent.querySelector('vaadin-grid-filter');
++      filter = filterCellContent.querySelector('vaadin24-grid-filter');
+       filterTextField = filter.firstElementChild;
+     });
+ 
+@@ -337,7 +338,7 @@
+   it('should sort filtered items', async () => {
+     grid._filters[1].value = 'r';
+     await nextFrame();
+-    grid.querySelector('vaadin-grid-sorter').direction = 'asc';
++    grid.querySelector('vaadin24-grid-sorter').direction = 'asc';
+     flushGrid(grid);
+     expect(grid.size).to.equal(2);
+     expect(getBodyCellContent(grid, 0, 0).innerText).to.equal('bar');

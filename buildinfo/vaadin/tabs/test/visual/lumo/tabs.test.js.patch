@@ -1,0 +1,98 @@
+Index: test/visual/lumo/tabs.test.js
+===================================================================
+--- test/visual/lumo/tabs.test.js
++++ test/visual/lumo/tabs.test.js
+@@ -26,11 +26,11 @@
+         beforeEach(() => {
+           element = fixtureSync(
+             `
+-              <vaadin-tabs>
+-                <vaadin-tab>Foo</vaadin-tab>
+-                <vaadin-tab>Bar</vaadin-tab>
+-                <vaadin-tab>Baz</vaadin-tab>
+-              </vaadin-tabs>
++              <vaadin24-tabs>
++                <vaadin24-tab>Foo</vaadin24-tab>
++                <vaadin24-tab>Bar</vaadin24-tab>
++                <vaadin24-tab>Baz</vaadin24-tab>
++              </vaadin24-tabs>
+             `,
+             div,
+           );
+@@ -66,11 +66,11 @@
+         beforeEach(() => {
+           element = fixtureSync(
+             `
+-              <vaadin-tabs orientation="vertical" style="width: 150px">
+-                <vaadin-tab>Foo</vaadin-tab>
+-                <vaadin-tab>Bar</vaadin-tab>
+-                <vaadin-tab>Baz</vaadin-tab>
+-              </vaadin-tabs>
++              <vaadin24-tabs orientation="vertical" style="width: 150px">
++                <vaadin24-tab>Foo</vaadin24-tab>
++                <vaadin24-tab>Bar</vaadin24-tab>
++                <vaadin24-tab>Baz</vaadin24-tab>
++              </vaadin24-tabs>
+             `,
+             div,
+           );
+@@ -97,11 +97,11 @@
+     beforeEach(() => {
+       element = fixtureSync(
+         `
+-          <vaadin-tabs>
+-            <vaadin-tab><a href="#">Foo</a></vaadin-tab>
+-            <vaadin-tab><a href="#">Bar</a></vaadin-tab>
+-            <vaadin-tab><a href="#">Baz</a></vaadin-tab>
+-          </vaadin-tabs>
++          <vaadin24-tabs>
++            <vaadin24-tab><a href="#">Foo</a></vaadin24-tab>
++            <vaadin24-tab><a href="#">Bar</a></vaadin24-tab>
++            <vaadin24-tab><a href="#">Baz</a></vaadin24-tab>
++          </vaadin24-tabs>
+         `,
+         div,
+       );
+@@ -130,24 +130,24 @@
+ 
+           element = fixtureSync(
+             `
+-              <vaadin-tabs style="overflow: hidden">
+-                <vaadin-tab>Tab-00</vaadin-tab>
+-                <vaadin-tab>Tab-01</vaadin-tab>
+-                <vaadin-tab>Tab-02</vaadin-tab>
+-                <vaadin-tab>Tab-03</vaadin-tab>
+-                <vaadin-tab>Tab-04</vaadin-tab>
+-                <vaadin-tab>Tab-05</vaadin-tab>
+-                <vaadin-tab>Tab-06</vaadin-tab>
+-                <vaadin-tab>Tab-07</vaadin-tab>
+-                <vaadin-tab>Tab-08</vaadin-tab>
+-                <vaadin-tab>Tab-09</vaadin-tab>
+-                <vaadin-tab>Tab-10</vaadin-tab>
+-                <vaadin-tab>Tab-11</vaadin-tab>
+-                <vaadin-tab>Tab-12</vaadin-tab>
+-                <vaadin-tab>Tab-13</vaadin-tab>
+-                <vaadin-tab>Tab-14</vaadin-tab>
+-                <vaadin-tab>Tab-15</vaadin-tab>
+-              </vaadin-tabs>
++              <vaadin24-tabs style="overflow: hidden">
++                <vaadin24-tab>Tab-00</vaadin24-tab>
++                <vaadin24-tab>Tab-01</vaadin24-tab>
++                <vaadin24-tab>Tab-02</vaadin24-tab>
++                <vaadin24-tab>Tab-03</vaadin24-tab>
++                <vaadin24-tab>Tab-04</vaadin24-tab>
++                <vaadin24-tab>Tab-05</vaadin24-tab>
++                <vaadin24-tab>Tab-06</vaadin24-tab>
++                <vaadin24-tab>Tab-07</vaadin24-tab>
++                <vaadin24-tab>Tab-08</vaadin24-tab>
++                <vaadin24-tab>Tab-09</vaadin24-tab>
++                <vaadin24-tab>Tab-10</vaadin24-tab>
++                <vaadin24-tab>Tab-11</vaadin24-tab>
++                <vaadin24-tab>Tab-12</vaadin24-tab>
++                <vaadin24-tab>Tab-13</vaadin24-tab>
++                <vaadin24-tab>Tab-14</vaadin24-tab>
++                <vaadin24-tab>Tab-15</vaadin24-tab>
++              </vaadin24-tabs>
+             `,
+             div,
+           );

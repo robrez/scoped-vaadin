@@ -1,0 +1,22 @@
+Index: test/visual/lumo/radio-button.test.js
+===================================================================
+--- test/visual/lumo/radio-button.test.js
++++ test/visual/lumo/radio-button.test.js
+@@ -1,7 +1,7 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/vaadin-lumo-styles/test/autoload.js';
++import '@scoped-vaadin/vaadin-lumo-styles/test/autoload.js';
+ import '../../../theme/lumo/vaadin-radio-button.js';
+ 
+ describe('radio-button', () => {
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-radio-button label="Radio button"></vaadin-radio-button>', div);
++    element = fixtureSync('<vaadin24-radio-button label="Radio button"></vaadin24-radio-button>', div);
+   });
+ 
+   it('basic', async () => {
