@@ -33,3 +33,30 @@ Index: test/selection.common.js
        `;
      };
      await nextRender();
+@@ -40,7 +40,7 @@
+     const spy = sinon.spy();
+     menu.addEventListener('opened-changed', spy);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     enter(item);
+     await nextRender();
+     expect(spy.calledOnce).to.be.true;
+@@ -51,7 +51,7 @@
+     await oneEvent(overlay, 'vaadin-overlay-open');
+     await nextRender(overlay);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     expect(document.activeElement).to.eql(item);
+   });
+ 
+@@ -60,7 +60,7 @@
+     await oneEvent(overlay, 'vaadin-overlay-open');
+     await nextRender(overlay);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     expect(document.activeElement).to.eql(item);
+   });
+ });

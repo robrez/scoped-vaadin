@@ -77,7 +77,7 @@ let packageFilter = null;
  * @type {TestRunnerConfig}
  */
 const baseConfig = {
-  staticLogging: true,
+  staticLogging: false,
   browsers: [playwrightLauncher()],
   packageFilter,
   coverageConfig: {

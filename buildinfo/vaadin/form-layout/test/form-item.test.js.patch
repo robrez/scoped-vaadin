@@ -39,7 +39,7 @@ Index: test/form-item.test.js
        `);
        label = item.querySelector('label');
        input = item.querySelector('input');
-@@ -84,8 +84,8 @@
+@@ -84,15 +84,15 @@
      let label1, label2;
  
      beforeEach(async () => {
@@ -50,6 +50,14 @@ Index: test/form-item.test.js
        label1 = item1.querySelector('label');
        label2 = item2.querySelector('label');
        await nextFrame();
+     });
+ 
+     it('should set a unique id on the label element', () => {
+-      const ID_REGEX = /^label-vaadin-form-item-\d+$/u;
++      const ID_REGEX = /^label-vaadin24-form-item-\d+$/u;
+       expect(label1.id).to.not.equal(label2.id);
+       expect(label1.id).to.match(ID_REGEX);
+       expect(label2.id).to.match(ID_REGEX);
 @@ -104,10 +104,10 @@
  
      beforeEach(async () => {
@@ -88,7 +96,7 @@ Index: test/form-item.test.js
          `);
          input = item.querySelector('input');
          await nextFrame();
-@@ -260,12 +260,12 @@
+@@ -260,15 +260,15 @@
  
        beforeEach(async () => {
          item = fixtureSync(`
@@ -104,8 +112,12 @@ Index: test/form-item.test.js
 +          </vaadin24-form-item>
          `);
          label = item.querySelector(':scope > label');
-         field = item.querySelector(':scope > vaadin-text-field');
-@@ -284,10 +284,10 @@
+-        field = item.querySelector(':scope > vaadin-text-field');
++        field = item.querySelector(':scope > vaadin24-text-field');
+         fieldInput = field.querySelector(':scope > input');
+         await nextFrame();
+       });
+@@ -284,13 +284,13 @@
  
        beforeEach(async () => {
          item = fixtureSync(`
@@ -118,7 +130,11 @@ Index: test/form-item.test.js
 +          </vaadin24-form-item>
          `);
          label = item.querySelector(':scope > label');
-         field = item.querySelector(':scope > vaadin-custom-field');
+-        field = item.querySelector(':scope > vaadin-custom-field');
++        field = item.querySelector(':scope > vaadin24-custom-field');
+         await nextFrame();
+       });
+ 
 @@ -315,10 +315,10 @@
  
      beforeEach(() => {

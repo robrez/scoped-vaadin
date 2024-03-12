@@ -18,7 +18,7 @@ Index: test/validation.common.js
  }
  
 -customElements.define('vaadin-date-picker-2016', DatePicker2016);
-+internalCustomElements.define('vaadin-date-picker-2016', DatePicker2016);
++internalCustomElements.define('vaadin24-date-picker-2016', DatePicker2016);
  
  function waitForValueChange(datePicker, callback) {
    let stub;

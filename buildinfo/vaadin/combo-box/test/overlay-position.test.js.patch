@@ -2,7 +2,14 @@ Index: test/overlay-position.test.js
 ===================================================================
 --- test/overlay-position.test.js
 +++ test/overlay-position.test.js
-@@ -29,7 +29,7 @@
+@@ -23,13 +23,13 @@
+   beforeEach(async () => {
+     fixtureSync(`
+       <style>
+-        vaadin-combo-box-overlay::part(overlay) {
++        vaadin24-combo-box-overlay::part(overlay) {
+           margin: 0 !important;
+         }
        </style>
      `);
  
