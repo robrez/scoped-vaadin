@@ -12,7 +12,7 @@ Index: test/validation.test.js
  }
  
 -customElements.define('vaadin-time-picker-20', TimePicker20Element);
-+internalCustomElements.define('vaadin-time-picker-20', TimePicker20Element);
++internalCustomElements.define('vaadin24-time-picker-20', TimePicker20Element);
  
  describe('validation', () => {
    let timePicker;

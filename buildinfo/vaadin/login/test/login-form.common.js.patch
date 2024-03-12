@@ -23,6 +23,15 @@ Index: test/login-form.common.js
    });
  
    afterEach(() => {
+@@ -60,7 +60,7 @@
+   it('should emit forgot password event', () => {
+     const spy = sinon.spy();
+     login.addEventListener('forgot-password', spy);
+-    const forgotElement = login.querySelector('vaadin-button[slot="forgot-password"]');
++    const forgotElement = login.querySelector('vaadin24-button[slot="forgot-password"]');
+     forgotElement.click();
+     expect(spy.calledOnce).to.be.true;
+   });
 @@ -120,7 +120,7 @@
    });
  

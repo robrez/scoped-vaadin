@@ -58,6 +58,15 @@ Index: test/tooltip.common.js
                    <div id=${item}></div>
                  `,
                )}
+@@ -300,7 +301,7 @@
+         renderTooltips(['foo']);
+ 
+         await nextFrame();
+-        expect(container.querySelector('vaadin-tooltip[for="foo"]').target).to.equal(container.querySelector('#foo'));
++        expect(container.querySelector('vaadin24-tooltip[for="foo"]').target).to.equal(container.querySelector('#foo'));
+       });
+     });
+ 
 @@ -451,10 +452,10 @@
        tabKeyDown(target);
        target.focus();

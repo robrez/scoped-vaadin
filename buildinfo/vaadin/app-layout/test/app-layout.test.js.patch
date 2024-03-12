@@ -106,3 +106,12 @@ Index: test/app-layout.test.js
        `);
        await nextRender();
        toggle = layout.querySelector('#toggle');
+@@ -309,7 +310,7 @@
+       it('should use the drawer width as offset width', async () => {
+         fixtureSync(`
+           <style>
+-            vaadin-app-layout::part(drawer) {
++            vaadin24-app-layout::part(drawer) {
+               width: 100px;
+             }
+           </style>

@@ -32,3 +32,53 @@ Index: test/grid-row-details.test.js
      );
    });
  });
+@@ -64,19 +64,19 @@
+   });
+ 
+   it('should render model.detailsOpened', () => {
+-    const checkbox = queryDetailsCellContent('vaadin-checkbox.details-opened');
++    const checkbox = queryDetailsCellContent('vaadin24-checkbox.details-opened');
+ 
+     expect(checkbox.checked).to.equal(true);
+   });
+ 
+   it('should render model.selected', () => {
+-    const checkbox = queryDetailsCellContent('vaadin-checkbox.selected');
++    const checkbox = queryDetailsCellContent('vaadin24-checkbox.selected');
+ 
+     expect(checkbox.checked).to.equal(false);
+   });
+ 
+   it('should render model.expanded', () => {
+-    const checkbox = queryDetailsCellContent('vaadin-checkbox.expanded');
++    const checkbox = queryDetailsCellContent('vaadin24-checkbox.expanded');
+ 
+     expect(checkbox.checked).to.equal(false);
+   });
+@@ -91,7 +91,7 @@
+     let checkbox;
+ 
+     beforeEach(() => {
+-      checkbox = queryDetailsCellContent('vaadin-checkbox.details-opened');
++      checkbox = queryDetailsCellContent('vaadin24-checkbox.details-opened');
+     });
+ 
+     describe('upwards', () => {
+@@ -126,7 +126,7 @@
+     let checkbox;
+ 
+     beforeEach(() => {
+-      checkbox = queryDetailsCellContent('vaadin-checkbox.expanded');
++      checkbox = queryDetailsCellContent('vaadin24-checkbox.expanded');
+ 
+       // Expanding items only works with custom data providers.
+       grid.dataProvider = (_params, cb) => {
+@@ -178,7 +178,7 @@
+     let checkbox;
+ 
+     beforeEach(() => {
+-      checkbox = queryDetailsCellContent('vaadin-checkbox.selected');
++      checkbox = queryDetailsCellContent('vaadin24-checkbox.selected');
+     });
+ 
+     describe('upwards', () => {

@@ -36,3 +36,30 @@ Index: test/grid-body.test.js
      );
    });
  });
+@@ -163,7 +163,7 @@
+         cb(items, 1);
+       };
+ 
+-      checkbox = getCell({ row: 0, col: 0 })._content.querySelector('vaadin-checkbox.expanded');
++      checkbox = getCell({ row: 0, col: 0 })._content.querySelector('vaadin24-checkbox.expanded');
+       expanded0 = getCell({ row: 0, col: 1 })._content.querySelector('div.expanded');
+       expanded1 = getCell({ row: 1, col: 1 })._content.querySelector('div.expanded');
+     });
+@@ -201,7 +201,7 @@
+     let checkbox, selected0, selected1;
+ 
+     beforeEach(() => {
+-      checkbox = queryCellContent({ row: 0, col: 0 }, 'vaadin-checkbox.selected');
++      checkbox = queryCellContent({ row: 0, col: 0 }, 'vaadin24-checkbox.selected');
+       selected0 = queryCellContent({ row: 0, col: 1 }, 'div.selected');
+       selected1 = queryCellContent({ row: 1, col: 1 }, 'div.selected');
+     });
+@@ -239,7 +239,7 @@
+     let checkbox, detailsOpened0, detailsOpened1;
+ 
+     beforeEach(() => {
+-      checkbox = queryCellContent({ row: 0, col: 0 }, 'vaadin-checkbox.details-opened');
++      checkbox = queryCellContent({ row: 0, col: 0 }, 'vaadin24-checkbox.details-opened');
+       detailsOpened0 = queryCellContent({ row: 0, col: 1 }, 'div.details-opened');
+       detailsOpened1 = queryCellContent({ row: 1, col: 1 }, 'div.details-opened');
+     });

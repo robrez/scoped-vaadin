@@ -10,12 +10,8 @@ import fs from "fs";
 import { init, parse } from "es-module-lexer";
 import { transformImports } from "./transformModuleImportsPlugin.js";
 import { ignorePackages } from "./ignore-packages.js";
-import {
-  processTagNames,
-  processTagNamesNaive,
-  processLocalName,
-} from "./replacement-helpers.js";
-import { allElementNames, allEventNames, allPackageNames } from "./meta.js";
+import { processTagNames } from "./replacement-helpers.js";
+import { allPackageNames } from "./meta.js";
 import { versionMeta } from "../version.js";
 import { createPatch } from "diff";
 import _ignoreTests from "./ignore-tests.js";
@@ -62,7 +58,7 @@ const findTestFiles = (dir) => {
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
     // note -- could have provided ignoredTests as negation globs
-    // but choosing to - instead - not create the ignored tests 
+    // but choosing to - instead - not create the ignored tests
     .filter((name) => !ignoreTests.has(name))
     .sort()
     .map((name) => Path.parse(name));

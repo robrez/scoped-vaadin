@@ -9,7 +9,7 @@ const unpublishedTests = [
   "packages/details/test/details-lit.test.js",
   "packages/icon/test/icon.test.js",
   "packages/login/test/login-form-lit.test.js",
-  "packages/login/src/vaadin-lit-login-overlay.js",
+  "packages/login/test/login-overlay-lit.test.js",
   "packages/login/test/login-submit-lit.test.js",
   "packages/number-field/test/number-field-lit.test.js",
   "packages/number-field/test/validation-lit.test.js",
