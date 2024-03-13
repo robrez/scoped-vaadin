@@ -4,7 +4,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
-    "directory": "packages/vaadin/app-layout"
+    "directory": "packages/app-layout"
   },
   "bugs": {
     "url": "https://github.com/robrez/scoped-vaadin/issues"

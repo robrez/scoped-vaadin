@@ -104,7 +104,7 @@ const badge = css`
   }
 
   iron-icon[theme~='badge'][icon],
-  vaadin-icon[theme~='badge'][icon] {
+  vaadin23-icon[theme~='badge'][icon] {
     min-width: 0;
     padding: 0;
     font-size: 1rem;
@@ -113,7 +113,7 @@ const badge = css`
   }
 
   iron-icon[theme~='badge'][icon][theme~='small'],
-  vaadin-icon[theme~='badge'][icon][theme~='small'] {
+  vaadin23-icon[theme~='badge'][icon][theme~='small'] {
     width: var(--lumo-icon-size-s);
     height: var(--lumo-icon-size-s);
   }
