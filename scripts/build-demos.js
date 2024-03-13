@@ -1,8 +1,11 @@
 import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
-import { processJs, majorVersion } from "./build.js";
-import { processTagNamesNaive } from "./replacement-helpers.js";
+import { createPatch } from "diff";
+import { versionMeta } from "./meta/index.js";
+import { transformJs, processTagNamesNaive } from "./transform/index.js";
+
+const majorVersion = versionMeta.vaadinVersion;
 
 // this lazily just operates on `dev/` which was copied directly from `@vaadin/web-components/dev`
 // TODO make this DRY vs `build.js`
@@ -71,7 +74,7 @@ async function processHtml(content, filePath) {
     let cleanScriptContent = scriptContent;
     if (!!scriptContent) {
       // use the js lexer to cleanup the js parts
-      cleanScriptContent = await processJs(scriptContent, filePath);
+      cleanScriptContent = await transformJs(scriptContent, filePath);
     }
     // use simple tagname replacement to process the html parts
     let cleanPreContent = processTagNamesNaive(pre);

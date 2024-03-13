@@ -1,5 +1,3 @@
-import { elementMeta } from "./element-meta.js";
-
 /**
  * additional string literals to treat like tag names
  */
@@ -57,24 +55,3 @@ export const supplementalCssSelectors = [
 
   "label-vaadin-form-item-",
 ];
-
-export function allElementNames() {
-  let accumulator = [];
-  elementMeta.forEach((meta) => {
-    accumulator = [...accumulator, ...meta.elementNames];
-  });
-  accumulator = [...accumulator, ...supplementalElementNames];
-  return [...new Set(accumulator)].sort();
-}
-
-export function allEventNames() {
-  let accumulator = [];
-  elementMeta.forEach((meta) => {
-    accumulator = [...accumulator, ...meta.eventNames];
-  });
-  return [...new Set(accumulator)].sort();
-}
-
-export function allPackageNames() {
-  return elementMeta.map((meta) => meta.package);
-}

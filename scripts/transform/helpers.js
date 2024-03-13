@@ -1,9 +1,12 @@
 import {
   allElementNames,
   allEventNames,
+  allPackageNames,
+  ignorePackages,
   supplementalCssSelectors,
-} from "./meta.js";
-import { versionMeta } from "../version.js";
+  versionMeta,
+} from "../meta/index.js";
+
 export const majorVersion = versionMeta.vaadinVersion;
 
 function escapeRegExp(text) {
@@ -141,4 +144,27 @@ export function processLocalName(content) {
     `const propPrefix = this.localName;`,
     `const propPrefix = this.localName.replace('vaadin${majorVersion}', 'vaadin');`
   );
+}
+
+function computePackagesRe() {
+  const names = allPackageNames()
+    .filter((name) => ignorePackages.indexOf(name) < 0)
+    .join("|");
+  return new RegExp(`(${names})`, "g");
+}
+
+const packagesRe = computePackagesRe();
+
+/**
+ * Replaces `@vaadin/` with `@scoped-vaadin/`
+ * except for where a package has been marked as excluded
+ *
+ * @param {string} input
+ * @returns {string}
+ */
+export function replaceNpmScope(input) {
+  const result = input.replace(packagesRe, (matched) => {
+    return matched.replaceAll(`@vaadin/`, `@scoped-vaadin/`);
+  });
+  return result;
 }

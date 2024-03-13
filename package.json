@@ -5,15 +5,15 @@
   "private": true,
   "scripts": {
     "start": "web-dev-server --node-resolve --open /dev",
-    "build:clean": "rimraf ./git_modules && rimraf ./packages && rimraf ./buildinfo && npm run clone && npm run build",
-    "build": "npm run build:element-meta && npm run build:packages",
+    "build:clean": "rimraf ./git_modules && rimraf ./packages && rimraf ./buildinfo && npm run git_modules && npm run build",
+    "build": "npm run build:meta && npm run build:packages",
     "build:packages": "node scripts/build.js",
     "build:demos": "node scripts/build-demos.js",
-    "build:element-meta": "node scripts/build-element-meta.js",
+    "build:meta": "node scripts/build-element-meta.js",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "test:chrome": "web-test-runner --config web-test-runner-chrome.config.cjs",
-    "clone": "rimraf ./git_modules/ && git clone --single-branch --branch v24.3.8 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
+    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v24.3.8 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
   },
   "author": "",
   "license": "Apache-2.0",

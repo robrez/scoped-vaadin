@@ -87,7 +87,7 @@ function findEventNames(content) {
  * @param {Path} filePath
  * @returns
  */
-async function processJs(content, filePath) {
+async function transformJs(content, filePath) {
   const result = await minify(content, {
     format: { quote_style: 1, comments: false },
   });
@@ -106,7 +106,7 @@ async function processJs(content, filePath) {
  * @param {Path} filePath
  * @returns
  */
-function processWebTypesJson(content, filePath) {
+function transformWebTypesJson(content, filePath) {
   const webTypes = JSON.parse(content);
   let elementNames = [];
   let eventNames = [];
@@ -146,11 +146,11 @@ async function processFile(filePath) {
 
   let result = undefined;
   if (filePath.ext.toLowerCase() === ".js") {
-    result = await processJs(content, filePath);
+    result = await transformJs(content, filePath);
   }
 
   if (filePath.ext.toLowerCase() === ".json") {
-    result = processWebTypesJson(content, filePath);
+    result = transformWebTypesJson(content, filePath);
   }
   return result;
 }
@@ -209,7 +209,7 @@ async function processPackages(packages) {
   // console.log(noElements);
 
   // TODO should also process CEM/webtypes... same info available, but hides "internal" elements
-  const outputFileName = `scripts/element-meta.js`;
+  const outputFileName = `scripts/meta/element-meta.js`;
   const tpl = `export const elementMeta = ${JSON.stringify(
     packagesMeta,
     null,
