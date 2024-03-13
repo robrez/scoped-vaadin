@@ -18,4 +18,5 @@ export const ignorePackages = [
   // "@vaadin/vaadin-list-mixin",
   // "@vaadin/vaadin-themable-mixin",
   "@vaadin/vaadin-usage-statistics",
+  "@vaadin/testing-helpers",
 ];
