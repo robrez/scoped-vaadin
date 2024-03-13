@@ -1,0 +1,78 @@
+Index: src/vaadin-message.js
+===================================================================
+--- src/vaadin-message.js
++++ src/vaadin-message.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+@@ -5,18 +6,18 @@
+  */
+ import './vaadin-message-avatar.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-message>` is a Web Component for showing a single message with an author, message and time.
++ * `<vaadin23-message>` is a Web Component for showing a single message with an author, message and time.
+  *
+  * ```html
+- * <vaadin-message time="2021-01-28 10:43"
++ * <vaadin23-message time="2021-01-28 10:43"
+  *     user-name = "Bob Ross"
+  *     user-abbr = "BR"
+- *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin-message>
++ *     user-img = "/static/img/avatar.jpg">There is no real ending. It's just the place where you stop the story.</vaadin23-message>
+  * ```
+  *
+  * ### Styling
+@@ -41,10 +42,10 @@
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-message>` itself, the following internal
++ * In addition to `<vaadin23-message>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-message-avatar>` - has the same API as [`<vaadin-avatar>`](#/elements/vaadin-avatar).
++ * - `<vaadin23-message-avatar>` - has the same API as [`<vaadin23-avatar>`](#/elements/vaadin-avatar).
+  *
+  * @extends HTMLElement
+  * @mixes FocusMixin
+@@ -154,7 +155,7 @@
+           white-space: pre-wrap;
+         }
+       </style>
+-      <vaadin-message-avatar
++      <vaadin23-message-avatar
+         part="avatar"
+         name="[[userName]]"
+         abbr="[[userAbbr]]"
+@@ -162,7 +163,7 @@
+         color-index="[[userColorIndex]]"
+         tabindex="-1"
+         aria-hidden="true"
+-      ></vaadin-message-avatar>
++      ></vaadin23-message-avatar>
+       <div part="content">
+         <div part="header">
+           <span part="name">[[userName]]</span>
+@@ -174,10 +175,10 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-message';
++    return 'vaadin23-message';
+   }
+ }
+ 
+-customElements.define(Message.is, Message);
++internalCustomElements.define(Message.is, Message);
+ 
+ export { Message };

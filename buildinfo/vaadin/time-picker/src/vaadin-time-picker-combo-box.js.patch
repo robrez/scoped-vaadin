@@ -1,0 +1,66 @@
+Index: src/vaadin-time-picker-combo-box.js
+===================================================================
+--- src/vaadin-time-picker-combo-box.js
++++ src/vaadin-time-picker-combo-box.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+@@ -7,11 +8,11 @@
+ import './vaadin-time-picker-scroller.js';
+ import './vaadin-time-picker-overlay.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ComboBoxMixin } from '@vaadin/combo-box/src/vaadin-combo-box-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-time-picker>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-time-picker>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ComboBoxMixin
+@@ -20,7 +21,7 @@
+  */
+ class TimePickerComboBox extends ComboBoxMixin(ThemableMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-time-picker-combo-box';
++    return 'vaadin23-time-picker-combo-box';
+   }
+ 
+   static get template() {
+@@ -33,7 +34,7 @@
+ 
+       <slot></slot>
+ 
+-      <vaadin-time-picker-overlay
++      <vaadin23-time-picker-overlay
+         id="overlay"
+         opened="[[_overlayOpened]]"
+         loading$="[[loading]]"
+@@ -41,7 +42,7 @@
+         position-target="[[positionTarget]]"
+         no-vertical-overlap
+         restore-focus-node="[[inputElement]]"
+-      ></vaadin-time-picker-overlay>
++      ></vaadin23-time-picker-overlay>
+     `;
+   }
+ 
+@@ -59,7 +60,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-time-picker';
++    return 'vaadin23-time-picker';
+   }
+ 
+   /**
+@@ -83,4 +84,4 @@
+   }
+ }
+ 
+-customElements.define(TimePickerComboBox.is, TimePickerComboBox);
++internalCustomElements.define(TimePickerComboBox.is, TimePickerComboBox);

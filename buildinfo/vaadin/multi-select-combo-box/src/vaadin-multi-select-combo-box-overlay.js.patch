@@ -1,0 +1,41 @@
+Index: src/vaadin-multi-select-combo-box-overlay.js
+===================================================================
+--- src/vaadin-multi-select-combo-box-overlay.js
++++ src/vaadin-multi-select-combo-box-overlay.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ComboBoxOverlay } from '@vaadin/combo-box/src/vaadin-combo-box-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxOverlay } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-overlay',
++  'vaadin23-multi-select-combo-box-overlay',
+   css`
+     #overlay {
+       width: var(
+@@ -20,15 +21,15 @@
+ );
+ 
+ /**
+- * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-multi-select-combo-box>`. Not intended to be used separately.
+  *
+  * @extends ComboBoxOverlay
+  * @private
+  */
+ class MultiSelectComboBoxOverlay extends ComboBoxOverlay {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-overlay';
++    return 'vaadin23-multi-select-combo-box-overlay';
+   }
+ }
+ 
+-customElements.define(MultiSelectComboBoxOverlay.is, MultiSelectComboBoxOverlay);
++internalCustomElements.define(MultiSelectComboBoxOverlay.is, MultiSelectComboBoxOverlay);

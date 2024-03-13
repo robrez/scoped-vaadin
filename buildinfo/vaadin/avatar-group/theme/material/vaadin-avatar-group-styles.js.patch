@@ -1,0 +1,42 @@
+Index: theme/material/vaadin-avatar-group-styles.js
+===================================================================
+--- theme/material/vaadin-avatar-group-styles.js
++++ theme/material/vaadin-avatar-group-styles.js
+@@ -1,9 +1,9 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { menuOverlay } from '@vaadin/vaadin-material-styles/mixins/menu-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { menuOverlay } from '@scoped-vaadin/vaadin-material-styles/mixins/menu-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-avatar-group',
++  'vaadin23-avatar-group',
+   css`
+     :host {
+       --vaadin-avatar-size: 2.25rem;
+@@ -42,12 +42,12 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
++registerStyles('vaadin23-avatar-group-overlay', [menuOverlay, avatarGroupOverlay], {
+   moduleId: 'material-avatar-group-overlay',
+ });
+ 
+ registerStyles(
+-  'vaadin-avatar-group-list-box',
++  'vaadin23-avatar-group-list-box',
+   css`
+     [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
+       padding: 8px;
+@@ -63,7 +63,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-item',
++  'vaadin23-item',
+   css`
+     :host([theme='avatar-group-item']) [part='content'] {
+       display: flex;

@@ -1,0 +1,33 @@
+Index: src/vaadin-grid-tree-column.d.ts
+===================================================================
+--- src/vaadin-grid-tree-column.d.ts
++++ src/vaadin-grid-tree-column.d.ts
+@@ -7,15 +7,15 @@
+ import { GridColumn } from './vaadin-grid-column.js';
+ 
+ /**
+- * `<vaadin-grid-tree-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin23-grid-tree-column>` is a helper element for the `<vaadin23-grid>`
+  * that provides default renderer and functionality for toggling tree/hierarchical items.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-tree-column path="name.first"></vaadin-grid-tree-column>
++ * <vaadin23-grid items="[[items]]">
++ *  <vaadin23-grid-tree-column path="name.first"></vaadin23-grid-tree-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin23-grid-column>
+  *    ...
+  * ```
+  */
+@@ -35,7 +35,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-tree-column': GridTreeColumn<GridDefaultItem>;
++    'vaadin23-grid-tree-column': GridTreeColumn<GridDefaultItem>;
+   }
+ }
+ 

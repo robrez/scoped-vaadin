@@ -1,0 +1,16 @@
+Index: theme/material/vaadin-menu-bar-item-styles.js
+===================================================================
+--- theme/material/vaadin-menu-bar-item-styles.js
++++ theme/material/vaadin-menu-bar-item-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-context-menu-item',
++  'vaadin23-context-menu-item',
+   css`
+     :host([theme='menu-bar-item']) [part='content'] {
+       display: flex;

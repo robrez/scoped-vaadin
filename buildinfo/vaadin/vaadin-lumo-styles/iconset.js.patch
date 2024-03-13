@@ -1,0 +1,13 @@
+Index: iconset.js
+===================================================================
+--- iconset.js
++++ iconset.js
+@@ -7,7 +7,7 @@
+ import './version.js';
+ 
+ console.warn(
+-  `WARNING: Since Vaadin 23.1, using <iron-icon> is deprecated. Please use <vaadin-icon> and '@vaadin/vaadin-lumo-styles/vaadin-iconset.js' instead.`,
++  `WARNING: Since Vaadin 23.1, using <iron-icon> is deprecated. Please use <vaadin23-icon> and '@vaadin/vaadin-lumo-styles/vaadin-iconset.js' instead.`,
+ );
+ 
+ const template = document.createElement('template');

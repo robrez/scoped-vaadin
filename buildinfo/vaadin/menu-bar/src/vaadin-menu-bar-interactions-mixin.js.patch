@@ -1,0 +1,35 @@
+Index: src/vaadin-menu-bar-interactions-mixin.js
+===================================================================
+--- src/vaadin-menu-bar-interactions-mixin.js
++++ src/vaadin-menu-bar-interactions-mixin.js
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2019 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { isKeyboardActive } from '@vaadin/component-base/src/focus-utils.js';
+-import { KeyboardDirectionMixin } from '@vaadin/component-base/src/keyboard-direction-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { isKeyboardActive } from '@scoped-vaadin/component-base/src/focus-utils.js';
++import { KeyboardDirectionMixin } from '@scoped-vaadin/component-base/src/keyboard-direction-mixin.js';
+ 
+ /**
+  * @polymerMixin
+@@ -180,7 +180,7 @@
+ 
+     /** @private */
+     _getButtonFromEvent(e) {
+-      return Array.from(e.composedPath()).find((el) => el.localName === 'vaadin-menu-bar-button');
++      return Array.from(e.composedPath()).find((el) => el.localName === 'vaadin23-menu-bar-button');
+     }
+ 
+     /**
+@@ -280,7 +280,7 @@
+ 
+     /** @private */
+     get _subMenu() {
+-      return this.shadowRoot.querySelector('vaadin-menu-bar-submenu');
++      return this.shadowRoot.querySelector('vaadin23-menu-bar-submenu');
+     }
+ 
+     /** @private */

@@ -1,0 +1,101 @@
+Index: src/vaadin-multi-select-combo-box.d.ts
+===================================================================
+--- src/vaadin-multi-select-combo-box.d.ts
++++ src/vaadin-multi-select-combo-box.d.ts
+@@ -7,24 +7,24 @@
+   ComboBoxDataProvider,
+   ComboBoxDefaultItem,
+   ComboBoxItemModel,
+-} from '@vaadin/combo-box/src/vaadin-combo-box.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { DisabledMixinClass } from '@vaadin/component-base/src/disabled-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/component-base/src/focus-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/component-base/src/keyboard-mixin.js';
+-import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
+-import type { DelegateFocusMixinClass } from '@vaadin/field-base/src/delegate-focus-mixin.js';
+-import type { DelegateStateMixinClass } from '@vaadin/field-base/src/delegate-state-mixin.js';
+-import type { FieldMixinClass } from '@vaadin/field-base/src/field-mixin.js';
+-import type { InputConstraintsMixinClass } from '@vaadin/field-base/src/input-constraints-mixin.js';
+-import type { InputControlMixinClass } from '@vaadin/field-base/src/input-control-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
+-import type { LabelMixinClass } from '@vaadin/field-base/src/label-mixin.js';
+-import type { SlotStylesMixinClass } from '@vaadin/field-base/src/slot-styles-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++} from '@scoped-vaadin/combo-box/src/vaadin-combo-box.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
++import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import type { DelegateFocusMixinClass } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
++import type { DelegateStateMixinClass } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
++import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
++import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
++import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
++import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
++import type { SlotStylesMixinClass } from '@scoped-vaadin/field-base/src/slot-styles-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ export type MultiSelectComboBoxRenderer<TItem> = (
+   root: HTMLElement,
+@@ -87,11 +87,11 @@
+ }
+ 
+ /**
+- * `<vaadin-multi-select-combo-box>` is a web component that wraps `<vaadin-combo-box>` and extends
++ * `<vaadin23-multi-select-combo-box>` is a web component that wraps `<vaadin23-combo-box>` and extends
+  * its functionality to allow selecting multiple items, in addition to basic features.
+  *
+  * ```html
+- * <vaadin-multi-select-combo-box id="comboBox"></vaadin-multi-select-combo-box>
++ * <vaadin23-multi-select-combo-box id="comboBox"></vaadin23-multi-select-combo-box>
+  * ```
+  *
+  * ```js
+@@ -146,14 +146,14 @@
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-multi-select-combo-box>` itself, the following internal
++ * In addition to `<vaadin23-multi-select-combo-box>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-multi-select-combo-box-overlay>` - has the same API as `<vaadin-overlay>`.
+- * - `<vaadin-multi-select-combo-box-item>` - has the same API as `<vaadin-item>`.
+- * - `<vaadin-multi-select-combo-box-container>` - has the same API as `<vaadin-input-container>`.
++ * - `<vaadin23-multi-select-combo-box-overlay>` - has the same API as `<vaadin23-overlay>`.
++ * - `<vaadin23-multi-select-combo-box-item>` - has the same API as `<vaadin23-item>`.
++ * - `<vaadin23-multi-select-combo-box-container>` - has the same API as `<vaadin23-input-container>`.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-multi-select-combo-box>` is
++ * Note: the `theme` attribute value set on `<vaadin23-multi-select-combo-box>` is
+  * propagated to these components.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+@@ -280,8 +280,8 @@
+    * Custom function for rendering the content of every item.
+    * Receives three arguments:
+    *
+-   * - `root` The `<vaadin-multi-select-combo-box-item>` internal container DOM element.
+-   * - `comboBox` The reference to the `<vaadin-multi-select-combo-box>` element.
++   * - `root` The `<vaadin23-multi-select-combo-box-item>` internal container DOM element.
++   * - `comboBox` The reference to the `<vaadin23-multi-select-combo-box>` element.
+    * - `model` The object with the properties related with the rendered
+    *   item, contains:
+    *   - `model.index` The index of the rendered item.
+@@ -352,7 +352,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-multi-select-combo-box': MultiSelectComboBox;
++    'vaadin23-multi-select-combo-box': MultiSelectComboBox;
+   }
+ }
+ 

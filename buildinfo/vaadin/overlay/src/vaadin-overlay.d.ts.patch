@@ -1,0 +1,56 @@
+Index: src/vaadin-overlay.d.ts
+===================================================================
+--- src/vaadin-overlay.d.ts
++++ src/vaadin-overlay.d.ts
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export type OverlayRenderer = (root: HTMLElement, owner: HTMLElement, model?: object) => void;
+ 
+@@ -54,7 +54,7 @@
+ export type OverlayEventMap = HTMLElementEventMap & OverlayCustomEventMap;
+ 
+ /**
+- * `<vaadin-overlay>` is a Web Component for creating overlays. The content of the overlay
++ * `<vaadin23-overlay>` is a Web Component for creating overlays. The content of the overlay
+  * can be populated in two ways: imperatively by using renderer callback function and
+  * declaratively by using Polymer's Templates.
+  *
+@@ -68,7 +68,7 @@
+  * content, users are able to check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-overlay id="overlay"></vaadin-overlay>
++ * <vaadin23-overlay id="overlay"></vaadin23-overlay>
+  * ```
+  * ```js
+  * const overlay = document.querySelector('#overlay');
+@@ -98,9 +98,9 @@
+  * from the parent scope propagate to the content.
+  *
+  * ```html
+- * <vaadin-overlay>
++ * <vaadin23-overlay>
+  *   <template>Overlay content</template>
+- * </vaadin-overlay>
++ * </vaadin23-overlay>
+  * ```
+  *
+  * ### Styling
+@@ -244,7 +244,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-overlay': Overlay;
++    'vaadin23-overlay': Overlay;
+   }
+ }
+ 

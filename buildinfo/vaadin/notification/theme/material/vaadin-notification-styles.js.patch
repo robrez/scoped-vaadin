@@ -1,0 +1,28 @@
+Index: theme/material/vaadin-notification-styles.js
+===================================================================
+--- theme/material/vaadin-notification-styles.js
++++ theme/material/vaadin-notification-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import { colorDark } from '@vaadin/vaadin-material-styles/color.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import { colorDark } from '@scoped-vaadin/vaadin-material-styles/color.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-notification-container',
++  'vaadin23-notification-container',
+   css`
+     :host {
+       top: 0;
+@@ -151,6 +151,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-notification-card', [colorDark, notificationCard], {
++registerStyles('vaadin23-notification-card', [colorDark, notificationCard], {
+   moduleId: 'material-notification-card',
+ });

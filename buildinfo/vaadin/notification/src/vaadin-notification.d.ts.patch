@@ -1,0 +1,99 @@
+Index: src/vaadin-notification.d.ts
+===================================================================
+--- src/vaadin-notification.d.ts
++++ src/vaadin-notification.d.ts
+@@ -4,9 +4,9 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { TemplateResult } from 'lit';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ export type NotificationPosition =
+   | 'bottom-center'
+@@ -39,7 +39,7 @@
+ }
+ 
+ /**
+- * An element used internally by `<vaadin-notification>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+  */
+ declare class NotificationContainer extends ElementMixin(ThemableMixin(HTMLElement)) {
+   /**
+@@ -49,12 +49,12 @@
+ }
+ 
+ /**
+- * An element used internally by `<vaadin-notification>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-notification>`. Not intended to be used separately.
+  */
+ declare class NotificationCard extends ThemableMixin(HTMLElement) {}
+ 
+ /**
+- * `<vaadin-notification>` is a Web Component providing accessible and customizable notifications (toasts).
++ * `<vaadin23-notification>` is a Web Component providing accessible and customizable notifications (toasts).
+  *
+  * ### Rendering
+  *
+@@ -66,7 +66,7 @@
+  * users are able to check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-notification id="notification"></vaadin-notification>
++ * <vaadin23-notification id="notification"></vaadin23-notification>
+  * ```
+  * ```js
+  * const notification = document.querySelector('#notification');
+@@ -82,10 +82,10 @@
+  *
+  * ### Styling
+  *
+- * `<vaadin-notification>` uses `<vaadin-notification-card>` internal
++ * `<vaadin23-notification>` uses `<vaadin23-notification-card>` internal
+  * themable component as the actual visible notification cards.
+  *
+- * The following shadow DOM parts of the `<vaadin-notification-card>` are available for styling:
++ * The following shadow DOM parts of the `<vaadin23-notification-card>` are available for styling:
+  *
+  * Part name | Description
+  * ----------------|----------------
+@@ -94,8 +94,8 @@
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-notification>` is
+- * propagated to the internal `<vaadin-notification-card>`.
++ * Note: the `theme` attribute value set on `<vaadin23-notification>` is
++ * propagated to the internal `<vaadin23-notification-card>`.
+  *
+  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
+  */
+@@ -144,9 +144,9 @@
+    * Custom function for rendering the content of the notification.
+    * Receives two arguments:
+    *
+-   * - `root` The `<vaadin-notification-card>` DOM element. Append
++   * - `root` The `<vaadin23-notification-card>` DOM element. Append
+    *   your content to it.
+-   * - `notification` The reference to the `<vaadin-notification>` element.
++   * - `notification` The reference to the `<vaadin23-notification>` element.
+    */
+   renderer: NotificationRenderer | undefined;
+ 
+@@ -183,9 +183,9 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-notification-container': NotificationContainer;
+-    'vaadin-notification-card': NotificationCard;
+-    'vaadin-notification': Notification;
++    'vaadin23-notification-container': NotificationContainer;
++    'vaadin23-notification-card': NotificationCard;
++    'vaadin23-notification': Notification;
+   }
+ }
+ 

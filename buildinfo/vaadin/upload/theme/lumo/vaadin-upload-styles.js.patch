@@ -1,0 +1,38 @@
+Index: theme/lumo/vaadin-upload-styles.js
+===================================================================
+--- theme/lumo/vaadin-upload-styles.js
++++ theme/lumo/vaadin-upload-styles.js
+@@ -1,16 +1,16 @@
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import '@vaadin/button/theme/lumo/vaadin-button.js';
+-import '@vaadin/progress-bar/theme/lumo/vaadin-progress-bar.js';
+-import { fieldButton } from '@vaadin/vaadin-lumo-styles/mixins/field-button.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import '@scoped-vaadin/button/theme/lumo/vaadin-button.js';
++import '@scoped-vaadin/progress-bar/theme/lumo/vaadin-progress-bar.js';
++import { fieldButton } from '@scoped-vaadin/vaadin-lumo-styles/mixins/field-button.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-upload',
++  'vaadin23-upload',
+   css`
+     :host {
+       line-height: var(--lumo-line-height-m);
+@@ -184,4 +184,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-upload-file', [fieldButton, uploadFile], { moduleId: 'lumo-upload-file' });
++registerStyles('vaadin23-upload-file', [fieldButton, uploadFile], { moduleId: 'lumo-upload-file' });

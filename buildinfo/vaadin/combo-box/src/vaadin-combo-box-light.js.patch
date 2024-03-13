@@ -1,0 +1,121 @@
+Index: src/vaadin-combo-box-light.js
+===================================================================
+--- src/vaadin-combo-box-light.js
++++ src/vaadin-combo-box-light.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2015 - 2022 Vaadin Ltd.
+@@ -9,25 +10,25 @@
+ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { ComboBoxDataProviderMixin } from './vaadin-combo-box-data-provider-mixin.js';
+ import { ComboBoxMixin } from './vaadin-combo-box-mixin.js';
+ 
+ /**
+- * `<vaadin-combo-box-light>` is a customizable version of the `<vaadin-combo-box>` providing
++ * `<vaadin23-combo-box-light>` is a customizable version of the `<vaadin23-combo-box>` providing
+  * only the dropdown functionality and leaving the input field definition to the user.
+  *
+- * The element has the same API as `<vaadin-combo-box>`.
++ * The element has the same API as `<vaadin23-combo-box>`.
+  *
+  * To create a custom input field, you need to add a child element which has a two-way
+  * data-bindable property representing the input value. The property name is expected
+- * to be `value` by default. For example, you can use `<vaadin-text-field>` element:
++ * to be `value` by default. For example, you can use `<vaadin23-text-field>` element:
+  *
+  * ```html
+- * <vaadin-combo-box-light>
+- *   <vaadin-text-field></vaadin-text-field>
+- * </vaadin-combo-box-light>
++ * <vaadin23-combo-box-light>
++ *   <vaadin23-text-field></vaadin23-text-field>
++ * </vaadin23-combo-box-light>
+  * ```
+  *
+  * If you are using custom input field that has other property for value,
+@@ -35,20 +36,20 @@
+  * attribute to specify which property to use:
+  *
+  * ```html
+- * <vaadin-combo-box-light attr-for-value="input-value">
++ * <vaadin23-combo-box-light attr-for-value="input-value">
+  *   <custom-input class="input"></custom-input>
+- * </vaadin-combo-box-light>
++ * </vaadin23-combo-box-light>
+  * ```
+  *
+  * You can also pass custom toggle and clear buttons with corresponding classes:
+  *
+  * ```html
+- * <vaadin-combo-box-light>
++ * <vaadin23-combo-box-light>
+  *   <custom-input class="input" attr-for-value="input-value">
+  *     <button slot="suffix" class="clear-button">Clear</button>
+  *     <button slot="suffix" class="toggle-button">Toggle</button>
+  *   </custom-input>
+- * </vaadin-combo-box-light>
++ * </vaadin23-combo-box-light>
+  * ```
+  *
+  * @fires {Event} change - Fired when the user commits a value change.
+@@ -68,7 +69,7 @@
+  */
+ class ComboBoxLight extends ComboBoxDataProviderMixin(ComboBoxMixin(ValidateMixin(ThemableMixin(PolymerElement)))) {
+   static get is() {
+-    return 'vaadin-combo-box-light';
++    return 'vaadin23-combo-box-light';
+   }
+ 
+   static get template() {
+@@ -81,7 +82,7 @@
+ 
+       <slot></slot>
+ 
+-      <vaadin-combo-box-overlay
++      <vaadin23-combo-box-overlay
+         id="overlay"
+         opened="[[_overlayOpened]]"
+         loading$="[[loading]]"
+@@ -89,7 +90,7 @@
+         position-target="[[inputElement]]"
+         no-vertical-overlap
+         restore-focus-node="[[inputElement]]"
+-      ></vaadin-combo-box-overlay>
++      ></vaadin23-combo-box-overlay>
+     `;
+   }
+ 
+@@ -125,7 +126,7 @@
+ 
+     // Wait until the slotted input DOM is ready
+     afterNextRender(this, () => {
+-      this._setInputElement(this.querySelector('vaadin-text-field,.input'));
++      this._setInputElement(this.querySelector('vaadin23-text-field,.input'));
+       this._revertInputValue();
+     });
+   }
+@@ -163,7 +164,7 @@
+         return input;
+       }
+ 
+-      // Support `<input>` in light DOM (e.g. `vaadin-text-field`)
++      // Support `<input>` in light DOM (e.g. `vaadin23-text-field`)
+       const slottedInput = input.querySelector('input');
+       if (slottedInput) {
+         return slottedInput;
+@@ -203,6 +204,6 @@
+   }
+ }
+ 
+-customElements.define(ComboBoxLight.is, ComboBoxLight);
++internalCustomElements.define(ComboBoxLight.is, ComboBoxLight);
+ 
+ export { ComboBoxLight };

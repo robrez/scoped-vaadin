@@ -1,0 +1,113 @@
+Index: src/vaadin-overlay.js
+===================================================================
+--- src/vaadin-overlay.js
++++ src/vaadin-overlay.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+@@ -7,15 +8,15 @@
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { FocusTrapController } from '@vaadin/component-base/src/focus-trap-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { FocusTrapController } from '@scoped-vaadin/component-base/src/focus-trap-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  *
+- * `<vaadin-overlay>` is a Web Component for creating overlays. The content of the overlay
++ * `<vaadin23-overlay>` is a Web Component for creating overlays. The content of the overlay
+  * can be populated in two ways: imperatively by using renderer callback function and
+  * declaratively by using Polymer's Templates.
+  *
+@@ -29,7 +30,7 @@
+  * content, users are able to check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-overlay id="overlay"></vaadin-overlay>
++ * <vaadin23-overlay id="overlay"></vaadin23-overlay>
+  * ```
+  * ```js
+  * const overlay = document.querySelector('#overlay');
+@@ -112,7 +113,7 @@
+           z-index: 200;
+           position: fixed;
+ 
+-          /* Despite of what the names say, <vaadin-overlay> is just a container
++          /* Despite of what the names say, <vaadin23-overlay> is just a container
+           for position/sizing/alignment. The actual overlay is the overlay part. */
+ 
+           /* Default position constraints: the entire viewport. Note: themes can
+@@ -182,7 +183,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-overlay';
++    return 'vaadin23-overlay';
+   }
+ 
+   static get properties() {
+@@ -370,8 +371,8 @@
+ 
+     // Need to add dummy click listeners to this and the backdrop or else
+     // the document click event listener (_outsideClickListener) may never
+-    // get invoked on iOS Safari (reproducible in <vaadin-dialog>
+-    // and <vaadin-context-menu>).
++    // get invoked on iOS Safari (reproducible in <vaadin23-dialog>
++    // and <vaadin23-context-menu>).
+     this.addEventListener('click', () => {});
+     this.$.backdrop.addEventListener('click', () => {});
+ 
+@@ -410,7 +411,7 @@
+   /**
+    * @param {Event=} sourceEvent
+    * @event vaadin-overlay-close
+-   * fired before the `vaadin-overlay` will be closed. If canceled the closing of the overlay is canceled as well.
++   * fired before the `vaadin23-overlay` will be closed. If canceled the closing of the overlay is canceled as well.
+    */
+   close(sourceEvent) {
+     const evt = new CustomEvent('vaadin-overlay-close', {
+@@ -478,7 +479,7 @@
+    * open(), this would happen: https://www.youtube.com/watch?v=Z86V_ICUCD4
+    *
+    * @event vaadin-overlay-outside-click
+-   * fired before the `vaadin-overlay` will be closed on outside click. If canceled the closing of the overlay is canceled as well.
++   * fired before the `vaadin23-overlay` will be closed on outside click. If canceled the closing of the overlay is canceled as well.
+    *
+    * @private
+    */
+@@ -506,7 +507,7 @@
+ 
+   /**
+    * @event vaadin-overlay-escape-press
+-   * fired before the `vaadin-overlay` will be closed on ESC button press. If canceled the closing of the overlay is canceled as well.
++   * fired before the `vaadin23-overlay` will be closed on ESC button press. If canceled the closing of the overlay is canceled as well.
+    *
+    * @private
+    */
+@@ -541,7 +542,7 @@
+ 
+   /**
+    * @event vaadin-overlay-open
+-   * fired after the `vaadin-overlay` is opened.
++   * fired after the `vaadin23-overlay` is opened.
+    *
+    * @private
+    */
+@@ -988,6 +989,6 @@
+   }
+ }
+ 
+-customElements.define(Overlay.is, Overlay);
++internalCustomElements.define(Overlay.is, Overlay);
+ 
+ export { Overlay };

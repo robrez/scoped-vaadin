@@ -1,0 +1,29 @@
+Index: src/vaadin-accordion-panel.js
+===================================================================
+--- src/vaadin-accordion-panel.js
++++ src/vaadin-accordion-panel.js
+@@ -1,9 +1,10 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2019 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Details } from '@vaadin/details/src/vaadin-details.js';
++import { Details } from '@scoped-vaadin/details/src/vaadin-details.js';
+ 
+ /**
+  * The accordion panel element.
+@@ -34,10 +35,10 @@
+  */
+ class AccordionPanel extends Details {
+   static get is() {
+-    return 'vaadin-accordion-panel';
++    return 'vaadin23-accordion-panel';
+   }
+ }
+ 
+-customElements.define(AccordionPanel.is, AccordionPanel);
++internalCustomElements.define(AccordionPanel.is, AccordionPanel);
+ 
+ export { AccordionPanel };

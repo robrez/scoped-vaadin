@@ -1,0 +1,65 @@
+Index: src/vaadin-confirm-dialog.d.ts
+===================================================================
+--- src/vaadin-confirm-dialog.d.ts
++++ src/vaadin-confirm-dialog.d.ts
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { SlotMixin } from '@vaadin/component-base/src/slot-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { SlotMixin } from '@scoped-vaadin/component-base/src/slot-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ /**
+  * Fired when the `opened` property changes.
+@@ -25,21 +25,21 @@
+ export type ConfirmDialogEventMap = ConfirmDialogCustomEventMap & HTMLElementEventMap;
+ 
+ /**
+- * `<vaadin-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
++ * `<vaadin23-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
+  *
+  * ```
+- * <vaadin-confirm-dialog cancel>
++ * <vaadin23-confirm-dialog cancel>
+  *   There are unsaved changes. Do you really want to leave?
+- * </vaadin-confirm-dialog>
++ * </vaadin23-confirm-dialog>
+  * ```
+  *
+  * ### Styling
+  *
+- * The `<vaadin-confirm-dialog>` is not themable. Apply styles to `<vaadin-confirm-dialog-overlay>`
++ * The `<vaadin23-confirm-dialog>` is not themable. Apply styles to `<vaadin23-confirm-dialog-overlay>`
+  * component and use its shadow parts for styling.
+- * See [`<vaadin-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
++ * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
+  *
+- * In addition to `<vaadin-overlay>` parts, the following parts are available for theming:
++ * In addition to `<vaadin23-overlay>` parts, the following parts are available for theming:
+  *
+  * Part name        | Description
+  * -----------------|-------------------------------------------
+@@ -51,8 +51,8 @@
+  * `reject-button`  | The "Reject" button wrapper
+  *
+  * Use `confirmTheme`, `cancelTheme` and `rejectTheme` properties to customize buttons theme.
+- * Also, the `theme` attribute value set on `<vaadin-confirm-dialog>` is propagated to the
+- * `<vaadin-confirm-dialog-overlay>` component.
++ * Also, the `theme` attribute value set on `<vaadin23-confirm-dialog>` is propagated to the
++ * `<vaadin23-confirm-dialog-overlay>` component.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+@@ -161,7 +161,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-confirm-dialog': ConfirmDialog;
++    'vaadin23-confirm-dialog': ConfirmDialog;
+   }
+ }
+ 

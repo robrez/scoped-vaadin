@@ -1,0 +1,72 @@
+Index: src/vaadin-grid-selection-column.js
+===================================================================
+--- src/vaadin-grid-selection-column.js
++++ src/vaadin-grid-selection-column.js
+@@ -1,25 +1,26 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/checkbox/src/vaadin-checkbox.js';
++import '@scoped-vaadin/checkbox/src/vaadin-checkbox.js';
+ import { GridColumn } from './vaadin-grid-column.js';
+ 
+ /**
+- * `<vaadin-grid-selection-column>` is a helper element for the `<vaadin-grid>`
++ * `<vaadin23-grid-selection-column>` is a helper element for the `<vaadin23-grid>`
+  * that provides default renderers and functionality for item selection.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid items="[[items]]">
+- *  <vaadin-grid-selection-column frozen auto-select></vaadin-grid-selection-column>
++ * <vaadin23-grid items="[[items]]">
++ *  <vaadin23-grid-selection-column frozen auto-select></vaadin23-grid-selection-column>
+  *
+- *  <vaadin-grid-column>
++ *  <vaadin23-grid-column>
+  *    ...
+  * ```
+  *
+- * By default the selection column displays `<vaadin-checkbox>` elements in the
++ * By default the selection column displays `<vaadin23-checkbox>` elements in the
+  * column cells. The checkboxes in the body rows toggle selection of the corresponding row items.
+  *
+  * When the grid data is provided as an array of [`items`](#/elements/vaadin-grid#property-items),
+@@ -32,7 +33,7 @@
+  */
+ class GridSelectionColumn extends GridColumn {
+   static get is() {
+-    return 'vaadin-grid-selection-column';
++    return 'vaadin23-grid-selection-column';
+   }
+ 
+   static get properties() {
+@@ -135,7 +136,7 @@
+   _defaultHeaderRenderer(root, _column) {
+     let checkbox = root.firstElementChild;
+     if (!checkbox) {
+-      checkbox = document.createElement('vaadin-checkbox');
++      checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.setAttribute('aria-label', 'Select All');
+       checkbox.classList.add('vaadin-grid-select-all-checkbox');
+       checkbox.addEventListener('checked-changed', this.__onSelectAllCheckedChanged.bind(this));
+@@ -157,7 +158,7 @@
+   _defaultRenderer(root, _column, { item, selected }) {
+     let checkbox = root.firstElementChild;
+     if (!checkbox) {
+-      checkbox = document.createElement('vaadin-checkbox');
++      checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.setAttribute('aria-label', 'Select Row');
+       checkbox.addEventListener('checked-changed', this.__onSelectRowCheckedChanged.bind(this));
+       root.appendChild(checkbox);
+@@ -303,6 +304,6 @@
+   }
+ }
+ 
+-customElements.define(GridSelectionColumn.is, GridSelectionColumn);
++internalCustomElements.define(GridSelectionColumn.is, GridSelectionColumn);
+ 
+ export { GridSelectionColumn };

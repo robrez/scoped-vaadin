@@ -1,0 +1,103 @@
+Index: src/vaadin-upload.js
+===================================================================
+--- src/vaadin-upload.js
++++ src/vaadin-upload.js
+@@ -1,25 +1,26 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+-import '@vaadin/button/src/vaadin-button.js';
++import '@scoped-vaadin/button/src/vaadin-button.js';
+ import './vaadin-upload-icons.js';
+ import './vaadin-upload-file.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { announce } from '@vaadin/component-base/src/a11y-announcer.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.
++ * `<vaadin23-upload>` is a Web Component for uploading multiple files with drag and drop support.
+  *
+  * Example:
+  *
+  * ```
+- * <vaadin-upload></vaadin-upload>
++ * <vaadin23-upload></vaadin23-upload>
+  * ```
+  *
+  * ### Styling
+@@ -90,9 +91,9 @@
+       <div part="primary-buttons">
+         <div id="addFiles" on-touchend="_onAddFilesTouchEnd" on-click="_onAddFilesClick">
+           <slot name="add-button">
+-            <vaadin-button part="upload-button" id="addButton" disabled="[[maxFilesReached]]">
++            <vaadin23-button part="upload-button" id="addButton" disabled="[[maxFilesReached]]">
+               [[_i18nPlural(maxFiles, i18n.addFiles, i18n.addFiles.*)]]
+-            </vaadin-button>
++            </vaadin23-button>
+           </slot>
+         </div>
+         <div part="drop-label" hidden$="[[nodrop]]" id="dropLabelContainer" aria-hidden="true">
+@@ -106,7 +107,7 @@
+         <ul id="fileList" part="file-list">
+           <template is="dom-repeat" items="[[files]]" as="file">
+             <li>
+-              <vaadin-upload-file file="[[file]]" i18n="[[i18n]]"></vaadin-upload-file>
++              <vaadin23-upload-file file="[[file]]" i18n="[[i18n]]"></vaadin23-upload-file>
+             </li>
+           </template>
+         </ul>
+@@ -125,7 +126,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-upload';
++    return 'vaadin23-upload';
+   }
+ 
+   static get properties() {
+@@ -169,7 +170,7 @@
+        * Key-Value map to send to the server. If you set this property as an
+        * attribute, use a valid JSON string, for example:
+        * ```
+-       * <vaadin-upload headers='{"X-Foo": "Bar"}'></vaadin-upload>
++       * <vaadin23-upload headers='{"X-Foo": "Bar"}'></vaadin23-upload>
+        * ```
+        * @type {object | string}
+        */
+@@ -928,7 +929,7 @@
+   /**
+    * Fired when the XHR has been opened but not sent yet. Useful for appending
+    * data keys to the FormData object, for changing some parameters like
+-   * headers, etc. If the event is defaultPrevented, `vaadin-upload` will not
++   * headers, etc. If the event is defaultPrevented, `vaadin23-upload` will not
+    * send the request allowing the user to do something on his own.
+    *
+    * @event upload-request
+@@ -962,7 +963,7 @@
+    * on the server response. If the event is defaultPrevented the vaadin-upload
+    * will return allowing the user to do something on his own like retry the
+    * upload, etc. since he has full access to the `xhr` and `file` objects.
+-   * Otherwise, if the event is not prevented default `vaadin-upload` continues
++   * Otherwise, if the event is not prevented default `vaadin23-upload` continues
+    * with the normal workflow checking the `xhr.status` and `file.error`
+    * which also might be modified by the user to force a customized response.
+    *
+@@ -1011,6 +1012,6 @@
+    */
+ }
+ 
+-customElements.define(Upload.is, Upload);
++internalCustomElements.define(Upload.is, Upload);
+ 
+ export { Upload };

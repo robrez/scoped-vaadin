@@ -1,0 +1,66 @@
+Index: src/vaadin-radio-group.js
+===================================================================
+--- src/vaadin-radio-group.js
++++ src/vaadin-radio-group.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+@@ -5,25 +6,25 @@
+  */
+ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { DisabledMixin } from '@vaadin/component-base/src/disabled-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { KeyboardMixin } from '@vaadin/component-base/src/keyboard-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { RadioButton } from './vaadin-radio-button.js';
+ 
+ /**
+- * `<vaadin-radio-group>` is a web component that allows the user to choose one item from a group of choices.
++ * `<vaadin23-radio-group>` is a web component that allows the user to choose one item from a group of choices.
+  *
+  * ```html
+- * <vaadin-radio-group label="Travel class">
+- *   <vaadin-radio-button value="economy" label="Economy"></vaadin-radio-button>
+- *   <vaadin-radio-button value="business" label="Business"></vaadin-radio-button>
+- *   <vaadin-radio-button value="firstClass" label="First Class"></vaadin-radio-button>
+- * </vaadin-radio-group>
++ * <vaadin23-radio-group label="Travel class">
++ *   <vaadin23-radio-button value="economy" label="Economy"></vaadin23-radio-button>
++ *   <vaadin23-radio-button value="business" label="Business"></vaadin23-radio-button>
++ *   <vaadin23-radio-button value="firstClass" label="First Class"></vaadin23-radio-button>
++ * </vaadin23-radio-group>
+  * ```
+  *
+  * ### Styling
+@@ -69,7 +70,7 @@
+   FocusMixin(DisabledMixin(KeyboardMixin(ElementMixin(ThemableMixin(PolymerElement))))),
+ ) {
+   static get is() {
+-    return 'vaadin-radio-group';
++    return 'vaadin23-radio-group';
+   }
+ 
+   static get template() {
+@@ -503,6 +504,6 @@
+   }
+ }
+ 
+-customElements.define(RadioGroup.is, RadioGroup);
++internalCustomElements.define(RadioGroup.is, RadioGroup);
+ 
+ export { RadioGroup };

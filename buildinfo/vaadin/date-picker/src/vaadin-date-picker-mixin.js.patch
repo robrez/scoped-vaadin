@@ -1,0 +1,34 @@
+Index: src/vaadin-date-picker-mixin.js
+===================================================================
+--- src/vaadin-date-picker-mixin.js
++++ src/vaadin-date-picker-mixin.js
+@@ -3,13 +3,13 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { KeyboardMixin } from '@vaadin/component-base/src/keyboard-mixin.js';
+-import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
+-import { DelegateFocusMixin } from '@vaadin/field-base/src/delegate-focus-mixin.js';
+-import { InputConstraintsMixin } from '@vaadin/field-base/src/input-constraints-mixin.js';
+-import { VirtualKeyboardController } from '@vaadin/field-base/src/virtual-keyboard-controller.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
++import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
++import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
++import { InputConstraintsMixin } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
++import { VirtualKeyboardController } from '@scoped-vaadin/field-base/src/virtual-keyboard-controller.js';
+ import {
+   dateAllowed,
+   dateEquals,
+@@ -346,7 +346,7 @@
+     /**
+      * Override a getter from `InputControlMixin` to make it optional
+      * and to prevent warning when a clear button is missing,
+-     * for example when using <vaadin-date-picker-light>.
++     * for example when using <vaadin23-date-picker-light>.
+      * @protected
+      * @return {Element | null | undefined}
+      */

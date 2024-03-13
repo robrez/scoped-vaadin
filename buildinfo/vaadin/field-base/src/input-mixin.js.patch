@@ -1,0 +1,13 @@
+Index: src/input-mixin.js
+===================================================================
+--- src/input-mixin.js
++++ src/input-mixin.js
+@@ -23,7 +23,7 @@
+            *
+            * A typical case is using `InputController` that does this automatically.
+            * However, the input element does not have to always be native <input>:
+-           * as an example, <vaadin-combo-box-light> accepts other components.
++           * as an example, <vaadin23-combo-box-light> accepts other components.
+            *
+            * @protected
+            * @type {!HTMLElement}

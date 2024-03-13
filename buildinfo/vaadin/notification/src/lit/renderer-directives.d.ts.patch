@@ -1,0 +1,25 @@
+Index: src/lit/renderer-directives.d.ts
+===================================================================
+--- src/lit/renderer-directives.d.ts
++++ src/lit/renderer-directives.d.ts
+@@ -5,7 +5,7 @@
+  */
+ import type { TemplateResult } from 'lit';
+ import type { DirectiveResult } from 'lit/directive.js';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { Notification } from '../vaadin-notification.js';
+ 
+ export type NotificationLitRenderer = (notification: Notification) => TemplateResult;
+@@ -44,9 +44,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-notification
++ * `<vaadin23-notification
+  *   ${notificationRenderer((notification) => html`...`)}
+- * ></vaadin-notification>`
++ * ></vaadin23-notification>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

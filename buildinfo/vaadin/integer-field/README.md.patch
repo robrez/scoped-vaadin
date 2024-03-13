@@ -1,0 +1,64 @@
+Index: README.md
+===================================================================
+--- README.md
++++ README.md
+@@ -1,14 +1,16 @@
+-# @vaadin/integer-field
++# @scoped-vaadin/integer-field
+ 
+-An extension of [`<vaadin-number-field>`](https://www.npmjs.com/package/@vaadin/number-field) component that only allows entering integer numbers.
++This component is based on [@vaadin/integer-field](https://www.npmjs.com/package/@vaadin/integer-field)
+ 
++An extension of [`<vaadin23-number-field>`](https://www.npmjs.com/package/@scoped-vaadin/number-field) component that only allows entering integer numbers.
++
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/number-field/#integer-field)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/integer-field)](https://www.npmjs.com/package/@vaadin/integer-field)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/integer-field)](https://www.npmjs.com/package/@scoped-vaadin/integer-field)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-integer-field label="X"></vaadin-integer-field>
++<vaadin23-integer-field label="X"></vaadin23-integer-field>
+ ```
+ 
+ ## Installation
+@@ -16,13 +18,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/integer-field
++npm i @scoped-vaadin/integer-field
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/integer-field';
++import '@scoped-vaadin/integer-field';
+ ```
+ 
+ ## Themes
+@@ -33,19 +35,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/integer-field/theme/material/vaadin-integer-field.js';
++import '@scoped-vaadin/integer-field/theme/material/vaadin-integer-field.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/integer-field/theme/lumo/vaadin-integer-field.js';
++import '@scoped-vaadin/integer-field/theme/lumo/vaadin-integer-field.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/integer-field/src/vaadin-integer-field.js';
++import '@scoped-vaadin/integer-field/src/vaadin-integer-field.js';
+ ```
+ 
+ ## Contributing

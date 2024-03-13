@@ -1,0 +1,68 @@
+Index: src/vaadin-avatar.js
+===================================================================
+--- src/vaadin-avatar.js
++++ src/vaadin-avatar.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2020 - 2022 Vaadin Ltd.
+@@ -5,17 +6,17 @@
+  */
+ import './vaadin-avatar-icons.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-avatar>` is a Web Component providing avatar displaying functionality.
++ * `<vaadin23-avatar>` is a Web Component providing avatar displaying functionality.
+  *
+  * ```html
+- * <vaadin-avatar img="avatars/avatar-1.jpg"></vaadin-avatar>
++ * <vaadin23-avatar img="avatars/avatar-1.jpg"></vaadin23-avatar>
+  * ```
+  *
+  * ### Styling
+@@ -129,7 +130,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-avatar';
++    return 'vaadin23-avatar';
+   }
+ 
+   static get properties() {
+@@ -313,7 +314,7 @@
+   __withTooltipChanged(withTooltip, oldWithTooltip) {
+     if (withTooltip) {
+       // Create and attach tooltip
+-      const tooltipNode = document.createElement('vaadin-tooltip');
++      const tooltipNode = document.createElement('vaadin23-tooltip');
+       tooltipNode.setAttribute('slot', 'tooltip');
+       this.appendChild(tooltipNode);
+       this.__tooltipNode = tooltipNode;
+@@ -354,13 +355,13 @@
+   /** @private */
+   __onImageLoadError() {
+     if (this.img) {
+-      console.warn(`<vaadin-avatar> The specified image could not be loaded: ${this.img}`);
++      console.warn(`<vaadin23-avatar> The specified image could not be loaded: ${this.img}`);
+       this.__imgFailedToLoad = true;
+       this.__updateVisibility();
+     }
+   }
+ }
+ 
+-customElements.define(Avatar.is, Avatar);
++internalCustomElements.define(Avatar.is, Avatar);
+ 
+ export { Avatar };

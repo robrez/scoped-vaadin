@@ -1,0 +1,23 @@
+Index: src/vaadin-message-avatar.d.ts
+===================================================================
+--- src/vaadin-message-avatar.d.ts
++++ src/vaadin-message-avatar.d.ts
+@@ -3,15 +3,15 @@
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Avatar } from '@vaadin/avatar/src/vaadin-avatar.js';
++import { Avatar } from '@scoped-vaadin/avatar/src/vaadin-avatar.js';
+ 
+ /**
+- * An element used internally by `<vaadin-message>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-message>`. Not intended to be used separately.
+  */
+ declare class MessageAvatar extends Avatar {}
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-message-avatar': MessageAvatar;
++    'vaadin23-message-avatar': MessageAvatar;
+   }
+ }

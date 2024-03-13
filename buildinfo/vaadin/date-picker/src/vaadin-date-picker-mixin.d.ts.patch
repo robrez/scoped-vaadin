@@ -1,0 +1,23 @@
+Index: src/vaadin-date-picker-mixin.d.ts
+===================================================================
+--- src/vaadin-date-picker-mixin.d.ts
++++ src/vaadin-date-picker-mixin.d.ts
+@@ -4,12 +4,12 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { DisabledMixinClass } from '@vaadin/component-base/src/disabled-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/component-base/src/focus-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/component-base/src/keyboard-mixin.js';
+-import type { DelegateFocusMixinClass } from '@vaadin/field-base/src/delegate-focus-mixin.js';
+-import type { InputConstraintsMixinClass } from '@vaadin/field-base/src/input-constraints-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
++import type { DelegateFocusMixinClass } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
++import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
+ 
+ export interface DatePickerDate {
+   day: number;

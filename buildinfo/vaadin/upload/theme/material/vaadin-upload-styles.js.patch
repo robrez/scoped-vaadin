@@ -1,0 +1,33 @@
+Index: theme/material/vaadin-upload-styles.js
+===================================================================
+--- theme/material/vaadin-upload-styles.js
++++ theme/material/vaadin-upload-styles.js
+@@ -1,12 +1,12 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import '@vaadin/button/theme/material/vaadin-button.js';
+-import '@vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button.js';
++import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-upload',
++  'vaadin23-upload',
+   css`
+     :host(:not([nodrop])) {
+       overflow: hidden;
+@@ -97,7 +97,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-upload-file',
++  'vaadin23-upload-file',
+   css`
+     :host {
+       outline: none;

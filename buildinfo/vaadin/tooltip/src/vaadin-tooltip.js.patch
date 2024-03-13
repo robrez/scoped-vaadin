@@ -1,0 +1,103 @@
+Index: src/vaadin-tooltip.js
+===================================================================
+--- src/vaadin-tooltip.js
++++ src/vaadin-tooltip.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2022 Vaadin Ltd.
+@@ -5,11 +6,11 @@
+  */
+ import './vaadin-tooltip-overlay.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { addValueToAttribute, removeValueFromAttribute } from '@vaadin/component-base/src/dom-utils.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { isKeyboardActive } from '@vaadin/component-base/src/focus-utils.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { isKeyboardActive } from '@scoped-vaadin/component-base/src/focus-utils.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ const DEFAULT_DELAY = 500;
+ 
+@@ -192,20 +193,20 @@
+ }
+ 
+ /**
+- * `<vaadin-tooltip>` is a Web Component for creating tooltips.
++ * `<vaadin23-tooltip>` is a Web Component for creating tooltips.
+  *
+  * ```html
+  * <button id="confirm">Confirm</button>
+- * <vaadin-tooltip text="Click to save changes" for="confirm"></vaadin-tooltip>
++ * <vaadin23-tooltip text="Click to save changes" for="confirm"></vaadin23-tooltip>
+  * ```
+  *
+  * ### Styling
+  *
+- * `<vaadin-tooltip>` uses `<vaadin-tooltip-overlay>` internal
++ * `<vaadin23-tooltip>` uses `<vaadin23-tooltip-overlay>` internal
+  * themable component as the actual visible overlay.
+  *
+- * See [`<vaadin-overlay>`](#/elements/vaadin-overlay) documentation
+- * for `<vaadin-tooltip-overlay>` parts.
++ * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) documentation
++ * for `<vaadin23-tooltip-overlay>` parts.
+  *
+  * The following state attributes are available for styling:
+  *
+@@ -213,12 +214,12 @@
+  * -----------------|----------------------------------------
+  * `position`       | Reflects the `position` property value.
+  *
+- * Note: the `theme` attribute value set on `<vaadin-tooltip>` is
+- * propagated to the internal `<vaadin-tooltip-overlay>` component.
++ * Note: the `theme` attribute value set on `<vaadin23-tooltip>` is
++ * propagated to the internal `<vaadin23-tooltip-overlay>` component.
+  *
+  * ### Custom CSS Properties
+  *
+- * The following custom CSS properties are available on the `<vaadin-tooltip>` element:
++ * The following custom CSS properties are available on the `<vaadin23-tooltip>` element:
+  *
+  * Custom CSS property              | Description
+  * ---------------------------------|-------------
+@@ -235,7 +236,7 @@
+  */
+ class Tooltip extends ThemePropertyMixin(ElementMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-tooltip';
++    return 'vaadin23-tooltip';
+   }
+ 
+   static get template() {
+@@ -245,7 +246,7 @@
+           display: none;
+         }
+       </style>
+-      <vaadin-tooltip-overlay
++      <vaadin23-tooltip-overlay
+         id="[[_uniqueId]]"
+         role="tooltip"
+         renderer="[[_renderer]]"
+@@ -259,7 +260,7 @@
+         vertical-align="[[__computeVerticalAlign(__effectivePosition)]]"
+         on-mouseleave="__onOverlayMouseLeave"
+         modeless
+-      ></vaadin-tooltip-overlay>
++      ></vaadin23-tooltip-overlay>
+     `;
+   }
+ 
+@@ -757,6 +758,6 @@
+   }
+ }
+ 
+-customElements.define(Tooltip.is, Tooltip);
++internalCustomElements.define(Tooltip.is, Tooltip);
+ 
+ export { Tooltip };

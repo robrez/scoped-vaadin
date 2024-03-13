@@ -1,0 +1,30 @@
+Index: theme/lumo/vaadin-avatar-styles.js
+===================================================================
+--- theme/lumo/vaadin-avatar-styles.js
++++ theme/lumo/vaadin-avatar-styles.js
+@@ -1,17 +1,17 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import '@vaadin/vaadin-lumo-styles/user-colors.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import '@scoped-vaadin/vaadin-lumo-styles/user-colors.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const globalStyle = document.createElement('style');
+ globalStyle.textContent = 'html { --vaadin-avatar-size: var(--lumo-size-m); }';
+ document.head.appendChild(globalStyle);
+ 
+ registerStyles(
+-  'vaadin-avatar',
++  'vaadin23-avatar',
+   css`
+     :host {
+       color: var(--lumo-secondary-text-color);

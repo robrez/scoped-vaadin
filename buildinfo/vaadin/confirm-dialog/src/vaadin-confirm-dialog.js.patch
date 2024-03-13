@@ -1,0 +1,115 @@
+Index: src/vaadin-confirm-dialog.js
+===================================================================
+--- src/vaadin-confirm-dialog.js
++++ src/vaadin-confirm-dialog.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+@@ -6,26 +7,26 @@
+ import './vaadin-confirm-dialog-overlay.js';
+ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { SlotMixin } from '@vaadin/component-base/src/slot-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { SlotMixin } from '@scoped-vaadin/component-base/src/slot-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ /**
+- * `<vaadin-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
++ * `<vaadin23-confirm-dialog>` is a Web Component for showing alerts and asking for user confirmation.
+  *
+  * ```
+- * <vaadin-confirm-dialog cancel>
++ * <vaadin23-confirm-dialog cancel>
+  *   There are unsaved changes. Do you really want to leave?
+- * </vaadin-confirm-dialog>
++ * </vaadin23-confirm-dialog>
+  * ```
+  *
+  * ### Styling
+  *
+- * The `<vaadin-confirm-dialog>` is not themable. Apply styles to `<vaadin-confirm-dialog-overlay>`
++ * The `<vaadin23-confirm-dialog>` is not themable. Apply styles to `<vaadin23-confirm-dialog-overlay>`
+  * component and use its shadow parts for styling.
+- * See [`<vaadin-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
++ * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) for the overlay styling documentation.
+  *
+- * In addition to `<vaadin-overlay>` parts, the following parts are available for theming:
++ * In addition to `<vaadin23-overlay>` parts, the following parts are available for theming:
+  *
+  * Part name        | Description
+  * -----------------|-------------------------------------------
+@@ -37,8 +38,8 @@
+  * `reject-button`  | The "Reject" button wrapper
+  *
+  * Use `confirmTheme`, `cancelTheme` and `rejectTheme` properties to customize buttons theme.
+- * Also, the `theme` attribute value set on `<vaadin-confirm-dialog>` is propagated to the
+- * `<vaadin-confirm-dialog-overlay>` component.
++ * Also, the `theme` attribute value set on `<vaadin23-confirm-dialog>` is propagated to the
++ * `<vaadin23-confirm-dialog-overlay>` component.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+@@ -73,14 +74,14 @@
+         }
+       </style>
+ 
+-      <vaadin-confirm-dialog-dialog
++      <vaadin23-confirm-dialog-dialog
+         id="dialog"
+         opened="{{opened}}"
+         aria-label="[[_getAriaLabel(header)]]"
+         theme$="[[_theme]]"
+         no-close-on-outside-click
+         no-close-on-esc="[[noCloseOnEsc]]"
+-      ></vaadin-confirm-dialog-dialog>
++      ></vaadin23-confirm-dialog-dialog>
+ 
+       <div hidden>
+         <slot name="header"></slot>
+@@ -93,7 +94,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-confirm-dialog';
++    return 'vaadin23-confirm-dialog';
+   }
+ 
+   static get properties() {
+@@ -292,21 +293,21 @@
+         return div;
+       },
+       'cancel-button': () => {
+-        const button = document.createElement('vaadin-button');
++        const button = document.createElement('vaadin23-button');
+         button.setAttribute('theme', this.cancelTheme);
+         button.textContent = this.cancelText;
+         button._isDefaultButton = true;
+         return button;
+       },
+       'reject-button': () => {
+-        const button = document.createElement('vaadin-button');
++        const button = document.createElement('vaadin23-button');
+         button.setAttribute('theme', this.rejectTheme);
+         button.textContent = this.rejectText;
+         button._isDefaultButton = true;
+         return button;
+       },
+       'confirm-button': () => {
+-        const button = document.createElement('vaadin-button');
++        const button = document.createElement('vaadin23-button');
+         button._isDefaultButton = true;
+         return button;
+       },
+@@ -538,6 +539,6 @@
+    */
+ }
+ 
+-customElements.define(ConfirmDialog.is, ConfirmDialog);
++internalCustomElements.define(ConfirmDialog.is, ConfirmDialog);
+ 
+ export { ConfirmDialog };

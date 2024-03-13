@@ -1,0 +1,25 @@
+Index: src/lit/renderer-directives.d.ts
+===================================================================
+--- src/lit/renderer-directives.d.ts
++++ src/lit/renderer-directives.d.ts
+@@ -5,7 +5,7 @@
+  */
+ import type { TemplateResult } from 'lit';
+ import type { DirectiveResult } from 'lit/directive';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { Grid, GridItemModel } from '../vaadin-grid.js';
+ 
+ export type GridRowDetailsLitRenderer<TItem> = (item: TItem, model: GridItemModel<TItem>, grid: Grid) => TemplateResult;
+@@ -47,9 +47,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-grid
++ * `<vaadin23-grid
+  *   ${gridRowDetailsRenderer((item, model, grid) => html`...`)}
+- * ></vaadin-grid>`
++ * ></vaadin23-grid>`
+  * ```
+  *
+  * @param renderer the renderer callback.

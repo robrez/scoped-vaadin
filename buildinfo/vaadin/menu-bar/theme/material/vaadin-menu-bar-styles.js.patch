@@ -1,0 +1,14 @@
+Index: theme/material/vaadin-menu-bar-styles.js
+===================================================================
+--- theme/material/vaadin-menu-bar-styles.js
++++ theme/material/vaadin-menu-bar-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-menu-bar',
++  'vaadin23-menu-bar',
+   css`
+     [part='container'] {
+       /* To retain the box-shadow */

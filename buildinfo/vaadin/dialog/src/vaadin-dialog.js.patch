@@ -1,0 +1,171 @@
+Index: src/vaadin-dialog.js
+===================================================================
+--- src/vaadin-dialog.js
++++ src/vaadin-dialog.js
+@@ -1,19 +1,20 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { Overlay } from '@vaadin/overlay/src/vaadin-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import { DialogDraggableMixin } from './vaadin-dialog-draggable-mixin.js';
+ import { DialogResizableMixin } from './vaadin-dialog-resizable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-dialog-overlay',
++  'vaadin23-dialog-overlay',
+   css`
+     [part='header'],
+     [part='header-content'],
+@@ -77,10 +78,10 @@
+ 
+     /*
+       NOTE(platosha): Make some min-width to prevent collapsing of the content
+-      taking the parent width, e. g., <vaadin-grid> and such.
++      taking the parent width, e. g., <vaadin23-grid> and such.
+     */
+     [part='content'] {
+-      min-width: 12em; /* matches the default <vaadin-text-field> width */
++      min-width: 12em; /* matches the default <vaadin23-text-field> width */
+     }
+ 
+     :host([has-bounds-set]) [part='overlay'] {
+@@ -93,14 +94,14 @@
+ let memoizedTemplate;
+ 
+ /**
+- * An element used internally by `<vaadin-dialog>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-dialog>`. Not intended to be used separately.
+  *
+  * @extends Overlay
+  * @private
+  */
+ export class DialogOverlay extends Overlay {
+   static get is() {
+-    return 'vaadin-dialog-overlay';
++    return 'vaadin23-dialog-overlay';
+   }
+ 
+   static get template() {
+@@ -393,10 +394,10 @@
+   }
+ }
+ 
+-customElements.define(DialogOverlay.is, DialogOverlay);
++internalCustomElements.define(DialogOverlay.is, DialogOverlay);
+ 
+ /**
+- * `<vaadin-dialog>` is a Web Component for creating customized modal dialogs.
++ * `<vaadin23-dialog>` is a Web Component for creating customized modal dialogs.
+  *
+  * ### Rendering
+  *
+@@ -408,7 +409,7 @@
+  * users are able to check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-dialog id="dialog"></vaadin-dialog>
++ * <vaadin23-dialog id="dialog"></vaadin23-dialog>
+  * ```
+  * ```js
+  * const dialog = document.querySelector('#dialog');
+@@ -424,13 +425,13 @@
+  *
+  * ### Styling
+  *
+- * `<vaadin-dialog>` uses `<vaadin-dialog-overlay>` internal
++ * `<vaadin23-dialog>` uses `<vaadin23-dialog-overlay>` internal
+  * themable component as the actual visible dialog overlay.
+  *
+- * See [`<vaadin-overlay>`](#/elements/vaadin-overlay) documentation.
+- * for `<vaadin-dialog-overlay>` parts.
++ * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay) documentation.
++ * for `<vaadin23-dialog-overlay>` parts.
+  *
+- * In addition to `<vaadin-overlay>` parts, the following parts are available for styling:
++ * In addition to `<vaadin23-overlay>` parts, the following parts are available for styling:
+  *
+  * Part name        | Description
+  * -----------------|-------------------------------------------
+@@ -448,8 +449,8 @@
+  * `has-footer`     | Set when the element has footer renderer
+  * `overflow`       | Set to `top`, `bottom`, none or both
+  *
+- * Note: the `theme` attribute value set on `<vaadin-dialog>` is
+- * propagated to the internal `<vaadin-dialog-overlay>` component.
++ * Note: the `theme` attribute value set on `<vaadin23-dialog>` is
++ * propagated to the internal `<vaadin23-dialog-overlay>` component.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+@@ -471,7 +472,7 @@
+         }
+       </style>
+ 
+-      <vaadin-dialog-overlay
++      <vaadin23-dialog-overlay
+         id="overlay"
+         header-title="[[headerTitle]]"
+         on-opened-changed="_onOverlayOpened"
+@@ -482,12 +483,12 @@
+         with-backdrop="[[!modeless]]"
+         resizable$="[[resizable]]"
+         focus-trap
+-      ></vaadin-dialog-overlay>
++      ></vaadin23-dialog-overlay>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-dialog';
++    return 'vaadin23-dialog';
+   }
+ 
+   static get properties() {
+@@ -537,7 +538,7 @@
+        * Receives two arguments:
+        *
+        * - `root` The root container DOM element. Append your content to it.
+-       * - `dialog` The reference to the `<vaadin-dialog>` element.
++       * - `dialog` The reference to the `<vaadin23-dialog>` element.
+        * @type {DialogRenderer | undefined}
+        */
+       renderer: Function,
+@@ -559,7 +560,7 @@
+        * Receives two arguments:
+        *
+        * - `root` The root container DOM element. Append your content to it.
+-       * - `dialog` The reference to the `<vaadin-dialog>` element.
++       * - `dialog` The reference to the `<vaadin23-dialog>` element.
+        *
+        * If both `headerTitle` and `headerRenderer` are defined, the title
+        * and the elements created by the renderer will be placed next to
+@@ -575,7 +576,7 @@
+        * Receives two arguments:
+        *
+        * - `root` The root container DOM element. Append your content to it.
+-       * - `dialog` The reference to the `<vaadin-dialog>` element.
++       * - `dialog` The reference to the `<vaadin23-dialog>` element.
+        *
+        * When `footerRenderer` is set, the attribute `has-footer` is added to the overlay element.
+        * @type {DialogRenderer | undefined}
+@@ -695,6 +696,6 @@
+   }
+ }
+ 
+-customElements.define(Dialog.is, Dialog);
++internalCustomElements.define(Dialog.is, Dialog);
+ 
+ export { Dialog };

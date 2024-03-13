@@ -1,0 +1,13 @@
+Index: mixins/field-button.js
+===================================================================
+--- mixins/field-button.js
++++ mixins/field-button.js
+@@ -7,7 +7,7 @@
+ import '../font-icons.js';
+ import '../sizing.js';
+ import '../style.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const fieldButton = css`
+   [part$='button'] {

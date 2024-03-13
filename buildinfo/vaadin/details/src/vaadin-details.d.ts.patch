@@ -1,0 +1,46 @@
+Index: src/vaadin-details.d.ts
+===================================================================
+--- src/vaadin-details.d.ts
++++ src/vaadin-details.d.ts
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2019 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ShadowFocusMixin } from '@vaadin/field-base/src/shadow-focus-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ShadowFocusMixin } from '@scoped-vaadin/field-base/src/shadow-focus-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * Fired when the `opened` property changes.
+@@ -20,14 +20,14 @@
+ export type DetailsEventMap = DetailsCustomEventMap & HTMLElementEventMap;
+ 
+ /**
+- * `<vaadin-details>` is a Web Component which the creates an
++ * `<vaadin23-details>` is a Web Component which the creates an
+  * expandable panel similar to `<details>` HTML element.
+  *
+  * ```
+- * <vaadin-details>
++ * <vaadin23-details>
+  *   <div slot="summary">Expandable Details</div>
+  *   Toggle using mouse, Enter and Space keys.
+- * </vaadin-details>
++ * </vaadin23-details>
+  * ```
+  *
+  * ### Styling
+@@ -75,7 +75,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-details': Details;
++    'vaadin23-details': Details;
+   }
+ }
+ 

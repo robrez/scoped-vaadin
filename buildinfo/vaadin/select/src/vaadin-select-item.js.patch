@@ -1,0 +1,30 @@
+Index: src/vaadin-select-item.js
+===================================================================
+--- src/vaadin-select-item.js
++++ src/vaadin-select-item.js
+@@ -1,20 +1,21 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Item } from '@vaadin/item/src/vaadin-item.js';
++import { Item } from '@scoped-vaadin/item/src/vaadin-item.js';
+ 
+ /**
+- * An element used internally by `<vaadin-select>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-select>`. Not intended to be used separately.
+  *
+  * @extends Item
+  * @protected
+  */
+ class SelectItem extends Item {
+   static get is() {
+-    return 'vaadin-select-item';
++    return 'vaadin23-select-item';
+   }
+ }
+ 
+-customElements.define(SelectItem.is, SelectItem);
++internalCustomElements.define(SelectItem.is, SelectItem);

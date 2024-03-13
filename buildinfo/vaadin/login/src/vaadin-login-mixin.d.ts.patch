@@ -1,0 +1,13 @@
+Index: src/vaadin-login-mixin.d.ts
+===================================================================
+--- src/vaadin-login-mixin.d.ts
++++ src/vaadin-login-mixin.d.ts
+@@ -65,7 +65,7 @@
+    *
+    * The object has the following JSON structure (by default it doesn't include `additionalInformation`
+    * and `header` sections, `header` can be added to override `title` and `description` properties
+-   * in `vaadin-login-overlay`):
++   * in `vaadin23-login-overlay`):
+    *
+    * ```
+    * {

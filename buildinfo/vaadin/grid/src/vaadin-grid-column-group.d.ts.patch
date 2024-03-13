@@ -1,0 +1,36 @@
+Index: src/vaadin-grid-column-group.d.ts
+===================================================================
+--- src/vaadin-grid-column-group.d.ts
++++ src/vaadin-grid-column-group.d.ts
+@@ -7,17 +7,17 @@
+ import type { ColumnBaseMixinClass } from './vaadin-grid-column.js';
+ 
+ /**
+- * A `<vaadin-grid-column-group>` is used to make groups of columns in `<vaadin-grid>` and
++ * A `<vaadin23-grid-column-group>` is used to make groups of columns in `<vaadin23-grid>` and
+  * to configure additional headers and footers.
+  *
+  * Groups can be nested to create complex header and footer configurations.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid-column-group resizable id="columnGroup">
+- *   <vaadin-grid-column id="column1"></vaadin-grid-column>
+- *   <vaadin-grid-column id="column2"></vaadin-grid-column>
+- * </vaadin-grid-column-group>
++ * <vaadin23-grid-column-group resizable id="columnGroup">
++ *   <vaadin23-grid-column id="column1"></vaadin23-grid-column>
++ *   <vaadin23-grid-column id="column2"></vaadin23-grid-column>
++ * </vaadin23-grid-column-group>
+  * ```
+  *
+  * ```js
+@@ -52,7 +52,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-column-group': GridColumnGroup<GridDefaultItem>;
++    'vaadin23-grid-column-group': GridColumnGroup<GridDefaultItem>;
+   }
+ }
+ 

@@ -1,0 +1,67 @@
+Index: README.md
+===================================================================
+--- README.md
++++ README.md
+@@ -1,17 +1,19 @@
+-# @vaadin/menu-bar
++# @scoped-vaadin/menu-bar
+ 
++This component is based on [@vaadin/menu-bar](https://www.npmjs.com/package/@vaadin/menu-bar)
++
+ A web component for creating a horizontal button bar with hierarchical drop-down menus.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/menu-bar)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/menu-bar)](https://www.npmjs.com/package/@vaadin/menu-bar)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/menu-bar)](https://www.npmjs.com/package/@scoped-vaadin/menu-bar)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ ```html
+-<vaadin-menu-bar></vaadin-menu-bar>
++<vaadin23-menu-bar></vaadin23-menu-bar>
+ 
+ <script>
+-  document.querySelector('vaadin-menu-bar').items = [
++  document.querySelector('vaadin23-menu-bar').items = [
+     { text: 'View' },
+     { text: 'Edit' },
+     {
+@@ -30,13 +32,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/menu-bar
++npm i @scoped-vaadin/menu-bar
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/menu-bar';
++import '@scoped-vaadin/menu-bar';
+ ```
+ 
+ ## Themes
+@@ -47,19 +49,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/menu-bar/theme/material/vaadin-menu-bar.js';
++import '@scoped-vaadin/menu-bar/theme/material/vaadin-menu-bar.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/menu-bar/theme/lumo/vaadin-menu-bar.js';
++import '@scoped-vaadin/menu-bar/theme/lumo/vaadin-menu-bar.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/menu-bar/src/vaadin-menu-bar.js';
++import '@scoped-vaadin/menu-bar/src/vaadin-menu-bar.js';
+ ```
+ 
+ ## Contributing

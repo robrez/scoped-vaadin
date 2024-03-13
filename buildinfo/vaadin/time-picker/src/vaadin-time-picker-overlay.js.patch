@@ -1,0 +1,41 @@
+Index: src/vaadin-time-picker-overlay.js
+===================================================================
+--- src/vaadin-time-picker-overlay.js
++++ src/vaadin-time-picker-overlay.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ComboBoxOverlay } from '@vaadin/combo-box/src/vaadin-combo-box-overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxOverlay } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-time-picker-overlay',
++  'vaadin23-time-picker-overlay',
+   css`
+     #overlay {
+       width: var(--vaadin-time-picker-overlay-width, var(--_vaadin-time-picker-overlay-default-width, auto));
+@@ -17,15 +18,15 @@
+ );
+ 
+ /**
+- * An element used internally by `<vaadin-time-picker>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-time-picker>`. Not intended to be used separately.
+  *
+  * @extends ComboBoxOverlay
+  * @private
+  */
+ class TimePickerOverlay extends ComboBoxOverlay {
+   static get is() {
+-    return 'vaadin-time-picker-overlay';
++    return 'vaadin23-time-picker-overlay';
+   }
+ }
+ 
+-customElements.define(TimePickerOverlay.is, TimePickerOverlay);
++internalCustomElements.define(TimePickerOverlay.is, TimePickerOverlay);

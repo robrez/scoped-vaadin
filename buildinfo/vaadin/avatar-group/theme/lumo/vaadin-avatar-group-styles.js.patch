@@ -1,0 +1,48 @@
+Index: theme/lumo/vaadin-avatar-group-styles.js
+===================================================================
+--- theme/lumo/vaadin-avatar-group-styles.js
++++ theme/lumo/vaadin-avatar-group-styles.js
+@@ -1,12 +1,12 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { menuOverlayCore } from '@vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
+-import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { menuOverlayCore } from '@scoped-vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
++import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-avatar-group',
++  'vaadin23-avatar-group',
+   css`
+     :host {
+       --vaadin-avatar-size: var(--lumo-size-m);
+@@ -50,12 +50,12 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-avatar-group-overlay', [overlay, menuOverlayCore, avatarGroupOverlay], {
++registerStyles('vaadin23-avatar-group-overlay', [overlay, menuOverlayCore, avatarGroupOverlay], {
+   moduleId: 'lumo-avatar-group-overlay',
+ });
+ 
+ registerStyles(
+-  'vaadin-avatar-group-list-box',
++  'vaadin23-avatar-group-list-box',
+   css`
+     [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
+       padding: var(--lumo-space-xs);
+@@ -71,7 +71,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-item',
++  'vaadin23-item',
+   css`
+     :host([theme='avatar-group-item']) [part='content'] {
+       display: flex;

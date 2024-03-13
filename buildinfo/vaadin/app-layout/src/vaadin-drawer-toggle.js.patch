@@ -1,0 +1,48 @@
+Index: src/vaadin-drawer-toggle.js
+===================================================================
+--- src/vaadin-drawer-toggle.js
++++ src/vaadin-drawer-toggle.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+@@ -5,16 +6,16 @@
+  */
+ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+-import { Button } from '@vaadin/button/src/vaadin-button.js';
+-import { isEmptyTextNode } from '@vaadin/component-base/src/dom-utils.js';
++import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
++import { isEmptyTextNode } from '@scoped-vaadin/component-base/src/dom-utils.js';
+ 
+ /**
+  * The Drawer Toggle component controls the drawer in App Layout component.
+  *
+  * ```
+- * <vaadin-app-layout>
+- *   <vaadin-drawer-toggle slot="navbar">Toggle drawer</vaadin-drawer-toggle>
+- * </vaadin-app-layout>
++ * <vaadin23-app-layout>
++ *   <vaadin23-drawer-toggle slot="navbar">Toggle drawer</vaadin23-drawer-toggle>
++ * </vaadin23-app-layout>
+  * ```
+  *
+  * @extends Button
+@@ -67,7 +68,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-drawer-toggle';
++    return 'vaadin23-drawer-toggle';
+   }
+ 
+   static get properties() {
+@@ -112,6 +113,6 @@
+   }
+ }
+ 
+-customElements.define(DrawerToggle.is, DrawerToggle);
++internalCustomElements.define(DrawerToggle.is, DrawerToggle);
+ 
+ export { DrawerToggle };

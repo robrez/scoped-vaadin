@@ -1,0 +1,14 @@
+Index: theme/material/vaadin-login-form-styles.js
+===================================================================
+--- theme/material/vaadin-login-form-styles.js
++++ theme/material/vaadin-login-form-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-login-form',
++  'vaadin23-login-form',
+   css`
+     vaadin-button[part='vaadin-login-submit'] {
+       margin-top: 3em;

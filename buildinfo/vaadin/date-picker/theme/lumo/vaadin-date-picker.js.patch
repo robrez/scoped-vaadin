@@ -1,0 +1,10 @@
+Index: theme/lumo/vaadin-date-picker.js
+===================================================================
+--- theme/lumo/vaadin-date-picker.js
++++ theme/lumo/vaadin-date-picker.js
+@@ -1,4 +1,4 @@
+-import '@vaadin/input-container/theme/lumo/vaadin-input-container.js';
++import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container.js';
+ import './vaadin-date-picker-overlay-styles.js';
+ import './vaadin-date-picker-overlay-content-styles.js';
+ import './vaadin-month-calendar-styles.js';

@@ -1,0 +1,94 @@
+Index: src/vaadin-upload-file.js
+===================================================================
+--- src/vaadin-upload-file.js
++++ src/vaadin-upload-file.js
+@@ -1,16 +1,17 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/progress-bar/src/vaadin-progress-bar.js';
++import '@scoped-vaadin/progress-bar/src/vaadin-progress-bar.js';
+ import './vaadin-upload-icons.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-upload-file>` element represents a file in the file list of `<vaadin-upload>`.
++ * `<vaadin23-upload-file>` element represents a file in the file list of `<vaadin23-upload>`.
+  *
+  * ### Styling
+  *
+@@ -114,7 +115,7 @@
+         </div>
+       </div>
+ 
+-      <vaadin-progress-bar
++      <vaadin23-progress-bar
+         part="progress"
+         id="progress"
+         value$="[[_formatProgressValue(file.progress)]]"
+@@ -122,12 +123,12 @@
+         indeterminate$="[[file.indeterminate]]"
+         uploading$="[[file.uploading]]"
+         complete$="[[file.complete]]"
+-      ></vaadin-progress-bar>
++      ></vaadin23-progress-bar>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-upload-file';
++    return 'vaadin23-upload-file';
+   }
+ 
+   static get properties() {
+@@ -239,7 +240,7 @@
+   }
+ 
+   /**
+-   * Fired when the retry button is pressed. It is listened by `vaadin-upload`
++   * Fired when the retry button is pressed. It is listened by `vaadin23-upload`
+    * which will start a new upload process of this file.
+    *
+    * @event file-retry
+@@ -248,7 +249,7 @@
+    */
+ 
+   /**
+-   * Fired when the start button is pressed. It is listened by `vaadin-upload`
++   * Fired when the start button is pressed. It is listened by `vaadin23-upload`
+    * which will start a new upload process of this file.
+    *
+    * @event file-start
+@@ -257,7 +258,7 @@
+    */
+ 
+   /**
+-   * Fired when abort button is pressed. It is listened by `vaadin-upload` which
++   * Fired when abort button is pressed. It is listened by `vaadin23-upload` which
+    * will abort the upload in progress, but will not remove the file from the list
+    * to allow the animation to hide the element to be run.
+    *
+@@ -268,7 +269,7 @@
+ 
+   /**
+    * Fired after the animation to hide the element has finished. It is listened
+-   * by `vaadin-upload` which will actually remove the file from the upload
++   * by `vaadin23-upload` which will actually remove the file from the upload
+    * file list.
+    *
+    * @event file-remove
+@@ -277,6 +278,6 @@
+    */
+ }
+ 
+-customElements.define(UploadFile.is, UploadFile);
++internalCustomElements.define(UploadFile.is, UploadFile);
+ 
+ export { UploadFile };

@@ -1,0 +1,16 @@
+Index: theme/lumo/vaadin-login-form-styles.js
+===================================================================
+--- theme/lumo/vaadin-login-form-styles.js
++++ theme/lumo/vaadin-login-form-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-login-form',
++  'vaadin23-login-form',
+   css`
+     vaadin-button[part='vaadin-login-submit'] {
+       margin-top: var(--lumo-space-l);

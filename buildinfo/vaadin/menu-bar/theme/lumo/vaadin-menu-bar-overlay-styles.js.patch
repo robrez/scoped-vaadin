@@ -1,0 +1,14 @@
+Index: theme/lumo/vaadin-menu-bar-overlay-styles.js
+===================================================================
+--- theme/lumo/vaadin-menu-bar-overlay-styles.js
++++ theme/lumo/vaadin-menu-bar-overlay-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-context-menu-overlay',
++  'vaadin23-context-menu-overlay',
+   css`
+     :host(:first-of-type) {
+       padding-top: var(--lumo-space-xs);

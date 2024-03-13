@@ -1,0 +1,25 @@
+Index: src/helper-controller.js
+===================================================================
+--- src/helper-controller.js
++++ src/helper-controller.js
+@@ -1,9 +1,10 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
+ 
+ /**
+  * A controller that manages the helper node content.
+@@ -84,7 +85,7 @@
+ 
+     return (
+       helperNode.children.length > 0 ||
+-      (helperNode.nodeType === Node.ELEMENT_NODE && customElements.get(helperNode.localName)) ||
++      (helperNode.nodeType === Node.ELEMENT_NODE && internalCustomElements.get(helperNode.localName)) ||
+       this.__isNotEmpty(helperNode.textContent)
+     );
+   }

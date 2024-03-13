@@ -1,0 +1,13 @@
+Index: src/vaadin-grid-styling-mixin.d.ts
+===================================================================
+--- src/vaadin-grid-styling-mixin.d.ts
++++ src/vaadin-grid-styling-mixin.d.ts
+@@ -21,7 +21,7 @@
+    * characters.
+    *
+    * Receives two arguments:
+-   * - `column` The `<vaadin-grid-column>` element (`undefined` for details-cell).
++   * - `column` The `<vaadin23-grid-column>` element (`undefined` for details-cell).
+    * - `model` The object with the properties related with
+    *   the rendered item, contains:
+    *   - `model.index` The index of the item.

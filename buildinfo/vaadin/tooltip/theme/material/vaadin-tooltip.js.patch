@@ -1,0 +1,9 @@
+Index: theme/material/vaadin-tooltip.js
+===================================================================
+--- theme/material/vaadin-tooltip.js
++++ theme/material/vaadin-tooltip.js
+@@ -1,3 +1,3 @@
+-import '@vaadin/overlay/theme/material/vaadin-overlay.js';
++import '@scoped-vaadin/overlay/theme/material/vaadin-overlay.js';
+ import './vaadin-tooltip-styles.js';
+ import '../../src/vaadin-tooltip.js';

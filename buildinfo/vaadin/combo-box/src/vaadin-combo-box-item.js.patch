@@ -1,0 +1,47 @@
+Index: src/vaadin-combo-box-item.js
+===================================================================
+--- src/vaadin-combo-box-item.js
++++ src/vaadin-combo-box-item.js
+@@ -1,14 +1,15 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2015 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An item element used by the `<vaadin-combo-box>` dropdown.
++ * An item element used by the `<vaadin23-combo-box>` dropdown.
+  *
+  * ### Styling
+  *
+@@ -52,7 +53,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-combo-box-item';
++    return 'vaadin23-combo-box-item';
+   }
+ 
+   static get properties() {
+@@ -92,7 +93,7 @@
+       },
+ 
+       /**
+-       * Custom function for rendering the content of the `<vaadin-combo-box-item>` propagated from the combo box element.
++       * Custom function for rendering the content of the `<vaadin23-combo-box-item>` propagated from the combo box element.
+        */
+       renderer: Function,
+ 
+@@ -169,4 +170,4 @@
+   }
+ }
+ 
+-customElements.define(ComboBoxItem.is, ComboBoxItem);
++internalCustomElements.define(ComboBoxItem.is, ComboBoxItem);

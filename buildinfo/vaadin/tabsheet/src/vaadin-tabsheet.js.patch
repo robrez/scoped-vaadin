@@ -1,0 +1,128 @@
+Index: src/vaadin-tabsheet.js
+===================================================================
+--- src/vaadin-tabsheet.js
++++ src/vaadin-tabsheet.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2022 Vaadin Ltd.
+@@ -6,18 +7,18 @@
+ import './vaadin-tabsheet-scroller.js';
+ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { OverflowController } from '@vaadin/component-base/src/overflow-controller.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { DelegateStateMixin } from '@vaadin/field-base/src/delegate-state-mixin.js';
+-import { Tabs } from '@vaadin/tabs/src/vaadin-tabs.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { DelegateStateMixin } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
++import { Tabs } from '@scoped-vaadin/tabs/src/vaadin-tabs.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * @private
+- * A controller which observes the <vaadin-tabs> slotted to the tabs slot.
++ * A controller which observes the <vaadin23-tabs> slotted to the tabs slot.
+  */
+ class TabsSlotController extends SlotController {
+   constructor(host) {
+@@ -38,7 +39,7 @@
+ 
+   initCustomNode(tabs) {
+     if (!(tabs instanceof Tabs)) {
+-      throw Error('The "tabs" slot of a <vaadin-tabsheet> must only contain a <vaadin-tabs> element!');
++      throw Error('The "tabs" slot of a <vaadin23-tabsheet> must only contain a <vaadin23-tabs> element!');
+     }
+     this.tabs = tabs;
+     tabs.addEventListener('items-changed', this.__tabsItemsChangedListener);
+@@ -59,24 +60,24 @@
+ }
+ 
+ /**
+- * `<vaadin-tabsheet>` is a Web Component for organizing and grouping content
++ * `<vaadin23-tabsheet>` is a Web Component for organizing and grouping content
+  * into scrollable panels. The panels can be switched between by using tabs.
+  *
+  * ```
+- *  <vaadin-tabsheet>
++ *  <vaadin23-tabsheet>
+  *    <div slot="prefix">Prefix</div>
+  *    <div slot="suffix">Suffix</div>
+  *
+- *    <vaadin-tabs slot="tabs">
+- *      <vaadin-tab id="tab-1">Tab 1</vaadin-tab>
+- *      <vaadin-tab id="tab-2">Tab 2</vaadin-tab>
+- *      <vaadin-tab id="tab-3">Tab 3</vaadin-tab>
+- *    </vaadin-tabs>
++ *    <vaadin23-tabs slot="tabs">
++ *      <vaadin23-tab id="tab-1">Tab 1</vaadin23-tab>
++ *      <vaadin23-tab id="tab-2">Tab 2</vaadin23-tab>
++ *      <vaadin23-tab id="tab-3">Tab 3</vaadin23-tab>
++ *    </vaadin23-tabs>
+  *
+  *    <div tab="tab-1">Panel 1</div>
+  *    <div tab="tab-2">Panel 2</div>
+  *    <div tab="tab-3">Panel 3</div>
+- *  </vaadin-tabsheet>
++ *  </vaadin23-tabsheet>
+  * ```
+  *
+  * ### Styling
+@@ -144,25 +145,25 @@
+         <slot name="suffix"></slot>
+       </div>
+ 
+-      <vaadin-tabsheet-scroller part="content">
++      <vaadin23-tabsheet-scroller part="content">
+         <div part="loader"></div>
+         <slot id="panel-slot"></slot>
+-      </vaadin-tabsheet-scroller>
++      </vaadin23-tabsheet-scroller>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-tabsheet';
++    return 'vaadin23-tabsheet';
+   }
+ 
+   static get properties() {
+     return {
+       /**
+-       * The list of `<vaadin-tab>`s from which a selection can be made.
++       * The list of `<vaadin23-tab>`s from which a selection can be made.
+        * It is populated from the elements passed inside the slotted
+-       * `<vaadin-tabs>`, and updated dynamically when adding or removing items.
++       * `<vaadin23-tabs>`, and updated dynamically when adding or removing items.
+        *
+-       * Note: unlike `<vaadin-combo-box>`, this property is read-only.
++       * Note: unlike `<vaadin23-combo-box>`, this property is read-only.
+        * @type {!Array<!Tab> | undefined}
+        */
+       items: {
+@@ -181,7 +182,7 @@
+       },
+ 
+       /**
+-       * The slotted <vaadin-tabs> element.
++       * The slotted <vaadin23-tabs> element.
+        */
+       __tabs: {
+         type: Object,
+@@ -286,6 +287,6 @@
+   }
+ }
+ 
+-customElements.define(TabSheet.is, TabSheet);
++internalCustomElements.define(TabSheet.is, TabSheet);
+ 
+ export { TabSheet };

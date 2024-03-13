@@ -1,0 +1,34 @@
+Index: src/vaadin-combo-box-scroller.js
+===================================================================
+--- src/vaadin-combo-box-scroller.js
++++ src/vaadin-combo-box-scroller.js
+@@ -1,11 +1,12 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2015 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { Virtualizer } from '@vaadin/component-base/src/virtualizer.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { Virtualizer } from '@scoped-vaadin/component-base/src/virtualizer.js';
+ import { ComboBoxPlaceholder } from './vaadin-combo-box-placeholder.js';
+ 
+ /**
+@@ -16,7 +17,7 @@
+  */
+ export class ComboBoxScroller extends PolymerElement {
+   static get is() {
+-    return 'vaadin-combo-box-scroller';
++    return 'vaadin23-combo-box-scroller';
+   }
+ 
+   static get template() {
+@@ -386,4 +387,4 @@
+   }
+ }
+ 
+-customElements.define(ComboBoxScroller.is, ComboBoxScroller);
++internalCustomElements.define(ComboBoxScroller.is, ComboBoxScroller);

@@ -1,0 +1,32 @@
+Index: theme/lumo/vaadin-combo-box-dropdown-styles.js
+===================================================================
+--- theme/lumo/vaadin-combo-box-dropdown-styles.js
++++ theme/lumo/vaadin-combo-box-dropdown-styles.js
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/overlay/theme/lumo/vaadin-overlay.js';
+-import { loader } from '@vaadin/vaadin-lumo-styles/mixins/loader.js';
+-import { menuOverlayCore } from '@vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
+-import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/overlay/theme/lumo/vaadin-overlay.js';
++import { loader } from '@scoped-vaadin/vaadin-lumo-styles/mixins/loader.js';
++import { menuOverlayCore } from '@scoped-vaadin/vaadin-lumo-styles/mixins/menu-overlay.js';
++import { overlay } from '@scoped-vaadin/vaadin-lumo-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const comboBoxOverlay = css`
+   [part='content'] {
+@@ -59,6 +59,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-combo-box-overlay', [overlay, menuOverlayCore, comboBoxOverlay, loader], {
++registerStyles('vaadin23-combo-box-overlay', [overlay, menuOverlayCore, comboBoxOverlay, loader], {
+   moduleId: 'lumo-combo-box-overlay',
+ });

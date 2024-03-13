@@ -1,0 +1,18 @@
+Index: theme/lumo/vaadin-horizontal-layout-styles.js
+===================================================================
+--- theme/lumo/vaadin-horizontal-layout-styles.js
++++ theme/lumo/vaadin-horizontal-layout-styles.js
+@@ -1,5 +1,5 @@
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const horizontalLayout = css`
+   :host([theme~='margin']) {
+@@ -31,4 +31,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-horizontal-layout', horizontalLayout, { moduleId: 'lumo-horizontal-layout' });
++registerStyles('vaadin23-horizontal-layout', horizontalLayout, { moduleId: 'lumo-horizontal-layout' });

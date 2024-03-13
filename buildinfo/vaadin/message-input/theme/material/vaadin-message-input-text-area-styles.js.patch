@@ -1,0 +1,14 @@
+Index: theme/material/vaadin-message-input-text-area-styles.js
+===================================================================
+--- theme/material/vaadin-message-input-text-area-styles.js
++++ theme/material/vaadin-message-input-text-area-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message-input-text-area',
++  'vaadin23-message-input-text-area',
+   css`
+     :host {
+       margin: 0 0.5em 0 0;

@@ -1,0 +1,20 @@
+Index: theme/lumo/vaadin-date-picker-styles.js
+===================================================================
+--- theme/lumo/vaadin-date-picker-styles.js
++++ theme/lumo/vaadin-date-picker-styles.js
+@@ -1,6 +1,6 @@
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import { inputFieldShared } from '@vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const datePicker = css`
+   :host {
+@@ -30,4 +30,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-date-picker', [inputFieldShared, datePicker], { moduleId: 'lumo-date-picker' });
++registerStyles('vaadin23-date-picker', [inputFieldShared, datePicker], { moduleId: 'lumo-date-picker' });

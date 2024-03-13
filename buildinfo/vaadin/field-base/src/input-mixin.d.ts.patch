@@ -1,0 +1,13 @@
+Index: src/input-mixin.d.ts
+===================================================================
+--- src/input-mixin.d.ts
++++ src/input-mixin.d.ts
+@@ -19,7 +19,7 @@
+    *
+    * A typical case is using `InputController` that does this automatically.
+    * However, the input element does not have to always be native <input>:
+-   * as an example, <vaadin-combo-box-light> accepts other components.
++   * as an example, <vaadin23-combo-box-light> accepts other components.
+    */
+   readonly inputElement: HTMLElement;
+ 

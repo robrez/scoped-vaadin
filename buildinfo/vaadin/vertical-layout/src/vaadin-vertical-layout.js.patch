@@ -1,0 +1,50 @@
+Index: src/vaadin-vertical-layout.js
+===================================================================
+--- src/vaadin-vertical-layout.js
++++ src/vaadin-vertical-layout.js
+@@ -1,25 +1,26 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-vertical-layout>` provides a simple way to vertically align your HTML elements.
++ * `<vaadin23-vertical-layout>` provides a simple way to vertically align your HTML elements.
+  *
+  * ```
+- * <vaadin-vertical-layout>
++ * <vaadin23-vertical-layout>
+  *   <div>Item 1</div>
+  *   <div>Item 2</div>
+- * </vaadin-vertical-layout>
++ * </vaadin23-vertical-layout>
+  * ```
+  *
+  * ### Built-in Theme Variations
+  *
+- * `<vaadin-vertical-layout>` supports the following theme variations:
++ * `<vaadin23-vertical-layout>` supports the following theme variations:
+  *
+  * Theme variation | Description
+  * ---|---
+@@ -65,10 +66,10 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-vertical-layout';
++    return 'vaadin23-vertical-layout';
+   }
+ }
+ 
+-customElements.define(VerticalLayout.is, VerticalLayout);
++internalCustomElements.define(VerticalLayout.is, VerticalLayout);
+ 
+ export { VerticalLayout };

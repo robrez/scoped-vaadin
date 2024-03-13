@@ -1,0 +1,20 @@
+Index: theme/lumo/vaadin-combo-box-styles.js
+===================================================================
+--- theme/lumo/vaadin-combo-box-styles.js
++++ theme/lumo/vaadin-combo-box-styles.js
+@@ -1,6 +1,6 @@
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import { inputFieldShared } from '@vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const comboBox = css`
+   :host {
+@@ -12,4 +12,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-combo-box', [inputFieldShared, comboBox], { moduleId: 'lumo-combo-box' });
++registerStyles('vaadin23-combo-box', [inputFieldShared, comboBox], { moduleId: 'lumo-combo-box' });

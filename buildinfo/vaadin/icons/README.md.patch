@@ -1,0 +1,43 @@
+Index: README.md
+===================================================================
+--- README.md
++++ README.md
+@@ -1,10 +1,12 @@
+-# @vaadin/icons
++# @scoped-vaadin/icons
+ 
++This component is based on [@vaadin/icons](https://www.npmjs.com/package/@vaadin/icons)
++
+ A set of 600+ icons designed for web applications.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/ds/foundation/icons/vaadin)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/icons)](https://www.npmjs.com/package/@vaadin/icons)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/icons)](https://www.npmjs.com/package/@scoped-vaadin/icons)
+ [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
+ 
+ [<img src="https://raw.githubusercontent.com/vaadin/web-components/master/packages/icons/screenshot.png" width="728" alt="Screenshot of vaadin-icons">](https://vaadin.com/docs/latest/ds/foundation/icons/vaadin)
+@@ -14,19 +16,19 @@
+ Install the iconset:
+ 
+ ```sh
+-npm i @vaadin/icons
++npm i @scoped-vaadin/icons
+ ```
+ 
+ Once installed, import it in your application:
+ 
+ ```js
+-import '@vaadin/icons';
++import '@scoped-vaadin/icons';
+ ```
+ 
+-To display an icon, use [`<vaadin-icon>`](https://www.npmjs.com/package/@vaadin/icon) element:
++To display an icon, use [`<vaadin23-icon>`](https://www.npmjs.com/package/@scoped-vaadin/icon) element:
+ 
+ ```html
+-<vaadin-icon icon="vaadin:phone"></vaadin-icon>
++<vaadin23-icon icon="vaadin:phone"></vaadin23-icon>
+ ```
+ 
+ ## License

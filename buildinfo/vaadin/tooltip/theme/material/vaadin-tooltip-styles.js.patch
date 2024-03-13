@@ -1,0 +1,18 @@
+Index: theme/material/vaadin-tooltip-styles.js
+===================================================================
+--- theme/material/vaadin-tooltip-styles.js
++++ theme/material/vaadin-tooltip-styles.js
+@@ -1,5 +1,5 @@
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const tooltipOverlay = css`
+   :host {
+@@ -20,4 +20,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-tooltip-overlay', [overlay, tooltipOverlay], { moduleId: 'material-tooltip-overlay' });
++registerStyles('vaadin23-tooltip-overlay', [overlay, tooltipOverlay], { moduleId: 'material-tooltip-overlay' });
