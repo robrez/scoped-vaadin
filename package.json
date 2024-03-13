@@ -15,8 +15,8 @@
   "author": "",
   "license": "Apache-2.0",
   "workspaces": [
-    "packages/vendor/*",
-    "packages/vaadin/*"
+    "vendor-packages/*",
+    "packages/*"
   ],
   "devDependencies": {
     "@web/dev-server": "^0.1.35",
