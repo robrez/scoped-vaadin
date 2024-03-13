@@ -1,0 +1,25 @@
+Index: src/vaadin-message-input-text-area.d.ts
+===================================================================
+--- src/vaadin-message-input-text-area.d.ts
++++ src/vaadin-message-input-text-area.d.ts
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { TextArea } from '@vaadin/text-area/src/vaadin-text-area.js';
++import { TextArea } from '@scoped-vaadin/text-area/src/vaadin-text-area.js';
+ 
+ /**
+- * An element used internally by `<vaadin-message-input>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-message-input>`. Not intended to be used separately.
+  *
+  * @protected
+  */
+@@ -16,6 +16,6 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-message-input-text-area': MessageInputTextArea;
++    'vaadin23-message-input-text-area': MessageInputTextArea;
+   }
+ }

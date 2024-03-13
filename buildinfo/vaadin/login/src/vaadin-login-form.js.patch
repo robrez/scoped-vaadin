@@ -1,0 +1,110 @@
+Index: src/vaadin-login-form.js
+===================================================================
+--- src/vaadin-login-form.js
++++ src/vaadin-login-form.js
+@@ -1,33 +1,34 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/text-field/src/vaadin-text-field.js';
+-import '@vaadin/password-field/src/vaadin-password-field.js';
++import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
++import '@scoped-vaadin/password-field/src/vaadin-password-field.js';
+ import './vaadin-login-form-wrapper.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { LoginMixin } from './vaadin-login-mixin.js';
+ 
+ /**
+- * `<vaadin-login-form>` is a Web Component providing an easy way to require users
++ * `<vaadin23-login-form>` is a Web Component providing an easy way to require users
+  * to log in into an application. Note that component has no shadowRoot.
+  *
+  * ```
+- * <vaadin-login-form></vaadin-login-form>
++ * <vaadin23-login-form></vaadin23-login-form>
+  * ```
+  *
+  * Component has to be accessible from the `document` layer in order to allow password managers to work properly with form values.
+- * Using `<vaadin-login-overlay>` allows to always attach the component to the document body.
++ * Using `<vaadin23-login-overlay>` allows to always attach the component to the document body.
+  *
+  * ### Styling
+  *
+  * The component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.
+- * Use `<vaadin-login-form-wrapper>` themable component to apply styles.
++ * Use `<vaadin23-login-form-wrapper>` themable component to apply styles.
+  *
+- * The following shadow DOM parts of the `<vaadin-login-form-wrapper>` are available for styling:
++ * The following shadow DOM parts of the `<vaadin23-login-form-wrapper>` are available for styling:
+  *
+  * Part name      | Description
+  * ---------------|---------------------------------------------------------|
+@@ -58,7 +59,7 @@
+           width: 100%;
+         }
+       </style>
+-      <vaadin-login-form-wrapper
++      <vaadin23-login-form-wrapper
+         theme$="[[_theme]]"
+         part="vaadin-login-native-form-wrapper"
+         error="[[error]]"
+@@ -69,7 +70,7 @@
+       >
+         <form part="vaadin-login-native-form" method="POST" action$="[[action]]" slot="form">
+           <input id="csrf" type="hidden" />
+-          <vaadin-text-field
++          <vaadin23-text-field
+             name="username"
+             label="[[i18n.form.username]]"
+             id="vaadinLoginUsername"
+@@ -81,9 +82,9 @@
+             autocomplete="username"
+           >
+             <input type="text" slot="input" on-keyup="_handleInputKeyup" />
+-          </vaadin-text-field>
++          </vaadin23-text-field>
+ 
+-          <vaadin-password-field
++          <vaadin23-password-field
+             name="password"
+             label="[[i18n.form.password]]"
+             id="vaadinLoginPassword"
+@@ -93,18 +94,18 @@
+             autocomplete="current-password"
+           >
+             <input type="password" slot="input" on-keyup="_handleInputKeyup" />
+-          </vaadin-password-field>
++          </vaadin23-password-field>
+ 
+-          <vaadin-button part="vaadin-login-submit" theme="primary contained" on-click="submit" disabled$="[[disabled]]"
+-            >[[i18n.form.submit]]</vaadin-button
++          <vaadin23-button part="vaadin-login-submit" theme="primary contained" on-click="submit" disabled$="[[disabled]]"
++            >[[i18n.form.submit]]</vaadin23-button
+           >
+         </form>
+-      </vaadin-login-form-wrapper>
++      </vaadin23-login-form-wrapper>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-login-form';
++    return 'vaadin23-login-form';
+   }
+ 
+   /** @protected */
+@@ -193,6 +194,6 @@
+   }
+ }
+ 
+-customElements.define(LoginForm.is, LoginForm);
++internalCustomElements.define(LoginForm.is, LoginForm);
+ 
+ export { LoginForm };

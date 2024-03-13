@@ -1,0 +1,16 @@
+Index: theme/material/vaadin-message-avatar-styles.js
+===================================================================
+--- theme/material/vaadin-message-avatar-styles.js
++++ theme/material/vaadin-message-avatar-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/avatar/theme/material/vaadin-avatar-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/avatar/theme/material/vaadin-avatar-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message-avatar',
++  'vaadin23-message-avatar',
+   css`
+     :host {
+       --vaadin-avatar-size: 2.5rem;

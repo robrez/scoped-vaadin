@@ -1,0 +1,105 @@
+Index: src/vaadin-app-layout.js
+===================================================================
+--- src/vaadin-app-layout.js
++++ src/vaadin-app-layout.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+@@ -8,31 +9,31 @@
+ import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
+ import { afterNextRender, beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusTrapController } from '@vaadin/component-base/src/focus-trap-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusTrapController } from '@scoped-vaadin/component-base/src/focus-trap-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * @typedef {import('./vaadin-app-layout.js').AppLayoutI18n} AppLayoutI18n
+  */
+ 
+ /**
+- * `<vaadin-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
++ * `<vaadin23-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
+  *
+  * ```
+- * <vaadin-app-layout primary-section="navbar|drawer">
+- *  <vaadin-drawer-toggle slot="navbar [touch-optimized]"></vaadin-drawer-toggle>
++ * <vaadin23-app-layout primary-section="navbar|drawer">
++ *  <vaadin23-drawer-toggle slot="navbar [touch-optimized]"></vaadin23-drawer-toggle>
+  *  <h3 slot="navbar [touch-optimized]">Company Name</h3>
+- *  <vaadin-tabs orientation="vertical" slot="drawer">
+- *    <vaadin-tab>Menu item 1</vaadin-tab>
+- *  </vaadin-tabs>
++ *  <vaadin23-tabs orientation="vertical" slot="drawer">
++ *    <vaadin23-tab>Menu item 1</vaadin23-tab>
++ *  </vaadin23-tabs>
+  *  <!-- Everything else will be the page content -->
+  *  <div>
+  *    <h3>Page title</h3>
+  *    <p>Page content</p>
+  *  </div>
+- * </vaadin-app-layout>
++ * </vaadin23-app-layout>
+  * ```
+  *
+  * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
+@@ -52,7 +53,7 @@
+  *
+  * ### Styling
+  *
+- * The following Shadow DOM parts of the `<vaadin-app-layout>` are available for styling:
++ * The following Shadow DOM parts of the `<vaadin23-app-layout>` are available for styling:
+  *
+  * Part name     | Description
+  * --------------|---------------------------------------------------------|
+@@ -85,7 +86,7 @@
+  * If you are using Vaadin Router, this will happen automatically unless you change the `closeDrawerOn` event name.
+  *
+  * In order to do so, there are two options:
+- * - If the `vaadin-app-layout` instance is available, then `drawerOpened` can be set to `false`
++ * - If the `vaadin23-app-layout` instance is available, then `drawerOpened` can be set to `false`
+  * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
+  *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
+  *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
+@@ -308,7 +309,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-app-layout';
++    return 'vaadin23-app-layout';
+   }
+ 
+   static get properties() {
+@@ -561,7 +562,7 @@
+ 
+   /** @private */
+   __setAriaExpanded() {
+-    const toggle = this.querySelector('vaadin-drawer-toggle');
++    const toggle = this.querySelector('vaadin23-drawer-toggle');
+     if (toggle) {
+       toggle.setAttribute('aria-expanded', this.drawerOpened);
+     }
+@@ -705,7 +706,7 @@
+     this.$.drawer.removeAttribute('tabindex');
+ 
+     // Move focus to the drawer toggle when closing the drawer.
+-    const toggle = this.querySelector('vaadin-drawer-toggle');
++    const toggle = this.querySelector('vaadin23-drawer-toggle');
+     if (toggle) {
+       toggle.focus();
+       toggle.setAttribute('focus-ring', 'focus');
+@@ -814,6 +815,6 @@
+    */
+ }
+ 
+-customElements.define(AppLayout.is, AppLayout);
++internalCustomElements.define(AppLayout.is, AppLayout);
+ 
+ export { AppLayout };

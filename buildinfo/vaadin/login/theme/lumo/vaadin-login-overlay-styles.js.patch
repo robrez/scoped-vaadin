@@ -1,0 +1,34 @@
+Index: theme/lumo/vaadin-login-overlay-styles.js
+===================================================================
+--- theme/lumo/vaadin-login-overlay-styles.js
++++ theme/lumo/vaadin-login-overlay-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
+ import './vaadin-login-form-wrapper-styles.js';
+-import { color } from '@vaadin/vaadin-lumo-styles/color.js';
+-import { typography } from '@vaadin/vaadin-lumo-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { color } from '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import { typography } from '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const loginOverlayWrapper = css`
+   :host {
+@@ -172,7 +172,7 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-login-overlay-wrapper', [color, typography, loginOverlayWrapper], {
++registerStyles('vaadin23-login-overlay-wrapper', [color, typography, loginOverlayWrapper], {
+   moduleId: 'vaadin-login-overlay-wrapper-lumo-styles',
+ });
+ 
+@@ -195,6 +195,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-login-form-wrapper', [color, typography, loginFormWrapper], {
++registerStyles('vaadin23-login-form-wrapper', [color, typography, loginFormWrapper], {
+   moduleId: 'lumo-login-overlay',
+ });

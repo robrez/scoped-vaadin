@@ -1,0 +1,13 @@
+Index: src/style-modules.js
+===================================================================
+--- src/style-modules.js
++++ src/style-modules.js
+@@ -6,7 +6,7 @@
+ import { DomModule } from '@polymer/polymer/lib/elements/dom-module.js';
+ import { stylesFromTemplate } from '@polymer/polymer/lib/utils/style-gather.js';
+ import { unsafeCSS } from 'lit';
+-import { __themeRegistry as themeRegistry } from '@vaadin/vaadin-themable-mixin';
++import { __themeRegistry as themeRegistry } from '@scoped-vaadin/vaadin-themable-mixin';
+ 
+ /**
+  * @typedef CSSResult

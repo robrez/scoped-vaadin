@@ -1,0 +1,22 @@
+Index: theme/material/vaadin-login-form-wrapper-styles.js
+===================================================================
+--- theme/material/vaadin-login-form-wrapper-styles.js
++++ theme/material/vaadin-login-form-wrapper-styles.js
+@@ -1,6 +1,6 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import { typography } from '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import { typography } from '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const loginFormWrapper = css`
+   :host {
+@@ -85,6 +85,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-login-form-wrapper', [typography, loginFormWrapper], {
++registerStyles('vaadin23-login-form-wrapper', [typography, loginFormWrapper], {
+   moduleId: 'material-login-form-wrapper',
+ });

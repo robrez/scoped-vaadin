@@ -1,0 +1,70 @@
+Index: src/vaadin-multi-select-combo-box-internal.js
+===================================================================
+--- src/vaadin-multi-select-combo-box-internal.js
++++ src/vaadin-multi-select-combo-box-internal.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+@@ -7,13 +8,13 @@
+ import './vaadin-multi-select-combo-box-overlay.js';
+ import './vaadin-multi-select-combo-box-scroller.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ComboBoxDataProviderMixin } from '@vaadin/combo-box/src/vaadin-combo-box-data-provider-mixin.js';
+-import { ComboBoxMixin } from '@vaadin/combo-box/src/vaadin-combo-box-mixin.js';
+-import { ComboBoxPlaceholder } from '@vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxDataProviderMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-data-provider-mixin.js';
++import { ComboBoxMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-mixin.js';
++import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-multi-select-combo-box>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ComboBoxDataProviderMixin
+@@ -23,7 +24,7 @@
+  */
+ class MultiSelectComboBoxInternal extends ComboBoxDataProviderMixin(ComboBoxMixin(ThemableMixin(PolymerElement))) {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-internal';
++    return 'vaadin23-multi-select-combo-box-internal';
+   }
+ 
+   static get template() {
+@@ -36,7 +37,7 @@
+ 
+       <slot></slot>
+ 
+-      <vaadin-multi-select-combo-box-overlay
++      <vaadin23-multi-select-combo-box-overlay
+         id="overlay"
+         opened="[[_overlayOpened]]"
+         loading$="[[loading]]"
+@@ -44,7 +45,7 @@
+         position-target="[[_target]]"
+         no-vertical-overlap
+         restore-focus-node="[[inputElement]]"
+-      ></vaadin-multi-select-combo-box-overlay>
++      ></vaadin23-multi-select-combo-box-overlay>
+     `;
+   }
+ 
+@@ -116,7 +117,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-multi-select-combo-box';
++    return 'vaadin23-multi-select-combo-box';
+   }
+ 
+   /**
+@@ -343,4 +344,4 @@
+   }
+ }
+ 
+-customElements.define(MultiSelectComboBoxInternal.is, MultiSelectComboBoxInternal);
++internalCustomElements.define(MultiSelectComboBoxInternal.is, MultiSelectComboBoxInternal);

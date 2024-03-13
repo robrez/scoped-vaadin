@@ -1,0 +1,22 @@
+Index: theme/material/vaadin-date-picker-overlay-styles.js
+===================================================================
+--- theme/material/vaadin-date-picker-overlay-styles.js
++++ theme/material/vaadin-date-picker-overlay-styles.js
+@@ -1,6 +1,6 @@
+-import '@vaadin/overlay/theme/material/vaadin-overlay.js';
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/overlay/theme/material/vaadin-overlay.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const datePickerOverlay = css`
+   :host([fullscreen]) {
+@@ -41,6 +41,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-date-picker-overlay', [overlay, datePickerOverlay], {
++registerStyles('vaadin23-date-picker-overlay', [overlay, datePickerOverlay], {
+   moduleId: 'material-date-picker-overlay',
+ });

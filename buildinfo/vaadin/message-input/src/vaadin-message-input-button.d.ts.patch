@@ -1,0 +1,25 @@
+Index: src/vaadin-message-input-button.d.ts
+===================================================================
+--- src/vaadin-message-input-button.d.ts
++++ src/vaadin-message-input-button.d.ts
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Button } from '@vaadin/button/src/vaadin-button.js';
++import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
+ 
+ /**
+- * An element used internally by `<vaadin-message-input>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-message-input>`. Not intended to be used separately.
+  *
+  * @extends Button
+  * @protected
+@@ -15,6 +15,6 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-message-input-button': MessageInputButton;
++    'vaadin23-message-input-button': MessageInputButton;
+   }
+ }

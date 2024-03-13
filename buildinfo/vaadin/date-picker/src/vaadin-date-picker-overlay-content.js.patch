@@ -1,0 +1,124 @@
+Index: src/vaadin-date-picker-overlay-content.js
+===================================================================
+--- src/vaadin-date-picker-overlay-content.js
++++ src/vaadin-date-picker-overlay-content.js
+@@ -1,19 +1,20 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/button/src/vaadin-button.js';
++import '@scoped-vaadin/button/src/vaadin-button.js';
+ import './vaadin-month-calendar.js';
+ import './vaadin-infinite-scroller.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { timeOut } from '@vaadin/component-base/src/async.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { addListener, setTouchAction } from '@vaadin/component-base/src/gestures.js';
+-import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { addListener, setTouchAction } from '@scoped-vaadin/component-base/src/gestures.js';
++import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { dateEquals, extractDateParts, getClosestDate } from './vaadin-date-picker-helper.js';
+ 
+ /**
+@@ -141,7 +142,7 @@
+       </div>
+ 
+       <div id="scrollers" desktop$="[[_desktopMode]]">
+-        <vaadin-infinite-scroller
++        <vaadin23-infinite-scroller
+           id="monthScroller"
+           on-custom-scroll="_onMonthScroll"
+           on-touchstart="_onMonthScrollTouchStart"
+@@ -150,7 +151,7 @@
+           part="months"
+         >
+           <template>
+-            <vaadin-month-calendar
++            <vaadin23-month-calendar
+               i18n="[[i18n]]"
+               month="[[_dateAfterXMonths(index)]]"
+               selected-date="{{selectedDate}}"
+@@ -163,10 +164,10 @@
+               theme$="[[_theme]]"
+               on-keydown="__onMonthCalendarKeyDown"
+             >
+-            </vaadin-month-calendar>
++            </vaadin23-month-calendar>
+           </template>
+-        </vaadin-infinite-scroller>
+-        <vaadin-infinite-scroller
++        </vaadin23-infinite-scroller>
++        <vaadin23-infinite-scroller
+           id="yearScroller"
+           on-custom-scroll="_onYearScroll"
+           on-touchstart="_onYearScrollTouchStart"
+@@ -185,11 +186,11 @@
+             </div>
+             <div part="year-separator" aria-hidden="true"></div>
+           </template>
+-        </vaadin-infinite-scroller>
++        </vaadin23-infinite-scroller>
+       </div>
+ 
+       <div on-touchend="_preventDefault" role="toolbar" part="toolbar">
+-        <vaadin-button
++        <vaadin23-button
+           id="todayButton"
+           part="today-button"
+           theme="tertiary"
+@@ -197,16 +198,16 @@
+           on-keydown="__onTodayButtonKeyDown"
+         >
+           [[i18n.today]]
+-        </vaadin-button>
+-        <vaadin-button id="cancelButton" part="cancel-button" theme="tertiary" on-keydown="__onCancelButtonKeyDown">
++        </vaadin23-button>
++        <vaadin23-button id="cancelButton" part="cancel-button" theme="tertiary" on-keydown="__onCancelButtonKeyDown">
+           [[i18n.cancel]]
+-        </vaadin-button>
++        </vaadin23-button>
+       </div>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-date-picker-overlay-content';
++    return 'vaadin23-date-picker-overlay-content';
+   }
+ 
+   static get properties() {
+@@ -310,7 +311,7 @@
+   }
+ 
+   get calendars() {
+-    return [...this.shadowRoot.querySelectorAll('vaadin-month-calendar')];
++    return [...this.shadowRoot.querySelectorAll('vaadin23-month-calendar')];
+   }
+ 
+   get focusableDateElement() {
+@@ -887,7 +888,7 @@
+   async focusDateElement(reveal = true) {
+     this.__pendingDateFocus = this.focusedDate;
+ 
+-    // Wait for `vaadin-month-calendar` elements to be rendered
++    // Wait for `vaadin23-month-calendar` elements to be rendered
+     if (!this.calendars.length) {
+       await new Promise((resolve) => {
+         setTimeout(resolve);
+@@ -1003,4 +1004,4 @@
+   }
+ }
+ 
+-customElements.define(DatePickerOverlayContent.is, DatePickerOverlayContent);
++internalCustomElements.define(DatePickerOverlayContent.is, DatePickerOverlayContent);

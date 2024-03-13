@@ -1,0 +1,31 @@
+Index: badge.js
+===================================================================
+--- badge.js
++++ badge.js
+@@ -6,7 +6,7 @@
+ import './style.js';
+ import './color.js';
+ import './typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const badge = css`
+   [theme~='badge'] {
+@@ -104,7 +104,7 @@
+   }
+ 
+   iron-icon[theme~='badge'][icon],
+-  vaadin-icon[theme~='badge'][icon] {
++  vaadin23-icon[theme~='badge'][icon] {
+     min-width: 0;
+     padding: 0;
+     font-size: 1rem;
+@@ -113,7 +113,7 @@
+   }
+ 
+   iron-icon[theme~='badge'][icon][theme~='small'],
+-  vaadin-icon[theme~='badge'][icon][theme~='small'] {
++  vaadin23-icon[theme~='badge'][icon][theme~='small'] {
+     width: var(--lumo-icon-size-s);
+     height: var(--lumo-icon-size-s);
+   }

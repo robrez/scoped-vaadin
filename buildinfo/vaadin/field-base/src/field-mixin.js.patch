@@ -1,0 +1,13 @@
+Index: src/field-mixin.js
+===================================================================
+--- src/field-mixin.js
++++ src/field-mixin.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+ import { ErrorController } from './error-controller.js';
+ import { FieldAriaController } from './field-aria-controller.js';
+ import { HelperController } from './helper-controller.js';

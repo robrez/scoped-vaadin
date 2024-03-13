@@ -1,0 +1,24 @@
+Index: theme/material/vaadin-item-styles.js
+===================================================================
+--- theme/material/vaadin-item-styles.js
++++ theme/material/vaadin-item-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const item = css`
+   :host {
+@@ -68,6 +68,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-item', item, { moduleId: 'material-item' });
++registerStyles('vaadin23-item', item, { moduleId: 'material-item' });
+ 
+ export { item };

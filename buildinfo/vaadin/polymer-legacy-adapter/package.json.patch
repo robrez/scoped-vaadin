@@ -1,0 +1,57 @@
+Index: package.json
+===================================================================
+--- package.json
++++ package.json
+@@ -1,21 +1,21 @@
+ {
+-  "name": "@vaadin/polymer-legacy-adapter",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/polymer-legacy-adapter",
++  "version": "23.0.1",
++  "repository": {
++    "type": "git",
++    "url": "https://github.com/robrez/scoped-vaadin.git",
++    "directory": "packages/polymer-legacy-adapter"
++  },
++  "bugs": {
++    "url": "https://github.com/robrez/scoped-vaadin/issues"
++  },
+   "publishConfig": {
+     "access": "public"
+   },
+   "description": "polymer-legacy-adapter",
+   "license": "Apache-2.0",
+-  "repository": {
+-    "type": "git",
+-    "url": "https://github.com/vaadin/web-components.git",
+-    "directory": "packages/polymer-legacy-adapter"
+-  },
+   "author": "Vaadin Ltd",
+   "homepage": "https://vaadin.com/elements",
+-  "bugs": {
+-    "url": "https://github.com/vaadin/web-components/issues"
+-  },
+   "main": "index.js",
+   "module": "index.js",
+   "type": "module",
+@@ -32,16 +32,8 @@
+   ],
+   "dependencies": {
+     "@polymer/polymer": "^3.0.0",
+-    "@vaadin/vaadin-themable-mixin": "~23.3.8",
+-    "lit": "^2.0.0"
+-  },
+-  "devDependencies": {
+-    "@esm-bundle/chai": "^4.3.4",
+-    "@vaadin/checkbox": "~23.3.8",
+-    "@vaadin/grid": "~23.3.8",
+-    "@vaadin/grid-pro": "~23.3.8",
+-    "@vaadin/testing-helpers": "^0.3.2",
+-    "sinon": "^13.0.2"
+-  },
+-  "gitHead": "f3bfde4c881f9deb7d757faf4ab070f0596b0a09"
++    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
++    "lit": "^2.0.0",
++    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
++  }
+ }

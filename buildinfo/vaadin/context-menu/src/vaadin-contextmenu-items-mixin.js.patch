@@ -1,0 +1,128 @@
+Index: src/vaadin-contextmenu-items-mixin.js
+===================================================================
+--- src/vaadin-contextmenu-items-mixin.js
++++ src/vaadin-contextmenu-items-mixin.js
+@@ -1,39 +1,40 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
+-import { Item } from '@vaadin/item/src/vaadin-item.js';
+-import { ListBox } from '@vaadin/list-box/src/vaadin-list-box.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { Item } from '@scoped-vaadin/item/src/vaadin-item.js';
++import { ListBox } from '@scoped-vaadin/list-box/src/vaadin-list-box.js';
+ 
+ /**
+- * An element used internally by `<vaadin-context-menu>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-context-menu>`. Not intended to be used separately.
+  *
+  * @extends Item
+  * @protected
+  */
+ class ContextMenuItemElement extends Item {
+   static get is() {
+-    return 'vaadin-context-menu-item';
++    return 'vaadin23-context-menu-item';
+   }
+ }
+ 
+-customElements.define(ContextMenuItemElement.is, ContextMenuItemElement);
++internalCustomElements.define(ContextMenuItemElement.is, ContextMenuItemElement);
+ 
+ /**
+- * An element used internally by `<vaadin-context-menu>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-context-menu>`. Not intended to be used separately.
+  *
+  * @extends ListBox
+  * @protected
+  */
+ class ContextMenuListBox extends ListBox {
+   static get is() {
+-    return 'vaadin-context-menu-list-box';
++    return 'vaadin23-context-menu-list-box';
+   }
+ }
+ 
+-customElements.define(ContextMenuListBox.is, ContextMenuListBox);
++internalCustomElements.define(ContextMenuListBox.is, ContextMenuListBox);
+ 
+ /**
+  * @polymerMixin
+@@ -47,7 +48,7 @@
+          * @type {object}
+          * @property {string} text - Text to be set as the menu item component's textContent
+          * @property {union: string | object} component - The component to represent the item.
+-         * Either a tagName or an element instance. Defaults to "vaadin-context-menu-item".
++         * Either a tagName or an element instance. Defaults to "vaadin23-context-menu-item".
+          * @property {boolean} disabled - If true, the item is disabled and cannot be selected
+          * @property {boolean} checked - If true, the item shows a checkmark next to it
+          * @property {union: string | string[]} theme - If set, sets the given theme(s) as an attribute to the menu item component, overriding any theme set on the context menu.
+@@ -87,8 +88,8 @@
+          *
+          * ### Styling
+          *
+-         * The `<vaadin-context-menu-item>` sub-menu elements have the following additional state attributes on top of
+-         * the built-in `<vaadin-item>` state attributes (see `<vaadin-item>` documentation for full listing).
++         * The `<vaadin23-context-menu-item>` sub-menu elements have the following additional state attributes on top of
++         * the built-in `<vaadin23-item>` state attributes (see `<vaadin23-item>` documentation for full listing).
+          *
+          * Part name | Attribute | Description
+          * ----------------|----------------|----------------
+@@ -105,7 +106,7 @@
+       // Overlay's outside click listener doesn't work with modeless
+       // overlays (submenus) so we need additional logic for it
+       this.__itemsOutsideClickListener = (e) => {
+-        if (!e.composedPath().some((el) => el.localName === 'vaadin-context-menu-overlay')) {
++        if (!e.composedPath().some((el) => el.localName === 'vaadin23-context-menu-overlay')) {
+           this.dispatchEvent(new CustomEvent('items-outside-click'));
+         }
+       };
+@@ -195,7 +196,7 @@
+       const subMenu = root.querySelector(this.constructor.is);
+       subMenu.closeOn = menu.closeOn;
+ 
+-      const listBox = root.querySelector('vaadin-context-menu-list-box');
++      const listBox = root.querySelector('vaadin23-context-menu-list-box');
+ 
+       listBox.innerHTML = '';
+ 
+@@ -206,7 +207,7 @@
+         if (item.component instanceof HTMLElement) {
+           component = item.component;
+         } else {
+-          component = document.createElement(item.component || 'vaadin-context-menu-item');
++          component = document.createElement(item.component || 'vaadin23-context-menu-item');
+         }
+ 
+         if (component instanceof Item) {
+@@ -272,7 +273,7 @@
+     /** @private */
+     __initMenu(root, menu) {
+       if (!root.firstElementChild) {
+-        const listBox = document.createElement('vaadin-context-menu-list-box');
++        const listBox = document.createElement('vaadin23-context-menu-list-box');
+         root.appendChild(listBox);
+ 
+         if (this._theme) {
+@@ -335,7 +336,7 @@
+         });
+         const openSubMenu = (
+           e,
+-          itemElement = e.composedPath().find((e) => e.localName === 'vaadin-context-menu-item'),
++          itemElement = e.composedPath().find((e) => e.localName === 'vaadin23-context-menu-item'),
+         ) => {
+           // Delay enabling the mouseover listener to avoid it from triggering on parent menu open
+           if (!this.__openListenerActive) {
+@@ -379,7 +380,7 @@
+           }
+         });
+       } else {
+-        const listBox = root.querySelector('vaadin-context-menu-list-box');
++        const listBox = root.querySelector('vaadin23-context-menu-list-box');
+         if (this._theme) {
+           listBox.setAttribute('theme', this._theme);
+         } else {

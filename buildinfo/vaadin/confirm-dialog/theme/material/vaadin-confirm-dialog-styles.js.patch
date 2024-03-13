@@ -1,0 +1,14 @@
+Index: theme/material/vaadin-confirm-dialog-styles.js
+===================================================================
+--- theme/material/vaadin-confirm-dialog-styles.js
++++ theme/material/vaadin-confirm-dialog-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-confirm-dialog-overlay',
++  'vaadin23-confirm-dialog-overlay',
+   css`
+     [part='overlay'] {
+       max-width: 100%;

@@ -1,0 +1,23 @@
+Index: theme/lumo/vaadin-time-picker-styles.js
+===================================================================
+--- theme/lumo/vaadin-time-picker-styles.js
++++ theme/lumo/vaadin-time-picker-styles.js
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import { inputFieldShared } from '@vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import { inputFieldShared } from '@scoped-vaadin/vaadin-lumo-styles/mixins/input-field-shared.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const timePicker = css`
+   [part~='toggle-button']::before {
+@@ -21,4 +21,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-time-picker', [inputFieldShared, timePicker], { moduleId: 'lumo-time-picker' });
++registerStyles('vaadin23-time-picker', [inputFieldShared, timePicker], { moduleId: 'lumo-time-picker' });

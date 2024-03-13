@@ -1,0 +1,36 @@
+Index: src/vaadin-multi-select-combo-box-scroller.js
+===================================================================
+--- src/vaadin-multi-select-combo-box-scroller.js
++++ src/vaadin-multi-select-combo-box-scroller.js
+@@ -1,20 +1,21 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ComboBoxPlaceholder } from '@vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
+-import { ComboBoxScroller } from '@vaadin/combo-box/src/vaadin-combo-box-scroller.js';
++import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
++import { ComboBoxScroller } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-scroller.js';
+ 
+ /**
+- * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-multi-select-combo-box>`. Not intended to be used separately.
+  *
+  * @extends ComboBoxScroller
+  * @private
+  */
+ class MultiSelectComboBoxScroller extends ComboBoxScroller {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-scroller';
++    return 'vaadin23-multi-select-combo-box-scroller';
+   }
+ 
+   /** @protected */
+@@ -48,4 +49,4 @@
+   }
+ }
+ 
+-customElements.define(MultiSelectComboBoxScroller.is, MultiSelectComboBoxScroller);
++internalCustomElements.define(MultiSelectComboBoxScroller.is, MultiSelectComboBoxScroller);

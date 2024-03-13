@@ -1,0 +1,56 @@
+Index: src/vaadin-field-highlighter.js
+===================================================================
+--- src/vaadin-field-highlighter.js
++++ src/vaadin-field-highlighter.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+@@ -5,7 +6,7 @@
+  */
+ import './vaadin-field-outline.js';
+ import './vaadin-user-tags.js';
+-import { announce } from '@vaadin/component-base/src/a11y-announcer.js';
++import { announce } from '@scoped-vaadin/component-base/src/a11y-announcer.js';
+ import { CheckboxGroupObserver } from './fields/vaadin-checkbox-group-observer.js';
+ import { DatePickerObserver } from './fields/vaadin-date-picker-observer.js';
+ import { DateTimePickerObserver } from './fields/vaadin-date-time-picker-observer.js';
+@@ -18,25 +19,25 @@
+   let result;
+   switch (field.tagName.toLowerCase()) {
+     /* c8 ignore next */
+-    case 'vaadin-date-picker':
++    case 'vaadin23-date-picker':
+       result = new DatePickerObserver(field);
+       break;
+     /* c8 ignore next */
+-    case 'vaadin-date-time-picker':
++    case 'vaadin23-date-time-picker':
+       result = new DateTimePickerObserver(field);
+       break;
+     /* c8 ignore next */
+-    case 'vaadin-select':
++    case 'vaadin23-select':
+       result = new SelectObserver(field);
+       break;
+     /* c8 ignore next 2 */
+-    case 'vaadin-checkbox-group':
++    case 'vaadin23-checkbox-group':
+       result = new CheckboxGroupObserver(field);
+       break;
+-    case 'vaadin-radio-group':
++    case 'vaadin23-radio-group':
+       result = new RadioGroupObserver(field);
+       break;
+-    case 'vaadin-list-box':
++    case 'vaadin23-list-box':
+       result = new ListBoxObserver(field);
+       break;
+     default:
+@@ -186,4 +187,4 @@
+   }
+ }
+ 
+-customElements.define('vaadin-field-highlighter', FieldHighlighter);
++internalCustomElements.define('vaadin23-field-highlighter', FieldHighlighter);

@@ -1,0 +1,79 @@
+Index: web-types.json
+===================================================================
+--- web-types.json
++++ web-types.json
+@@ -1,14 +1,14 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/upload",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/upload",
++  "version": "23.0.1",
+   "description-markup": "markdown",
+   "contributions": {
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-upload-file",
+-          "description": "`<vaadin-upload-file>` element represents a file in the file list of `<vaadin-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n`progress`       | Progress bar\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "name": "vaadin23-upload-file",
++          "description": "`<vaadin23-upload-file>` element represents a file in the file list of `<vaadin23-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n`progress`       | Progress bar\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+           "attributes": [
+             {
+               "name": "theme",
+@@ -50,26 +50,26 @@
+             "events": [
+               {
+                 "name": "file-abort",
+-                "description": "Fired when abort button is pressed. It is listened by `vaadin-upload` which\nwill abort the upload in progress, but will not remove the file from the list\nto allow the animation to hide the element to be run."
++                "description": "Fired when abort button is pressed. It is listened by `vaadin23-upload` which\nwill abort the upload in progress, but will not remove the file from the list\nto allow the animation to hide the element to be run."
+               },
+               {
+                 "name": "file-remove",
+-                "description": "Fired after the animation to hide the element has finished. It is listened\nby `vaadin-upload` which will actually remove the file from the upload\nfile list."
++                "description": "Fired after the animation to hide the element has finished. It is listened\nby `vaadin23-upload` which will actually remove the file from the upload\nfile list."
+               },
+               {
+                 "name": "file-retry",
+-                "description": "Fired when the retry button is pressed. It is listened by `vaadin-upload`\nwhich will start a new upload process of this file."
++                "description": "Fired when the retry button is pressed. It is listened by `vaadin23-upload`\nwhich will start a new upload process of this file."
+               },
+               {
+                 "name": "file-start",
+-                "description": "Fired when the start button is pressed. It is listened by `vaadin-upload`\nwhich will start a new upload process of this file."
++                "description": "Fired when the start button is pressed. It is listened by `vaadin23-upload`\nwhich will start a new upload process of this file."
+               }
+             ]
+           }
+         },
+         {
+-          "name": "vaadin-upload",
+-          "description": "`<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin-upload></vaadin-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n---|---\n`primary-buttons` | Upload container\n`upload-button` | Upload button\n`drop-label` | Label for drop indicator\n`drop-label-icon` | Icon for drop indicator\n`file-list` | File list container\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "name": "vaadin23-upload",
++          "description": "`<vaadin23-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin23-upload></vaadin23-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n---|---\n`primary-buttons` | Upload container\n`upload-button` | Upload button\n`drop-label` | Label for drop indicator\n`drop-label-icon` | Icon for drop indicator\n`file-list` | File list container\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+           "attributes": [
+             {
+               "name": "nodrop",
+@@ -215,7 +215,7 @@
+               },
+               {
+                 "name": "headers",
+-                "description": "Key-Value map to send to the server. If you set this property as an\nattribute, use a valid JSON string, for example:\n```\n<vaadin-upload headers='{\"X-Foo\": \"Bar\"}'></vaadin-upload>\n```",
++                "description": "Key-Value map to send to the server. If you set this property as an\nattribute, use a valid JSON string, for example:\n```\n<vaadin23-upload headers='{\"X-Foo\": \"Bar\"}'></vaadin23-upload>\n```",
+                 "value": {
+                   "type": [
+                     "object",
+@@ -339,11 +339,11 @@
+               },
+               {
+                 "name": "upload-request",
+-                "description": "Fired when the XHR has been opened but not sent yet. Useful for appending\ndata keys to the FormData object, for changing some parameters like\nheaders, etc. If the event is defaultPrevented, `vaadin-upload` will not\nsend the request allowing the user to do something on his own."
++                "description": "Fired when the XHR has been opened but not sent yet. Useful for appending\ndata keys to the FormData object, for changing some parameters like\nheaders, etc. If the event is defaultPrevented, `vaadin23-upload` will not\nsend the request allowing the user to do something on his own."
+               },
+               {
+                 "name": "upload-response",
+-                "description": "Fired when we have the actual server response, and before the component\nanalyses it. It's useful for developers to make the upload fail depending\non the server response. If the event is defaultPrevented the vaadin-upload\nwill return allowing the user to do something on his own like retry the\nupload, etc. since he has full access to the `xhr` and `file` objects.\nOtherwise, if the event is not prevented default `vaadin-upload` continues\nwith the normal workflow checking the `xhr.status` and `file.error`\nwhich also might be modified by the user to force a customized response."
++                "description": "Fired when we have the actual server response, and before the component\nanalyses it. It's useful for developers to make the upload fail depending\non the server response. If the event is defaultPrevented the vaadin-upload\nwill return allowing the user to do something on his own like retry the\nupload, etc. since he has full access to the `xhr` and `file` objects.\nOtherwise, if the event is not prevented default `vaadin23-upload` continues\nwith the normal workflow checking the `xhr.status` and `file.error`\nwhich also might be modified by the user to force a customized response."
+               },
+               {
+                 "name": "upload-retry",

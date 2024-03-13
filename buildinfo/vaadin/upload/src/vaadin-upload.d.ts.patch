@@ -1,0 +1,66 @@
+Index: src/vaadin-upload.d.ts
+===================================================================
+--- src/vaadin-upload.d.ts
++++ src/vaadin-upload.d.ts
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export interface UploadFile extends File {
+   uploadTarget: string;
+@@ -113,7 +113,7 @@
+  * on the server response. If the event is defaultPrevented the vaadin-upload
+  * will return allowing the user to do something on his own like retry the
+  * upload, etc. since he has full access to the `xhr` and `file` objects.
+- * Otherwise, if the event is not prevented default `vaadin-upload` continues
++ * Otherwise, if the event is not prevented default `vaadin23-upload` continues
+  * with the normal workflow checking the `xhr.status` and `file.error`
+  * which also might be modified by the user to force a customized response,
+  */
+@@ -134,7 +134,7 @@
+ /**
+  * Fired when the XHR has been opened but not sent yet. Useful for appending
+  * data keys to the FormData object, for changing some parameters like
+- * headers, etc. If the event is defaultPrevented, `vaadin-upload` will not
++ * headers, etc. If the event is defaultPrevented, `vaadin23-upload` will not
+  * send the request allowing the user to do something on his own.
+  */
+ export type UploadRequestEvent = CustomEvent<{ xhr: XMLHttpRequest; file: UploadFile; formData: FormData }>;
+@@ -168,12 +168,12 @@
+ export interface UploadEventMap extends HTMLElementEventMap, UploadCustomEventMap {}
+ 
+ /**
+- * `<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.
++ * `<vaadin23-upload>` is a Web Component for uploading multiple files with drag and drop support.
+  *
+  * Example:
+  *
+  * ```
+- * <vaadin-upload></vaadin-upload>
++ * <vaadin23-upload></vaadin23-upload>
+  * ```
+  *
+  * ### Styling
+@@ -237,7 +237,7 @@
+    * Key-Value map to send to the server. If you set this property as an
+    * attribute, use a valid JSON string, for example:
+    * ```
+-   * <vaadin-upload headers='{"X-Foo": "Bar"}'></vaadin-upload>
++   * <vaadin23-upload headers='{"X-Foo": "Bar"}'></vaadin23-upload>
+    * ```
+    */
+   headers: object | string | null;
+@@ -413,7 +413,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-upload': Upload;
++    'vaadin23-upload': Upload;
+   }
+ }
+ 

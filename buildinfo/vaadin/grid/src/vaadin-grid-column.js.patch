@@ -1,0 +1,96 @@
+Index: src/vaadin-grid-column.js
+===================================================================
+--- src/vaadin-grid-column.js
++++ src/vaadin-grid-column.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { animationFrame } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
++import { animationFrame } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
+ 
+ /**
+  * @polymerMixin
+@@ -23,12 +24,12 @@
+         resizable: {
+           type: Boolean,
+           value() {
+-            if (this.localName === 'vaadin-grid-column-group') {
++            if (this.localName === 'vaadin23-grid-column-group') {
+               return;
+             }
+ 
+             const parent = this.parentNode;
+-            if (parent && parent.localName === 'vaadin-grid-column-group') {
++            if (parent && parent.localName === 'vaadin23-grid-column-group') {
+               return parent.resizable || false;
+             }
+             return false;
+@@ -142,7 +143,7 @@
+          * Receives two arguments:
+          *
+          * - `root` The header cell content DOM element. Append your content to it.
+-         * - `column` The `<vaadin-grid-column>` element.
++         * - `column` The `<vaadin23-grid-column>` element.
+          *
+          * @type {GridHeaderFooterRenderer | null | undefined}
+          */
+@@ -165,7 +166,7 @@
+          * Receives two arguments:
+          *
+          * - `root` The footer cell content DOM element. Append your content to it.
+-         * - `column` The `<vaadin-grid-column>` element.
++         * - `column` The `<vaadin23-grid-column>` element.
+          *
+          * @type {GridHeaderFooterRenderer | null | undefined}
+          */
+@@ -727,18 +728,18 @@
+   };
+ 
+ /**
+- * A `<vaadin-grid-column>` is used to configure how a column in `<vaadin-grid>`
++ * A `<vaadin23-grid-column>` is used to configure how a column in `<vaadin23-grid>`
+  * should look like.
+  *
+- * See [`<vaadin-grid>`](#/elements/vaadin-grid) documentation for instructions on how
+- * to configure the `<vaadin-grid-column>`.
++ * See [`<vaadin23-grid>`](#/elements/vaadin-grid) documentation for instructions on how
++ * to configure the `<vaadin23-grid-column>`.
+  *
+  * @extends HTMLElement
+  * @mixes ColumnBaseMixin
+  */
+ class GridColumn extends ColumnBaseMixin(DirMixin(PolymerElement)) {
+   static get is() {
+-    return 'vaadin-grid-column';
++    return 'vaadin23-grid-column';
+   }
+ 
+   static get properties() {
+@@ -766,7 +767,7 @@
+        * Receives three arguments:
+        *
+        * - `root` The cell content DOM element. Append your content to it.
+-       * - `column` The `<vaadin-grid-column>` element.
++       * - `column` The `<vaadin23-grid-column>` element.
+        * - `model` The object with the properties related with
+        *   the rendered item, contains:
+        *   - `model.index` The index of the item.
+@@ -844,6 +845,6 @@
+   }
+ }
+ 
+-customElements.define(GridColumn.is, GridColumn);
++internalCustomElements.define(GridColumn.is, GridColumn);
+ 
+ export { GridColumn };

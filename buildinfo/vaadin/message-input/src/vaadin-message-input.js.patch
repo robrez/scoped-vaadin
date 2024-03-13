@@ -1,0 +1,98 @@
+Index: src/vaadin-message-input.js
+===================================================================
+--- src/vaadin-message-input.js
++++ src/vaadin-message-input.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+@@ -6,13 +7,13 @@
+ import './vaadin-message-input-text-area.js';
+ import './vaadin-message-input-button.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-message-input>` is a Web Component for sending messages.
++ * `<vaadin23-message-input>` is a Web Component for sending messages.
+  * It consists of a text area that grows on along with the content, and a send button to send message.
+  *
+  * The message can be sent by one of the following actions:
+@@ -20,16 +21,16 @@
+  * - by clicking `submit` button.
+  *
+  * ```html
+- * <vaadin-message-input></vaadin-message-input>
++ * <vaadin23-message-input></vaadin23-message-input>
+  * ```
+  *
+  * ### Internal components
+  *
+- * In addition to `<vaadin-message-input>` itself, the following internal
++ * In addition to `<vaadin23-message-input>` itself, the following internal
+  * components are themable:
+  *
+- * - `<vaadin-message-input-button>` - has the same API as [`<vaadin-button>`](#/elements/vaadin-button).
+- * - `<vaadin-message-input-text-area>` - has the same API as [`<vaadin-text-area>`](#/elements/vaadin-text-area).
++ * - `<vaadin23-message-input-button>` - has the same API as [`<vaadin23-button>`](#/elements/vaadin-button).
++ * - `<vaadin23-message-input-text-area>` - has the same API as [`<vaadin23-text-area>`](#/elements/vaadin-text-area).
+  *
+  * @extends HTMLElement
+  * @mizes ControllerMixin
+@@ -103,15 +104,15 @@
+           display: none !important;
+         }
+       </style>
+-      <vaadin-message-input-text-area
++      <vaadin23-message-input-text-area
+         disabled="[[disabled]]"
+         value="{{value}}"
+         placeholder="[[i18n.message]]"
+         aria-label="[[i18n.message]]"
+         on-enter="__submit"
+-      ></vaadin-message-input-text-area>
+-      <vaadin-message-input-button disabled="[[disabled]]" theme="primary contained" on-click="__submit"
+-        >[[i18n.send]]</vaadin-message-input-button
++      ></vaadin23-message-input-text-area>
++      <vaadin23-message-input-button disabled="[[disabled]]" theme="primary contained" on-click="__submit"
++        >[[i18n.send]]</vaadin23-message-input-button
+       >
+ 
+       <slot name="tooltip"></slot>
+@@ -119,7 +120,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-message-input';
++    return 'vaadin23-message-input';
+   }
+ 
+   /** @protected */
+@@ -141,16 +142,16 @@
+       this.dispatchEvent(new CustomEvent('submit', { detail: { value: this.value } }));
+       this.value = '';
+     }
+-    this.shadowRoot.querySelector('vaadin-message-input-text-area').focus();
++    this.shadowRoot.querySelector('vaadin23-message-input-text-area').focus();
+   }
+ 
+   /**
+-   * Fired when a new message is submitted with `<vaadin-message-input>`, either
++   * Fired when a new message is submitted with `<vaadin23-message-input>`, either
+    * by clicking the "send" button, or pressing the Enter key.
+    * @event submit
+    */
+ }
+ 
+-customElements.define(MessageInput.is, MessageInput);
++internalCustomElements.define(MessageInput.is, MessageInput);
+ 
+ export { MessageInput };

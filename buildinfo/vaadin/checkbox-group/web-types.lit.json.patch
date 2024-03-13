@@ -1,0 +1,25 @@
+Index: web-types.lit.json
+===================================================================
+--- web-types.lit.json
++++ web-types.lit.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/checkbox-group",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/checkbox-group",
++  "version": "23.0.1",
+   "description-markup": "markdown",
+   "framework": "lit",
+   "framework-config": {
+@@ -15,8 +15,8 @@
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-checkbox-group",
+-          "description": "`<vaadin-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.\n\n```html\n<vaadin-checkbox-group label=\"Preferred language of contact:\">\n  <vaadin-checkbox value=\"en\" label=\"English\"></vaadin-checkbox>\n  <vaadin-checkbox value=\"fr\" label=\"Français\"></vaadin-checkbox>\n  <vaadin-checkbox value=\"de\" label=\"Deutsch\"></vaadin-checkbox>\n</vaadin-checkbox-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`group-field`        | The checkbox elements wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`disabled`          | Set when the element is disabled          | :host\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "name": "vaadin23-checkbox-group",
++          "description": "`<vaadin23-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.\n\n```html\n<vaadin23-checkbox-group label=\"Preferred language of contact:\">\n  <vaadin23-checkbox value=\"en\" label=\"English\"></vaadin23-checkbox>\n  <vaadin23-checkbox value=\"fr\" label=\"Français\"></vaadin23-checkbox>\n  <vaadin23-checkbox value=\"de\" label=\"Deutsch\"></vaadin23-checkbox>\n</vaadin23-checkbox-group>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`group-field`        | The checkbox elements wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`disabled`          | Set when the element is disabled          | :host\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+           "extension": true,
+           "attributes": [
+             {

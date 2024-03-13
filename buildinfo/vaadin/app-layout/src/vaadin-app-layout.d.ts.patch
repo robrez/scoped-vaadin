@@ -1,0 +1,73 @@
+Index: src/vaadin-app-layout.d.ts
+===================================================================
+--- src/vaadin-app-layout.d.ts
++++ src/vaadin-app-layout.d.ts
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export interface AppLayoutI18n {
+   drawer: string;
+@@ -37,21 +37,21 @@
+ export type AppLayoutEventMap = AppLayoutCustomEventMap & HTMLElementEventMap;
+ 
+ /**
+- * `<vaadin-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
++ * `<vaadin23-app-layout>` is a Web Component providing a quick and easy way to get a common application layout structure done.
+  *
+  * ```
+- * <vaadin-app-layout primary-section="navbar|drawer">
+- *  <vaadin-drawer-toggle slot="navbar [touch-optimized]"></vaadin-drawer-toggle>
++ * <vaadin23-app-layout primary-section="navbar|drawer">
++ *  <vaadin23-drawer-toggle slot="navbar [touch-optimized]"></vaadin23-drawer-toggle>
+  *  <h3 slot="navbar [touch-optimized]">Company Name</h3>
+- *  <vaadin-tabs orientation="vertical" slot="drawer">
+- *    <vaadin-tab>Menu item 1</vaadin-tab>
+- *  </vaadin-tabs>
++ *  <vaadin23-tabs orientation="vertical" slot="drawer">
++ *    <vaadin23-tab>Menu item 1</vaadin23-tab>
++ *  </vaadin23-tabs>
+  *  <!-- Everything else will be the page content -->
+  *  <div>
+  *    <h3>Page title</h3>
+  *    <p>Page content</p>
+  *  </div>
+- * </vaadin-app-layout>
++ * </vaadin23-app-layout>
+  * ```
+  *
+  * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
+@@ -71,7 +71,7 @@
+  *
+  * ### Styling
+  *
+- * The following Shadow DOM parts of the `<vaadin-app-layout>` are available for styling:
++ * The following Shadow DOM parts of the `<vaadin23-app-layout>` are available for styling:
+  *
+  * Part name     | Description
+  * --------------|---------------------------------------------------------|
+@@ -104,7 +104,7 @@
+  * If you are using Vaadin Router, this will happen automatically unless you change the `closeDrawerOn` event name.
+  *
+  * In order to do so, there are two options:
+- * - If the `vaadin-app-layout` instance is available, then `drawerOpened` can be set to `false`
++ * - If the `vaadin23-app-layout` instance is available, then `drawerOpened` can be set to `false`
+  * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
+  *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
+  *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
+@@ -197,7 +197,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-app-layout': AppLayout;
++    'vaadin23-app-layout': AppLayout;
+   }
+ }
+ 

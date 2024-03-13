@@ -1,0 +1,72 @@
+Index: package.json
+===================================================================
+--- package.json
++++ package.json
+@@ -1,21 +1,21 @@
+ {
+-  "name": "@vaadin/notification",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/notification",
++  "version": "23.0.1",
++  "repository": {
++    "type": "git",
++    "url": "https://github.com/robrez/scoped-vaadin.git",
++    "directory": "packages/notification"
++  },
++  "bugs": {
++    "url": "https://github.com/robrez/scoped-vaadin/issues"
++  },
+   "publishConfig": {
+     "access": "public"
+   },
+   "description": "vaadin-notification",
+   "license": "Apache-2.0",
+-  "repository": {
+-    "type": "git",
+-    "url": "https://github.com/vaadin/web-components.git",
+-    "directory": "packages/notification"
+-  },
+   "author": "Vaadin Ltd",
+   "homepage": "https://vaadin.com/components",
+-  "bugs": {
+-    "url": "https://github.com/vaadin/web-components/issues"
+-  },
+   "main": "vaadin-notification.js",
+   "module": "vaadin-notification.js",
+   "type": "module",
+@@ -36,25 +36,18 @@
+     "web-component",
+     "polymer"
+   ],
+-  "dependencies": {
+-    "@polymer/polymer": "^3.0.0",
+-    "@vaadin/component-base": "~23.3.8",
+-    "@vaadin/lit-renderer": "~23.3.8",
+-    "@vaadin/vaadin-lumo-styles": "~23.3.8",
+-    "@vaadin/vaadin-material-styles": "~23.3.8",
+-    "@vaadin/vaadin-themable-mixin": "~23.3.8",
+-    "lit": "^2.0.0"
+-  },
+-  "devDependencies": {
+-    "@esm-bundle/chai": "^4.3.4",
+-    "@vaadin/button": "~23.3.8",
+-    "@vaadin/polymer-legacy-adapter": "~23.3.8",
+-    "@vaadin/testing-helpers": "^0.3.2",
+-    "sinon": "^13.0.2"
+-  },
+   "web-types": [
+     "web-types.json",
+     "web-types.lit.json"
+   ],
+-  "gitHead": "f3bfde4c881f9deb7d757faf4ab070f0596b0a09"
++  "dependencies": {
++    "@polymer/polymer": "^3.0.0",
++    "@scoped-vaadin/component-base": "^23.0.1",
++    "@scoped-vaadin/lit-renderer": "^23.0.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.1",
++    "@scoped-vaadin/vaadin-material-styles": "^23.0.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
++    "lit": "^2.0.0",
++    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
++  }
+ }

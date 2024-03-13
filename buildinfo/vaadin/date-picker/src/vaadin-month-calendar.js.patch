@@ -1,0 +1,37 @@
+Index: src/vaadin-month-calendar.js
+===================================================================
+--- src/vaadin-month-calendar.js
++++ src/vaadin-month-calendar.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+@@ -5,9 +6,9 @@
+  */
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { addListener } from '@vaadin/component-base/src/gestures.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { addListener } from '@scoped-vaadin/component-base/src/gestures.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { dateAllowed, dateEquals, getISOWeekNumber } from './vaadin-date-picker-helper.js';
+ 
+ /**
+@@ -120,7 +121,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-month-calendar';
++    return 'vaadin23-month-calendar';
+   }
+ 
+   static get properties() {
+@@ -430,4 +431,4 @@
+   }
+ }
+ 
+-customElements.define(MonthCalendar.is, MonthCalendar);
++internalCustomElements.define(MonthCalendar.is, MonthCalendar);

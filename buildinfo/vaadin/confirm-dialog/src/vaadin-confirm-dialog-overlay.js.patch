@@ -1,0 +1,80 @@
+Index: src/vaadin-confirm-dialog-overlay.js
+===================================================================
+--- src/vaadin-confirm-dialog-overlay.js
++++ src/vaadin-confirm-dialog-overlay.js
+@@ -1,14 +1,15 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+-import { Dialog, DialogOverlay } from '@vaadin/dialog/src/vaadin-dialog.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { Dialog, DialogOverlay } from '@scoped-vaadin/dialog/src/vaadin-dialog.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-confirm-dialog-overlay',
++  'vaadin23-confirm-dialog-overlay',
+   css`
+     :host {
+       --_vaadin-confirm-dialog-content-width: auto;
+@@ -43,13 +44,13 @@
+ `;
+ 
+ /**
+- * An extension of `<vaadin-dialog-overlay>` used internally by `<vaadin-confirm-dialog>`.
++ * An extension of `<vaadin23-dialog-overlay>` used internally by `<vaadin23-confirm-dialog>`.
+  * Not intended to be used separately.
+  * @private
+  */
+ class ConfirmDialogOverlay extends DialogOverlay {
+   static get is() {
+-    return 'vaadin-confirm-dialog-overlay';
++    return 'vaadin23-confirm-dialog-overlay';
+   }
+ 
+   static get template() {
+@@ -106,16 +107,16 @@
+   }
+ }
+ 
+-customElements.define(ConfirmDialogOverlay.is, ConfirmDialogOverlay);
++internalCustomElements.define(ConfirmDialogOverlay.is, ConfirmDialogOverlay);
+ 
+ /**
+- * An extension of `<vaadin-dialog>` used internally by `<vaadin-confirm-dialog>`.
++ * An extension of `<vaadin23-dialog>` used internally by `<vaadin23-confirm-dialog>`.
+  * Not intended to be used separately.
+  * @private
+  */
+ class ConfirmDialogDialog extends Dialog {
+   static get is() {
+-    return 'vaadin-confirm-dialog-dialog';
++    return 'vaadin23-confirm-dialog-dialog';
+   }
+ 
+   /**
+@@ -129,7 +130,7 @@
+         }
+       </style>
+ 
+-      <vaadin-confirm-dialog-overlay
++      <vaadin23-confirm-dialog-overlay
+         id="overlay"
+         on-opened-changed="_onOverlayOpened"
+         on-mousedown="_bringOverlayToFront"
+@@ -139,9 +140,9 @@
+         with-backdrop="[[!modeless]]"
+         resizable$="[[resizable]]"
+         focus-trap
+-      ></vaadin-confirm-dialog-overlay>
++      ></vaadin23-confirm-dialog-overlay>
+     `;
+   }
+ }
+ 
+-customElements.define(ConfirmDialogDialog.is, ConfirmDialogDialog);
++internalCustomElements.define(ConfirmDialogDialog.is, ConfirmDialogDialog);

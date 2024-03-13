@@ -1,0 +1,35 @@
+Index: src/vaadin-menu-bar-buttons-mixin.js
+===================================================================
+--- src/vaadin-menu-bar-buttons-mixin.js
++++ src/vaadin-menu-bar-buttons-mixin.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2019 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+ 
+ /**
+  * @polymerMixin
+@@ -187,7 +187,7 @@
+ 
+     /** @protected */
+     _initButton(item) {
+-      const button = document.createElement('vaadin-menu-bar-button');
++      const button = document.createElement('vaadin23-menu-bar-button');
+       button.setAttribute('part', 'menu-bar-button');
+ 
+       const itemCopy = { ...item };
+@@ -251,10 +251,10 @@
+ 
+       const isElement = itemComponent instanceof HTMLElement;
+       // Use existing item component, if any
+-      if (isElement && itemComponent.localName === 'vaadin-context-menu-item') {
++      if (isElement && itemComponent.localName === 'vaadin23-context-menu-item') {
+         component = itemComponent;
+       } else {
+-        component = document.createElement('vaadin-context-menu-item');
++        component = document.createElement('vaadin23-context-menu-item');
+         component.appendChild(isElement ? itemComponent : document.createElement(itemComponent));
+       }
+       if (item.text) {

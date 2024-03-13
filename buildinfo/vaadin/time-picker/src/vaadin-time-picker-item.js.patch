@@ -1,0 +1,31 @@
+Index: src/vaadin-time-picker-item.js
+===================================================================
+--- src/vaadin-time-picker-item.js
++++ src/vaadin-time-picker-item.js
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ComboBoxItem } from '@vaadin/combo-box/src/vaadin-combo-box-item.js';
++import { ComboBoxItem } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-item.js';
+ 
+ /**
+- * An element used for items in `<vaadin-time-picker>`.
++ * An element used for items in `<vaadin23-time-picker>`.
+  *
+  * ### Styling
+  *
+@@ -30,8 +31,8 @@
+  */
+ class TimePickerItem extends ComboBoxItem {
+   static get is() {
+-    return 'vaadin-time-picker-item';
++    return 'vaadin23-time-picker-item';
+   }
+ }
+ 
+-customElements.define(TimePickerItem.is, TimePickerItem);
++internalCustomElements.define(TimePickerItem.is, TimePickerItem);

@@ -1,0 +1,13 @@
+Index: theme/material/vaadin-context-menu.js
+===================================================================
+--- theme/material/vaadin-context-menu.js
++++ theme/material/vaadin-context-menu.js
+@@ -1,5 +1,5 @@
+ import './vaadin-context-menu-styles.js';
+-import '@vaadin/item/theme/material/vaadin-item.js';
+-import '@vaadin/list-box/theme/material/vaadin-list-box.js';
+-import '@vaadin/overlay/theme/material/vaadin-overlay.js';
++import '@scoped-vaadin/item/theme/material/vaadin-item.js';
++import '@scoped-vaadin/list-box/theme/material/vaadin-list-box.js';
++import '@scoped-vaadin/overlay/theme/material/vaadin-overlay.js';
+ import '../../src/vaadin-context-menu.js';

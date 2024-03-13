@@ -1,0 +1,25 @@
+Index: web-types.lit.json
+===================================================================
+--- web-types.lit.json
++++ web-types.lit.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/custom-field",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/custom-field",
++  "version": "23.0.1",
+   "description-markup": "markdown",
+   "framework": "lit",
+   "framework-config": {
+@@ -15,8 +15,8 @@
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-custom-field",
+-          "description": "`<vaadin-custom-field>` is a web component for wrapping multiple components as a single field.\n\n```\n<vaadin-custom-field label=\"Appointment time\">\n  <vaadin-date-picker></vaadin-date-picker>\n  <vaadin-time-picker></vaadin-time-picker>\n</vaadin-custom-field>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nYou may also manually set `disabled` or `readonly` attribute on this component to make the label\npart look visually the same as on a `<vaadin-text-field>` when it is disabled or readonly.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "name": "vaadin23-custom-field",
++          "description": "`<vaadin23-custom-field>` is a web component for wrapping multiple components as a single field.\n\n```\n<vaadin23-custom-field label=\"Appointment time\">\n  <vaadin23-date-picker></vaadin23-date-picker>\n  <vaadin23-time-picker></vaadin23-time-picker>\n</vaadin23-custom-field>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name            | Description\n---------------------|----------------\n`label`              | The slotted label element wrapper\n`helper-text`        | The slotted helper text element wrapper\n`error-message`      | The slotted error message element wrapper\n`required-indicator` | The `required` state indicator element\n\nThe following state attributes are available for styling:\n\nAttribute           | Description                               | Part name\n--------------------|-------------------------------------------|------------\n`invalid`           | Set when the element is invalid           | :host\n`focused`           | Set when the element is focused           | :host\n`has-label`         | Set when the element has a label          | :host\n`has-value`         | Set when the element has a value          | :host\n`has-helper`        | Set when the element has helper text      | :host\n`has-error-message` | Set when the element has an error message | :host\n\nYou may also manually set `disabled` or `readonly` attribute on this component to make the label\npart look visually the same as on a `<vaadin23-text-field>` when it is disabled or readonly.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+           "extension": true,
+           "attributes": [
+             {

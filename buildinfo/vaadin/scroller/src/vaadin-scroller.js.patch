@@ -1,0 +1,53 @@
+Index: src/vaadin-scroller.js
+===================================================================
+--- src/vaadin-scroller.js
++++ src/vaadin-scroller.js
+@@ -1,22 +1,23 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2020 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { OverflowController } from '@vaadin/component-base/src/overflow-controller.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-scroller>` provides a simple way to enable scrolling when its content is overflowing.
++ * `<vaadin23-scroller>` provides a simple way to enable scrolling when its content is overflowing.
+  *
+  * ```
+- * <vaadin-scroller>
++ * <vaadin23-scroller>
+  *   <div>Content</div>
+- * </vaadin-scroller>
++ * </vaadin23-scroller>
+  * ```
+  * The following attributes are exposed for styling:
+  *
+@@ -63,7 +64,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-scroller';
++    return 'vaadin23-scroller';
+   }
+ 
+   static get properties() {
+@@ -110,6 +111,6 @@
+   }
+ }
+ 
+-customElements.define(Scroller.is, Scroller);
++internalCustomElements.define(Scroller.is, Scroller);
+ 
+ export { Scroller };

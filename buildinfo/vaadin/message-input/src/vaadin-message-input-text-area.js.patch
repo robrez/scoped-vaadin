@@ -1,0 +1,45 @@
+Index: src/vaadin-message-input-text-area.js
+===================================================================
+--- src/vaadin-message-input-text-area.js
++++ src/vaadin-message-input-text-area.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { TextArea } from '@vaadin/text-area/src/vaadin-text-area.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { TextArea } from '@scoped-vaadin/text-area/src/vaadin-text-area.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message-input-text-area',
++  'vaadin23-message-input-text-area',
+   css`
+     :host {
+       align-self: stretch;
+@@ -22,14 +23,14 @@
+ );
+ 
+ /**
+- * An element used internally by `<vaadin-message-input>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-message-input>`. Not intended to be used separately.
+  *
+  * @extends TextArea
+  * @protected
+  */
+ class MessageInputTextArea extends TextArea {
+   static get is() {
+-    return 'vaadin-message-input-text-area';
++    return 'vaadin23-message-input-text-area';
+   }
+ 
+   static get properties() {
+@@ -96,4 +97,4 @@
+   }
+ }
+ 
+-customElements.define(MessageInputTextArea.is, MessageInputTextArea);
++internalCustomElements.define(MessageInputTextArea.is, MessageInputTextArea);

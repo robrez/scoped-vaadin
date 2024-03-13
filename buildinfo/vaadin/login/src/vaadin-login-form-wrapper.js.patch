@@ -1,0 +1,58 @@
+Index: src/vaadin-login-form-wrapper.js
+===================================================================
+--- src/vaadin-login-form-wrapper.js
++++ src/vaadin-login-form-wrapper.js
+@@ -1,16 +1,17 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/button/src/vaadin-button.js';
++import '@scoped-vaadin/button/src/vaadin-button.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { LoginMixin } from './vaadin-login-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-login-form>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-login-form>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ElementMixin
+@@ -55,12 +56,12 @@
+ 
+         <slot name="form"></slot>
+ 
+-        <vaadin-button
++        <vaadin23-button
+           id="forgotPasswordButton"
+           theme="tertiary small forgot-password"
+           on-click="_forgotPassword"
+           hidden$="[[noForgotPassword]]"
+-          >[[i18n.form.forgotPassword]]</vaadin-button
++          >[[i18n.form.forgotPassword]]</vaadin23-button
+         >
+ 
+         <div part="footer">
+@@ -71,7 +72,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-login-form-wrapper';
++    return 'vaadin23-login-form-wrapper';
+   }
+ 
+   _forgotPassword() {
+@@ -79,6 +80,6 @@
+   }
+ }
+ 
+-customElements.define(LoginFormWrapper.is, LoginFormWrapper);
++internalCustomElements.define(LoginFormWrapper.is, LoginFormWrapper);
+ 
+ export { LoginFormWrapper };

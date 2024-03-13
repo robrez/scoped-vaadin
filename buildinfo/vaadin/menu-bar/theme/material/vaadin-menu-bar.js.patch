@@ -1,0 +1,11 @@
+Index: theme/material/vaadin-menu-bar.js
+===================================================================
+--- theme/material/vaadin-menu-bar.js
++++ theme/material/vaadin-menu-bar.js
+@@ -2,5 +2,5 @@
+ import './vaadin-menu-bar-item-styles.js';
+ import './vaadin-menu-bar-styles.js';
+ import './vaadin-menu-bar-overlay-styles.js';
+-import '@vaadin/context-menu/theme/material/vaadin-context-menu.js';
++import '@scoped-vaadin/context-menu/theme/material/vaadin-context-menu.js';
+ import '../../src/vaadin-menu-bar.js';

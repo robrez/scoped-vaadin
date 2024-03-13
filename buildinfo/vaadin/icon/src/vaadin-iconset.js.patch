@@ -1,0 +1,68 @@
+Index: src/vaadin-iconset.js
+===================================================================
+--- src/vaadin-iconset.js
++++ src/vaadin-iconset.js
+@@ -1,16 +1,17 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
+ import { cloneSvgNode } from './vaadin-icon-svg.js';
+ 
+ const iconRegistry = {};
+ 
+ /**
+- * `<vaadin-iconset>` is a Web Component for creating SVG icon collections.
++ * `<vaadin23-iconset>` is a Web Component for creating SVG icon collections.
+  *
+  * @extends HTMLElement
+  * @mixes ElementMixin
+@@ -21,7 +22,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-iconset';
++    return 'vaadin23-iconset';
+   }
+ 
+   static get properties() {
+@@ -30,7 +31,7 @@
+        * The name of the iconset. Every iconset is required to have its own unique name.
+        * All the SVG icons in the iconset must have IDs conforming to its name.
+        *
+-       * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin-icon`.
++       * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin23-icon`.
+        */
+       name: {
+         type: String,
+@@ -40,7 +41,7 @@
+       /**
+        * The size of an individual icon. Note that icons must be square.
+        *
+-       * When using `vaadin-icon`, the size of the iconset will take precedence
++       * When using `vaadin23-icon`, the size of the iconset will take precedence
+        * over the size defined by the user to ensure correct appearance.
+        */
+       size: {
+@@ -58,7 +59,7 @@
+   static getIconset(name) {
+     let iconset = iconRegistry[name];
+     if (!iconset) {
+-      iconset = document.createElement('vaadin-iconset');
++      iconset = document.createElement('vaadin23-iconset');
+       iconset.name = name;
+       iconRegistry[name] = iconset;
+     }
+@@ -119,6 +120,6 @@
+   }
+ }
+ 
+-customElements.define(Iconset.is, Iconset);
++internalCustomElements.define(Iconset.is, Iconset);
+ 
+ export { Iconset };

@@ -1,0 +1,31 @@
+Index: src/vaadin-multi-select-combo-box-item.js
+===================================================================
+--- src/vaadin-multi-select-combo-box-item.js
++++ src/vaadin-multi-select-combo-box-item.js
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ComboBoxItem } from '@vaadin/combo-box/src/vaadin-combo-box-item.js';
++import { ComboBoxItem } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-item.js';
+ 
+ /**
+- * An element used for items in `<vaadin-multi-select-combo-box>`.
++ * An element used for items in `<vaadin23-multi-select-combo-box>`.
+  *
+  * ### Styling
+  *
+@@ -30,8 +31,8 @@
+  */
+ class MultiSelectComboBoxItem extends ComboBoxItem {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-item';
++    return 'vaadin23-multi-select-combo-box-item';
+   }
+ }
+ 
+-customElements.define(MultiSelectComboBoxItem.is, MultiSelectComboBoxItem);
++internalCustomElements.define(MultiSelectComboBoxItem.is, MultiSelectComboBoxItem);

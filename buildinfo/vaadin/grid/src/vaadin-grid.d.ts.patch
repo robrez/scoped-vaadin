@@ -1,0 +1,118 @@
+Index: src/vaadin-grid.d.ts
+===================================================================
+--- src/vaadin-grid.d.ts
++++ src/vaadin-grid.d.ts
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import type { DisabledMixinClass } from '@vaadin/component-base/src/disabled-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import type { ActiveItemMixinClass } from './vaadin-grid-active-item-mixin.js';
+ import type { ArrayDataProviderMixinClass } from './vaadin-grid-array-data-provider-mixin.js';
+ import type { GridColumn } from './vaadin-grid-column.js';
+@@ -160,26 +160,26 @@
+ export interface GridEventMap<TItem> extends HTMLElementEventMap, GridCustomEventMap<TItem> {}
+ 
+ /**
+- * `<vaadin-grid>` is a free, high quality data grid / data table Web Component. The content of the
++ * `<vaadin23-grid>` is a free, high quality data grid / data table Web Component. The content of the
+  * the grid can be populated by using renderer callback function.
+  *
+  * ### Quick Start
+  *
+  * Start with an assigning an array to the [`items`](#/elements/vaadin-grid#property-items) property to visualize your data.
+  *
+- * Use the [`<vaadin-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
++ * Use the [`<vaadin23-grid-column>`](#/elements/vaadin-grid-column) element to configure the grid columns. Set `path` and `header`
+  * shorthand properties for the columns to define what gets rendered in the cells of the column.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid>
+- *   <vaadin-grid-column path="name.first" header="First name"></vaadin-grid-column>
+- *   <vaadin-grid-column path="name.last" header="Last name"></vaadin-grid-column>
+- *   <vaadin-grid-column path="email"></vaadin-grid-column>
+- * </vaadin-grid>
++ * <vaadin23-grid>
++ *   <vaadin23-grid-column path="name.first" header="First name"></vaadin23-grid-column>
++ *   <vaadin23-grid-column path="name.last" header="Last name"></vaadin23-grid-column>
++ *   <vaadin23-grid-column path="email"></vaadin23-grid-column>
++ * </vaadin23-grid>
+  * ```
+  *
+- * For custom content `vaadin-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
++ * For custom content `vaadin23-grid-column` element provides you with three types of `renderer` callback functions: `headerRenderer`,
+  * `renderer` and `footerRenderer`.
+  *
+  * Each of those renderer functions provides `root`, `column`, `model` arguments when applicable.
+@@ -194,18 +194,18 @@
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- *   <vaadin-grid-column></vaadin-grid-column>
+- * </vaadin-grid>
++ * <vaadin23-grid>
++ *   <vaadin23-grid-column></vaadin23-grid-column>
++ *   <vaadin23-grid-column></vaadin23-grid-column>
++ *   <vaadin23-grid-column></vaadin23-grid-column>
++ * </vaadin23-grid>
+  * ```
+  * ```js
+- * const grid = document.querySelector('vaadin-grid');
++ * const grid = document.querySelector('vaadin23-grid');
+  * grid.items = [{'name': 'John', 'surname': 'Lennon', 'role': 'singer'},
+  *               {'name': 'Ringo', 'surname': 'Starr', 'role': 'drums'}];
+  *
+- * const columns = grid.querySelectorAll('vaadin-grid-column');
++ * const columns = grid.querySelectorAll('vaadin23-grid-column');
+  *
+  * columns[0].headerRenderer = function(root) {
+  *   root.textContent = 'Name';
+@@ -241,11 +241,11 @@
+  * `detailsOpened` | Boolean | True if the item's row details are open.
+  *
+  * The following helper elements can be used for further customization:
+- * - [`<vaadin-grid-column-group>`](#/elements/vaadin-grid-column-group)
+- * - [`<vaadin-grid-filter>`](#/elements/vaadin-grid-filter)
+- * - [`<vaadin-grid-sorter>`](#/elements/vaadin-grid-sorter)
+- * - [`<vaadin-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
+- * - [`<vaadin-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
++ * - [`<vaadin23-grid-column-group>`](#/elements/vaadin-grid-column-group)
++ * - [`<vaadin23-grid-filter>`](#/elements/vaadin-grid-filter)
++ * - [`<vaadin23-grid-sorter>`](#/elements/vaadin-grid-sorter)
++ * - [`<vaadin23-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
++ * - [`<vaadin23-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
+  *
+  * __Note that the helper elements must be explicitly imported.__
+  * If you want to import everything at once you can use the `all-imports.html` bundle.
+@@ -253,9 +253,9 @@
+  * ### Lazy Loading with Function Data Provider
+  *
+  * In addition to assigning an array to the items property, you can alternatively
+- * provide the `<vaadin-grid>` data through the
++ * provide the `<vaadin23-grid>` data through the
+  * [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) function property.
+- * The `<vaadin-grid>` calls this function lazily, only when it needs more data
++ * The `<vaadin23-grid>` calls this function lazily, only when it needs more data
+  * to be displayed.
+  *
+  * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) in
+@@ -428,7 +428,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid': Grid<GridDefaultItem>;
++    'vaadin23-grid': Grid<GridDefaultItem>;
+   }
+ }
+ 

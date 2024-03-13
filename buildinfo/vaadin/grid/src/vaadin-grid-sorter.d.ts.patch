@@ -1,0 +1,47 @@
+Index: src/vaadin-grid-sorter.d.ts
+===================================================================
+--- src/vaadin-grid-sorter.d.ts
++++ src/vaadin-grid-sorter.d.ts
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export type GridSorterDirection = 'asc' | 'desc' | null;
+ 
+@@ -27,19 +27,19 @@
+ export interface GridSorterEventMap extends HTMLElementEventMap, GridSorterCustomEventMap {}
+ 
+ /**
+- * `<vaadin-grid-sorter>` is a helper element for the `<vaadin-grid>` that provides out-of-the-box UI controls,
++ * `<vaadin23-grid-sorter>` is a helper element for the `<vaadin23-grid>` that provides out-of-the-box UI controls,
+  * visual feedback, and handlers for sorting the grid data.
+  *
+  * #### Example:
+  * ```html
+- * <vaadin-grid-column id="column"></vaadin-grid-column>
++ * <vaadin23-grid-column id="column"></vaadin23-grid-column>
+  * ```
+  * ```js
+  * const column = document.querySelector('#column');
+  * column.renderer = (root, column, model) => {
+  *   let sorter = root.firstElementChild;
+  *   if (!sorter) {
+- *     sorter = document.createElement('vaadin-grid-sorter');
++ *     sorter = document.createElement('vaadin23-grid-sorter');
+  *     root.appendChild(sorter);
+  *   }
+  *   sorter.path = 'name.first';
+@@ -93,7 +93,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-grid-sorter': GridSorter;
++    'vaadin23-grid-sorter': GridSorter;
+   }
+ }
+ 

@@ -1,0 +1,25 @@
+Index: src/lit/renderer-directives.d.ts
+===================================================================
+--- src/lit/renderer-directives.d.ts
++++ src/lit/renderer-directives.d.ts
+@@ -5,7 +5,7 @@
+  */
+ import type { TemplateResult } from 'lit';
+ import type { DirectiveResult } from 'lit/directive.js';
+-import { LitRendererDirective } from '@vaadin/lit-renderer';
++import { LitRendererDirective } from '@scoped-vaadin/lit-renderer';
+ import type { ContextMenu, ContextMenuRendererContext } from '../vaadin-context-menu.js';
+ 
+ export type ContextMenuLitRenderer = (context: ContextMenuRendererContext, menu: ContextMenu) => TemplateResult;
+@@ -44,9 +44,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-context-menu
++ * `<vaadin23-context-menu
+  *   ${contextMenuRenderer((context, menu) => html`...`)}
+- * ></vaadin-context-menu>`
++ * ></vaadin23-context-menu>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

@@ -1,0 +1,13 @@
+Index: src/vaadin-grid-row-details-mixin.js
+===================================================================
+--- src/vaadin-grid-row-details-mixin.js
++++ src/vaadin-grid-row-details-mixin.js
+@@ -25,7 +25,7 @@
+          * Receives three arguments:
+          *
+          * - `root` The row details content DOM element. Append your content to it.
+-         * - `grid` The `<vaadin-grid>` element.
++         * - `grid` The `<vaadin23-grid>` element.
+          * - `model` The object with the properties related with
+          *   the rendered item, contains:
+          *   - `model.index` The index of the item.

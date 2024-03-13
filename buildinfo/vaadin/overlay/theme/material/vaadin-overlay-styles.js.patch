@@ -1,0 +1,12 @@
+Index: theme/material/vaadin-overlay-styles.js
+===================================================================
+--- theme/material/vaadin-overlay-styles.js
++++ theme/material/vaadin-overlay-styles.js
+@@ -1,4 +1,4 @@
+-import { overlay } from '@vaadin/vaadin-material-styles/mixins/overlay.js';
+-import { registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { overlay } from '@scoped-vaadin/vaadin-material-styles/mixins/overlay.js';
++import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+-registerStyles('vaadin-overlay', overlay, { moduleId: 'material-vaadin-overlay' });
++registerStyles('vaadin23-overlay', overlay, { moduleId: 'material-vaadin-overlay' });

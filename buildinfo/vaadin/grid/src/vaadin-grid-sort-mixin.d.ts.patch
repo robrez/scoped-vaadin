@@ -1,0 +1,13 @@
+Index: src/vaadin-grid-sort-mixin.d.ts
+===================================================================
+--- src/vaadin-grid-sort-mixin.d.ts
++++ src/vaadin-grid-sort-mixin.d.ts
+@@ -16,7 +16,7 @@
+   static setDefaultMultiSortPriority(priority: 'append' | 'prepend'): void;
+ 
+   /**
+-   * When `true`, all `<vaadin-grid-sorter>` are applied for sorting.
++   * When `true`, all `<vaadin23-grid-sorter>` are applied for sorting.
+    * @attr {boolean} multi-sort
+    */
+   multiSort: boolean;

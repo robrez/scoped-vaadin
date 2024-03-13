@@ -1,0 +1,38 @@
+Index: theme/lumo/vaadin-date-time-picker-styles.js
+===================================================================
+--- theme/lumo/vaadin-date-time-picker-styles.js
++++ theme/lumo/vaadin-date-time-picker-styles.js
+@@ -1,16 +1,16 @@
+-import '@vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
+-import '@vaadin/time-picker/theme/lumo/vaadin-time-picker.js';
+-import { customField } from '@vaadin/custom-field/theme/lumo/vaadin-custom-field-styles.js';
+-import { helper } from '@vaadin/vaadin-lumo-styles/mixins/helper.js';
+-import { requiredField } from '@vaadin/vaadin-lumo-styles/mixins/required-field.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
++import '@scoped-vaadin/time-picker/theme/lumo/vaadin-time-picker.js';
++import { customField } from '@scoped-vaadin/custom-field/theme/lumo/vaadin-custom-field-styles.js';
++import { helper } from '@scoped-vaadin/vaadin-lumo-styles/mixins/helper.js';
++import { requiredField } from '@scoped-vaadin/vaadin-lumo-styles/mixins/required-field.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+-registerStyles('vaadin-date-time-picker', [requiredField, helper, customField], {
++registerStyles('vaadin23-date-time-picker', [requiredField, helper, customField], {
+   moduleId: 'lumo-date-time-picker',
+ });
+ 
+ registerStyles(
+-  'vaadin-date-time-picker-date-picker',
++  'vaadin23-date-time-picker-date-picker',
+   css`
+     :host {
+       margin-right: 2px;
+@@ -38,7 +38,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-date-time-picker-time-picker',
++  'vaadin23-date-time-picker-time-picker',
+   css`
+     [part~='input-field'] {
+       border-top-left-radius: 0;

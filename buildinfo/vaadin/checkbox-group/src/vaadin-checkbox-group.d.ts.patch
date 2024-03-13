@@ -1,0 +1,51 @@
+Index: src/vaadin-checkbox-group.d.ts
+===================================================================
+--- src/vaadin-checkbox-group.d.ts
++++ src/vaadin-checkbox-group.d.ts
+@@ -3,11 +3,11 @@
+  * Copyright (c) 2018 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DisabledMixin } from '@vaadin/component-base/src/disabled-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { FocusMixin } from '@vaadin/component-base/src/focus-mixin.js';
+-import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DisabledMixin } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { FocusMixin } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+  * Fired when the `invalid` property changes.
+@@ -35,14 +35,14 @@
+ export interface CheckboxGroupEventMap extends HTMLElementEventMap, CheckboxGroupCustomEventMap {}
+ 
+ /**
+- * `<vaadin-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
++ * `<vaadin23-checkbox-group>` is a web component that allows the user to choose several items from a group of binary choices.
+  *
+  * ```html
+- * <vaadin-checkbox-group label="Preferred language of contact:">
+- *   <vaadin-checkbox value="en" label="English"></vaadin-checkbox>
+- *   <vaadin-checkbox value="fr" label="Français"></vaadin-checkbox>
+- *   <vaadin-checkbox value="de" label="Deutsch"></vaadin-checkbox>
+- * </vaadin-checkbox-group>
++ * <vaadin23-checkbox-group label="Preferred language of contact:">
++ *   <vaadin23-checkbox value="en" label="English"></vaadin23-checkbox>
++ *   <vaadin23-checkbox value="fr" label="Français"></vaadin23-checkbox>
++ *   <vaadin23-checkbox value="de" label="Deutsch"></vaadin23-checkbox>
++ * </vaadin23-checkbox-group>
+  * ```
+  *
+  * ### Styling
+@@ -99,7 +99,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-checkbox-group': CheckboxGroup;
++    'vaadin23-checkbox-group': CheckboxGroup;
+   }
+ }
+ 

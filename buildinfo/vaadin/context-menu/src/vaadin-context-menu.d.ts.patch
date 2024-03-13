@@ -1,0 +1,178 @@
+Index: src/vaadin-context-menu.d.ts
+===================================================================
+--- src/vaadin-context-menu.d.ts
++++ src/vaadin-context-menu.d.ts
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ import { ContextMenuItem, ItemsMixin } from './vaadin-contextmenu-items-mixin.js';
+ 
+ export { ContextMenuItem };
+@@ -43,7 +43,7 @@
+ export interface ContextMenuEventMap extends HTMLElementEventMap, ContextMenuCustomEventMap {}
+ 
+ /**
+- * `<vaadin-context-menu>` is a Web Component for creating context menus.
++ * `<vaadin23-context-menu>` is a Web Component for creating context menus.
+  *
+  * ### Items
+  *
+@@ -51,7 +51,7 @@
+  * If a menu item has a non-empty `children` set, a sub-menu with the child items is opened
+  * next to the parent menu on mouseover, tap or a right arrow keypress.
+  *
+- * When an item is selected, `<vaadin-context-menu>` dispatches an "item-selected" event
++ * When an item is selected, `<vaadin23-context-menu>` dispatches an "item-selected" event
+  * with the selected item as `event.detail.value` property.
+  *
+  * ```javascript
+@@ -90,22 +90,22 @@
+  * new content, the renderer function should check if there is already content in `root` for reusing it.
+  *
+  * ```html
+- * <vaadin-context-menu id="contextMenu">
++ * <vaadin23-context-menu id="contextMenu">
+  *  <p>This paragraph has a context menu.</p>
+- * </vaadin-context-menu>
++ * </vaadin23-context-menu>
+  * ```
+  * ```js
+  * const contextMenu = document.querySelector('#contextMenu');
+  * contextMenu.renderer = (root, contextMenu, context) => {
+  *   let listBox = root.firstElementChild;
+  *   if (!listBox) {
+- *     listBox = document.createElement('vaadin-list-box');
++ *     listBox = document.createElement('vaadin23-list-box');
+  *     root.appendChild(listBox);
+  *   }
+  *
+- *   let item = listBox.querySelector('vaadin-item');
++ *   let item = listBox.querySelector('vaadin23-item');
+  *   if (!item) {
+- *     item = document.createElement('vaadin-item');
++ *     item = document.createElement('vaadin23-item');
+  *     listBox.appendChild(item);
+  *   }
+  *   item.textContent = 'Content of the selector: ' + context.target.textContent;
+@@ -126,18 +126,18 @@
+  * which is dispatched after either `contextmenu` or long touch events.
+  * This enables support for both mouse and touch environments in a uniform way.
+  *
+- * `<vaadin-context-menu>` opens the menu overlay on the `vaadin-contextmenu`
++ * `<vaadin23-context-menu>` opens the menu overlay on the `vaadin-contextmenu`
+  * event by default.
+  *
+  * ### Menu Listener
+  *
+- * By default, the `<vaadin-context-menu>` element listens for the menu opening
++ * By default, the `<vaadin23-context-menu>` element listens for the menu opening
+  * event on itself. In case if you do not want to wrap the target, you can listen for
+- * events on an element outside the `<vaadin-context-menu>` by setting the
++ * events on an element outside the `<vaadin23-context-menu>` by setting the
+  * `listenOn` property:
+  *
+  * ```html
+- * <vaadin-context-menu id="contextMenu"></vaadin-context-menu>
++ * <vaadin23-context-menu id="contextMenu"></vaadin23-context-menu>
+  *
+  * <div id="menuListener">The element that listens for the contextmenu event.</div>
+  * ```
+@@ -155,10 +155,10 @@
+  * In the following example, only the elements matching `.has-menu` will open the context menu:
+  *
+  * ```html
+- * <vaadin-context-menu selector=".has-menu">
++ * <vaadin23-context-menu selector=".has-menu">
+  *   <p class="has-menu">This paragraph opens the context menu</p>
+  *   <p>This paragraph does not open the context menu</p>
+- * </vaadin-context-menu>
++ * </vaadin23-context-menu>
+  * ```
+  *
+  * ### Menu Context
+@@ -173,26 +173,26 @@
+  * of the element that opened the menu:
+  *
+  * ```html
+- * <vaadin-context-menu selector="li" id="contextMenu">
++ * <vaadin23-context-menu selector="li" id="contextMenu">
+  *   <ul>
+  *     <li>Foo</li>
+  *     <li>Bar</li>
+  *     <li>Baz</li>
+  *   </ul>
+- * </vaadin-context-menu>
++ * </vaadin23-context-menu>
+  * ```
+  * ```js
+  * const contextMenu = document.querySelector('#contextMenu');
+  * contextMenu.renderer = (root, contextMenu, context) => {
+  *   let listBox = root.firstElementChild;
+  *   if (!listBox) {
+- *     listBox = document.createElement('vaadin-list-box');
++ *     listBox = document.createElement('vaadin23-list-box');
+  *     root.appendChild(listBox);
+  *   }
+  *
+- *   let item = listBox.querySelector('vaadin-item');
++ *   let item = listBox.querySelector('vaadin23-item');
+  *   if (!item) {
+- *     item = document.createElement('vaadin-item');
++ *     item = document.createElement('vaadin23-item');
+  *     listBox.appendChild(item);
+  *   }
+  *   item.textContent = 'The menu target: ' + context.target.textContent;
+@@ -201,23 +201,23 @@
+  *
+  * ### Styling
+  *
+- * `<vaadin-context-menu>` uses `<vaadin-context-menu-overlay>` internal
++ * `<vaadin23-context-menu>` uses `<vaadin23-context-menu-overlay>` internal
+  * themable component as the actual visible context menu overlay.
+  *
+- * See [`<vaadin-overlay>`](#/elements/vaadin-overlay)
+- * documentation for `<vaadin-context-menu-overlay>` stylable parts.
++ * See [`<vaadin23-overlay>`](#/elements/vaadin-overlay)
++ * documentation for `<vaadin23-context-menu-overlay>` stylable parts.
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+  * ### Internal components
+  *
+- * When using `items` API, in addition `<vaadin-context-menu-overlay>`, the following
++ * When using `items` API, in addition `<vaadin23-context-menu-overlay>`, the following
+  * internal components are themable:
+  *
+- * - `<vaadin-context-menu-item>` - has the same API as [`<vaadin-item>`](#/elements/vaadin-item).
+- * - `<vaadin-context-menu-list-box>` - has the same API as [`<vaadin-list-box>`](#/elements/vaadin-list-box).
++ * - `<vaadin23-context-menu-item>` - has the same API as [`<vaadin23-item>`](#/elements/vaadin-item).
++ * - `<vaadin23-context-menu-list-box>` - has the same API as [`<vaadin23-list-box>`](#/elements/vaadin-list-box).
+  *
+- * Note: the `theme` attribute value set on `<vaadin-context-menu>` is
++ * Note: the `theme` attribute value set on `<vaadin23-context-menu>` is
+  * propagated to the internal components listed above.
+  *
+  * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
+@@ -259,7 +259,7 @@
+    * Receives three arguments:
+    *
+    * - `root` The root container DOM element. Append your content to it.
+-   * - `contextMenu` The reference to the `<vaadin-context-menu>` element.
++   * - `contextMenu` The reference to the `<vaadin23-context-menu>` element.
+    * - `context` The object with the menu context, contains:
+    *   - `context.target`  the target of the menu opening event,
+    *   - `context.detail` the menu opening event detail.
+@@ -301,7 +301,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-context-menu': ContextMenu;
++    'vaadin23-context-menu': ContextMenu;
+   }
+ }
+ 

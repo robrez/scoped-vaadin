@@ -1,0 +1,41 @@
+Index: src/vaadin-message-input-button.js
+===================================================================
+--- src/vaadin-message-input-button.js
++++ src/vaadin-message-input-button.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Button } from '@vaadin/button/src/vaadin-button.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-message-input-button',
++  'vaadin23-message-input-button',
+   css`
+     :host {
+       flex-shrink: 0;
+@@ -17,15 +18,15 @@
+ );
+ 
+ /**
+- * An element used internally by `<vaadin-message-input>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-message-input>`. Not intended to be used separately.
+  *
+  * @extends Button
+  * @protected
+  */
+ class MessageInputButton extends Button {
+   static get is() {
+-    return 'vaadin-message-input-button';
++    return 'vaadin23-message-input-button';
+   }
+ }
+ 
+-customElements.define(MessageInputButton.is, MessageInputButton);
++internalCustomElements.define(MessageInputButton.is, MessageInputButton);

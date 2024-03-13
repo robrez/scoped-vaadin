@@ -1,0 +1,25 @@
+Index: web-types.lit.json
+===================================================================
+--- web-types.lit.json
++++ web-types.lit.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/scroller",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/scroller",
++  "version": "23.0.1",
+   "description-markup": "markdown",
+   "framework": "lit",
+   "framework-config": {
+@@ -15,8 +15,8 @@
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-scroller",
+-          "description": "`<vaadin-scroller>` provides a simple way to enable scrolling when its content is overflowing.\n\n```\n<vaadin-scroller>\n  <div>Content</div>\n</vaadin-scroller>\n```\nThe following attributes are exposed for styling:\n\nAttribute    | Description\n-------------| -----------\n`focus-ring` | Set when the element is focused using the keyboard.\n`focused`    | Set when the element is focused.\n`overflow`   | Set to `top`, `bottom`, `start`, `end`, all of them, or none.",
++          "name": "vaadin23-scroller",
++          "description": "`<vaadin23-scroller>` provides a simple way to enable scrolling when its content is overflowing.\n\n```\n<vaadin23-scroller>\n  <div>Content</div>\n</vaadin23-scroller>\n```\nThe following attributes are exposed for styling:\n\nAttribute    | Description\n-------------| -----------\n`focus-ring` | Set when the element is focused using the keyboard.\n`focused`    | Set when the element is focused.\n`overflow`   | Set to `top`, `bottom`, `start`, `end`, all of them, or none.",
+           "extension": true,
+           "attributes": [
+             {

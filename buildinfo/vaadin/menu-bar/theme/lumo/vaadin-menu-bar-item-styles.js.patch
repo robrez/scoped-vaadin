@@ -1,0 +1,18 @@
+Index: theme/lumo/vaadin-menu-bar-item-styles.js
+===================================================================
+--- theme/lumo/vaadin-menu-bar-item-styles.js
++++ theme/lumo/vaadin-menu-bar-item-styles.js
+@@ -1,9 +1,9 @@
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-context-menu-item',
++  'vaadin23-context-menu-item',
+   css`
+     :host([theme='menu-bar-item']) [part='content'] {
+       display: flex;

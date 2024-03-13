@@ -1,0 +1,34 @@
+Index: web-types.json
+===================================================================
+--- web-types.json
++++ web-types.json
+@@ -1,14 +1,14 @@
+ {
+   "$schema": "https://json.schemastore.org/web-types",
+-  "name": "@vaadin/message-list",
+-  "version": "23.3.8",
++  "name": "@scoped-vaadin/message-list",
++  "version": "23.0.1",
+   "description-markup": "markdown",
+   "contributions": {
+     "html": {
+       "elements": [
+         {
+-          "name": "vaadin-message",
+-          "description": "`<vaadin-message>` is a Web Component for showing a single message with an author, message and time.\n\n```html\n<vaadin-message time=\"2021-01-28 10:43\"\n    user-name = \"Bob Ross\"\n    user-abbr = \"BR\"\n    user-img = \"/static/img/avatar.jpg\">There is no real ending. It's just the place where you stop the story.</vaadin-message>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n----------|----------------\n`avatar`  | The author's avatar\n`name`    | Author's name\n`time`    | When the message was posted\n`content` | The message itself as a slotted content\n\nThe following state attributes are available for styling:\n\nAttribute    | Description\n-------------|-------------\n`focus-ring` | Set when the message is focused using the keyboard.\n`focused`    | Set when the message is focused.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin-message>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin-message-avatar>` - has the same API as [`<vaadin-avatar>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-avatar).",
++          "name": "vaadin23-message",
++          "description": "`<vaadin23-message>` is a Web Component for showing a single message with an author, message and time.\n\n```html\n<vaadin23-message time=\"2021-01-28 10:43\"\n    user-name = \"Bob Ross\"\n    user-abbr = \"BR\"\n    user-img = \"/static/img/avatar.jpg\">There is no real ending. It's just the place where you stop the story.</vaadin23-message>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n----------|----------------\n`avatar`  | The author's avatar\n`name`    | Author's name\n`time`    | When the message was posted\n`content` | The message itself as a slotted content\n\nThe following state attributes are available for styling:\n\nAttribute    | Description\n-------------|-------------\n`focus-ring` | Set when the message is focused using the keyboard.\n`focused`    | Set when the message is focused.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.\n\n### Internal components\n\nIn addition to `<vaadin23-message>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin23-message-avatar>` - has the same API as [`<vaadin23-avatar>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-avatar).",
+           "attributes": [
+             {
+               "name": "time",
+@@ -139,8 +139,8 @@
+           }
+         },
+         {
+-          "name": "vaadin-message-list",
+-          "description": "`<vaadin-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin-message>\n\n### Example\nTo create a new message list, add the component to the page:\n```html\n<vaadin-message-list></vaadin-message-list>\n```\n\nProvide the messages to the message list with the `items` property.\n```js\ndocument.querySelector('vaadin-message-list').items = [\n  { text: 'Hello list', time: 'yesterday', userName: 'Matt Mambo', userAbbr: 'MM', userColorIndex: 1 },\n  { text: 'Another message', time: 'right now', userName: 'Linsey Listy', userAbbr: 'LL', userColorIndex: 2, userImg: '/static/img/avatar.jpg' }\n];\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n----------|----------------\n`list`    | The container wrapping messages.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "name": "vaadin23-message-list",
++          "description": "`<vaadin23-message-list>` is a Web Component for showing an ordered list of messages. The messages are rendered as <vaadin23-message>\n\n### Example\nTo create a new message list, add the component to the page:\n```html\n<vaadin23-message-list></vaadin23-message-list>\n```\n\nProvide the messages to the message list with the `items` property.\n```js\ndocument.querySelector('vaadin23-message-list').items = [\n  { text: 'Hello list', time: 'yesterday', userName: 'Matt Mambo', userAbbr: 'MM', userColorIndex: 1 },\n  { text: 'Another message', time: 'right now', userName: 'Linsey Listy', userAbbr: 'LL', userColorIndex: 2, userImg: '/static/img/avatar.jpg' }\n];\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name | Description\n----------|----------------\n`list`    | The container wrapping messages.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+           "attributes": [
+             {
+               "name": "theme",

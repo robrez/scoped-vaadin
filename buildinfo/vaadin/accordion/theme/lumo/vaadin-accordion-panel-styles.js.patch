@@ -1,0 +1,22 @@
+Index: theme/lumo/vaadin-accordion-panel-styles.js
+===================================================================
+--- theme/lumo/vaadin-accordion-panel-styles.js
++++ theme/lumo/vaadin-accordion-panel-styles.js
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import { details } from '@vaadin/details/theme/lumo/vaadin-details-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import { details } from '@scoped-vaadin/details/theme/lumo/vaadin-details-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const accordionPanel = css`
+   :host {
+@@ -22,4 +22,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-accordion-panel', [details, accordionPanel], { moduleId: 'lumo-accordion-panel' });
++registerStyles('vaadin23-accordion-panel', [details, accordionPanel], { moduleId: 'lumo-accordion-panel' });

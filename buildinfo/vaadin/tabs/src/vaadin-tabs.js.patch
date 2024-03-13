@@ -1,0 +1,59 @@
+Index: src/vaadin-tabs.js
+===================================================================
+--- src/vaadin-tabs.js
++++ src/vaadin-tabs.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2022 Vaadin Ltd.
+@@ -6,21 +7,21 @@
+ import './vaadin-tab.js';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
+-import { ListMixin } from '@vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
++import { ListMixin } from '@scoped-vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * `<vaadin-tabs>` is a Web Component for organizing and grouping content into sections.
++ * `<vaadin23-tabs>` is a Web Component for organizing and grouping content into sections.
+  *
+  * ```
+- *   <vaadin-tabs selected="4">
+- *     <vaadin-tab>Page 1</vaadin-tab>
+- *     <vaadin-tab>Page 2</vaadin-tab>
+- *     <vaadin-tab>Page 3</vaadin-tab>
+- *     <vaadin-tab>Page 4</vaadin-tab>
+- *   </vaadin-tabs>
++ *   <vaadin23-tabs selected="4">
++ *     <vaadin23-tab>Page 1</vaadin23-tab>
++ *     <vaadin23-tab>Page 2</vaadin23-tab>
++ *     <vaadin23-tab>Page 3</vaadin23-tab>
++ *     <vaadin23-tab>Page 4</vaadin23-tab>
++ *   </vaadin23-tabs>
+  * ```
+  *
+  * ### Styling
+@@ -142,7 +143,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-tabs';
++    return 'vaadin23-tabs';
+   }
+ 
+   static get properties() {
+@@ -266,6 +267,6 @@
+   }
+ }
+ 
+-customElements.define(Tabs.is, Tabs);
++internalCustomElements.define(Tabs.is, Tabs);
+ 
+ export { Tabs };

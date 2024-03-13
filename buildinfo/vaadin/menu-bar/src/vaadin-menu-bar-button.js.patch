@@ -1,0 +1,41 @@
+Index: src/vaadin-menu-bar-button.js
+===================================================================
+--- src/vaadin-menu-bar-button.js
++++ src/vaadin-menu-bar-button.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2019 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { Button } from '@vaadin/button/src/vaadin-button.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-menu-bar-button',
++  'vaadin23-menu-bar-button',
+   css`
+     [part='label'] ::slotted(vaadin-context-menu-item) {
+       position: relative;
+@@ -18,15 +19,15 @@
+ );
+ 
+ /**
+- * An element used internally by `<vaadin-menu-bar>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-menu-bar>`. Not intended to be used separately.
+  *
+  * @extends Button
+  * @private
+  */
+ class MenuBarButton extends Button {
+   static get is() {
+-    return 'vaadin-menu-bar-button';
++    return 'vaadin23-menu-bar-button';
+   }
+ }
+ 
+-customElements.define(MenuBarButton.is, MenuBarButton);
++internalCustomElements.define(MenuBarButton.is, MenuBarButton);

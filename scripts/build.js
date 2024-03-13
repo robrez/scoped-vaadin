@@ -131,7 +131,7 @@ async function processFile(filePath) {
       context: 3,
     }
   );
-  if (false && diff.trim().split(/\r?\n/).length > 4) {
+  if (diff.trim().split(/\r?\n/).length > 4) {
     const patchDestination = filePath.dir.replace(
       inputFilePackageRoot,
       localDiffsRoot

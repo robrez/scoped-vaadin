@@ -1,0 +1,41 @@
+Index: src/vaadin-contextmenu-items-mixin.d.ts
+===================================================================
+--- src/vaadin-contextmenu-items-mixin.d.ts
++++ src/vaadin-contextmenu-items-mixin.d.ts
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import { Item } from '@vaadin/item/src/vaadin-item.js';
+-import { ListBox } from '@vaadin/list-box/src/vaadin-list-box.js';
++import { Item } from '@scoped-vaadin/item/src/vaadin-item.js';
++import { ListBox } from '@scoped-vaadin/list-box/src/vaadin-list-box.js';
+ 
+ export interface ContextMenuItem {
+   text?: string;
+@@ -17,7 +17,7 @@
+ }
+ 
+ /**
+- * An element used internally by `<vaadin-context-menu>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-context-menu>`. Not intended to be used separately.
+  *
+  * @protected
+  */
+@@ -25,13 +25,13 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-context-menu-item': ContextMenuItemElement;
+-    'vaadin-context-menu-list-box': ContextMenuListBox;
++    'vaadin23-context-menu-item': ContextMenuItemElement;
++    'vaadin23-context-menu-list-box': ContextMenuListBox;
+   }
+ }
+ 
+ /**
+- * An element used internally by `<vaadin-context-menu>`. Not intended to be used separately.
++ * An element used internally by `<vaadin23-context-menu>`. Not intended to be used separately.
+  *
+  * @protected
+  */

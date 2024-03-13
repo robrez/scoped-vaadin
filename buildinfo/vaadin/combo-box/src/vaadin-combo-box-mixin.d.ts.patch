@@ -1,0 +1,28 @@
+Index: src/vaadin-combo-box-mixin.d.ts
+===================================================================
+--- src/vaadin-combo-box-mixin.d.ts
++++ src/vaadin-combo-box-mixin.d.ts
+@@ -4,9 +4,9 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { DisabledMixinClass } from '@vaadin/component-base/src/disabled-mixin.js';
+-import type { KeyboardMixinClass } from '@vaadin/component-base/src/keyboard-mixin.js';
+-import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
++import type { KeyboardMixinClass } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
++import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
+ import type { ComboBox } from './vaadin-combo-box.js';
+ 
+ export type ComboBoxDefaultItem = any;
+@@ -51,8 +51,8 @@
+    * Custom function for rendering the content of every item.
+    * Receives three arguments:
+    *
+-   * - `root` The `<vaadin-combo-box-item>` internal container DOM element.
+-   * - `comboBox` The reference to the `<vaadin-combo-box>` element.
++   * - `root` The `<vaadin23-combo-box-item>` internal container DOM element.
++   * - `comboBox` The reference to the `<vaadin23-combo-box>` element.
+    * - `model` The object with the properties related with the rendered
+    *   item, contains:
+    *   - `model.index` The index of the rendered item.

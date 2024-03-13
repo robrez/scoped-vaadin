@@ -1,0 +1,13 @@
+Index: src/active-mixin.js
+===================================================================
+--- src/active-mixin.js
++++ src/active-mixin.js
+@@ -55,7 +55,7 @@
+       // When the element is disconnecting from the DOM at the moment being active,
+       // the `active` attribute needs to be manually removed from the element.
+       // Otherwise, it will preserve on the element until the element is activated once again.
+-      // The case reproduces for `<vaadin-date-picker>` when closing on `Cancel` or `Today` click.
++      // The case reproduces for `<vaadin23-date-picker>` when closing on `Cancel` or `Today` click.
+       this._setActive(false);
+     }
+ 

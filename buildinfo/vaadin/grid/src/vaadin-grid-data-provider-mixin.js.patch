@@ -1,0 +1,24 @@
+Index: src/vaadin-grid-data-provider-mixin.js
+===================================================================
+--- src/vaadin-grid-data-provider-mixin.js
++++ src/vaadin-grid-data-provider-mixin.js
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { timeOut } from '@vaadin/component-base/src/async.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
++import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
+ 
+ /**
+  * @private
+@@ -435,7 +435,7 @@
+     _checkSize() {
+       if (this.size === undefined && this._effectiveSize === 0) {
+         console.warn(
+-          'The <vaadin-grid> needs the total number of items' +
++          'The <vaadin23-grid> needs the total number of items' +
+             ' in order to display rows. Set the total number of items' +
+             ' to the `size` property, or provide the total number of items' +
+             ' in the second argument of the `dataProvider`’s `callback` call.',

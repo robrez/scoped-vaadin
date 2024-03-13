@@ -1,0 +1,26 @@
+Index: theme/lumo/vaadin-combo-box-item-styles.js
+===================================================================
+--- theme/lumo/vaadin-combo-box-item-styles.js
++++ theme/lumo/vaadin-combo-box-item-styles.js
+@@ -1,8 +1,8 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import { item } from '@vaadin/item/theme/lumo/vaadin-item-styles.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import { item } from '@scoped-vaadin/item/theme/lumo/vaadin-item-styles.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const comboBoxItem = css`
+   :host {
+@@ -18,6 +18,6 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-combo-box-item', [item, comboBoxItem], {
++registerStyles('vaadin23-combo-box-item', [item, comboBoxItem], {
+   moduleId: 'lumo-combo-box-item',
+ });

@@ -1,0 +1,110 @@
+Index: src/vaadin-date-picker-light.js
+===================================================================
+--- src/vaadin-date-picker-light.js
++++ src/vaadin-date-picker-light.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2022 Vaadin Ltd.
+@@ -7,12 +8,12 @@
+ import './vaadin-date-picker-overlay-content.js';
+ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
+ 
+ /**
+- * `<vaadin-date-picker-light>` is a customizable version of the `<vaadin-date-picker>` providing
++ * `<vaadin23-date-picker-light>` is a customizable version of the `<vaadin23-date-picker>` providing
+  * only the scrollable month calendar view and leaving the input field definition to the user.
+  *
+  * To create a custom input field, you need to add a child element which has a two-way
+@@ -21,9 +22,9 @@
+  * using an `<input>` element.
+  *
+  * ```html
+- * <vaadin-date-picker-light attr-for-value="value">
++ * <vaadin23-date-picker-light attr-for-value="value">
+  *   <input class="input">
+- * </vaadin-date-picker-light>
++ * </vaadin23-date-picker-light>
+  * ```
+  *
+  * ### Styling
+@@ -36,14 +37,14 @@
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
+  *
+- * In addition to `<vaadin-date-picker-light>` itself, the following
++ * In addition to `<vaadin23-date-picker-light>` itself, the following
+  * internal components are themable:
+  *
+- * - `<vaadin-date-picker-overlay>`
+- * - `<vaadin-date-picker-overlay-content>`
+- * - `<vaadin-month-calendar>`
++ * - `<vaadin23-date-picker-overlay>`
++ * - `<vaadin23-date-picker-overlay-content>`
++ * - `<vaadin23-month-calendar>`
+  *
+- * Note: the `theme` attribute value set on `<vaadin-date-picker-light>`
++ * Note: the `theme` attribute value set on `<vaadin23-date-picker-light>`
+  * is propagated to the internal themable components listed above.
+  *
+  * @fires {Event} change - Fired when the user commits a value change.
+@@ -69,7 +70,7 @@
+       </style>
+       <slot></slot>
+ 
+-      <vaadin-date-picker-overlay
++      <vaadin23-date-picker-overlay
+         id="overlay"
+         fullscreen$="[[_fullscreen]]"
+         opened="{{opened}}"
+@@ -80,7 +81,7 @@
+         theme$="[[__getOverlayTheme(_theme, _overlayInitialized)]]"
+       >
+         <template>
+-          <vaadin-date-picker-overlay-content
++          <vaadin23-date-picker-overlay-content
+             id="overlay-content"
+             i18n="[[i18n]]"
+             fullscreen$="[[_fullscreen]]"
+@@ -93,14 +94,14 @@
+             part="overlay-content"
+             theme$="[[__getOverlayTheme(_theme, _overlayInitialized)]]"
+           >
+-          </vaadin-date-picker-overlay-content>
++          </vaadin23-date-picker-overlay-content>
+         </template>
+-      </vaadin-date-picker-overlay>
++      </vaadin23-date-picker-overlay>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-date-picker-light';
++    return 'vaadin23-date-picker-light';
+   }
+ 
+   static get properties() {
+@@ -137,7 +138,7 @@
+   /** @protected */
+   connectedCallback() {
+     super.connectedCallback();
+-    const cssSelector = 'vaadin-text-field,iron-input,paper-input,.paper-input-input,.input';
++    const cssSelector = 'vaadin23-text-field,iron-input,paper-input,.paper-input-input,.input';
+     this._setInputElement(this.querySelector(cssSelector));
+     this._setFocusElement(this.inputElement);
+   }
+@@ -163,6 +164,6 @@
+   }
+ }
+ 
+-customElements.define(DatePickerLight.is, DatePickerLight);
++internalCustomElements.define(DatePickerLight.is, DatePickerLight);
+ 
+ export { DatePickerLight };

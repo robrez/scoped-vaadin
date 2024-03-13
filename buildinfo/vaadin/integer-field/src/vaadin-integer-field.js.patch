@@ -1,0 +1,68 @@
+Index: src/vaadin-integer-field.js
+===================================================================
+--- src/vaadin-integer-field.js
++++ src/vaadin-integer-field.js
+@@ -1,23 +1,24 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2022 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { NumberField } from '@vaadin/number-field/src/vaadin-number-field.js';
++import { NumberField } from '@scoped-vaadin/number-field/src/vaadin-number-field.js';
+ 
+ /**
+- * `<vaadin-integer-field>` is an input field web component that only accepts entering integer numbers.
++ * `<vaadin23-integer-field>` is an input field web component that only accepts entering integer numbers.
+  *
+  * ```html
+- * <vaadin-integer-field label="X"></vaadin-integer-field>
++ * <vaadin23-integer-field label="X"></vaadin23-integer-field>
+  * ```
+  *
+  * ### Styling
+  *
+- * `<vaadin-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
+- * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
++ * `<vaadin23-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.
++ * See [`<vaadin23-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
+  *
+- * In addition to `<vaadin-text-field>` parts, the following parts are available for theming:
++ * In addition to `<vaadin23-text-field>` parts, the following parts are available for theming:
+  *
+  * Part name         | Description
+  * ------------------|-------------------------
+@@ -36,7 +37,7 @@
+  */
+ export class IntegerField extends NumberField {
+   static get is() {
+-    return 'vaadin-integer-field';
++    return 'vaadin23-integer-field';
+   }
+ 
+   constructor() {
+@@ -55,7 +56,7 @@
+    */
+   _valueChanged(newVal, oldVal) {
+     if (newVal !== '' && !this.__isInteger(newVal)) {
+-      console.warn(`Trying to set non-integer value "${newVal}" to <vaadin-integer-field>. Clearing the value.`);
++      console.warn(`Trying to set non-integer value "${newVal}" to <vaadin23-integer-field>. Clearing the value.`);
+       this.value = '';
+       return;
+     }
+@@ -73,7 +74,7 @@
+   _stepChanged(step, inputElement) {
+     if (step != null && !this.__hasOnlyDigits(step)) {
+       console.warn(
+-        `<vaadin-integer-field> The \`step\` property must be a positive integer but \`${step}\` was provided, so the property was reset to \`null\`.`,
++        `<vaadin23-integer-field> The \`step\` property must be a positive integer but \`${step}\` was provided, so the property was reset to \`null\`.`,
+       );
+       this.step = null;
+       return;
+@@ -93,4 +94,4 @@
+   }
+ }
+ 
+-customElements.define(IntegerField.is, IntegerField);
++internalCustomElements.define(IntegerField.is, IntegerField);
