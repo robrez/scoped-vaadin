@@ -1,0 +1,76 @@
+Index: test/multiple.test.js
+===================================================================
+--- test/multiple.test.js
++++ test/multiple.test.js
+@@ -1,12 +1,12 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-notification.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-notification-card',
++  'vaadin23-notification-card',
+   css`
+     :host {
+       width: 200px;
+@@ -23,25 +23,25 @@
+   beforeEach(async () => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-notification opened position="top-stretch"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="top-start"><template>Notification 1</template></vaadin-notification>
+-        <vaadin-notification opened position="top-center"><template>Notification 1</template></vaadin-notification>
+-        <vaadin-notification opened position="top-end"><template>Notification 1</template></vaadin-notification>
+-        <vaadin-notification opened position="middle"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-start"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-center"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-end"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-stretch"><template>Notification</template></vaadin-notification>
++        <vaadin23-notification opened position="top-stretch"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-start"><template>Notification 1</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-center"><template>Notification 1</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-end"><template>Notification 1</template></vaadin23-notification>
++        <vaadin23-notification opened position="middle"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-start"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-center"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-end"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-stretch"><template>Notification</template></vaadin23-notification>
+ 
+-        <vaadin-notification opened position="top-stretch"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="top-start"><template>Notification 2</template></vaadin-notification>
+-        <vaadin-notification opened position="top-center"><template>Notification 2</template></vaadin-notification>
+-        <vaadin-notification opened position="top-end"><template>Notification 2</template></vaadin-notification>
+-        <vaadin-notification opened position="middle"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-start"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-center"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-end"><template>Notification</template></vaadin-notification>
+-        <vaadin-notification opened position="bottom-stretch"><template>Notification</template></vaadin-notification>
++        <vaadin23-notification opened position="top-stretch"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-start"><template>Notification 2</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-center"><template>Notification 2</template></vaadin23-notification>
++        <vaadin23-notification opened position="top-end"><template>Notification 2</template></vaadin23-notification>
++        <vaadin23-notification opened position="middle"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-start"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-center"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-end"><template>Notification</template></vaadin23-notification>
++        <vaadin23-notification opened position="bottom-stretch"><template>Notification</template></vaadin23-notification>
+       </div>
+     `);
+     notifications = Array.from(wrapper.children);
+@@ -62,9 +62,9 @@
+     delete notifications[0].constructor._container;
+   });
+ 
+-  describe('vaadin-notification-container', () => {
++  describe('vaadin23-notification-container', () => {
+     it('should be only one instance of vaadin-notification-container in the dom', () => {
+-      expect(document.body.querySelectorAll('vaadin-notification-container').length).to.be.equal(1);
++      expect(document.body.querySelectorAll('vaadin23-notification-container').length).to.be.equal(1);
+     });
+ 
+     it('container should be a singleton', () => {

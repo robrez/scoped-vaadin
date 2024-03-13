@@ -1,0 +1,145 @@
+Index: test/dom/__snapshots__/email-field.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/email-field.test.snap.js
++++ test/dom/__snapshots__/email-field.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-email-field host default"] = 
+-`<vaadin-email-field>
++`<vaadin23-email-field>
+   <label
+     for="input-vaadin-email-field-3"
+     id="label-vaadin-email-field-0"
+@@ -21,12 +21,12 @@
+     slot="input"
+     type="email"
+   >
+-</vaadin-email-field>
++</vaadin23-email-field>
+ `;
+ /* end snapshot vaadin-email-field host default */
+ 
+ snapshots["vaadin-email-field host helper"] = 
+-`<vaadin-email-field has-helper="">
++`<vaadin23-email-field has-helper="">
+   <label
+     for="input-vaadin-email-field-3"
+     id="label-vaadin-email-field-0"
+@@ -52,7 +52,7 @@
+   >
+     Helper
+   </div>
+-</vaadin-email-field>
++</vaadin23-email-field>
+ `;
+ /* end snapshot vaadin-email-field host helper */
+ 
+@@ -67,7 +67,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <slot
+       name="prefix"
+       slot="prefix"
+@@ -87,7 +87,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -113,7 +113,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     disabled=""
+     part="input-field"
+   >
+@@ -136,7 +136,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -162,7 +162,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     readonly=""
+   >
+@@ -185,7 +185,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -211,7 +211,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     invalid=""
+     part="input-field"
+   >
+@@ -234,7 +234,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -260,7 +260,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     theme="align-right"
+   >
+@@ -283,7 +283,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -299,7 +299,7 @@
+ /* end snapshot vaadin-email-field shadow theme */
+ 
+ snapshots["vaadin-email-field host error"] = 
+-`<vaadin-email-field
++`<vaadin23-email-field
+   has-error-message=""
+   invalid=""
+ >
+@@ -324,7 +324,7 @@
+     slot="input"
+     type="email"
+   >
+-</vaadin-email-field>
++</vaadin23-email-field>
+ `;
+ /* end snapshot vaadin-email-field host error */
+ 

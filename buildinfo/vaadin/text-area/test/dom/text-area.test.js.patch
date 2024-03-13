@@ -1,0 +1,22 @@
+Index: test/dom/text-area.test.js
+===================================================================
+--- test/dom/text-area.test.js
++++ test/dom/text-area.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-text-area.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-text-area', () => {
++describe('vaadin23-text-area', () => {
+   let textArea;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    textArea = fixtureSync('<vaadin-text-area></vaadin-text-area>');
++    textArea = fixtureSync('<vaadin23-text-area></vaadin23-text-area>');
+   });
+ 
+   describe('host', () => {

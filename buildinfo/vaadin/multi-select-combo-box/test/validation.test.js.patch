@@ -1,0 +1,31 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      comboBox = document.createElement('vaadin-multi-select-combo-box');
++      comboBox = document.createElement('vaadin23-multi-select-combo-box');
+       comboBox.items = ['apple', 'banana'];
+       validateSpy = sinon.spy(comboBox, 'validate');
+     });
+@@ -42,7 +42,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
++      comboBox = fixtureSync(`<vaadin23-multi-select-combo-box></vaadin23-multi-select-combo-box>`);
+       comboBox.items = ['apple', 'banana'];
+       validateSpy = sinon.spy(comboBox, 'validate');
+     });
+@@ -57,7 +57,7 @@
+ 
+   describe('required', () => {
+     beforeEach(() => {
+-      comboBox = fixtureSync(`<vaadin-multi-select-combo-box required></vaadin-multi-select-combo-box>`);
++      comboBox = fixtureSync(`<vaadin23-multi-select-combo-box required></vaadin23-multi-select-combo-box>`);
+       comboBox.items = ['apple', 'banana'];
+     });
+ 

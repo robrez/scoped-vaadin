@@ -1,0 +1,36 @@
+Index: test/element-mixin.test.js
+===================================================================
+--- test/element-mixin.test.js
++++ test/element-mixin.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import sinon from 'sinon';
+ import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -6,7 +7,7 @@
+ 
+ describe('ElementMixin', () => {
+   const defineCE = (tagName) => {
+-    customElements.define(
++    internalCustomElements.define(
+       tagName,
+       class extends ElementMixin(PolymerElement) {
+         static get is() {
+@@ -17,7 +18,7 @@
+ 
+     flush();
+ 
+-    return customElements.get(tagName);
++    return internalCustomElements.get(tagName);
+   };
+ 
+   describe('globals', () => {
+@@ -125,7 +126,7 @@
+           return 'element-qux';
+         }
+       }
+-      customElements.define(ElementQux.is, ElementQux);
++      internalCustomElements.define(ElementQux.is, ElementQux);
+       document.createElement('element-qux');
+       expect(console.warn.calledOnce).to.be.true;
+     });

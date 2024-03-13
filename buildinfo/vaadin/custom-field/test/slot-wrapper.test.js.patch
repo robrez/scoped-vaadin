@@ -1,0 +1,53 @@
+Index: test/slot-wrapper.test.js
+===================================================================
+--- test/slot-wrapper.test.js
++++ test/slot-wrapper.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import '../src/vaadin-custom-field.js';
+@@ -7,35 +8,35 @@
+ class XField extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-custom-field id="customField">
++      <vaadin23-custom-field id="customField">
+         <slot></slot>
+-      </vaadin-custom-field>
++      </vaadin23-custom-field>
+     `;
+   }
+ }
+ 
+-customElements.define('x-field', XField);
++internalCustomElements.define('x-field', XField);
+ 
+ class XField2 extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-custom-field id="customField">
++      <vaadin23-custom-field id="customField">
+         <div id="wrapper">
+           <slot></slot>
+         </div>
+-      </vaadin-custom-field>
++      </vaadin23-custom-field>
+     `;
+   }
+ }
+ 
+-customElements.define('x-field2', XField2);
++internalCustomElements.define('x-field2', XField2);
+ 
+ const fixtures = {
+   default: `
+-    <vaadin-custom-field>
++    <vaadin23-custom-field>
+       <input type="text">
+       <input type="number">
+-    </vaadin-custom-field>
++    </vaadin23-custom-field>
+   `,
+   nested: `
+     <x-field>

@@ -1,0 +1,13 @@
+Index: test/visual/material/text-field.test.js
+===================================================================
+--- test/visual/material/text-field.test.js
++++ test/visual/material/text-field.test.js
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-text-field></vaadin-text-field>', div);
++    element = fixtureSync('<vaadin23-text-field></vaadin23-text-field>', div);
+   });
+ 
+   it('basic', async () => {

@@ -1,0 +1,13 @@
+Index: test/typings/scroller.types.ts
+===================================================================
+--- test/typings/scroller.types.ts
++++ test/typings/scroller.types.ts
+@@ -3,7 +3,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const scroller = document.createElement('vaadin-scroller');
++const scroller = document.createElement('vaadin23-scroller');
+ 
+ assertType<Scroller>(scroller);
+ 

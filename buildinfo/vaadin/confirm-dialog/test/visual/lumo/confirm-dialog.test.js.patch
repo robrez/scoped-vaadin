@@ -1,0 +1,24 @@
+Index: test/visual/lumo/confirm-dialog.test.js
+===================================================================
+--- test/visual/lumo/confirm-dialog.test.js
++++ test/visual/lumo/confirm-dialog.test.js
+@@ -1,6 +1,6 @@
+ import { fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/vaadin-lumo-styles/test/autoload.js';
++import '@scoped-vaadin/vaadin-lumo-styles/test/autoload.js';
+ import '../../../theme/lumo/vaadin-confirm-dialog.js';
+ import '../../not-animated-styles.js';
+ 
+@@ -13,9 +13,9 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-confirm-dialog header="Action required" opened>
++        <vaadin23-confirm-dialog header="Action required" opened>
+           Please press a button to confirm.
+-        </vaadin-confirm-dialog>
++        </vaadin23-confirm-dialog>
+       `,
+       div,
+     );

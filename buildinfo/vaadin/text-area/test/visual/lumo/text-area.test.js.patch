@@ -1,0 +1,13 @@
+Index: test/visual/lumo/text-area.test.js
+===================================================================
+--- test/visual/lumo/text-area.test.js
++++ test/visual/lumo/text-area.test.js
+@@ -10,7 +10,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-text-area></vaadin-text-area>', div);
++    element = fixtureSync('<vaadin23-text-area></vaadin23-text-area>', div);
+   });
+ 
+   it('basic', async () => {

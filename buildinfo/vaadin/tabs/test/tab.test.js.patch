@@ -1,0 +1,18 @@
+Index: test/tab.test.js
+===================================================================
+--- test/tab.test.js
++++ test/tab.test.js
+@@ -6,11 +6,11 @@
+   let tab;
+ 
+   beforeEach(() => {
+-    tab = fixtureSync('<vaadin-tab>text-content</vaadin-tab>');
++    tab = fixtureSync('<vaadin23-tab>text-content</vaadin23-tab>');
+   });
+ 
+   it('should have a correct localName', () => {
+-    expect(tab.localName).to.be.equal('vaadin-tab');
++    expect(tab.localName).to.be.equal('vaadin23-tab');
+   });
+ 
+   it('should have a correct role', () => {

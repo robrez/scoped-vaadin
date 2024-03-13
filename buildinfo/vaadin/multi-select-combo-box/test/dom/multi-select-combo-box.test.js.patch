@@ -1,0 +1,18 @@
+Index: test/dom/multi-select-combo-box.test.js
+===================================================================
+--- test/dom/multi-select-combo-box.test.js
++++ test/dom/multi-select-combo-box.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-multi-select-combo-box.js';
+ 
+-describe('vaadin-multi-select-combo-box', () => {
++describe('vaadin23-multi-select-combo-box', () => {
+   let multiSelectComboBox;
+ 
+   beforeEach(() => {
+-    multiSelectComboBox = fixtureSync('<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>');
++    multiSelectComboBox = fixtureSync('<vaadin23-multi-select-combo-box></vaadin23-multi-select-combo-box>');
+   });
+ 
+   it('default', async () => {

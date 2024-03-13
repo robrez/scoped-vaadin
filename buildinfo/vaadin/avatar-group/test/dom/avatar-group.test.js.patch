@@ -1,0 +1,18 @@
+Index: test/dom/avatar-group.test.js
+===================================================================
+--- test/dom/avatar-group.test.js
++++ test/dom/avatar-group.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-avatar-group.js';
+ 
+-describe('vaadin-avatar-group', () => {
++describe('vaadin23-avatar-group', () => {
+   let group;
+ 
+   beforeEach(() => {
+-    group = fixtureSync('<vaadin-avatar-group></vaadin-avatar-group>');
++    group = fixtureSync('<vaadin23-avatar-group></vaadin23-avatar-group>');
+   });
+ 
+   it('default', async () => {

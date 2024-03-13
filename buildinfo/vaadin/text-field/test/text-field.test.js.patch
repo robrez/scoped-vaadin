@@ -1,0 +1,13 @@
+Index: test/text-field.test.js
+===================================================================
+--- test/text-field.test.js
++++ test/text-field.test.js
+@@ -7,7 +7,7 @@
+   let textField, input;
+ 
+   beforeEach(() => {
+-    textField = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++    textField = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     input = textField.inputElement;
+   });
+ 

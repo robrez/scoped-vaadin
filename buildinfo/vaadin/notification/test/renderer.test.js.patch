@@ -1,0 +1,31 @@
+Index: test/renderer.test.js
+===================================================================
+--- test/renderer.test.js
++++ test/renderer.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-notification.js';
+ 
+ describe('renderer', () => {
+@@ -13,7 +13,7 @@
+       rendererContent = document.createElement('p');
+       rendererContent.textContent = 'renderer-content';
+ 
+-      notification = fixtureSync('<vaadin-notification></vaadin-notification>');
++      notification = fixtureSync('<vaadin23-notification></vaadin23-notification>');
+ 
+       // Force sync card attaching and removal instead of waiting for the animation
+       sinon
+@@ -111,7 +111,7 @@
+     let notification;
+ 
+     beforeEach(() => {
+-      notification = document.createElement('vaadin-notification');
++      notification = document.createElement('vaadin23-notification');
+     });
+ 
+     afterEach(() => {

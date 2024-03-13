@@ -1,0 +1,74 @@
+Index: test/user-tags.test.js
+===================================================================
+--- test/user-tags.test.js
++++ test/user-tags.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/text-field';
++import '@scoped-vaadin/text-field';
+ import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
+ 
+ const user1 = { id: 'a', name: 'foo', colorIndex: 0 };
+@@ -20,7 +20,7 @@
+ 
+   const getTags = () => {
+     const { overlay } = wrapper.$;
+-    return overlay.content.querySelectorAll('vaadin-user-tag');
++    return overlay.content.querySelectorAll('vaadin23-user-tag');
+   };
+ 
+   const addUser = (user) => {
+@@ -40,9 +40,9 @@
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++      field = fixtureSync(`<vaadin23-text-field></vaadin23-text-field>`);
+       FieldHighlighter.init(field);
+-      wrapper = field.shadowRoot.querySelector('vaadin-user-tags');
++      wrapper = field.shadowRoot.querySelector('vaadin23-user-tags');
+       wrapper.duration = 0;
+       wrapper.delay = 0;
+       await waitForIntersectionObserver();
+@@ -68,9 +68,9 @@
+ 
+   describe('opened', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++      field = fixtureSync(`<vaadin23-text-field></vaadin23-text-field>`);
+       FieldHighlighter.init(field);
+-      wrapper = field.shadowRoot.querySelector('vaadin-user-tags');
++      wrapper = field.shadowRoot.querySelector('vaadin23-user-tags');
+       wrapper.duration = 0;
+       wrapper.delay = 0;
+       wrapper.show();
+@@ -144,9 +144,9 @@
+ 
+   describe('closed', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++      field = fixtureSync(`<vaadin23-text-field></vaadin23-text-field>`);
+       FieldHighlighter.init(field);
+-      wrapper = field.shadowRoot.querySelector('vaadin-user-tags');
++      wrapper = field.shadowRoot.querySelector('vaadin23-user-tags');
+       wrapper.duration = 0;
+       wrapper.delay = 0;
+       await waitForIntersectionObserver();
+@@ -195,12 +195,12 @@
+     beforeEach(async () => {
+       container = fixtureSync(`
+         <div style="width: 400px; height: 400px; overflow: scroll; border: 1px solid black;">
+-          <vaadin-text-field style="margin: 600px 0;"></vaadin-text-field>
++          <vaadin23-text-field style="margin: 600px 0;"></vaadin23-text-field>
+         </div>
+       `);
+-      field = container.querySelector('vaadin-text-field');
++      field = container.querySelector('vaadin23-text-field');
+       FieldHighlighter.init(field);
+-      wrapper = field.shadowRoot.querySelector('vaadin-user-tags');
++      wrapper = field.shadowRoot.querySelector('vaadin23-user-tags');
+       wrapper.duration = 1000;
+       await waitForIntersectionObserver();
+     });

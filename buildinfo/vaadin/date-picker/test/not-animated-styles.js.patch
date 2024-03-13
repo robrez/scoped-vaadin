@@ -1,0 +1,14 @@
+Index: test/not-animated-styles.js
+===================================================================
+--- test/not-animated-styles.js
++++ test/not-animated-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-date-picker-overlay',
++  'vaadin23-date-picker-overlay',
+   css`
+     :host([opening]),
+     :host([closing]),

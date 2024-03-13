@@ -1,0 +1,28 @@
+Index: test/class-name-generator.test.js
+===================================================================
+--- test/class-name-generator.test.js
++++ test/class-name-generator.test.js
+@@ -9,10 +9,10 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid size="200">
+-        <vaadin-grid-column path="value" header="col0"></vaadin-grid-column>
+-        <vaadin-grid-column path="value" header="col1"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid size="200">
++        <vaadin23-grid-column path="value" header="col0"></vaadin23-grid-column>
++        <vaadin23-grid-column path="value" header="col1"></vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);
+@@ -121,7 +121,7 @@
+ 
+   it('should have the right class names after toggling column visibility', async () => {
+     grid.cellClassNameGenerator = (_column, { index }) => (index % 2 === 0 ? 'even' : 'odd');
+-    const column = grid.querySelector('vaadin-grid-column');
++    const column = grid.querySelector('vaadin23-grid-column');
+     column.hidden = true;
+     await nextFrame();
+     column.hidden = false;

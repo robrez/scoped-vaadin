@@ -1,0 +1,276 @@
+Index: test/visual/lumo/grid.test.js
+===================================================================
+--- test/visual/lumo/grid.test.js
++++ test/visual/lumo/grid.test.js
+@@ -1,7 +1,7 @@
+ import { click, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../../../theme/lumo/vaadin-grid.js';
+ import '../../../theme/lumo/vaadin-grid-column-group.js';
+ import '../../../theme/lumo/vaadin-grid-sorter.js';
+@@ -25,14 +25,14 @@
+       describe('header and footer', () => {
+         beforeEach(async () => {
+           element = fixtureSync(`
+-            <vaadin-grid size="200" style="width: 200px; height: 100px">
++            <vaadin23-grid size="200" style="width: 200px; height: 100px">
+               <template class="row-details">[[index]]</template>
+-              <vaadin-grid-column>
++              <vaadin23-grid-column>
+                 <template class="header">header</template>
+                 <template>[[index]]</template>
+                 <template class="footer">footer</template>
+-              </vaadin-grid-column>
+-            </vaadin-grid>
++              </vaadin23-grid-column>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -47,45 +47,45 @@
+       describe('column groups', () => {
+         beforeEach(async () => {
+           element = fixtureSync(`
+-            <vaadin-grid style="height: 250px" column-reordering-allowed>
+-              <vaadin-grid-column width="30px" flex-grow="0" resizable>
++            <vaadin23-grid style="height: 250px" column-reordering-allowed>
++              <vaadin23-grid-column width="30px" flex-grow="0" resizable>
+                 <template class="header">#</template>
+                 <template>[[index]]</template>
+-              </vaadin-grid-column>
++              </vaadin23-grid-column>
+ 
+-              <vaadin-grid-column-group resizable>
++              <vaadin23-grid-column-group resizable>
+                 <template class="header">Name</template>
+ 
+-                <vaadin-grid-column width="calc(20% - 50px)">
++                <vaadin23-grid-column width="calc(20% - 50px)">
+                   <template class="header">First</template>
+                   <template>[[item.name.first]]</template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column width="calc(20% - 50px)">
++                <vaadin23-grid-column width="calc(20% - 50px)">
+                   <template class="header">Last</template>
+                   <template>[[item.name.last]]</template>
+-                </vaadin-grid-column>
+-              </vaadin-grid-column-group>
++                </vaadin23-grid-column>
++              </vaadin23-grid-column-group>
+ 
+-              <vaadin-grid-column-group resizable>
++              <vaadin23-grid-column-group resizable>
+                 <template class="header">Location</template>
+ 
+-                <vaadin-grid-column width="calc(20% - 50px)">
++                <vaadin23-grid-column width="calc(20% - 50px)">
+                   <template class="header">City</template>
+                   <template>[[item.location.city]]</template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column width="calc(20% - 50px)">
++                <vaadin23-grid-column width="calc(20% - 50px)">
+                   <template class="header">State</template>
+                   <template>[[item.location.state]]</template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column width="200px" resizable>
++                <vaadin23-grid-column width="200px" resizable>
+                   <template class="header">Street</template>
+                   <template>[[item.location.street]]</template>
+-                </vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-            </vaadin-grid>
++                </vaadin23-grid-column>
++              </vaadin23-grid-column-group>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -100,14 +100,14 @@
+       describe('row details', () => {
+         beforeEach(async () => {
+           element = fixtureSync(`
+-            <vaadin-grid>
++            <vaadin23-grid>
+               <template class="row-details">
+                 <div class="details-cell">
+                   <h1>Hi, I'm [[item.name.first]]</h1>
+                 </div>
+               </template>
+ 
+-              <vaadin-grid-column-group>
++              <vaadin23-grid-column-group>
+                 <template class="header">
+                   <div class="header-content">
+                     <b>1-200 of 15,554</b>
+@@ -115,28 +115,28 @@
+                   </div>
+                 </template>
+ 
+-                <vaadin-grid-column width="55px" flex-grow="0">
++                <vaadin23-grid-column width="55px" flex-grow="0">
+                   <template>
+                     <input type="checkbox" checked="{{selected::change}}" />
+                   </template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column resizable>
++                <vaadin23-grid-column resizable>
+                   <template class="header">Email</template>
+                   <template>[[item.email]]</template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column>
++                <vaadin23-grid-column>
+                   <template class="header">City</template>
+                   <template>[[item.location.city]]</template>
+-                </vaadin-grid-column>
++                </vaadin23-grid-column>
+ 
+-                <vaadin-grid-column>
++                <vaadin23-grid-column>
+                   <template class="header">State</template>
+                   <template>[[item.location.state]]</template>
+-                </vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-            </vaadin-grid>
++                </vaadin23-grid-column>
++              </vaadin23-grid-column-group>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -154,24 +154,24 @@
+ 
+         beforeEach(async () => {
+           element = fixtureSync(`
+-            <vaadin-grid style="height: 250px" multi-sort>
+-              <vaadin-grid-column width="50px">
++            <vaadin23-grid style="height: 250px" multi-sort>
++              <vaadin23-grid-column width="50px">
+                 <template class="header">#</template>
+                 <template>[[index]]</template>
+-              </vaadin-grid-column>
+-              <vaadin-grid-column>
++              </vaadin23-grid-column>
++              <vaadin23-grid-column>
+                 <template class="header">
+-                  <vaadin-grid-sorter id="first-name-sorter" path="name.first">First name</vaadin-grid-sorter>
++                  <vaadin23-grid-sorter id="first-name-sorter" path="name.first">First name</vaadin23-grid-sorter>
+                 </template>
+                 <template>[[item.name.first]]</template>
+-              </vaadin-grid-column>
+-              <vaadin-grid-column>
++              </vaadin23-grid-column>
++              <vaadin23-grid-column>
+                 <template class="header">
+-                  <vaadin-grid-sorter id="last-name-sorter" path="name.last">Last name</vaadin-grid-sorter>
++                  <vaadin23-grid-sorter id="last-name-sorter" path="name.last">Last name</vaadin23-grid-sorter>
+                 </template>
+                 <template>[[item.name.last]]</template>
+-              </vaadin-grid-column>
+-            </vaadin-grid>
++              </vaadin23-grid-column>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -212,13 +212,13 @@
+       describe('row focus', () => {
+         beforeEach(async () => {
+           element = fixtureSync(`
+-            <vaadin-grid style="width: 550px">
+-              <vaadin-grid-column-group header="Name" frozen>
+-                <vaadin-grid-column path="name.first" width="200px" flex-shrink="0"></vaadin-grid-column>
+-                <vaadin-grid-column path="name.last" width="200px" flex-shrink="0"></vaadin-grid-column>
+-              </vaadin-grid-column-group>
+-              <vaadin-grid-column path="location.city" width="200px" flex-shrink="0"></vaadin-grid-column>
+-            </vaadin-grid>
++            <vaadin23-grid style="width: 550px">
++              <vaadin23-grid-column-group header="Name" frozen>
++                <vaadin23-grid-column path="name.first" width="200px" flex-shrink="0"></vaadin23-grid-column>
++                <vaadin23-grid-column path="name.last" width="200px" flex-shrink="0"></vaadin23-grid-column>
++              </vaadin23-grid-column-group>
++              <vaadin23-grid-column path="location.city" width="200px" flex-shrink="0"></vaadin23-grid-column>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -253,12 +253,12 @@
+       describe('frozen', () => {
+         beforeEach(() => {
+           element = fixtureSync(`
+-            <vaadin-grid style="max-width: 600px">
+-              <vaadin-grid-column path="name.first" width="200px" flex-shrink="0" frozen></vaadin-grid-column>
+-              <vaadin-grid-column path="name.last" width="200px" flex-shrink="0" ></vaadin-grid-column>
+-              <vaadin-grid-column path="location.city" width="200px" flex-shrink="0"></vaadin-grid-column>
+-              <vaadin-grid-column path="location.state" width="200px" flex-shrink="0" frozen-to-end></vaadin-grid-column>
+-            </vaadin-grid>
++            <vaadin23-grid style="max-width: 600px">
++              <vaadin23-grid-column path="name.first" width="200px" flex-shrink="0" frozen></vaadin23-grid-column>
++              <vaadin23-grid-column path="name.last" width="200px" flex-shrink="0" ></vaadin23-grid-column>
++              <vaadin23-grid-column path="location.city" width="200px" flex-shrink="0"></vaadin23-grid-column>
++              <vaadin23-grid-column path="location.state" width="200px" flex-shrink="0" frozen-to-end></vaadin23-grid-column>
++            </vaadin23-grid>
+           `);
+           element.items = users;
+           flushGrid(element);
+@@ -284,11 +284,11 @@
+   describe('drag and drop', () => {
+     beforeEach(async () => {
+       element = fixtureSync(`
+-        <vaadin-grid drop-mode="on-top-or-between" rows-draggable>
+-          <vaadin-grid-column path="name.first" header="First name"></vaadin-grid-column>
+-          <vaadin-grid-column path="name.last" header="Last name"></vaadin-grid-column>
+-          <vaadin-grid-column path="email"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin23-grid drop-mode="on-top-or-between" rows-draggable>
++          <vaadin23-grid-column path="name.first" header="First name"></vaadin23-grid-column>
++          <vaadin23-grid-column path="name.last" header="Last name"></vaadin23-grid-column>
++          <vaadin23-grid-column path="email"></vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       element.rowDetailsRenderer = (root) => {
+         root.innerHTML = '<p>Details</p>';
+@@ -346,11 +346,11 @@
+   describe('disabled', () => {
+     beforeEach(async () => {
+       element = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name.first" header="First name"></vaadin-grid-column>
+-          <vaadin-grid-column path="name.last" header="Last name"></vaadin-grid-column>
+-          <vaadin-grid-column path="email"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin23-grid>
++          <vaadin23-grid-column path="name.first" header="First name"></vaadin23-grid-column>
++          <vaadin23-grid-column path="name.last" header="Last name"></vaadin23-grid-column>
++          <vaadin23-grid-column path="email"></vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       element.items = users;
+       flushGrid(element);
+@@ -366,10 +366,10 @@
+   describe('tree', () => {
+     beforeEach(async () => {
+       element = fixtureSync(`
+-        <vaadin-grid item-id-path="name">
+-          <vaadin-grid-tree-column path="name" width="200px" flex-shrink="0"></vaadin-grid-tree-column>
+-          <vaadin-grid-column path="name" width="200px" flex-shrink="0"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin23-grid item-id-path="name">
++          <vaadin23-grid-tree-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-tree-column>
++          <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       element.dataProvider = ({ parentItem, page, pageSize }, cb) => {
+         // Let's have 10 root-level items and 3 items on every child level

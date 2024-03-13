@@ -1,0 +1,42 @@
+Index: test/missing-imports.test.js
+===================================================================
+--- test/missing-imports.test.js
++++ test/missing-imports.test.js
+@@ -9,27 +9,27 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 300px;" size="1000">
+-      </vaadin-grid>
++      <vaadin23-grid style="width: 200px; height: 300px;" size="1000">
++      </vaadin23-grid>
+     `);
+   });
+ 
+   it('should not throw on requestContentUpdate', () => {
+     // Add a column type that is not imported by default
+-    grid.appendChild(document.createElement('vaadin-grid-sort-column'));
++    grid.appendChild(document.createElement('vaadin23-grid-sort-column'));
+     flushGrid(grid);
+ 
+     expect(() => grid.requestContentUpdate()).to.not.throw();
+   });
+ 
+   [
+-    'vaadin-grid-column-group',
+-    'vaadin-grid-filter',
+-    'vaadin-grid-filter-column',
+-    'vaadin-grid-tree-toggle',
+-    'vaadin-grid-selection-column',
+-    'vaadin-grid-sort-column',
+-    'vaadin-grid-sorter',
++    'vaadin23-grid-column-group',
++    'vaadin23-grid-filter',
++    'vaadin23-grid-filter-column',
++    'vaadin23-grid-tree-toggle',
++    'vaadin23-grid-selection-column',
++    'vaadin23-grid-sort-column',
++    'vaadin23-grid-sorter',
+   ].forEach((elementName) => {
+     describe(`import warning for ${elementName}`, () => {
+       beforeEach(() => {

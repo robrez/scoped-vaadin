@@ -1,0 +1,332 @@
+Index: test/dom/__snapshots__/date-picker.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/date-picker.test.snap.js
++++ test/dom/__snapshots__/date-picker.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-date-picker host default"] = 
+-`<vaadin-date-picker>
++`<vaadin23-date-picker>
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -23,12 +23,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host default */
+ 
+ snapshots["vaadin-date-picker host disabled"] = 
+-`<vaadin-date-picker
++`<vaadin23-date-picker
+   aria-disabled="true"
+   disabled=""
+ >
+@@ -54,12 +54,12 @@
+     slot="input"
+     tabindex="-1"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host disabled */
+ 
+ snapshots["vaadin-date-picker host placeholder"] = 
+-`<vaadin-date-picker placeholder="Placeholder">
++`<vaadin23-date-picker placeholder="Placeholder">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -81,12 +81,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host placeholder */
+ 
+ snapshots["vaadin-date-picker host readonly"] = 
+-`<vaadin-date-picker readonly="">
++`<vaadin23-date-picker readonly="">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -108,12 +108,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host readonly */
+ 
+ snapshots["vaadin-date-picker host required"] = 
+-`<vaadin-date-picker required="">
++`<vaadin23-date-picker required="">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -135,12 +135,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host required */
+ 
+ snapshots["vaadin-date-picker host label"] = 
+-`<vaadin-date-picker has-label="">
++`<vaadin23-date-picker has-label="">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -163,12 +163,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host label */
+ 
+ snapshots["vaadin-date-picker host helper"] = 
+-`<vaadin-date-picker has-helper="">
++`<vaadin23-date-picker has-helper="">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -196,12 +196,12 @@
+   >
+     Helper
+   </div>
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host helper */
+ 
+ snapshots["vaadin-date-picker host error"] = 
+-`<vaadin-date-picker
++`<vaadin23-date-picker
+   has-error-message=""
+   invalid=""
+ >
+@@ -229,12 +229,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host error */
+ 
+ snapshots["vaadin-date-picker host name"] = 
+-`<vaadin-date-picker name="Field Name">
++`<vaadin23-date-picker name="Field Name">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -256,12 +256,12 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host name */
+ 
+ snapshots["vaadin-date-picker host value"] = 
+-`<vaadin-date-picker has-value="">
++`<vaadin23-date-picker has-value="">
+   <label
+     for="input-vaadin-date-picker-3"
+     id="label-vaadin-date-picker-0"
+@@ -282,7 +282,7 @@
+     role="combobox"
+     slot="input"
+   >
+-</vaadin-date-picker>
++</vaadin23-date-picker>
+ `;
+ /* end snapshot vaadin-date-picker host value */
+ 
+@@ -297,7 +297,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <slot
+       name="prefix"
+       slot="prefix"
+@@ -318,7 +318,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -328,14 +328,14 @@
+     </slot>
+   </div>
+ </div>
+-<vaadin-date-picker-overlay
++<vaadin23-date-picker-overlay
+   disable-upgrade=""
+   id="overlay"
+   restore-focus-on-close=""
+ >
+   <template>
+   </template>
+-</vaadin-date-picker-overlay>
++</vaadin23-date-picker-overlay>
+ <slot name="tooltip">
+ </slot>
+ `;
+@@ -352,7 +352,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     disabled=""
+     part="input-field"
+   >
+@@ -376,7 +376,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -386,14 +386,14 @@
+     </slot>
+   </div>
+ </div>
+-<vaadin-date-picker-overlay
++<vaadin23-date-picker-overlay
+   disable-upgrade=""
+   id="overlay"
+   restore-focus-on-close=""
+ >
+   <template>
+   </template>
+-</vaadin-date-picker-overlay>
++</vaadin23-date-picker-overlay>
+ <slot name="tooltip">
+ </slot>
+ `;
+@@ -410,7 +410,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     readonly=""
+   >
+@@ -434,7 +434,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -444,14 +444,14 @@
+     </slot>
+   </div>
+ </div>
+-<vaadin-date-picker-overlay
++<vaadin23-date-picker-overlay
+   disable-upgrade=""
+   id="overlay"
+   restore-focus-on-close=""
+ >
+   <template>
+   </template>
+-</vaadin-date-picker-overlay>
++</vaadin23-date-picker-overlay>
+ <slot name="tooltip">
+ </slot>
+ `;
+@@ -468,7 +468,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     invalid=""
+     part="input-field"
+   >
+@@ -492,7 +492,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -502,14 +502,14 @@
+     </slot>
+   </div>
+ </div>
+-<vaadin-date-picker-overlay
++<vaadin23-date-picker-overlay
+   disable-upgrade=""
+   id="overlay"
+   restore-focus-on-close=""
+ >
+   <template>
+   </template>
+-</vaadin-date-picker-overlay>
++</vaadin23-date-picker-overlay>
+ <slot name="tooltip">
+ </slot>
+ `;
+@@ -526,7 +526,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     theme="align-right"
+   >
+@@ -550,7 +550,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -560,14 +560,14 @@
+     </slot>
+   </div>
+ </div>
+-<vaadin-date-picker-overlay
++<vaadin23-date-picker-overlay
+   disable-upgrade=""
+   id="overlay"
+   restore-focus-on-close=""
+ >
+   <template>
+   </template>
+-</vaadin-date-picker-overlay>
++</vaadin23-date-picker-overlay>
+ <slot name="tooltip">
+ </slot>
+ `;

@@ -1,0 +1,18 @@
+Index: test/media-query-controller.test.js
+===================================================================
+--- test/media-query-controller.test.js
++++ test/media-query-controller.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -5,7 +6,7 @@
+ import { ControllerMixin } from '../src/controller-mixin.js';
+ import { MediaQueryController } from '../src/media-query-controller.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'media-query-element',
+   class extends ControllerMixin(PolymerElement) {
+     static get template() {

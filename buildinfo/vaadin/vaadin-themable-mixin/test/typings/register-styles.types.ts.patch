@@ -1,0 +1,13 @@
+Index: test/typings/register-styles.types.ts
+===================================================================
+--- test/typings/register-styles.types.ts
++++ test/typings/register-styles.types.ts
+@@ -1,7 +1,7 @@
+ import { css, registerStyles } from '../../register-styles.js';
+ 
+ registerStyles(
+-  'vaadin-grid',
++  'vaadin23-grid',
+   css`
+     [part~='cell'].dark {
+       color: var(--lumo-contrast-color);

@@ -1,0 +1,24 @@
+Index: test/scroller.test.js
+===================================================================
+--- test/scroller.test.js
++++ test/scroller.test.js
+@@ -4,16 +4,16 @@
+ import '../src/vaadin-infinite-scroller.js';
+ import { activateScroller, getFirstVisibleItem } from './helpers.js';
+ 
+-describe('vaadin-infinite-scroller', () => {
++describe('vaadin23-infinite-scroller', () => {
+   let scroller;
+ 
+   beforeEach(async () => {
+     scroller = fixtureSync(`
+-      <vaadin-infinite-scroller buffer-size="80">
++      <vaadin23-infinite-scroller buffer-size="80">
+         <template>
+           <div>[[index]]</div>
+         </template>
+-      </vaadin-infinite-scroller>
++      </vaadin23-infinite-scroller>
+     `);
+     scroller.style.setProperty('--vaadin-infinite-scroller-item-height', '30px');
+     scroller.updateStyles({ '--vaadin-infinite-scroller-item-height': '30px' });

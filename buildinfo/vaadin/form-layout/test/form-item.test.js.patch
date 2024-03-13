@@ -1,0 +1,214 @@
+Index: test/form-item.test.js
+===================================================================
+--- test/form-item.test.js
++++ test/form-item.test.js
+@@ -2,8 +2,8 @@
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '@polymer/polymer/lib/elements/custom-style.js';
+-import '@vaadin/custom-field';
+-import '@vaadin/text-field';
++import '@scoped-vaadin/custom-field';
++import '@scoped-vaadin/text-field';
+ import '../vaadin-form-item.js';
+ 
+ describe('form-item', () => {
+@@ -14,10 +14,10 @@
+ 
+     beforeEach(() => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <label slot="label">Label</label>
+           <input>
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       label = item.querySelector('label');
+       input = item.querySelector('input');
+@@ -42,10 +42,10 @@
+   describe('label positioning', () => {
+     beforeEach(() => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <label slot="label">Label</label>
+           <input>
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       label = item.querySelector('label');
+       input = item.querySelector('input');
+@@ -84,15 +84,15 @@
+     let label1, label2;
+ 
+     beforeEach(async () => {
+-      const item1 = fixtureSync(`<vaadin-form-item><label slot="label">Label</label></vaadin-form-item>`);
+-      const item2 = fixtureSync(`<vaadin-form-item><label slot="label">Label</label></vaadin-form-item>`);
++      const item1 = fixtureSync(`<vaadin23-form-item><label slot="label">Label</label></vaadin23-form-item>`);
++      const item2 = fixtureSync(`<vaadin23-form-item><label slot="label">Label</label></vaadin23-form-item>`);
+       label1 = item1.querySelector('label');
+       label2 = item2.querySelector('label');
+       await nextFrame();
+     });
+ 
+     it('should set a unique id on the label element', () => {
+-      const ID_REGEX = /^label-vaadin-form-item-\d+$/;
++      const ID_REGEX = /^label-vaadin23-form-item-\d+$/;
+       expect(label1.id).to.not.equal(label2.id);
+       expect(label1.id).to.match(ID_REGEX);
+       expect(label2.id).to.match(ID_REGEX);
+@@ -104,10 +104,10 @@
+ 
+     beforeEach(async () => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <label slot="label">Label</label>
+           <input>
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       await nextFrame();
+       input = item.querySelector('input');
+@@ -186,10 +186,10 @@
+     describe('input', () => {
+       beforeEach(async () => {
+         item = fixtureSync(`
+-          <vaadin-form-item>
++          <vaadin23-form-item>
+             <label slot="label">Label</label>
+             <input aria-labelledby="custom-id">
+-          </vaadin-form-item>
++          </vaadin23-form-item>
+         `);
+         label = item.querySelector('label');
+         input = item.querySelector('input');
+@@ -234,9 +234,9 @@
+     describe('input without label', () => {
+       beforeEach(async () => {
+         item = fixtureSync(`
+-          <vaadin-form-item>
++          <vaadin23-form-item>
+             <input aria-labelledby="custom-id">
+-          </vaadin-form-item>
++          </vaadin23-form-item>
+         `);
+         input = item.querySelector('input');
+         await nextFrame();
+@@ -260,15 +260,15 @@
+ 
+       beforeEach(async () => {
+         item = fixtureSync(`
+-          <vaadin-form-item>
++          <vaadin23-form-item>
+             <label slot="label">Label</label>
+-            <vaadin-text-field>
++            <vaadin23-text-field>
+               <input slot="input" aria-labelledby="custom-id">
+-            </vaadin-text-field>
+-          </vaadin-form-item>
++            </vaadin23-text-field>
++          </vaadin23-form-item>
+         `);
+         label = item.querySelector(':scope > label');
+-        field = item.querySelector(':scope > vaadin-text-field');
++        field = item.querySelector(':scope > vaadin23-text-field');
+         fieldInput = field.querySelector(':scope > input');
+         await nextFrame();
+       });
+@@ -284,13 +284,13 @@
+ 
+       beforeEach(async () => {
+         item = fixtureSync(`
+-          <vaadin-form-item>
++          <vaadin23-form-item>
+             <label slot="label">Label</label>
+-            <vaadin-custom-field aria-labelledby="custom-id"></vaadin-custom-field>
+-          </vaadin-form-item>
++            <vaadin23-custom-field aria-labelledby="custom-id"></vaadin23-custom-field>
++          </vaadin23-form-item>
+         `);
+         label = item.querySelector(':scope > label');
+-        field = item.querySelector(':scope > vaadin-custom-field');
++        field = item.querySelector(':scope > vaadin23-custom-field');
+         await nextFrame();
+       });
+ 
+@@ -315,10 +315,10 @@
+ 
+     beforeEach(() => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <label slot="label">Label</label>
+           <input>
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       label = item.querySelector('label');
+       input = item.querySelector('input');
+@@ -347,10 +347,10 @@
+   describe('required input', () => {
+     beforeEach(async () => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <label slot="label">Label</label>
+           <input>
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       label = item.querySelector('label');
+       input = item.querySelector('input');
+@@ -484,9 +484,9 @@
+ 
+     it('should not warn when a single field is placed to an item', async () => {
+       fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <input />
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       await nextFrame();
+ 
+@@ -495,24 +495,24 @@
+ 
+     it('should warn when multiple fields are placed to an item initially', async () => {
+       fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <input />
+           <input />
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       await nextFrame();
+ 
+       expect(stub.calledOnce).to.be.true;
+       expect(stub.args[0][0]).to.include(
+-        'WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin-form-item> is deprecated.',
++        'WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin23-form-item> is deprecated.',
+       );
+     });
+ 
+     it('should warn when multiple fields are placed to an item dynamically', async () => {
+       const item = fixtureSync(`
+-        <vaadin-form-item>
++        <vaadin23-form-item>
+           <input />
+-        </vaadin-form-item>
++        </vaadin23-form-item>
+       `);
+       await nextFrame();
+ 
+@@ -522,7 +522,7 @@
+ 
+       expect(stub.calledOnce).to.be.true;
+       expect(stub.args[0][0]).to.include(
+-        'WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin-form-item> is deprecated.',
++        'WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin23-form-item> is deprecated.',
+       );
+     });
+   });

@@ -1,0 +1,112 @@
+Index: test/message-list.test.js
+===================================================================
+--- test/message-list.test.js
++++ test/message-list.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   arrowDown,
+@@ -22,7 +23,7 @@
+     root.style.setProperty('--vaadin-user-color-1', 'purple');
+     root.style.setProperty('--vaadin-user-color-2', 'blue');
+ 
+-    messageList = fixtureSync('<vaadin-message-list></vaadin-message-list>');
++    messageList = fixtureSync('<vaadin23-message-list></vaadin23-message-list>');
+     messages = [
+       {
+         text: 'A message in the stream of messages',
+@@ -71,11 +72,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -90,7 +91,7 @@
+     });
+ 
+     it('message list should have two messages', () => {
+-      const items = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      const items = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+       expect(items.length).to.equal(4);
+     });
+ 
+@@ -101,7 +102,7 @@
+     });
+ 
+     it('message properties should be correctly set', () => {
+-      const firstMessage = messageList.shadowRoot.querySelector('vaadin-message');
++      const firstMessage = messageList.shadowRoot.querySelector('vaadin23-message');
+       expect(firstMessage.time).to.be.equal(messages[0].time);
+       expect(firstMessage.userName).to.be.equal(messages[0].userName);
+       expect(firstMessage.userAbbr).to.be.equal(messages[0].userAbbr);
+@@ -157,7 +158,7 @@
+     });
+ 
+     it('message list should set tab index on first item if new item list is shorter, and it does not have a item index corresponding to the previous item with tab index 0', async () => {
+-      const messages = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      const messages = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+       const thirdMessage = messages[2];
+ 
+       // Click on third item to give it tabindex=0
+@@ -193,7 +194,7 @@
+     });
+ 
+     it('should preserve tabindex when increasing items count', async () => {
+-      const secondMessage = messageList.shadowRoot.querySelectorAll('vaadin-message')[1];
++      const secondMessage = messageList.shadowRoot.querySelectorAll('vaadin23-message')[1];
+       mousedown(secondMessage);
+       focusin(secondMessage);
+       messageList.items = [
+@@ -209,14 +210,14 @@
+         },
+       ];
+       await nextRender(messageList);
+-      const messages = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      const messages = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+       messages.forEach((msg, idx) => {
+         expect(msg.tabIndex).to.equal(idx === 1 ? 0 : -1);
+       });
+     });
+ 
+     it('should preserve tabindex when decreasing items count if possible', async () => {
+-      const secondMessage = messageList.shadowRoot.querySelectorAll('vaadin-message')[1];
++      const secondMessage = messageList.shadowRoot.querySelectorAll('vaadin23-message')[1];
+       mousedown(secondMessage);
+       focusin(secondMessage);
+ 
+@@ -243,7 +244,7 @@
+       ];
+ 
+       await nextRender(messageList);
+-      const messages = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      const messages = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+       // Verify that the second item got the new tabIndex=0.
+       expect(messages[0].tabIndex).to.be.equal(-1);
+       expect(messages[1].tabIndex).to.be.equal(0);
+@@ -256,7 +257,7 @@
+     beforeEach(async () => {
+       messageList.items = messages;
+       await nextRender(messageList);
+-      messageElements = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      messageElements = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+       message = messageElements[1];
+     });
+ 
+@@ -304,7 +305,7 @@
+     beforeEach(async () => {
+       messageList.items = messages;
+       await nextRender(messageList);
+-      messageElements = messageList.shadowRoot.querySelectorAll('vaadin-message');
++      messageElements = messageList.shadowRoot.querySelectorAll('vaadin23-message');
+     });
+ 
+     it('should set tabindex on the next message on "arrow-down" keydown', () => {

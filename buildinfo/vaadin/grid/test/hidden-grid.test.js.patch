@@ -1,0 +1,29 @@
+Index: test/hidden-grid.test.js
+===================================================================
+--- test/hidden-grid.test.js
++++ test/hidden-grid.test.js
+@@ -1,6 +1,6 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import { flushGrid, getBodyCellContent, infiniteDataProvider } from './helpers.js';
+ 
+@@ -9,12 +9,12 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="height: 200px; width: 200px;" hidden size="1">
+-        <vaadin-grid-column>
++      <vaadin23-grid style="height: 200px; width: 200px;" hidden size="1">
++        <vaadin23-grid-column>
+           <template class="header">foo</template>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);

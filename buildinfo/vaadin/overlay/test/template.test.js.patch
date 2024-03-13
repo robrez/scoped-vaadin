@@ -1,0 +1,53 @@
+Index: test/template.test.js
+===================================================================
+--- test/template.test.js
++++ test/template.test.js
+@@ -1,29 +1,30 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../vaadin-overlay.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'overlay-opened-wrapper',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-overlay id="overlay" opened>
++        <vaadin23-overlay id="overlay" opened>
+           <template>overlay content</template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `;
+     }
+   },
+ );
+ 
+-customElements.define(
++internalCustomElements.define(
+   'overlay-props-wrapper',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-overlay id="overlay" opened="{{opened}}">
++        <vaadin23-overlay id="overlay" opened="{{opened}}">
+           <template>my-overlay-view content hostProp: {{hostProp}} hostPath.subPath: {{hostPath.subPath}}</template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `;
+     }
+ 
+@@ -171,9 +172,9 @@
+   describe('in document scope', () => {
+     beforeEach(() => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>plain overlay content</template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       externalTemplate = createTemplate('external template content');
+     });

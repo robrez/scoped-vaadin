@@ -1,0 +1,22 @@
+Index: test/typings/login.types.ts
+===================================================================
+--- test/typings/login.types.ts
++++ test/typings/login.types.ts
+@@ -13,7 +13,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const overlay = document.createElement('vaadin-login-overlay');
++const overlay = document.createElement('vaadin23-login-overlay');
+ 
+ overlay.addEventListener('login', (event) => {
+   assertType<LoginOverlayLoginEvent>(event);
+@@ -36,7 +36,7 @@
+   assertType<string>(event.detail.value);
+ });
+ 
+-const form = document.createElement('vaadin-login-form');
++const form = document.createElement('vaadin23-login-form');
+ 
+ form.addEventListener('login', (event) => {
+   assertType<LoginFormLoginEvent>(event);

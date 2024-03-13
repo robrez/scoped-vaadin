@@ -1,0 +1,20 @@
+Index: test/visual/material/app-layout.test.js
+===================================================================
+--- test/visual/material/app-layout.test.js
++++ test/visual/material/app-layout.test.js
+@@ -12,12 +12,12 @@
+ 
+     element = fixtureSync(
+       `
+-        <vaadin-app-layout>
+-          <vaadin-drawer-toggle slot="navbar"></vaadin-drawer-toggle>
++        <vaadin23-app-layout>
++          <vaadin23-drawer-toggle slot="navbar"></vaadin23-drawer-toggle>
+           <h2 slot="navbar">App Name</h2>
+           <section slot="drawer">Drawer content</section>
+           <main>Page content</main>
+-        </vaadin-app-layout>
++        </vaadin23-app-layout>
+       `,
+       div,
+     );

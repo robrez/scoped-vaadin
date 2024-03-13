@@ -1,0 +1,32 @@
+Index: test/scroll.test.js
+===================================================================
+--- test/scroll.test.js
++++ test/scroll.test.js
+@@ -7,17 +7,17 @@
+ 
+   beforeEach(() => {
+     tabs = fixtureSync(`
+-      <vaadin-tabs style="width: 400px; height: 150px;">
+-        <vaadin-tab>Foo</vaadin-tab>
+-        <vaadin-tab>Bar</vaadin-tab>
++      <vaadin23-tabs style="width: 400px; height: 150px;">
++        <vaadin23-tab>Foo</vaadin23-tab>
++        <vaadin23-tab>Bar</vaadin23-tab>
+         <separator>___</separator>
+-        <vaadin-tab disabled>Baz</vaadin-tab>
+-        <vaadin-tab>Foo1</vaadin-tab>
+-        <vaadin-tab>Bar1</vaadin-tab>
+-        <vaadin-tab>Baz1</vaadin-tab>
+-        <vaadin-tab>Foo2</vaadin-tab>
+-        <vaadin-tab>Bar2</vaadin-tab>
+-      </vaadin-tabs>
++        <vaadin23-tab disabled>Baz</vaadin23-tab>
++        <vaadin23-tab>Foo1</vaadin23-tab>
++        <vaadin23-tab>Bar1</vaadin23-tab>
++        <vaadin23-tab>Baz1</vaadin23-tab>
++        <vaadin23-tab>Foo2</vaadin23-tab>
++        <vaadin23-tab>Bar2</vaadin23-tab>
++      </vaadin23-tabs>
+     `);
+     tabs._observer.flush();
+     items = tabs.items;

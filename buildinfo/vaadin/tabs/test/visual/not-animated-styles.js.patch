@@ -1,0 +1,14 @@
+Index: test/visual/not-animated-styles.js
+===================================================================
+--- test/visual/not-animated-styles.js
++++ test/visual/not-animated-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-tab',
++  'vaadin23-tab',
+   css`
+     :host,
+     :host::before,

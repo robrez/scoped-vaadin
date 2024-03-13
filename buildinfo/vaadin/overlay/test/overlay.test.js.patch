@@ -1,0 +1,157 @@
+Index: test/overlay.test.js
+===================================================================
+--- test/overlay.test.js
++++ test/overlay.test.js
+@@ -1,18 +1,19 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { click, enterKeyDown, escKeyDown, fixtureSync, mousedown, mouseup, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/text-field/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/vaadin-text-field.js';
+ import '../vaadin-overlay.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'overlay-wrapper',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-overlay id="overlay" opened="[[opened]]">
++        <vaadin23-overlay id="overlay" opened="[[opened]]">
+           <template> overlay content </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `;
+     }
+ 
+@@ -24,18 +25,18 @@
+   },
+ );
+ 
+-describe('vaadin-overlay', () => {
++describe('vaadin23-overlay', () => {
+   describe('moving overlay', () => {
+     let parent, overlay;
+ 
+     beforeEach(async () => {
+       parent = fixtureSync(`
+         <div id="parent">
+-          <vaadin-overlay>
++          <vaadin23-overlay>
+             <template>
+               overlay-content
+             </template>
+-          </vaadin-overlay>
++          </vaadin23-overlay>
+         </div>
+       `);
+       overlay = parent.children[0];
+@@ -63,11 +64,11 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       overlay._observer.flush();
+       overlay.opened = true;
+@@ -103,11 +104,11 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       overlay._observer.flush();
+       backdrop = overlay.$.backdrop;
+@@ -145,11 +146,11 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       overlay._observer.flush();
+       overlay.opened = true;
+@@ -199,11 +200,11 @@
+     beforeEach(async () => {
+       parent = fixtureSync(`
+         <div id="parent">
+-          <vaadin-overlay>
++          <vaadin23-overlay>
+             <template>
+               overlay-content
+             </template>
+-          </vaadin-overlay>
++          </vaadin23-overlay>
+         </div>
+       `);
+       overlay = parent.children[0];
+@@ -406,11 +407,11 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       overlayPart = overlay.$.overlay;
+       overlay._observer.flush();
+@@ -482,11 +483,11 @@
+     beforeEach(async () => {
+       parent = fixtureSync(`
+         <div id="parent">
+-          <vaadin-overlay>
++          <vaadin23-overlay>
+             <template>
+               <overlay-wrapper></-wrapper>
+             </template>
+-          </vaadin-overlay>
++          </vaadin23-overlay>
+         </div>
+       `);
+       overlay = parent.children[0];
+@@ -501,7 +502,7 @@
+ 
+     it('should not exit modal state when opened changes from undefined to false', () => {
+       const wrapper = overlay.content.querySelector('overlay-wrapper');
+-      const inner = wrapper.shadowRoot.querySelector('vaadin-overlay');
++      const inner = wrapper.shadowRoot.querySelector('vaadin23-overlay');
+       const spy = sinon.spy(inner, '_exitModalState');
+       wrapper.opened = false;
+       expect(spy.called).to.be.false;
+@@ -514,11 +515,11 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       overlay._observer.flush();
+       overlay.opened = true;

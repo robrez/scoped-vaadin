@@ -1,0 +1,30 @@
+Index: test/dom/app-layout.test.js
+===================================================================
+--- test/dom/app-layout.test.js
++++ test/dom/app-layout.test.js
+@@ -4,20 +4,20 @@
+ import '../../src/vaadin-app-layout.js';
+ import '../../vaadin-drawer-toggle.js';
+ 
+-describe('vaadin-app-layout', () => {
++describe('vaadin23-app-layout', () => {
+   let layout;
+ 
+   async function fixtureLayout() {
+     layout = fixtureSync(`
+-      <vaadin-app-layout>
+-        <vaadin-drawer-toggle id="toggle" slot="navbar">
++      <vaadin23-app-layout>
++        <vaadin23-drawer-toggle id="toggle" slot="navbar">
+           Drawer Toggle
+-        </vaadin-drawer-toggle>
++        </vaadin23-drawer-toggle>
+         <section slot="drawer">
+           Drawer Content
+         </section>
+         <main>Page Content</main>
+-      </vaadin-app-layout>
++      </vaadin23-app-layout>
+     `);
+     await nextRender();
+   }

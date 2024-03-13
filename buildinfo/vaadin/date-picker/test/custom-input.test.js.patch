@@ -1,0 +1,25 @@
+Index: test/custom-input.test.js
+===================================================================
+--- test/custom-input.test.js
++++ test/custom-input.test.js
+@@ -10,9 +10,9 @@
+ 
+   beforeEach(() => {
+     datePicker = fixtureSync(`
+-      <vaadin-date-picker-light attr-for-value="value">
++      <vaadin23-date-picker-light attr-for-value="value">
+         <input class="input">
+-      </vaadin-date-picker-light>
++      </vaadin23-date-picker-light>
+     `);
+     overlay = datePicker.$.overlay;
+     input = datePicker.inputElement;
+@@ -74,7 +74,7 @@
+       it('should propagate theme attribute to month calendar', async () => {
+         const overlayContent = getOverlayContent(datePicker);
+         await waitForScrollToFinish(overlayContent);
+-        const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin-month-calendar');
++        const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin23-month-calendar');
+         expect(monthCalendar.getAttribute('theme')).to.equal('foo');
+       });
+     });

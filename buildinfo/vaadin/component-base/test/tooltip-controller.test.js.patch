@@ -1,0 +1,39 @@
+Index: test/tooltip-controller.test.js
+===================================================================
+--- test/tooltip-controller.test.js
++++ test/tooltip-controller.test.js
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { ControllerMixin } from '../src/controller-mixin.js';
+ import { TooltipController } from '../src/tooltip-controller.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'tooltip-host',
+   class extends ControllerMixin(PolymerElement) {
+     static get template() {
+@@ -24,10 +25,10 @@
+       host = fixtureSync(`
+         <tooltip-host>
+           <div>Target</div>
+-          <vaadin-tooltip slot="tooltip"></vaadin-tooltip>
++          <vaadin23-tooltip slot="tooltip"></vaadin23-tooltip>
+         </tooltip-host>
+       `);
+-      tooltip = host.querySelector('vaadin-tooltip');
++      tooltip = host.querySelector('vaadin23-tooltip');
+       controller = new TooltipController(host);
+       host.addController(controller);
+     });
+@@ -91,7 +92,7 @@
+       controller = new TooltipController(host);
+       host.addController(controller);
+ 
+-      tooltip = document.createElement('vaadin-tooltip');
++      tooltip = document.createElement('vaadin23-tooltip');
+       tooltip.setAttribute('slot', 'tooltip');
+     });
+ 

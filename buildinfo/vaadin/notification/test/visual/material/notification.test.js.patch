@@ -1,0 +1,13 @@
+Index: test/visual/material/notification.test.js
+===================================================================
+--- test/visual/material/notification.test.js
++++ test/visual/material/notification.test.js
+@@ -6,7 +6,7 @@
+   let element;
+ 
+   beforeEach(() => {
+-    element = fixtureSync('<vaadin-notification duration="0"></vaadin-notification>');
++    element = fixtureSync('<vaadin23-notification duration="0"></vaadin23-notification>');
+     element.renderer = (root) => {
+       root.textContent = element.position;
+     };

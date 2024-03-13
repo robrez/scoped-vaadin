@@ -1,0 +1,238 @@
+Index: test/checkbox-group.test.js
+===================================================================
+--- test/checkbox-group.test.js
++++ test/checkbox-group.test.js
+@@ -1,38 +1,39 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+ import '../vaadin-checkbox-group.js';
+ 
+-describe('vaadin-checkbox-group', () => {
++describe('vaadin23-checkbox-group', () => {
+   let group, checkboxes;
+ 
+   describe('custom element definition', () => {
+     let tagName;
+ 
+     beforeEach(() => {
+-      group = fixtureSync(`<vaadin-checkbox-group></vaadin-checkbox-group>`);
++      group = fixtureSync(`<vaadin23-checkbox-group></vaadin23-checkbox-group>`);
+       tagName = group.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="2" label="Checkbox 2" disabled></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++          <vaadin23-checkbox value="2" label="Checkbox 2" disabled></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+-      checkboxes = group.querySelectorAll('vaadin-checkbox');
++      checkboxes = group.querySelectorAll('vaadin23-checkbox');
+       await nextFrame();
+     });
+ 
+@@ -55,13 +56,13 @@
+   describe('disabled', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group disabled>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="2" label="Checkbox 2"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group disabled>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++          <vaadin23-checkbox value="2" label="Checkbox 2"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+-      checkboxes = [...group.querySelectorAll('vaadin-checkbox')];
++      checkboxes = [...group.querySelectorAll('vaadin23-checkbox')];
+     });
+ 
+     it('should propagate disabled property to checkboxes', () => {
+@@ -76,7 +77,7 @@
+     });
+ 
+     it('should set disabled property to dynamically added checkboxes', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = '3';
+       group.appendChild(checkbox);
+       await nextFrame();
+@@ -87,18 +88,18 @@
+   describe('value', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="2" label="Checkbox 2"></vaadin-checkbox>
+-          <vaadin-checkbox value="3" label="Checkbox 3"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++          <vaadin23-checkbox value="2" label="Checkbox 2"></vaadin23-checkbox>
++          <vaadin23-checkbox value="3" label="Checkbox 3"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+-      checkboxes = [...group.querySelectorAll('vaadin-checkbox')];
++      checkboxes = [...group.querySelectorAll('vaadin23-checkbox')];
+     });
+ 
+     it('should add dynamically added checked checkbox value to checkbox group value', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = 'new';
+       checkbox.checked = true;
+       group.appendChild(checkbox);
+@@ -107,7 +108,7 @@
+     });
+ 
+     it('should not add duplicate values when added checked checkbox already included in value', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = 'new';
+       checkbox.checked = true;
+       group.value = ['new'];
+@@ -117,7 +118,7 @@
+     });
+ 
+     it('should check dynamically added checkbox if included in value', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = 'new';
+       group.value = ['new'];
+       group.appendChild(checkbox);
+@@ -136,7 +137,7 @@
+ 
+     it('should create new array instance for checkbox group value when checkbox dynamically added', async () => {
+       const value = group.value;
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = 'new';
+       checkbox.checked = true;
+       group.appendChild(checkbox);
+@@ -197,12 +198,12 @@
+   describe('focused attribute', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+-      checkboxes = [...group.querySelectorAll('vaadin-checkbox')];
++      checkboxes = [...group.querySelectorAll('vaadin23-checkbox')];
+     });
+ 
+     it('should set focused attribute on Tab', async () => {
+@@ -248,12 +249,12 @@
+   describe('has-value attribute', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+-      checkboxes = [...group.querySelectorAll('vaadin-checkbox')];
++      checkboxes = [...group.querySelectorAll('vaadin23-checkbox')];
+     });
+ 
+     it('should toggle the attribute on value change', () => {
+@@ -266,7 +267,7 @@
+ 
+   describe('warnings', () => {
+     beforeEach(async () => {
+-      group = fixtureSync(`<vaadin-checkbox-group></vaadin-checkbox-group>`);
++      group = fixtureSync(`<vaadin23-checkbox-group></vaadin23-checkbox-group>`);
+       await nextFrame();
+     });
+ 
+@@ -279,14 +280,14 @@
+     });
+ 
+     it('should warn when adding checkbox without value', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       group.appendChild(checkbox);
+       await nextFrame();
+       expect(console.warn.calledOnce).to.be.true;
+     });
+ 
+     it('should not warn when adding checkbox with value attribute', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.setAttribute('value', 'something');
+       group.appendChild(checkbox);
+       await nextFrame();
+@@ -294,7 +295,7 @@
+     });
+ 
+     it('should not warn when adding checkbox with value property', async () => {
+-      const checkbox = document.createElement('vaadin-checkbox');
++      const checkbox = document.createElement('vaadin23-checkbox');
+       checkbox.value = 'something';
+       group.appendChild(checkbox);
+       await nextFrame();
+@@ -305,20 +306,20 @@
+   describe('wrapping', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="c_1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_2" label="Checkbox 2"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_3" label="Checkbox 3"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_4" label="Checkbox 4"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_5" label="Checkbox 5"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_6" label="Checkbox 6"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_7" label="Checkbox 7"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_8" label="Checkbox 8"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_9" label="Checkbox 9"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_10" label="Checkbox 10"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_11" label="Checkbox 11"></vaadin-checkbox>
+-          <vaadin-checkbox value="c_12" label="Checkbox 12"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="c_1" label="Checkbox 1"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_2" label="Checkbox 2"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_3" label="Checkbox 3"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_4" label="Checkbox 4"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_5" label="Checkbox 5"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_6" label="Checkbox 6"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_7" label="Checkbox 7"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_8" label="Checkbox 8"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_9" label="Checkbox 9"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_10" label="Checkbox 10"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_11" label="Checkbox 11"></vaadin23-checkbox>
++          <vaadin23-checkbox value="c_12" label="Checkbox 12"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+     });

@@ -1,0 +1,19 @@
+Index: test/typings/menu-bar.types.ts
+===================================================================
+--- test/typings/menu-bar.types.ts
++++ test/typings/menu-bar.types.ts
+@@ -1,10 +1,10 @@
+ import '../../vaadin-menu-bar.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { FocusMixinClass } from '@vaadin/component-base/src/focus-mixin.js';
+-import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/component-base/src/focus-mixin.js';
++import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
+ import type { MenuBarItem, MenuBarItemSelectedEvent } from '../../vaadin-menu-bar.js';
+ 
+-const menu = document.createElement('vaadin-menu-bar');
++const menu = document.createElement('vaadin23-menu-bar');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 

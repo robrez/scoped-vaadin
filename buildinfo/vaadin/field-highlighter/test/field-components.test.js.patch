@@ -1,0 +1,167 @@
+Index: test/field-components.test.js
+===================================================================
+--- test/field-components.test.js
++++ test/field-components.test.js
+@@ -2,14 +2,14 @@
+ import { arrowDown, fixtureSync, focusin, focusout, listenOnce, nextFrame } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+-import '@vaadin/checkbox-group';
+-import '@vaadin/date-picker';
+-import '@vaadin/date-time-picker';
+-import '@vaadin/item';
+-import '@vaadin/list-box';
+-import '@vaadin/radio-group';
+-import '@vaadin/select';
+-import '@vaadin/text-field';
++import '@scoped-vaadin/checkbox-group';
++import '@scoped-vaadin/date-picker';
++import '@scoped-vaadin/date-time-picker';
++import '@scoped-vaadin/item';
++import '@scoped-vaadin/list-box';
++import '@scoped-vaadin/radio-group';
++import '@scoped-vaadin/select';
++import '@scoped-vaadin/text-field';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, render } from 'lit';
+ import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
+@@ -37,7 +37,7 @@
+ 
+   describe('text field', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-text-field></vaadin-text-field>`);
++      field = fixtureSync(`<vaadin23-text-field></vaadin23-text-field>`);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+       hideSpy = sinon.spy();
+@@ -60,7 +60,7 @@
+ 
+   describe('date picker', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++      field = fixtureSync(`<vaadin23-date-picker></vaadin23-date-picker>`);
+       FieldHighlighter.init(field);
+       overlay = field.$.overlay;
+       showSpy = sinon.spy();
+@@ -190,7 +190,7 @@
+ 
+   describe('select', () => {
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-select></vaadin-select>`);
++      field = fixtureSync(`<vaadin23-select></vaadin23-select>`);
+       field.renderer = (root) => {
+         if (root.firstChild) {
+           return;
+@@ -198,11 +198,11 @@
+ 
+         render(
+           html`
+-            <vaadin-list-box>
+-              <vaadin-item>Foo</vaadin-item>
+-              <vaadin-item>Bar</vaadin-item>
+-              <vaadin-item>Baz</vaadin-item>
+-            </vaadin-list-box>
++            <vaadin23-list-box>
++              <vaadin23-item>Foo</vaadin23-item>
++              <vaadin23-item>Bar</vaadin23-item>
++              <vaadin23-item>Baz</vaadin23-item>
++            </vaadin23-list-box>
+           `,
+           root,
+         );
+@@ -243,7 +243,7 @@
+             expect(hideSpy.callCount).to.equal(0);
+             done();
+           });
+-          overlay.querySelector('vaadin-item').click();
++          overlay.querySelector('vaadin23-item').click();
+         });
+       });
+ 
+@@ -254,7 +254,7 @@
+             expect(hideSpy.callCount).to.equal(0);
+             done();
+           });
+-          overlay.querySelector('vaadin-item').blur();
++          overlay.querySelector('vaadin23-item').blur();
+           document.body.click();
+         });
+       });
+@@ -266,7 +266,7 @@
+             expect(showSpy.callCount).to.equal(1);
+             done();
+           });
+-          overlay.querySelector('vaadin-item').blur();
++          overlay.querySelector('vaadin23-item').blur();
+           document.body.click();
+         });
+       });
+@@ -295,7 +295,7 @@
+             expect(hideSpy.callCount).to.equal(1);
+             done();
+           });
+-          overlay.querySelector('vaadin-item').click();
++          overlay.querySelector('vaadin23-item').click();
+         });
+       });
+     });
+@@ -306,11 +306,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox value="1" label="Checkbox 1"></vaadin-checkbox>
+-          <vaadin-checkbox value="2" label="Checkbox 2"></vaadin-checkbox>
+-          <vaadin-checkbox value="3" label="Checkbox 3"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox value="1" label="Checkbox 1"></vaadin23-checkbox>
++          <vaadin23-checkbox value="2" label="Checkbox 2"></vaadin23-checkbox>
++          <vaadin23-checkbox value="3" label="Checkbox 3"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+@@ -363,11 +363,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button value="1" label="Radio 1"></vaadin-radio-button>
+-          <vaadin-radio-button value="2" label="Radio 2"></vaadin-radio-button>
+-          <vaadin-radio-button value="3" label="Radio 3"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button value="1" label="Radio 1"></vaadin23-radio-button>
++          <vaadin23-radio-button value="2" label="Radio 2"></vaadin23-radio-button>
++          <vaadin23-radio-button value="3" label="Radio 3"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       FieldHighlighter.init(field);
+       showSpy = sinon.spy();
+@@ -420,7 +420,7 @@
+     let time;
+ 
+     beforeEach(async () => {
+-      field = fixtureSync(`<vaadin-date-time-picker></vaadin-date-time-picker>`);
++      field = fixtureSync(`<vaadin23-date-time-picker></vaadin23-date-time-picker>`);
+       FieldHighlighter.init(field);
+       date = field.__inputs[0];
+       time = field.__inputs[1];
+@@ -518,11 +518,11 @@
+ 
+     beforeEach(async () => {
+       field = fixtureSync(`
+-        <vaadin-list-box>
+-          <vaadin-item>Option 1</vaadin-item>
+-          <vaadin-item>Option 2</vaadin-item>
+-          <vaadin-item>Option 3</vaadin-item>
+-        </vaadin-list-box>
++        <vaadin23-list-box>
++          <vaadin23-item>Option 1</vaadin23-item>
++          <vaadin23-item>Option 2</vaadin23-item>
++          <vaadin23-item>Option 3</vaadin23-item>
++        </vaadin23-list-box>
+       `);
+       await nextFrame();
+       FieldHighlighter.init(field);

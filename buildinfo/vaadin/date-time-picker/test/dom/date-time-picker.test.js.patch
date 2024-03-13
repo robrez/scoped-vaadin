@@ -1,0 +1,18 @@
+Index: test/dom/date-time-picker.test.js
+===================================================================
+--- test/dom/date-time-picker.test.js
++++ test/dom/date-time-picker.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-date-time-picker.js';
+ 
+-describe('vaadin-date-time-picker', () => {
++describe('vaadin23-date-time-picker', () => {
+   let dateTimePicker;
+ 
+   beforeEach(() => {
+-    dateTimePicker = fixtureSync('<vaadin-date-time-picker></vaadin-date-time-picker>');
++    dateTimePicker = fixtureSync('<vaadin23-date-time-picker></vaadin23-date-time-picker>');
+   });
+ 
+   it('default', async () => {

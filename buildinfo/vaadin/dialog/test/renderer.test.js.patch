@@ -1,0 +1,43 @@
+Index: test/renderer.test.js
+===================================================================
+--- test/renderer.test.js
++++ test/renderer.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-dialog.js';
+ 
+ describe('vaadin-dialog renderer', () => {
+@@ -9,7 +9,7 @@
+     let dialog, overlay;
+ 
+     beforeEach(() => {
+-      dialog = fixtureSync('<vaadin-dialog></vaadin-dialog>');
++      dialog = fixtureSync('<vaadin23-dialog></vaadin23-dialog>');
+       overlay = dialog.$.overlay;
+     });
+ 
+@@ -36,7 +36,7 @@
+     });
+ 
+     it('should not throw when requesting content update for an unupgraded dialog', () => {
+-      const dialog = document.createElement('vaadin-dialog');
++      const dialog = document.createElement('vaadin23-dialog');
+ 
+       expect(() => dialog.requestContentUpdate()).not.to.throw();
+     });
+@@ -60,9 +60,9 @@
+ 
+     beforeEach(() => {
+       dialog = fixtureSync(`
+-        <vaadin-dialog>
++        <vaadin23-dialog>
+           <template>foo</template>
+-        </vaadin-dialog>
++        </vaadin23-dialog>
+       `);
+       overlay = dialog.$.overlay;
+     });

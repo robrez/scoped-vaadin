@@ -1,0 +1,94 @@
+Index: test/items.test.js
+===================================================================
+--- test/items.test.js
++++ test/items.test.js
+@@ -14,11 +14,11 @@
+   tabKeyDown,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
+ import './not-animated-styles.js';
+ import '../vaadin-context-menu.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ 
+ const menuOpenEvent = isTouch ? 'click' : 'mouseover';
+ 
+@@ -41,7 +41,7 @@
+   };
+ 
+   const getSubMenu = (menu = rootMenu) => {
+-    return menu.$.overlay.content.querySelector('vaadin-context-menu');
++    return menu.$.overlay.content.querySelector('vaadin23-context-menu');
+   };
+ 
+   const updateItemsAndReopen = async () => {
+@@ -53,8 +53,8 @@
+ 
+   const getMenuItems = (menu = rootMenu) => {
+     const overlay = menu.$.overlay;
+-    const listBox = overlay.querySelector('vaadin-context-menu-list-box');
+-    return Array.from(listBox.querySelectorAll('vaadin-context-menu-item'));
++    const listBox = overlay.querySelector('vaadin23-context-menu-list-box');
++    return Array.from(listBox.querySelectorAll('vaadin23-context-menu-item'));
+   };
+ 
+   afterEach(() => {
+@@ -64,9 +64,9 @@
+   describe('default', () => {
+     beforeEach(async () => {
+       rootMenu = fixtureSync(`
+-        <vaadin-context-menu>
++        <vaadin23-context-menu>
+           <button id="target"></button>
+-        </vaadin-context-menu>
++        </vaadin23-context-menu>
+       `);
+       rootMenu.openOn = menuOpenEvent;
+       target = rootMenu.firstElementChild;
+@@ -214,7 +214,7 @@
+     });
+ 
+     it('should have default item type', () => {
+-      expect(menuComponents()[0].localName).to.equal('vaadin-context-menu-item');
++      expect(menuComponents()[0].localName).to.equal('vaadin23-context-menu-item');
+     });
+ 
+     it('should accept component items', () => {
+@@ -514,9 +514,9 @@
+ 
+     beforeEach(async () => {
+       rootMenu = fixtureSync(`
+-        <vaadin-context-menu theme="foo">
++        <vaadin23-context-menu theme="foo">
+           <button id="target"></button>
+-        </vaadin-context-menu>
++        </vaadin23-context-menu>
+       `);
+       rootMenu.openOn = menuOpenEvent;
+       target = rootMenu.firstElementChild;
+@@ -552,8 +552,8 @@
+     it('should propagate host theme attribute to the nested elements', () => {
+       [rootMenu, subMenu, subMenu2].forEach((subMenu) => {
+         const overlay = subMenu.$.overlay;
+-        const listBox = overlay.querySelector('vaadin-context-menu-list-box');
+-        const items = Array.from(listBox.querySelectorAll('vaadin-context-menu-item'));
++        const listBox = overlay.querySelector('vaadin23-context-menu-list-box');
++        const items = Array.from(listBox.querySelectorAll('vaadin23-context-menu-item'));
+ 
+         expect(overlay.getAttribute('theme')).to.equal('foo');
+         expect(listBox.getAttribute('theme')).to.equal('foo');
+@@ -582,8 +582,8 @@
+ 
+       [rootMenu, subMenu, subMenu2].forEach((subMenu) => {
+         const overlay = subMenu.$.overlay;
+-        const listBox = overlay.querySelector('vaadin-context-menu-list-box');
+-        const items = Array.from(listBox.querySelectorAll('vaadin-context-menu-item'));
++        const listBox = overlay.querySelector('vaadin23-context-menu-list-box');
++        const items = Array.from(listBox.querySelectorAll('vaadin23-context-menu-item'));
+ 
+         expect(overlay.hasAttribute('theme')).to.be.false;
+         expect(listBox.hasAttribute('theme')).to.be.false;

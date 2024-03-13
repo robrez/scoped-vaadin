@@ -1,0 +1,18 @@
+Index: test/dom/message.test.js
+===================================================================
+--- test/dom/message.test.js
++++ test/dom/message.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-message.js';
+ 
+-describe('vaadin-message', () => {
++describe('vaadin23-message', () => {
+   let message;
+ 
+   beforeEach(() => {
+-    message = fixtureSync('<vaadin-message></vaadin-message>');
++    message = fixtureSync('<vaadin23-message></vaadin23-message>');
+   });
+ 
+   it('default', async () => {

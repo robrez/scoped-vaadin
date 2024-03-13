@@ -1,0 +1,18 @@
+Index: test/dom/vaadin-upload.test.js
+===================================================================
+--- test/dom/vaadin-upload.test.js
++++ test/dom/vaadin-upload.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-upload.js';
+ 
+-describe('vaadin-upload', () => {
++describe('vaadin23-upload', () => {
+   let upload;
+ 
+   beforeEach(async () => {
+-    upload = fixtureSync('<vaadin-upload></vaadin-upload>');
++    upload = fixtureSync('<vaadin23-upload></vaadin23-upload>');
+     upload.files = [
+       { name: 'Annual Report.docx', complete: true },
+       {

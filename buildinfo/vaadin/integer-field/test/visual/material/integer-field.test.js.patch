@@ -1,0 +1,13 @@
+Index: test/visual/material/integer-field.test.js
+===================================================================
+--- test/visual/material/integer-field.test.js
++++ test/visual/material/integer-field.test.js
+@@ -9,7 +9,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-integer-field></vaadin-integer-field>', div);
++    element = fixtureSync('<vaadin23-integer-field></vaadin23-integer-field>', div);
+   });
+ 
+   it('basic', async () => {

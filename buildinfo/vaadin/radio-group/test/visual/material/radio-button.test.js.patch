@@ -1,0 +1,13 @@
+Index: test/visual/material/radio-button.test.js
+===================================================================
+--- test/visual/material/radio-button.test.js
++++ test/visual/material/radio-button.test.js
+@@ -10,7 +10,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-radio-button label="Radio button"></vaadin-radio-button>', div);
++    element = fixtureSync('<vaadin23-radio-button label="Radio button"></vaadin23-radio-button>', div);
+   });
+ 
+   it('basic', async () => {

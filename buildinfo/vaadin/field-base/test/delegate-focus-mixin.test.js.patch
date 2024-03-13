@@ -1,0 +1,20 @@
+Index: test/delegate-focus-mixin.test.js
+===================================================================
+--- test/delegate-focus-mixin.test.js
++++ test/delegate-focus-mixin.test.js
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+ import { DelegateFocusMixin } from '../src/delegate-focus-mixin.js';
+ import { InputController } from '../src/input-controller.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'delegate-focus-mixin-element',
+   class extends DelegateFocusMixin(ControllerMixin(PolymerElement)) {
+     static get template() {

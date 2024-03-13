@@ -1,0 +1,295 @@
+Index: test/dom/__snapshots__/avatar-group.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/avatar-group.test.snap.js
++++ test/dom/__snapshots__/avatar-group.test.snap.js
+@@ -13,7 +13,7 @@
+     <template is="dom-repeat">
+     </template>
+   </dom-repeat>
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="+NaN"
+     aria-expanded="false"
+     aria-haspopup="listbox"
+@@ -23,17 +23,17 @@
+     role="button"
+     tabindex="0"
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+ </div>
+-<vaadin-avatar-group-overlay
++<vaadin23-avatar-group-overlay
+   id="overlay"
+   no-vertical-overlap=""
+ >
+   <template>
+   </template>
+-</vaadin-avatar-group-overlay>
++</vaadin23-avatar-group-overlay>
+ `;
+ /* end snapshot vaadin-avatar-group default */
+ 
+@@ -42,17 +42,17 @@
+   id="container"
+   part="container"
+ >
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="YY"
+     part="avatar"
+     role="button"
+     tabindex="0"
+     with-tooltip=""
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
+-  <vaadin-avatar
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
++  <vaadin23-avatar
+     abbr="TV"
+     name="Tomi Virkki"
+     part="avatar"
+@@ -60,9 +60,9 @@
+     tabindex="0"
+     with-tooltip=""
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+   <dom-repeat
+     id="items"
+     style="display: none;"
+@@ -70,7 +70,7 @@
+     <template is="dom-repeat">
+     </template>
+   </dom-repeat>
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="+2"
+     aria-expanded="false"
+     aria-haspopup="listbox"
+@@ -80,17 +80,17 @@
+     role="button"
+     tabindex="0"
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+ </div>
+-<vaadin-avatar-group-overlay
++<vaadin23-avatar-group-overlay
+   id="overlay"
+   no-vertical-overlap=""
+ >
+   <template>
+   </template>
+-</vaadin-avatar-group-overlay>
++</vaadin23-avatar-group-overlay>
+ `;
+ /* end snapshot vaadin-avatar-group items */
+ 
+@@ -99,7 +99,7 @@
+   id="container"
+   part="container"
+ >
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="YY"
+     part="avatar"
+     role="button"
+@@ -107,10 +107,10 @@
+     theme="small"
+     with-tooltip=""
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
+-  <vaadin-avatar
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
++  <vaadin23-avatar
+     abbr="TV"
+     name="Tomi Virkki"
+     part="avatar"
+@@ -119,9 +119,9 @@
+     theme="small"
+     with-tooltip=""
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+   <dom-repeat
+     id="items"
+     style="display: none;"
+@@ -129,7 +129,7 @@
+     <template is="dom-repeat">
+     </template>
+   </dom-repeat>
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="+2"
+     aria-expanded="false"
+     aria-haspopup="listbox"
+@@ -140,17 +140,17 @@
+     tabindex="0"
+     theme="small"
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+ </div>
+-<vaadin-avatar-group-overlay
++<vaadin23-avatar-group-overlay
+   id="overlay"
+   no-vertical-overlap=""
+ >
+   <template>
+   </template>
+-</vaadin-avatar-group-overlay>
++</vaadin23-avatar-group-overlay>
+ `;
+ /* end snapshot vaadin-avatar-group theme */
+ 
+@@ -159,7 +159,7 @@
+   id="container"
+   part="container"
+ >
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="AD"
+     name="Abc Def"
+     part="avatar"
+@@ -167,14 +167,14 @@
+     tabindex="0"
+     with-tooltip=""
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+   <dom-repeat id="items">
+     <template is="dom-repeat">
+     </template>
+   </dom-repeat>
+-  <vaadin-avatar
++  <vaadin23-avatar
+     abbr="+3"
+     aria-expanded="true"
+     aria-haspopup="listbox"
+@@ -183,19 +183,19 @@
+     role="button"
+     tabindex="0"
+   >
+-    <vaadin-tooltip slot="tooltip">
+-    </vaadin-tooltip>
+-  </vaadin-avatar>
++    <vaadin23-tooltip slot="tooltip">
++    </vaadin23-tooltip>
++  </vaadin23-avatar>
+ </div>
+ `;
+ /* end snapshot vaadin-avatar-group opened default */
+ 
+ snapshots["vaadin-avatar-group opened overlay"] = 
+-`<vaadin-avatar-group-list-box
++`<vaadin23-avatar-group-list-box
+   aria-orientation="vertical"
+   role="listbox"
+ >
+-  <vaadin-item
++  <vaadin23-item
+     aria-selected="false"
+     focus-ring=""
+     focused=""
+@@ -203,7 +203,7 @@
+     tabindex="0"
+     theme="avatar-group-item"
+   >
+-    <vaadin-avatar
++    <vaadin23-avatar
+       abbr="GJ"
+       aria-hidden="true"
+       name="Ghi Jkl"
+@@ -211,16 +211,16 @@
+       role="button"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
++    </vaadin23-avatar>
+     Ghi Jkl
+-  </vaadin-item>
+-  <vaadin-item
++  </vaadin23-item>
++  <vaadin23-item
+     aria-selected="false"
+     role="option"
+     tabindex="-1"
+     theme="avatar-group-item"
+   >
+-    <vaadin-avatar
++    <vaadin23-avatar
+       abbr="MP"
+       aria-hidden="true"
+       name="Mno Pqr"
+@@ -228,16 +228,16 @@
+       role="button"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
++    </vaadin23-avatar>
+     Mno Pqr
+-  </vaadin-item>
+-  <vaadin-item
++  </vaadin23-item>
++  <vaadin23-item
+     aria-selected="false"
+     role="option"
+     tabindex="-1"
+     theme="avatar-group-item"
+   >
+-    <vaadin-avatar
++    <vaadin23-avatar
+       abbr="SV"
+       aria-hidden="true"
+       name="Stu Vwx"
+@@ -245,14 +245,14 @@
+       role="button"
+       tabindex="-1"
+     >
+-    </vaadin-avatar>
++    </vaadin23-avatar>
+     Stu Vwx
+-  </vaadin-item>
++  </vaadin23-item>
+   <dom-repeat>
+     <template is="dom-repeat">
+     </template>
+   </dom-repeat>
+-</vaadin-avatar-group-list-box>
++</vaadin23-avatar-group-list-box>
+ `;
+ /* end snapshot vaadin-avatar-group opened overlay */
+ 

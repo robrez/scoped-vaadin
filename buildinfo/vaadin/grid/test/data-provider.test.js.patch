@@ -1,0 +1,112 @@
+Index: test/data-provider.test.js
+===================================================================
+--- test/data-provider.test.js
++++ test/data-provider.test.js
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import {
+   flushGrid,
+   getCellContent,
+@@ -19,7 +20,7 @@
+ } from './helpers.js';
+ 
+ registerStyles(
+-  'vaadin-grid',
++  'vaadin23-grid',
+   css`
+     [part~='cell'] {
+       height: 20px;
+@@ -35,9 +36,9 @@
+           height: 30px;
+         }
+       </style>
+-      <vaadin-grid size="100" id="grid" style="height: 300px;" data-provider="[[dataProvider]]">
+-        <vaadin-grid-column id="col"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid size="100" id="grid" style="height: 300px;" data-provider="[[dataProvider]]">
++        <vaadin23-grid-column id="col"></vaadin23-grid-column>
++      </vaadin23-grid>
+     `;
+   }
+ 
+@@ -52,17 +53,17 @@
+   }
+ }
+ 
+-customElements.define('wrapped-grid', WrappedGrid);
++internalCustomElements.define('wrapped-grid', WrappedGrid);
+ 
+ class PageSizeGrid extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-grid data-provider="[[dataProvider]]" size="[[size]]" id="grid">
+-        <vaadin-grid-column>
++      <vaadin23-grid data-provider="[[dataProvider]]" size="[[size]]" id="grid">
++        <vaadin23-grid-column>
+           <template class="header">#</template>
+           <template>[[item.value]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `;
+   }
+ 
+@@ -81,7 +82,7 @@
+   }
+ }
+ 
+-customElements.define('page-size-grid', PageSizeGrid);
++internalCustomElements.define('page-size-grid', PageSizeGrid);
+ 
+ function simulateScrollToStart(grid) {
+   // Make sure not over scroll more than the delta threshold limit of 10k.
+@@ -126,11 +127,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column>
++      <vaadin23-grid>
++        <vaadin23-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     flushGrid(grid);
+   });
+@@ -348,9 +349,9 @@
+           beforeEach(() => {
+             if (type === 'renderer') {
+               grid = fixtureSync(`
+-                <vaadin-grid>
+-                  <vaadin-grid-column></vaadin-grid-column>
+-                </vaadin-grid>
++                <vaadin23-grid>
++                  <vaadin23-grid-column></vaadin23-grid-column>
++                </vaadin23-grid>
+               `);
+               grid.firstElementChild.renderer = (root, col, model) => {
+                 root.textContent = model.index;
+@@ -564,8 +565,8 @@
+ 
+ describe('attached', () => {
+   it('should have rows when attached and shown after cache is cleared on hidden grid', async () => {
+-    const grid = document.createElement('vaadin-grid');
+-    const col = document.createElement('vaadin-grid-column');
++    const grid = document.createElement('vaadin23-grid');
++    const col = document.createElement('vaadin23-grid-column');
+     col.setAttribute('path', 'item');
+     grid.appendChild(col);
+ 

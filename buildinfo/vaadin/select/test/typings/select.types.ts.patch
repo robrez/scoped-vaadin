@@ -1,0 +1,20 @@
+Index: test/typings/select.types.ts
+===================================================================
+--- test/typings/select.types.ts
++++ test/typings/select.types.ts
+@@ -1,5 +1,5 @@
+ import '../../vaadin-select.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
+ import type {
+   Select,
+   SelectChangeEvent,
+@@ -13,7 +13,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const select: Select = document.createElement('vaadin-select');
++const select: Select = document.createElement('vaadin23-select');
+ 
+ // Properties
+ assertType<SelectItem[] | null | undefined>(select.items);

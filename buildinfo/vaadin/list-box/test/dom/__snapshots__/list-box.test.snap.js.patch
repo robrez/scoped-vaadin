@@ -1,0 +1,27 @@
+Index: test/dom/__snapshots__/list-box.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/list-box.test.snap.js
++++ test/dom/__snapshots__/list-box.test.snap.js
+@@ -2,18 +2,18 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-list-box host default"] = 
+-`<vaadin-list-box role="listbox">
+-</vaadin-list-box>
++`<vaadin23-list-box role="listbox">
++</vaadin23-list-box>
+ `;
+ /* end snapshot vaadin-list-box host default */
+ 
+ snapshots["vaadin-list-box host multiple"] = 
+-`<vaadin-list-box
++`<vaadin23-list-box
+   aria-multiselectable="true"
+   multiple=""
+   role="listbox"
+ >
+-</vaadin-list-box>
++</vaadin23-list-box>
+ `;
+ /* end snapshot vaadin-list-box host multiple */
+ 

@@ -1,0 +1,25 @@
+Index: test/overlay.test.js
+===================================================================
+--- test/overlay.test.js
++++ test/overlay.test.js
+@@ -8,9 +8,9 @@
+ 
+   beforeEach(() => {
+     menu = fixtureSync(`
+-      <vaadin-context-menu>
++      <vaadin23-context-menu>
+         <div id="target">FOOOO</div>
+-      </vaadin-context-menu>
++      </vaadin23-context-menu>
+     `);
+     menu.renderer = (root) => {
+       root.textContent = 'OVERLAY CONTENT';
+@@ -307,7 +307,7 @@
+       });
+     });
+ 
+-    (isIOS ? describe : describe.skip)('<vaadin-overlay> iOS viewport workaround (phone mode)', () => {
++    (isIOS ? describe : describe.skip)('<vaadin23-overlay> iOS viewport workaround (phone mode)', () => {
+       it('should have zero bottom by default', async () => {
+         contextmenu();
+         await oneEvent(overlay, 'vaadin-overlay-open');

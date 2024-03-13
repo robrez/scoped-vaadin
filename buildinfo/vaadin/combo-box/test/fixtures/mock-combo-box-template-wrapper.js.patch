@@ -1,0 +1,32 @@
+Index: test/fixtures/mock-combo-box-template-wrapper.js
+===================================================================
+--- test/fixtures/mock-combo-box-template-wrapper.js
++++ test/fixtures/mock-combo-box-template-wrapper.js
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import '../../vaadin-combo-box.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+ class MockComboBoxTemplateWrapper extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-combo-box id="comboBox" items="[[items]]">
++      <vaadin23-combo-box id="comboBox" items="[[items]]">
+         <template>
+           <div>index: [[index]]</div>
+           <div>item: [[item]]</div>
+@@ -15,7 +16,7 @@
+           <div>parentMethod: [[parentMethod()]]</div>
+           <button on-click="parentEventHandler"></button>
+         </template>
+-      </vaadin-combo-box>
++      </vaadin23-combo-box>
+     `;
+   }
+ 
+@@ -34,4 +35,4 @@
+   }
+ }
+ 
+-customElements.define('mock-combo-box-template-wrapper', MockComboBoxTemplateWrapper);
++internalCustomElements.define('mock-combo-box-template-wrapper', MockComboBoxTemplateWrapper);

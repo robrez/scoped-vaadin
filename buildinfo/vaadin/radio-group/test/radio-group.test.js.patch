@@ -1,0 +1,291 @@
+Index: test/radio-group.test.js
+===================================================================
+--- test/radio-group.test.js
++++ test/radio-group.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+@@ -11,29 +12,29 @@
+     let tagName;
+ 
+     beforeEach(() => {
+-      group = fixtureSync(`<vaadin-radio-group></vaadin-radio-group>`);
++      group = fixtureSync(`<vaadin23-radio-group></vaadin23-radio-group>`);
+       tagName = group.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" disabled></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" disabled></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should not be disabled by default', () => {
+@@ -53,13 +54,13 @@
+   describe('disabled property', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group disabled>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group disabled>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should propagate disabled property to radio buttons', () => {
+@@ -74,7 +75,7 @@
+     });
+ 
+     it('should set disabled property to dynamically added radio buttons', async () => {
+-      const radio = document.createElement('vaadin-radio-button');
++      const radio = document.createElement('vaadin23-radio-button');
+       group.appendChild(radio);
+       await nextFrame();
+       expect(radio.disabled).to.be.true;
+@@ -86,18 +87,18 @@
+ 
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+       groupName = group._fieldName;
+     });
+ 
+     it('should set the group name to the dynamically added radio buttons', async () => {
+-      const radio = document.createElement('vaadin-radio-button');
++      const radio = document.createElement('vaadin23-radio-button');
+       group.appendChild(radio);
+       await nextFrame();
+ 
+@@ -108,13 +109,13 @@
+   describe('readonly property', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group readonly>
+-          <vaadin-radio-button label="Button 1" value="1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" value="2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group readonly>
++          <vaadin23-radio-button label="Button 1" value="1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" value="2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should disable unchecked buttons when readonly', () => {
+@@ -146,7 +147,7 @@
+     it('should disable a new button when added to a readonly group', async () => {
+       group.readonly = true;
+ 
+-      const newRadioButton = document.createElement('vaadin-radio-button');
++      const newRadioButton = document.createElement('vaadin23-radio-button');
+       newRadioButton.label = 'Button 3';
+       newRadioButton.value = '3';
+       group.appendChild(newRadioButton);
+@@ -158,7 +159,7 @@
+     it('should not disable a checked button when added to a readonly group', async () => {
+       group.readonly = true;
+ 
+-      const newRadioButton = document.createElement('vaadin-radio-button');
++      const newRadioButton = document.createElement('vaadin23-radio-button');
+       newRadioButton.label = 'Button 3';
+       newRadioButton.value = '3';
+       newRadioButton.checked = true;
+@@ -171,7 +172,7 @@
+ 
+   describe('aria-invalid attribute', () => {
+     beforeEach(() => {
+-      group = fixtureSync(`<vaadin-radio-group></vaadin-radio-group>`);
++      group = fixtureSync(`<vaadin23-radio-group></vaadin23-radio-group>`);
+     });
+ 
+     it('should toggle aria-invalid attribute on invalid property change', () => {
+@@ -185,13 +186,13 @@
+   describe('focused state', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should set focused attribute on Tab', async () => {
+@@ -227,13 +228,13 @@
+   describe('value property', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" value="2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" value="2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should be an empty string by default', () => {
+@@ -302,13 +303,13 @@
+   describe('has-value attribute', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1" value="1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" value="2"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1" value="1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" value="2"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should add and keep the attribute on radio button click', () => {
+@@ -331,14 +332,14 @@
+ 
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1" value="1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" value="2"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 3" value="3"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1" value="1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" value="2"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 3" value="3"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+ 
+       spy = sinon.spy();
+       group.addEventListener('change', spy);
+@@ -435,15 +436,15 @@
+   describe('initial value', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-radio-group>
+-          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 2" value="1" checked></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 3" value="2" checked></vaadin-radio-button>
+-          <vaadin-radio-button label="Button 4"></vaadin-radio-button>
+-        </vaadin-radio-group>
++        <vaadin23-radio-group>
++          <vaadin23-radio-button label="Button 1"></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 2" value="1" checked></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 3" value="2" checked></vaadin23-radio-button>
++          <vaadin23-radio-button label="Button 4"></vaadin23-radio-button>
++        </vaadin23-radio-group>
+       `);
+       await nextFrame();
+-      buttons = [...group.querySelectorAll('vaadin-radio-button')];
++      buttons = [...group.querySelectorAll('vaadin23-radio-button')];
+     });
+ 
+     it('should set the value based on the initially checked radio button', () => {
+@@ -465,7 +466,7 @@
+       group.__radioButtons.forEach((button) => group.removeChild(button));
+ 
+       ['value1', 'value2', 'value3'].forEach((value) => {
+-        const radio = document.createElement('vaadin-radio-button');
++        const radio = document.createElement('vaadin23-radio-button');
+         radio.value = value;
+         group.appendChild(radio);
+       });
+@@ -482,20 +483,20 @@
+     beforeEach(async () => {
+       wrapper = fixtureSync(`
+         <div style="width: 500px">
+-          <vaadin-radio-group>
+-            <vaadin-radio-button label="Radio button 1" value="r_1"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 2" value="r_2"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 3" value="r_3"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 4" value="r_4"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 5" value="r_5"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 6" value="r_6"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 7" value="r_7"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 8" value="r_8"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 9" value="r_9"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 10" value="r_10"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 11" value="r_11"></vaadin-radio-button>
+-            <vaadin-radio-button label="Radio button 12" value="r_12"></vaadin-radio-button>
+-          </vaadin-radio-group>
++          <vaadin23-radio-group>
++            <vaadin23-radio-button label="Radio button 1" value="r_1"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 2" value="r_2"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 3" value="r_3"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 4" value="r_4"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 5" value="r_5"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 6" value="r_6"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 7" value="r_7"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 8" value="r_8"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 9" value="r_9"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 10" value="r_10"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 11" value="r_11"></vaadin23-radio-button>
++            <vaadin23-radio-button label="Radio button 12" value="r_12"></vaadin23-radio-button>
++          </vaadin23-radio-group>
+         </div>
+       `);
+       group = wrapper.firstElementChild;

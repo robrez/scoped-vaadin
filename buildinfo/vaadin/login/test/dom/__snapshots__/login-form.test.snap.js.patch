@@ -1,0 +1,200 @@
+Index: test/dom/__snapshots__/login-form.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/login-form.test.snap.js
++++ test/dom/__snapshots__/login-form.test.snap.js
+@@ -2,8 +2,8 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-login-form host default"] = 
+-`<vaadin-login-form>
+-  <vaadin-login-form-wrapper part="vaadin-login-native-form-wrapper">
++`<vaadin23-login-form>
++  <vaadin23-login-form-wrapper part="vaadin-login-native-form-wrapper">
+     <form
+       method="POST"
+       part="vaadin-login-native-form"
+@@ -13,7 +13,7 @@
+         id="csrf"
+         type="hidden"
+       >
+-      <vaadin-text-field
++      <vaadin23-text-field
+         autocapitalize="none"
+         autocomplete="username"
+         autocorrect="off"
+@@ -48,8 +48,8 @@
+           slot="error-message"
+         >
+         </div>
+-      </vaadin-text-field>
+-      <vaadin-password-field
++      </vaadin23-text-field>
++      <vaadin23-password-field
+         autocomplete="current-password"
+         has-label=""
+         id="vaadinLoginPassword"
+@@ -80,32 +80,32 @@
+           slot="error-message"
+         >
+         </div>
+-        <vaadin-password-field-button
++        <vaadin23-password-field-button
+           aria-label="Show password"
+           aria-pressed="false"
+           role="button"
+           slot="reveal"
+           tabindex="0"
+         >
+-        </vaadin-password-field-button>
+-      </vaadin-password-field>
+-      <vaadin-button
++        </vaadin23-password-field-button>
++      </vaadin23-password-field>
++      <vaadin23-button
+         part="vaadin-login-submit"
+         role="button"
+         tabindex="0"
+         theme="primary contained"
+       >
+         Log in
+-      </vaadin-button>
++      </vaadin23-button>
+     </form>
+-  </vaadin-login-form-wrapper>
+-</vaadin-login-form>
++  </vaadin23-login-form-wrapper>
++</vaadin23-login-form>
+ `;
+ /* end snapshot vaadin-login-form host default */
+ 
+ snapshots["vaadin-login-form host i18n"] = 
+-`<vaadin-login-form>
+-  <vaadin-login-form-wrapper part="vaadin-login-native-form-wrapper">
++`<vaadin23-login-form>
++  <vaadin23-login-form-wrapper part="vaadin-login-native-form-wrapper">
+     <form
+       method="POST"
+       part="vaadin-login-native-form"
+@@ -115,7 +115,7 @@
+         id="csrf"
+         type="hidden"
+       >
+-      <vaadin-text-field
++      <vaadin23-text-field
+         autocapitalize="none"
+         autocomplete="username"
+         autocorrect="off"
+@@ -150,8 +150,8 @@
+           slot="error-message"
+         >
+         </div>
+-      </vaadin-text-field>
+-      <vaadin-password-field
++      </vaadin23-text-field>
++      <vaadin23-password-field
+         autocomplete="current-password"
+         has-label=""
+         id="vaadinLoginPassword"
+@@ -182,26 +182,26 @@
+           slot="error-message"
+         >
+         </div>
+-        <vaadin-password-field-button
++        <vaadin23-password-field-button
+           aria-label="Show password"
+           aria-pressed="false"
+           role="button"
+           slot="reveal"
+           tabindex="0"
+         >
+-        </vaadin-password-field-button>
+-      </vaadin-password-field>
+-      <vaadin-button
++        </vaadin23-password-field-button>
++      </vaadin23-password-field>
++      <vaadin23-button
+         part="vaadin-login-submit"
+         role="button"
+         tabindex="0"
+         theme="primary contained"
+       >
+         Kirjaudu sisään
+-      </vaadin-button>
++      </vaadin23-button>
+     </form>
+-  </vaadin-login-form-wrapper>
+-</vaadin-login-form>
++  </vaadin23-login-form-wrapper>
++</vaadin23-login-form>
+ `;
+ /* end snapshot vaadin-login-form host i18n */
+ 
+@@ -223,14 +223,14 @@
+   </div>
+   <slot name="form">
+   </slot>
+-  <vaadin-button
++  <vaadin23-button
+     id="forgotPasswordButton"
+     role="button"
+     tabindex="0"
+     theme="tertiary small forgot-password"
+   >
+     Forgot password
+-  </vaadin-button>
++  </vaadin23-button>
+   <div part="footer">
+     <p>
+     </p>
+@@ -254,14 +254,14 @@
+   </div>
+   <slot name="form">
+   </slot>
+-  <vaadin-button
++  <vaadin23-button
+     id="forgotPasswordButton"
+     role="button"
+     tabindex="0"
+     theme="tertiary small forgot-password"
+   >
+     Forgot password
+-  </vaadin-button>
++  </vaadin23-button>
+   <div part="footer">
+     <p>
+     </p>
+@@ -288,7 +288,7 @@
+   </div>
+   <slot name="form">
+   </slot>
+-  <vaadin-button
++  <vaadin23-button
+     hidden=""
+     id="forgotPasswordButton"
+     role="button"
+@@ -296,7 +296,7 @@
+     theme="tertiary small forgot-password"
+   >
+     Forgot password
+-  </vaadin-button>
++  </vaadin23-button>
+   <div part="footer">
+     <p>
+     </p>
+@@ -323,14 +323,14 @@
+   </div>
+   <slot name="form">
+   </slot>
+-  <vaadin-button
++  <vaadin23-button
+     id="forgotPasswordButton"
+     role="button"
+     tabindex="0"
+     theme="tertiary small forgot-password"
+   >
+     Unohtuiko salasana?
+-  </vaadin-button>
++  </vaadin23-button>
+   <div part="footer">
+     <p>
+       Jos tarvitset lisätietoja käyttäjälle.

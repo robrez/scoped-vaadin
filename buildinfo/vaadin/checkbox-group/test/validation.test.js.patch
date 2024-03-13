@@ -1,0 +1,51 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      group = document.createElement('vaadin-checkbox-group');
++      group = document.createElement('vaadin23-checkbox-group');
+       validateSpy = sinon.spy(group, 'validate');
+     });
+ 
+@@ -42,11 +42,11 @@
+   describe('basic', () => {
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group>
+-          <vaadin-checkbox name="language" value="en" label="English"></vaadin-checkbox>
+-          <vaadin-checkbox name="language" value="fr" label="Français"></vaadin-checkbox>
+-          <vaadin-checkbox name="language" value="de" label="Deutsch"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group>
++          <vaadin23-checkbox name="language" value="en" label="English"></vaadin23-checkbox>
++          <vaadin23-checkbox name="language" value="fr" label="Français"></vaadin23-checkbox>
++          <vaadin23-checkbox name="language" value="de" label="Deutsch"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextRender();
+       validateSpy = sinon.spy(group, 'validate');
+@@ -115,14 +115,14 @@
+ 
+     beforeEach(async () => {
+       group = fixtureSync(`
+-        <vaadin-checkbox-group required>
+-          <vaadin-checkbox name="language" value="en" label="English"></vaadin-checkbox>
+-          <vaadin-checkbox name="language" value="fr" label="Français"></vaadin-checkbox>
+-          <vaadin-checkbox name="language" value="de" label="Deutsch"></vaadin-checkbox>
+-        </vaadin-checkbox-group>
++        <vaadin23-checkbox-group required>
++          <vaadin23-checkbox name="language" value="en" label="English"></vaadin23-checkbox>
++          <vaadin23-checkbox name="language" value="fr" label="Français"></vaadin23-checkbox>
++          <vaadin23-checkbox name="language" value="de" label="Deutsch"></vaadin23-checkbox>
++        </vaadin23-checkbox-group>
+       `);
+       await nextFrame();
+-      checkboxes = [...group.querySelectorAll('vaadin-checkbox')];
++      checkboxes = [...group.querySelectorAll('vaadin23-checkbox')];
+       validateSpy = sinon.spy(group, 'validate');
+     });
+ 

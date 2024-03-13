@@ -1,0 +1,253 @@
+Index: test/dom/__snapshots__/checkbox-group.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/checkbox-group.test.snap.js
++++ test/dom/__snapshots__/checkbox-group.test.snap.js
+@@ -2,8 +2,8 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-checkbox-group host default"] = 
+-`<vaadin-checkbox-group role="group">
+-  <vaadin-checkbox
++`<vaadin23-checkbox-group role="group">
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 1"
+@@ -22,8 +22,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 2"
+@@ -42,7 +42,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -54,17 +54,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host default */
+ 
+ snapshots["vaadin-checkbox-group host disabled"] = 
+-`<vaadin-checkbox-group
++`<vaadin23-checkbox-group
+   aria-disabled="true"
+   disabled=""
+   role="group"
+ >
+-  <vaadin-checkbox
++  <vaadin23-checkbox
+     aria-disabled="true"
+     disabled=""
+     has-label=""
+@@ -87,8 +87,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     aria-disabled="true"
+     disabled=""
+     has-label=""
+@@ -111,7 +111,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -123,7 +123,7 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host disabled */
+ 
+@@ -157,12 +157,12 @@
+ /* end snapshot vaadin-checkbox-group shadow default */
+ 
+ snapshots["vaadin-checkbox-group host label"] = 
+-`<vaadin-checkbox-group
++`<vaadin23-checkbox-group
+   aria-labelledby="label-vaadin-checkbox-group-0"
+   has-label=""
+   role="group"
+ >
+-  <vaadin-checkbox
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 1"
+@@ -181,8 +181,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 2"
+@@ -201,7 +201,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -214,17 +214,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host label */
+ 
+ snapshots["vaadin-checkbox-group host required"] = 
+-`<vaadin-checkbox-group
++`<vaadin23-checkbox-group
+   aria-required="true"
+   required=""
+   role="group"
+ >
+-  <vaadin-checkbox
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 1"
+@@ -243,8 +243,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 2"
+@@ -263,7 +263,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -275,17 +275,17 @@
+     slot="error-message"
+   >
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host required */
+ 
+ snapshots["vaadin-checkbox-group host helper"] = 
+-`<vaadin-checkbox-group
++`<vaadin23-checkbox-group
+   aria-labelledby="helper-vaadin-checkbox-group-1"
+   has-helper=""
+   role="group"
+ >
+-  <vaadin-checkbox
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 1"
+@@ -304,8 +304,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 2"
+@@ -324,7 +324,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -342,18 +342,18 @@
+   >
+     Helper
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host helper */
+ 
+ snapshots["vaadin-checkbox-group host error"] = 
+-`<vaadin-checkbox-group
++`<vaadin23-checkbox-group
+   aria-labelledby="error-message-vaadin-checkbox-group-2"
+   has-error-message=""
+   invalid=""
+   role="group"
+ >
+-  <vaadin-checkbox
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 1"
+@@ -372,8 +372,8 @@
+       type="checkbox"
+       value="1"
+     >
+-  </vaadin-checkbox>
+-  <vaadin-checkbox
++  </vaadin23-checkbox>
++  <vaadin23-checkbox
+     has-label=""
+     has-value=""
+     label="Checkbox 2"
+@@ -392,7 +392,7 @@
+       type="checkbox"
+       value="2"
+     >
+-  </vaadin-checkbox>
++  </vaadin23-checkbox>
+   <label
+     id="label-vaadin-checkbox-group-0"
+     slot="label"
+@@ -405,7 +405,7 @@
+   >
+     Error
+   </div>
+-</vaadin-checkbox-group>
++</vaadin23-checkbox-group>
+ `;
+ /* end snapshot vaadin-checkbox-group host error */
+ 

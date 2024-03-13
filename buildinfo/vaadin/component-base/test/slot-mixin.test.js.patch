@@ -1,0 +1,16 @@
+Index: test/slot-mixin.test.js
+===================================================================
+--- test/slot-mixin.test.js
++++ test/slot-mixin.test.js
+@@ -1,9 +1,10 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { SlotMixin } from '../src/slot-mixin.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'slot-mixin-element',
+   class extends SlotMixin(PolymerElement) {
+     static get template() {

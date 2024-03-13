@@ -1,0 +1,90 @@
+Index: test/split-layout.test.js
+===================================================================
+--- test/split-layout.test.js
++++ test/split-layout.test.js
+@@ -10,10 +10,10 @@
+ describe('split layout', () => {
+   beforeEach(() => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+         <div id="second">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+   });
+ 
+@@ -266,10 +266,10 @@
+ describe('horizontal mode', () => {
+   beforeEach(async () => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+         <div id="second">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+     splitLayout.style.width = `${initialSizes.width}px`;
+     splitLayout.style.height = `${initialSizes.height}px`;
+@@ -284,10 +284,10 @@
+ describe('vertical mode', () => {
+   beforeEach(async () => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+         <div id="second">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+     splitLayout.style.width = `${initialSizes.width}px`;
+     splitLayout.style.height = `${initialSizes.height}px`;
+@@ -303,9 +303,9 @@
+ describe('layout with one child', () => {
+   beforeEach(async () => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+     await aTimeout(1);
+     first = splitLayout.$.primary.assignedNodes({ flatten: true })[0];
+@@ -326,10 +326,10 @@
+ describe('removing nodes', () => {
+   beforeEach(async () => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+         <div id="second">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+     await aTimeout(0);
+     first = splitLayout.$.primary.assignedNodes({ flatten: true })[0];
+@@ -346,10 +346,10 @@
+ describe('moving nodes between layouts', () => {
+   beforeEach(async () => {
+     splitLayout = fixtureSync(`
+-      <vaadin-split-layout>
++      <vaadin23-split-layout>
+         <div id="first">some content</div>
+         <div id="second">some content</div>
+-      </vaadin-split-layout>
++      </vaadin23-split-layout>
+     `);
+     await aTimeout(0);
+     first = splitLayout.$.primary.assignedNodes({ flatten: true })[0];
+@@ -358,7 +358,7 @@
+ 
+   it('should not clear slot attribute when moving to a different split layout', async () => {
+     const otherLayout = fixtureSync(`
+-      <vaadin-split-layout></vaadin-split-layout>
++      <vaadin23-split-layout></vaadin23-split-layout>
+     `);
+     otherLayout.appendChild(second);
+     otherLayout.appendChild(first);

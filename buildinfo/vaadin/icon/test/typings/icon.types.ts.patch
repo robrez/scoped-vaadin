@@ -1,0 +1,16 @@
+Index: test/typings/icon.types.ts
+===================================================================
+--- test/typings/icon.types.ts
++++ test/typings/icon.types.ts
+@@ -1,9 +1,9 @@
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin';
+ import type { Icon, IconSvgLiteral } from '../../vaadin-icon';
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const icon = document.createElement('vaadin-icon');
++const icon = document.createElement('vaadin23-icon');
+ assertType<Icon>(icon);
+ assertType<ControllerMixinClass>(icon);
+ 

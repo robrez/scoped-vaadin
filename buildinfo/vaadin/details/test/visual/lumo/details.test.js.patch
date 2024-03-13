@@ -1,0 +1,17 @@
+Index: test/visual/lumo/details.test.js
+===================================================================
+--- test/visual/lumo/details.test.js
++++ test/visual/lumo/details.test.js
+@@ -11,10 +11,10 @@
+ 
+     element = fixtureSync(
+       `
+-      <vaadin-details>
++      <vaadin23-details>
+         <div slot="summary">Summary</div>
+         <span>Content</span>
+-      </vaadin-details>
++      </vaadin23-details>
+       `,
+       div,
+     );

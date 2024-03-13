@@ -1,0 +1,31 @@
+Index: test/dom/select.test.js
+===================================================================
+--- test/dom/select.test.js
++++ test/dom/select.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-select.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-select', () => {
++describe('vaadin23-select', () => {
+   let select;
+ 
+   beforeEach(async () => {
+     resetUniqueId();
+-    select = fixtureSync('<vaadin-select></vaadin-select>');
++    select = fixtureSync('<vaadin23-select></vaadin23-select>');
+     select.items = [
+       { label: 'Option 1', value: 'Option 1' },
+       { label: 'Option 2', value: 'Option 2' },
+@@ -63,7 +63,7 @@
+       };
+ 
+       beforeEach(async () => {
+-        overlay = select.shadowRoot.querySelector('vaadin-select-overlay');
++        overlay = select.shadowRoot.querySelector('vaadin23-select-overlay');
+         select.opened = true;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+       });

@@ -1,0 +1,18 @@
+Index: test/dom/item.test.js
+===================================================================
+--- test/dom/item.test.js
++++ test/dom/item.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-item.js';
+ 
+-describe('vaadin-item', () => {
++describe('vaadin23-item', () => {
+   let item;
+ 
+   beforeEach(() => {
+-    item = fixtureSync('<vaadin-item></vaadin-item>');
++    item = fixtureSync('<vaadin23-item></vaadin23-item>');
+   });
+ 
+   describe('host', () => {

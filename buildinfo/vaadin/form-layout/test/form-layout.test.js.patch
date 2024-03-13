@@ -1,0 +1,239 @@
+Index: test/form-layout.test.js
+===================================================================
+--- test/form-layout.test.js
++++ test/form-layout.test.js
+@@ -1,8 +1,9 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+-import '@vaadin/text-field/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/vaadin-text-field.js';
+ import '../vaadin-form-layout.js';
+ import '../vaadin-form-item.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -27,27 +28,27 @@
+   await onceInvoked(layout, '_updateLayout');
+ }
+ 
+-customElements.define(
++internalCustomElements.define(
+   'mutable-layout',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-form-layout>
+-          <vaadin-form-item>
++        <vaadin23-form-layout>
++          <vaadin23-form-item>
+             <label slot="label">Address</label>
+             <input class="full-width" />
+-          </vaadin-form-item>
+-          <vaadin-form-item>
++          </vaadin23-form-item>
++          <vaadin23-form-item>
+             <label slot="label">First Name</label>
+             <input class="full-width" value="Jane" />
+-          </vaadin-form-item>
++          </vaadin23-form-item>
+           <template is="dom-repeat" items="[[items]]">
+-            <vaadin-form-item colspan$="[[item.colspan]]">
++            <vaadin23-form-item colspan$="[[item.colspan]]">
+               <label slot="label">[[item.label]]</label>
+               <input class="full-width" />
+-            </vaadin-form-item>
++            </vaadin23-form-item>
+           </template>
+-        </vaadin-form-layout>
++        </vaadin23-form-layout>
+       `;
+     }
+ 
+@@ -75,10 +76,10 @@
+ 
+     beforeEach(() => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout>
+-          <vaadin-text-field></vaadin-text-field>
+-          <vaadin-form-item></vaadin-form-item>
+-        </vaadin-form-layout>
++        <vaadin23-form-layout>
++          <vaadin23-text-field></vaadin23-text-field>
++          <vaadin23-form-item></vaadin23-form-item>
++        </vaadin23-form-layout>
+       `);
+     });
+ 
+@@ -94,7 +95,7 @@
+     });
+ 
+     it('should distribute vaadin-text-field', () => {
+-      const textField = layout.querySelector('vaadin-text-field');
++      const textField = layout.querySelector('vaadin23-text-field');
+       const slot = layout.shadowRoot.querySelector('slot');
+       expect(textField).to.be.ok;
+       expect(slot.assignedNodes()).to.contain(textField);
+@@ -115,12 +116,12 @@
+ 
+     beforeEach(() => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout>
+-          <vaadin-text-field></vaadin-text-field>
+-          <vaadin-form-item></vaadin-form-item>
+-        </vaadin-form-layout>
++        <vaadin23-form-layout>
++          <vaadin23-text-field></vaadin23-text-field>
++          <vaadin23-form-item></vaadin23-form-item>
++        </vaadin23-form-layout>
+       `);
+-      item = layout.querySelector('vaadin-form-item');
++      item = layout.querySelector('vaadin23-form-item');
+     });
+ 
+     it('should have default label-width', () => {
+@@ -182,14 +183,14 @@
+ 
+     beforeEach(() => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout responsive-steps='[{"columns": 3}]'>
+-          <vaadin-text-field></vaadin-text-field>
+-          <vaadin-text-field colspan="1"></vaadin-text-field>
+-          <vaadin-text-field colspan="2"></vaadin-text-field>
+-          <vaadin-text-field colspan="3"></vaadin-text-field>
+-          <vaadin-text-field colspan="4"></vaadin-text-field>
+-          <vaadin-text-field colspan="non-number"></vaadin-text-field>
+-        </vaadin-form-layout>
++        <vaadin23-form-layout responsive-steps='[{"columns": 3}]'>
++          <vaadin23-text-field></vaadin23-text-field>
++          <vaadin23-text-field colspan="1"></vaadin23-text-field>
++          <vaadin23-text-field colspan="2"></vaadin23-text-field>
++          <vaadin23-text-field colspan="3"></vaadin23-text-field>
++          <vaadin23-text-field colspan="4"></vaadin23-text-field>
++          <vaadin23-text-field colspan="non-number"></vaadin23-text-field>
++        </vaadin23-form-layout>
+       `);
+     });
+ 
+@@ -220,7 +221,7 @@
+     beforeEach(() => {
+       container = fixtureSync(`
+       <div style="width: 300px; overflow: auto;">
+-          <vaadin-form-layout responsive-steps='[{"columns": 3}]'>
++          <vaadin23-form-layout responsive-steps='[{"columns": 3}]'>
+             <div at-start>1 start</div>
+             <div>2 mid</div>
+             <div at-end>3 end</div>
+@@ -234,7 +235,7 @@
+             <div colspan="2" at-start>7 start</div>
+             <div at-end>8 end</div>
+             <div colspan="3" at-start at-end>9 start to end</div>
+-          </vaadin-form-layout>
++          </vaadin23-form-layout>
+         </div>
+       `);
+       layout = container.firstElementChild;
+@@ -293,11 +294,11 @@
+ 
+     beforeEach(async () => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout>
+-          <vaadin-text-field></vaadin-text-field>
+-          <vaadin-text-field></vaadin-text-field>
+-          <vaadin-form-item></vaadin-form-item>
+-        </vaadin-form-layout>
++        <vaadin23-form-layout>
++          <vaadin23-text-field></vaadin23-text-field>
++          <vaadin23-text-field></vaadin23-text-field>
++          <vaadin23-form-item></vaadin23-form-item>
++        </vaadin23-form-layout>
+       `);
+       await aTimeout(100);
+     });
+@@ -334,7 +335,7 @@
+ 
+     describe('custom label-position', () => {
+       beforeEach(async () => {
+-        const item = document.createElement('vaadin-form-item');
++        const item = document.createElement('vaadin23-form-item');
+         item.setAttribute('label-position', 'top');
+         layout.insertBefore(item, layout.lastElementChild);
+         await nextRender();
+@@ -516,14 +517,14 @@
+       container = fixtureSync(`
+         <div style="display: flex;">
+           <div>Foo</div>
+-          <vaadin-form-layout>
+-            <vaadin-text-field></vaadin-text-field>
++          <vaadin23-form-layout>
++            <vaadin23-text-field></vaadin23-text-field>
+             <br>
+-            <vaadin-text-field></vaadin-text-field>
+-          </vaadin-form-layout>
++            <vaadin23-text-field></vaadin23-text-field>
++          </vaadin23-form-layout>
+         </div>
+       `);
+-      layout = container.querySelector('vaadin-form-layout');
++      layout = container.querySelector('vaadin23-form-layout');
+     });
+ 
+     it('should have less width than then flexbox', () => {
+@@ -539,10 +540,10 @@
+     beforeEach(() => {
+       container = fixtureSync(`
+         <div hidden>
+-          <vaadin-form-layout></vaadin-form-layout>
++          <vaadin23-form-layout></vaadin23-form-layout>
+         </div>
+       `);
+-      layout = container.querySelector('vaadin-form-layout');
++      layout = container.querySelector('vaadin23-form-layout');
+     });
+ 
+     it('should update steps on show after hidden', (done) => {
+@@ -573,7 +574,7 @@
+ 
+     beforeEach(async () => {
+       container = fixtureSync('<mutable-layout></mutable-layout>');
+-      layout = container.shadowRoot.querySelector('vaadin-form-layout');
++      layout = container.shadowRoot.querySelector('vaadin23-form-layout');
+       await nextRender(container);
+     });
+ 
+@@ -593,7 +594,7 @@
+       const itemWidth = layout.children[0].getBoundingClientRect().width;
+       expect(itemWidth).to.be.above(0);
+ 
+-      const newFormItem = document.createElement('vaadin-form-item');
++      const newFormItem = document.createElement('vaadin23-form-item');
+       newFormItem.hidden = true;
+       layout.appendChild(newFormItem);
+       await nextRender(container);
+@@ -608,7 +609,7 @@
+     it('should update layout after updating a colspan attribute on the lazily stamped node', async () => {
+       container.push('items', { label: 'Email', colspan: 1 });
+       await nextRender(container);
+-      const item = layout.querySelectorAll('vaadin-form-item')[2];
++      const item = layout.querySelectorAll('vaadin23-form-item')[2];
+       expect(estimateEffectiveColspan(item)).to.be.closeTo(1, 0.1);
+ 
+       container.set('items.0.colspan', 2);
+@@ -617,7 +618,7 @@
+     });
+ 
+     it('should update layout after a new item is added', async () => {
+-      const newFormItem = document.createElement('vaadin-form-item');
++      const newFormItem = document.createElement('vaadin23-form-item');
+       newFormItem.innerHTML = '<label slot="label">Age</label><input class="full-width">';
+       layout.appendChild(newFormItem);
+       await nextRender(container);
+@@ -625,7 +626,7 @@
+     });
+ 
+     it('should update layout after an item is removed', async () => {
+-      const itemsList = layout.querySelectorAll('vaadin-form-item');
++      const itemsList = layout.querySelectorAll('vaadin23-form-item');
+       expect(getComputedStyle(itemsList[1]).marginLeft).to.not.be.equal('0px');
+ 
+       layout.removeChild(itemsList[0]);

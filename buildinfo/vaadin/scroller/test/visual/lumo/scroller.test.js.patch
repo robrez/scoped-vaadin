@@ -1,0 +1,16 @@
+Index: test/visual/lumo/scroller.test.js
+===================================================================
+--- test/visual/lumo/scroller.test.js
++++ test/visual/lumo/scroller.test.js
+@@ -12,9 +12,9 @@
+ 
+     element = fixtureSync(
+       `
+-      <vaadin-scroller style="width: 200px; height: 200px;">
++      <vaadin23-scroller style="width: 200px; height: 200px;">
+         <div id="content" style="width: 400px;"></div>
+-      </vaadin-scroller>`,
++      </vaadin23-scroller>`,
+       div,
+     );
+     element.firstElementChild.textContent = new Array(1000).fill('content').join(' ');

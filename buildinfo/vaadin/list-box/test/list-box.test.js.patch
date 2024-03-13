@@ -1,0 +1,28 @@
+Index: test/list-box.test.js
+===================================================================
+--- test/list-box.test.js
++++ test/list-box.test.js
+@@ -1,17 +1,17 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/item/vaadin-item.js';
+ import '../vaadin-list-box.js';
+ 
+-describe('vaadin-list-box', () => {
++describe('vaadin23-list-box', () => {
+   let listBox;
+ 
+   beforeEach(() => {
+     listBox = fixtureSync(`
+-      <vaadin-list-box>
+-        <vaadin-item>Foo</vaadin-item>
+-        <vaadin-item>Bar</vaadin-item>
+-      </vaadin-list-box>
++      <vaadin23-list-box>
++        <vaadin23-item>Foo</vaadin23-item>
++        <vaadin23-item>Bar</vaadin23-item>
++      </vaadin23-list-box>
+     `);
+   });
+ 

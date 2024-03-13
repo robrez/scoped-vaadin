@@ -1,0 +1,13 @@
+Index: test/typings/notification.types.ts
+===================================================================
+--- test/typings/notification.types.ts
++++ test/typings/notification.types.ts
+@@ -4,7 +4,7 @@
+ 
+ const assertType = <TExpected>(value: TExpected) => value;
+ 
+-const notification = document.createElement('vaadin-notification');
++const notification = document.createElement('vaadin23-notification');
+ 
+ notification.addEventListener('opened-changed', (event) => {
+   assertType<NotificationOpenedChangedEvent>(event);
