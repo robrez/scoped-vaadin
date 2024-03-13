@@ -1,0 +1,27 @@
+Index: test/integration.test.js
+===================================================================
+--- test/integration.test.js
++++ test/integration.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, click, fixtureSync, isIOS, makeSoloTouchEvent } from '@vaadin/testing-helpers';
+ import './not-animated-styles.js';
+@@ -7,7 +8,7 @@
+ class MenuWrapper extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-context-menu id="menu" renderer="[[_renderer]]"></vaadin-context-menu>
++      <vaadin23-context-menu id="menu" renderer="[[_renderer]]"></vaadin23-context-menu>
+       <button on-click="_showMenu" id="button" style="margin: 20px">Show context menu</button>
+     `;
+   }
+@@ -25,7 +26,7 @@
+   }
+ }
+ 
+-customElements.define('menu-wrapper', MenuWrapper);
++internalCustomElements.define('menu-wrapper', MenuWrapper);
+ 
+ describe('integration', () => {
+   let wrapper, menu, button, overlay;

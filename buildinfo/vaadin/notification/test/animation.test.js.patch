@@ -1,0 +1,36 @@
+Index: test/animation.test.js
+===================================================================
+--- test/animation.test.js
++++ test/animation.test.js
+@@ -1,11 +1,11 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-notification.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-notification-card',
++  'vaadin23-notification-card',
+   css`
+     @keyframes test-animation {
+       100% {
+@@ -35,12 +35,12 @@
+   beforeEach(async () => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-notification position="bottom-center">
++        <vaadin23-notification position="bottom-center">
+           <template>Notification</template>
+-        </vaadin-notification>
+-        <vaadin-notification position="middle">
++        </vaadin23-notification>
++        <vaadin23-notification position="middle">
+           <template>Notification</template>
+-        </vaadin-notification>
++        </vaadin23-notification>
+       </div>
+     `);
+     notifications = Array.from(wrapper.children);

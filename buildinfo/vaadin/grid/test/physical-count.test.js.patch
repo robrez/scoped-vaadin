@@ -1,0 +1,40 @@
+Index: test/physical-count.test.js
+===================================================================
+--- test/physical-count.test.js
++++ test/physical-count.test.js
+@@ -1,8 +1,8 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import {
+   flushGrid,
+   getCellContent,
+@@ -13,7 +13,7 @@
+ } from './helpers.js';
+ 
+ registerStyles(
+-  'vaadin-grid',
++  'vaadin23-grid',
+   css`
+     :host {
+       font-size: 16px;
+@@ -37,11 +37,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 200px;" size="200" theme="no-border">
+-        <vaadin-grid-column>
++      <vaadin23-grid style="width: 200px; height: 200px;" size="200" theme="no-border">
++        <vaadin23-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     scroller = grid.$.scroller;

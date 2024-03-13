@@ -1,4 +1,6 @@
-import fs from "fs";
+/* eslint-env node */
+const fs = require("fs");
+const { esbuildPlugin } = require("@web/dev-server-esbuild");
 
 const preventFouc = `
   <style>
@@ -17,7 +19,7 @@ const preventFouc = `
   </script>
 `;
 
-const config = {
+module.exports = {
   plugins: [
     {
       name: "dev-page-listing",
@@ -26,7 +28,7 @@ const config = {
           let body = context.body;
 
           // Fouc prevention
-          body = body.replace(/<\/body>/, `${preventFouc}\n</body>`);
+          body = body.replace(/<\/body>/u, `${preventFouc}\n</body>`);
 
           // Index page listing
           if (["/dev/index.html", "/dev", "/dev/"].includes(context.path)) {
@@ -40,14 +42,13 @@ const config = {
                   .join("")}
               </ul>`;
 
-            body = body.replace(/<ul id="listing">.*<\/ul>/, listing);
+            body = body.replace(/<ul id="listing">.*<\/ul>/u, listing);
           }
 
           return { body };
         }
       },
     },
+    esbuildPlugin({ ts: true }),
   ],
 };
-
-export default config;

@@ -1,0 +1,22 @@
+Index: test/visual/material/message-list.test.js
+===================================================================
+--- test/visual/material/message-list.test.js
++++ test/visual/material/message-list.test.js
+@@ -21,7 +21,7 @@
+           div = document.createElement('div');
+           div.style.padding = '10px';
+ 
+-          element = fixtureSync('<vaadin-message-list></vaadin-message-list>', div);
++          element = fixtureSync('<vaadin23-message-list></vaadin23-message-list>', div);
+           element.items = [
+             {
+               text: 'Hello list',
+@@ -55,7 +55,7 @@
+         });
+ 
+         it('focused', async () => {
+-          element.shadowRoot.querySelectorAll('vaadin-message')[0].focus();
++          element.shadowRoot.querySelectorAll('vaadin23-message')[0].focus();
+           await sendKeys({ press: 'ArrowDown' });
+           await visualDiff(div, `${dir}-focused`);
+         });

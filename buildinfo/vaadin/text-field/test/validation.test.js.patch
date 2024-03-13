@@ -1,0 +1,58 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -8,7 +8,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      field = document.createElement('vaadin-text-field');
++      field = document.createElement('vaadin23-text-field');
+       validateSpy = sinon.spy(field, 'validate');
+     });
+ 
+@@ -58,7 +58,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++      field = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     });
+ 
+     it('should fire a validated event on validation success', () => {
+@@ -85,7 +85,7 @@
+ 
+   describe('required', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++      field = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     });
+ 
+     it('should update "invalid" state when "required" is removed', () => {
+@@ -100,7 +100,7 @@
+ 
+   describe('minlength', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++      field = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     });
+ 
+     it('should not validate the field when minlength is set', () => {
+@@ -139,7 +139,7 @@
+ 
+   describe('maxlength', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++      field = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     });
+ 
+     it('should not validate the field when maxlength is set', () => {
+@@ -178,7 +178,7 @@
+ 
+   describe('pattern', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-text-field></vaadin-text-field>');
++      field = fixtureSync('<vaadin23-text-field></vaadin23-text-field>');
+     });
+ 
+     it('should update "invalid" state when "pattern" is removed', () => {

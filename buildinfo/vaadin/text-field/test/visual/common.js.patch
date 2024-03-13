@@ -1,0 +1,15 @@
+Index: test/visual/common.js
+===================================================================
+--- test/visual/common.js
++++ test/visual/common.js
+@@ -1,8 +1,8 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /* Hide caret */
+ registerStyles(
+-  'vaadin-text-field',
++  'vaadin23-text-field',
+   css`
+     :host([focus-ring]) ::slotted(input) {
+       caret-color: transparent;

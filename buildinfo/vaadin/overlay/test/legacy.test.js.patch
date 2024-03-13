@@ -1,0 +1,40 @@
+Index: test/legacy.test.js
+===================================================================
+--- test/legacy.test.js
++++ test/legacy.test.js
+@@ -17,14 +17,14 @@
+     beforeEach(async () => {
+       parent = fixtureSync(`
+         <iron-overlay id="parent">
+-          <vaadin-overlay>
++          <vaadin23-overlay>
+             <template>
+               overlay-content
+             </template>
+-          </vaadin-overlay>
++          </vaadin23-overlay>
+         </iron-overlay>
+       `);
+-      overlay = parent.querySelector('vaadin-overlay');
++      overlay = parent.querySelector('vaadin23-overlay');
+       overlay._observer.flush();
+       parent.open();
+       await nextRender(parent);
+@@ -77,7 +77,7 @@
+       // to enable mouse events dispatching.
+       sinon.spy(Overlay.prototype, 'addEventListener');
+ 
+-      const overlay = document.createElement('vaadin-overlay');
++      const overlay = document.createElement('vaadin23-overlay');
+       document.body.appendChild(overlay);
+ 
+       expect(Overlay.prototype.addEventListener.calledWith('click')).to.be.true;
+@@ -91,7 +91,7 @@
+       // so another iOS workaround listener is needed for the backdrop.
+       sinon.spy(HTMLElement.prototype, 'addEventListener');
+ 
+-      const overlay = document.createElement('vaadin-overlay');
++      const overlay = document.createElement('vaadin23-overlay');
+       document.body.appendChild(overlay);
+ 
+       const backdropCall = HTMLElement.prototype.addEventListener

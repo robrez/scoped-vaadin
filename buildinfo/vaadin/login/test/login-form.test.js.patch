@@ -1,0 +1,72 @@
+Index: test/login-form.test.js
+===================================================================
+--- test/login-form.test.js
++++ test/login-form.test.js
+@@ -2,11 +2,11 @@
+ import { enter, fixtureSync, tap } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../vaadin-login-form.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { fillUsernameAndPassword } from './helpers.js';
+ 
+ registerStyles(
+-  'vaadin-login-form-wrapper',
++  'vaadin23-login-form-wrapper',
+   css`
+     :host([theme='green']) [part='form-title'],
+     :host([theme='green']) [part='error-message-title'],
+@@ -28,7 +28,7 @@
+   });
+ 
+   beforeEach(() => {
+-    loginForm = fixtureSync(`<vaadin-login-form action='login-action'></vaadin-login-form>
++    loginForm = fixtureSync(`<vaadin23-login-form action='login-action'></vaadin23-login-form>
+     <meta name="_csrf_parameter" content="_csrf" />
+     <meta name="_csrf_header" content="X-CSRF-TOKEN" />
+     <meta name="_csrf" content="28e4c684-fb5e-4c79-b8e2-a2177569edfa" />`);
+@@ -60,7 +60,7 @@
+   });
+ 
+   beforeEach(() => {
+-    login = fixtureSync('<vaadin-login-form action="login-action"></vaadin-login-form>');
++    login = fixtureSync('<vaadin23-login-form action="login-action"></vaadin23-login-form>');
+     formWrapper = login.querySelector('[part="vaadin-login-native-form-wrapper"]');
+   });
+ 
+@@ -269,7 +269,7 @@
+   let login;
+ 
+   beforeEach(() => {
+-    login = fixtureSync('<vaadin-login-form no-forgot-password></vaadin-login-form>');
++    login = fixtureSync('<vaadin23-login-form no-forgot-password></vaadin23-login-form>');
+   });
+ 
+   it('should hide forgot password button', () => {
+@@ -283,7 +283,7 @@
+ 
+   beforeEach(() => {
+     activeElement = document.activeElement;
+-    fixtureSync('<vaadin-login-form no-autofocus></vaadin-login-form>');
++    fixtureSync('<vaadin23-login-form no-autofocus></vaadin23-login-form>');
+   });
+ 
+   it('should not focus the username field', () => {
+@@ -295,7 +295,7 @@
+   let login, formWrapper;
+ 
+   beforeEach(() => {
+-    login = fixtureSync('<vaadin-login-form error></vaadin-login-form>');
++    login = fixtureSync('<vaadin23-login-form error></vaadin23-login-form>');
+     formWrapper = login.querySelector('[part="vaadin-login-native-form-wrapper"]');
+   });
+ 
+@@ -320,7 +320,7 @@
+   let login, formWrapper;
+ 
+   beforeEach(() => {
+-    login = fixtureSync('<vaadin-login-form theme="green"></vaadin-login-form>');
++    login = fixtureSync('<vaadin23-login-form theme="green"></vaadin23-login-form>');
+     formWrapper = login.querySelector('[part="vaadin-login-native-form-wrapper"]');
+   });
+ 

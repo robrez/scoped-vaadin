@@ -1,0 +1,34 @@
+Index: test/visual/lumo/avatar.test.js
+===================================================================
+--- test/visual/lumo/avatar.test.js
++++ test/visual/lumo/avatar.test.js
+@@ -1,9 +1,9 @@
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { sendKeys } from '@web/test-runner-commands';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/tooltip/test/not-animated-styles.js';
++import '@scoped-vaadin/tooltip/test/not-animated-styles.js';
+ import '../../../theme/lumo/vaadin-avatar.js';
+-import { Tooltip } from '@vaadin/tooltip/src/vaadin-tooltip.js';
++import { Tooltip } from '@scoped-vaadin/tooltip/src/vaadin-tooltip.js';
+ 
+ describe('avatar', () => {
+   let div, element;
+@@ -12,7 +12,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-avatar></vaadin-avatar>', div);
++    element = fixtureSync('<vaadin23-avatar></vaadin23-avatar>', div);
+   });
+ 
+   before(() => {
+@@ -67,7 +67,7 @@
+   });
+ 
+   /**
+-   * Tests that images rendered in <vaadin-avatar> preserve their aspect ratio using object-fit: cover, instead of being
++   * Tests that images rendered in <vaadin23-avatar> preserve their aspect ratio using object-fit: cover, instead of being
+    * stretched. Uses the Vaadin `}` as test image, which is higher than it is wide.
+    */
+   it('aspect-ratio', async () => {

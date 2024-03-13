@@ -1,0 +1,40 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -8,7 +8,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      textArea = document.createElement('vaadin-text-area');
++      textArea = document.createElement('vaadin23-text-area');
+       validateSpy = sinon.spy(textArea, 'validate');
+     });
+ 
+@@ -58,7 +58,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      textArea = fixtureSync('<vaadin-text-area></vaadin-text-area>');
++      textArea = fixtureSync('<vaadin23-text-area></vaadin23-text-area>');
+     });
+ 
+     it('should fire a validated event on validation success', () => {
+@@ -85,7 +85,7 @@
+ 
+   describe('minlength', () => {
+     beforeEach(() => {
+-      textArea = fixtureSync('<vaadin-text-area></vaadin-text-area>');
++      textArea = fixtureSync('<vaadin23-text-area></vaadin23-text-area>');
+     });
+ 
+     it('should not validate the field when minlength is set', () => {
+@@ -103,7 +103,7 @@
+ 
+   describe('maxlength', () => {
+     beforeEach(() => {
+-      textArea = fixtureSync('<vaadin-text-area></vaadin-text-area>');
++      textArea = fixtureSync('<vaadin23-text-area></vaadin23-text-area>');
+     });
+ 
+     it('should not validate the field when maxlength is set', () => {

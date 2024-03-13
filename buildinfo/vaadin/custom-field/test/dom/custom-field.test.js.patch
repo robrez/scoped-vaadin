@@ -1,0 +1,22 @@
+Index: test/dom/custom-field.test.js
+===================================================================
+--- test/dom/custom-field.test.js
++++ test/dom/custom-field.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-custom-field.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-custom-field', () => {
++describe('vaadin23-custom-field', () => {
+   let field;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    field = fixtureSync('<vaadin-custom-field></vaadin-custom-field>');
++    field = fixtureSync('<vaadin23-custom-field></vaadin23-custom-field>');
+   });
+ 
+   describe('host', () => {

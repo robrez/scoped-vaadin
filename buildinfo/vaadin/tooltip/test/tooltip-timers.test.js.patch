@@ -1,0 +1,74 @@
+Index: test/tooltip-timers.test.js
+===================================================================
+--- test/tooltip-timers.test.js
++++ test/tooltip-timers.test.js
+@@ -25,19 +25,19 @@
+   });
+ 
+   function createTooltip(target) {
+-    const tooltip = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
++    const tooltip = fixtureSync('<vaadin23-tooltip></vaadin23-tooltip>');
+     tooltip.target = target;
+-    return tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    return tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+   }
+ 
+   describe('hoverDelay', () => {
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" hover-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin23-tooltip text="tooltip" hover-delay="1"></vaadin23-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+       await nextRender();
+     });
+ 
+@@ -65,10 +65,10 @@
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" focus-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin23-tooltip text="tooltip" focus-delay="1"></vaadin23-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+       await nextRender();
+     });
+ 
+@@ -96,10 +96,10 @@
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" hide-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin23-tooltip text="tooltip" hide-delay="1"></vaadin23-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+       await nextRender();
+     });
+ 
+@@ -419,15 +419,15 @@
+     beforeEach(async () => {
+       wrapper = fixtureSync(`
+         <div>
+-          <vaadin-tooltip text="tooltip 1" hover-delay="2" focus-delay="2" hide-delay="2" for="input-1"></vaadin-tooltip>
+-          <vaadin-tooltip text="tooltip 2" hover-delay="2" focus-delay="2" hide-delay="2" for="input-2"></vaadin-tooltip>
++          <vaadin23-tooltip text="tooltip 1" hover-delay="2" focus-delay="2" hide-delay="2" for="input-1"></vaadin23-tooltip>
++          <vaadin23-tooltip text="tooltip 2" hover-delay="2" focus-delay="2" hide-delay="2" for="input-2"></vaadin23-tooltip>
+           <input id="input-1">
+           <input id="input-2">
+         </div>
+       `);
+-      tooltips = Array.from(wrapper.querySelectorAll('vaadin-tooltip'));
++      tooltips = Array.from(wrapper.querySelectorAll('vaadin23-tooltip'));
+       targets = wrapper.querySelectorAll('input');
+-      overlays = tooltips.map((el) => el.shadowRoot.querySelector('vaadin-tooltip-overlay'));
++      overlays = tooltips.map((el) => el.shadowRoot.querySelector('vaadin23-tooltip-overlay'));
+       await nextRender();
+     });
+ 

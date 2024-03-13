@@ -1,0 +1,28 @@
+Index: test/missing-import.test.js
+===================================================================
+--- test/missing-import.test.js
++++ test/missing-import.test.js
+@@ -8,10 +8,10 @@
+ 
+   beforeEach(() => {
+     listBox = fixtureSync(`
+-      <vaadin-list-box>
+-        <vaadin-item>Foo</vaadin-item>
+-        <vaadin-item>Bar</vaadin-item>
+-      </vaadin-list-box>
++      <vaadin23-list-box>
++        <vaadin23-item>Foo</vaadin23-item>
++        <vaadin23-item>Bar</vaadin23-item>
++      </vaadin23-list-box>
+     `);
+ 
+     sinon.stub(console, 'warn');
+@@ -28,7 +28,7 @@
+   });
+ 
+   it('should not warn after vaadin-item is imported', async () => {
+-    await import('@vaadin/item/vaadin-item.js');
++    await import('@scoped-vaadin/item/vaadin-item.js');
+     listBox._checkImport();
+     expect(console.warn.called).to.be.false;
+   });

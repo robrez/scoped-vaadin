@@ -1,0 +1,72 @@
+Index: test/fixtures/mock-grid-host.js
+===================================================================
+--- test/fixtures/mock-grid-host.js
++++ test/fixtures/mock-grid-host.js
+@@ -1,24 +1,25 @@
+-import '@vaadin/grid';
+-import '@vaadin/checkbox';
+-import '@vaadin/grid/vaadin-grid-column';
+-import '@vaadin/grid/vaadin-grid-tree-column';
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
++import '@scoped-vaadin/grid';
++import '@scoped-vaadin/checkbox';
++import '@scoped-vaadin/grid/vaadin-grid-column';
++import '@scoped-vaadin/grid/vaadin-grid-tree-column';
+ import { html, PolymerElement } from '@polymer/polymer';
+ 
+ export class MockGridHost extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-grid id="grid" items="[[items]]">
+-        <vaadin-grid-column>
++      <vaadin23-grid id="grid" items="[[items]]">
++        <vaadin23-grid-column>
+           <template>
+             <input class="parent-property" value="{{parentProperty::input}}" />
+             <input class="title" value="{{item.title::input}}" />
+-            <vaadin-checkbox class="selected" checked="{{selected}}"></vaadin-checkbox>
+-            <vaadin-checkbox class="expanded" checked="{{expanded}}"></vaadin-checkbox>
+-            <vaadin-checkbox class="details-opened" checked="{{detailsOpened}}"></vaadin-checkbox>
++            <vaadin23-checkbox class="selected" checked="{{selected}}"></vaadin23-checkbox>
++            <vaadin23-checkbox class="expanded" checked="{{expanded}}"></vaadin23-checkbox>
++            <vaadin23-checkbox class="details-opened" checked="{{detailsOpened}}"></vaadin23-checkbox>
+           </template>
+-        </vaadin-grid-column>
++        </vaadin23-grid-column>
+ 
+-        <vaadin-grid-column>
++        <vaadin23-grid-column>
+           <template>
+             <div class="index">[[index]]</div>
+             <div class="parent-property">[[parentProperty]]</div>
+@@ -27,18 +28,18 @@
+             <div class="expanded">[[expanded]]</div>
+             <div class="details-opened">[[detailsOpened]]</div>
+           </template>
+-        </vaadin-grid-column>
++        </vaadin23-grid-column>
+ 
+-        <vaadin-grid-tree-column></vaadin-grid-tree-column>
++        <vaadin23-grid-tree-column></vaadin23-grid-tree-column>
+ 
+         <template class="row-details">
+           <div class="index">[[index]]</div>
+           <input class="title" value="{{item.title::input}}" />
+-          <vaadin-checkbox class="selected" checked="{{selected}}"></vaadin-checkbox>
+-          <vaadin-checkbox class="expanded" checked="{{expanded}}"></vaadin-checkbox>
+-          <vaadin-checkbox class="details-opened" checked="{{detailsOpened}}"></vaadin-checkbox>
++          <vaadin23-checkbox class="selected" checked="{{selected}}"></vaadin23-checkbox>
++          <vaadin23-checkbox class="expanded" checked="{{expanded}}"></vaadin23-checkbox>
++          <vaadin23-checkbox class="details-opened" checked="{{detailsOpened}}"></vaadin23-checkbox>
+         </template>
+-      </vaadin-grid>
++      </vaadin23-grid>
+     `;
+   }
+ 
+@@ -61,4 +62,4 @@
+   }
+ }
+ 
+-customElements.define('mock-grid-host', MockGridHost);
++internalCustomElements.define('mock-grid-host', MockGridHost);

@@ -1,0 +1,17 @@
+Index: test/disabled-mixin.test.js
+===================================================================
+--- test/disabled-mixin.test.js
++++ test/disabled-mixin.test.js
+@@ -1,10 +1,11 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { DisabledMixin } from '../src/disabled-mixin.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'disabled-mixin-element',
+   class extends DisabledMixin(PolymerElement) {
+     static get template() {

@@ -1,0 +1,13 @@
+Index: test/text-area.test.js
+===================================================================
+--- test/text-area.test.js
++++ test/text-area.test.js
+@@ -8,7 +8,7 @@
+   let textArea;
+ 
+   beforeEach(() => {
+-    textArea = fixtureSync('<vaadin-text-area></vaadin-text-area>');
++    textArea = fixtureSync('<vaadin23-text-area></vaadin23-text-area>');
+   });
+ 
+   describe('properties', () => {

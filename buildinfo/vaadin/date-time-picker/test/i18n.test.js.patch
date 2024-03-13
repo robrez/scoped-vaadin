@@ -1,0 +1,73 @@
+Index: test/i18n.test.js
+===================================================================
+--- test/i18n.test.js
++++ test/i18n.test.js
+@@ -1,25 +1,26 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../vaadin-date-time-picker.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+ const formatTime = (...args) =>
+-  customElements
+-    .get('vaadin-time-picker')
++  internalCustomElements
++    .get('vaadin23-time-picker')
+     .properties.i18n.value()
+     .formatTime(...args);
+ 
+ const parseTime = (...args) =>
+-  customElements
+-    .get('vaadin-time-picker')
++  internalCustomElements
++    .get('vaadin23-time-picker')
+     .properties.i18n.value()
+     .parseTime(...args);
+ 
+-customElements.define(
++internalCustomElements.define(
+   'dtp-i18n-default',
+   class extends PolymerElement {
+     static get template() {
+-      return html`<vaadin-date-time-picker id="dateTimePicker" i18n="[[i18n]]"></vaadin-date-time-picker>`;
++      return html`<vaadin23-date-time-picker id="dateTimePicker" i18n="[[i18n]]"></vaadin23-date-time-picker>`;
+     }
+ 
+     static get properties() {
+@@ -41,15 +42,15 @@
+   },
+ );
+ 
+-customElements.define(
++internalCustomElements.define(
+   'dtp-i18n-slotted',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-date-time-picker id="dateTimePicker">
+-          <vaadin-date-picker slot="date-picker" i18n="[[dpI18n]]"></vaadin-date-picker>
+-          <vaadin-time-picker slot="time-picker" i18n="[[tpI18n]]"></vaadin-time-picker>
+-        </vaadin-date-time-picker>
++        <vaadin23-date-time-picker id="dateTimePicker">
++          <vaadin23-date-picker slot="date-picker" i18n="[[dpI18n]]"></vaadin23-date-picker>
++          <vaadin23-time-picker slot="time-picker" i18n="[[tpI18n]]"></vaadin23-time-picker>
++        </vaadin23-date-time-picker>
+       `;
+     }
+ 
+@@ -101,12 +102,12 @@
+   let dateTimePicker, datePicker;
+ 
+   beforeEach(() => {
+-    dateTimePicker = document.createElement('vaadin-date-time-picker');
++    dateTimePicker = document.createElement('vaadin23-date-time-picker');
+   });
+ 
+   describe('date-picker', () => {
+     beforeEach(() => {
+-      datePicker = document.createElement('vaadin-date-picker');
++      datePicker = document.createElement('vaadin23-date-picker');
+       datePicker.slot = 'date-picker';
+       datePicker.i18n = { ...datePicker.i18n, cancel: 'Peruuta' };
+       dateTimePicker.appendChild(datePicker);

@@ -1,0 +1,18 @@
+Index: test/dom/vaadin-upload-file.test.js
+===================================================================
+--- test/dom/vaadin-upload-file.test.js
++++ test/dom/vaadin-upload-file.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-upload-file.js';
+ 
+-describe('vaadin-upload-file', () => {
++describe('vaadin23-upload-file', () => {
+   let uploadFile;
+ 
+   beforeEach(() => {
+-    uploadFile = fixtureSync('<vaadin-upload-file></vaadin-upload-file>');
++    uploadFile = fixtureSync('<vaadin23-upload-file></vaadin23-upload-file>');
+     uploadFile.file = {
+       name: 'Workflow.pdf',
+       progress: 60,

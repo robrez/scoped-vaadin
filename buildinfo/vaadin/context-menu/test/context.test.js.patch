@@ -1,0 +1,49 @@
+Index: test/context.test.js
+===================================================================
+--- test/context.test.js
++++ test/context.test.js
+@@ -1,8 +1,9 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fire, fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
+ import './not-animated-styles.js';
+ import '../vaadin-context-menu.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -17,26 +18,26 @@
+   }
+ }
+ 
+-customElements.define('x-foo', XFoo);
++internalCustomElements.define('x-foo', XFoo);
+ 
+ describe('context', () => {
+   let menu, foo, target, another;
+ 
+   beforeEach(() => {
+     menu = fixtureSync(`
+-      <vaadin-context-menu>
++      <vaadin23-context-menu>
+         <div id="target">
+           Foo
+           <x-foo></x-foo>
+         </div>
+         <div id="another">Bar</div>
+-      </vaadin-context-menu>
++      </vaadin23-context-menu>
+     `);
+     menu.renderer = (root, _, context) => {
+       root.innerHTML = `
+-        <vaadin-list-box id="menu">
+-          <vaadin-item>The menu target: ${context.target.textContent}</vaadin-item>
+-        </vaadin-list-box>
++        <vaadin23-list-box id="menu">
++          <vaadin23-item>The menu target: ${context.target.textContent}</vaadin23-item>
++        </vaadin23-list-box>
+       `;
+     };
+     foo = document.querySelector('x-foo');

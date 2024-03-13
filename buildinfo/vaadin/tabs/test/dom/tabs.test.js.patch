@@ -1,0 +1,18 @@
+Index: test/dom/tabs.test.js
+===================================================================
+--- test/dom/tabs.test.js
++++ test/dom/tabs.test.js
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-tabs.js';
+ 
+-describe('vaadin-tabs', () => {
++describe('vaadin23-tabs', () => {
+   let tabs;
+ 
+   beforeEach(() => {
+-    tabs = fixtureSync('<vaadin-tabs></vaadin-tabs>');
++    tabs = fixtureSync('<vaadin23-tabs></vaadin23-tabs>');
+   });
+ 
+   it('default', async () => {

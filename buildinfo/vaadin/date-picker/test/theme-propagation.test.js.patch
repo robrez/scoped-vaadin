@@ -1,0 +1,22 @@
+Index: test/theme-propagation.test.js
+===================================================================
+--- test/theme-propagation.test.js
++++ test/theme-propagation.test.js
+@@ -7,7 +7,7 @@
+   let datePicker;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync(`<vaadin-date-picker theme="foo"></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin23-date-picker theme="foo"></vaadin23-date-picker>`);
+   });
+ 
+   it('should propagate theme attribute to the input container', () => {
+@@ -39,7 +39,7 @@
+     });
+ 
+     it('should propagate theme attribute to month calendar', () => {
+-      const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin-month-calendar');
++      const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin23-month-calendar');
+       expect(monthCalendar.getAttribute('theme')).to.equal('foo');
+     });
+   });

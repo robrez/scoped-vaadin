@@ -1,0 +1,22 @@
+Index: test/number-field.test.js
+===================================================================
+--- test/number-field.test.js
++++ test/number-field.test.js
+@@ -8,7 +8,7 @@
+   let numberField, input, decreaseButton, increaseButton;
+ 
+   beforeEach(() => {
+-    numberField = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++    numberField = fixtureSync('<vaadin23-number-field></vaadin23-number-field>');
+     input = numberField.inputElement;
+     decreaseButton = numberField.shadowRoot.querySelector('[part=decrease-button]');
+     increaseButton = numberField.shadowRoot.querySelector('[part=increase-button]');
+@@ -682,7 +682,7 @@
+   let numberField;
+ 
+   beforeEach(() => {
+-    numberField = fixtureSync('<vaadin-number-field required></vaadin-number-field>');
++    numberField = fixtureSync('<vaadin23-number-field required></vaadin23-number-field>');
+   });
+ 
+   it('should focus on required indicator click', () => {

@@ -1,0 +1,22 @@
+Index: test/visual/lumo/text-field.test.js
+===================================================================
+--- test/visual/lumo/text-field.test.js
++++ test/visual/lumo/text-field.test.js
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-text-field></vaadin-text-field>', div);
++    element = fixtureSync('<vaadin23-text-field></vaadin23-text-field>', div);
+   });
+ 
+   it('basic', async () => {
+@@ -104,7 +104,7 @@
+     let field;
+ 
+     beforeEach(() => {
+-      field = document.createElement('vaadin-text-field');
++      field = document.createElement('vaadin23-text-field');
+       field.label = 'Label';
+       field.style.marginLeft = '10px';
+       element.parentNode.appendChild(field);

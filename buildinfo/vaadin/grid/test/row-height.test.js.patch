@@ -1,0 +1,87 @@
+Index: test/row-height.test.js
+===================================================================
+--- test/row-height.test.js
++++ test/row-height.test.js
+@@ -1,12 +1,12 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { flushGrid, getRowCells, getRows, infiniteDataProvider, scrollToEnd } from './helpers.js';
+ 
+ registerStyles(
+-  'vaadin-grid',
++  'vaadin23-grid',
+   css`
+     [part~='cell'] {
+       border: none !important;
+@@ -16,41 +16,41 @@
+ 
+ const fixtures = {
+   defaultContent: `
+-    <vaadin-grid style="width: 200px; height: 200px;" size="10000" hidden>
+-      <vaadin-grid-column>
++    <vaadin23-grid style="width: 200px; height: 200px;" size="10000" hidden>
++      <vaadin23-grid-column>
+         <template>
+           <div>foobar</div>
+         </template>
+         <template class="header">foo</template>
+-      </vaadin-grid-column>
+-    </vaadin-grid>
++      </vaadin23-grid-column>
++    </vaadin23-grid>
+   `,
+   twoColumns: `
+-    <vaadin-grid style="width: 200px; height: 200px;" size="10000" hidden>
+-      <vaadin-grid-column>
++    <vaadin23-grid style="width: 200px; height: 200px;" size="10000" hidden>
++      <vaadin23-grid-column>
+         <template class="header">foo</template>
+         <template>foo</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin23-grid-column>
++      <vaadin23-grid-column>
+         <template>foo</template>
+-      </vaadin-grid-column>
+-    </vaadin-grid>
++      </vaadin23-grid-column>
++    </vaadin23-grid>
+   `,
+   unevenContent: `
+-    <vaadin-grid style="width: 200px; height: 200px;" size="10000" hidden>
+-      <vaadin-grid-column>
++    <vaadin23-grid style="width: 200px; height: 200px;" size="10000" hidden>
++      <vaadin23-grid-column>
+         <template>
+           <div style="line-height: 2em;">foobar</div>
+         </template>
+         <template class="header">foo</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin23-grid-column>
++      <vaadin23-grid-column>
+         <template>
+           <div style="line-height: 0.5em;">foobar</div>
+         </template>
+         <template class="header">foo</template>
+-      </vaadin-grid-column>
+-    </vaadin-grid>
++      </vaadin23-grid-column>
++    </vaadin23-grid>
+   `,
+ };
+ 
+@@ -116,7 +116,7 @@
+ 
+   it('should update height when hiding columns', async () => {
+     await init('unevenContent');
+-    grid.querySelectorAll('vaadin-grid-column')[0].hidden = true;
++    grid.querySelectorAll('vaadin23-grid-column')[0].hidden = true;
+     // Flush row height and position calculations
+     flushGrid(grid);
+     expect(rows[0].getBoundingClientRect().bottom).to.eql(rows[1].getBoundingClientRect().top);

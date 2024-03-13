@@ -1,0 +1,35 @@
+Index: test/item-renderer.test.js
+===================================================================
+--- test/item-renderer.test.js
++++ test/item-renderer.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import './not-animated-styles.js';
+ import '../vaadin-combo-box.js';
+ import { getFirstItem } from './helpers.js';
+@@ -11,10 +11,10 @@
+ 
+   beforeEach(() => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box
++      <vaadin23-combo-box
+         item-label-path="name"
+         item-value-path="symbol">
+-      </vaadin-combo-box>
++      </vaadin23-combo-box>
+     `);
+     comboBox.items = ['foo', 'bar', 'baz'];
+   });
+@@ -32,7 +32,7 @@
+     it(`should pass the 'root', 'owner', 'model' arguments to the renderer`, () => {
+       const [root, owner, model] = comboBox.renderer.args[0];
+ 
+-      expect(root.localName).to.equal('vaadin-combo-box-item');
++      expect(root.localName).to.equal('vaadin23-combo-box-item');
+       expect(owner).to.eql(comboBox);
+       expect(model).to.deep.equal({
+         item: 'foo',

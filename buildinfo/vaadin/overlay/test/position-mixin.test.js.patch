@@ -1,0 +1,24 @@
+Index: test/position-mixin.test.js
+===================================================================
+--- test/position-mixin.test.js
++++ test/position-mixin.test.js
+@@ -1,8 +1,9 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import { setViewport } from '@web/test-runner-commands';
+ import { css } from 'lit';
+-import { registerStyles } from '@vaadin/vaadin-themable-mixin/register-styles';
++import { registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles';
+ import { Overlay } from '../src/vaadin-overlay.js';
+ import { PositionMixin } from '../src/vaadin-overlay-position-mixin.js';
+ 
+@@ -12,7 +13,7 @@
+   }
+ }
+ 
+-customElements.define(PositionedOverlay.is, PositionedOverlay);
++internalCustomElements.define(PositionedOverlay.is, PositionedOverlay);
+ 
+ registerStyles(
+   'vaadin-positioned-overlay',

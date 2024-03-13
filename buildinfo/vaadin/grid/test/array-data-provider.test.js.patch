@@ -1,0 +1,125 @@
+Index: test/array-data-provider.test.js
+===================================================================
+--- test/array-data-provider.test.js
++++ test/array-data-provider.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { click, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import '../vaadin-grid-filter.js';
+ import '../vaadin-grid-sorter.js';
+@@ -21,16 +21,16 @@
+   describe('with items', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column>
++        <vaadin23-grid>
++          <vaadin23-grid-column>
+             <template class="header">First</template>
+             <template>[[item.name.first]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin23-grid-column>
++          <vaadin23-grid-column>
+             <template class="header">Last</template>
+             <template>[[item.name.last]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       grid.items = [
+         {
+@@ -119,16 +119,16 @@
+   describe('without items', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column>
++        <vaadin23-grid>
++          <vaadin23-grid-column>
+             <template class="header">First</template>
+             <template>[[item.name.first]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin23-grid-column>
++          <vaadin23-grid-column>
+             <template class="header">Last</template>
+             <template>[[item.name.last]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       flushGrid(grid);
+       await nextFrame();
+@@ -148,24 +148,24 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column>
++      <vaadin23-grid>
++        <vaadin23-grid-column>
+           <template class="header">
+-            <vaadin-grid-sorter>
++            <vaadin23-grid-sorter>
+               Sorter with invalid path
+-            </vaadin-grid-sorter>
++            </vaadin23-grid-sorter>
+           </template>
+           <template>[[item.name.first]]</template>
+-        </vaadin-grid-column>
++        </vaadin23-grid-column>
+ 
+-        <vaadin-grid-column>
++        <vaadin23-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter value="foo">
+-            </vaadin-grid-filter>
++            <vaadin23-grid-filter value="foo">
++            </vaadin23-grid-filter>
+           </template>
+           <template>[[item.name.last]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+ 
+     grid.items = [
+@@ -191,7 +191,7 @@
+     let sorter;
+ 
+     beforeEach(() => {
+-      sorter = grid.querySelector('vaadin-grid-sorter');
++      sorter = grid.querySelector('vaadin23-grid-sorter');
+     });
+ 
+     it('should warn about invalid path with undefined parent property', () => {
+@@ -233,7 +233,7 @@
+     let filter;
+ 
+     beforeEach(() => {
+-      filter = grid.querySelector('vaadin-grid-filter');
++      filter = grid.querySelector('vaadin23-grid-filter');
+       filter.path = '';
+       filter._debouncerFilterChanged.flush();
+     });
+@@ -265,9 +265,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="value"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid>
++        <vaadin23-grid-column path="value"></vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+   });
+ 

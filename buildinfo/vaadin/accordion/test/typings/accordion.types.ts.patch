@@ -1,0 +1,22 @@
+Index: test/typings/accordion.types.ts
+===================================================================
+--- test/typings/accordion.types.ts
++++ test/typings/accordion.types.ts
+@@ -4,7 +4,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const accordion = document.createElement('vaadin-accordion');
++const accordion = document.createElement('vaadin23-accordion');
+ 
+ accordion.opened = null;
+ 
+@@ -18,7 +18,7 @@
+   assertType<AccordionPanel[]>(event.detail.value);
+ });
+ 
+-const panel = document.createElement('vaadin-accordion-panel');
++const panel = document.createElement('vaadin23-accordion-panel');
+ 
+ panel.addEventListener('opened-changed', (event) => {
+   assertType<AccordionPanelOpenedChangedEvent>(event);

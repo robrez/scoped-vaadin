@@ -1,0 +1,226 @@
+Index: test/dom/__snapshots__/number-field.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/number-field.test.snap.js
++++ test/dom/__snapshots__/number-field.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-number-field host default"] = 
+-`<vaadin-number-field>
++`<vaadin23-number-field>
+   <label
+     for="input-vaadin-number-field-3"
+     id="label-vaadin-number-field-0"
+@@ -23,12 +23,12 @@
+     step="any"
+     type="number"
+   >
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host default */
+ 
+ snapshots["vaadin-number-field host helper"] = 
+-`<vaadin-number-field has-helper="">
++`<vaadin23-number-field has-helper="">
+   <label
+     for="input-vaadin-number-field-3"
+     id="label-vaadin-number-field-0"
+@@ -56,12 +56,12 @@
+   >
+     Helper
+   </div>
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host helper */
+ 
+ snapshots["vaadin-number-field host error"] = 
+-`<vaadin-number-field
++`<vaadin23-number-field
+   has-error-message=""
+   invalid=""
+ >
+@@ -89,7 +89,7 @@
+     step="any"
+     type="number"
+   >
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host error */
+ 
+@@ -104,7 +104,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <div
+       aria-hidden="true"
+       hidden=""
+@@ -138,7 +138,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -164,7 +164,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <div
+       aria-hidden="true"
+       part="decrease-button"
+@@ -196,7 +196,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -222,7 +222,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     disabled=""
+     part="input-field"
+   >
+@@ -259,7 +259,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -285,7 +285,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     readonly=""
+   >
+@@ -322,7 +322,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -348,7 +348,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     invalid=""
+     part="input-field"
+   >
+@@ -385,7 +385,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -411,7 +411,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     theme="align-right"
+   >
+@@ -448,7 +448,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -464,7 +464,7 @@
+ /* end snapshot vaadin-number-field shadow theme */
+ 
+ snapshots["vaadin-number-field host min"] = 
+-`<vaadin-number-field>
++`<vaadin23-number-field>
+   <label
+     for="input-vaadin-number-field-3"
+     id="label-vaadin-number-field-0"
+@@ -485,12 +485,12 @@
+     step="any"
+     type="number"
+   >
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host min */
+ 
+ snapshots["vaadin-number-field host max"] = 
+-`<vaadin-number-field>
++`<vaadin23-number-field>
+   <label
+     for="input-vaadin-number-field-3"
+     id="label-vaadin-number-field-0"
+@@ -511,12 +511,12 @@
+     step="any"
+     type="number"
+   >
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host max */
+ 
+ snapshots["vaadin-number-field host step"] = 
+-`<vaadin-number-field>
++`<vaadin23-number-field>
+   <label
+     for="input-vaadin-number-field-3"
+     id="label-vaadin-number-field-0"
+@@ -537,7 +537,7 @@
+     step="2"
+     type="number"
+   >
+-</vaadin-number-field>
++</vaadin23-number-field>
+ `;
+ /* end snapshot vaadin-number-field host step */
+ 
+@@ -552,7 +552,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <div
+       aria-hidden="true"
+       part="decrease-button"
+@@ -584,7 +584,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>

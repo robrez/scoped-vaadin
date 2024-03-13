@@ -1,0 +1,13 @@
+Index: test/visual/lumo/message.test.js
+===================================================================
+--- test/visual/lumo/message.test.js
++++ test/visual/lumo/message.test.js
+@@ -20,7 +20,7 @@
+           div = document.createElement('div');
+           div.style.padding = '10px';
+           element = fixtureSync(
+-            `<vaadin-message>There is no real ending. It's just the place where you stop the story.</vaadin-message>`,
++            `<vaadin23-message>There is no real ending. It's just the place where you stop the story.</vaadin23-message>`,
+             div,
+           );
+         });

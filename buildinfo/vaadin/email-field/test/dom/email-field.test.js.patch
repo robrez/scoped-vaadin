@@ -1,0 +1,25 @@
+Index: test/dom/email-field.test.js
+===================================================================
+--- test/dom/email-field.test.js
++++ test/dom/email-field.test.js
+@@ -1,9 +1,9 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-email-field.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-email-field', () => {
++describe('vaadin23-email-field', () => {
+   let field;
+ 
+   // Ignore pattern because of escape characters
+@@ -13,7 +13,7 @@
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    field = fixtureSync('<vaadin-email-field></vaadin-email-field>');
++    field = fixtureSync('<vaadin23-email-field></vaadin23-email-field>');
+   });
+ 
+   describe('host', () => {

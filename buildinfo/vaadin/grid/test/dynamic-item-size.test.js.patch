@@ -1,0 +1,36 @@
+Index: test/dynamic-item-size.test.js
+===================================================================
+--- test/dynamic-item-size.test.js
++++ test/dynamic-item-size.test.js
+@@ -1,12 +1,12 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { flushGrid, getFirstVisibleItem, infiniteDataProvider } from './helpers.js';
+ 
+ registerStyles(
+-  'vaadin-grid',
++  'vaadin23-grid',
+   css`
+     [part~='cell']:not([part~='details-cell']) ::slotted(vaadin-grid-cell-content) {
+       padding: 0 !important;
+@@ -28,11 +28,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 200px;" size="1000">
+-        <vaadin-grid-column>
++      <vaadin23-grid style="width: 200px; height: 200px;" size="1000">
++        <vaadin23-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);

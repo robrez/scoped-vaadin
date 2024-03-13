@@ -1,0 +1,22 @@
+Index: test/dom/date-picker.test.js
+===================================================================
+--- test/dom/date-picker.test.js
++++ test/dom/date-picker.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-date-picker.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-date-picker', () => {
++describe('vaadin23-date-picker', () => {
+   let datePicker;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    datePicker = fixtureSync('<vaadin-date-picker></vaadin-date-picker>');
++    datePicker = fixtureSync('<vaadin23-date-picker></vaadin23-date-picker>');
+   });
+ 
+   describe('host', () => {

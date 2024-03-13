@@ -1,0 +1,22 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin23-combo-box></vaadin23-combo-box>');
+       comboBox.items = ['foo', 'bar', 'baz'];
+     });
+ 
+@@ -60,7 +60,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      comboBox = document.createElement('vaadin-combo-box');
++      comboBox = document.createElement('vaadin23-combo-box');
+       comboBox.allowCustomValue = true;
+       validateSpy = sinon.spy(comboBox, 'validate');
+     });

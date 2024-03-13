@@ -1,0 +1,13 @@
+Index: test/visual/lumo/message-input.test.js
+===================================================================
+--- test/visual/lumo/message-input.test.js
++++ test/visual/lumo/message-input.test.js
+@@ -19,7 +19,7 @@
+         beforeEach(() => {
+           div = document.createElement('div');
+           div.style.padding = '10px';
+-          element = fixtureSync('<vaadin-message-input></vaadin-message-input>', div);
++          element = fixtureSync('<vaadin23-message-input></vaadin23-message-input>', div);
+         });
+ 
+         it('basic', async () => {

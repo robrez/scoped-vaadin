@@ -1,0 +1,104 @@
+Index: test/basic.test.js
+===================================================================
+--- test/basic.test.js
++++ test/basic.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+@@ -9,7 +10,7 @@
+   let comboBox, internal, inputElement;
+ 
+   beforeEach(() => {
+-    comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
++    comboBox = fixtureSync(`<vaadin23-multi-select-combo-box></vaadin23-multi-select-combo-box>`);
+     comboBox.items = ['apple', 'banana', 'lemon', 'orange'];
+     internal = comboBox.$.comboBox;
+     inputElement = comboBox.inputElement;
+@@ -23,11 +24,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -144,7 +145,7 @@
+     });
+ 
+     it('should not throw on clearCache() if not attached', () => {
+-      const combo = document.createElement('vaadin-multi-select-combo-box');
++      const combo = document.createElement('vaadin23-multi-select-combo-box');
+       expect(() => {
+         combo.clearCache();
+       }).to.not.throw(Error);
+@@ -696,7 +697,7 @@
+ 
+     it('should clear input element value after clicking matching value', async () => {
+       await sendKeys({ type: 'ora' });
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin23-multi-select-combo-box-item');
+       item.click();
+       expect(internal.value).to.equal('');
+       expect(inputElement.value).to.equal('');
+@@ -704,7 +705,7 @@
+ 
+     it('should clear filter property after clicking matching value', async () => {
+       await sendKeys({ type: 'ora' });
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin23-multi-select-combo-box-item');
+       item.click();
+       expect(comboBox.filter).to.equal('');
+     });
+@@ -775,7 +776,7 @@
+ 
+       const [root, owner, model] = spy.firstCall.args;
+ 
+-      expect(root.localName).to.equal('vaadin-multi-select-combo-box-item');
++      expect(root.localName).to.equal('vaadin23-multi-select-combo-box-item');
+       expect(owner).to.eql(comboBox);
+       expect(model).to.deep.equal({
+         item: 'apple',
+@@ -792,7 +793,7 @@
+       };
+       comboBox.opened = true;
+ 
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin23-multi-select-combo-box-item');
+       expect(item.textContent.trim()).to.equal('apple 0');
+     });
+ 
+@@ -813,7 +814,7 @@
+     });
+ 
+     it('should not throw if requestContentUpdate() called before attached', () => {
+-      const combo = document.createElement('vaadin-multi-select-combo-box');
++      const combo = document.createElement('vaadin23-multi-select-combo-box');
+       expect(() => {
+         combo.requestContentUpdate();
+       }).to.not.throw(Error);
+@@ -825,7 +826,7 @@
+       };
+       comboBox.opened = true;
+ 
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin23-multi-select-combo-box-item');
+       expect(item.textContent).to.equal('APPLE');
+ 
+       comboBox.renderer = null;
+@@ -836,7 +837,7 @@
+     it('should clear the old content after assigning a new renderer', () => {
+       comboBox.opened = true;
+       comboBox.renderer = () => {};
+-      const item = document.querySelector('vaadin-multi-select-combo-box-item');
++      const item = document.querySelector('vaadin23-multi-select-combo-box-item');
+       expect(item.textContent).to.equal('');
+     });
+   });

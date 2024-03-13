@@ -1,0 +1,13 @@
+Index: test/visual/lumo/multi-select-combo-box.test.js
+===================================================================
+--- test/visual/lumo/multi-select-combo-box.test.js
++++ test/visual/lumo/multi-select-combo-box.test.js
+@@ -12,7 +12,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>', div);
++    element = fixtureSync('<vaadin23-multi-select-combo-box></vaadin23-multi-select-combo-box>', div);
+     element.items = ['Apple', 'Banana', 'Lemon', 'Pear'];
+   });
+ 

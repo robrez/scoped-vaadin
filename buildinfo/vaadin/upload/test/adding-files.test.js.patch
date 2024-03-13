@@ -1,0 +1,13 @@
+Index: test/adding-files.test.js
+===================================================================
+--- test/adding-files.test.js
++++ test/adding-files.test.js
+@@ -9,7 +9,7 @@
+   const testFileSize = 512;
+ 
+   beforeEach(() => {
+-    upload = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    upload = fixtureSync(`<vaadin23-upload></vaadin23-upload>`);
+     upload.target = 'http://foo.com/bar';
+     upload._createXhr = xhrCreator({ size: testFileSize, uploadTime: 200, stepTime: 50 });
+     files = createFiles(2, testFileSize, 'application/x-octet-stream');

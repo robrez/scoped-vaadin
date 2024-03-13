@@ -1,0 +1,42 @@
+Index: test/event-context.test.js
+===================================================================
+--- test/event-context.test.js
++++ test/event-context.test.js
+@@ -1,6 +1,6 @@
+ import { expect } from '@esm-bundle/chai';
+ import { click, fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import '../vaadin-grid-column-group.js';
+ import { flushGrid, getContainerCell } from './helpers.js';
+@@ -10,21 +10,21 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid items='[{"foo": "bar"}]'>
+-        <vaadin-grid-column-group header="column group header">
++      <vaadin23-grid items='[{"foo": "bar"}]'>
++        <vaadin23-grid-column-group header="column group header">
+           <template class="footer">
+             column group footer
+           </template>
+-          <vaadin-grid-column path="foo" header="column header">
++          <vaadin23-grid-column path="foo" header="column header">
+             <template class="footer">
+               column footer
+             </template>
+-          </vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++          </vaadin23-grid-column>
++        </vaadin23-grid-column-group>
++      </vaadin23-grid>
+     `);
+-    column = grid.querySelector('vaadin-grid-column');
+-    columnGroup = grid.querySelector('vaadin-grid-column-group');
++    column = grid.querySelector('vaadin23-grid-column');
++    columnGroup = grid.querySelector('vaadin23-grid-column-group');
+ 
+     grid.rowDetailsRenderer = (root) => {
+       root.innerHTML = '<div>details</div>';

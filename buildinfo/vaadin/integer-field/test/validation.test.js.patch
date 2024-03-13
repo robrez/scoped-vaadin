@@ -1,0 +1,31 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -11,7 +11,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      integerField = document.createElement('vaadin-integer-field');
++      integerField = document.createElement('vaadin23-integer-field');
+       validateSpy = sinon.spy(integerField, 'validate');
+     });
+ 
+@@ -68,7 +68,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(() => {
+-      integerField = fixtureSync('<vaadin-integer-field></vaadin-integer-field>');
++      integerField = fixtureSync('<vaadin23-integer-field></vaadin23-integer-field>');
+     });
+ 
+     it('should fire a validated event on validation success', () => {
+@@ -97,7 +97,7 @@
+     let input;
+ 
+     beforeEach(() => {
+-      integerField = fixtureSync('<vaadin-integer-field></vaadin-integer-field>');
++      integerField = fixtureSync('<vaadin23-integer-field></vaadin23-integer-field>');
+       input = integerField.inputElement;
+       input.focus();
+     });

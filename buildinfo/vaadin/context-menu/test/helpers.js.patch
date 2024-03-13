@@ -1,0 +1,13 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -5,7 +5,7 @@
+   const itemElement = menu.$.overlay.querySelector('.vaadin-context-menu-parent-item');
+   if (itemElement) {
+     itemElement.dispatchEvent(new CustomEvent('mouseover', { bubbles: true, composed: true }));
+-    const subMenu = menu.$.overlay.querySelector('vaadin-context-menu');
++    const subMenu = menu.$.overlay.querySelector('vaadin23-context-menu');
+     await openSubMenus(subMenu);
+   }
+ }

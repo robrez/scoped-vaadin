@@ -1,0 +1,59 @@
+Index: test/dom/__snapshots__/message-input.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/message-input.test.snap.js
++++ test/dom/__snapshots__/message-input.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-message-input default"] = 
+-`<vaadin-message-input-text-area placeholder="Message">
++`<vaadin23-message-input-text-area placeholder="Message">
+   <label
+     for="textarea-vaadin-message-input-text-area-3"
+     id="label-vaadin-message-input-text-area-0"
+@@ -24,21 +24,21 @@
+     style="min-height: 0px;"
+   >
+   </textarea>
+-</vaadin-message-input-text-area>
+-<vaadin-message-input-button
++</vaadin23-message-input-text-area>
++<vaadin23-message-input-button
+   role="button"
+   tabindex="0"
+   theme="primary contained"
+ >
+   Send
+-</vaadin-message-input-button>
++</vaadin23-message-input-button>
+ <slot name="tooltip">
+ </slot>
+ `;
+ /* end snapshot vaadin-message-input default */
+ 
+ snapshots["vaadin-message-input disabled"] = 
+-`<vaadin-message-input-text-area
++`<vaadin23-message-input-text-area
+   aria-disabled="true"
+   disabled=""
+   placeholder="Message"
+@@ -66,8 +66,8 @@
+     tabindex="-1"
+   >
+   </textarea>
+-</vaadin-message-input-text-area>
+-<vaadin-message-input-button
++</vaadin23-message-input-text-area>
++<vaadin23-message-input-button
+   aria-disabled="true"
+   disabled=""
+   role="button"
+@@ -75,7 +75,7 @@
+   theme="primary contained"
+ >
+   Send
+-</vaadin-message-input-button>
++</vaadin23-message-input-button>
+ <slot name="tooltip">
+ </slot>
+ `;

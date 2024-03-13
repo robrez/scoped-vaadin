@@ -1,0 +1,29 @@
+Index: test/visual/vaadin-iconset.test.js
+===================================================================
+--- test/visual/vaadin-iconset.test.js
++++ test/visual/vaadin-iconset.test.js
+@@ -2,7 +2,7 @@
+ import { visualDiff } from '@web/test-runner-visual-regression';
+ import '../../vaadin-iconset.js';
+ 
+-describe('vaadin-iconset', () => {
++describe('vaadin23-iconset', () => {
+   let wrapper;
+ 
+   before(async () => {
+@@ -12,13 +12,13 @@
+     const icons = await data.json();
+     wrapper = fixtureSync(`
+       <div style="display: flex; flex-wrap: wrap;">
+-        ${icons.map(({ name }) => `<vaadin-icon icon="vaadin:${name}" style="margin: 3px"></vaadin-icon>`).join('\n')}
++        ${icons.map(({ name }) => `<vaadin23-icon icon="vaadin:${name}" style="margin: 3px"></vaadin23-icon>`).join('\n')}
+       </div>
+     `);
+     await nextFrame();
+   });
+ 
+   it('basic', async () => {
+-    await visualDiff(wrapper, 'vaadin-iconset');
++    await visualDiff(wrapper, 'vaadin23-iconset');
+   });
+ });

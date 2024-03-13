@@ -1,0 +1,13 @@
+Index: test/typings/split-layout.types.ts
+===================================================================
+--- test/typings/split-layout.types.ts
++++ test/typings/split-layout.types.ts
+@@ -2,7 +2,7 @@
+ 
+ const assert = <T>(value: T) => value;
+ 
+-const layout = document.createElement('vaadin-split-layout');
++const layout = document.createElement('vaadin23-split-layout');
+ 
+ layout.addEventListener('splitter-dragend', (event) => {
+   assert<Event>(event);

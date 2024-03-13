@@ -1,0 +1,13 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -151,7 +151,7 @@
+ export const dragStart = (source) => {
+   let grid = source.parentElement;
+   while (grid) {
+-    if (grid.localName === 'vaadin-grid') {
++    if (grid.localName === 'vaadin23-grid') {
+       grid._touchDevice = false;
+     }
+     grid = grid.parentNode || grid.host;

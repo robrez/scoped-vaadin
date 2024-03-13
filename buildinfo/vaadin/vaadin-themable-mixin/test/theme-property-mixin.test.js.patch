@@ -1,0 +1,18 @@
+Index: test/theme-property-mixin.test.js
+===================================================================
+--- test/theme-property-mixin.test.js
++++ test/theme-property-mixin.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -13,7 +14,7 @@
+   }
+ }
+ 
+-customElements.define(ThemeHostElement.is, ThemeHostElement);
++internalCustomElements.define(ThemeHostElement.is, ThemeHostElement);
+ 
+ describe('ThemePropertyMixin', () => {
+   let host, target;

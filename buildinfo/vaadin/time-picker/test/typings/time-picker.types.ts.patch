@@ -1,0 +1,30 @@
+Index: test/typings/time-picker.types.ts
+===================================================================
+--- test/typings/time-picker.types.ts
++++ test/typings/time-picker.types.ts
+@@ -1,10 +1,10 @@
+ import '../../vaadin-time-picker.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { InputControlMixinClass } from '@vaadin/field-base/src/input-control-mixin.js';
+-import type { PatternMixinClass } from '@vaadin/field-base/src/pattern-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { InputControlMixinClass } from '@scoped-vaadin/field-base/src/input-control-mixin.js';
++import type { PatternMixinClass } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type {
+   TimePicker,
+   TimePickerChangeEvent,
+@@ -16,7 +16,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const timePicker = document.createElement('vaadin-time-picker');
++const timePicker = document.createElement('vaadin23-time-picker');
+ 
+ // Mixins
+ assertType<ControllerMixinClass>(timePicker);

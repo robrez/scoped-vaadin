@@ -1,0 +1,81 @@
+Index: test/tooltip.test.js
+===================================================================
+--- test/tooltip.test.js
++++ test/tooltip.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   escKeyDown,
+@@ -15,7 +16,7 @@
+ import { Tooltip } from '../vaadin-tooltip.js';
+ import { mouseenter, mouseleave, waitForIntersectionObserver } from './helpers.js';
+ 
+-describe('vaadin-tooltip', () => {
++describe('vaadin23-tooltip', () => {
+   before(() => {
+     Tooltip.setDefaultFocusDelay(0);
+     Tooltip.setDefaultHoverDelay(0);
+@@ -25,8 +26,8 @@
+   let tooltip, overlay;
+ 
+   beforeEach(() => {
+-    tooltip = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
+-    overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    tooltip = fixtureSync('<vaadin23-tooltip></vaadin23-tooltip>');
++    overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+   });
+ 
+   describe('custom element definition', () => {
+@@ -37,11 +38,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -321,8 +322,8 @@
+       tabKeyDown(target);
+       target.focus();
+ 
+-      const tooltip2 = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
+-      const overlay2 = tooltip2.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      const tooltip2 = fixtureSync('<vaadin23-tooltip></vaadin23-tooltip>');
++      const overlay2 = tooltip2.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+       tooltip2.target = target;
+       mouseenter(target);
+ 
+@@ -431,7 +432,7 @@
+       target.focus();
+       expect(overlay.opened).to.be.true;
+ 
+-      const otherOverlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      const otherOverlay = fixtureSync('<vaadin23-overlay></vaadin23-overlay>');
+       otherOverlay.opened = true;
+       await nextRender();
+ 
+@@ -680,7 +681,7 @@
+       tooltip.opened = true;
+       expect(overlay.opened).to.be.true;
+ 
+-      const otherOverlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      const otherOverlay = fixtureSync('<vaadin23-overlay></vaadin23-overlay>');
+       otherOverlay.opened = true;
+       await nextRender();
+ 
+@@ -693,7 +694,7 @@
+   let tooltip, overlay;
+ 
+   beforeEach(() => {
+-    tooltip = fixtureSync('<vaadin-tooltip text="Test" manual opened></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin23-tooltip text="Test" manual opened></vaadin23-tooltip>');
+     overlay = tooltip._overlayElement;
+   });
+ 

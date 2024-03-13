@@ -1,0 +1,13 @@
+Index: test/visual/lumo/avatar-group.test.js
+===================================================================
+--- test/visual/lumo/avatar-group.test.js
++++ test/visual/lumo/avatar-group.test.js
+@@ -9,7 +9,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.padding = '10px';
+-    element = fixtureSync('<vaadin-avatar-group></vaadin-avatar-group>', div);
++    element = fixtureSync('<vaadin23-avatar-group></vaadin23-avatar-group>', div);
+   });
+ 
+   it('basic', async () => {

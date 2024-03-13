@@ -1,0 +1,146 @@
+Index: test/combo-box-light.test.js
+===================================================================
+--- test/combo-box-light.test.js
++++ test/combo-box-light.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   arrowDownKeyDown,
+@@ -16,8 +17,8 @@
+ } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+-import '@vaadin/text-field/vaadin-text-field.js';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/text-field/vaadin-text-field.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import './not-animated-styles.js';
+ import '../vaadin-combo-box-light.js';
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+@@ -32,7 +33,7 @@
+           display: inline-block;
+         }
+       </style>
+-      <vaadin-text-field id="input" value="{{customValue}}"></vaadin-text-field>
++      <vaadin23-text-field id="input" value="{{customValue}}"></vaadin23-text-field>
+     `;
+   }
+ 
+@@ -46,21 +47,21 @@
+   }
+ }
+ 
+-customElements.define('my-input', MyInput);
++internalCustomElements.define('my-input', MyInput);
+ 
+-describe('vaadin-combo-box-light', () => {
++describe('vaadin23-combo-box-light', () => {
+   let comboBox, overlay, inputElement;
+ 
+   beforeEach(async () => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light>
+-        <vaadin-text-field></vaadin-text-field>
+-      </vaadin-combo-box-light>
++      <vaadin23-combo-box-light>
++        <vaadin23-text-field></vaadin23-text-field>
++      </vaadin23-combo-box-light>
+     `);
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+     overlay = comboBox.$.overlay;
+-    inputElement = comboBox.querySelector('vaadin-text-field');
++    inputElement = comboBox.querySelector('vaadin23-text-field');
+   });
+ 
+   it('should find the input element correctly', () => {
+@@ -171,9 +172,9 @@
+ 
+   beforeEach(async () => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light attr-for-value="custom-value">
++      <vaadin23-combo-box-light attr-for-value="custom-value">
+         <my-input class="input"></my-input>
+-      </vaadin-combo-box-light>
++      </vaadin23-combo-box-light>
+     `);
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+@@ -216,9 +217,9 @@
+   describe('input in light DOM', () => {
+     beforeEach(async () => {
+       comboBox = fixtureSync(`
+-        <vaadin-combo-box-light>
+-          <vaadin-text-field></vaadin-text-field>
+-        </vaadin-combo-box-light>
++        <vaadin23-combo-box-light>
++          <vaadin23-text-field></vaadin23-text-field>
++        </vaadin23-combo-box-light>
+       `);
+       await nextRender();
+       comboBox.items = ['foo', 'bar', 'baz'];
+@@ -241,9 +242,9 @@
+   describe('input in Shadow DOM', () => {
+     beforeEach(async () => {
+       comboBox = fixtureSync(`
+-        <vaadin-combo-box-light attr-for-value="custom-value">
++        <vaadin23-combo-box-light attr-for-value="custom-value">
+           <my-input class="input"></my-input>
+-        </vaadin-combo-box-light>
++        </vaadin23-combo-box-light>
+       `);
+       await nextRender();
+       comboBox.items = ['foo', 'bar', 'baz'];
+@@ -269,12 +270,12 @@
+ 
+   beforeEach(async () => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light>
+-        <vaadin-text-field>
++      <vaadin23-combo-box-light>
++        <vaadin23-text-field>
+           <button slot="suffix" class="clear-button">Clear</button>
+           <button slot="suffix" class="toggle-button">Toggle</button>
+-        </vaadin-text-field>
+-      </vaadin-combo-box-light>
++        </vaadin23-text-field>
++      </vaadin23-combo-box-light>
+     `);
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+@@ -446,9 +447,9 @@
+ 
+   beforeEach(() => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light theme="foo">
+-        <vaadin-text-field></vaadin-text-field>
+-      </vaadin-combo-box-light>
++      <vaadin23-combo-box-light theme="foo">
++        <vaadin23-text-field></vaadin23-text-field>
++      </vaadin23-combo-box-light>
+     `);
+   });
+ 
+@@ -468,8 +469,8 @@
+ 
+   beforeEach(async () => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light>
+-        <vaadin-text-field>
++      <vaadin23-combo-box-light>
++        <vaadin23-text-field>
+           <div slot="prefix">
+             <dom-repeat items="[1, 2]">
+               <template>
+@@ -477,8 +478,8 @@
+               </template>
+             </dom-repeat>
+           </div>
+-        </vaadin-text-field>
+-      </vaadin-combo-box-light>
++        </vaadin23-text-field>
++      </vaadin23-combo-box-light>
+     `);
+     await nextRender();
+     comboBox.items = ['bar', 'baz', 'qux'];

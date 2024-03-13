@@ -1,0 +1,13 @@
+Index: test/typings/details.types.ts
+===================================================================
+--- test/typings/details.types.ts
++++ test/typings/details.types.ts
+@@ -3,7 +3,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const details = document.createElement('vaadin-details');
++const details = document.createElement('vaadin23-details');
+ 
+ details.addEventListener('opened-changed', (event) => {
+   assertType<DetailsOpenedChangedEvent>(event);

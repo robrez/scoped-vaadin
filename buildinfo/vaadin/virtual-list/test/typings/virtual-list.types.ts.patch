@@ -1,0 +1,13 @@
+Index: test/typings/virtual-list.types.ts
+===================================================================
+--- test/typings/virtual-list.types.ts
++++ test/typings/virtual-list.types.ts
+@@ -3,7 +3,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const genericVirtualList = document.createElement('vaadin-virtual-list');
++const genericVirtualList = document.createElement('vaadin23-virtual-list');
+ 
+ assertType<VirtualList>(genericVirtualList);
+ 

@@ -1,0 +1,44 @@
+Index: test/renderers.test.js
+===================================================================
+--- test/renderers.test.js
++++ test/renderers.test.js
+@@ -17,9 +17,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid>
++        <vaadin23-grid-column></vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     column = grid.firstElementChild;
+     grid.items = [{ foo: 'bar' }, { foo: 'baz' }];
+@@ -50,7 +50,7 @@
+     it('should pass column as `owner` and `this` to the renderer', () => {
+       column.renderer = function (root, owner) {
+         expect(this).to.eql(owner);
+-        expect(owner.localName).to.eql('vaadin-grid-column');
++        expect(owner.localName).to.eql('vaadin23-grid-column');
+       };
+     });
+ 
+@@ -229,7 +229,7 @@
+       column.headerRenderer = (root) => {
+         root.textContent = 'foo';
+       };
+-      const newColumn = document.createElement('vaadin-grid-column');
++      const newColumn = document.createElement('vaadin23-grid-column');
+       newColumn.headerRenderer = (root) => {
+         root.textContent = 'bar';
+       };
+@@ -242,7 +242,7 @@
+ 
+     it('should have a visible header with header', () => {
+       column.header = 'foo';
+-      const newColumn = document.createElement('vaadin-grid-column');
++      const newColumn = document.createElement('vaadin23-grid-column');
+       newColumn.header = 'bar';
+       grid.appendChild(newColumn);
+       flushGrid(grid);

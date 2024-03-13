@@ -1,0 +1,16 @@
+Index: test/typings/tab.types.ts
+===================================================================
+--- test/typings/tab.types.ts
++++ test/typings/tab.types.ts
+@@ -1,8 +1,8 @@
+ import '../../vaadin-tab.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { ItemMixinClass } from '@vaadin/item/src/vaadin-item-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { ItemMixinClass } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
+ 
+-const tab = document.createElement('vaadin-tab');
++const tab = document.createElement('vaadin23-tab');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 

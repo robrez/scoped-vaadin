@@ -1,0 +1,27 @@
+Index: test/renderer.test.js
+===================================================================
+--- test/renderer.test.js
++++ test/renderer.test.js
+@@ -16,7 +16,7 @@
+     let overlay;
+ 
+     beforeEach(() => {
+-      overlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      overlay = fixtureSync('<vaadin23-overlay></vaadin23-overlay>');
+     });
+ 
+     afterEach(() => {
+@@ -135,11 +135,11 @@
+ 
+     beforeEach(() => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+     });
+ 

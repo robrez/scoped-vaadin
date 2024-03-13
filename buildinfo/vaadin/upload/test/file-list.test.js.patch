@@ -1,0 +1,18 @@
+Index: test/file-list.test.js
+===================================================================
+--- test/file-list.test.js
++++ test/file-list.test.js
+@@ -7,11 +7,11 @@
+   let upload;
+ 
+   const getFileListItems = (upload) => {
+-    return upload.$.fileList.querySelectorAll('vaadin-upload-file');
++    return upload.$.fileList.querySelectorAll('vaadin23-upload-file');
+   };
+ 
+   beforeEach(() => {
+-    upload = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    upload = fixtureSync(`<vaadin23-upload></vaadin23-upload>`);
+     upload._createXhr = xhrCreator();
+   });
+ 

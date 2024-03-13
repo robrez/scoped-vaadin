@@ -1,0 +1,58 @@
+Index: test/overlay-position.test.js
+===================================================================
+--- test/overlay-position.test.js
++++ test/overlay-position.test.js
+@@ -23,13 +23,13 @@
+   beforeEach(async () => {
+     fixtureSync(`
+       <style>
+-        vaadin-combo-box-overlay::part(overlay) {
++        vaadin23-combo-box-overlay::part(overlay) {
+           margin: 0 !important;
+         }
+       </style>
+     `);
+ 
+-    comboBox = fixtureSync(`<vaadin-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin-combo-box>`);
++    comboBox = fixtureSync(`<vaadin23-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin23-combo-box>`);
+     const comboBoxRect = comboBox.getBoundingClientRect();
+     comboBox.items = makeItems(20);
+     inputField = comboBox.shadowRoot.querySelector('[part="input-field"]');
+@@ -50,7 +50,7 @@
+     await aTimeout(0);
+   });
+ 
+-  // Clean out <vaadin-overlay> elements from body.
++  // Clean out <vaadin23-overlay> elements from body.
+   afterEach(() => {
+     comboBox.close();
+   });
+@@ -251,12 +251,12 @@
+       parent = fixtureSync(`
+         <div style="position: fixed;">
+           <div>
+-            <vaadin-combo-box label='comboBox' style='width: 300px;'></vaadin-combo-box>
++            <vaadin23-combo-box label='comboBox' style='width: 300px;'></vaadin23-combo-box>
+           </div>
+         </div>
+       `);
+ 
+-      comboBox = parent.querySelector('vaadin-combo-box');
++      comboBox = parent.querySelector('vaadin23-combo-box');
+       overlay = comboBox.$.overlay;
+     });
+ 
+@@ -273,11 +273,11 @@
+     beforeEach(() => {
+       parent = fixtureSync(`
+         <x-fixed>
+-          <vaadin-combo-box label='comboBox' style='width: 300px;'></vaadin-combo-box>
++          <vaadin23-combo-box label='comboBox' style='width: 300px;'></vaadin23-combo-box>
+         </x-fixed>
+       `);
+ 
+-      comboBox = parent.querySelector('vaadin-combo-box');
++      comboBox = parent.querySelector('vaadin23-combo-box');
+       overlay = comboBox.$.overlay;
+     });
+ 

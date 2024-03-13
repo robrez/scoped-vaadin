@@ -1,0 +1,23 @@
+Index: test/keyboard-navigation.test.js
+===================================================================
+--- test/keyboard-navigation.test.js
++++ test/keyboard-navigation.test.js
+@@ -21,15 +21,15 @@
+     const overlayMode = String(layoutMode === 'mobile');
+ 
+     layout = fixtureSync(`
+-      <vaadin-app-layout style="--vaadin-app-layout-drawer-overlay: ${overlayMode}; --vaadin-app-layout-transition: none;">
+-        <vaadin-drawer-toggle slot="navbar"></vaadin-drawer-toggle>
++      <vaadin23-app-layout style="--vaadin-app-layout-drawer-overlay: ${overlayMode}; --vaadin-app-layout-transition: none;">
++        <vaadin23-drawer-toggle slot="navbar"></vaadin23-drawer-toggle>
+         <section slot="drawer">
+           <a href="#">Drawer Link</a>
+         </section>
+         <main>
+           <a href="#">Content Link</a>
+         </main>
+-      </vaadin-app-layout>
++      </vaadin23-app-layout>
+     `);
+     await nextRender();
+     toggle = layout.querySelector(':scope > [slot=navbar]');

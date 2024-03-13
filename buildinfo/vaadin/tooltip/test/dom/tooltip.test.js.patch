@@ -1,0 +1,22 @@
+Index: test/dom/tooltip.test.js
+===================================================================
+--- test/dom/tooltip.test.js
++++ test/dom/tooltip.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../src/vaadin-tooltip.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-tooltip', () => {
++describe('vaadin23-tooltip', () => {
+   let tooltip;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    tooltip = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin23-tooltip></vaadin23-tooltip>');
+   });
+ 
+   it('default', async () => {

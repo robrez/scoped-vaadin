@@ -1,0 +1,19 @@
+Index: test/slot-target-controller.test.js
+===================================================================
+--- test/slot-target-controller.test.js
++++ test/slot-target-controller.test.js
+@@ -1,11 +1,12 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+ import { SlotTargetController } from '../src/slot-target-controller.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'slot-target-mixin-element',
+   class extends ControllerMixin(PolymerElement) {
+     static get template() {

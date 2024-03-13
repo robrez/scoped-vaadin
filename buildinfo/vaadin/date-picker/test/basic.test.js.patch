@@ -1,0 +1,94 @@
+Index: test/basic.test.js
+===================================================================
+--- test/basic.test.js
++++ test/basic.test.js
+@@ -34,7 +34,7 @@
+   let datePicker, input;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin23-date-picker></vaadin23-date-picker>`);
+     input = datePicker.inputElement;
+   });
+ 
+@@ -302,7 +302,7 @@
+     });
+ 
+     it('should notify i18n mutation to children', () => {
+-      const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin-month-calendar');
++      const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin23-month-calendar');
+       const weekdays = monthCalendar.$.monthGrid.querySelectorAll('[part="weekday"]:not(:empty)');
+       const weekdayTitles = Array.prototype.map.call(weekdays, (weekday) => weekday.textContent.trim());
+       expect(weekdayTitles).to.eql(['ma', 'ti', 'ke', 'to', 'pe', 'la', 'su']);
+@@ -345,10 +345,10 @@
+   it('date-picker should stretch to fit the column flex container', () => {
+     const container = fixtureSync(`
+     <div style="display: flex; flex-direction: column; width: 500px;">
+-      <vaadin-date-picker></vaadin-date-picker>
++      <vaadin23-date-picker></vaadin23-date-picker>
+     </div>
+     `);
+-    const flexDatePicker = container.querySelector('vaadin-date-picker');
++    const flexDatePicker = container.querySelector('vaadin23-date-picker');
+     expect(window.getComputedStyle(container).width).to.eql('500px');
+     expect(window.getComputedStyle(flexDatePicker).width).to.eql('500px');
+   });
+@@ -358,7 +358,7 @@
+   let datePicker, clearButton;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync('<vaadin-date-picker clear-button-visible></vaadin-date-picker>');
++    datePicker = fixtureSync('<vaadin23-date-picker clear-button-visible></vaadin23-date-picker>');
+     clearButton = datePicker.shadowRoot.querySelector('[part="clear-button"]');
+   });
+ 
+@@ -441,11 +441,11 @@
+     container = fixtureSync(`
+       <div style="height: 100px; overflow: scroll;">
+         <div style="height: 1000px;">
+-          <vaadin-date-picker></vaadin-date-picker>
++          <vaadin23-date-picker></vaadin23-date-picker>
+         </div>
+       </div>
+     `);
+-    datePicker = container.querySelector('vaadin-date-picker');
++    datePicker = container.querySelector('vaadin23-date-picker');
+   });
+ 
+   it('should match the parent width', () => {
+@@ -459,7 +459,7 @@
+   let datePicker, input;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync('<vaadin-date-picker value="2000-01-01"></vaadin-date-picker>');
++    datePicker = fixtureSync('<vaadin23-date-picker value="2000-01-01"></vaadin23-date-picker>');
+     input = datePicker.inputElement;
+   });
+ 
+@@ -472,7 +472,7 @@
+   let datePicker, input, toggleButton;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync('<vaadin-date-picker value="2000-01-01"></vaadin-date-picker>');
++    datePicker = fixtureSync('<vaadin23-date-picker value="2000-01-01"></vaadin23-date-picker>');
+     input = datePicker.inputElement;
+     toggleButton = datePicker.shadowRoot.querySelector('[part="toggle-button"]');
+     datePicker.autoOpenDisabled = true;
+@@ -517,7 +517,7 @@
+   let datePicker, input;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync('<vaadin-date-picker value="2000-01-01"></vaadin-date-picker>');
++    datePicker = fixtureSync('<vaadin23-date-picker value="2000-01-01"></vaadin23-date-picker>');
+     input = datePicker.inputElement;
+     datePicker._ios = true;
+   });
+@@ -581,7 +581,7 @@
+   let datePicker;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync(`<vaadin-date-picker required></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin23-date-picker required></vaadin23-date-picker>`);
+   });
+ 
+   it('should focus on required indicator click', () => {

@@ -1,0 +1,89 @@
+Index: test/dom/__snapshots__/tabsheet.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/tabsheet.test.snap.js
++++ test/dom/__snapshots__/tabsheet.test.snap.js
+@@ -2,21 +2,21 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-tabsheet host default"] = 
+-`<vaadin-tabsheet>
++`<vaadin23-tabsheet>
+   <div slot="prefix">
+     Prefix
+   </div>
+   <div slot="suffix">
+     Suffix
+   </div>
+-  <vaadin-tabs
++  <vaadin23-tabs
+     aria-orientation="horizontal"
+     orientation="horizontal"
+     role="tablist"
+     selected="0"
+     slot="tabs"
+   >
+-    <vaadin-tab
++    <vaadin23-tab
+       aria-controls="tabsheet-panel-0"
+       aria-selected="true"
+       id="tab-1"
+@@ -26,8 +26,8 @@
+       tabindex="0"
+     >
+       Tab 1
+-    </vaadin-tab>
+-    <vaadin-tab
++    </vaadin23-tab>
++    <vaadin23-tab
+       aria-controls="tabsheet-panel-1"
+       aria-selected="false"
+       id="tab-2"
+@@ -36,8 +36,8 @@
+       tabindex="-1"
+     >
+       Tab 2
+-    </vaadin-tab>
+-    <vaadin-tab
++    </vaadin23-tab>
++    <vaadin23-tab
+       aria-controls="tabsheet-panel-2"
+       aria-selected="false"
+       id="tab-3"
+@@ -46,8 +46,8 @@
+       tabindex="-1"
+     >
+       Tab 3
+-    </vaadin-tab>
+-  </vaadin-tabs>
++    </vaadin23-tab>
++  </vaadin23-tabs>
+   <div
+     aria-labelledby="tab-1"
+     id="tabsheet-panel-0"
+@@ -71,7 +71,7 @@
+     tab="tab-3"
+   >
+   </div>
+-</vaadin-tabsheet>
++</vaadin23-tabsheet>
+ `;
+ /* end snapshot vaadin-tabsheet host default */
+ 
+@@ -84,7 +84,7 @@
+   <slot name="suffix">
+   </slot>
+ </div>
+-<vaadin-tabsheet-scroller
++<vaadin23-tabsheet-scroller
+   part="content"
+   tabindex="0"
+ >
+@@ -92,7 +92,7 @@
+   </div>
+   <slot id="panel-slot">
+   </slot>
+-</vaadin-tabsheet-scroller>
++</vaadin23-tabsheet-scroller>
+ `;
+ /* end snapshot vaadin-tabsheet shadow default */
+ 

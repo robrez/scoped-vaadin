@@ -1,0 +1,70 @@
+Index: test/keyboard-navigation-row-focus.test.js
+===================================================================
+--- test/keyboard-navigation-row-focus.test.js
++++ test/keyboard-navigation-row-focus.test.js
+@@ -132,10 +132,10 @@
+ describe('keyboard navigation - row focus', () => {
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-tree-column path="name" header="" width="100px" flex-shrink="0"></vaadin-grid-tree-column>
+-        <vaadin-grid-column path="name" width="200px" flex-shrink="0"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid>
++        <vaadin23-grid-tree-column path="name" header="" width="100px" flex-shrink="0"></vaadin23-grid-tree-column>
++        <vaadin23-grid-column path="name" width="200px" flex-shrink="0"></vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+ 
+     grid.dataProvider = hierarchicalDataProvider;
+@@ -399,16 +399,16 @@
+ describe('keyboard navigation on column groups - row focus', () => {
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column-group header="main group header">
+-          <vaadin-grid-column-group header="sub group header">
+-            <vaadin-grid-column header="column header"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin23-grid>
++        <vaadin23-grid-column-group header="main group header">
++          <vaadin23-grid-column-group header="sub group header">
++            <vaadin23-grid-column header="column header"></vaadin23-grid-column>
++          </vaadin23-grid-column-group>
++        </vaadin23-grid-column-group>
++      </vaadin23-grid>
+     `);
+     grid.items = ['foo', 'bar'];
+-    grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++    grid.querySelector('vaadin23-grid-column').renderer = (root, _, model) => {
+       root.textContent = model.item;
+     };
+     flushGrid(grid);
+@@ -431,9 +431,9 @@
+ 
+       beforeEach(() => {
+         header = grid.$.header;
+-        mainGroup = grid.querySelector('vaadin-grid-column-group');
+-        subGroup = mainGroup.querySelector('vaadin-grid-column-group');
+-        column = subGroup.querySelector('vaadin-grid-column');
++        mainGroup = grid.querySelector('vaadin23-grid-column-group');
++        subGroup = mainGroup.querySelector('vaadin23-grid-column-group');
++        column = subGroup.querySelector('vaadin23-grid-column');
+       });
+ 
+       it('should update tabbable header row on header row hide', async () => {
+@@ -523,9 +523,9 @@
+ ['header', 'footer', 'body'].forEach((section) => {
+   describe(`empty grid - row focus - ${section}`, () => {
+     beforeEach(() => {
+-      grid = fixtureSync(`<vaadin-grid>
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>`);
++      grid = fixtureSync(`<vaadin23-grid>
++        <vaadin23-grid-column></vaadin23-grid-column>
++      </vaadin23-grid>`);
+       const column = grid.firstElementChild;
+ 
+       if (section === 'header') {

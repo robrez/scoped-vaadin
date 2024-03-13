@@ -1,0 +1,126 @@
+Index: test/animations.test.js
+===================================================================
+--- test/animations.test.js
++++ test/animations.test.js
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { escKeyDown, fixtureSync } from '@vaadin/testing-helpers';
+ import '../vaadin-overlay.js';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-overlay',
++  'vaadin23-overlay',
+   css`
+     :host([animate][opening]),
+     :host([animate][closing]) {
+@@ -21,22 +22,22 @@
+   `,
+ );
+ 
+-customElements.define(
++internalCustomElements.define(
+   'two-overlays',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-overlay opened="{{showOverlay1}}">
++        <vaadin23-overlay opened="{{showOverlay1}}">
+           <template>
+             <div>Overlay 1</div>
+             <button on-click="_switchOverlays">Go to overlay 2</button>
+           </template>
+-        </vaadin-overlay>
+-        <vaadin-overlay opened="{{showOverlay2}}">
++        </vaadin23-overlay>
++        <vaadin23-overlay opened="{{showOverlay2}}">
+           <template>
+             <div>Overlay 2</div>
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `;
+     }
+ 
+@@ -54,7 +55,7 @@
+   },
+ );
+ 
+-customElements.define(
++internalCustomElements.define(
+   'animated-div',
+   class extends PolymerElement {
+     static get template() {
+@@ -120,11 +121,11 @@
+ 
+     beforeEach(() => {
+       overlay = fixtureSync(`
+-        <vaadin-overlay>
++        <vaadin23-overlay>
+           <template>
+             overlay-content
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+       `);
+       if (withAnimation) {
+         overlay.setAttribute('animate', '');
+@@ -188,7 +189,7 @@
+ 
+     beforeEach((done) => {
+       wrapper = fixtureSync('<two-overlays><two-overlays>');
+-      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin-overlay'));
++      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin23-overlay'));
+       if (withAnimation) {
+         overlays.forEach((overlay) => overlay.setAttribute('animate', ''));
+       }
+@@ -216,7 +217,7 @@
+ 
+     beforeEach(() => {
+       wrapper = fixtureSync('<two-overlays><two-overlays>');
+-      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin-overlay'));
++      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin23-overlay'));
+       if (withAnimation) {
+         overlays.forEach((overlay) => overlay.setAttribute('animate', ''));
+       }
+@@ -244,9 +245,9 @@
+ 
+     beforeEach(() => {
+       wrapper = fixtureSync('<two-overlays><two-overlays>');
+-      const third = document.createElement('vaadin-overlay');
++      const third = document.createElement('vaadin23-overlay');
+       wrapper.shadowRoot.appendChild(third);
+-      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin-overlay'));
++      overlays = Array.from(wrapper.shadowRoot.querySelectorAll('vaadin23-overlay'));
+ 
+       if (withAnimation) {
+         overlays.forEach((overlay) => overlay.setAttribute('animate', ''));
+@@ -279,19 +280,19 @@
+     beforeEach(() => {
+       wrapper = fixtureSync(`
+         <div>
+-          <vaadin-overlay>
++          <vaadin23-overlay>
+             <template>
+               <div>Plain old content</div>
+             </template>
+-          </vaadin-overlay>
+-          <vaadin-overlay>
++          </vaadin23-overlay>
++          <vaadin23-overlay>
+             <template>
+               <animated-div>Fancy content</animated-div>
+             </template>
+-          </vaadin-overlay>
++          </vaadin23-overlay>
+         </div>
+       `);
+-      overlays = Array.from(wrapper.querySelectorAll('vaadin-overlay'));
++      overlays = Array.from(wrapper.querySelectorAll('vaadin23-overlay'));
+       if (withAnimation) {
+         overlays.forEach((overlay) => {
+           overlay.setAttribute('animate', '');

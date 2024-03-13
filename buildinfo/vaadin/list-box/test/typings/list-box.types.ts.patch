@@ -1,0 +1,22 @@
+Index: test/typings/list-box.types.ts
+===================================================================
+--- test/typings/list-box.types.ts
++++ test/typings/list-box.types.ts
+@@ -1,6 +1,6 @@
+ import '../../vaadin-list-box.js';
+-import type { ListMixinClass } from '@vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
+-import type { MultiSelectListMixinClass } from '@vaadin/vaadin-list-mixin/vaadin-multi-select-list-mixin.js';
++import type { ListMixinClass } from '@scoped-vaadin/vaadin-list-mixin/vaadin-list-mixin.js';
++import type { MultiSelectListMixinClass } from '@scoped-vaadin/vaadin-list-mixin/vaadin-multi-select-list-mixin.js';
+ import type {
+   ListBoxItemsChangedEvent,
+   ListBoxSelectedChangedEvent,
+@@ -9,7 +9,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const listBox = document.createElement('vaadin-list-box');
++const listBox = document.createElement('vaadin23-list-box');
+ 
+ listBox.addEventListener('items-changed', (event) => {
+   assertType<ListBoxItemsChangedEvent>(event);

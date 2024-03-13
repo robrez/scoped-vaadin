@@ -1,0 +1,13 @@
+Index: test/visual/lumo/dialog.test.js
+===================================================================
+--- test/visual/lumo/dialog.test.js
++++ test/visual/lumo/dialog.test.js
+@@ -11,7 +11,7 @@
+     div = document.createElement('div');
+     div.style.height = '100%';
+ 
+-    element = fixtureSync(`<vaadin-dialog></vaadin-dialog>`, div);
++    element = fixtureSync(`<vaadin23-dialog></vaadin23-dialog>`, div);
+     element.renderer = createRenderer('Simple dialog with text');
+     element.opened = true;
+   });

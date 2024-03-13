@@ -1,0 +1,13 @@
+Index: test/typings/upload.types.ts
+===================================================================
+--- test/typings/upload.types.ts
++++ test/typings/upload.types.ts
+@@ -17,7 +17,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const upload = document.createElement('vaadin-upload');
++const upload = document.createElement('vaadin23-upload');
+ 
+ upload.addEventListener('max-files-reached-changed', (event) => {
+   assertType<UploadMaxFilesReachedChangedEvent>(event);

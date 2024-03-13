@@ -1,0 +1,32 @@
+Index: test/custom-field.test.js
+===================================================================
+--- test/custom-field.test.js
++++ test/custom-field.test.js
+@@ -9,10 +9,10 @@
+ 
+   beforeEach(() => {
+     customField = fixtureSync(`
+-      <vaadin-custom-field>
++      <vaadin23-custom-field>
+         <input type="text" />
+         <input type="number" />
+-      </vaadin-custom-field>
++      </vaadin23-custom-field>
+     `);
+   });
+ 
+@@ -37,12 +37,12 @@
+ 
+     it('should ignore slotted inputs', () => {
+       customField = fixtureSync(`
+-        <vaadin-custom-field>
++        <vaadin23-custom-field>
+           <div>
+             <input type="text" slot="input" />
+             <textarea slot="textarea" />
+           </div>
+-        </vaadin-custom-field>
++        </vaadin23-custom-field>
+       `);
+       expect(customField.inputs).to.be.empty;
+     });

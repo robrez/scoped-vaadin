@@ -1,0 +1,13 @@
+Index: test/typings/integer-field.types.ts
+===================================================================
+--- test/typings/integer-field.types.ts
++++ test/typings/integer-field.types.ts
+@@ -9,7 +9,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const field = document.createElement('vaadin-integer-field');
++const field = document.createElement('vaadin23-integer-field');
+ 
+ field.addEventListener('change', (event) => {
+   assertType<IntegerFieldChangeEvent>(event);

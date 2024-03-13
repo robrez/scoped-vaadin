@@ -1,0 +1,31 @@
+Index: test/restore-focus.test.js
+===================================================================
+--- test/restore-focus.test.js
++++ test/restore-focus.test.js
+@@ -1,20 +1,21 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/text-field/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/vaadin-text-field.js';
+ import '../src/vaadin-overlay.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { close, open } from './helpers.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'overlay-field-wrapper',
+   class extends PolymerElement {
+     static get template() {
+       return html`
+-        <vaadin-overlay id="overlay">
++        <vaadin23-overlay id="overlay">
+           <template>
+-            <vaadin-text-field id="focusable"></vaadin-text-field>
++            <vaadin23-text-field id="focusable"></vaadin23-text-field>
+           </template>
+-        </vaadin-overlay>
++        </vaadin23-overlay>
+         <input id="focusable" />
+       `;
+     }

@@ -1,0 +1,24 @@
+Index: test/accessibility.test.js
+===================================================================
+--- test/accessibility.test.js
++++ test/accessibility.test.js
+@@ -1,8 +1,8 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
+ import './not-animated-styles.js';
+ import '../vaadin-select.js';
+ 
+@@ -10,7 +10,7 @@
+   let select, valueButton;
+ 
+   beforeEach(async () => {
+-    select = fixtureSync(`<vaadin-select label="Label"></vaadin-select>`);
++    select = fixtureSync(`<vaadin23-select label="Label"></vaadin23-select>`);
+     select.items = [
+       { label: 'Option 1', value: 'Option 1' },
+       { label: 'Option 2', value: 'Option 2' },

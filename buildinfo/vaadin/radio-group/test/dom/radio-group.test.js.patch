@@ -1,0 +1,29 @@
+Index: test/dom/radio-group.test.js
+===================================================================
+--- test/dom/radio-group.test.js
++++ test/dom/radio-group.test.js
+@@ -1,18 +1,18 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-radio-group.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-radio-group', () => {
++describe('vaadin23-radio-group', () => {
+   let group;
+ 
+   beforeEach(() => {
+     resetUniqueId();
+     group = fixtureSync(`
+-      <vaadin-radio-group>
+-        <vaadin-radio-button value="1" label="Radio 1"></vaadin-radio-button>
+-        <vaadin-radio-button value="2" label="Radio 2"></vaadin-radio-button>
+-      </vaadin-radio-group>
++      <vaadin23-radio-group>
++        <vaadin23-radio-button value="1" label="Radio 1"></vaadin23-radio-button>
++        <vaadin23-radio-button value="2" label="Radio 2"></vaadin23-radio-button>
++      </vaadin23-radio-group>
+     `);
+   });
+ 

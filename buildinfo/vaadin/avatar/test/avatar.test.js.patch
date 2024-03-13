@@ -1,0 +1,46 @@
+Index: test/avatar.test.js
+===================================================================
+--- test/avatar.test.js
++++ test/avatar.test.js
+@@ -1,14 +1,15 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, focusin, focusout, mousedown, nextFrame, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/tooltip/vaadin-tooltip.js';
++import '@scoped-vaadin/tooltip/vaadin-tooltip.js';
+ import '../vaadin-avatar.js';
+ 
+-describe('vaadin-avatar', () => {
++describe('vaadin23-avatar', () => {
+   let avatar, imgElement, iconElement, abbrElement;
+ 
+   beforeEach(() => {
+-    avatar = fixtureSync('<vaadin-avatar></vaadin-avatar>');
++    avatar = fixtureSync('<vaadin23-avatar></vaadin23-avatar>');
+   });
+ 
+   describe('custom element definition', () => {
+@@ -19,11 +20,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -344,7 +345,7 @@
+     });
+ 
+     it('should not override custom role set on the avatar', () => {
+-      const custom = fixtureSync('<vaadin-avatar role="image"></vaadin-avatar>');
++      const custom = fixtureSync('<vaadin23-avatar role="image"></vaadin23-avatar>');
+       expect(custom.getAttribute('role')).to.equal('image');
+     });
+   });

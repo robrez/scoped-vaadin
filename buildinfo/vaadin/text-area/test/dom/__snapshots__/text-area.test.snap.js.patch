@@ -1,0 +1,142 @@
+Index: test/dom/__snapshots__/text-area.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/text-area.test.snap.js
++++ test/dom/__snapshots__/text-area.test.snap.js
+@@ -2,7 +2,7 @@
+ export const snapshots = {};
+ 
+ snapshots["vaadin-text-area host default"] = 
+-`<vaadin-text-area>
++`<vaadin23-text-area>
+   <label
+     for="textarea-vaadin-text-area-3"
+     id="label-vaadin-text-area-0"
+@@ -20,12 +20,12 @@
+     slot="textarea"
+   >
+   </textarea>
+-</vaadin-text-area>
++</vaadin23-text-area>
+ `;
+ /* end snapshot vaadin-text-area host default */
+ 
+ snapshots["vaadin-text-area host helper"] = 
+-`<vaadin-text-area has-helper="">
++`<vaadin23-text-area has-helper="">
+   <label
+     for="textarea-vaadin-text-area-3"
+     id="label-vaadin-text-area-0"
+@@ -50,12 +50,12 @@
+   >
+     Helper
+   </div>
+-</vaadin-text-area>
++</vaadin23-text-area>
+ `;
+ /* end snapshot vaadin-text-area host helper */
+ 
+ snapshots["vaadin-text-area host error"] = 
+-`<vaadin-text-area
++`<vaadin23-text-area
+   has-error-message=""
+   invalid=""
+ >
+@@ -80,7 +80,7 @@
+     slot="textarea"
+   >
+   </textarea>
+-</vaadin-text-area>
++</vaadin23-text-area>
+ `;
+ /* end snapshot vaadin-text-area host error */
+ 
+@@ -95,7 +95,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     style="--_text-area-vertical-scroll-position:0px;"
+   >
+@@ -118,7 +118,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -144,7 +144,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     disabled=""
+     part="input-field"
+     style="--_text-area-vertical-scroll-position:0px;"
+@@ -168,7 +168,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -194,7 +194,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     readonly=""
+     style="--_text-area-vertical-scroll-position:0px;"
+@@ -218,7 +218,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -244,7 +244,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     invalid=""
+     part="input-field"
+     style="--_text-area-vertical-scroll-position:0px;"
+@@ -268,7 +268,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>
+@@ -294,7 +294,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container
++  <vaadin23-input-container
+     part="input-field"
+     style="--_text-area-vertical-scroll-position:0px;"
+     theme="align-right"
+@@ -318,7 +318,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin23-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>

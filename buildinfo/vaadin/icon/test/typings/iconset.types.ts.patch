@@ -1,0 +1,13 @@
+Index: test/typings/iconset.types.ts
+===================================================================
+--- test/typings/iconset.types.ts
++++ test/typings/iconset.types.ts
+@@ -2,7 +2,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const iconset = document.createElement('vaadin-iconset');
++const iconset = document.createElement('vaadin23-iconset');
+ assertType<Iconset>(iconset);
+ 
+ const result = iconset.applyIcon('test');

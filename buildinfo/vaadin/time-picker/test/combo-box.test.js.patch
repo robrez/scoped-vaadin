@@ -1,0 +1,36 @@
+Index: test/combo-box.test.js
+===================================================================
+--- test/combo-box.test.js
++++ test/combo-box.test.js
+@@ -8,12 +8,12 @@
+   let timePicker, comboBox;
+ 
+   beforeEach(() => {
+-    timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
++    timePicker = fixtureSync(`<vaadin23-time-picker></vaadin23-time-picker>`);
+     comboBox = timePicker.$.comboBox;
+   });
+ 
+   it('should store a reference to a combo-box instance', () => {
+-    expect(comboBox.localName).to.equal('vaadin-time-picker-combo-box');
++    expect(comboBox.localName).to.equal('vaadin23-time-picker-combo-box');
+   });
+ 
+   it('should define a toggle element on the combo-box', () => {
+@@ -112,14 +112,14 @@
+   let timePicker, inputElement;
+ 
+   beforeEach(() => {
+-    timePicker = fixtureSync(`<vaadin-time-picker auto-open-disabled value="05:00"></vaadin-time-picker>`);
++    timePicker = fixtureSync(`<vaadin23-time-picker auto-open-disabled value="05:00"></vaadin23-time-picker>`);
+     inputElement = timePicker.inputElement;
+   });
+ 
+   it('should focus the correct item when opened', () => {
+     timePicker.open();
+ 
+-    const items = document.querySelectorAll('vaadin-time-picker-item');
++    const items = document.querySelectorAll('vaadin23-time-picker-item');
+     expect(items[5].hasAttribute('focused')).to.be.true;
+   });
+ 

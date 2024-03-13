@@ -1,0 +1,43 @@
+Index: test/dom/__snapshots__/message-list.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/message-list.test.snap.js
++++ test/dom/__snapshots__/message-list.test.snap.js
+@@ -19,18 +19,18 @@
+   part="list"
+   role="list"
+ >
+-  <vaadin-message
++  <vaadin23-message
+     role="listitem"
+     tabindex="0"
+   >
+     Hi folks!
+-  </vaadin-message>
+-  <vaadin-message
++  </vaadin23-message>
++  <vaadin23-message
+     role="listitem"
+     tabindex="-1"
+   >
+     Good morning!
+-  </vaadin-message>
++  </vaadin23-message>
+   <dom-repeat style="display: none;">
+     <template is="dom-repeat">
+     </template>
+@@ -44,13 +44,13 @@
+   part="list"
+   role="list"
+ >
+-  <vaadin-message
++  <vaadin23-message
+     role="listitem"
+     tabindex="0"
+     theme="danger"
+   >
+     Partial service outage.
+-  </vaadin-message>
++  </vaadin23-message>
+   <dom-repeat style="display: none;">
+     <template is="dom-repeat">
+     </template>

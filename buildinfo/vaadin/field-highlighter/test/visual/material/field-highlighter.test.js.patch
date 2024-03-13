@@ -1,0 +1,133 @@
+Index: test/visual/material/field-highlighter.test.js
+===================================================================
+--- test/visual/material/field-highlighter.test.js
++++ test/visual/material/field-highlighter.test.js
+@@ -1,14 +1,14 @@
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/checkbox/theme/material/vaadin-checkbox.js';
+-import '@vaadin/checkbox-group/theme/material/vaadin-checkbox-group.js';
+-import '@vaadin/date-time-picker/theme/material/vaadin-date-time-picker.js';
+-import '@vaadin/item/theme/material/vaadin-item.js';
+-import '@vaadin/list-box/theme/material/vaadin-list-box.js';
+-import '@vaadin/radio-group/theme/material/vaadin-radio-group.js';
+-import '@vaadin/text-area/theme/material/vaadin-text-area.js';
+-import '@vaadin/text-field/theme/material/vaadin-text-field.js';
++import '@scoped-vaadin/checkbox/theme/material/vaadin-checkbox.js';
++import '@scoped-vaadin/checkbox-group/theme/material/vaadin-checkbox-group.js';
++import '@scoped-vaadin/date-time-picker/theme/material/vaadin-date-time-picker.js';
++import '@scoped-vaadin/item/theme/material/vaadin-item.js';
++import '@scoped-vaadin/list-box/theme/material/vaadin-list-box.js';
++import '@scoped-vaadin/radio-group/theme/material/vaadin-radio-group.js';
++import '@scoped-vaadin/text-area/theme/material/vaadin-text-area.js';
++import '@scoped-vaadin/text-field/theme/material/vaadin-text-field.js';
+ import '../../../theme/material/vaadin-field-highlighter.js';
+ import '../common.js';
+ import { setUsers } from '../helpers.js';
+@@ -25,7 +25,7 @@
+ 
+   describe('checkbox', () => {
+     beforeEach(async () => {
+-      element = fixtureSync(`<vaadin-checkbox label="I agree with terms"></vaadin-checkbox>`, div);
++      element = fixtureSync(`<vaadin23-checkbox label="I agree with terms"></vaadin23-checkbox>`, div);
+       setUsers(element);
+       await nextFrame();
+     });
+@@ -45,12 +45,12 @@
+     beforeEach(async () => {
+       element = fixtureSync(
+         `
+-          <vaadin-checkbox-group>
+-            <vaadin-checkbox name="user" value="1" label="Option 1"></vaadin-checkbox>
+-            <vaadin-checkbox name="user" value="2" label="Option 2"></vaadin-checkbox>
+-            <vaadin-checkbox name="user" value="3" label="Option 3"></vaadin-checkbox>
+-            <vaadin-checkbox name="user" value="4" label="Option 4"></vaadin-checkbox>
+-          </vaadin-checkbox-group>
++          <vaadin23-checkbox-group>
++            <vaadin23-checkbox name="user" value="1" label="Option 1"></vaadin23-checkbox>
++            <vaadin23-checkbox name="user" value="2" label="Option 2"></vaadin23-checkbox>
++            <vaadin23-checkbox name="user" value="3" label="Option 3"></vaadin23-checkbox>
++            <vaadin23-checkbox name="user" value="4" label="Option 4"></vaadin23-checkbox>
++          </vaadin23-checkbox-group>
+         `,
+         div,
+       );
+@@ -71,7 +71,7 @@
+ 
+   describe('date-time-picker', () => {
+     beforeEach(async () => {
+-      element = fixtureSync(`<vaadin-date-time-picker></vaadin-date-time-picker>`, div);
++      element = fixtureSync(`<vaadin23-date-time-picker></vaadin23-date-time-picker>`, div);
+       setUsers(element);
+       await nextFrame();
+     });
+@@ -92,12 +92,12 @@
+       div.style.height = '250px';
+       element = fixtureSync(
+         `
+-          <vaadin-list-box>
+-            <vaadin-item>Option one</vaadin-item>
+-            <vaadin-item>Option two</vaadin-item>
+-            <vaadin-item>Option three</vaadin-item>
+-            <vaadin-item>Option four</vaadin-item>
+-          </vaadin-list-box>
++          <vaadin23-list-box>
++            <vaadin23-item>Option one</vaadin23-item>
++            <vaadin23-item>Option two</vaadin23-item>
++            <vaadin23-item>Option three</vaadin23-item>
++            <vaadin23-item>Option four</vaadin23-item>
++          </vaadin23-list-box>
+         `,
+         div,
+       );
+@@ -120,7 +120,7 @@
+ 
+   describe('radio-button', () => {
+     beforeEach(async () => {
+-      element = fixtureSync(`<vaadin-radio-button label="I agree with terms"></vaadin-radio-button>`, div);
++      element = fixtureSync(`<vaadin23-radio-button label="I agree with terms"></vaadin23-radio-button>`, div);
+       setUsers(element);
+       await nextFrame();
+     });
+@@ -140,12 +140,12 @@
+     beforeEach(async () => {
+       element = fixtureSync(
+         `
+-          <vaadin-radio-group>
+-            <vaadin-radio-button name="user" value="1" label="Option 1"></vaadin-radio-button>
+-            <vaadin-radio-button name="user" value="2" label="Option 2"></vaadin-radio-button>
+-            <vaadin-radio-button name="user" value="3" label="Option 3"></vaadin-radio-button>
+-            <vaadin-radio-button name="user" value="4" label="Option 4"></vaadin-radio-button>
+-          </vaadin-radio-group>
++          <vaadin23-radio-group>
++            <vaadin23-radio-button name="user" value="1" label="Option 1"></vaadin23-radio-button>
++            <vaadin23-radio-button name="user" value="2" label="Option 2"></vaadin23-radio-button>
++            <vaadin23-radio-button name="user" value="3" label="Option 3"></vaadin23-radio-button>
++            <vaadin23-radio-button name="user" value="4" label="Option 4"></vaadin23-radio-button>
++          </vaadin23-radio-group>
+         `,
+         div,
+       );
+@@ -169,10 +169,10 @@
+       div.style.height = '250px';
+       element = fixtureSync(
+         `
+-          <vaadin-text-area
++          <vaadin23-text-area
+             label="Text area"
+             helper-text="Helper"
+-          ></vaadin-text-area>
++          ></vaadin23-text-area>
+         `,
+         div,
+       );
+@@ -193,7 +193,7 @@
+ 
+   describe('text-field', () => {
+     beforeEach(async () => {
+-      element = fixtureSync(`<vaadin-text-field></vaadin-text-field>`, div);
++      element = fixtureSync(`<vaadin23-text-field></vaadin23-text-field>`, div);
+       setUsers(element);
+       await nextFrame();
+     });

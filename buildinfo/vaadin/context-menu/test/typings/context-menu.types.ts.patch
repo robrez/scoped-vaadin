@@ -1,0 +1,13 @@
+Index: test/typings/context-menu.types.ts
+===================================================================
+--- test/typings/context-menu.types.ts
++++ test/typings/context-menu.types.ts
+@@ -8,7 +8,7 @@
+   ContextMenuRendererContext,
+ } from '../../vaadin-context-menu.js';
+ 
+-const menu = document.createElement('vaadin-context-menu');
++const menu = document.createElement('vaadin23-context-menu');
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 

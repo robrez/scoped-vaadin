@@ -1,0 +1,22 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -18,7 +18,7 @@
+  * Returns first item of the combo box dropdown.
+  */
+ export const getFirstItem = (comboBox) => {
+-  return comboBox._scroller.querySelector('vaadin-combo-box-item');
++  return comboBox._scroller.querySelector('vaadin23-combo-box-item');
+ };
+ 
+ /**
+@@ -32,7 +32,7 @@
+  * Returns all the items of the combo box dropdown.
+  */
+ export const getAllItems = (comboBox) => {
+-  return Array.from(comboBox._scroller.querySelectorAll('vaadin-combo-box-item'))
++  return Array.from(comboBox._scroller.querySelectorAll('vaadin23-combo-box-item'))
+     .filter((item) => !item.hidden)
+     .sort((a, b) => a.index - b.index);
+ };

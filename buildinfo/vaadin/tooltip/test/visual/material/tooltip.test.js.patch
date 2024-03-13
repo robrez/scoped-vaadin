@@ -1,0 +1,31 @@
+Index: test/visual/material/tooltip.test.js
+===================================================================
+--- test/visual/material/tooltip.test.js
++++ test/visual/material/tooltip.test.js
+@@ -2,7 +2,7 @@
+ import { visualDiff } from '@web/test-runner-visual-regression';
+ import '../../not-animated-styles.js';
+ import '../../../theme/material/vaadin-tooltip.js';
+-import { colorDark } from '@vaadin/vaadin-material-styles/color.js';
++import { colorDark } from '@scoped-vaadin/vaadin-material-styles/color.js';
+ import { Tooltip } from '../../../src/vaadin-tooltip.js';
+ 
+ describe('tooltip', () => {
+@@ -15,7 +15,7 @@
+   });
+ 
+   beforeEach(() => {
+-    element = fixtureSync('<vaadin-tooltip text="tooltip"></vaadin-tooltip>');
++    element = fixtureSync('<vaadin23-tooltip text="tooltip"></vaadin23-tooltip>');
+     div = fixtureSync(`
+       <div style="display: flex; width: 300px; height: 300px; justify-content: center; align-items: center">
+         <div style="width: 100px; height: 100px; outline: 1px solid red;"></div>
+@@ -73,7 +73,7 @@
+   it('white-space-pre', async () => {
+     element.text = 'Line 1\n\nLine 2';
+     fire(target, 'mouseenter');
+-    const overlay = document.querySelector('vaadin-tooltip-overlay');
++    const overlay = document.querySelector('vaadin23-tooltip-overlay');
+     const content = overlay.shadowRoot.querySelector('[part="content"]');
+     content.style.whiteSpace = 'pre';
+     await visualDiff(div, 'white-space-pre');

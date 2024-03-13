@@ -1,0 +1,13 @@
+Index: test/visual/material/progress-bar.test.js
+===================================================================
+--- test/visual/material/progress-bar.test.js
++++ test/visual/material/progress-bar.test.js
+@@ -9,7 +9,7 @@
+     div = document.createElement('div');
+     div.style.display = 'inline-block';
+     div.style.width = '200px';
+-    element = fixtureSync('<vaadin-progress-bar value="0.1"></vaadin-progress-bar>', div);
++    element = fixtureSync('<vaadin23-progress-bar value="0.1"></vaadin23-progress-bar>', div);
+   });
+ 
+   it('basic', async () => {

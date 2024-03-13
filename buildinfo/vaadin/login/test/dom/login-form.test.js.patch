@@ -1,0 +1,34 @@
+Index: test/dom/login-form.test.js
+===================================================================
+--- test/dom/login-form.test.js
++++ test/dom/login-form.test.js
+@@ -1,9 +1,9 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import '../../vaadin-login-form.js';
+-import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
++import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
+ 
+-describe('vaadin-login-form', () => {
++describe('vaadin23-login-form', () => {
+   let form;
+ 
+   const I18N_FINNISH = {
+@@ -23,7 +23,7 @@
+ 
+   beforeEach(() => {
+     resetUniqueId();
+-    form = fixtureSync('<vaadin-login-form></vaadin-login-form>');
++    form = fixtureSync('<vaadin23-login-form></vaadin23-login-form>');
+   });
+ 
+   describe('host', () => {
+@@ -41,7 +41,7 @@
+     let wrapper;
+ 
+     beforeEach(() => {
+-      wrapper = form.querySelector('vaadin-login-form-wrapper');
++      wrapper = form.querySelector('vaadin23-login-form-wrapper');
+     });
+ 
+     it('default', async () => {

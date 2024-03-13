@@ -1,0 +1,13 @@
+Index: test/typings/dialog.types.ts
+===================================================================
+--- test/typings/dialog.types.ts
++++ test/typings/dialog.types.ts
+@@ -9,7 +9,7 @@
+ 
+ const assertType = <TExpected>(actual: TExpected) => actual;
+ 
+-const dialog = document.createElement('vaadin-dialog');
++const dialog = document.createElement('vaadin23-dialog');
+ 
+ dialog.addEventListener('opened-changed', (event) => {
+   assertType<DialogOpenedChangedEvent>(event);

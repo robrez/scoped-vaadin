@@ -1,0 +1,17 @@
+Index: test/tooltip-offset.test.js
+===================================================================
+--- test/tooltip-offset.test.js
++++ test/tooltip-offset.test.js
+@@ -12,10 +12,10 @@
+   });
+ 
+   beforeEach(() => {
+-    tooltip = fixtureSync('<vaadin-tooltip text="tooltip"></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin23-tooltip text="tooltip"></vaadin23-tooltip>');
+     target = fixtureSync('<div style="width: 100px; height: 100px; margin: 100px; outline: 1px solid red;"></div>');
+     tooltip.target = target;
+-    overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+   });
+ 
+   async function open() {
