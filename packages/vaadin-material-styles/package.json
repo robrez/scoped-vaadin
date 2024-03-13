@@ -1,0 +1,45 @@
+{
+  "name": "@scoped-vaadin/vaadin-material-styles",
+  "version": "23.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robrez/scoped-vaadin.git",
+    "directory": "packages/vaadin-material-styles"
+  },
+  "bugs": {
+    "url": "https://github.com/robrez/scoped-vaadin/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Vaadin Material is a complete theme for Vaadin components, inspired by Google’s Material Design guidelines.",
+  "license": "Apache-2.0",
+  "author": "Vaadin Ltd",
+  "homepage": "https://vaadin.com/themes",
+  "main": "all-imports.js",
+  "module": "all-imports.js",
+  "type": "module",
+  "scripts": {
+    "icons": "gulp icons --gulpfile gulpfile.cjs"
+  },
+  "files": [
+    "*.d.ts",
+    "*.js",
+    "mixins/*.d.ts",
+    "mixins/*.js"
+  ],
+  "keywords": [
+    "vaadin",
+    "material",
+    "theme",
+    "design-system",
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
+  }
+}

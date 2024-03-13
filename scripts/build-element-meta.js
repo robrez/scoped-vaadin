@@ -1,13 +1,13 @@
 /**
  * Performs analysis on packages to determine things such as custom element tag names, event names
  */
-import glob from "glob";
+import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
 import { minify } from "terser";
 
 const nodePackagesRoot = "node_modules/@vaadin";
-const localPackagesRoot = "packages/vaadin";
+const localPackagesRoot = "packages";
 
 const regexes = [
   { re: /static get is\(\){return\'([a-z\-]+)'/g, pos: 1 },
@@ -20,15 +20,23 @@ const eventRegexes = [
 ];
 
 function findPackages(dir) {
-  const files = glob.sync(dir + "/*", { dot: false });
-  const paths = files.map((name) => Path.parse(name));
+  const files = glob.sync(dir + "/*", { dot: false, posix: true });
+  const paths = files
+    .sort()
+    .map((name) => posixify(name))
+    .map((name) => Path.parse(name));
   return paths;
 }
 
 function findFiles(dir) {
-  const files = glob.sync(dir + "/**/{*.js,web-types.json}", { dot: false });
+  const files = glob.sync(dir + "/**/{*.js,web-types.json}", {
+    dot: false,
+    posix: true,
+  });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .sort()
+    .map((name) => posixify(name))
     .map((name) => Path.parse(name));
   return paths;
 }
@@ -79,7 +87,7 @@ function findEventNames(content) {
  * @param {Path} filePath
  * @returns
  */
-async function processJs(content, filePath) {
+async function transformJs(content, filePath) {
   const result = await minify(content, {
     format: { quote_style: 1, comments: false },
   });
@@ -98,7 +106,7 @@ async function processJs(content, filePath) {
  * @param {Path} filePath
  * @returns
  */
-function processWebTypesJson(content, filePath) {
+function transformWebTypesJson(content, filePath) {
   const webTypes = JSON.parse(content);
   let elementNames = [];
   let eventNames = [];
@@ -138,11 +146,11 @@ async function processFile(filePath) {
 
   let result = undefined;
   if (filePath.ext.toLowerCase() === ".js") {
-    result = await processJs(content, filePath);
+    result = await transformJs(content, filePath);
   }
 
   if (filePath.ext.toLowerCase() === ".json") {
-    result = processWebTypesJson(content, filePath);
+    result = transformWebTypesJson(content, filePath);
   }
   return result;
 }
@@ -201,7 +209,7 @@ async function processPackages(packages) {
   // console.log(noElements);
 
   // TODO should also process CEM/webtypes... same info available, but hides "internal" elements
-  const outputFileName = `scripts/element-meta.js`;
+  const outputFileName = `scripts/meta/element-meta.js`;
   const tpl = `export const elementMeta = ${JSON.stringify(
     packagesMeta,
     null,
