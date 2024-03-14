@@ -27,7 +27,7 @@ Index: src/vaadin-accordion.d.ts
   *
   * Panel headings function as controls that enable users to open (expand)
   * or hide (collapse) their associated sections of content. The user can
-@@ -39,24 +39,24 @@
+@@ -39,28 +39,28 @@
   * previous panel to close and hide its content.
   *
   * ```
@@ -59,6 +59,11 @@ Index: src/vaadin-accordion.d.ts
 + * **Note:** You can apply the theme to `<vaadin23-accordion>` component itself,
   * especially by using the following CSS selector:
   *
+  * ```
+- * :host ::slotted(vaadin-accordion-panel) {
++ * :host ::slotted(vaadin23-accordion-panel) {
+  *   margin-bottom: 5px;
+  * }
   * ```
 @@ -79,7 +79,7 @@
    opened: number | null;

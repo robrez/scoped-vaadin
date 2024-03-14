@@ -7,7 +7,7 @@ Index: package.json
 -  "name": "@vaadin/lit-renderer",
 -  "version": "23.4.0",
 +  "name": "@scoped-vaadin/lit-renderer",
-+  "version": "23.0.1",
++  "version": "23.0.2",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -47,6 +47,6 @@ Index: package.json
 -  },
 -  "gitHead": "c104ecc83b82425fc4899e5eac9d91a114874c8e"
 +    "lit": "^2.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
++    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.2"
 +  }
  }

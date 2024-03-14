@@ -18,7 +18,15 @@ Index: theme/lumo/vaadin-item-styles.js
  
  const item = css`
    :host {
-@@ -87,6 +87,6 @@
+@@ -80,13 +80,13 @@
+   }
+ 
+   /* Slotted icons */
+-  :host ::slotted(vaadin-icon),
++  :host ::slotted(vaadin23-icon),
+   :host ::slotted(iron-icon) {
+     width: var(--lumo-icon-size-m);
+     height: var(--lumo-icon-size-m);
    }
  `;
  

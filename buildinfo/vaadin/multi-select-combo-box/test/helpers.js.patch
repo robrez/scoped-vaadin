@@ -1,0 +1,20 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -21,7 +21,7 @@
+  */
+ export const getAllItems = (comboBox) => {
+   const internal = comboBox.$.comboBox;
+-  return Array.from(internal._scroller.querySelectorAll('vaadin-multi-select-combo-box-item'))
++  return Array.from(internal._scroller.querySelectorAll('vaadin23-multi-select-combo-box-item'))
+     .filter((item) => !item.hidden)
+     .sort((a, b) => a.index - b.index);
+ };
+@@ -31,5 +31,5 @@
+  */
+ export const getFirstItem = (comboBox) => {
+   const internal = comboBox.$.comboBox;
+-  return internal._scroller.querySelector('vaadin-multi-select-combo-box-item');
++  return internal._scroller.querySelector('vaadin23-multi-select-combo-box-item');
+ };

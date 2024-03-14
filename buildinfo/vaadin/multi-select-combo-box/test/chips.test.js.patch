@@ -1,0 +1,22 @@
+Index: test/chips.test.js
+===================================================================
+--- test/chips.test.js
++++ test/chips.test.js
+@@ -18,7 +18,7 @@
+   };
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
++    comboBox = fixtureSync(`<vaadin23-multi-select-combo-box></vaadin23-multi-select-combo-box>`);
+     comboBox.items = ['apple', 'banana', 'lemon', 'orange'];
+     inputElement = comboBox.inputElement;
+ 
+@@ -524,7 +524,7 @@
+     it('should adapt overlay width to the input field width while opened', async () => {
+       comboBox.opened = true;
+ 
+-      const overlay = document.querySelector('vaadin-multi-select-combo-box-overlay');
++      const overlay = document.querySelector('vaadin23-multi-select-combo-box-overlay');
+       const overlayPart = overlay.$.overlay;
+       const width = overlayPart.clientWidth;
+       expect(width).to.equal(comboBox.clientWidth);

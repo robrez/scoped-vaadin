@@ -14,3 +14,12 @@ Index: theme/material/vaadin-menu-bar-item-styles.js
    css`
      :host([theme='menu-bar-item']) [part='content'] {
        display: flex;
+@@ -12,7 +12,7 @@
+       font-size: var(--material-button-font-size);
+     }
+ 
+-    :host([theme='menu-bar-item']) [part='content'] ::slotted(vaadin-icon[icon^='vaadin:']),
++    :host([theme='menu-bar-item']) [part='content'] ::slotted(vaadin23-icon[icon^='vaadin:']),
+     :host([theme='menu-bar-item']) [part='content'] ::slotted(iron-icon[icon^='vaadin:']) {
+       display: inline-block;
+       width: 18px;

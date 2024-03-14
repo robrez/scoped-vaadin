@@ -16,7 +16,7 @@ Index: theme/material/vaadin-avatar-group-styles.js
    css`
      :host {
        --vaadin-avatar-size: 2.25rem;
-@@ -42,12 +42,12 @@
+@@ -42,19 +42,19 @@
    }
  `;
  
@@ -29,8 +29,17 @@ Index: theme/material/vaadin-avatar-group-styles.js
 -  'vaadin-avatar-group-list-box',
 +  'vaadin23-avatar-group-list-box',
    css`
-     [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
+-    [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
++    [part='items'] ::slotted(vaadin23-item[theme='avatar-group-item']) {
        padding: 8px;
+       padding-right: 24px;
+     }
+ 
+-    :host([dir='rtl']) [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
++    :host([dir='rtl']) [part='items'] ::slotted(vaadin23-item[theme='avatar-group-item']) {
+       padding: 8px;
+       padding-left: 24px;
+     }
 @@ -63,7 +63,7 @@
  );
  
@@ -40,3 +49,17 @@ Index: theme/material/vaadin-avatar-group-styles.js
    css`
      :host([theme='avatar-group-item']) [part='content'] {
        display: flex;
+@@ -74,11 +74,11 @@
+       display: none;
+     }
+ 
+-    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin-avatar) {
++    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin23-avatar) {
+       margin-right: 8px;
+     }
+ 
+-    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin-avatar) {
++    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin23-avatar) {
+       margin-left: 8px;
+     }
+   `,

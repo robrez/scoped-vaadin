@@ -27,7 +27,7 @@ packages\date-picker\test\validation.test.js:
 
 packages\date-time-picker\test\properties.test.js:
 
- ❌ Initial property values (default) > should have initial value for invalid
+ ❌ Initial property values (slotted) > should have initial value for invalid
       AssertionError: expected false to be true
       + expected - actual
 
@@ -35,6 +35,14 @@ packages\date-time-picker\test\properties.test.js:
       +true
 
       at n.<anonymous> (packages\date-time-picker\test\properties.test.js:317:43)
+
+packages\grid\test\scrolling-mode.test.js:
+
+ ❌ scrolling mode > overflow attribute > update on resize
+      Error: Timeout of 10000ms exceeded. For async tests and hooks, ensure "done()" is called; if returning a Promise, ensure it resolves.
+        at createTimeoutError (..\..\..\C:\develop\vaadn\scoped-vaadin-23\node_modules\@web\test-runner-mocha\dist\autorun.js:1:191473)
+        at ds._timeoutError (..\..\..\C:\develop\vaadn\scoped-vaadin-23\node_modules\@web\test-runner-mocha\dist\autorun.js:1:195706)
+        at ..\..\..\C:\develop\vaadn\scoped-vaadin-23\node_modules\@web\test-runner-mocha\dist\autorun.js:1:193787
 
 packages\login\test\login-overlay.test.js:
 
@@ -51,8 +59,8 @@ packages\login\test\login-overlay.test.js:
         at new PropertyEffects (node_modules\@polymer\polymer\lib\mixins\property-effects.js:1327:7)
         at new PolymerElement (node_modules\@polymer\polymer\lib\mixins\element-mixin.js:562:7)
 
- ❌ Error: Uncaught TypeError: Cannot read properties of undefined (reading 'content') (http://localhost:8000/packages/login/src/va
-adin-login-overlay-wrapper.js:96) 
+ ❌ Error: Uncaught TypeError: Cannot read properties of undefined (reading 'content') (http://localhost:8000/packages/login/src/vaadin-login-overl
+ay-wrapper.js:96)
       at LoginOverlay._stampTemplate (node_modules\@polymer\polymer\lib\mixins\template-stamp.js:556:59)
       at LoginOverlay._stampTemplate (node_modules\@polymer\polymer\lib\mixins\property-effects.js:2789:23)
       at LoginOverlay.ready (node_modules\@polymer\polymer\lib\mixins\element-mixin.js:696:26)
@@ -93,8 +101,8 @@ packages\login\test\login-submit.test.js:
  🚧 404 network requests:
     - login-action?username=username&password=password
 
- ❌ Error: Uncaught TypeError: Cannot read properties of undefined (reading 'content') (http://localhost:8000/packages/login/src/va
-adin-login-overlay-wrapper.js:96) 
+ ❌ Error: Uncaught TypeError: Cannot read properties of undefined (reading 'content') (http://localhost:8000/packages/login/src/vaadin-login-overl
+ay-wrapper.js:96)
       at LoginOverlay._stampTemplate (node_modules\@polymer\polymer\lib\mixins\template-stamp.js:556:59)
       at LoginOverlay._stampTemplate (node_modules\@polymer\polymer\lib\mixins\property-effects.js:2789:23)
       at LoginOverlay.ready (node_modules\@polymer\polymer\lib\mixins\element-mixin.js:696:26)
@@ -104,17 +112,6 @@ adin-login-overlay-wrapper.js:96)
       at LoginOverlay.connectedCallback (node_modules\@polymer\polymer\lib\mixins\element-mixin.js:685:13)
       at LoginOverlay.connectedCallback (packages\component-base\src\dir-mixin.js:76:13)
       at LoginOverlay.connectedCallback (packages\login\src\vaadin-login-overlay.js:130:11)
-
-packages\menu-bar\test\menu-bar.test.js:
-
- ❌ item components > should set position and z-index on the item component to allow clicks
-      AssertionError: expected 'static' to equal 'relative'
-      + expected - actual
-
-      -static
-      +relative
-
-      at Ka.<anonymous> (packages\menu-bar\test\menu-bar.test.js:762:31)
 
 packages\tabs\test\tabs.test.js:
 
@@ -136,10 +133,16 @@ packages\tabs\test\tabs.test.js:
 
       at n.<anonymous> (packages\tabs\test\tabs.test.js:189:56)
 
-Chromium: |██████████████████████████████| 268/268 test files | 6755 passed, 11 failed, 41 skipped
+ ❌ flex equal width tabs > should not cut content
+      AssertionError: expected 109 to be above 124
+      + expected - actual
 
-Finished running tests in 263.9s with 11 failed tests.
+      -109
+      +124
 
+      at n.<anonymous> (packages\tabs\test\tabs.test.js:277:45)
+
+Chromium: |██████████████████████████████| 268/268 test files | 6754 passed, 12 failed, 41 skipped
 ```
 
 Re: validators -- these fail because of an underlying raised exception
@@ -155,4 +158,13 @@ Re: validators -- these fail because of an underlying raised exception
         }
         return !this.invalid;
       }
+```
+
+Note that there seems to be some problem with soe ResizeObserver-dependent functions in tests. Whenever I manually, in the browser, perform some of the tests - the components are working correctly. On one of the failing tests above, I found the following comment
+
+```js
+// This test constantly fails in WebKit when the test is running on CI.
+// It perhaps has something to do with the specific version of WebKit
+// Playwright uses on CI. It sometimes fails also in Firefox on CI,
+// but not as often as in WebKit.
 ```

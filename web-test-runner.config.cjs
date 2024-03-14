@@ -70,7 +70,7 @@ const allPackages = [
 ];
 
 let packageFilter = [];
-// packageFilter = [...packageFilter, "login"];
+// packageFilter = [...packageFilter, "tabs"];
 // console.log("packages", packageFilter.join(', '));
 
 /**

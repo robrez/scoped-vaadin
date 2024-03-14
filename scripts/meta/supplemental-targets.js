@@ -1,4 +1,12 @@
 /**
+ * TagNames that must not be rewritten
+ */
+export const ignoreElementNames = [
+  //
+  "vaadin-grid-cell-content",
+];
+
+/**
  * additional string literals to treat like tag names
  */
 export const supplementalElementNames = [
