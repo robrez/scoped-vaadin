@@ -25,7 +25,16 @@ Index: theme/lumo/vaadin-multi-select-combo-box-styles.js
    css`
      @media (any-hover: hover) {
        :host(:hover[readonly]) {
-@@ -52,6 +52,6 @@
+@@ -26,7 +26,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-container',
++  'vaadin23-multi-select-combo-box-container',
+   css`
+     :host([auto-expand-vertically]) {
+       padding-block: var(--lumo-space-xs);
+@@ -74,6 +74,6 @@
    }
  `;
  

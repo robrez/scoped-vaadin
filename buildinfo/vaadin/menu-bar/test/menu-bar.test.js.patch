@@ -65,7 +65,7 @@ Index: test/menu-bar.test.js
  
      menu.style.width = '250px';
  
-@@ -460,7 +461,7 @@
+@@ -504,7 +505,7 @@
    let menu, buttons, overflow;
  
    beforeEach(async () => {
@@ -74,7 +74,7 @@ Index: test/menu-bar.test.js
      menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
      await nextRender(menu);
      buttons = menu._buttons;
-@@ -528,7 +529,7 @@
+@@ -572,7 +573,7 @@
  
    beforeEach(async () => {
      container = fixtureSync(
@@ -83,7 +83,7 @@ Index: test/menu-bar.test.js
      );
      menu = container.firstChild;
  
-@@ -587,7 +588,7 @@
+@@ -631,7 +632,7 @@
      container = fixtureSync('<div style="display: flex; max-width: 300px"></div>');
      text = document.createElement('div');
      text.textContent = 'Sibling';
@@ -92,7 +92,7 @@ Index: test/menu-bar.test.js
      menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
      menu.style.minWidth = '100px';
    });
-@@ -657,13 +658,13 @@
+@@ -701,13 +702,13 @@
    }
  
    beforeEach(async () => {
@@ -108,7 +108,7 @@ Index: test/menu-bar.test.js
        { component: makeComponent('6'), children: [{ text: 'SubItem6.1' }, { text: 'SubItem6.2' }] },
      ];
      await nextRender(menu);
-@@ -674,7 +675,7 @@
+@@ -718,7 +719,7 @@
    it('should render the component inside the context-menu item', () => {
      const item = buttons[2].firstChild;
      expect(item).to.equal(buttons[2].item.component);
@@ -117,7 +117,7 @@ Index: test/menu-bar.test.js
      const div = item.firstChild;
      expect(div).to.equal(menu.items[2].component);
      expect(div.localName).to.equal('div');
-@@ -685,7 +686,7 @@
+@@ -729,7 +730,7 @@
    it('should override the component text when defined on the item', () => {
      const item = buttons[3].firstChild;
      expect(item).to.equal(buttons[3].item.component);
@@ -126,7 +126,7 @@ Index: test/menu-bar.test.js
      const div = item.firstChild;
      expect(div).to.equal(menu.items[3].component);
      expect(div.localName).to.equal('div');
-@@ -730,7 +731,7 @@
+@@ -774,7 +775,7 @@
      it('should teleport the same component to overflow sub-menu and back', async () => {
        overflow.click();
        await nextRender(subMenu);
@@ -135,7 +135,7 @@ Index: test/menu-bar.test.js
        expect(listBox.items[0]).to.equal(buttons[2].item.component);
        expect(listBox.items[0].firstChild).to.equal(menu.items[2].component);
        expect(listBox.items[0].firstChild.localName).to.equal('div');
-@@ -762,7 +763,7 @@
+@@ -818,7 +819,7 @@
    beforeEach(() => {
      wrapper = fixtureSync(`
        <div style="display: flex; width: 400px;">

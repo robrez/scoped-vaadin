@@ -77,7 +77,7 @@ Index: src/vaadin-app-layout.js
    }
  
    static get properties() {
-@@ -561,7 +562,7 @@
+@@ -566,7 +567,7 @@
  
    /** @private */
    __setAriaExpanded() {
@@ -86,7 +86,7 @@ Index: src/vaadin-app-layout.js
      if (toggle) {
        toggle.setAttribute('aria-expanded', this.drawerOpened);
      }
-@@ -705,7 +706,7 @@
+@@ -710,7 +711,7 @@
      this.$.drawer.removeAttribute('tabindex');
  
      // Move focus to the drawer toggle when closing the drawer.
@@ -95,7 +95,7 @@ Index: src/vaadin-app-layout.js
      if (toggle) {
        toggle.focus();
        toggle.setAttribute('focus-ring', 'focus');
-@@ -814,6 +815,6 @@
+@@ -819,6 +820,6 @@
     */
  }
  

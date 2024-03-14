@@ -59,10 +59,10 @@ Index: src/vaadin-icon.d.ts
     *
 -   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin-iconset`.
 +   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin23-iconset`.
+    *
+    * @attr {string} icon
     */
-   icon: string | null;
- 
-@@ -73,7 +73,7 @@
+@@ -75,7 +75,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

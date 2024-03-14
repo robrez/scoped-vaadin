@@ -38,7 +38,7 @@ Index: src/vaadin-virtual-list.js
   * list.items = items; // An array of data items
   * list.renderer = (root, list, {item, index}) => {
   *   root.textContent = `#${index}: ${item.name}`
-@@ -67,7 +68,7 @@
+@@ -71,7 +72,7 @@
    }
  
    static get is() {
@@ -47,7 +47,7 @@ Index: src/vaadin-virtual-list.js
    }
  
    static get properties() {
-@@ -83,7 +84,7 @@
+@@ -87,7 +88,7 @@
         * Receives three arguments:
         *
         * - `root` The render target element representing one item at a time.
@@ -56,7 +56,7 @@ Index: src/vaadin-virtual-list.js
         * - `model` The object with the properties related with the rendered
         *   item, contains:
         *   - `model.index` The index of the rendered item.
-@@ -201,6 +202,6 @@
+@@ -205,6 +206,6 @@
    }
  }
  

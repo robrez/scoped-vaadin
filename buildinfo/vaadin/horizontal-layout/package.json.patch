@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/horizontal-layout",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/horizontal-layout",
 +  "version": "23.0.1",
 +  "repository": {
@@ -40,10 +40,10 @@ Index: package.json
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/component-base": "~23.3.8",
--    "@vaadin/vaadin-lumo-styles": "~23.3.8",
--    "@vaadin/vaadin-material-styles": "~23.3.8",
--    "@vaadin/vaadin-themable-mixin": "~23.3.8"
+-    "@vaadin/component-base": "~23.4.0",
+-    "@vaadin/vaadin-lumo-styles": "~23.4.0",
+-    "@vaadin/vaadin-material-styles": "~23.4.0",
+-    "@vaadin/vaadin-themable-mixin": "~23.4.0"
 -  },
 -  "devDependencies": {
 -    "@esm-bundle/chai": "^4.3.4",
@@ -53,7 +53,7 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "f3bfde4c881f9deb7d757faf4ab070f0596b0a09"
+-  "gitHead": "c104ecc83b82425fc4899e5eac9d91a114874c8e"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
 +    "@scoped-vaadin/component-base": "^23.0.1",

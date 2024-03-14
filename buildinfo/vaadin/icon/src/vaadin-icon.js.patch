@@ -77,10 +77,10 @@ Index: src/vaadin-icon.js
         *
 -       * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin-iconset`.
 +       * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin23-iconset`.
-        */
-       icon: {
-         type: String,
-@@ -234,6 +235,6 @@
+        *
+        * @attr {string} icon
+        * @type {string}
+@@ -238,6 +239,6 @@
    }
  }
  

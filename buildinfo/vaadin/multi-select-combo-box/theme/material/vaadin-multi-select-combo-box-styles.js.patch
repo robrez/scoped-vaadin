@@ -23,7 +23,7 @@ Index: theme/material/vaadin-multi-select-combo-box-styles.js
    css`
      @media (any-hover: hover) {
        :host(:hover[readonly]) {
-@@ -51,6 +51,6 @@
+@@ -56,6 +56,6 @@
    }
  `;
  

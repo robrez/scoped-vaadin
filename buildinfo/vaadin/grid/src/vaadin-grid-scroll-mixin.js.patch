@@ -2,15 +2,17 @@ Index: src/vaadin-grid-scroll-mixin.js
 ===================================================================
 --- src/vaadin-grid-scroll-mixin.js
 +++ src/vaadin-grid-scroll-mixin.js
-@@ -3,9 +3,9 @@
+@@ -3,10 +3,10 @@
   * Copyright (c) 2016 - 2022 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { animationFrame, microTask, timeOut } from '@vaadin/component-base/src/async.js';
 -import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { isElementHidden } from '@vaadin/component-base/src/focus-utils.js';
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 +import { animationFrame, microTask, timeOut } from '@scoped-vaadin/component-base/src/async.js';
 +import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { isElementHidden } from '@scoped-vaadin/component-base/src/focus-utils.js';
 +import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
  
  const timeouts = {

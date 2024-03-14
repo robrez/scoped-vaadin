@@ -127,7 +127,7 @@ Index: src/vaadin-time-picker.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -746,6 +747,6 @@
+@@ -748,6 +749,6 @@
     */
  }
  

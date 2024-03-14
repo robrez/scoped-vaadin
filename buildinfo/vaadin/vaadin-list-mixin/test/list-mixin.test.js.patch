@@ -34,7 +34,7 @@ Index: test/list-mixin.test.js
    'test-list-wrapper-element',
    class extends PolymerElement {
      static get template() {
-@@ -841,7 +842,7 @@
+@@ -869,7 +870,7 @@
  
      it('should warn when creating an element without focusElement', () => {
        class ScrollerElementMissing extends ListMixin(PolymerElement) {}

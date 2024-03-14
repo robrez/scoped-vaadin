@@ -49,7 +49,7 @@ Index: src/vaadin-tabs.js
    }
  
    static get properties() {
-@@ -266,6 +267,6 @@
+@@ -275,6 +276,6 @@
    }
  }
  

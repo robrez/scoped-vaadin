@@ -11,7 +11,7 @@ Index: test/object-values.test.js
        input = comboBox.inputElement;
  
        comboBox.items = [
-@@ -247,7 +247,7 @@
+@@ -293,7 +293,7 @@
      });
  
      beforeEach(() => {

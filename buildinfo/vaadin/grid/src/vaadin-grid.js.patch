@@ -7,7 +7,7 @@ Index: src/vaadin-grid.js
  /**
   * @license
   * Copyright (c) 2016 - 2022 Vaadin Ltd.
-@@ -7,16 +8,16 @@
+@@ -7,17 +8,17 @@
  import './vaadin-grid-styles.js';
  import { beforeNextRender } from '@polymer/polymer/lib/utils/render-status.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -16,6 +16,7 @@ Index: src/vaadin-grid.js
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { Debouncer } from '@vaadin/component-base/src/debounce.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { isElementHidden } from '@vaadin/component-base/src/focus-utils.js';
 -import { TabindexMixin } from '@vaadin/component-base/src/tabindex-mixin.js';
 -import { processTemplates } from '@vaadin/component-base/src/templates.js';
 -import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
@@ -26,6 +27,7 @@ Index: src/vaadin-grid.js
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { isElementHidden } from '@scoped-vaadin/component-base/src/focus-utils.js';
 +import { TabindexMixin } from '@scoped-vaadin/component-base/src/tabindex-mixin.js';
 +import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
 +import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
@@ -34,7 +36,7 @@ Index: src/vaadin-grid.js
  import { A11yMixin } from './vaadin-grid-a11y-mixin.js';
  import { ActiveItemMixin } from './vaadin-grid-active-item-mixin.js';
  import { ArrayDataProviderMixin } from './vaadin-grid-array-data-provider-mixin.js';
-@@ -35,26 +36,26 @@
+@@ -36,26 +37,26 @@
  import { StylingMixin } from './vaadin-grid-styling-mixin.js';
  
  /**
@@ -69,7 +71,7 @@ Index: src/vaadin-grid.js
   * `renderer` and `footerRenderer`.
   *
   * Each of those renderer functions provides `root`, `column`, `model` arguments when applicable.
-@@ -69,18 +70,18 @@
+@@ -70,18 +71,18 @@
   *
   * #### Example:
   * ```html
@@ -95,7 +97,7 @@ Index: src/vaadin-grid.js
   *
   * columns[0].headerRenderer = function(root) {
   *   root.textContent = 'Name';
-@@ -116,11 +117,11 @@
+@@ -117,11 +118,11 @@
   * `detailsOpened` | Boolean | True if the item's row details are open.
   *
   * The following helper elements can be used for further customization:
@@ -112,7 +114,7 @@ Index: src/vaadin-grid.js
   *
   * __Note that the helper elements must be explicitly imported.__
   * If you want to import everything at once you can use the `all-imports.html` bundle.
-@@ -128,9 +129,9 @@
+@@ -129,9 +130,9 @@
   * ### Lazy Loading with Function Data Provider
   *
   * In addition to assigning an array to the items property, you can alternatively
@@ -124,7 +126,7 @@ Index: src/vaadin-grid.js
   * to be displayed.
   *
   * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) in
-@@ -311,7 +312,7 @@
+@@ -312,7 +313,7 @@
    }
  
    static get is() {
@@ -133,7 +135,7 @@ Index: src/vaadin-grid.js
    }
  
    static get observers() {
-@@ -825,7 +826,7 @@
+@@ -855,7 +856,7 @@
          } else {
            // Header & footer
            const tagName = section === 'header' ? 'th' : 'td';
@@ -142,7 +144,7 @@ Index: src/vaadin-grid.js
              cell = column[`_${section}Cell`] || this._createCell(tagName);
              cell._column = column;
              row.appendChild(cell);
-@@ -1146,6 +1147,6 @@
+@@ -1180,6 +1181,6 @@
    }
  }
  

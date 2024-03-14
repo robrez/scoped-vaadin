@@ -25,36 +25,16 @@ packages\date-picker\test\validation.test.js:
 
       at n.<anonymous> (packages\date-picker\test\validation.test.js:435:42)
 
-packages\email-field\test\email-field.test.js:
+packages\date-time-picker\test\properties.test.js:
 
- ❌ email-field > default > invalid email addresses > should treat email@example as invalid
+ ❌ Initial property values (default) > should have initial value for invalid
       AssertionError: expected false to be true
       + expected - actual
 
       -false
       +true
 
-      at n.<anonymous> (packages\email-field\test\email-field.test.js:57:43)
-
-packages\field-base\test\pattern-mixin.test.js:
-
- ❌ PatternMixin + Polymer > pattern > should fail validation when value mismatches JavaScript-specific regular expression
-      AssertionError: expected true to be false
-      + expected - actual
-
-      -true
-      +false
-
-      at n.<anonymous> (packages\field-base\test\pattern-mixin.test.js:171:44)
-
- ❌ PatternMixin + Lit > pattern > should fail validation when value mismatches JavaScript-specific regular expression
-      AssertionError: expected true to be false
-      + expected - actual
-
-      -true
-      +false
-
-      at n.<anonymous> (packages\field-base\test\pattern-mixin.test.js:171:44)
+      at n.<anonymous> (packages\date-time-picker\test\properties.test.js:317:43)
 
 packages\login\test\login-overlay.test.js:
 
@@ -134,15 +114,31 @@ packages\menu-bar\test\menu-bar.test.js:
       -static
       +relative
 
-      at Ka.<anonymous> (packages\menu-bar\test\menu-bar.test.js:718:31)
+      at Ka.<anonymous> (packages\menu-bar\test\menu-bar.test.js:762:31)
 
-packages\tooltip\test\tooltip-timers.test.js:
+packages\tabs\test\tabs.test.js:
 
- ❌ timers > warmup and cooldown > should not open on mouseleave during the initial warm up hover delay
-      AssertionError: expected true to be falsy
-        at n.<anonymous> (packages\tooltip\test\tooltip-timers.test.js:527:43)
+ ❌ tabs > Overflow horizontal ltr > small viewport > should update overflow on item resize
+      AssertionError: expected true to be false
+      + expected - actual
 
-Chromium: |██████████████████████████████| 265/265 test files | 6624 passed, 12 failed, 40 skipped
+      -true
+      +false
+
+      at n.<anonymous> (packages\tabs\test\tabs.test.js:189:56)
+
+ ❌ tabs > Overflow horizontal rtl > small viewport > should update overflow on item resize
+      AssertionError: expected true to be false
+      + expected - actual
+
+      -true
+      +false
+
+      at n.<anonymous> (packages\tabs\test\tabs.test.js:189:56)
+
+Chromium: |██████████████████████████████| 268/268 test files | 6755 passed, 11 failed, 41 skipped
+
+Finished running tests in 263.9s with 11 failed tests.
 
 ```
 

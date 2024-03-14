@@ -19,7 +19,7 @@ Index: test/visual/lumo/checkbox-group.test.js
        `,
        div,
      );
-@@ -92,7 +92,7 @@
+@@ -98,7 +98,7 @@
        div.style.width = '300px';
        div.style.padding = '0';
        element.style.width = '100%';

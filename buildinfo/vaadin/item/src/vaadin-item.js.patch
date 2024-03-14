@@ -49,7 +49,16 @@ Index: src/vaadin-item.js
    }
  
    constructor() {
-@@ -93,6 +94,6 @@
+@@ -84,7 +85,7 @@
+     this.value; // eslint-disable-line no-unused-expressions
+ 
+     /**
+-     * String that can be set to visually represent the selected item in `vaadin-select`.
++     * String that can be set to visually represent the selected item in `vaadin23-select`.
+      * @type {string}
+      */
+     this.label; // eslint-disable-line no-unused-expressions
+@@ -98,6 +99,6 @@
    }
  }
  

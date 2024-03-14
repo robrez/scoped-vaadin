@@ -16,3 +16,12 @@ Index: test/dom/vaadin-upload-file.test.js
      uploadFile.file = {
        name: 'Workflow.pdf',
        progress: 60,
+@@ -17,7 +17,7 @@
+   describe('shadow', () => {
+     const SNAPSHOT_CONFIG = {
+       // Exclude inline style as we are not testing
+-      // the `vaadin-progress-bar` internal logic.
++      // the `vaadin23-progress-bar` internal logic.
+       ignoreAttributes: ['style'],
+     };
+ 

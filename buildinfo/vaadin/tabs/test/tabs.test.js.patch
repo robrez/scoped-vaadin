@@ -7,16 +7,18 @@ Index: test/tabs.test.js
  import { expect } from '@esm-bundle/chai';
  import { arrowRight, aTimeout, enter, fixtureSync, listenOnce, nextFrame, space } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -28,15 +29,15 @@
+@@ -28,16 +29,16 @@
  
    beforeEach(() => {
      tabs = fixtureSync(`
 -      <vaadin-tabs>
 -        <vaadin-tab>Foo</vaadin-tab>
 -        <vaadin-tab>Bar</vaadin-tab>
+-        <vaadin-tab>Some</vaadin-tab>
 +      <vaadin23-tabs>
 +        <vaadin23-tab>Foo</vaadin23-tab>
 +        <vaadin23-tab>Bar</vaadin23-tab>
++        <vaadin23-tab>Some</vaadin23-tab>
          <span></span>
 -        <vaadin-tab disabled>Baz</vaadin-tab>
 -        <vaadin-tab>
@@ -30,7 +32,7 @@ Index: test/tabs.test.js
      `);
      tabs._observer.flush();
    });
-@@ -49,11 +50,11 @@
+@@ -50,11 +51,11 @@
      });
  
      it('should be defined in custom element registry', () => {
@@ -44,16 +46,16 @@ Index: test/tabs.test.js
      });
    });
  
-@@ -61,7 +62,7 @@
+@@ -62,7 +63,7 @@
      it('should only add vaadin-tab components to items', () => {
-       expect(tabs.items.length).to.equal(4);
+       expect(tabs.items.length).to.equal(5);
        tabs.items.forEach((item) => {
 -        expect(item.tagName.toLowerCase()).to.equal('vaadin-tab');
 +        expect(item.tagName.toLowerCase()).to.equal('vaadin23-tab');
        });
      });
  
-@@ -226,13 +227,13 @@
+@@ -237,13 +238,13 @@
    beforeEach(() => {
      wrapper = fixtureSync(`
        <div style="display: flex; width: 400px;">
@@ -72,7 +74,7 @@ Index: test/tabs.test.js
    });
  
    it('should have width above zero', () => {
-@@ -250,14 +251,14 @@
+@@ -261,14 +262,14 @@
    beforeEach(() => {
      wrapper = fixtureSync(`
        <div style="display: flex; justify-content: center; width: 400px;">

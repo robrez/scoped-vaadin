@@ -19,7 +19,7 @@ Index: test/visual/material/checkbox-group.test.js
        `,
        div,
      );
-@@ -82,7 +82,7 @@
+@@ -88,7 +88,7 @@
        div.style.width = '300px';
        div.style.padding = '0';
        element.style.width = '100%';

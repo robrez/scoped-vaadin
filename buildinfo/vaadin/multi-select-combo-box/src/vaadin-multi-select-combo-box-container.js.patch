@@ -20,7 +20,7 @@ Index: src/vaadin-multi-select-combo-box-container.js
    css`
      #wrapper {
        display: flex;
-@@ -22,14 +23,14 @@
+@@ -26,14 +27,14 @@
  let memoizedTemplate;
  
  /**
@@ -37,7 +37,7 @@ Index: src/vaadin-multi-select-combo-box-container.js
    }
  
    static get template() {
-@@ -49,4 +50,4 @@
+@@ -68,4 +69,4 @@
    }
  }
  

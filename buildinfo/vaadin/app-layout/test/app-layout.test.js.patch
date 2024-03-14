@@ -7,9 +7,9 @@ Index: test/app-layout.test.js
  import { expect } from '@esm-bundle/chai';
  import {
    aTimeout,
-@@ -12,29 +13,29 @@
- import '../vaadin-app-layout.js';
- import '../vaadin-drawer-toggle.js';
+@@ -32,29 +33,29 @@
+   await onceInvoked(layout, '_updateOffsetSize');
+ }
  
 -describe('vaadin-app-layout', () => {
 +describe('vaadin23-app-layout', () => {
@@ -42,7 +42,7 @@ Index: test/app-layout.test.js
      });
  
      it('should be set to navbar by default', () => {
-@@ -60,7 +61,7 @@
+@@ -80,7 +81,7 @@
  
    describe('navbar', () => {
      beforeEach(() => {
@@ -51,7 +51,7 @@ Index: test/app-layout.test.js
      });
  
      describe('default', () => {
-@@ -69,7 +70,7 @@
+@@ -89,7 +90,7 @@
        });
  
        it('should move added node to navbar', async () => {
@@ -60,7 +60,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -77,7 +78,7 @@
+@@ -97,7 +98,7 @@
        });
  
        it('should make node added to navbar visible', async () => {
@@ -69,7 +69,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -107,7 +108,7 @@
+@@ -127,7 +128,7 @@
        });
  
        it('should move added node to navbar-bottom', async () => {
@@ -78,7 +78,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -115,7 +116,7 @@
+@@ -135,7 +136,7 @@
        });
  
        it('should make node added to navbar-bottom visible', async () => {
@@ -87,7 +87,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -153,15 +154,15 @@
+@@ -173,15 +174,15 @@
        const overlayMode = String(layoutMode === 'mobile');
  
        layout = fixtureSync(`

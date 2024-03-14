@@ -10,7 +10,7 @@ Index: test/item-renderer.test.js
 +import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
  import './not-animated-styles.js';
  import '../vaadin-combo-box.js';
- import { getFirstItem } from './helpers.js';
+ import { getAllItems, getFirstItem, setInputValue } from './helpers.js';
 @@ -11,10 +11,10 @@
  
    beforeEach(() => {

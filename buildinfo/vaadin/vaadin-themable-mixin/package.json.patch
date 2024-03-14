@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/vaadin-themable-mixin",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/vaadin-themable-mixin",
 +  "version": "23.0.1",
 +  "repository": {
@@ -46,7 +46,7 @@ Index: package.json
 -    "@vaadin/testing-helpers": "^0.3.2",
 -    "sinon": "^13.0.2"
 -  },
--  "gitHead": "f3bfde4c881f9deb7d757faf4ab070f0596b0a09"
+-  "gitHead": "c104ecc83b82425fc4899e5eac9d91a114874c8e"
 +    "lit": "^2.0.0",
 +    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
 +  }

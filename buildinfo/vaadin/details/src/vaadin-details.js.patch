@@ -47,7 +47,7 @@ Index: src/vaadin-details.js
    }
  
    static get properties() {
-@@ -183,6 +184,6 @@
+@@ -187,6 +188,6 @@
    }
  }
  

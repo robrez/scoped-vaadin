@@ -7,7 +7,7 @@ Index: test/focus-utils.test.js
  import { expect } from '@esm-bundle/chai';
  import { fixtureSync, mousedown, tabKeyDown } from '@vaadin/testing-helpers';
  import {
-@@ -122,7 +123,7 @@
+@@ -127,7 +128,7 @@
    });
  
    describe('getFocusableElements', () => {

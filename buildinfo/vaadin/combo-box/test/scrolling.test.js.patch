@@ -2,7 +2,7 @@ Index: test/scrolling.test.js
 ===================================================================
 --- test/scrolling.test.js
 +++ test/scrolling.test.js
-@@ -8,7 +8,7 @@
+@@ -7,7 +7,7 @@
    let comboBox, overlay, scroller, input;
  
    beforeEach(() => {

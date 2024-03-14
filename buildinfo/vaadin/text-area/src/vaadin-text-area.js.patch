@@ -108,7 +108,7 @@ Index: src/vaadin-text-area.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -350,4 +351,4 @@
+@@ -351,4 +352,4 @@
    }
  }
  

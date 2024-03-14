@@ -2,7 +2,7 @@ Index: test/avatar.test.js
 ===================================================================
 --- test/avatar.test.js
 +++ test/avatar.test.js
-@@ -1,14 +1,15 @@
+@@ -1,15 +1,16 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
  import { fixtureSync, focusin, focusout, mousedown, nextFrame, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
@@ -10,6 +10,8 @@ Index: test/avatar.test.js
 -import '@vaadin/tooltip/vaadin-tooltip.js';
 +import '@scoped-vaadin/tooltip/vaadin-tooltip.js';
  import '../vaadin-avatar.js';
+-import { Tooltip } from '@vaadin/tooltip';
++import { Tooltip } from '@scoped-vaadin/tooltip';
  
 -describe('vaadin-avatar', () => {
 +describe('vaadin23-avatar', () => {
@@ -21,7 +23,7 @@ Index: test/avatar.test.js
    });
  
    describe('custom element definition', () => {
-@@ -19,11 +20,11 @@
+@@ -20,11 +21,11 @@
      });
  
      it('should be defined in custom element registry', () => {
@@ -35,7 +37,16 @@ Index: test/avatar.test.js
      });
    });
  
-@@ -344,7 +345,7 @@
+@@ -260,7 +261,7 @@
+         container.setAttribute('style', 'width: 100px; height: 100px; overflow: auto;');
+         container.appendChild(avatar);
+ 
+-        const overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++        const overlay = tooltip.shadowRoot.querySelector('vaadin23-tooltip-overlay');
+         tabKeyDown(avatar);
+         avatar.focus();
+         expect(overlay.opened).to.be.true;
+@@ -362,7 +363,7 @@
      });
  
      it('should not override custom role set on the avatar', () => {

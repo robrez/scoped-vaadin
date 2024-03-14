@@ -2,7 +2,7 @@ Index: src/vaadin-select.js
 ===================================================================
 --- src/vaadin-select.js
 +++ src/vaadin-select.js
-@@ -1,39 +1,40 @@
+@@ -1,40 +1,41 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
@@ -18,6 +18,7 @@ Index: src/vaadin-select.js
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { addValueToAttribute } from '@vaadin/component-base/src/dom-utils.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { KeyboardMixin } from '@vaadin/component-base/src/keyboard-mixin.js';
 -import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
 -import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
 -import { processTemplates } from '@vaadin/component-base/src/templates.js';
@@ -31,6 +32,7 @@ Index: src/vaadin-select.js
 -import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { addValueToAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 +import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
 +import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
 +import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
@@ -60,7 +62,7 @@ Index: src/vaadin-select.js
   * ```
   * ```js
   * const select = document.querySelector('#select');
-@@ -59,10 +60,10 @@
+@@ -60,10 +61,10 @@
   * ```js
   * const select = document.querySelector('#select');
   * select.renderer = function(root, select) {
@@ -74,7 +76,7 @@ Index: src/vaadin-select.js
   *     item.textContent = name;
   *     item.setAttribute('label', name)
   *     listBox.appendChild(item);
-@@ -88,38 +89,38 @@
+@@ -89,38 +90,38 @@
   * Custom property                    | Description                  | Target element          | Default
   * -----------------------------------|------------------------------|----------------------------------
   * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
@@ -126,16 +128,16 @@ Index: src/vaadin-select.js
   * propagated to the internal components listed above.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
-@@ -139,7 +140,7 @@
-  */
- class Select extends DelegateFocusMixin(DelegateStateMixin(FieldMixin(ElementMixin(ThemableMixin(PolymerElement))))) {
+@@ -143,7 +144,7 @@
+   DelegateStateMixin(KeyboardMixin(FieldMixin(ElementMixin(ThemableMixin(PolymerElement))))),
+ ) {
    static get is() {
 -    return 'vaadin-select';
 +    return 'vaadin23-select';
    }
  
    static get template() {
-@@ -156,7 +157,7 @@
+@@ -160,7 +161,7 @@
            <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
          </div>
  
@@ -144,7 +146,7 @@ Index: src/vaadin-select.js
            part="input-field"
            readonly="[[readonly]]"
            disabled="[[disabled]]"
-@@ -167,7 +168,7 @@
+@@ -171,7 +172,7 @@
            <slot name="prefix" slot="prefix"></slot>
            <slot name="value"></slot>
            <div part="toggle-button" slot="suffix" aria-hidden="true" on-mousedown="_onToggleMouseDown"></div>
@@ -153,7 +155,7 @@ Index: src/vaadin-select.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -178,13 +179,13 @@
+@@ -182,13 +183,13 @@
          </div>
        </div>
  
@@ -169,7 +171,7 @@ Index: src/vaadin-select.js
  
        <slot name="tooltip"></slot>
      `;
-@@ -208,7 +209,7 @@
+@@ -212,7 +213,7 @@
         * ];
         * ```
         *
@@ -178,7 +180,7 @@ Index: src/vaadin-select.js
         * To render the item with a custom component, provide a tag name by the `component` property.
         *
         * @type {!Array<!SelectItem>}
-@@ -231,12 +232,12 @@
+@@ -235,12 +236,12 @@
        },
  
        /**
@@ -194,7 +196,7 @@ Index: src/vaadin-select.js
         * @type {!SelectRenderer | undefined}
         */
        renderer: Function,
-@@ -346,13 +347,13 @@
+@@ -348,13 +349,13 @@
    ready() {
      super.ready();
  

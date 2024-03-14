@@ -21,7 +21,7 @@ Index: test/visual/lumo/menu-bar.test.js
            element.items = [
              { text: 'Home' },
              {
-@@ -51,7 +51,7 @@
+@@ -61,7 +61,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  
@@ -30,7 +30,7 @@ Index: test/visual/lumo/menu-bar.test.js
            element.items = [{ text: 'Actions' }];
          });
  
-@@ -68,8 +68,8 @@
+@@ -78,8 +78,8 @@
  
        describe('theme', () => {
          function makeIcon(img) {
@@ -41,7 +41,7 @@ Index: test/visual/lumo/menu-bar.test.js
            icon.setAttribute('icon', img);
            item.appendChild(icon);
            item.setAttribute('theme', 'menu-bar-item');
-@@ -80,7 +80,7 @@
+@@ -90,7 +90,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  

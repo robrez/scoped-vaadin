@@ -2,8 +2,8 @@ Index: test/selecting-items.test.js
 ===================================================================
 --- test/selecting-items.test.js
 +++ test/selecting-items.test.js
-@@ -10,7 +10,7 @@
-   let comboBox, internal, inputElement;
+@@ -18,7 +18,7 @@
+   }
  
    beforeEach(() => {
 -    comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
@@ -11,7 +11,7 @@ Index: test/selecting-items.test.js
      internal = comboBox.$.comboBox;
      inputElement = comboBox.inputElement;
      inputElement.focus();
-@@ -30,7 +30,7 @@
+@@ -38,7 +38,7 @@
  
      it('should update selectedItems when selecting an item on click', async () => {
        await sendKeys({ down: 'ArrowDown' });
@@ -20,7 +20,7 @@ Index: test/selecting-items.test.js
        item.click();
        expect(comboBox.selectedItems).to.deep.equal(['apple']);
      });
-@@ -85,7 +85,7 @@
+@@ -93,7 +93,7 @@
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ down: 'Enter' });
@@ -29,7 +29,7 @@ Index: test/selecting-items.test.js
        expect(item.hasAttribute('focused')).to.be.true;
      });
  
-@@ -93,7 +93,7 @@
+@@ -101,7 +101,7 @@
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ type: 'banana' });
        await sendKeys({ down: 'Enter' });

@@ -2,10 +2,12 @@ Index: test/input-controller.test.js
 ===================================================================
 --- test/input-controller.test.js
 +++ test/input-controller.test.js
-@@ -1,11 +1,12 @@
+@@ -1,13 +1,14 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
  import { fixtureSync } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';

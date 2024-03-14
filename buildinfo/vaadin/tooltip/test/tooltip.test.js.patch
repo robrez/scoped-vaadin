@@ -61,7 +61,7 @@ Index: test/tooltip.test.js
        otherOverlay.opened = true;
        await nextRender();
  
-@@ -680,7 +681,7 @@
+@@ -668,7 +669,7 @@
        tooltip.opened = true;
        expect(overlay.opened).to.be.true;
  
@@ -70,7 +70,7 @@ Index: test/tooltip.test.js
        otherOverlay.opened = true;
        await nextRender();
  
-@@ -693,7 +694,7 @@
+@@ -681,7 +682,7 @@
    let tooltip, overlay;
  
    beforeEach(() => {

@@ -12,7 +12,7 @@ Index: test/typings/grid.types.ts
  import type {
    GridColumnGroup,
    GridFilter,
-@@ -67,7 +67,7 @@
+@@ -68,7 +68,7 @@
  const assertType = <TExpected>(actual: TExpected) => actual;
  
  /* Grid */
@@ -21,7 +21,7 @@ Index: test/typings/grid.types.ts
  assertType<Grid>(genericGrid);
  
  const narrowedGrid = genericGrid as Grid<TestGridItem>;
-@@ -214,7 +214,7 @@
+@@ -215,7 +215,7 @@
  assertType<string | null | undefined>(narrowedGrid.theme);
  
  /* GridColumn */
@@ -30,7 +30,7 @@ Index: test/typings/grid.types.ts
  assertType<GridColumn>(genericColumn);
  
  const bodyRenderer: GridBodyRenderer<TestGridItem> = (root, column, model) => {
-@@ -250,7 +250,7 @@
+@@ -251,7 +251,7 @@
  assertType<boolean>(narrowedColumn.autoWidth);
  
  /* GridColumnGroup */
@@ -39,7 +39,7 @@ Index: test/typings/grid.types.ts
  assertType<GridColumnGroup>(genericColumnGroup);
  
  const narrowedColumnGroup = genericColumnGroup as GridColumnGroup<TestGridItem>;
-@@ -258,7 +258,7 @@
+@@ -259,7 +259,7 @@
  assertType<ColumnBaseMixinClass<TestGridItem>>(narrowedColumnGroup);
  
  /* GridFilter */
@@ -48,7 +48,7 @@ Index: test/typings/grid.types.ts
  assertType<GridFilter>(filter);
  assertType<HTMLElement>(filter);
  assertType<string | null | undefined>(filter.path);
-@@ -270,7 +270,7 @@
+@@ -271,7 +271,7 @@
  });
  
  /* GridFilterColumn */
@@ -57,7 +57,7 @@ Index: test/typings/grid.types.ts
  assertType<GridFilterColumn>(genericFilterColumn);
  
  const narrowedFilterColumn = genericFilterColumn as GridFilterColumn<TestGridItem>;
-@@ -279,7 +279,7 @@
+@@ -280,7 +280,7 @@
  assertType<string | null | undefined>(narrowedFilterColumn.path);
  
  /* GridSelectionColumn */
@@ -66,7 +66,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSelectionColumn>(genericSelectionColumn);
  
  const narrowedSelectionColumn = genericSelectionColumn as GridSelectionColumn<TestGridItem>;
-@@ -296,7 +296,7 @@
+@@ -298,7 +298,7 @@
  assertType<boolean>(narrowedSelectionColumn.autoSelect);
  
  /* GridSortColumn */
@@ -75,7 +75,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSortColumn>(genericSortColumn);
  
  const narrowedSortColumn = genericSortColumn as GridSortColumn<TestGridItem>;
-@@ -310,7 +310,7 @@
+@@ -312,7 +312,7 @@
  });
  
  /* GridSorter */
@@ -84,7 +84,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSorter>(sorter);
  
  sorter.addEventListener('sorter-changed', (event) => {
-@@ -328,7 +328,7 @@
+@@ -330,7 +330,7 @@
  assertType<GridSorterDirection | null | undefined>(sorter.direction);
  
  /* GridTreeColumn */
@@ -93,7 +93,7 @@ Index: test/typings/grid.types.ts
  assertType<GridTreeColumn>(genericTreeColumn);
  
  const narrowedTreeColumn = genericTreeColumn as GridTreeColumn<TestGridItem>;
-@@ -337,7 +337,7 @@
+@@ -339,7 +339,7 @@
  assertType<string | null | undefined>(narrowedTreeColumn.itemHasChildrenPath);
  
  /* GridTreeToggle */

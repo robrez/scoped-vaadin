@@ -36,7 +36,15 @@ Index: src/vaadin-item.d.ts
   * the `selected` property on the items, e. g. on mousedown or when Enter / Spacebar is pressed.
   *
   * ### Styling
-@@ -54,7 +54,7 @@
+@@ -52,14 +52,14 @@
+   value: string;
+ 
+   /**
+-   * String that can be set to visually represent the selected item in `vaadin-select`.
++   * String that can be set to visually represent the selected item in `vaadin23-select`.
+    */
+   label: string | undefined;
+ }
  
  declare global {
    interface HTMLElementTagNameMap {

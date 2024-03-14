@@ -2,7 +2,7 @@ Index: src/vaadin-grid-selection-column.d.ts
 ===================================================================
 --- src/vaadin-grid-selection-column.d.ts
 +++ src/vaadin-grid-selection-column.d.ts
-@@ -18,19 +18,19 @@
+@@ -19,19 +19,19 @@
  export interface GridSelectionColumnEventMap extends HTMLElementEventMap, GridSelectionColumnCustomEventMap {}
  
  /**
@@ -27,7 +27,7 @@ Index: src/vaadin-grid-selection-column.d.ts
   * column cells. The checkboxes in the body rows toggle selection of the corresponding row items.
   *
   * When the grid data is provided as an array of [`items`](#/elements/vaadin-grid#property-items),
-@@ -69,7 +69,7 @@
+@@ -60,7 +60,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

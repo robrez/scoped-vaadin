@@ -39,7 +39,7 @@ Index: src/vaadin-combo-box-item.js
         */
        renderer: Function,
  
-@@ -169,4 +170,4 @@
+@@ -184,4 +185,4 @@
    }
  }
  
