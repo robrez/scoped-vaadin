@@ -69,8 +69,8 @@ const allPackages = [
   "virtual-list",
 ];
 
-let packageFilter = null;
-// packageFilter = ["avatar-group"];
+let packageFilter = [];
+// packageFilter = [...packageFilter, "login"];
 // console.log("packages", packageFilter.join(', '));
 
 /**

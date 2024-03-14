@@ -16,6 +16,15 @@ Index: test/lazy-loading.test.js
  import { ComboBoxPlaceholder } from '../src/vaadin-combo-box-placeholder.js';
  import {
    clickItem,
+@@ -25,7 +25,7 @@
+   'vaadin-combo-box*',
+   css`
+     :host {
+-      --vaadin-combo-box-overlay-max-height: 400px;
++      --vaadin23-combo-box-overlay-max-height: 400px;
+     }
+   `,
+ );
 @@ -1292,7 +1292,7 @@
  
    describe('combo-box', () => {

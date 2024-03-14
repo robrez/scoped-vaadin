@@ -28,8 +28,19 @@ export const supplementalCssSelectors = [
   // avatar-group/test/avatar-group.test.js
   "vaadin-avatar:not([hidden])",
 
+  // combo-box basic test
+  // potential problem: a goal of this project is to tolerate the "normal"
+  // css property names... note that this one doesn't work because it is a dyanmic
+  // property "get" based on the component's localName.  would very much like to
+  // figure out how to patch this particular piece of code
+  "--vaadin-combo-box-overlay-max-height: ",
+
+  // details test
+  "/^vaadin-details-content-\\d+$/",
+
   // login/test/login-form.common.js
-  `vaadin-button[slot="forgot-password"]`,
+  `'vaadin-button[slot`,
+  `'vaadin-button[part`,
 
   // context-menu/test/selection.common.js
   "#menu vaadin-item",
@@ -43,6 +54,9 @@ export const supplementalCssSelectors = [
 
   // grid/test/column-auto-width.common.js
   "vaadin-grid::part(cell) {",
+
+  // notification test
+  `vaadin-notification-card[slot`,
 
   // tooltip/test/tooltip.common.js
   `vaadin-tooltip[for="foo"]`,

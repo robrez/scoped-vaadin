@@ -34,6 +34,49 @@ Index: test/login-form.test.js
      formWrapper = login.querySelector('[part="vaadin-login-native-form-wrapper"]');
    });
  
+@@ -75,7 +75,7 @@
+ 
+     const usernameElement = login.querySelector('#vaadinLoginUsername');
+     const passwordElement = login.querySelector('#vaadinLoginPassword');
+-    const submitElement = login.querySelector('vaadin-button[part="vaadin-login-submit"]');
++    const submitElement = login.querySelector('vaadin23-button[part="vaadin-login-submit"]');
+     const forgotElement = formWrapper.shadowRoot.querySelector('#forgotPasswordButton');
+ 
+     const footerElement = formWrapper.shadowRoot.querySelector('[part="footer"] p');
+@@ -169,14 +169,14 @@
+   });
+ 
+   it('should disable button after submitting form', () => {
+-    const submit = login.querySelector('vaadin-button[part="vaadin-login-submit"]');
++    const submit = login.querySelector('vaadin23-button[part="vaadin-login-submit"]');
+     const { vaadinLoginPassword } = fillUsernameAndPassword(login);
+     enter(vaadinLoginPassword);
+     expect(submit.disabled).to.be.true;
+   });
+ 
+   it('should prevent submit call when login is disabled', () => {
+-    const submit = login.querySelector('vaadin-button[part="vaadin-login-submit"]');
++    const submit = login.querySelector('vaadin23-button[part="vaadin-login-submit"]');
+     const { vaadinLoginPassword } = fillUsernameAndPassword(login);
+ 
+     login.setAttribute('disabled', 'disabled');
+@@ -188,14 +188,14 @@
+   });
+ 
+   it('should not disable button on button click if form is invalid', () => {
+-    const submit = login.querySelector('vaadin-button[part="vaadin-login-submit"]');
++    const submit = login.querySelector('vaadin23-button[part="vaadin-login-submit"]');
+     expect(submit.disabled).to.not.be.true;
+     tap(submit);
+     expect(submit.disabled).to.not.be.true;
+   });
+ 
+   it('should disable button on button click if form is valid', () => {
+-    const submit = login.querySelector('vaadin-button[part="vaadin-login-submit"]');
++    const submit = login.querySelector('vaadin23-button[part="vaadin-login-submit"]');
+     fillUsernameAndPassword(login);
+     tap(submit);
+     expect(submit.disabled).to.be.true;
 @@ -269,7 +269,7 @@
    let login;
  
