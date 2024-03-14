@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "web-dev-server --node-resolve --open /dev",
+    "clean:node": "rm -rf node_modules && find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "build:clean": "rimraf ./git_modules && rimraf ./packages && rimraf ./buildinfo && npm run git_modules && npm run build",
     "build": "npm run build:meta && npm run build:packages",
     "build:packages": "node scripts/build.js",
@@ -23,7 +24,6 @@
   ],
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4",
-    "@vaadin/testing-helpers": "^0.6.0",
     "@web/dev-server": "^0.4.3",
     "@web/dev-server-esbuild": "^1.0.2",
     "@web/rollup-plugin-html": "^2.1.2",
@@ -40,6 +40,8 @@
     "rimraf": "^5.0.5",
     "simple-git": "^3.22.0",
     "sinon": "^13.0.2",
-    "terser": "^5.28.1"
+    "terser": "^5.28.1",
+    "@vaadin/testing-helpers": "^0.5.0",
+    "@polymer/iron-overlay-behavior": "^3.0.0"
   }
 }

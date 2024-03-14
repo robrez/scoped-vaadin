@@ -97,9 +97,7 @@ export const elementMeta = [
   {
     "package": "@vaadin/component-base",
     "elementNames": [],
-    "eventNames": [
-      "lit-debug"
-    ]
+    "eventNames": []
   },
   {
     "package": "@vaadin/confirm-dialog",
@@ -229,7 +227,6 @@ export const elementMeta = [
       "helper-changed",
       "input",
       "label-changed",
-      "lit-debug",
       "validated"
     ]
   },
@@ -243,7 +240,6 @@ export const elementMeta = [
       "vaadin-user-tags-overlay"
     ],
     "eventNames": [
-      "lit-debug",
       "user-tag-click"
     ]
   },
@@ -305,7 +301,6 @@ export const elementMeta = [
       "vaadin-iconset"
     ],
     "eventNames": [
-      "lit-debug",
       "vaadin-iconset-registered"
     ]
   },
@@ -355,9 +350,7 @@ export const elementMeta = [
   {
     "package": "@vaadin/lit-renderer",
     "elementNames": [],
-    "eventNames": [
-      "lit-debug"
-    ]
+    "eventNames": []
   },
   {
     "package": "@vaadin/login",
@@ -440,7 +433,6 @@ export const elementMeta = [
       "vaadin-notification-container"
     ],
     "eventNames": [
-      "lit-debug",
       "opened-changed"
     ]
   },
@@ -490,9 +482,7 @@ export const elementMeta = [
       "vaadin-template-renderer-grid-templatizer",
       "vaadin-template-renderer-templatizer"
     ],
-    "eventNames": [
-      "lit-debug"
-    ]
+    "eventNames": []
   },
   {
     "package": "@vaadin/progress-bar",
@@ -679,9 +669,7 @@ export const elementMeta = [
   {
     "package": "@vaadin/vaadin-themable-mixin",
     "elementNames": [],
-    "eventNames": [
-      "lit-debug"
-    ]
+    "eventNames": []
   },
   {
     "package": "@vaadin/vaadin-usage-statistics",

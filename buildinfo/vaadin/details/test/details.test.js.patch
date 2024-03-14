@@ -38,7 +38,21 @@ Index: test/details.test.js
      });
    });
  
-@@ -148,17 +149,17 @@
+@@ -136,29 +137,29 @@
+     });
+ 
+     it('should set aria-controls on toggle button', () => {
+-      const idRegex = /^vaadin-details-content-\d+$/;
++      const idRegex = /^vaadin23-details-content-\d+$/;
+       expect(idRegex.test(toggle.getAttribute('aria-controls'))).to.be.true;
+     });
+   });
+ 
+   describe('unique IDs', () => {
+-    const idRegex = /^vaadin-details-content-\d+$/;
++    const idRegex = /^vaadin23-details-content-\d+$/;
+     let container, details;
+ 
      beforeEach(() => {
        container = fixtureSync(`
          <div>

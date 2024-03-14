@@ -2,6 +2,15 @@ Index: test/login-submit.test.js
 ===================================================================
 --- test/login-submit.test.js
 +++ test/login-submit.test.js
+@@ -23,7 +23,7 @@
+       done();
+     };
+ 
+-    login.querySelector('vaadin-button[part="vaadin-login-submit"]').click();
++    login.querySelector('vaadin23-button[part="vaadin-login-submit"]').click();
+     expect(submitSpy.called).to.equal(expectation);
+ 
+     if (preventDefault) {
 @@ -49,7 +49,7 @@
  
    describe('default', () => {
