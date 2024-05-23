@@ -5,13 +5,13 @@ Index: test/header-footer.test.js
 @@ -9,7 +9,7 @@
    let dialog, overlay;
  
-   beforeEach(() => {
+   beforeEach(async () => {
 -    dialog = fixtureSync('<vaadin-dialog></vaadin-dialog>');
 +    dialog = fixtureSync('<vaadin23-dialog></vaadin23-dialog>');
+     await nextRender();
      overlay = dialog.$.overlay;
    });
- 
-@@ -537,7 +537,7 @@
+@@ -576,7 +576,7 @@
    let dialog;
  
    beforeEach(() => {

@@ -6,7 +6,7 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/integer-field",
--  "version": "23.4.0",
+-  "version": "23.4.1",
 +  "name": "@scoped-vaadin/integer-field",
 +  "version": "23.0.2",
    "description-markup": "markdown",
@@ -15,9 +15,9 @@ Index: web-types.json
        "elements": [
          {
 -          "name": "vaadin-integer-field",
--          "description": "`<vaadin-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin-integer-field label=\"X\"></vaadin-integer-field>\n```\n\n### Styling\n\n`<vaadin-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.\nSee [`<vaadin-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
+-          "description": "`<vaadin-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin-integer-field label=\"X\"></vaadin-integer-field>\n```\n\n### Styling\n\n`<vaadin-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.\nSee [`<vaadin-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.4.1/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
 +          "name": "vaadin23-integer-field",
-+          "description": "`<vaadin23-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin23-integer-field label=\"X\"></vaadin23-integer-field>\n```\n\n### Styling\n\n`<vaadin23-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin23-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
++          "description": "`<vaadin23-integer-field>` is an input field web component that only accepts entering integer numbers.\n\n```html\n<vaadin23-integer-field label=\"X\"></vaadin23-integer-field>\n```\n\n### Styling\n\n`<vaadin23-integer-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin23-text-field>`.\nSee [`<vaadin23-text-field>`](https://cdn.vaadin.com/vaadin-web-components/23.4.1/#/elements/vaadin-text-field) for the styling documentation.\n\nIn addition to `<vaadin23-text-field>` parts, the following parts are available for theming:\n\nPart name         | Description\n------------------|-------------------------\n`increase-button` | Increase (\"plus\") button\n`decrease-button` | Decrease (\"minus\") button\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.",
            "attributes": [
              {
                "name": "disabled",
