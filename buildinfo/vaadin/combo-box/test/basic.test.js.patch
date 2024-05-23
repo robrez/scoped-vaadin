@@ -81,10 +81,9 @@ Index: test/basic.test.js
 +      <vaadin23-combo-box
          opened
          items="[0]"
--        style="--vaadin-combo-box-overlay-max-height: 200px"
+         style="--vaadin-combo-box-overlay-max-height: 200px"
 -      ></vaadin-combo-box>`);
 -    const scroller = comboBox.$.overlay.querySelector('vaadin-combo-box-scroller');
-+        style="--vaadin23-combo-box-overlay-max-height: 200px"
 +      ></vaadin23-combo-box>`);
 +    const scroller = comboBox.$.overlay.querySelector('vaadin23-combo-box-scroller');
      expect(scroller.style.maxHeight).to.equal('200px');

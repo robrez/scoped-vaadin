@@ -166,10 +166,19 @@ export function processLocalName(content) {
   // standard-fare custom property names
   // we want this:  --_vaadin-time-picker-overlay-default-width
   // not this:      --_vaadin24-time-picker-overlay-default-width
-  return content.replaceAll(
+  content = content.replaceAll(
     `const propPrefix = this.localName;`,
     `const propPrefix = this.localName.replace('vaadin${majorVersion}', 'vaadin');`
   );
+
+  // same as above but against _tagNamePrefix rather than localName
+  // we want this:   --vaadin-combo-box-overlay-max-height
+  // not this:       --vaadin24-combo-box-overlay-max-height
+  content = content.replaceAll(
+    "--${this._tagNamePrefix}-",
+    `--\${this._tagNamePrefix.replace('vaadin${majorVersion}', 'vaadin')}-`
+  );
+  return content;
 }
 
 function computePackagesRe() {

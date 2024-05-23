@@ -45,6 +45,15 @@ Index: src/vaadin-combo-box-mixin.js
      }
  
      /**
+@@ -476,7 +476,7 @@
+       if (scroller) {
+         if (opened) {
+           scroller.style.maxHeight =
+-            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix}-overlay-max-height`) || '65vh';
++            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix.replace('vaadin23', 'vaadin')}-overlay-max-height`) || '65vh';
+         }
+ 
+         scroller.setProperties({
 @@ -610,7 +610,7 @@
       * @private
       */
