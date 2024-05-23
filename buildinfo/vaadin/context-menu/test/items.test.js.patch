@@ -17,7 +17,16 @@ Index: test/items.test.js
  
  const menuOpenEvent = isTouch ? 'click' : 'mouseover';
  
-@@ -41,7 +41,7 @@
+@@ -26,7 +26,7 @@
+   let rootMenu, subMenu, target;
+ 
+   const createComponent = (text) => {
+-    const item = document.createElement('vaadin-context-menu-item');
++    const item = document.createElement('vaadin23-context-menu-item');
+     item.textContent = text;
+     return item;
+   };
+@@ -47,7 +47,7 @@
    };
  
    const getSubMenu = (menu = rootMenu) => {
@@ -26,7 +35,7 @@ Index: test/items.test.js
    };
  
    const updateItemsAndReopen = async () => {
-@@ -53,8 +53,8 @@
+@@ -59,8 +59,8 @@
  
    const getMenuItems = (menu = rootMenu) => {
      const overlay = menu.$.overlay;
@@ -37,7 +46,7 @@ Index: test/items.test.js
    };
  
    afterEach(() => {
-@@ -64,9 +64,9 @@
+@@ -70,9 +70,9 @@
    describe('default', () => {
      beforeEach(async () => {
        rootMenu = fixtureSync(`
@@ -49,7 +58,7 @@ Index: test/items.test.js
        `);
        rootMenu.openOn = menuOpenEvent;
        target = rootMenu.firstElementChild;
-@@ -214,7 +214,7 @@
+@@ -228,7 +228,7 @@
      });
  
      it('should have default item type', () => {
@@ -58,7 +67,7 @@ Index: test/items.test.js
      });
  
      it('should accept component items', () => {
-@@ -514,9 +514,9 @@
+@@ -556,9 +556,9 @@
  
      beforeEach(async () => {
        rootMenu = fixtureSync(`
@@ -70,7 +79,7 @@ Index: test/items.test.js
        `);
        rootMenu.openOn = menuOpenEvent;
        target = rootMenu.firstElementChild;
-@@ -552,8 +552,8 @@
+@@ -594,8 +594,8 @@
      it('should propagate host theme attribute to the nested elements', () => {
        [rootMenu, subMenu, subMenu2].forEach((subMenu) => {
          const overlay = subMenu.$.overlay;
@@ -81,7 +90,7 @@ Index: test/items.test.js
  
          expect(overlay.getAttribute('theme')).to.equal('foo');
          expect(listBox.getAttribute('theme')).to.equal('foo');
-@@ -582,8 +582,8 @@
+@@ -624,8 +624,8 @@
  
        [rootMenu, subMenu, subMenu2].forEach((subMenu) => {
          const overlay = subMenu.$.overlay;

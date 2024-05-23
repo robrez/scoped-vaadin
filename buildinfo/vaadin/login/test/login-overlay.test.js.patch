@@ -11,25 +11,25 @@ Index: test/login-overlay.test.js
    });
  
    afterEach(() => {
-@@ -17,7 +17,7 @@
- 
-   it('should render form wrapper when opened', () => {
+@@ -18,7 +18,7 @@
+   it('should render form wrapper when opened', async () => {
      overlay.opened = true;
+     await nextRender();
 -    expect(document.querySelector('vaadin-login-form-wrapper')).to.be.ok;
 +    expect(document.querySelector('vaadin23-login-form-wrapper')).to.be.ok;
    });
  });
  
-@@ -33,7 +33,7 @@
+@@ -34,7 +34,7 @@
    });
  
-   beforeEach(() => {
+   beforeEach(async () => {
 -    overlay = fixtureSync('<vaadin-login-overlay opened theme="some-theme"></vaadin-login-overlay>');
 +    overlay = fixtureSync('<vaadin23-login-overlay opened theme="some-theme"></vaadin23-login-overlay>');
+     await nextRender();
    });
  
-   afterEach(() => {
-@@ -43,12 +43,12 @@
+@@ -45,12 +45,12 @@
  
    it('should set opened using attribute', () => {
      expect(overlay.opened).to.be.true;
@@ -43,10 +43,10 @@ Index: test/login-overlay.test.js
 +    expect(document.querySelector('vaadin23-login-form-wrapper')).not.to.exist;
    });
  
-   it('should not remove form wrapper when moved within DOM', () => {
-@@ -56,11 +56,11 @@
-     document.body.appendChild(newParent);
+   it('should not remove form wrapper when moved within DOM', async () => {
+@@ -59,11 +59,11 @@
      newParent.appendChild(overlay);
+     await nextRender();
  
 -    expect(document.querySelector('vaadin-login-form-wrapper')).to.exist;
 +    expect(document.querySelector('vaadin23-login-form-wrapper')).to.exist;
@@ -58,7 +58,7 @@ Index: test/login-overlay.test.js
      expect(wrapper.getAttribute('theme')).to.be.equal('some-theme');
    });
  
-@@ -121,7 +121,7 @@
+@@ -124,7 +124,7 @@
    let overlay;
  
    beforeEach(() => {
@@ -66,19 +66,19 @@ Index: test/login-overlay.test.js
 +    overlay = fixtureSync('<vaadin23-login-overlay no-autofocus></vaadin23-login-overlay>');
    });
  
-   it('should not focus the username field', () => {
-@@ -136,7 +136,7 @@
+   it('should not focus the username field', async () => {
+@@ -140,7 +140,7 @@
  
-   beforeEach(() => {
+   beforeEach(async () => {
      overlay = fixtureSync(`
 -      <vaadin-login-overlay title="New title" description="New description" opened></vaadin-login-overlay>
 +      <vaadin23-login-overlay title="New title" description="New description" opened></vaadin23-login-overlay>
      `);
+     await nextRender();
      headerElement = overlay.$.vaadinLoginOverlayWrapper.shadowRoot.querySelector('[part="brand"] h1');
-     descriptionElement = overlay.$.vaadinLoginOverlayWrapper.shadowRoot.querySelector('[part="brand"] p');
-@@ -179,9 +179,9 @@
+@@ -184,9 +184,9 @@
  
-   beforeEach(() => {
+   beforeEach(async () => {
      overlay = fixtureSync(`
 -      <vaadin-login-overlay description="New description" opened>
 +      <vaadin23-login-overlay description="New description" opened>
@@ -86,5 +86,5 @@ Index: test/login-overlay.test.js
 -      </vaadin-login-overlay>
 +      </vaadin23-login-overlay>
      `);
+     await nextRender();
      overlayWrapper = overlay.$.vaadinLoginOverlayWrapper;
-   });

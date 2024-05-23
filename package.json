@@ -14,7 +14,7 @@
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "test:chrome": "web-test-runner --config web-test-runner-chrome.config.cjs",
-    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v23.4.0 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
+    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v23.4.1 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
   },
   "author": "",
   "license": "Apache-2.0",

@@ -108,7 +108,7 @@ Index: test/focus-trap.test.js
        `;
      }
    },
-@@ -116,12 +117,12 @@
+@@ -119,12 +120,12 @@
        expect(focusableElements[1]).to.eql(overlay.content.querySelector('select'));
        expect(focusableElements[2]).to.eql(overlay.$.overlay);
        expect(focusableElements[3]).to.eql(overlay.content.querySelector('button'));
@@ -123,7 +123,7 @@ Index: test/focus-trap.test.js
      });
  
      it('should focus focusable elements inside the content when focusTrap = true', async () => {
-@@ -173,7 +174,7 @@
+@@ -179,7 +180,7 @@
        overlay.opened = true;
        await oneEvent(overlay, 'vaadin-overlay-open');
  
@@ -132,7 +132,7 @@ Index: test/focus-trap.test.js
        button.focus();
        button.blur();
  
-@@ -270,23 +271,23 @@
+@@ -283,23 +284,23 @@
      beforeEach(async () => {
        parent = fixtureSync(`
          <div>
@@ -165,7 +165,7 @@ Index: test/focus-trap.test.js
          </div>
        `);
        await nextRender();
-@@ -313,12 +314,12 @@
+@@ -329,12 +330,12 @@
        expect(focusableElements[1]).to.eql(overlay.content.querySelector('select'));
        expect(focusableElements[2]).to.eql(overlay.$.overlay);
        expect(focusableElements[3]).to.eql(overlay.content.querySelector('button'));
@@ -180,16 +180,16 @@ Index: test/focus-trap.test.js
      });
  
      it('should focus focusable elements inside the content when focusTrap = true', async () => {
-@@ -369,7 +370,7 @@
-       overlay.opened = true;
+@@ -389,7 +390,7 @@
        await oneEvent(overlay, 'vaadin-overlay-open');
+       focusableElements = getFocusableElements(overlay.$.overlay);
  
 -      const button = overlay.content.querySelector('vaadin-button');
 +      const button = overlay.content.querySelector('vaadin23-button');
        button.focus();
        button.blur();
  
-@@ -379,13 +380,13 @@
+@@ -399,13 +400,13 @@
      describe('shadow content', () => {
        beforeEach(() => {
          overlay = fixtureSync(`
@@ -203,9 +203,9 @@ Index: test/focus-trap.test.js
 -          </vaadin-overlay>
 +          </vaadin23-overlay>
          `);
-         focusableElements = getFocusableElements(overlay.$.overlay);
        });
-@@ -456,10 +457,10 @@
+ 
+@@ -483,10 +484,10 @@
        beforeEach(() => {
          parent = fixtureSync(`
            <div>

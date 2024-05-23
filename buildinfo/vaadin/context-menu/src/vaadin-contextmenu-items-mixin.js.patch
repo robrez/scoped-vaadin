@@ -99,7 +99,7 @@ Index: src/vaadin-contextmenu-items-mixin.js
          }
  
          if (component instanceof Item) {
-@@ -272,7 +273,7 @@
+@@ -273,7 +274,7 @@
      /** @private */
      __initMenu(root, menu) {
        if (!root.firstElementChild) {
@@ -108,7 +108,7 @@ Index: src/vaadin-contextmenu-items-mixin.js
          root.appendChild(listBox);
  
          if (this._theme) {
-@@ -335,7 +336,7 @@
+@@ -336,7 +337,7 @@
          });
          const openSubMenu = (
            e,
@@ -117,7 +117,7 @@ Index: src/vaadin-contextmenu-items-mixin.js
          ) => {
            // Delay enabling the mouseover listener to avoid it from triggering on parent menu open
            if (!this.__openListenerActive) {
-@@ -379,7 +380,7 @@
+@@ -380,7 +381,7 @@
            }
          });
        } else {
