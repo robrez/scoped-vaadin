@@ -157,7 +157,7 @@ Index: src/vaadin-split-layout.js
    }
  
    static get properties() {
-@@ -351,6 +352,6 @@
+@@ -372,6 +373,6 @@
     */
  }
  

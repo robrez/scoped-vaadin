@@ -36,7 +36,7 @@ Index: src/vaadin-combo-box-mixin.js
           * - `model` The object with the properties related with the rendered
           *   item, contains:
           *   - `model.index` The index of the rendered item.
-@@ -259,7 +259,7 @@
+@@ -267,7 +267,7 @@
       * @return {string}
       */
      get _tagNamePrefix() {
@@ -45,7 +45,16 @@ Index: src/vaadin-combo-box-mixin.js
      }
  
      /**
-@@ -600,7 +600,7 @@
+@@ -476,7 +476,7 @@
+       if (scroller) {
+         if (opened) {
+           scroller.style.maxHeight =
+-            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix}-overlay-max-height`) || '65vh';
++            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix.replace('vaadin23', 'vaadin')}-overlay-max-height`) || '65vh';
+         }
+ 
+         scroller.setProperties({
+@@ -610,7 +610,7 @@
       * @private
       */
      _onToggleButtonClick(event) {
@@ -54,7 +63,7 @@ Index: src/vaadin-combo-box-mixin.js
        // from handling the click event after it bubbles.
        event.preventDefault();
  
-@@ -1330,13 +1330,13 @@
+@@ -1338,13 +1338,13 @@
       */
  
      /**

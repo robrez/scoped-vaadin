@@ -16,3 +16,12 @@ Index: theme/material/vaadin-tabs-styles.js
    css`
      :host {
        -webkit-tap-highlight-color: transparent;
+@@ -69,7 +69,7 @@
+     }
+ 
+     /* Fixed width tabs */
+-    :host([theme~='fixed']) [part='tabs'] ::slotted(vaadin-tab) {
++    :host([theme~='fixed']) [part='tabs'] ::slotted(vaadin23-tab) {
+       flex-basis: 0.0001px;
+     }
+ 

@@ -70,7 +70,7 @@ Index: test/dom/__snapshots__/message.test.snap.js
  <div part="content">
    <div part="header">
      <span part="name">
-@@ -99,7 +99,7 @@
+@@ -99,14 +99,14 @@
  /* end snapshot vaadin-message userImg */
  
  snapshots["vaadin-message userColorIndex"] = 
@@ -79,8 +79,7 @@ Index: test/dom/__snapshots__/message.test.snap.js
    aria-hidden="true"
    has-color-index=""
    part="avatar"
-@@ -107,7 +107,7 @@
-   style="--vaadin-avatar-user-color:var(--vaadin-user-color-2);"
+   role="button"
    tabindex="-1"
  >
 -</vaadin-message-avatar>
@@ -88,7 +87,7 @@ Index: test/dom/__snapshots__/message.test.snap.js
  <div part="content">
    <div part="header">
      <span part="name">
-@@ -124,13 +124,13 @@
+@@ -123,13 +123,13 @@
  /* end snapshot vaadin-message userColorIndex */
  
  snapshots["vaadin-message time"] = 

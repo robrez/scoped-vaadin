@@ -53,7 +53,7 @@ Index: src/vaadin-multi-select-combo-box-internal.js
      `;
    }
  
-@@ -116,7 +117,7 @@
+@@ -141,7 +142,7 @@
     * @return {string}
     */
    get _tagNamePrefix() {
@@ -62,7 +62,7 @@ Index: src/vaadin-multi-select-combo-box-internal.js
    }
  
    /**
-@@ -343,4 +344,4 @@
+@@ -446,4 +447,4 @@
    }
  }
  

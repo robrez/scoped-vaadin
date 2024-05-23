@@ -2,6 +2,7 @@ import { elementMeta } from "./element-meta.js";
 import { ignorePackages } from "./ignore-packages.js";
 import ignoreTests from "./ignore-tests.js";
 import {
+  ignoreElementNames,
   supplementalElementNames,
   supplementalCssSelectors,
 } from "./supplemental-targets.js";
@@ -9,6 +10,7 @@ import { versionMeta } from "./version.js";
 
 export {
   elementMeta,
+  ignoreElementNames,
   ignorePackages,
   ignoreTests,
   supplementalCssSelectors,

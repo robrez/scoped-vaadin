@@ -6,9 +6,9 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/item",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/item",
-+  "version": "23.0.1",
++  "version": "23.0.2",
    "description-markup": "markdown",
    "contributions": {
      "html": {
@@ -21,3 +21,12 @@ Index: web-types.json
            "attributes": [
              {
                "name": "selected",
+@@ -53,7 +53,7 @@
+               },
+               {
+                 "name": "label",
+-                "description": "String that can be set to visually represent the selected item in `vaadin-select`.",
++                "description": "String that can be set to visually represent the selected item in `vaadin23-select`.",
+                 "value": {
+                   "type": [
+                     "string"

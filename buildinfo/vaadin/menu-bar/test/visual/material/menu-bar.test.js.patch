@@ -21,7 +21,7 @@ Index: test/visual/material/menu-bar.test.js
            element.items = [
              { text: 'Home' },
              {
-@@ -51,7 +51,7 @@
+@@ -62,7 +62,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  
@@ -30,7 +30,7 @@ Index: test/visual/material/menu-bar.test.js
            element.items = [{ text: 'Actions' }];
            element.setAttribute('theme', 'outlined');
          });
-@@ -69,8 +69,8 @@
+@@ -80,8 +80,8 @@
  
        describe('theme', () => {
          function makeIcon(img) {
@@ -41,7 +41,7 @@ Index: test/visual/material/menu-bar.test.js
            icon.setAttribute('icon', img);
            item.appendChild(icon);
            item.setAttribute('theme', 'menu-bar-item');
-@@ -81,7 +81,7 @@
+@@ -92,7 +92,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  

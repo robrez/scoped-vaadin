@@ -34,7 +34,7 @@ Index: src/vaadin-multi-select-combo-box.js
  
  const multiSelectComboBox = css`
    :host {
-@@ -48,16 +49,16 @@
+@@ -56,16 +57,16 @@
    }
  `;
  
@@ -54,7 +54,7 @@ Index: src/vaadin-multi-select-combo-box.js
   * ```
   *
   * ```js
-@@ -112,14 +113,14 @@
+@@ -120,14 +121,14 @@
   *
   * ### Internal components
   *
@@ -74,7 +74,7 @@ Index: src/vaadin-multi-select-combo-box.js
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
-@@ -139,18 +140,18 @@
+@@ -147,18 +148,18 @@
   */
  class MultiSelectComboBox extends ResizeMixin(InputControlMixin(ThemableMixin(ElementMixin(PolymerElement)))) {
    static get is() {
@@ -96,15 +96,16 @@ Index: src/vaadin-multi-select-combo-box.js
            id="comboBox"
            items="[[__effectiveItems]]"
            item-id-path="[[itemIdPath]]"
-@@ -175,14 +176,14 @@
+@@ -186,7 +187,7 @@
            on-custom-value-set="_onCustomValueSet"
            on-filtered-items-changed="_onFilteredItemsChanged"
          >
 -          <vaadin-multi-select-combo-box-container
 +          <vaadin23-multi-select-combo-box-container
              part="input-field"
+             auto-expand-vertically="[[autoExpandVertically]]"
              readonly="[[readonly]]"
-             disabled="[[disabled]]"
+@@ -194,7 +195,7 @@
              invalid="[[invalid]]"
              theme$="[[_theme]]"
            >
@@ -113,7 +114,7 @@ Index: src/vaadin-multi-select-combo-box.js
                id="overflow"
                slot="prefix"
                part$="[[_getOverflowPart(_overflowItems.length)]]"
-@@ -192,7 +193,7 @@
+@@ -204,7 +205,7 @@
                title$="[[_getOverflowTitle(_overflowItems)]]"
                hidden$="[[_isOverflowHidden(_overflowItems.length)]]"
                on-mousedown="_preventBlur"
@@ -122,7 +123,7 @@ Index: src/vaadin-multi-select-combo-box.js
              <div id="chips" part="chips" slot="prefix"></div>
              <slot name="input"></slot>
              <div
-@@ -203,8 +204,8 @@
+@@ -215,8 +216,8 @@
                aria-hidden="true"
              ></div>
              <div id="toggleButton" class="toggle-button" part="toggle-button" slot="suffix" aria-hidden="true"></div>
@@ -133,7 +134,7 @@ Index: src/vaadin-multi-select-combo-box.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -406,8 +407,8 @@
+@@ -451,8 +452,8 @@
         * Custom function for rendering the content of every item.
         * Receives three arguments:
         *
@@ -144,7 +145,7 @@ Index: src/vaadin-multi-select-combo-box.js
         * - `model` The object with the properties related with the rendered
         *   item, contains:
         *   - `model.index` The index of the rendered item.
-@@ -827,7 +828,7 @@
+@@ -933,7 +934,7 @@
  
    /** @private */
    __createChip(item) {
@@ -153,8 +154,8 @@ Index: src/vaadin-multi-select-combo-box.js
      chip.setAttribute('part', 'chip');
      chip.setAttribute('slot', 'prefix');
  
-@@ -1145,6 +1146,6 @@
-   }
+@@ -1303,6 +1304,6 @@
+    */
  }
  
 -customElements.define(MultiSelectComboBox.is, MultiSelectComboBox);

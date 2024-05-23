@@ -16,3 +16,12 @@ Index: theme/material/vaadin-tab-styles.js
    css`
      :host {
        display: flex;
+@@ -128,7 +128,7 @@
+     }
+ 
+     /* Small space between icon and label */
+-    ::slotted(vaadin-icon:not(:only-child)),
++    ::slotted(vaadin23-icon:not(:only-child)),
+     ::slotted(iron-icon:not(:only-child)) {
+       margin-bottom: 8px;
+     }

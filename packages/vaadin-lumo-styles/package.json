@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/vaadin-lumo-styles",
-  "version": "23.0.1",
+  "version": "23.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -43,8 +43,8 @@
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/icon": "^23.0.1",
-    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
-    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
+    "@scoped-vaadin/icon": "^23.0.2",
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.2",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.2"
   }
 }

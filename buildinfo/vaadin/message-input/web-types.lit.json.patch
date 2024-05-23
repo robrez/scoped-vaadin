@@ -6,9 +6,9 @@ Index: web-types.lit.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/message-input",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/message-input",
-+  "version": "23.0.1",
++  "version": "23.0.2",
    "description-markup": "markdown",
    "framework": "lit",
    "framework-config": {
@@ -17,9 +17,9 @@ Index: web-types.lit.json
        "elements": [
          {
 -          "name": "vaadin-message-input",
--          "description": "`<vaadin-message-input>` is a Web Component for sending messages.\nIt consists of a text area that grows on along with the content, and a send button to send message.\n\nThe message can be sent by one of the following actions:\n- by pressing Enter (use Shift + Enter to add a new line)\n- by clicking `submit` button.\n\n```html\n<vaadin-message-input></vaadin-message-input>\n```\n\n### Internal components\n\nIn addition to `<vaadin-message-input>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin-message-input-button>` - has the same API as [`<vaadin-button>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-button).\n- `<vaadin-message-input-text-area>` - has the same API as [`<vaadin-text-area>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-area).",
+-          "description": "`<vaadin-message-input>` is a Web Component for sending messages.\nIt consists of a text area that grows on along with the content, and a send button to send message.\n\nThe message can be sent by one of the following actions:\n- by pressing Enter (use Shift + Enter to add a new line)\n- by clicking `submit` button.\n\n```html\n<vaadin-message-input></vaadin-message-input>\n```\n\n### Internal components\n\nIn addition to `<vaadin-message-input>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin-message-input-button>` - has the same API as [`<vaadin-button>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-button).\n- `<vaadin-message-input-text-area>` - has the same API as [`<vaadin-text-area>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-text-area).",
 +          "name": "vaadin23-message-input",
-+          "description": "`<vaadin23-message-input>` is a Web Component for sending messages.\nIt consists of a text area that grows on along with the content, and a send button to send message.\n\nThe message can be sent by one of the following actions:\n- by pressing Enter (use Shift + Enter to add a new line)\n- by clicking `submit` button.\n\n```html\n<vaadin23-message-input></vaadin23-message-input>\n```\n\n### Internal components\n\nIn addition to `<vaadin23-message-input>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin23-message-input-button>` - has the same API as [`<vaadin23-button>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-button).\n- `<vaadin23-message-input-text-area>` - has the same API as [`<vaadin23-text-area>`](https://cdn.vaadin.com/vaadin-web-components/23.3.8/#/elements/vaadin-text-area).",
++          "description": "`<vaadin23-message-input>` is a Web Component for sending messages.\nIt consists of a text area that grows on along with the content, and a send button to send message.\n\nThe message can be sent by one of the following actions:\n- by pressing Enter (use Shift + Enter to add a new line)\n- by clicking `submit` button.\n\n```html\n<vaadin23-message-input></vaadin23-message-input>\n```\n\n### Internal components\n\nIn addition to `<vaadin23-message-input>` itself, the following internal\ncomponents are themable:\n\n- `<vaadin23-message-input-button>` - has the same API as [`<vaadin23-button>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-button).\n- `<vaadin23-message-input-text-area>` - has the same API as [`<vaadin23-text-area>`](https://cdn.vaadin.com/vaadin-web-components/23.4.0/#/elements/vaadin-text-area).",
            "extension": true,
            "attributes": [
              {

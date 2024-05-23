@@ -14,7 +14,46 @@ Index: theme/material/vaadin-button-styles.js
  
  const button = css`
    :host {
-@@ -169,6 +169,6 @@
+@@ -116,20 +116,20 @@
+ 
+   /* Icon alignment */
+ 
+-  [part] ::slotted(vaadin-icon),
++  [part] ::slotted(vaadin23-icon),
+   [part] ::slotted(iron-icon) {
+     display: block;
+     width: 18px;
+     height: 18px;
+   }
+ 
+-  [part='prefix'] ::slotted(vaadin-icon),
++  [part='prefix'] ::slotted(vaadin23-icon),
+   [part='prefix'] ::slotted(iron-icon) {
+     margin-right: 8px;
+     margin-left: -4px;
+   }
+ 
+-  [part='suffix'] ::slotted(vaadin-icon),
++  [part='suffix'] ::slotted(vaadin23-icon),
+   [part='suffix'] ::slotted(iron-icon) {
+     margin-left: 8px;
+     margin-right: -4px;
+@@ -156,19 +156,19 @@
+     transform: translate(50%, -50%) scale(1);
+   }
+ 
+-  :host([dir='rtl']) [part='prefix'] ::slotted(vaadin-icon),
++  :host([dir='rtl']) [part='prefix'] ::slotted(vaadin23-icon),
+   :host([dir='rtl']) [part='prefix'] ::slotted(iron-icon) {
+     margin-right: -4px;
+     margin-left: 8px;
+   }
+ 
+-  :host([dir='rtl']) [part='suffix'] ::slotted(vaadin-icon),
++  :host([dir='rtl']) [part='suffix'] ::slotted(vaadin23-icon),
+   :host([dir='rtl']) [part='suffix'] ::slotted(iron-icon) {
+     margin-left: -4px;
+     margin-right: 8px;
    }
  `;
  

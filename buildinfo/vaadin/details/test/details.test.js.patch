@@ -38,7 +38,7 @@ Index: test/details.test.js
      });
    });
  
-@@ -136,29 +137,29 @@
+@@ -143,29 +144,29 @@
      });
  
      it('should set aria-controls on toggle button', () => {

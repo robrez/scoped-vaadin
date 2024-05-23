@@ -111,7 +111,7 @@ Index: src/vaadin-combo-box-light.js
        const slottedInput = input.querySelector('input');
        if (slottedInput) {
          return slottedInput;
-@@ -203,6 +204,6 @@
+@@ -219,6 +220,6 @@
    }
  }
  

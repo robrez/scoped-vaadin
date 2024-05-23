@@ -6,9 +6,9 @@ Index: web-types.lit.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/checkbox-group",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/checkbox-group",
-+  "version": "23.0.1",
++  "version": "23.0.2",
    "description-markup": "markdown",
    "framework": "lit",
    "framework-config": {

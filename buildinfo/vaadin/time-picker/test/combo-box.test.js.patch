@@ -17,20 +17,12 @@ Index: test/combo-box.test.js
    });
  
    it('should define a toggle element on the combo-box', () => {
-@@ -112,14 +112,14 @@
+@@ -112,7 +112,7 @@
    let timePicker, inputElement;
  
    beforeEach(() => {
 -    timePicker = fixtureSync(`<vaadin-time-picker auto-open-disabled value="05:00"></vaadin-time-picker>`);
 +    timePicker = fixtureSync(`<vaadin23-time-picker auto-open-disabled value="05:00"></vaadin23-time-picker>`);
      inputElement = timePicker.inputElement;
-   });
- 
-   it('should focus the correct item when opened', () => {
-     timePicker.open();
- 
--    const items = document.querySelectorAll('vaadin-time-picker-item');
-+    const items = document.querySelectorAll('vaadin23-time-picker-item');
-     expect(items[5].hasAttribute('focused')).to.be.true;
    });
  

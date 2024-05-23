@@ -11,7 +11,7 @@ Index: src/vaadin-menu-bar-buttons-mixin.js
  
  /**
   * @polymerMixin
-@@ -187,7 +187,7 @@
+@@ -220,7 +220,7 @@
  
      /** @protected */
      _initButton(item) {
@@ -20,7 +20,7 @@ Index: src/vaadin-menu-bar-buttons-mixin.js
        button.setAttribute('part', 'menu-bar-button');
  
        const itemCopy = { ...item };
-@@ -251,10 +251,10 @@
+@@ -284,10 +284,10 @@
  
        const isElement = itemComponent instanceof HTMLElement;
        // Use existing item component, if any

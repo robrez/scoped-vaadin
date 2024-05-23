@@ -17,7 +17,7 @@ Index: test/keyboard-navigation.test.js
  import {
    flushGrid,
    getCell,
-@@ -188,16 +188,16 @@
+@@ -192,16 +192,16 @@
  describe('keyboard navigation', () => {
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -38,7 +38,7 @@ Index: test/keyboard-navigation.test.js
            <template class="header">
              <input>
            </template>
-@@ -207,8 +207,8 @@
+@@ -211,8 +211,8 @@
            <template class="footer">
              <input>
            </template>
@@ -49,7 +49,7 @@ Index: test/keyboard-navigation.test.js
            <template class="header">
              <div></div>
              <div></div>
-@@ -219,8 +219,8 @@
+@@ -223,8 +223,8 @@
              </span>
            </template>
            <template class="footer"></template>
@@ -60,7 +60,7 @@ Index: test/keyboard-navigation.test.js
      `);
  
      scroller = grid.$.scroller;
-@@ -442,7 +442,7 @@
+@@ -446,7 +446,7 @@
      });
  
      it('should be possible to tab through the grid when first column is hidden', () => {
@@ -69,7 +69,7 @@ Index: test/keyboard-navigation.test.js
        firstColumn.hidden = true;
  
        const tabbableElements = getTabbableElements(grid.shadowRoot);
-@@ -467,7 +467,7 @@
+@@ -471,7 +471,7 @@
      });
  
      it('should be possible to shift-tab through grid when first column is hidden', () => {
@@ -78,7 +78,18 @@ Index: test/keyboard-navigation.test.js
        firstColumn.hidden = true;
  
        const tabbableElements = getTabbableElements(grid.shadowRoot);
-@@ -1443,7 +1443,7 @@
+@@ -1159,8 +1159,8 @@
+ 
+       it('should not throw when focusing a group header cell', () => {
+         // Wrap the columns in a group
+-        const group = document.createElement('vaadin-grid-column-group');
+-        group.append(...grid.querySelectorAll('vaadin-grid-column'));
++        const group = document.createElement('vaadin23-grid-column-group');
++        group.append(...grid.querySelectorAll('vaadin23-grid-column'));
+         group.header = 'group';
+         grid.appendChild(group);
+         flushGrid(grid);
+@@ -1495,7 +1495,7 @@
  
        it('should allow toggling a checkbox with space keypress', async () => {
          // Add a selection column
@@ -87,7 +98,7 @@ Index: test/keyboard-navigation.test.js
          flushGrid(grid);
  
          // Get a reference to a checkbox, focus it and hit space
-@@ -1512,16 +1512,16 @@
+@@ -1564,16 +1564,16 @@
    describe('interaction mode', () => {
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -108,7 +119,7 @@ Index: test/keyboard-navigation.test.js
            <template class="header">
              <input>
            </template>
-@@ -1531,8 +1531,8 @@
+@@ -1583,8 +1583,8 @@
            <template class="footer">
              <input>
            </template>
@@ -119,7 +130,7 @@ Index: test/keyboard-navigation.test.js
            <template class="header">
              <input>
            </template>
-@@ -1542,8 +1542,8 @@
+@@ -1594,8 +1594,8 @@
            <template class="footer">
              <input>
            </template>
@@ -130,7 +141,7 @@ Index: test/keyboard-navigation.test.js
      `);
  
        scroller = grid.$.scroller;
-@@ -1933,7 +1933,7 @@
+@@ -1985,7 +1985,7 @@
    describe('focus events on cell content', () => {
      it('should dispatch cell-focus on keyboard navigation', () => {
        const expectedContext = {
@@ -139,7 +150,7 @@ Index: test/keyboard-navigation.test.js
          detailsOpened: false,
          expanded: false,
          index: 0,
-@@ -2022,22 +2022,22 @@
+@@ -2074,22 +2074,22 @@
  describe('keyboard navigation on column groups', () => {
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -170,7 +181,7 @@ Index: test/keyboard-navigation.test.js
      `);
      grid.items = ['foo', 'bar'];
      flushGrid(grid);
-@@ -2105,9 +2105,9 @@
+@@ -2157,9 +2157,9 @@
  
        beforeEach(() => {
          header = grid.$.header;
@@ -183,7 +194,7 @@ Index: test/keyboard-navigation.test.js
        });
  
        it('should update tabbable header cell on header row hide', async () => {
-@@ -2194,7 +2194,7 @@
+@@ -2246,7 +2246,7 @@
  
        it('should remain on the first column after a tabbable cell row is hidden', async () => {
          // Add a second column
@@ -192,7 +203,7 @@ Index: test/keyboard-navigation.test.js
          grid.appendChild(column);
          await nextFrame();
  
-@@ -2237,9 +2237,9 @@
+@@ -2289,9 +2289,9 @@
  describe('empty grid', () => {
    beforeEach(() => {
      grid = fixtureSync(`
@@ -205,7 +216,7 @@ Index: test/keyboard-navigation.test.js
      `);
      flushGrid(grid);
    });
-@@ -2282,9 +2282,9 @@
+@@ -2334,9 +2334,9 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -218,3 +229,25 @@ Index: test/keyboard-navigation.test.js
      `);
  
      grid.dataProvider = hierarchicalDataProvider;
+@@ -2392,9 +2392,9 @@
+   beforeEach(() => {
+     dataProviderCallbacks = [];
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="name"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin23-grid>
++        <vaadin23-grid-column path="name"></vaadin23-grid-column>
++      </vaadin23-grid>
+     `);
+     cellFocusSpy = sinon.spy();
+     grid.addEventListener('cell-focus', cellFocusSpy);
+@@ -2408,7 +2408,7 @@
+ 
+   it('should dispatch cell-focused event for lazily loaded item', async () => {
+     const expectedContext = {
+-      column: grid.querySelector('vaadin-grid-column'),
++      column: grid.querySelector('vaadin23-grid-column'),
+       detailsOpened: false,
+       expanded: false,
+       index: 999,

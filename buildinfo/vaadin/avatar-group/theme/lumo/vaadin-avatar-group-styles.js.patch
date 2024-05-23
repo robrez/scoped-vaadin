@@ -22,7 +22,7 @@ Index: theme/lumo/vaadin-avatar-group-styles.js
    css`
      :host {
        --vaadin-avatar-size: var(--lumo-size-m);
-@@ -50,12 +50,12 @@
+@@ -50,19 +50,19 @@
    }
  `;
  
@@ -35,9 +35,18 @@ Index: theme/lumo/vaadin-avatar-group-styles.js
 -  'vaadin-avatar-group-list-box',
 +  'vaadin23-avatar-group-list-box',
    css`
-     [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
+-    [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
++    [part='items'] ::slotted(vaadin23-item[theme='avatar-group-item']) {
        padding: var(--lumo-space-xs);
-@@ -71,7 +71,7 @@
+       padding-right: var(--lumo-space-m);
+     }
+ 
+-    :host([dir='rtl']) [part='items'] ::slotted(vaadin-item[theme='avatar-group-item']) {
++    :host([dir='rtl']) [part='items'] ::slotted(vaadin23-item[theme='avatar-group-item']) {
+       padding: var(--lumo-space-xs);
+       padding-left: var(--lumo-space-m);
+     }
+@@ -71,23 +71,23 @@
  );
  
  registerStyles(
@@ -46,3 +55,22 @@ Index: theme/lumo/vaadin-avatar-group-styles.js
    css`
      :host([theme='avatar-group-item']) [part='content'] {
        display: flex;
+       align-items: center;
+     }
+ 
+-    :host([theme='avatar-group-item']) ::slotted(vaadin-avatar) {
++    :host([theme='avatar-group-item']) ::slotted(vaadin23-avatar) {
+       width: var(--lumo-size-xs);
+       height: var(--lumo-size-xs);
+     }
+ 
+-    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin-avatar) {
++    :host([theme='avatar-group-item']:not([dir='rtl'])) ::slotted(vaadin23-avatar) {
+       margin-right: var(--lumo-space-s);
+     }
+ 
+-    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin-avatar) {
++    :host([theme='avatar-group-item'][dir='rtl']) ::slotted(vaadin23-avatar) {
+       margin-left: var(--lumo-space-s);
+     }
+   `,

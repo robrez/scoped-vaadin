@@ -75,7 +75,7 @@ Index: src/vaadin-upload.js
         * ```
         * @type {object | string}
         */
-@@ -928,7 +929,7 @@
+@@ -944,7 +945,7 @@
    /**
     * Fired when the XHR has been opened but not sent yet. Useful for appending
     * data keys to the FormData object, for changing some parameters like
@@ -84,7 +84,7 @@ Index: src/vaadin-upload.js
     * send the request allowing the user to do something on his own.
     *
     * @event upload-request
-@@ -962,7 +963,7 @@
+@@ -978,7 +979,7 @@
     * on the server response. If the event is defaultPrevented the vaadin-upload
     * will return allowing the user to do something on his own like retry the
     * upload, etc. since he has full access to the `xhr` and `file` objects.
@@ -93,7 +93,7 @@ Index: src/vaadin-upload.js
     * with the normal workflow checking the `xhr.status` and `file.error`
     * which also might be modified by the user to force a customized response.
     *
-@@ -1011,6 +1012,6 @@
+@@ -1027,6 +1028,6 @@
     */
  }
  

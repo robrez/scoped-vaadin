@@ -79,7 +79,7 @@ Index: src/vaadin-multi-select-combo-box.d.ts
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
-@@ -280,8 +280,8 @@
+@@ -301,8 +301,8 @@
     * Custom function for rendering the content of every item.
     * Receives three arguments:
     *
@@ -90,7 +90,7 @@ Index: src/vaadin-multi-select-combo-box.d.ts
     * - `model` The object with the properties related with the rendered
     *   item, contains:
     *   - `model.index` The index of the rendered item.
-@@ -352,7 +352,7 @@
+@@ -379,7 +379,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

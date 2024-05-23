@@ -11,8 +11,8 @@ Index: test/dom/__snapshots__/vaadin-upload-file.test.snap.js
    aria-valuemax="1"
    aria-valuemin="0"
    aria-valuenow="0.6"
-@@ -73,7 +73,7 @@
-   style="--vaadin-progress-value:0.6;"
+@@ -72,7 +72,7 @@
+   role="progressbar"
    value="0.6"
  >
 -</vaadin-progress-bar>

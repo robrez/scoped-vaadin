@@ -2,7 +2,7 @@ Index: test/lit.test.js
 ===================================================================
 --- test/lit.test.js
 +++ test/lit.test.js
-@@ -11,11 +11,11 @@
+@@ -12,11 +12,11 @@
      function renderGrid(columnPaths, items) {
        render(
          html`
@@ -17,3 +17,27 @@ Index: test/lit.test.js
          `,
          wrapper,
        );
+@@ -40,11 +40,11 @@
+     function renderGrid(columnPaths, items) {
+       render(
+         html`
+-          <vaadin-grid .items=${items}>
++          <vaadin23-grid .items=${items}>
+             ${columnPaths.map((columnPath) => {
+-              return html`<vaadin-grid-sort-column path="${columnPath}"></vaadin-grid-sort-column>`;
++              return html`<vaadin23-grid-sort-column path="${columnPath}"></vaadin23-grid-sort-column>`;
+             })}
+-          </vaadin-grid>
++          </vaadin23-grid>
+         `,
+         wrapper,
+       );
+@@ -55,7 +55,7 @@
+ 
+     await aTimeout(0);
+ 
+-    document.querySelector('vaadin-grid-sorter').click();
++    document.querySelector('vaadin23-grid-sorter').click();
+ 
+     // Then render a grid with one column
+     renderGrid(['c1'], [{ c1: '1-1', c2: '1-2' }]);

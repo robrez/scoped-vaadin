@@ -19,7 +19,13 @@ Index: theme/lumo/vaadin-text-area-styles.js
  
  const textArea = css`
    [part='input-field'],
-@@ -62,6 +62,6 @@
+@@ -57,11 +57,11 @@
+ 
+   /* Vertically align icon prefix/suffix with the first line of text */
+   [part='input-field'] ::slotted(iron-icon),
+-  [part='input-field'] ::slotted(vaadin-icon) {
++  [part='input-field'] ::slotted(vaadin23-icon) {
+     margin-top: calc((var(--lumo-icon-size-m) - 1em * var(--lumo-line-height-s)) / -2);
    }
  `;
  

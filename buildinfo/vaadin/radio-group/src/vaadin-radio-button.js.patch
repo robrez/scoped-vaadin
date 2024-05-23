@@ -59,7 +59,7 @@ Index: src/vaadin-radio-button.js
    }
  
    static get template() {
-@@ -184,12 +185,12 @@
+@@ -186,12 +187,12 @@
    /** @private */
    __warnDeprecated() {
      console.warn(

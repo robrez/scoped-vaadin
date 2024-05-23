@@ -80,7 +80,7 @@ Index: test/confirm-dialog.test.js
          `);
          overlay = confirm.$.dialog.$.overlay;
          await oneEvent(overlay, 'vaadin-overlay-open');
-@@ -149,7 +150,7 @@
+@@ -154,7 +155,7 @@
  
      describe('property', () => {
        beforeEach(async () => {
@@ -89,7 +89,7 @@ Index: test/confirm-dialog.test.js
          overlay = confirm.$.dialog.$.overlay;
          await oneEvent(overlay, 'vaadin-overlay-open');
          messageSlot = overlay.shadowRoot.querySelector('[part="message"] > slot');
-@@ -169,7 +170,7 @@
+@@ -174,7 +175,7 @@
  
      describe('slot', () => {
        beforeEach(async () => {
@@ -98,7 +98,7 @@ Index: test/confirm-dialog.test.js
          overlay = confirm.$.dialog.$.overlay;
          await oneEvent(overlay, 'vaadin-overlay-open');
          messageSlot = overlay.shadowRoot.querySelector('[part="message"] > slot');
-@@ -192,7 +193,7 @@
+@@ -197,7 +198,7 @@
      let confirm, overlay;
  
      beforeEach(async () => {
@@ -107,7 +107,7 @@ Index: test/confirm-dialog.test.js
        overlay = confirm.$.dialog.$.overlay;
        await oneEvent(overlay, 'vaadin-overlay-open');
      });
-@@ -330,11 +331,11 @@
+@@ -335,11 +336,11 @@
  
      beforeEach(() => {
        confirm = fixtureSync(`
@@ -121,7 +121,7 @@ Index: test/confirm-dialog.test.js
        `);
        overlay = confirm.$.dialog.$.overlay;
      });
-@@ -389,7 +390,7 @@
+@@ -394,7 +395,7 @@
      let confirm, overlay;
  
      beforeEach(async () => {
@@ -130,7 +130,7 @@ Index: test/confirm-dialog.test.js
        overlay = confirm.$.dialog.$.overlay;
        await oneEvent(overlay, 'vaadin-overlay-open');
      });
-@@ -422,7 +423,7 @@
+@@ -427,7 +428,7 @@
      let confirm, spy;
  
      beforeEach(async () => {
@@ -139,7 +139,7 @@ Index: test/confirm-dialog.test.js
        await oneEvent(confirm.$.dialog.$.overlay, 'vaadin-overlay-open');
        spy = sinon.spy();
        confirm.addEventListener('cancel', spy);
-@@ -446,7 +447,7 @@
+@@ -451,7 +452,7 @@
      let confirm;
  
      beforeEach(() => {
@@ -148,7 +148,7 @@ Index: test/confirm-dialog.test.js
      });
  
      it('should propagate theme attribute to vaadin-dialog', () => {
-@@ -465,7 +466,7 @@
+@@ -470,7 +471,7 @@
  
      describe('default', () => {
        beforeEach(async () => {
@@ -157,7 +157,7 @@ Index: test/confirm-dialog.test.js
          overlay = confirm.$.dialog.$.overlay;
          await oneEvent(overlay, 'vaadin-overlay-open');
          spy = sinon.spy(confirm, '_setDimension');
-@@ -487,7 +488,7 @@
+@@ -492,7 +493,7 @@
  
      describe('before attach', () => {
        beforeEach(() => {

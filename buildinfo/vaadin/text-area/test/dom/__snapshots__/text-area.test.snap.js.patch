@@ -54,12 +54,12 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
      >
      </span>
    </div>
--  <vaadin-input-container
-+  <vaadin23-input-container
-     part="input-field"
-     style="--_text-area-vertical-scroll-position:0px;"
-   >
-@@ -118,7 +118,7 @@
+-  <vaadin-input-container part="input-field">
++  <vaadin23-input-container part="input-field">
+     <slot
+       name="prefix"
+       slot="prefix"
+@@ -115,7 +115,7 @@
        slot="suffix"
      >
      </div>
@@ -68,7 +68,7 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
    <div part="helper-text">
      <slot name="helper">
      </slot>
-@@ -144,7 +144,7 @@
+@@ -141,7 +141,7 @@
      >
      </span>
    </div>
@@ -76,8 +76,8 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
 +  <vaadin23-input-container
      disabled=""
      part="input-field"
-     style="--_text-area-vertical-scroll-position:0px;"
-@@ -168,7 +168,7 @@
+   >
+@@ -164,7 +164,7 @@
        slot="suffix"
      >
      </div>
@@ -86,7 +86,7 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
    <div part="helper-text">
      <slot name="helper">
      </slot>
-@@ -194,7 +194,7 @@
+@@ -190,7 +190,7 @@
      >
      </span>
    </div>
@@ -94,8 +94,8 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
 +  <vaadin23-input-container
      part="input-field"
      readonly=""
-     style="--_text-area-vertical-scroll-position:0px;"
-@@ -218,7 +218,7 @@
+   >
+@@ -213,7 +213,7 @@
        slot="suffix"
      >
      </div>
@@ -104,7 +104,7 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
    <div part="helper-text">
      <slot name="helper">
      </slot>
-@@ -244,7 +244,7 @@
+@@ -239,7 +239,7 @@
      >
      </span>
    </div>
@@ -112,8 +112,8 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
 +  <vaadin23-input-container
      invalid=""
      part="input-field"
-     style="--_text-area-vertical-scroll-position:0px;"
-@@ -268,7 +268,7 @@
+   >
+@@ -262,7 +262,7 @@
        slot="suffix"
      >
      </div>
@@ -122,16 +122,16 @@ Index: test/dom/__snapshots__/text-area.test.snap.js
    <div part="helper-text">
      <slot name="helper">
      </slot>
-@@ -294,7 +294,7 @@
+@@ -288,7 +288,7 @@
      >
      </span>
    </div>
 -  <vaadin-input-container
 +  <vaadin23-input-container
      part="input-field"
-     style="--_text-area-vertical-scroll-position:0px;"
      theme="align-right"
-@@ -318,7 +318,7 @@
+   >
+@@ -311,7 +311,7 @@
        slot="suffix"
      >
      </div>

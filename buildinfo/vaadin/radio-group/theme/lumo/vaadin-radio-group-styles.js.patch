@@ -22,7 +22,7 @@ Index: theme/lumo/vaadin-radio-group-styles.js
  
  const radioGroup = css`
    :host {
-@@ -48,4 +48,4 @@
+@@ -53,4 +53,4 @@
    }
  `;
  

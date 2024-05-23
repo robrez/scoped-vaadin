@@ -42,3 +42,12 @@ Index: test/renderers.test.js
        newColumn.header = 'bar';
        grid.appendChild(newColumn);
        flushGrid(grid);
+@@ -275,7 +275,7 @@
+ 
+     it('should apply updates to hidden column headers', async () => {
+       // Add another column
+-      const newColumn = document.createElement('vaadin-grid-column');
++      const newColumn = document.createElement('vaadin23-grid-column');
+       newColumn.headerRenderer = (root) => {
+         root.textContent = 'header2';
+       };

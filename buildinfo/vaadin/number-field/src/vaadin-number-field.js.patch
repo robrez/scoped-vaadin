@@ -78,7 +78,7 @@ Index: src/vaadin-number-field.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -471,4 +472,4 @@
+@@ -478,4 +479,4 @@
    }
  }
  

@@ -4,14 +4,14 @@ Index: test/selection.test.js
 +++ test/selection.test.js
 @@ -1,7 +1,7 @@
  import { expect } from '@esm-bundle/chai';
- import { fixtureSync, listenOnce } from '@vaadin/testing-helpers';
+ import { click, fixtureSync, listenOnce, mousedown } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import '@vaadin/polymer-legacy-adapter/template-renderer.js';
 +import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
  import '../vaadin-grid.js';
  import '../vaadin-grid-selection-column.js';
  import '../vaadin-grid-filter.js';
-@@ -17,20 +17,20 @@
+@@ -20,20 +20,20 @@
  
  const fixtures = {
    renderer: `
@@ -42,7 +42,7 @@ Index: test/selection.test.js
    `,
  };
  
-@@ -177,24 +177,24 @@
+@@ -180,24 +180,24 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -79,7 +79,7 @@ Index: test/selection.test.js
      `);
  
      grid.items = ['foo', 'bar', 'baz'];
-@@ -221,7 +221,7 @@
+@@ -224,7 +224,7 @@
    });
  
    it('should have a checkbox in the body cell', () => {
@@ -88,7 +88,7 @@ Index: test/selection.test.js
    });
  
    it('should select item when checkbox is checked', () => {
-@@ -268,7 +268,7 @@
+@@ -271,7 +271,7 @@
    });
  
    it('should have a select all checkbox in the header', () => {
@@ -97,7 +97,7 @@ Index: test/selection.test.js
    });
  
    it('should have class name for the select all checkbox', () => {
-@@ -411,10 +411,10 @@
+@@ -414,10 +414,10 @@
  
    it('should not clear pre-selected items', () => {
      const grid = fixtureSync(`
@@ -112,3 +112,27 @@ Index: test/selection.test.js
      `);
      expect(grid.selectedItems).to.have.length(1);
    });
+@@ -538,10 +538,10 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 450px;">
+-          <vaadin-grid-selection-column drag-select></vaadin-grid-selection-column>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin23-grid style="width: 200px; height: 450px;">
++          <vaadin23-grid-selection-column drag-select></vaadin23-grid-selection-column>
++          <vaadin23-grid-column></vaadin23-grid-column>
++        </vaadin23-grid>
+       `);
+       grid.items = [...new Array(100)].map((_, i) => `${i}`);
+       flushGrid(grid);
+@@ -607,7 +607,7 @@
+ 
+     it('should not toggle checkbox after dragging on a single checkbox', () => {
+       const cell = getBodyCellContent(grid, 1, 0);
+-      const checkBox = cell.querySelector('vaadin-checkbox');
++      const checkBox = cell.querySelector('vaadin23-checkbox');
+       const input = checkBox.querySelector('input');
+ 
+       fireTrackEvent(input, input, 'start');

@@ -1,0 +1,30 @@
+Index: test/scroll-restoration.test.js
+===================================================================
+--- test/scroll-restoration.test.js
++++ test/scroll-restoration.test.js
+@@ -15,17 +15,17 @@
+     beforeEach(() => {
+       const fixture = fixtureSync(`
+       <div>
+-        <vaadin-grid style="height: 200px; width: 200px;" size="100">
+-          <vaadin-grid-column header="foo"></vaadin-grid-column>
+-        </vaadin-grid>
+-        <vaadin-grid style="height: 200px; width: 200px;" hidden size="100">
+-          <vaadin-grid-column header="bar"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin23-grid style="height: 200px; width: 200px;" size="100">
++          <vaadin23-grid-column header="foo"></vaadin23-grid-column>
++        </vaadin23-grid>
++        <vaadin23-grid style="height: 200px; width: 200px;" hidden size="100">
++          <vaadin23-grid-column header="bar"></vaadin23-grid-column>
++        </vaadin23-grid>
+       </div>
+     `);
+-      const grids = fixture.querySelectorAll('vaadin-grid');
++      const grids = fixture.querySelectorAll('vaadin23-grid');
+       grids.forEach((grid) => {
+-        grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++        grid.querySelector('vaadin23-grid-column').renderer = (root, _, model) => {
+           root.textContent = model.index;
+         };
+         grid.dataProvider = infiniteDataProvider;

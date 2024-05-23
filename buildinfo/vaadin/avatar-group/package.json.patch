@@ -5,9 +5,9 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/avatar-group",
--  "version": "23.3.8",
+-  "version": "23.4.0",
 +  "name": "@scoped-vaadin/avatar-group",
-+  "version": "23.0.1",
++  "version": "23.0.2",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -40,14 +40,14 @@ Index: package.json
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/avatar": "~23.3.8",
--    "@vaadin/component-base": "~23.3.8",
--    "@vaadin/item": "~23.3.8",
--    "@vaadin/list-box": "~23.3.8",
--    "@vaadin/overlay": "~23.3.8",
--    "@vaadin/vaadin-lumo-styles": "~23.3.8",
--    "@vaadin/vaadin-material-styles": "~23.3.8",
--    "@vaadin/vaadin-themable-mixin": "~23.3.8"
+-    "@vaadin/avatar": "~23.4.0",
+-    "@vaadin/component-base": "~23.4.0",
+-    "@vaadin/item": "~23.4.0",
+-    "@vaadin/list-box": "~23.4.0",
+-    "@vaadin/overlay": "~23.4.0",
+-    "@vaadin/vaadin-lumo-styles": "~23.4.0",
+-    "@vaadin/vaadin-material-styles": "~23.4.0",
+-    "@vaadin/vaadin-themable-mixin": "~23.4.0"
 -  },
 -  "devDependencies": {
 -    "@esm-bundle/chai": "^4.3.4",
@@ -58,17 +58,17 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "f3bfde4c881f9deb7d757faf4ab070f0596b0a09"
+-  "gitHead": "c104ecc83b82425fc4899e5eac9d91a114874c8e"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/avatar": "^23.0.1",
-+    "@scoped-vaadin/component-base": "^23.0.1",
-+    "@scoped-vaadin/item": "^23.0.1",
-+    "@scoped-vaadin/list-box": "^23.0.1",
-+    "@scoped-vaadin/overlay": "^23.0.1",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.1",
-+    "@scoped-vaadin/vaadin-material-styles": "^23.0.1",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.1",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.1"
++    "@scoped-vaadin/avatar": "^23.0.2",
++    "@scoped-vaadin/component-base": "^23.0.2",
++    "@scoped-vaadin/item": "^23.0.2",
++    "@scoped-vaadin/list-box": "^23.0.2",
++    "@scoped-vaadin/overlay": "^23.0.2",
++    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.2",
++    "@scoped-vaadin/vaadin-material-styles": "^23.0.2",
++    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.2",
++    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.2"
 +  }
  }

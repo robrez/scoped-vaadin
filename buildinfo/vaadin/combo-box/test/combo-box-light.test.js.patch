@@ -7,7 +7,7 @@ Index: test/combo-box-light.test.js
  import { expect } from '@esm-bundle/chai';
  import {
    arrowDownKeyDown,
-@@ -16,8 +17,8 @@
+@@ -16,13 +17,13 @@
  } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
@@ -18,7 +18,13 @@ Index: test/combo-box-light.test.js
  import './not-animated-styles.js';
  import '../vaadin-combo-box-light.js';
  import '@polymer/polymer/lib/elements/dom-repeat.js';
-@@ -32,7 +33,7 @@
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ import { getFirstItem } from './helpers.js';
+ 
+ class MyInput extends PolymerElement {
+@@ -33,7 +34,7 @@
            display: inline-block;
          }
        </style>
@@ -27,7 +33,7 @@ Index: test/combo-box-light.test.js
      `;
    }
  
-@@ -46,21 +47,21 @@
+@@ -47,21 +48,21 @@
    }
  }
  
@@ -55,7 +61,7 @@ Index: test/combo-box-light.test.js
    });
  
    it('should find the input element correctly', () => {
-@@ -171,9 +172,9 @@
+@@ -172,9 +173,9 @@
  
    beforeEach(async () => {
      comboBox = fixtureSync(`
@@ -67,7 +73,7 @@ Index: test/combo-box-light.test.js
      `);
      await nextRender();
      comboBox.items = ['foo', 'bar', 'baz'];
-@@ -216,9 +217,9 @@
+@@ -217,9 +218,9 @@
    describe('input in light DOM', () => {
      beforeEach(async () => {
        comboBox = fixtureSync(`
@@ -80,7 +86,7 @@ Index: test/combo-box-light.test.js
        `);
        await nextRender();
        comboBox.items = ['foo', 'bar', 'baz'];
-@@ -241,9 +242,9 @@
+@@ -242,9 +243,9 @@
    describe('input in Shadow DOM', () => {
      beforeEach(async () => {
        comboBox = fixtureSync(`
@@ -92,7 +98,7 @@ Index: test/combo-box-light.test.js
        `);
        await nextRender();
        comboBox.items = ['foo', 'bar', 'baz'];
-@@ -269,12 +270,12 @@
+@@ -270,12 +271,12 @@
  
    beforeEach(async () => {
      comboBox = fixtureSync(`
@@ -109,7 +115,7 @@ Index: test/combo-box-light.test.js
      `);
      await nextRender();
      comboBox.items = ['foo', 'bar', 'baz'];
-@@ -446,9 +447,9 @@
+@@ -455,9 +456,9 @@
  
    beforeEach(() => {
      comboBox = fixtureSync(`
@@ -122,7 +128,7 @@ Index: test/combo-box-light.test.js
      `);
    });
  
-@@ -468,8 +469,8 @@
+@@ -477,8 +478,8 @@
  
    beforeEach(async () => {
      comboBox = fixtureSync(`
@@ -133,7 +139,7 @@ Index: test/combo-box-light.test.js
            <div slot="prefix">
              <dom-repeat items="[1, 2]">
                <template>
-@@ -477,8 +478,8 @@
+@@ -486,8 +487,8 @@
                </template>
              </dom-repeat>
            </div>

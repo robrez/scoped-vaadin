@@ -2,12 +2,14 @@ Index: test/input-control-mixin.test.js
 ===================================================================
 --- test/input-control-mixin.test.js
 +++ test/input-control-mixin.test.js
-@@ -1,3 +1,4 @@
+@@ -1,12 +1,13 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
- import { escKeyDown, fixtureSync, keyboardEventFor, keyDownOn } from '@vaadin/testing-helpers';
+ import { escKeyDown, fixtureSync, keyboardEventFor, keyDownOn, mousedown } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -5,7 +6,7 @@
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
  import { InputControlMixin } from '../src/input-control-mixin.js';
  import { InputController } from '../src/input-controller.js';
  

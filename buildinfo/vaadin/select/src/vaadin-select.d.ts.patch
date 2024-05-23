@@ -2,16 +2,18 @@ Index: src/vaadin-select.d.ts
 ===================================================================
 --- src/vaadin-select.d.ts
 +++ src/vaadin-select.d.ts
-@@ -3,11 +3,11 @@
+@@ -3,12 +3,12 @@
   * Copyright (c) 2017 - 2022 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { KeyboardMixin } from '@vaadin/component-base/src/keyboard-mixin.js';
 -import { DelegateFocusMixin } from '@vaadin/field-base/src/delegate-focus-mixin.js';
 -import { DelegateStateMixin } from '@vaadin/field-base/src/delegate-state-mixin.js';
 -import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { KeyboardMixin } from '@scoped-vaadin/component-base/src/keyboard-mixin.js';
 +import { DelegateFocusMixin } from '@scoped-vaadin/field-base/src/delegate-focus-mixin.js';
 +import { DelegateStateMixin } from '@scoped-vaadin/field-base/src/delegate-state-mixin.js';
 +import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
@@ -19,7 +21,7 @@ Index: src/vaadin-select.d.ts
  
  export interface SelectItem {
    label?: string;
-@@ -24,12 +24,12 @@
+@@ -25,12 +25,12 @@
  };
  
  /**
@@ -35,7 +37,7 @@ Index: src/vaadin-select.d.ts
   */
  export type SelectRenderer = (root: HTMLElement, select: Select) => void;
  
-@@ -68,14 +68,14 @@
+@@ -69,14 +69,14 @@
  }
  
  /**
@@ -52,7 +54,7 @@ Index: src/vaadin-select.d.ts
   * ```
   * ```js
   * const select = document.querySelector('#select');
-@@ -101,10 +101,10 @@
+@@ -102,10 +102,10 @@
   * ```js
   * const select = document.querySelector('#select');
   * select.renderer = function(root, select) {
@@ -66,7 +68,7 @@ Index: src/vaadin-select.d.ts
   *     item.textContent = name;
   *     item.setAttribute('label', name)
   *     listBox.appendChild(item);
-@@ -130,38 +130,38 @@
+@@ -131,38 +131,38 @@
   * Custom property                    | Description                  | Target element          | Default
   * -----------------------------------|------------------------------|----------------------------------
   * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
@@ -118,7 +120,7 @@ Index: src/vaadin-select.d.ts
   * propagated to the internal components listed above.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/custom-theme/styling-components) documentation.
-@@ -191,7 +191,7 @@
+@@ -192,7 +192,7 @@
     * ];
     * ```
     *
@@ -127,7 +129,7 @@ Index: src/vaadin-select.d.ts
     * To render the item with a custom component, provide a tag name by the `component` property.
     *
     * @type {!Array<!SelectItem>}
-@@ -204,12 +204,12 @@
+@@ -205,12 +205,12 @@
    opened: boolean;
  
    /**
@@ -143,7 +145,7 @@ Index: src/vaadin-select.d.ts
     */
    renderer: SelectRenderer | undefined;
  
-@@ -270,7 +270,7 @@
+@@ -271,7 +271,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

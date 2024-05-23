@@ -13,7 +13,7 @@ Index: src/vaadin-grid-data-provider-mixin.js
  
  /**
   * @private
-@@ -435,7 +435,7 @@
+@@ -436,7 +436,7 @@
      _checkSize() {
        if (this.size === undefined && this._effectiveSize === 0) {
          console.warn(

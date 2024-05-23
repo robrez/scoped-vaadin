@@ -276,6 +276,7 @@ export const elementMeta = [
       "expanded-changed",
       "expanded-items-changed",
       "filter-changed",
+      "focusin",
       "grid-dragend",
       "grid-dragstart",
       "grid-drop",
