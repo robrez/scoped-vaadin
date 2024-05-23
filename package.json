@@ -1,5 +1,5 @@
 {
-  "version": "23.0.2",
+  "version": "23.4.1",
   "name": "@robrez/scoped-vaadin-web-components",
   "type": "module",
   "private": true,

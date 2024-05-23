@@ -6,9 +6,8 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/number-field",
--  "version": "23.4.1",
 +  "name": "@scoped-vaadin/number-field",
-+  "version": "23.0.2",
+   "version": "23.4.1",
    "description-markup": "markdown",
    "contributions": {
      "html": {

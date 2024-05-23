@@ -6,9 +6,8 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/time-picker",
--  "version": "23.4.1",
 +  "name": "@scoped-vaadin/time-picker",
-+  "version": "23.0.2",
+   "version": "23.4.1",
    "description-markup": "markdown",
    "contributions": {
      "html": {

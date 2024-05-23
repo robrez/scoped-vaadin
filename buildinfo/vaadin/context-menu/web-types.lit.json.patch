@@ -2,16 +2,14 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,7 +1,7 @@
+@@ -1,6 +1,6 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/context-menu",
--  "version": "23.4.1",
 +  "name": "@scoped-vaadin/context-menu",
-+  "version": "23.0.2",
+   "version": "23.4.1",
    "description-markup": "markdown",
    "framework": "lit",
-   "framework-config": {
 @@ -15,8 +15,8 @@
      "html": {
        "elements": [

@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/vaadin-material-styles",
-  "version": "23.0.2",
+  "version": "23.4.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.2",
-    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.2"
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.4.1",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.1"
   }
 }

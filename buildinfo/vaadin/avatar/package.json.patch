@@ -5,9 +5,8 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/avatar",
--  "version": "23.4.1",
 +  "name": "@scoped-vaadin/avatar",
-+  "version": "23.0.2",
+   "version": "23.4.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -61,14 +60,14 @@ Index: package.json
 -  "gitHead": "7f8c68fc31880385593d59233616b23654d9c048"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/component-base": "^23.0.2",
-+    "@scoped-vaadin/item": "^23.0.2",
-+    "@scoped-vaadin/list-box": "^23.0.2",
-+    "@scoped-vaadin/overlay": "^23.0.2",
-+    "@scoped-vaadin/tooltip": "^23.0.2",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^23.0.2",
-+    "@scoped-vaadin/vaadin-material-styles": "^23.0.2",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^23.0.2",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^23.0.2"
++    "@scoped-vaadin/component-base": "^23.4.1",
++    "@scoped-vaadin/item": "^23.4.1",
++    "@scoped-vaadin/list-box": "^23.4.1",
++    "@scoped-vaadin/overlay": "^23.4.1",
++    "@scoped-vaadin/tooltip": "^23.4.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^23.4.1",
++    "@scoped-vaadin/vaadin-material-styles": "^23.4.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^23.4.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.1"
 +  }
  }
