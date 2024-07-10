@@ -31,8 +31,8 @@ Index: test/grid-body.test.js
      column.renderer = () => {};
  
      expect(() => window.Vaadin.templateRendererCallback(column)).to.throw(
--      /^Cannot use both a template and a renderer for <vaadin-grid-column \/>\.$/,
-+      /^Cannot use both a template and a renderer for <vaadin24-grid-column \/>\.$/,
+-      /^Cannot use both a template and a renderer for <vaadin-grid-column \/>\.$/u,
++      /^Cannot use both a template and a renderer for <vaadin24-grid-column \/>\.$/u,
      );
    });
  });

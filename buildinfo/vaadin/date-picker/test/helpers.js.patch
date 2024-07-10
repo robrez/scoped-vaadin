@@ -2,21 +2,12 @@ Index: test/helpers.js
 ===================================================================
 --- test/helpers.js
 +++ test/helpers.js
-@@ -130,7 +130,7 @@
+@@ -109,7 +109,7 @@
  }
  
  export function getFocusedMonth(overlayContent) {
--  const months = Array.from(overlayContent.shadowRoot.querySelectorAll('vaadin-month-calendar'));
-+  const months = Array.from(overlayContent.shadowRoot.querySelectorAll('vaadin24-month-calendar'));
+-  const months = [...overlayContent.querySelectorAll('vaadin-month-calendar')];
++  const months = [...overlayContent.querySelectorAll('vaadin24-month-calendar')];
    return months.find((month) => {
-     const focused = month.shadowRoot.querySelector('[part="date"][focused]');
-     return !!focused;
-@@ -138,7 +138,7 @@
- }
- 
- export function getFocusedCell(overlayContent) {
--  const months = Array.from(overlayContent.shadowRoot.querySelectorAll('vaadin-month-calendar'));
-+  const months = Array.from(overlayContent.shadowRoot.querySelectorAll('vaadin24-month-calendar'));
- 
-   // Date that is currently focused
-   let focusedCell;
+     return !!month.shadowRoot.querySelector('[part~="focused"]');
+   });

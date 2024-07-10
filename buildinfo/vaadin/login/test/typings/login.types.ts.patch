@@ -2,16 +2,25 @@ Index: test/typings/login.types.ts
 ===================================================================
 --- test/typings/login.types.ts
 +++ test/typings/login.types.ts
-@@ -13,7 +13,7 @@
+@@ -1,6 +1,6 @@
+ import '../../vaadin-login-form.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
+ import type {
+   LoginFormDisabledChangedEvent,
+   LoginFormErrorChangedEvent,
+@@ -15,7 +15,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
 -const overlay = document.createElement('vaadin-login-overlay');
 +const overlay = document.createElement('vaadin24-login-overlay');
  
- overlay.addEventListener('login', (event) => {
-   assertType<LoginOverlayLoginEvent>(event);
-@@ -36,7 +36,7 @@
+ assertType<ElementMixinClass>(overlay);
+ assertType<OverlayClassMixinClass>(overlay);
+@@ -42,7 +42,7 @@
    assertType<string>(event.detail.value);
  });
  

@@ -2,7 +2,7 @@ Index: test/validation.test.js
 ===================================================================
 --- test/validation.test.js
 +++ test/validation.test.js
-@@ -9,7 +9,7 @@
+@@ -10,7 +10,7 @@
  
    describe('initial', () => {
      beforeEach(() => {
@@ -11,16 +11,16 @@ Index: test/validation.test.js
        comboBox.items = ['apple', 'banana'];
        validateSpy = sinon.spy(comboBox, 'validate');
      });
-@@ -42,7 +42,7 @@
+@@ -43,7 +43,7 @@
  
    describe('basic', () => {
      beforeEach(() => {
 -      comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
 +      comboBox = fixtureSync(`<vaadin24-multi-select-combo-box></vaadin24-multi-select-combo-box>`);
        comboBox.items = ['apple', 'banana'];
+       input = comboBox.inputElement;
        validateSpy = sinon.spy(comboBox, 'validate');
-     });
-@@ -57,7 +57,7 @@
+@@ -93,7 +93,7 @@
  
    describe('required', () => {
      beforeEach(() => {

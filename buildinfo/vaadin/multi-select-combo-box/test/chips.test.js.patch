@@ -2,6 +2,15 @@ Index: test/chips.test.js
 ===================================================================
 --- test/chips.test.js
 +++ test/chips.test.js
+@@ -7,7 +7,7 @@
+ describe('chips', () => {
+   let comboBox, internal, inputElement;
+ 
+-  const getChips = (combo) => combo.querySelectorAll('vaadin-multi-select-combo-box-chip');
++  const getChips = (combo) => combo.querySelectorAll('vaadin24-multi-select-combo-box-chip');
+ 
+   const getChipContent = (chip) => chip.shadowRoot.querySelector('[part="label"]').textContent;
+ 
 @@ -18,7 +18,7 @@
    };
  
@@ -9,9 +18,9 @@ Index: test/chips.test.js
 -    comboBox = fixtureSync(`<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>`);
 +    comboBox = fixtureSync(`<vaadin24-multi-select-combo-box></vaadin24-multi-select-combo-box>`);
      comboBox.items = ['apple', 'banana', 'lemon', 'orange'];
+     internal = comboBox.$.comboBox;
      inputElement = comboBox.inputElement;
- 
-@@ -524,7 +524,7 @@
+@@ -542,7 +542,7 @@
      it('should adapt overlay width to the input field width while opened', async () => {
        comboBox.opened = true;
  

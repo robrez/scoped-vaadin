@@ -2,22 +2,24 @@ Index: test/typings/text-field.types.ts
 ===================================================================
 --- test/typings/text-field.types.ts
 +++ test/typings/text-field.types.ts
-@@ -1,9 +1,9 @@
+@@ -1,10 +1,10 @@
  import '../../vaadin-text-field.js';
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
 -import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ClearButtonMixinClass } from '@vaadin/field-base/src/clear-button-mixin.js';
 -import type { InputFieldMixinClass } from '@vaadin/field-base/src/input-field-mixin.js';
 -import type { PatternMixinClass } from '@vaadin/field-base/src/pattern-mixin.js';
 -import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ClearButtonMixinClass } from '@scoped-vaadin/field-base/src/clear-button-mixin.js';
 +import type { InputFieldMixinClass } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
 +import type { PatternMixinClass } from '@scoped-vaadin/field-base/src/pattern-mixin.js';
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  import type {
    TextField,
    TextFieldChangeEvent,
-@@ -14,7 +14,7 @@
+@@ -15,7 +15,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
@@ -25,4 +27,4 @@ Index: test/typings/text-field.types.ts
 +const field = document.createElement('vaadin24-text-field');
  
  // Mixins
- assertType<ControllerMixinClass>(field);
+ assertType<ClearButtonMixinClass>(field);

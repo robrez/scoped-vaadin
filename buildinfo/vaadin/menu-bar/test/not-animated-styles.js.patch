@@ -7,8 +7,8 @@ Index: test/not-animated-styles.js
 +import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  registerStyles(
--  'vaadin-context-menu-overlay',
-+  'vaadin24-context-menu-overlay',
+-  'vaadin-menu-bar-overlay',
++  'vaadin24-menu-bar-overlay',
    css`
      :host([opening]),
      :host([closing]),

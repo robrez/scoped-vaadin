@@ -27,8 +27,8 @@ Index: test/grid-row-details.test.js
      grid.rowDetailsRenderer = () => {};
  
      expect(() => window.Vaadin.templateRendererCallback(grid)).to.throw(
--      /^Cannot use both a template and a renderer for <vaadin-grid \/>\.$/,
-+      /^Cannot use both a template and a renderer for <vaadin24-grid \/>\.$/,
+-      /^Cannot use both a template and a renderer for <vaadin-grid \/>\.$/u,
++      /^Cannot use both a template and a renderer for <vaadin24-grid \/>\.$/u,
      );
    });
  });

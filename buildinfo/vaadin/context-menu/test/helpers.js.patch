@@ -2,12 +2,23 @@ Index: test/helpers.js
 ===================================================================
 --- test/helpers.js
 +++ test/helpers.js
-@@ -5,7 +5,7 @@
-   const itemElement = menu.$.overlay.querySelector('.vaadin-context-menu-parent-item');
-   if (itemElement) {
-     itemElement.dispatchEvent(new CustomEvent('mouseover', { bubbles: true, composed: true }));
--    const subMenu = menu.$.overlay.querySelector('vaadin-context-menu');
-+    const subMenu = menu.$.overlay.querySelector('vaadin24-context-menu');
-     await openSubMenus(subMenu);
+@@ -1,8 +1,8 @@
+ import { fire, nextRender, oneEvent } from '@vaadin/testing-helpers';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ 
+ export async function openMenu(target, event = isTouch ? 'click' : 'mouseover') {
+-  const menu = target.closest('vaadin-context-menu');
++  const menu = target.closest('vaadin24-context-menu');
+   if (menu) {
+     menu.__openListenerActive = true;
    }
+@@ -16,7 +16,7 @@
  }
+ 
+ export function getSubMenu(menu) {
+-  return menu._overlayElement.querySelector('vaadin-context-menu');
++  return menu._overlayElement.querySelector('vaadin24-context-menu');
+ }
+ 
+ export async function openSubMenus(menu) {

@@ -7,16 +7,16 @@ Index: test/position-mixin-listeners.test.js
  import { expect } from '@esm-bundle/chai';
  import { aTimeout, fire, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -9,7 +10,7 @@
-     return 'vaadin-positioned-overlay';
+@@ -10,7 +11,7 @@
    }
  }
+ 
 -customElements.define(PositionedOverlay.is, PositionedOverlay);
 +internalCustomElements.define(PositionedOverlay.is, PositionedOverlay);
  
  class ScrollableWrapper extends HTMLElement {
    constructor() {
-@@ -24,7 +25,7 @@
+@@ -25,7 +26,7 @@
      `;
    }
  }

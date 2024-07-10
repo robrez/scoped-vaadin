@@ -27,5 +27,5 @@ Index: test/keyboard-navigation.test.js
 -      expect(document.querySelector('vaadin-combo-box-overlay')).not.to.be.ok;
 +      expect(document.querySelector('vaadin24-combo-box-overlay')).not.to.be.ok;
      });
- 
-     it('should not change value on escape', () => {
+   });
+ });

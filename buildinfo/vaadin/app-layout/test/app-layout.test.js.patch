@@ -87,7 +87,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -173,15 +174,15 @@
+@@ -183,15 +184,15 @@
        const overlayMode = String(layoutMode === 'mobile');
  
        layout = fixtureSync(`
@@ -106,3 +106,12 @@ Index: test/app-layout.test.js
        `);
        await nextRender();
        toggle = layout.querySelector('#toggle');
+@@ -309,7 +310,7 @@
+       it('should use the drawer width as offset width', async () => {
+         fixtureSync(`
+           <style>
+-            vaadin-app-layout::part(drawer) {
++            vaadin24-app-layout::part(drawer) {
+               width: 100px;
+             }
+           </style>

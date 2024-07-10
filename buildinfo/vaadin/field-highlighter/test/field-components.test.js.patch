@@ -2,8 +2,8 @@ Index: test/field-components.test.js
 ===================================================================
 --- test/field-components.test.js
 +++ test/field-components.test.js
-@@ -2,14 +2,14 @@
- import { arrowDown, fixtureSync, focusin, focusout, listenOnce, nextFrame } from '@vaadin/testing-helpers';
+@@ -2,16 +2,16 @@
+ import { arrowDown, fixtureSync, nextFrame, nextRender, oneEvent, outsideClick } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
 -import '@vaadin/checkbox-group';
@@ -22,9 +22,12 @@ Index: test/field-components.test.js
 +import '@scoped-vaadin/radio-group';
 +import '@scoped-vaadin/select';
 +import '@scoped-vaadin/text-field';
- import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
  import { html, render } from 'lit';
+-import { close, waitForOverlayRender } from '@vaadin/date-picker/test/helpers.js';
++import { close, waitForOverlayRender } from '@scoped-vaadin/date-picker/test/helpers.js';
  import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
+ 
+ async function waitForIntersectionObserver() {
 @@ -37,7 +37,7 @@
  
    describe('text field', () => {
@@ -43,7 +46,7 @@ Index: test/field-components.test.js
        FieldHighlighter.init(field);
        overlay = field.$.overlay;
        showSpy = sinon.spy();
-@@ -190,7 +190,7 @@
+@@ -177,7 +177,7 @@
  
    describe('select', () => {
      beforeEach(async () => {
@@ -52,7 +55,7 @@ Index: test/field-components.test.js
        field.renderer = (root) => {
          if (root.firstChild) {
            return;
-@@ -198,11 +198,11 @@
+@@ -185,11 +185,11 @@
  
          render(
            html`
@@ -69,43 +72,25 @@ Index: test/field-components.test.js
            `,
            root,
          );
-@@ -243,7 +243,7 @@
-             expect(hideSpy.callCount).to.equal(0);
-             done();
-           });
--          overlay.querySelector('vaadin-item').click();
-+          overlay.querySelector('vaadin24-item').click();
-         });
-       });
+@@ -225,7 +225,7 @@
+         field.focus();
+         await open(field);
  
-@@ -254,7 +254,7 @@
-             expect(hideSpy.callCount).to.equal(0);
-             done();
-           });
--          overlay.querySelector('vaadin-item').blur();
-+          overlay.querySelector('vaadin24-item').blur();
-           document.body.click();
-         });
-       });
-@@ -266,7 +266,7 @@
-             expect(showSpy.callCount).to.equal(1);
-             done();
-           });
--          overlay.querySelector('vaadin-item').blur();
-+          overlay.querySelector('vaadin24-item').blur();
-           document.body.click();
-         });
-       });
-@@ -295,7 +295,7 @@
-             expect(hideSpy.callCount).to.equal(1);
-             done();
-           });
--          overlay.querySelector('vaadin-item').click();
-+          overlay.querySelector('vaadin24-item').click();
-         });
-       });
-     });
-@@ -306,11 +306,11 @@
+-        overlay.querySelector('vaadin-item').click();
++        overlay.querySelector('vaadin24-item').click();
+         await nextRender();
+ 
+         expect(hideSpy.callCount).to.equal(0);
+@@ -270,7 +270,7 @@
+         field.focus();
+         await open(field);
+ 
+-        overlay.querySelector('vaadin-item').click();
++        overlay.querySelector('vaadin24-item').click();
+         await nextRender();
+ 
+         expect(hideSpy.callCount).to.equal(1);
+@@ -283,11 +283,11 @@
  
      beforeEach(async () => {
        field = fixtureSync(`
@@ -122,7 +107,7 @@ Index: test/field-components.test.js
        `);
        FieldHighlighter.init(field);
        showSpy = sinon.spy();
-@@ -363,11 +363,11 @@
+@@ -340,11 +340,11 @@
  
      beforeEach(async () => {
        field = fixtureSync(`
@@ -139,7 +124,7 @@ Index: test/field-components.test.js
        `);
        FieldHighlighter.init(field);
        showSpy = sinon.spy();
-@@ -420,7 +420,7 @@
+@@ -397,7 +397,7 @@
      let time;
  
      beforeEach(async () => {
@@ -148,7 +133,7 @@ Index: test/field-components.test.js
        FieldHighlighter.init(field);
        date = field.__inputs[0];
        time = field.__inputs[1];
-@@ -518,11 +518,11 @@
+@@ -497,11 +497,11 @@
  
      beforeEach(async () => {
        field = fixtureSync(`

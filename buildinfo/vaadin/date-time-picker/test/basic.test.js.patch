@@ -48,7 +48,16 @@ Index: test/basic.test.js
      datePicker = getDatePicker(dateTimePicker);
      timePicker = getTimePicker(dateTimePicker);
    });
-@@ -265,7 +265,7 @@
+@@ -97,7 +97,7 @@
+     });
+ 
+     it('should not throw on focus when not attached to the DOM', () => {
+-      const element = document.createElement('vaadin-date-time-picker');
++      const element = document.createElement('vaadin24-date-time-picker');
+       expect(() => element.focus()).not.to.throw(Error);
+     });
+   });
+@@ -274,7 +274,7 @@
    let datePicker;
  
    beforeEach(async () => {
@@ -57,7 +66,7 @@ Index: test/basic.test.js
      datePicker = getDatePicker(dateTimePicker);
      await nextFrame();
    });
-@@ -279,7 +279,7 @@
+@@ -288,7 +288,7 @@
    let dateTimePicker;
  
    beforeEach(() => {
@@ -66,7 +75,7 @@ Index: test/basic.test.js
    });
  
    it('should use initial value from attribute without clearing it', () => {
-@@ -291,7 +291,7 @@
+@@ -300,7 +300,7 @@
    let dateTimePicker;
  
    beforeEach(() => {
@@ -75,7 +84,7 @@ Index: test/basic.test.js
    });
  
    it('should display the helper text when provided', () => {
-@@ -307,7 +307,7 @@
+@@ -316,7 +316,7 @@
  
    describe('default', () => {
      beforeEach(() => {
@@ -84,16 +93,24 @@ Index: test/basic.test.js
        datePicker = getDatePicker(dateTimePicker);
        timePicker = getTimePicker(dateTimePicker);
      });
-@@ -323,7 +323,7 @@
+@@ -332,13 +332,13 @@
  
    describe('slotted', () => {
      beforeEach(() => {
 -      dateTimePicker = document.createElement('vaadin-date-time-picker');
 +      dateTimePicker = document.createElement('vaadin24-date-time-picker');
  
-       datePicker = document.createElement('vaadin-date-time-picker-date-picker');
+-      datePicker = document.createElement('vaadin-date-picker');
++      datePicker = document.createElement('vaadin24-date-picker');
        datePicker.setAttribute('slot', 'date-picker');
-@@ -364,14 +364,14 @@
+       dateTimePicker.appendChild(datePicker);
+ 
+-      timePicker = document.createElement('vaadin-time-picker');
++      timePicker = document.createElement('vaadin24-time-picker');
+       timePicker.setAttribute('slot', 'time-picker');
+       dateTimePicker.appendChild(timePicker);
+     });
+@@ -373,14 +373,14 @@
        dateTimePicker = fixtureSync(fixtures[`${set}-inputs`]);
        originalDatePicker = getDatePicker(dateTimePicker);
        originalTimePicker = getTimePicker(dateTimePicker);
@@ -112,7 +129,7 @@ Index: test/basic.test.js
          timePicker.slot = 'time-picker';
          dateTimePicker.appendChild(datePicker);
          dateTimePicker.appendChild(timePicker);
-@@ -476,10 +476,10 @@
+@@ -485,10 +485,10 @@
  
        if (set === 'lazy') {
          // Add slotted children lazily simulating the case where Flow adds the slotted elements after date time picker is ready

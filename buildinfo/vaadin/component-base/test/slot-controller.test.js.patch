@@ -7,12 +7,30 @@ Index: test/slot-controller.test.js
  import { expect } from '@esm-bundle/chai';
  import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -5,7 +6,7 @@
- import { ControllerMixin } from '../src/controller-mixin.js';
- import { SlotController } from '../src/slot-controller.js';
+@@ -15,7 +16,7 @@
+   }
+ }
  
--customElements.define(
-+internalCustomElements.define(
-   'slot-controller-element',
-   class extends ControllerMixin(PolymerElement) {
-     static get template() {
+-customElements.define('slot-controller-element', SlotControllerHost);
++internalCustomElements.define('slot-controller-element', SlotControllerHost);
+ 
+ describe('slot-controller', () => {
+   let element, child, controller;
+@@ -128,7 +129,7 @@
+ 
+       const initializeSpy = sinon.spy();
+ 
+-      customElements.define(
++      internalCustomElements.define(
+         'default-slot-element',
+         class extends SlotControllerHost {
+           ready() {
+@@ -140,7 +141,7 @@
+         },
+       );
+ 
+-      customElements.define(
++      internalCustomElements.define(
+         'custom-default-wrapper',
+         class extends LitElement {
+           render() {

@@ -11,7 +11,7 @@ Index: test/selecting-items.test.js
      internal = comboBox.$.comboBox;
      inputElement = comboBox.inputElement;
      inputElement.focus();
-@@ -38,7 +38,7 @@
+@@ -45,7 +45,7 @@
  
      it('should update selectedItems when selecting an item on click', async () => {
        await sendKeys({ down: 'ArrowDown' });
@@ -20,7 +20,7 @@ Index: test/selecting-items.test.js
        item.click();
        expect(comboBox.selectedItems).to.deep.equal(['apple']);
      });
-@@ -93,7 +93,7 @@
+@@ -100,7 +100,7 @@
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ down: 'Enter' });
@@ -29,7 +29,7 @@ Index: test/selecting-items.test.js
        expect(item.hasAttribute('focused')).to.be.true;
      });
  
-@@ -101,7 +101,7 @@
+@@ -108,7 +108,7 @@
        await sendKeys({ down: 'ArrowDown' });
        await sendKeys({ type: 'banana' });
        await sendKeys({ down: 'Enter' });

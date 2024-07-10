@@ -2,12 +2,8 @@ Index: test/notification.test.js
 ===================================================================
 --- test/notification.test.js
 +++ test/notification.test.js
-@@ -1,19 +1,19 @@
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, listenOnce } from '@vaadin/testing-helpers';
+@@ -3,12 +3,12 @@
  import sinon from 'sinon';
--import '@vaadin/polymer-legacy-adapter/template-renderer.js';
-+import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
  import '../vaadin-notification.js';
  
 -describe('vaadin-notification', () => {
@@ -16,18 +12,13 @@ Index: test/notification.test.js
  
    beforeEach(() => {
      notification = fixtureSync(`
--      <vaadin-notification duration="20">
-+      <vaadin24-notification duration="20">
-         <template>
-           Your work has been <strong>saved</strong>
-         </template>
--      </vaadin-notification>
-+      </vaadin24-notification>
+-      <vaadin-notification duration="20"></vaadin-notification>
++      <vaadin24-notification duration="20"></vaadin24-notification>
      `);
  
-     // Force sync card attaching and removal instead of waiting for the animation
-@@ -45,27 +45,27 @@
-     expect(notification.opened).to.be.false;
+     notification.renderer = (root) => {
+@@ -53,27 +53,27 @@
+     expect(notification.opened).to.be.true;
    });
  
 -  describe('vaadin-notification-container', () => {
@@ -59,7 +50,7 @@ Index: test/notification.test.js
      });
  
      it('should cancel vaadin-overlay-close events when the source event occurred within the container', (done) => {
-@@ -101,7 +101,7 @@
+@@ -108,7 +108,7 @@
        let container;
  
        beforeEach(() => {

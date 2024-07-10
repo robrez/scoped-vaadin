@@ -5,7 +5,7 @@ Index: test/validation.test.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
- import { enter, fixtureSync, focusout, nextRender } from '@vaadin/testing-helpers';
+ import { enter, fixtureSync, nextRender } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 @@ -10,7 +11,7 @@
    }
@@ -26,15 +26,15 @@ Index: test/validation.test.js
      });
  
 @@ -71,7 +72,7 @@
-     let validateSpy;
+     let validateSpy, changeSpy, valueChangedSpy, input;
  
      beforeEach(() => {
 -      timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
 +      timePicker = fixtureSync(`<vaadin24-time-picker></vaadin24-time-picker>`);
        validateSpy = sinon.spy(timePicker, 'validate');
-     });
- 
-@@ -149,7 +150,7 @@
+       changeSpy = sinon.spy();
+       timePicker.addEventListener('change', changeSpy);
+@@ -133,7 +134,7 @@
  
    describe('input value', () => {
      beforeEach(() => {
@@ -43,7 +43,7 @@ Index: test/validation.test.js
      });
  
      it('should be valid when committing a valid time', () => {
-@@ -174,7 +175,7 @@
+@@ -158,7 +159,7 @@
  
    describe('required', () => {
      beforeEach(() => {
@@ -52,7 +52,7 @@ Index: test/validation.test.js
      });
  
      it('should fail validation without value', () => {
-@@ -203,7 +204,7 @@
+@@ -173,7 +174,7 @@
  
    describe('min', () => {
      beforeEach(() => {
@@ -61,7 +61,7 @@ Index: test/validation.test.js
      });
  
      it('should pass validation without value', () => {
-@@ -246,7 +247,7 @@
+@@ -198,7 +199,7 @@
  
    describe('max', () => {
      beforeEach(() => {
@@ -70,7 +70,7 @@ Index: test/validation.test.js
      });
  
      it('should pass validation without value', () => {
-@@ -289,7 +290,7 @@
+@@ -223,7 +224,7 @@
  
    describe('pattern', () => {
      beforeEach(() => {
@@ -79,7 +79,7 @@ Index: test/validation.test.js
      });
  
      it('should pass validation without value', () => {
-@@ -331,7 +332,7 @@
+@@ -243,7 +244,7 @@
  
    describe('custom validator', () => {
      beforeEach(() => {
@@ -88,7 +88,7 @@ Index: test/validation.test.js
      });
  
      it('should validate correctly with custom validator', () => {
-@@ -349,7 +350,7 @@
+@@ -261,7 +262,7 @@
  
    describe('incorrect value', () => {
      it('should not throw error when setting incorrect value using attribute', () => {
