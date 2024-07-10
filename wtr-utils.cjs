@@ -11,6 +11,7 @@ const {
 
 const MY_HIDDEN_WARNINGS = [
   "Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information.",
+  "Multiple versions of Lit loaded. Loading multiple versions is not recommended. See https://lit.dev/msg/multiple-versions for more information.",
   /^Overriding .* is deprecated.*/u,
   /^Element.*scheduled an update.*after an update completed.*/u,
 ];
