@@ -57,10 +57,16 @@ function findFiles(dir) {
 }
 
 const findTestFiles = (dir) => {
+  const snapTestPattern = `/test/dom/`;
+  const visiaulTestPattern = `/test/visual/`
   const files = glob.sync(dir + "/test/**/*", { dot: true, posix: true });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
+    // do not use snapshot tests
+    .filter(name => name.indexOf(snapTestPattern) < 0)
+    // do not use visual regression tests
+    .filter(name => name.indexOf(visiaulTestPattern) < 0)
     // note -- could have provided ignoredTests as negation globs
     // but choosing to - instead - not create the ignored tests
     .filter((name) => !ignoreTests.has(name))
