@@ -1,0 +1,168 @@
+Index: test/confirm-dialog.test.js
+===================================================================
+--- test/confirm-dialog.test.js
++++ test/confirm-dialog.test.js
+@@ -1,24 +1,25 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { esc, fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import './not-animated-styles.js';
+ import '../vaadin-confirm-dialog.js';
+ 
+-describe('vaadin-confirm-dialog', () => {
++describe('vaadin24-confirm-dialog', () => {
+   describe('custom element definition', () => {
+     let confirm, tagName;
+ 
+     beforeEach(() => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog></vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog></vaadin24-confirm-dialog>');
+       tagName = confirm.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -26,7 +27,7 @@
+     let confirm;
+ 
+     beforeEach(() => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog></vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog></vaadin24-confirm-dialog>');
+     });
+ 
+     it('should enforce display: none to hide the host element', () => {
+@@ -39,7 +40,7 @@
+     let confirm, dialog, overlay;
+ 
+     beforeEach(() => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog>Confirmation message</vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog>Confirmation message</vaadin24-confirm-dialog>');
+       dialog = confirm.$.dialog;
+       overlay = dialog.$.overlay;
+     });
+@@ -86,7 +87,7 @@
+ 
+     describe('default', () => {
+       beforeEach(() => {
+-        confirm = fixtureSync('<vaadin-confirm-dialog></vaadin-confirm-dialog>');
++        confirm = fixtureSync('<vaadin24-confirm-dialog></vaadin24-confirm-dialog>');
+       });
+ 
+       it('should set header to empty string by default', () => {
+@@ -101,7 +102,7 @@
+ 
+     describe('property', () => {
+       beforeEach(async () => {
+-        confirm = fixtureSync('<vaadin-confirm-dialog opened header="Property header"></vaadin-confirm-dialog>');
++        confirm = fixtureSync('<vaadin24-confirm-dialog opened header="Property header"></vaadin24-confirm-dialog>');
+         overlay = confirm.$.dialog.$.overlay;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+         headerSlot = overlay.shadowRoot.querySelector('slot[name="header"]');
+@@ -122,9 +123,9 @@
+     describe('slot', () => {
+       beforeEach(async () => {
+         confirm = fixtureSync(`
+-          <vaadin-confirm-dialog opened header="Property header">
++          <vaadin24-confirm-dialog opened header="Property header">
+             <h3 slot="header">Slotted header</h3>
+-          </vaadin-confirm-dialog>
++          </vaadin24-confirm-dialog>
+         `);
+         overlay = confirm.$.dialog.$.overlay;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+@@ -154,7 +155,7 @@
+ 
+     describe('property', () => {
+       beforeEach(async () => {
+-        confirm = fixtureSync('<vaadin-confirm-dialog opened message="Confirmation message"></vaadin-confirm-dialog>');
++        confirm = fixtureSync('<vaadin24-confirm-dialog opened message="Confirmation message"></vaadin24-confirm-dialog>');
+         overlay = confirm.$.dialog.$.overlay;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+         messageSlot = overlay.shadowRoot.querySelector('[part="message"] > slot');
+@@ -174,7 +175,7 @@
+ 
+     describe('slot', () => {
+       beforeEach(async () => {
+-        confirm = fixtureSync('<vaadin-confirm-dialog opened>Confirmation message</vaadin-confirm-dialog>');
++        confirm = fixtureSync('<vaadin24-confirm-dialog opened>Confirmation message</vaadin24-confirm-dialog>');
+         overlay = confirm.$.dialog.$.overlay;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+         messageSlot = overlay.shadowRoot.querySelector('[part="message"] > slot');
+@@ -197,7 +198,7 @@
+     let confirm, overlay;
+ 
+     beforeEach(async () => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog opened>Confirmation message</vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog opened>Confirmation message</vaadin24-confirm-dialog>');
+       overlay = confirm.$.dialog.$.overlay;
+       await oneEvent(overlay, 'vaadin-overlay-open');
+     });
+@@ -335,11 +336,11 @@
+ 
+     beforeEach(() => {
+       confirm = fixtureSync(`
+-        <vaadin-confirm-dialog>
++        <vaadin24-confirm-dialog>
+           <button slot="confirm-button" theme="custom-confirm-theme">Custom Confirm</button>
+           <button slot="cancel-button" theme="custom-cancel-theme">Custom Cancel</button>
+           <button slot="reject-button" theme="custom-reject-theme">Custom Reject</button>
+-        </vaadin-confirm-dialog>
++        </vaadin24-confirm-dialog>
+       `);
+       overlay = confirm.$.dialog.$.overlay;
+     });
+@@ -394,7 +395,7 @@
+     let confirm, overlay;
+ 
+     beforeEach(async () => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog opened>Confirmation message</vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog opened>Confirmation message</vaadin24-confirm-dialog>');
+       overlay = confirm.$.dialog.$.overlay;
+       await oneEvent(overlay, 'vaadin-overlay-open');
+     });
+@@ -427,7 +428,7 @@
+     let confirm, spy;
+ 
+     beforeEach(async () => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog opened>Confirmation message</vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog opened>Confirmation message</vaadin24-confirm-dialog>');
+       await oneEvent(confirm.$.dialog.$.overlay, 'vaadin-overlay-open');
+       spy = sinon.spy();
+       confirm.addEventListener('cancel', spy);
+@@ -451,7 +452,7 @@
+     let confirm;
+ 
+     beforeEach(() => {
+-      confirm = fixtureSync('<vaadin-confirm-dialog theme="foo">Confirmation message</vaadin-confirm-dialog>');
++      confirm = fixtureSync('<vaadin24-confirm-dialog theme="foo">Confirmation message</vaadin24-confirm-dialog>');
+     });
+ 
+     it('should propagate theme attribute to vaadin-dialog', () => {
+@@ -470,7 +471,7 @@
+ 
+     describe('default', () => {
+       beforeEach(async () => {
+-        confirm = fixtureSync('<vaadin-confirm-dialog opened>Confirmation message</vaadin-confirm-dialog>');
++        confirm = fixtureSync('<vaadin24-confirm-dialog opened>Confirmation message</vaadin24-confirm-dialog>');
+         overlay = confirm.$.dialog.$.overlay;
+         await oneEvent(overlay, 'vaadin-overlay-open');
+         spy = sinon.spy(confirm, '_setDimension');
+@@ -492,7 +493,7 @@
+ 
+     describe('before attach', () => {
+       beforeEach(() => {
+-        confirm = document.createElement('vaadin-confirm-dialog');
++        confirm = document.createElement('vaadin24-confirm-dialog');
+         confirm.message = 'Message';
+         spy = sinon.spy(confirm, '_setDimension');
+       });

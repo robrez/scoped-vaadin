@@ -1,0 +1,7 @@
+Index: theme/lumo/vaadin-vertical-layout-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-vertical-layout-styles.d.ts
++++ theme/lumo/vaadin-vertical-layout-styles.d.ts
+@@ -1,1 +1,1 @@
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

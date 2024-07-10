@@ -1,0 +1,234 @@
+Index: test/sorting.test.js
+===================================================================
+--- test/sorting.test.js
++++ test/sorting.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { click, fixtureSync, keyUpOn, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid-sorter.js';
+ import '../vaadin-grid-sort-column.js';
+ import { Grid } from '../vaadin-grid.js';
+@@ -22,9 +22,9 @@
+ 
+     beforeEach(() => {
+       sorter = fixtureSync(`
+-        <vaadin-grid-sorter path="path">
++        <vaadin24-grid-sorter path="path">
+           <span class="title">title</span><button>Button</button>
+-        </vaadin-grid-sorter>
++        </vaadin24-grid-sorter>
+       `);
+       button = sorter.querySelector('button');
+       title = sorter.querySelector('.title');
+@@ -109,21 +109,21 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 400px; height: 200px;" multi-sort>
+-          <vaadin-grid-sort-column path="first" direction="desc"></vaadin-grid-sort-column>
+-          <vaadin-grid-sort-column path="second" direction="asc"></vaadin-grid-sort-column>
+-          <vaadin-grid-sort-column path="third" direction="desc"></vaadin-grid-sort-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 400px; height: 200px;" multi-sort>
++          <vaadin24-grid-sort-column path="first" direction="desc"></vaadin24-grid-sort-column>
++          <vaadin24-grid-sort-column path="second" direction="asc"></vaadin24-grid-sort-column>
++          <vaadin24-grid-sort-column path="third" direction="desc"></vaadin24-grid-sort-column>
++        </vaadin24-grid>
+       `);
+       await nextFrame();
+ 
+       // TODO: find better way to select
+-      columnFirst = grid.querySelectorAll('vaadin-grid-sort-column')[0];
+-      columnThird = grid.querySelectorAll('vaadin-grid-sort-column')[2];
++      columnFirst = grid.querySelectorAll('vaadin24-grid-sort-column')[0];
++      columnThird = grid.querySelectorAll('vaadin24-grid-sort-column')[2];
+ 
+-      sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin-grid-sorter');
+-      sorterSecond = getHeaderCellContent(grid, 0, 1).querySelector('vaadin-grid-sorter');
+-      sorterThird = getHeaderCellContent(grid, 0, 2).querySelector('vaadin-grid-sorter');
++      sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin24-grid-sorter');
++      sorterSecond = getHeaderCellContent(grid, 0, 1).querySelector('vaadin24-grid-sorter');
++      sorterThird = getHeaderCellContent(grid, 0, 2).querySelector('vaadin24-grid-sorter');
+ 
+       grid.items = [
+         { first: '1', second: '2', third: '3' },
+@@ -193,29 +193,29 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 200px;" multi-sort>
+-          <vaadin-grid-column>
++        <vaadin24-grid style="width: 200px; height: 200px;" multi-sort>
++          <vaadin24-grid-column>
+             <template class="header">
+-              <vaadin-grid-sorter path="first" direction="asc">
++              <vaadin24-grid-sorter path="first" direction="asc">
+                 <span class="title">first</span>
+-              </vaadin-grid-sorter>
++              </vaadin24-grid-sorter>
+             </template>
+             <template>[[item.first]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">
+-              <vaadin-grid-sorter path="last" direction="desc">
++              <vaadin24-grid-sorter path="last" direction="desc">
+                 <span class="title">last</span>
+-              </vaadin-grid-sorter>
++              </vaadin24-grid-sorter>
+             </template>
+             <template>[[item.last]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-sort-column></vaadin-grid-sort-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++          <vaadin24-grid-sort-column></vaadin24-grid-sort-column>
++        </vaadin24-grid>
+       `);
+       await nextFrame();
+-      sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin-grid-sorter');
+-      sorterLast = getHeaderCellContent(grid, 0, 1).querySelector('vaadin-grid-sorter');
++      sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin24-grid-sorter');
++      sorterLast = getHeaderCellContent(grid, 0, 1).querySelector('vaadin24-grid-sorter');
+ 
+       grid.items = [
+         { first: 'foo', last: 'bar' },
+@@ -521,29 +521,29 @@
+ 
+     describe('set multi-sort-priority', () => {
+       it('should change default multi-sort-priority for newly created grid', () => {
+-        const grid1 = fixtureSync('<vaadin-grid></vaadin-grid>');
++        const grid1 = fixtureSync('<vaadin24-grid></vaadin24-grid>');
+         expect(grid1.multiSortPriority).to.be.equal('prepend');
+ 
+         Grid.setDefaultMultiSortPriority('append');
+ 
+-        const grid2 = fixtureSync('<vaadin-grid></vaadin-grid>');
++        const grid2 = fixtureSync('<vaadin24-grid></vaadin24-grid>');
+         expect(grid1.multiSortPriority).to.be.equal('prepend');
+         expect(grid2.multiSortPriority).to.be.equal('append');
+ 
+         Grid.setDefaultMultiSortPriority('prepend');
+ 
+-        const grid3 = fixtureSync('<vaadin-grid></vaadin-grid>');
++        const grid3 = fixtureSync('<vaadin24-grid></vaadin24-grid>');
+         expect(grid2.multiSortPriority).to.be.equal('append');
+         expect(grid3.multiSortPriority).to.be.equal('prepend');
+       });
+ 
+       it('should not change default multi-sort-priority with incorrect value', () => {
+-        const grid1 = fixtureSync('<vaadin-grid></vaadin-grid>');
++        const grid1 = fixtureSync('<vaadin24-grid></vaadin24-grid>');
+         expect(grid1.multiSortPriority).to.be.equal('prepend');
+ 
+         Grid.setDefaultMultiSortPriority(null);
+ 
+-        const grid2 = fixtureSync('<vaadin-grid></vaadin-grid>');
++        const grid2 = fixtureSync('<vaadin24-grid></vaadin24-grid>');
+         expect(grid2.multiSortPriority).to.be.equal('prepend');
+       });
+     });
+@@ -605,9 +605,9 @@
+       let sortColumn, sortCellContent, sorter;
+ 
+       beforeEach(() => {
+-        sortColumn = grid.querySelector('vaadin-grid-sort-column');
++        sortColumn = grid.querySelector('vaadin24-grid-sort-column');
+         sortCellContent = getHeaderCellContent(grid, 0, 2);
+-        sorter = sortCellContent.querySelector('vaadin-grid-sorter');
++        sorter = sortCellContent.querySelector('vaadin24-grid-sorter');
+       });
+ 
+       it('should propagate path property to the internal grid sorter', () => {
+@@ -656,30 +656,30 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 200px;">
+-          <vaadin-grid-column>
++        <vaadin24-grid style="width: 200px; height: 200px;">
++          <vaadin24-grid-column>
+             <template class="header">
+-              <vaadin-grid-sorter path="first" direction="asc">
++              <vaadin24-grid-sorter path="first" direction="asc">
+                 <span class="title">first</span>
+-              </vaadin-grid-sorter>
++              </vaadin24-grid-sorter>
+             </template>
+             <template>[[item.first]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">
+               <span class="title">last</span>
+-              <vaadin-grid-sorter path="last">
+-              </vaadin-grid-sorter>
++              <vaadin24-grid-sorter path="last">
++              </vaadin24-grid-sorter>
+             </template>
+             <template>[[item.last]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       flushGrid(grid);
+     });
+ 
+     it('should set direction to also other than last sorter', () => {
+-      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin-grid-sorter');
++      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin24-grid-sorter');
+       expect(sorterFirst.direction).to.eql('asc');
+     });
+   });
+@@ -689,15 +689,15 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 200px;" multi-sort>
+-          <vaadin-grid-column path="first"></vaadin-grid-column>
+-          <vaadin-grid-column path="last"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 200px;" multi-sort>
++          <vaadin24-grid-column path="first"></vaadin24-grid-column>
++          <vaadin24-grid-column path="last"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+-      firstName = grid.querySelector('vaadin-grid-column');
++      firstName = grid.querySelector('vaadin24-grid-column');
+       firstName.headerRenderer = (root) => {
+         if (!root.firstChild) {
+-          root.innerHTML = '<vaadin-grid-sorter path="first">First name</vaadin-grid-sorter>';
++          root.innerHTML = '<vaadin24-grid-sorter path="first">First name</vaadin24-grid-sorter>';
+         }
+       };
+       grid.items = [{ first: 'John', last: 'Doe' }];
+@@ -706,11 +706,11 @@
+     });
+ 
+     it('should remove detached sorter with no parent', () => {
+-      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin-grid-sorter');
++      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin24-grid-sorter');
+       sorterFirst.click();
+ 
+       firstName.headerRenderer = (root) => {
+-        root.innerHTML = '<vaadin-grid-sorter path="first">1st</vaadin-grid-sorter>';
++        root.innerHTML = '<vaadin24-grid-sorter path="first">1st</vaadin24-grid-sorter>';
+       };
+       grid.requestContentUpdate();
+ 
+@@ -718,7 +718,7 @@
+     });
+ 
+     it('should not remove sorter for hidden column', async () => {
+-      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin-grid-sorter');
++      const sorterFirst = getHeaderCellContent(grid, 0, 0).querySelector('vaadin24-grid-sorter');
+       sorterFirst.click();
+       firstName.setAttribute('hidden', '');
+       await nextFrame();

@@ -1,0 +1,7 @@
+Index: theme/lumo/vaadin-drawer-toggle-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-drawer-toggle-styles.d.ts
++++ theme/lumo/vaadin-drawer-toggle-styles.d.ts
+@@ -1,1 +1,1 @@
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';

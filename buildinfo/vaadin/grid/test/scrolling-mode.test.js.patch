@@ -1,0 +1,60 @@
+Index: test/scrolling-mode.test.js
+===================================================================
+--- test/scrolling-mode.test.js
++++ test/scrolling-mode.test.js
+@@ -1,6 +1,6 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, isDesktopSafari, isFirefox, listenOnce, nextFrame } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+ import { flushGrid, infiniteDataProvider, onceResized, scrollToEnd } from './helpers.js';
+@@ -10,11 +10,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 50px; height: 400px;" size="1000">
+-        <vaadin-grid-column>
++      <vaadin24-grid style="width: 50px; height: 400px;" size="1000">
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);
+@@ -142,11 +142,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 50px; height: 400px;" size="1000">
+-        <vaadin-grid-column>
++      <vaadin24-grid style="width: 50px; height: 400px;" size="1000">
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     flushGrid(grid);
+   });
+@@ -165,11 +165,11 @@
+     document.documentElement.scrollTop = 10000;
+     const scrollTop = document.documentElement.scrollTop;
+     fixtureSync(`
+-      <vaadin-grid style="width: 50px; height: 400px;" size="1000">
+-        <vaadin-grid-column>
++      <vaadin24-grid style="width: 50px; height: 400px;" size="1000">
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     const newScrollTop = document.documentElement.scrollTop;
+     // Cleanup

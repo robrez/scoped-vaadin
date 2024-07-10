@@ -1,0 +1,22 @@
+Index: test/dom/__snapshots__/vaadin-upload-file.test.snap.js
+===================================================================
+--- test/dom/__snapshots__/vaadin-upload-file.test.snap.js
++++ test/dom/__snapshots__/vaadin-upload-file.test.snap.js
+@@ -63,7 +63,7 @@
+     </button>
+   </div>
+ </div>
+-<vaadin-progress-bar
++<vaadin24-progress-bar
+   aria-valuemax="1"
+   aria-valuemin="0"
+   aria-valuenow="0.6"
+@@ -72,7 +72,7 @@
+   role="progressbar"
+   value="0.6"
+ >
+-</vaadin-progress-bar>
++</vaadin24-progress-bar>
+ `;
+ /* end snapshot vaadin-upload-file shadow default */
+ 

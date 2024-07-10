@@ -1,0 +1,77 @@
+Index: test/details.test.js
+===================================================================
+--- test/details.test.js
++++ test/details.test.js
+@@ -1,17 +1,18 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, keyboardEventFor, keyDownOn } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../vaadin-details.js';
+ 
+-describe('vaadin-details', () => {
++describe('vaadin24-details', () => {
+   let details, toggle, content;
+ 
+   beforeEach(() => {
+     details = fixtureSync(`
+-      <vaadin-details>
++      <vaadin24-details>
+         <div slot="summary">Summary</div>
+         <input>
+-      </vaadin-details>
++      </vaadin24-details>
+     `);
+     toggle = details.focusElement;
+     content = details._collapsible;
+@@ -25,11 +26,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -143,29 +144,29 @@
+     });
+ 
+     it('should set aria-controls on toggle button', () => {
+-      const idRegex = /^vaadin-details-content-\d+$/;
++      const idRegex = /^vaadin24-details-content-\d+$/;
+       expect(idRegex.test(toggle.getAttribute('aria-controls'))).to.be.true;
+     });
+   });
+ 
+   describe('unique IDs', () => {
+-    const idRegex = /^vaadin-details-content-\d+$/;
++    const idRegex = /^vaadin24-details-content-\d+$/;
+     let container, details;
+ 
+     beforeEach(() => {
+       container = fixtureSync(`
+         <div>
+-          <vaadin-details>
++          <vaadin24-details>
+             <div slot="summary">Summary</div>
+             <input>
+-          </vaadin-details>
+-          <vaadin-details>
++          </vaadin24-details>
++          <vaadin24-details>
+             <div slot="summary">Summary</div>
+             <input>
+-          </vaadin-details>
++          </vaadin24-details>
+         </div>
+       `);
+-      details = container.querySelectorAll('vaadin-details');
++      details = container.querySelectorAll('vaadin24-details');
+     });
+ 
+     it('should set unique id on the content', () => {

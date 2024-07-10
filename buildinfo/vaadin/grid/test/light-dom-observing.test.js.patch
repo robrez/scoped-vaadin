@@ -1,0 +1,486 @@
+Index: test/light-dom-observing.test.js
+===================================================================
+--- test/light-dom-observing.test.js
++++ test/light-dom-observing.test.js
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '@polymer/polymer/lib/elements/dom-bind.js';
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+ import '../vaadin-grid.js';
+@@ -30,32 +31,32 @@
+   }
+ }
+ 
+-customElements.define('x-boolean-toggle', XBooleanToggle);
++internalCustomElements.define('x-boolean-toggle', XBooleanToggle);
+ 
+ class GridWrapper extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-grid id="grid" size="10">
++      <vaadin24-grid id="grid" size="10">
+         <slot name="grid"></slot>
+-        <vaadin-grid-column-group>
++        <vaadin24-grid-column-group>
+           <template class="header">wrapper group header</template>
+           <template class="footer">wrapper group footer</template>
+           <slot name="group"></slot>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">wrapper column header</template>
+             <template class="footer">wrapper column footer</template>
+             <template>wrapper column body [[item.value]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `;
+   }
+ }
+ 
+-customElements.define('grid-wrapper', GridWrapper);
++internalCustomElements.define('grid-wrapper', GridWrapper);
+ 
+ const createColumn = () => {
+-  const column = document.createElement('vaadin-grid-column');
++  const column = document.createElement('vaadin24-grid-column');
+   column.innerHTML = `
+     <template class="header">some header</template>
+     <template class="footer">some footer</template>
+@@ -65,234 +66,234 @@
+ };
+ 
+ const createGroup = () => {
+-  const group = document.createElement('vaadin-grid-column-group');
++  const group = document.createElement('vaadin24-grid-column-group');
+   group.innerHTML = `
+     <template class="header">some group header</template>
+     <template class="footer">some group footer</template>
+-    <vaadin-grid-column>
++    <vaadin24-grid-column>
+       <template class="header">some foo header</template>
+       <template class="footer">some foo footer</template>
+       <template>some foo body [[item.value]]</template>
+-    </vaadin-grid-column>
+-    <vaadin-grid-column>
++    </vaadin24-grid-column>
++    <vaadin24-grid-column>
+       <template class="header">some bar header</template>
+       <template class="footer">some bar footer</template>
+       <template>some bar body [[item.value]]</template>
+-    </vaadin-grid-column>
++    </vaadin24-grid-column>
+   `;
+   return group;
+ };
+ 
+ const fixtures = {
+   columns: `
+-    <vaadin-grid size="10">
+-      <vaadin-grid-column>
++    <vaadin24-grid size="10">
++      <vaadin24-grid-column>
+         <template class="header">first header</template>
+         <template class="footer">first footer</template>
+         <template>first body [[item.value]]</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin24-grid-column>
++      <vaadin24-grid-column>
+         <template class="header">second header</template>
+         <template class="footer">second footer</template>
+         <template>second body [[item.value]]</template>
+-      </vaadin-grid-column>
+-    </vaadin-grid>
++      </vaadin24-grid-column>
++    </vaadin24-grid>
+   `,
+   'plain-groups': `
+-    <vaadin-grid size="10">
+-      <vaadin-grid-column-group>
++    <vaadin24-grid size="10">
++      <vaadin24-grid-column-group>
+         <template class="header">first group header</template>
+         <template class="footer">first group footer</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">first foo header</template>
+           <template class="footer">first foo footer</template>
+           <template>first foo body [[item.value]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">first bar header</template>
+           <template class="footer">first bar footer</template>
+           <template>first bar body [[item.value]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid-column-group>
+-      <vaadin-grid-column-group>
++        </vaadin24-grid-column>
++      </vaadin24-grid-column-group>
++      <vaadin24-grid-column-group>
+         <template class="header">second group header</template>
+         <template class="footer">second group footer</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">second foo header</template>
+           <template class="footer">second foo footer</template>
+           <template>second foo body [[item.value]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">second bar header</template>
+           <template class="footer">second bar footer</template>
+           <template>second bar body [[item.value]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid-column-group>
+-    </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid-column-group>
++    </vaadin24-grid>
+   `,
+   'nested-groups': `
+-    <vaadin-grid size="10">
+-      <vaadin-grid-column-group>
++    <vaadin24-grid size="10">
++      <vaadin24-grid-column-group>
+         <template class="header">group header</template>
+         <template class="footer">group footer</template>
+-        <vaadin-grid-column-group>
++        <vaadin24-grid-column-group>
+           <template class="header">first nested group header</template>
+           <template class="footer">first nested group footer</template>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">first foo header</template>
+             <template class="footer">first foo footer</template>
+             <template>first foo body [[item.value]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">first bar header</template>
+             <template class="footer">first bar footer</template>
+             <template>first bar body [[item.value]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-        <vaadin-grid-column-group>
++          </vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++        <vaadin24-grid-column-group>
+           <template class="header">second nested group header</template>
+           <template class="footer">second nested group footer</template>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">second foo header</template>
+             <template class="footer">second foo footer</template>
+             <template>second foo body [[item.value]]</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">second bar header</template>
+             <template class="footer">second bar footer</template>
+             <template>second bar body [[item.value]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid-column-group>
+-    </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid-column-group>
++    </vaadin24-grid>
+   `,
+   'dom-repeat-columns': `
+-    <vaadin-grid id="grid" size="10">
++    <vaadin24-grid id="grid" size="10">
+       <dom-repeat as="column">
+         <template is="dom-repeat" as="column">
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template class="header">grid repeats column [[column]] header</template>
+             <template class="footer">grid repeats column [[column]] footer</template>
+             <template>grid repeats column [[column]] body [[item.value]]</template>
+-          </vaadin-grid-column>
++          </vaadin24-grid-column>
+         </template>
+       </dom-repeat>
+-    </vaadin-grid>
++    </vaadin24-grid>
+   `,
+   'dom-repeat-columns-in-group': `
+-    <vaadin-grid size="10">
+-      <vaadin-grid-column-group>
++    <vaadin24-grid size="10">
++      <vaadin24-grid-column-group>
+         <dom-repeat as="column">
+           <template is="dom-repeat" as="column">
+-            <vaadin-grid-column>
++            <vaadin24-grid-column>
+               <template class="header">group repeats column [[column]] header</template>
+               <template class="footer">group repeats column [[column]] footer</template>
+               <template>group repeats column [[column]] body [[item.value]]</template>
+-            </vaadin-grid-column>
++            </vaadin24-grid-column>
+           </template>
+         </dom-repeat>
+-      </vaadin-grid-column-group>
+-    </vaadin-grid>
++      </vaadin24-grid-column-group>
++    </vaadin24-grid>
+   `,
+   'dom-repeat-groups': `
+-    <vaadin-grid size="10">
++    <vaadin24-grid size="10">
+       <dom-repeat as="column">
+         <template is="dom-repeat" as="column">
+-          <vaadin-grid-column-group>
+-            <vaadin-grid-column>
++          <vaadin24-grid-column-group>
++            <vaadin24-grid-column>
+               <template class="header">grid repeats group [[column]] header</template>
+               <template class="footer">grid repeats group [[column]] footer</template>
+               <template>grid repeats group [[column]] body [[item.value]]</template>
+-            </vaadin-grid-column>
+-          </vaadin-grid-column-group>
++            </vaadin24-grid-column>
++          </vaadin24-grid-column-group>
+         </template>
+       </dom-repeat>
+-    </vaadin-grid>
++    </vaadin24-grid>
+   `,
+   'dom-repeat-groups-in-group': `
+-    <vaadin-grid size="10">
+-      <vaadin-grid-column-group>
++    <vaadin24-grid size="10">
++      <vaadin24-grid-column-group>
+         <dom-repeat as="column">
+           <template is="dom-repeat" as="column">
+-            <vaadin-grid-column-group>
+-              <vaadin-grid-column>
++            <vaadin24-grid-column-group>
++              <vaadin24-grid-column>
+                 <template class="header">group repeats group [[column]] header</template>
+                 <template class="footer">group repeats group [[column]] footer</template>
+                 <template>group repeats group [[column]] body [[item.value]]</template>
+-              </vaadin-grid-column>
+-            </vaadin-grid-column-group>
++              </vaadin24-grid-column>
++            </vaadin24-grid-column-group>
+           </template>
+         </dom-repeat>
+-      </vaadin-grid-column-group>
+-    </vaadin-grid>
++      </vaadin24-grid-column-group>
++    </vaadin24-grid>
+   `,
+   'dom-repeat-columns-detailed': `
+     <dom-bind>
+       <template>
+-        <vaadin-grid id="grid" size="10">
++        <vaadin24-grid id="grid" size="10">
+           <template class="row-details">
+             <div class="details">grid repeats column with detail detail [[item.value]]</div>
+           </template>
+-          <vaadin-grid-column frozen width="20px">
++          <vaadin24-grid-column frozen width="20px">
+             <template><x-boolean-toggle value="{{detailsOpened}}"></x-boolean-toggle></template>
+             <template class="header">detail toggle</template>
+-          </vaadin-grid-column>
++          </vaadin24-grid-column>
+           <dom-repeat as="column">
+             <template is="dom-repeat" as="column">
+-              <vaadin-grid-column>
++              <vaadin24-grid-column>
+                 <template class="header">grid repeats column with detail [[column]] header</template>
+                 <template>grid repeats column with detail [[column]] body [[item.value]]</template>
+-              </vaadin-grid-column>
++              </vaadin24-grid-column>
+             </template>
+           </dom-repeat>
+-        </vaadin-grid>
++        </vaadin24-grid>
+       </template>
+     </dom-bind>
+   `,
+   'effective-children-columns': `
+     <grid-wrapper>
+-      <vaadin-grid-column>
++      <vaadin24-grid-column>
+         <template class="header">foo header</template>
+         <template class="footer">foo footer</template>
+         <template>foo body [[item.value]]</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin24-grid-column>
++      <vaadin24-grid-column>
+         <template class="header">bar header</template>
+         <template class="footer">bar footer</template>
+         <template>bar body [[item.value]]</template>
+-      </vaadin-grid-column>
++      </vaadin24-grid-column>
+     </grid-wrapper>
+   `,
+   'effective-children-groups': `
+     <grid-wrapper>
+-      <vaadin-grid-column-group>
++      <vaadin24-grid-column-group>
+         <template class="header">first group header</template>
+         <template class="footer">first group footer</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">first foo header</template>
+           <template class="footer">first foo footer</template>
+           <template>first foo body [[item.value]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">first bar header</template>
+           <template class="footer">first bar footer</template>
+           <template>first bar body [[item.value]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid-column-group>
+-      <vaadin-grid-column-group>
++        </vaadin24-grid-column>
++      </vaadin24-grid-column-group>
++      <vaadin24-grid-column-group>
+         <template class="header">second group header</template>
+         <template class="footer">second group footer</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">second foo header</template>
+           <template class="footer">second foo footer</template>
+           <template>second foo body [[item.value]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">second bar header</template>
+           <template class="footer">second bar footer</template>
+           <template>second bar body [[item.value]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid-column-group>
++        </vaadin24-grid-column>
++      </vaadin24-grid-column-group>
+     </grid-wrapper>
+   `,
+ };
+@@ -376,7 +377,7 @@
+       });
+ 
+       it('should support adding selection column late', async () => {
+-        const column = document.createElement('vaadin-grid-selection-column');
++        const column = document.createElement('vaadin24-grid-selection-column');
+         column.innerHTML = `
+           <template class="header">some header</template>
+           <template>some body [[item.value]]</template>
+@@ -390,7 +391,7 @@
+       });
+ 
+       it('should support removing late', async () => {
+-        const column = grid.querySelector('vaadin-grid-column');
++        const column = grid.querySelector('vaadin24-grid-column');
+         grid.removeChild(column);
+         await nextRender();
+         flushGrid(grid);
+@@ -413,7 +414,7 @@
+       });
+ 
+       it('should invoke node observer twice when removing columns', async () => {
+-        const column = grid.querySelector('vaadin-grid-column');
++        const column = grid.querySelector('vaadin24-grid-column');
+         const spy = sinon.spy(grid._observer, 'callback');
+         grid.removeChild(column);
+         flushGrid(grid);
+@@ -459,7 +460,7 @@
+ 
+       beforeEach(async () => {
+         init('plain-groups');
+-        firstGroup = grid.querySelector('vaadin-grid-column-group');
++        firstGroup = grid.querySelector('vaadin24-grid-column-group');
+         await nextFrame();
+       });
+ 
+@@ -471,7 +472,7 @@
+       });
+ 
+       it('should support removing late', async () => {
+-        const column = firstGroup.querySelector('vaadin-grid-column');
++        const column = firstGroup.querySelector('vaadin24-grid-column');
+         firstGroup.removeChild(column);
+         await nextFrame();
+         expectFirstColumn('first bar', 1);
+@@ -496,7 +497,7 @@
+       });
+ 
+       it('should support removing late', async () => {
+-        const group = grid.querySelector('vaadin-grid-column-group');
++        const group = grid.querySelector('vaadin24-grid-column-group');
+         grid.removeChild(group);
+ 
+         await nextRender();
+@@ -513,7 +514,7 @@
+ 
+       beforeEach(() => {
+         init('nested-groups');
+-        firstGroup = grid.querySelector('vaadin-grid-column-group');
++        firstGroup = grid.querySelector('vaadin24-grid-column-group');
+       });
+ 
+       it('should support adding late', async () => {
+@@ -529,7 +530,7 @@
+       });
+ 
+       it('should support removing late', async () => {
+-        const group = firstGroup.querySelector('vaadin-grid-column-group');
++        const group = firstGroup.querySelector('vaadin24-grid-column-group');
+         firstGroup.removeChild(group);
+ 
+         await nextRender();
+@@ -669,7 +670,7 @@
+           });
+ 
+           it('should support removing late', async () => {
+-            const column = wrapper.querySelector('vaadin-grid-column');
++            const column = wrapper.querySelector('vaadin24-grid-column');
+             wrapper.removeChild(column);
+             await nextFrame();
+             expectFirstColumn('bar', 1);
+@@ -682,7 +683,7 @@
+ 
+           beforeEach(() => {
+             init('effective-children-groups', { inGroup });
+-            firstGroup = wrapper.querySelector('vaadin-grid-column-group');
++            firstGroup = wrapper.querySelector('vaadin24-grid-column-group');
+           });
+ 
+           it('should provide initial state', async () => {
+@@ -714,7 +715,7 @@
+ 
+         beforeEach(() => {
+           init('effective-children-groups', { inGroup });
+-          firstGroup = wrapper.querySelector('vaadin-grid-column-group');
++          firstGroup = wrapper.querySelector('vaadin24-grid-column-group');
+         });
+ 
+         describe('with columns', () => {
+@@ -727,7 +728,7 @@
+           });
+ 
+           it('should support removing late', async () => {
+-            const column = firstGroup.querySelector('vaadin-grid-column');
++            const column = firstGroup.querySelector('vaadin24-grid-column');
+             firstGroup.removeChild(column);
+             await nextFrame();
+             expectFirstColumn('first bar', inGroup ? 2 : 1);

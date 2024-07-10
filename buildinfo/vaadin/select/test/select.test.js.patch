@@ -1,0 +1,139 @@
+Index: test/select.test.js
+===================================================================
+--- test/select.test.js
++++ test/select.test.js
+@@ -15,20 +15,20 @@
+   tab,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/item/vaadin-item.js';
+-import '@vaadin/list-box/vaadin-list-box.js';
++import '@scoped-vaadin/item/vaadin-item.js';
++import '@scoped-vaadin/list-box/vaadin-list-box.js';
+ import './not-animated-styles.js';
+ import '../vaadin-select.js';
+ import { html, render } from 'lit';
+ 
+-describe('vaadin-select', () => {
++describe('vaadin24-select', () => {
+   let select, valueButton;
+ 
+   describe('empty', () => {
+     let select;
+ 
+     beforeEach(() => {
+-      select = fixtureSync(`<vaadin-select></vaadin-select>`);
++      select = fixtureSync(`<vaadin24-select></vaadin24-select>`);
+     });
+ 
+     it('should not throw an exception if renderer is not set', () => {
+@@ -51,8 +51,8 @@
+         if (root.firstElementChild) {
+           return;
+         }
+-        const menu = document.createElement('vaadin-list-box');
+-        const item = document.createElement('vaadin-item');
++        const menu = document.createElement('vaadin24-list-box');
++        const item = document.createElement('vaadin24-item');
+         menu.appendChild(item);
+         root.appendChild(menu);
+       };
+@@ -63,9 +63,9 @@
+     it('should assign menu element set using innerHTML after opening', () => {
+       const renderer = (root) => {
+         root.innerHTML = `
+-          <vaadin-list-box>
+-            <vaadin-item>Test<vaadin-item>
+-          </vaadin-list-box>
++          <vaadin24-list-box>
++            <vaadin24-item>Test<vaadin24-item>
++          </vaadin24-list-box>
+         `;
+       };
+       select.renderer = renderer;
+@@ -78,20 +78,20 @@
+ 
+   describe('with items', () => {
+     beforeEach(async () => {
+-      select = fixtureSync('<vaadin-select></vaadin-select>');
++      select = fixtureSync('<vaadin24-select></vaadin24-select>');
+       select.renderer = (root) => {
+         render(
+           html`
+-            <vaadin-list-box>
+-              <vaadin-item>Option 1</vaadin-item>
+-              <vaadin-item value="v2" label="o2">Option 2</vaadin-item>
+-              <vaadin-item value="">Option 3</vaadin-item>
+-              <vaadin-item></vaadin-item>
+-              <vaadin-item label="">Empty</vaadin-item>
+-              <vaadin-item value="v4" disabled>Disabled</vaadin-item>
+-              <vaadin-item value="5">A number</vaadin-item>
+-              <vaadin-item value="false">A boolean</vaadin-item>
+-            </vaadin-list-box>
++            <vaadin24-list-box>
++              <vaadin24-item>Option 1</vaadin24-item>
++              <vaadin24-item value="v2" label="o2">Option 2</vaadin24-item>
++              <vaadin24-item value="">Option 3</vaadin24-item>
++              <vaadin24-item></vaadin24-item>
++              <vaadin24-item label="">Empty</vaadin24-item>
++              <vaadin24-item value="v4" disabled>Disabled</vaadin24-item>
++              <vaadin24-item value="5">A number</vaadin24-item>
++              <vaadin24-item value="false">A boolean</vaadin24-item>
++            </vaadin24-list-box>
+           `,
+           root,
+         );
+@@ -174,7 +174,7 @@
+       it('should wrap the selected item `label` string in selected vaadin item', () => {
+         menu.selected = 1;
+         const item = valueButton.firstElementChild;
+-        expect(item.localName).to.equal('vaadin-select-item');
++        expect(item.localName).to.equal('vaadin24-select-item');
+         expect(item.textContent).to.equal('o2');
+         expect(item.selected).to.be.true;
+         expect(item.getAttribute('tabindex')).to.be.null;
+@@ -443,7 +443,7 @@
+ 
+       // IOS Safari has incorrect viewport height when navigation bar is
+       // visible in landscape orientation. This is workarounded by exposing
+-      // --vaadin-overlay-viewport-bottom in <vaadin-overlay>.
++      // --vaadin-overlay-viewport-bottom in <vaadin24-overlay>.
+       it('should support --vaadin-overlay-viewport-bottom CSS property', () => {
+         const overlay = select._overlayElement;
+         overlay.setAttribute('phone', '');
+@@ -602,14 +602,14 @@
+     let menu;
+ 
+     beforeEach(async () => {
+-      select = fixtureSync(`<vaadin-select value="v2"></vaadin-select>`);
++      select = fixtureSync(`<vaadin24-select value="v2"></vaadin24-select>`);
+       select.renderer = (root) => {
+         render(
+           html`
+-            <vaadin-list-box>
+-              <vaadin-item value="v1">t1</vaadin-item>
+-              <vaadin-item value="v2" label="o2">t2</vaadin-item>
+-            </vaadin-list-box>
++            <vaadin24-list-box>
++              <vaadin24-item value="v1">t1</vaadin24-item>
++              <vaadin24-item value="v2" label="o2">t2</vaadin24-item>
++            </vaadin24-list-box>
+           `,
+           root,
+         );
+@@ -630,13 +630,13 @@
+     beforeEach(() => {
+       container = fixtureSync(`
+         <div style="display: flex; flex-direction: column; width: 500px;">
+-          <vaadin-select></vaadin-select>
++          <vaadin24-select></vaadin24-select>
+         </div>
+       `);
+     });
+ 
+     it('should stretch inside a column flex container', () => {
+-      const select = container.querySelector('vaadin-select');
++      const select = container.querySelector('vaadin24-select');
+       expect(window.getComputedStyle(container).width).to.eql('500px');
+       expect(parseFloat(window.getComputedStyle(select).width)).to.eql(500);
+     });

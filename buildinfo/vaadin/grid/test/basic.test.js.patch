@@ -1,0 +1,58 @@
+Index: test/basic.test.js
+===================================================================
+--- test/basic.test.js
++++ test/basic.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import {
+   flushGrid,
+@@ -22,11 +22,11 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 300px;" size="1000">
+-        <vaadin-grid-column>
++      <vaadin24-grid style="width: 200px; height: 300px;" size="1000">
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);
+@@ -228,14 +228,14 @@
+     layout = fixtureSync(`
+       <div style="display: flex; width: 300px; height: 300px;">
+         <div style="width: 100px; height: 100px; flex-shrink: 0;">Layout sibling</div>
+-        <vaadin-grid size="1000">
+-          <vaadin-grid-column>
++        <vaadin24-grid size="1000">
++          <vaadin24-grid-column>
+             <template>[[index]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       </div>
+     `);
+-    grid = layout.querySelector('vaadin-grid');
++    grid = layout.querySelector('vaadin24-grid');
+     grid.dataProvider = infiniteDataProvider;
+     flushGrid(grid);
+   });
+@@ -267,7 +267,7 @@
+     });
+ 
+     it('should have a visible header after row reorder', async () => {
+-      grid.querySelector('vaadin-grid-column').header = 'header';
++      grid.querySelector('vaadin24-grid-column').header = 'header';
+       grid.scrollToIndex(300);
+       await aTimeout(0);
+       flushGrid(grid);

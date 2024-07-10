@@ -1,0 +1,62 @@
+Index: test/button.test.js
+===================================================================
+--- test/button.test.js
++++ test/button.test.js
+@@ -1,33 +1,34 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+ import '../vaadin-button.js';
+ 
+-describe('vaadin-button', () => {
++describe('vaadin24-button', () => {
+   let element;
+ 
+   describe('custom element definition', () => {
+     let tagName;
+ 
+     beforeEach(() => {
+-      element = fixtureSync('<vaadin-button></vaadin-button>');
++      element = fixtureSync('<vaadin24-button></vaadin24-button>');
+       tagName = element.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+   describe('role', () => {
+     describe('default', () => {
+       beforeEach(() => {
+-        element = fixtureSync('<vaadin-button>Press me</vaadin-button>');
++        element = fixtureSync('<vaadin24-button>Press me</vaadin24-button>');
+       });
+ 
+       it('should set role attribute to button by default', () => {
+@@ -37,7 +38,7 @@
+ 
+     describe('custom', () => {
+       beforeEach(() => {
+-        element = fixtureSync('<vaadin-button role="menuitem">Press me</vaadin-button>');
++        element = fixtureSync('<vaadin24-button role="menuitem">Press me</vaadin24-button>');
+       });
+ 
+       it('should not override custom role attribute', () => {
+@@ -48,7 +49,7 @@
+ 
+   describe('keyboard', () => {
+     beforeEach(() => {
+-      element = fixtureSync('<vaadin-button>Press me</vaadin-button>');
++      element = fixtureSync('<vaadin24-button>Press me</vaadin24-button>');
+       element.focus();
+     });
+ 

@@ -1,0 +1,7 @@
+Index: theme/material/vaadin-input-container-styles.d.ts
+===================================================================
+--- theme/material/vaadin-input-container-styles.d.ts
++++ theme/material/vaadin-input-container-styles.d.ts
+@@ -1,1 +1,1 @@
+-import '@vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';

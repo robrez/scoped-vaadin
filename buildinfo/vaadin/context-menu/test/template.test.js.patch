@@ -1,0 +1,25 @@
+Index: test/template.test.js
+===================================================================
+--- test/template.test.js
++++ test/template.test.js
+@@ -1,6 +1,6 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fire, fixtureSync } from '@vaadin/testing-helpers';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import './not-animated-styles.js';
+ import '../vaadin-context-menu.js';
+ 
+@@ -9,10 +9,10 @@
+ 
+   beforeEach(() => {
+     menu = fixtureSync(`
+-      <vaadin-context-menu>
++      <vaadin24-context-menu>
+         <template>FOOBAR [[detail.foo]] [[target.id]]</template>
+         <div id="target"></div>
+-      </vaadin-context-menu>
++      </vaadin24-context-menu>
+     `);
+     target = document.querySelector('#target');
+   });

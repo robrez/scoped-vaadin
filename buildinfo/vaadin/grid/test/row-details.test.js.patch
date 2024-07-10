@@ -1,0 +1,157 @@
+Index: test/row-details.test.js
+===================================================================
+--- test/row-details.test.js
++++ test/row-details.test.js
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, click, fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
+ import '../vaadin-grid.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -19,32 +20,32 @@
+ class GridDetailsWrapper extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-grid id="grid" style="width: 50px; height: 400px">
++      <vaadin24-grid id="grid" style="width: 50px; height: 400px">
+         <template class="row-details"><span>[[index]]</span>-details</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `;
+   }
+ }
+ 
+-customElements.define('grid-details-wrapper', GridDetailsWrapper);
++internalCustomElements.define('grid-details-wrapper', GridDetailsWrapper);
+ 
+ class SlottedDetails extends PolymerElement {
+   static get template() {
+     return html`
+-      <vaadin-grid id="grid" style="width: 50px; height: 400px">
++      <vaadin24-grid id="grid" style="width: 50px; height: 400px">
+         <slot></slot>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `;
+   }
+ }
+ 
+-customElements.define('slotted-details', SlottedDetails);
++internalCustomElements.define('slotted-details', SlottedDetails);
+ 
+ describe('row details', () => {
+   let grid;
+@@ -62,12 +63,12 @@
+ 
+   it('should not increase row update count', () => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 50px; height: 400px" size="100">
++      <vaadin24-grid style="width: 50px; height: 400px" size="100">
+         <template class="row-details"><span>[[index]]</span>-details</template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     const spy = sinon.spy(grid, '_updateRow');
+     grid.size = 1;
+@@ -79,12 +80,12 @@
+   describe('simple', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 50px; height: 400px" size="100">
++        <vaadin24-grid style="width: 50px; height: 400px" size="100">
+           <template class="row-details"><span>[[index]]</span>-details</template>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template>[[index]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.dataProvider = infiniteDataProvider;
+       flushGrid(grid);
+@@ -295,7 +296,7 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 400px" size="100">
++        <vaadin24-grid style="width: 200px; height: 400px" size="100">
+           <template class="row-details">
+             <div>
+               <template is="dom-repeat" items="[[item.details]]">
+@@ -303,10 +304,10 @@
+               </template>
+             </div>
+           </template>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template>[[index]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+     });
+ 
+@@ -332,12 +333,12 @@
+     beforeEach(async () => {
+       dataset = buildDataSet(10);
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 50px; height: 400px" size="100">
++        <vaadin24-grid style="width: 50px; height: 400px" size="100">
+           <template class="row-details"><span>[[index]]</span>-details</template>
+-          <vaadin-grid-column>
++          <vaadin24-grid-column>
+             <template>[[index]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.dataProvider = dataProvider;
+       flushGrid(grid);
+@@ -389,9 +390,9 @@
+   describe('lazily set details renderer', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="name"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.items = [{ name: 'foo' }];
+       await nextFrame();
+@@ -429,9 +430,9 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="name"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.rowDetailsRenderer = (root) => {
+         // Render the details cell with a height of 100px

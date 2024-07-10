@@ -1,0 +1,9 @@
+Index: theme/lumo/vaadin-date-picker-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-date-picker-styles.d.ts
++++ theme/lumo/vaadin-date-picker-styles.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
++import '@scoped-vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';

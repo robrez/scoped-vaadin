@@ -1,0 +1,82 @@
+Index: test/frozen-columns.test.js
+===================================================================
+--- test/frozen-columns.test.js
++++ test/frozen-columns.test.js
+@@ -1,9 +1,9 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, listenOnce, nextRender } from '@vaadin/testing-helpers';
+ import { resetMouse, sendMouse } from '@web/test-runner-commands';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+-import { isElementFocused } from '@vaadin/component-base/src/focus-utils.js';
++import { isElementFocused } from '@scoped-vaadin/component-base/src/focus-utils.js';
+ import {
+   flushGrid,
+   getRowCells,
+@@ -33,23 +33,23 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 400px;" size="10">
+-          <vaadin-grid-column frozen>
++        <vaadin24-grid style="width: 200px; height: 400px;" size="10">
++          <vaadin24-grid-column frozen>
+             <template>foo</template>
+             <template class="header">foo</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template>bar</template>
+             <template class="header">bar</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template>baz</template>
+             <template class="header">baz</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.dataProvider = infiniteDataProvider;
+-      columns = grid.querySelectorAll('vaadin-grid-column');
++      columns = grid.querySelectorAll('vaadin24-grid-column');
+       document.documentElement.setAttribute('dir', direction);
+ 
+       flushGrid(grid);
+@@ -175,23 +175,23 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 400px;" size="10">
+-          <vaadin-grid-column>
++        <vaadin24-grid style="width: 200px; height: 400px;" size="10">
++          <vaadin24-grid-column>
+             <template>foo</template>
+             <template class="header">foo</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column>
+             <template>bar</template>
+             <template class="header">bar</template>
+-          </vaadin-grid-column>
+-          <vaadin-grid-column frozen-to-end>
++          </vaadin24-grid-column>
++          <vaadin24-grid-column frozen-to-end>
+             <template>baz</template>
+             <template class="header">baz</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.dataProvider = infiniteDataProvider;
+-      columns = grid.querySelectorAll('vaadin-grid-column');
++      columns = grid.querySelectorAll('vaadin24-grid-column');
+       document.documentElement.setAttribute('dir', direction);
+ 
+       flushGrid(grid);

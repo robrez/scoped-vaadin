@@ -1,0 +1,17 @@
+Index: test/lit-renderers.test.js
+===================================================================
+--- test/lit-renderers.test.js
++++ test/lit-renderers.test.js
+@@ -14,9 +14,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     grid.items = ['item1'];
+     column = grid.firstElementChild;

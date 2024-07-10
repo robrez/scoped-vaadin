@@ -1,0 +1,64 @@
+Index: test/checkbox.test.js
+===================================================================
+--- test/checkbox.test.js
++++ test/checkbox.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, mousedown, mouseup, nextFrame } from '@vaadin/testing-helpers';
+ import { resetMouse, sendKeys, sendMouse } from '@web/test-runner-commands';
+@@ -11,25 +12,25 @@
+     let tagName;
+ 
+     beforeEach(() => {
+-      checkbox = fixtureSync('<vaadin-checkbox></vaadin-checkbox>');
++      checkbox = fixtureSync('<vaadin24-checkbox></vaadin24-checkbox>');
+       tagName = checkbox.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+       checkbox = fixtureSync(`
+-        <vaadin-checkbox>
++        <vaadin24-checkbox>
+           <label slot="label">I accept <a href="#">the terms and conditions</a></label>
+-        </vaadin-checkbox>
++        </vaadin24-checkbox>
+       `);
+       // Wait for MutationObserver.
+       await nextFrame();
+@@ -216,7 +217,7 @@
+ 
+   describe('indeterminate property', () => {
+     beforeEach(() => {
+-      checkbox = fixtureSync(`<vaadin-checkbox></vaadin-checkbox>`);
++      checkbox = fixtureSync(`<vaadin24-checkbox></vaadin24-checkbox>`);
+       input = checkbox.inputElement;
+     });
+ 
+@@ -239,12 +240,12 @@
+     });
+ 
+     it('should warn about using default slot label', async () => {
+-      fixtureSync('<vaadin-checkbox>label</vaadin-checkbox>');
++      fixtureSync('<vaadin24-checkbox>label</vaadin24-checkbox>');
+       await nextFrame();
+ 
+       expect(console.warn.calledOnce).to.be.true;
+       expect(console.warn.args[0][0]).to.include(
+-        'WARNING: Since Vaadin 22, placing the label as a direct child of a <vaadin-checkbox> is deprecated.',
++        'WARNING: Since Vaadin 22, placing the label as a direct child of a <vaadin24-checkbox> is deprecated.',
+       );
+     });
+   });

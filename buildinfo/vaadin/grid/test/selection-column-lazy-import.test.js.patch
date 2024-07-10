@@ -1,0 +1,17 @@
+Index: test/selection-column-lazy-import.test.js
+===================================================================
+--- test/selection-column-lazy-import.test.js
++++ test/selection-column-lazy-import.test.js
+@@ -2,9 +2,9 @@
+ 
+ it('should not throw when grid with items imported lazily after selection column', async () => {
+   fixtureSync(`
+-    <vaadin-grid items="[]">
+-      <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-    </vaadin-grid>
++    <vaadin24-grid items="[]">
++      <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++    </vaadin24-grid>
+   `);
+ 
+   // The order of imports matters in this test

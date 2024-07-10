@@ -1,0 +1,32 @@
+Index: src/vaadin-lit-accordion-panel.js
+===================================================================
+--- src/vaadin-lit-accordion-panel.js
++++ src/vaadin-lit-accordion-panel.js
+@@ -5,14 +5,14 @@
+  */
+ import './vaadin-lit-accordion-heading.js';
+ import { html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { AccordionPanelMixin } from './vaadin-accordion-panel-mixin.js';
+ import { accordionPanel } from './vaadin-accordion-panel-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-accordion-panel>` web component.
++ * LitElement based version of `<vaadin24-accordion-panel>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -22,7 +22,7 @@
+  */
+ class AccordionPanel extends AccordionPanelMixin(ThemableMixin(PolylitMixin(LitElement))) {
+   static get is() {
+-    return 'vaadin-accordion-panel';
++    return 'vaadin24-accordion-panel';
+   }
+ 
+   static get styles() {

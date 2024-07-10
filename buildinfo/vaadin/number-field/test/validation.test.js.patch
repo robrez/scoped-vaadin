@@ -1,0 +1,118 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -11,7 +11,7 @@
+     let validateSpy, changeSpy;
+ 
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++      field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+       input = field.inputElement;
+       validateSpy = sinon.spy(field, 'validate');
+       changeSpy = sinon.spy().named('changeSpy');
+@@ -150,7 +150,7 @@
+ 
+   describe('bad input', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++      field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+       input = field.inputElement;
+       input.focus();
+     });
+@@ -190,7 +190,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      field = document.createElement('vaadin-number-field');
++      field = document.createElement('vaadin24-number-field');
+       validateSpy = sinon.spy(field, 'validate');
+     });
+ 
+@@ -248,7 +248,7 @@
+   describe('step', () => {
+     describe('default', () => {
+       beforeEach(() => {
+-        field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++        field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+       });
+ 
+       it('should not validate by step when only min and max are set', () => {
+@@ -261,7 +261,7 @@
+ 
+     describe('values', () => {
+       beforeEach(() => {
+-        field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++        field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+         field.step = 1.5;
+       });
+ 
+@@ -282,7 +282,7 @@
+ 
+     describe('basis', () => {
+       beforeEach(() => {
+-        field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++        field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+         field.min = 1;
+         field.step = 1.5;
+       });
+@@ -304,7 +304,7 @@
+ 
+     describe('the default step is set initially', () => {
+       beforeEach(() => {
+-        field = fixtureSync('<vaadin-number-field step="1"></vaadin-number-field>');
++        field = fixtureSync('<vaadin24-number-field step="1"></vaadin24-number-field>');
+       });
+ 
+       it('should validate by step when default value defined as attribute', () => {
+@@ -317,7 +317,7 @@
+ 
+     describe('a custom step is set initially', () => {
+       beforeEach(() => {
+-        field = fixtureSync('<vaadin-number-field step="1.5"></vaadin-number-field>');
++        field = fixtureSync('<vaadin24-number-field step="1.5"></vaadin24-number-field>');
+       });
+ 
+       it('should validate by step when defined as attribute', () => {
+@@ -331,7 +331,7 @@
+ 
+   describe('removing constraints', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-number-field></vaadin-number-field>');
++      field = fixtureSync('<vaadin24-number-field></vaadin24-number-field>');
+     });
+ 
+     it('should update "invalid" state when "required" is removed', () => {
+@@ -407,7 +407,7 @@
+ 
+   describe('invalid is set initially', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-number-field invalid></vaadin-number-field>');
++      field = fixtureSync('<vaadin24-number-field invalid></vaadin24-number-field>');
+     });
+ 
+     it('should not remove "invalid" state when ready', () => {
+@@ -417,7 +417,7 @@
+ 
+   describe('invalid and value are set initially', () => {
+     beforeEach(() => {
+-      field = fixtureSync('<vaadin-number-field invalid value="123456"></vaadin-number-field>');
++      field = fixtureSync('<vaadin24-number-field invalid value="123456"></vaadin24-number-field>');
+     });
+ 
+     it('should not remove "invalid" state when ready', () => {
+@@ -427,12 +427,12 @@
+ 
+   describe('checkValidity', () => {
+     it('should return true when called before connected to the DOM', () => {
+-      const field = document.createElement('vaadin-number-field');
++      const field = document.createElement('vaadin24-number-field');
+       expect(field.checkValidity()).to.be.true;
+     });
+ 
+     it('should return false when called before connected to the DOM and invalid', () => {
+-      const field = document.createElement('vaadin-number-field');
++      const field = document.createElement('vaadin24-number-field');
+       field.invalid = true;
+       expect(field.checkValidity()).to.be.false;
+     });

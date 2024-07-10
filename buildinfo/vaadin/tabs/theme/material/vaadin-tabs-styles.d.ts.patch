@@ -1,0 +1,9 @@
+Index: theme/material/vaadin-tabs-styles.d.ts
+===================================================================
+--- theme/material/vaadin-tabs-styles.d.ts
++++ theme/material/vaadin-tabs-styles.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';

@@ -1,0 +1,30 @@
+Index: test/extension.test.js
+===================================================================
+--- test/extension.test.js
++++ test/extension.test.js
+@@ -1,8 +1,9 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync } from '@vaadin/testing-helpers';
+ import { Grid } from '../src/vaadin-grid.js';
+ 
+-customElements.define('vaadin-custom-grid', class CustomGrid extends Grid {});
++internalCustomElements.define('vaadin-custom-grid', class CustomGrid extends Grid {});
+ 
+ describe('extended grid', () => {
+   let grid;
+@@ -10,12 +11,12 @@
+   beforeEach(() => {
+     grid = fixtureSync(`
+       <vaadin-custom-grid items='[{"foo": "bar"}]'>
+-        <vaadin-grid-column path="foo" header="Foo"></vaadin-grid-column>
++        <vaadin24-grid-column path="foo" header="Foo"></vaadin24-grid-column>
+       </vaadin-custom-grid>
+     `);
+   });
+ 
+   it('child column should be able to find host grid', () => {
+-    expect(grid.querySelector('vaadin-grid-column')._grid).to.be.equal(grid);
++    expect(grid.querySelector('vaadin24-grid-column')._grid).to.be.equal(grid);
+   });
+ });

@@ -1,0 +1,9 @@
+Index: theme/material/vaadin-date-time-picker-styles.d.ts
+===================================================================
+--- theme/material/vaadin-date-time-picker-styles.d.ts
++++ theme/material/vaadin-date-time-picker-styles.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/date-picker/theme/material/vaadin-date-picker.js';
+-import '@vaadin/time-picker/theme/material/vaadin-time-picker.js';
++import '@scoped-vaadin/date-picker/theme/material/vaadin-date-picker.js';
++import '@scoped-vaadin/time-picker/theme/material/vaadin-time-picker.js';

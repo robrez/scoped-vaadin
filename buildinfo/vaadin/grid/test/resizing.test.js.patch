@@ -1,0 +1,77 @@
+Index: test/resizing.test.js
+===================================================================
+--- test/resizing.test.js
++++ test/resizing.test.js
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import '../vaadin-grid-column-group.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -26,19 +27,19 @@
+         }
+       </style>
+ 
+-      <vaadin-grid id="grid" style="width: 200px; height: 400px;" size="10" hidden>
++      <vaadin24-grid id="grid" style="width: 200px; height: 400px;" size="10" hidden>
+         <template class="row-details"> [[index]] </template>
+-        <vaadin-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">header</template>
+           <template>[[index]]</template>
+           <template class="footer">footer</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `;
+   }
+ }
+ 
+-customElements.define('test-component', TestComponent);
++internalCustomElements.define('test-component', TestComponent);
+ 
+ describe('resizing', () => {
+   let component, grid;
+@@ -122,7 +123,7 @@
+   it('should have correct layout after column width change', async () => {
+     grid.style.height = '';
+     grid.allRowsVisible = true;
+-    grid.querySelector('vaadin-grid-column').width = '300px';
++    grid.querySelector('vaadin24-grid-column').width = '300px';
+     // Before next render
+     await nextFrame();
+     // After next render
+@@ -170,11 +171,11 @@
+   describe('template', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column>
++        <vaadin24-grid>
++          <vaadin24-grid-column>
+             <template>[[index]]</template>
+-          </vaadin-grid-column>
+-        </vaadin-grid>
++          </vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+     });
+ 
+@@ -192,9 +193,9 @@
+   describe('path', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="value"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="value"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.firstElementChild.header = null;
+       grid.allRowsVisible = true;

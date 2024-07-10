@@ -1,0 +1,43 @@
+Index: src/vaadin-lit-menu-bar-submenu.js
+===================================================================
+--- src/vaadin-lit-menu-bar-submenu.js
++++ src/vaadin-lit-menu-bar-submenu.js
+@@ -7,14 +7,14 @@
+ import './vaadin-lit-menu-bar-list-box.js';
+ import './vaadin-lit-menu-bar-overlay.js';
+ import { css, html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ContextMenuMixin } from '@vaadin/context-menu/src/vaadin-context-menu-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ContextMenuMixin } from '@scoped-vaadin/context-menu/src/vaadin-context-menu-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-menu-bar>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-menu-bar>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -25,7 +25,7 @@
+  */
+ class MenuBarSubmenu extends ContextMenuMixin(OverlayClassMixin(ThemePropertyMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-menu-bar-submenu';
++    return 'vaadin24-menu-bar-submenu';
+   }
+ 
+   static get styles() {
+@@ -52,7 +52,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-menu-bar';
++    return 'vaadin24-menu-bar';
+   }
+ 
+   /** @protected */

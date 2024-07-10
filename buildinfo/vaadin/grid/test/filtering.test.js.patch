@@ -1,0 +1,178 @@
+Index: test/filtering.test.js
+===================================================================
+--- test/filtering.test.js
++++ test/filtering.test.js
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, listenOnce } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import '../vaadin-grid-filter.js';
+ import '../vaadin-grid-filter-column.js';
+@@ -17,17 +18,17 @@
+           display: block;
+         }
+       </style>
+-      <vaadin-grid-filter path="foo" value="[[_filterValue]]" id="filter">
++      <vaadin24-grid-filter path="foo" value="[[_filterValue]]" id="filter">
+         <input slot="filter" value="{{_filterValue::input}}" />
+-      </vaadin-grid-filter>
++      </vaadin24-grid-filter>
+     `;
+   }
+ }
+ 
+-customElements.define('filter-wrapper', FilterWrapper);
++internalCustomElements.define('filter-wrapper', FilterWrapper);
+ 
+ function flushFilters(grid) {
+-  Array.from(grid.querySelectorAll('vaadin-grid-filter')).forEach(
++  Array.from(grid.querySelectorAll('vaadin24-grid-filter')).forEach(
+     (filter) => filter._debouncerFilterChanged && filter._debouncerFilterChanged.flush(),
+   );
+ }
+@@ -71,24 +72,24 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column>
++      <vaadin24-grid>
++        <vaadin24-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter path="first" value="bar">
+-            </vaadin-grid-filter>
+-            <vaadin-grid-sorter path="first"></vaadin-grid-sorter>
++            <vaadin24-grid-filter path="first" value="bar">
++            </vaadin24-grid-filter>
++            <vaadin24-grid-sorter path="first"></vaadin24-grid-sorter>
+           </template>
+           <template>[[item.first]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter path="last" value="qux">
+-            </vaadin-grid-filter>
++            <vaadin24-grid-filter path="last" value="qux">
++            </vaadin24-grid-filter>
+           </template>
+           <template>[[item.last]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-filter-column></vaadin-grid-filter-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++        <vaadin24-grid-filter-column></vaadin24-grid-filter-column>
++      </vaadin24-grid>
+     `);
+     flushGrid(grid);
+     flushFilters(grid);
+@@ -165,7 +166,7 @@
+     flushFilters(grid);
+     grid.style.width = '200px';
+     const filterWidth = grid._filters[0].parentElement.offsetWidth;
+-    const textFieldWidth = grid._filters[0].shadowRoot.querySelector('vaadin-text-field').offsetWidth;
++    const textFieldWidth = grid._filters[0].shadowRoot.querySelector('vaadin24-text-field').offsetWidth;
+     expect(filterWidth).to.be.greaterThan(textFieldWidth);
+   });
+ 
+@@ -173,10 +174,10 @@
+     let filterColumn, filterCellContent, filter, filterTextField;
+ 
+     beforeEach(() => {
+-      filterColumn = grid.querySelector('vaadin-grid-filter-column');
++      filterColumn = grid.querySelector('vaadin24-grid-filter-column');
+       filterCellContent = getHeaderCellContent(grid, 0, 2);
+ 
+-      filter = filterCellContent.querySelector('vaadin-grid-filter');
++      filter = filterCellContent.querySelector('vaadin24-grid-filter');
+       filterTextField = filter.firstElementChild;
+     });
+ 
+@@ -215,24 +216,24 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column>
++      <vaadin24-grid>
++        <vaadin24-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter path="first" value="bar">
+-            </vaadin-grid-filter>
+-            <vaadin-grid-sorter path="first"></vaadin-grid-sorter>
++            <vaadin24-grid-filter path="first" value="bar">
++            </vaadin24-grid-filter>
++            <vaadin24-grid-sorter path="first"></vaadin24-grid-sorter>
+           </template>
+           <template>[[item.first]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-column>
++        </vaadin24-grid-column>
++        <vaadin24-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter path="last" value="qux">
+-            </vaadin-grid-filter>
++            <vaadin24-grid-filter path="last" value="qux">
++            </vaadin24-grid-filter>
+           </template>
+           <template>[[item.last]]</template>
+-        </vaadin-grid-column>
+-        <vaadin-grid-filter-column></vaadin-grid-filter-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++        <vaadin24-grid-filter-column></vaadin24-grid-filter-column>
++      </vaadin24-grid>
+     `);
+     flushGrid(grid);
+ 
+@@ -304,7 +305,7 @@
+ 
+   it('should sort filtered items', () => {
+     grid._filters[1].value = 'r';
+-    grid.querySelector('vaadin-grid-sorter').direction = 'asc';
++    grid.querySelector('vaadin24-grid-sorter').direction = 'asc';
+     expect(grid.size).to.equal(2);
+     expect(getBodyCellContent(grid, 0, 0).innerText).to.equal('bar');
+     expect(getBodyCellContent(grid, 1, 0).innerText).to.equal('foo');
+@@ -314,24 +315,24 @@
+ describe('lazy init', () => {
+   it('should not filter if there is no data yet', () => {
+     const grid = fixtureSync(`
+-    <vaadin-grid>
+-      <vaadin-grid-column>
++    <vaadin24-grid>
++      <vaadin24-grid-column>
+         <template class="header">
+-          <vaadin-grid-filter path="first" value="bar">
+-          </vaadin-grid-filter>
+-          <vaadin-grid-sorter path="first"></vaadin-grid-sorter>
++          <vaadin24-grid-filter path="first" value="bar">
++          </vaadin24-grid-filter>
++          <vaadin24-grid-sorter path="first"></vaadin24-grid-sorter>
+         </template>
+         <template>[[item.first]]</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin24-grid-column>
++      <vaadin24-grid-column>
+         <template class="header">
+-          <vaadin-grid-filter path="last" value="qux">
+-          </vaadin-grid-filter>
++          <vaadin24-grid-filter path="last" value="qux">
++          </vaadin24-grid-filter>
+         </template>
+         <template>[[item.last]]</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-filter-column></vaadin-grid-filter-column>
+-    </vaadin-grid>
++      </vaadin24-grid-column>
++      <vaadin24-grid-filter-column></vaadin24-grid-filter-column>
++    </vaadin24-grid>
+   `);
+     grid.size = 100;
+     grid.dataProvider = () => {

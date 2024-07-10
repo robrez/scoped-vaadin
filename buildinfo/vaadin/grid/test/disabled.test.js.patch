@@ -1,0 +1,19 @@
+Index: test/disabled.test.js
+===================================================================
+--- test/disabled.test.js
++++ test/disabled.test.js
+@@ -11,10 +11,10 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-filter-column path="foo"></vaadin-grid-filter-column>
+-        <vaadin-grid-sort-column path="bar"></vaadin-grid-sort-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-filter-column path="foo"></vaadin24-grid-filter-column>
++        <vaadin24-grid-sort-column path="bar"></vaadin24-grid-sort-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.items = [

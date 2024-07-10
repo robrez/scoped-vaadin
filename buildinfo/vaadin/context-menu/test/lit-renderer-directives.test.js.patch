@@ -1,0 +1,40 @@
+Index: test/lit-renderer-directives.test.js
+===================================================================
+--- test/lit-renderer-directives.test.js
++++ test/lit-renderer-directives.test.js
+@@ -9,14 +9,14 @@
+ async function renderContextMenu(container, { content }) {
+   render(
+     html`
+-      <vaadin-context-menu open-on="click" ${content ? contextMenuRenderer(() => html`${content}`, content) : nothing}>
++      <vaadin24-context-menu open-on="click" ${content ? contextMenuRenderer(() => html`${content}`, content) : nothing}>
+         <button>Target</button>
+-      </vaadin-context-menu>
++      </vaadin24-context-menu>
+     `,
+     container,
+   );
+   await nextFrame();
+-  return container.querySelector('vaadin-context-menu');
++  return container.querySelector('vaadin24-context-menu');
+ }
+ 
+ describe('lit renderer directives', () => {
+@@ -62,14 +62,14 @@
+         rendererSpy = sinon.spy();
+         render(
+           html`
+-            <vaadin-context-menu open-on="click" ${contextMenuRenderer(rendererSpy)}>
++            <vaadin24-context-menu open-on="click" ${contextMenuRenderer(rendererSpy)}>
+               <button></button>
+-            </vaadin-context-menu>
++            </vaadin24-context-menu>
+           `,
+           container,
+         );
+         await nextFrame();
+-        contextMenu = container.querySelector('vaadin-context-menu');
++        contextMenu = container.querySelector('vaadin24-context-menu');
+         target = contextMenu.querySelector('button');
+         target.click();
+       });

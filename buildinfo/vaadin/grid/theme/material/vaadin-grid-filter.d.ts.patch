@@ -1,0 +1,8 @@
+Index: theme/material/vaadin-grid-filter.d.ts
+===================================================================
+--- theme/material/vaadin-grid-filter.d.ts
++++ theme/material/vaadin-grid-filter.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/text-field/theme/material/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/theme/material/vaadin-text-field.js';
+ import '../../src/vaadin-grid-filter.js';

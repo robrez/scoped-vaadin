@@ -1,0 +1,151 @@
+Index: test/draggable-resizable.test.js
+===================================================================
+--- test/draggable-resizable.test.js
++++ test/draggable-resizable.test.js
+@@ -1,13 +1,14 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
+-import '@vaadin/text-area/vaadin-text-area.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/text-area/vaadin-text-area.js';
+ import './not-animated-styles.js';
+ import '../src/vaadin-dialog.js';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'internally-draggable',
+   class extends PolymerElement {
+     static get template() {
+@@ -51,16 +52,16 @@
+   beforeEach(() => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-dialog modeless draggable opened>
++        <vaadin24-dialog modeless draggable opened>
+           <template>
+             <div>Modeless dialog 1</div>
+           </template>
+-        </vaadin-dialog>
+-        <vaadin-dialog modeless draggable opened>
++        </vaadin24-dialog>
++        <vaadin24-dialog modeless draggable opened>
+           <template>
+             <div>Modeless dialog 2</div>
+           </template>
+-        </vaadin-dialog>
++        </vaadin24-dialog>
+       </div>
+     `);
+     dialogs = wrapper.children;
+@@ -114,11 +115,11 @@
+ 
+   beforeEach(() => {
+     dialog = fixtureSync(`
+-      <vaadin-dialog resizable opened modeless>
++      <vaadin24-dialog resizable opened modeless>
+         <template>
+           <div>Resizable dialog</div>
+         </template>
+-      </vaadin-dialog>
++      </vaadin24-dialog>
+     `);
+     overlayPart = dialog.$.overlay.$.overlay;
+     bounds = overlayPart.getBoundingClientRect();
+@@ -347,14 +348,14 @@
+ 
+   beforeEach(() => {
+     dialog = fixtureSync(`
+-      <vaadin-dialog draggable opened modeless>
++      <vaadin24-dialog draggable opened modeless>
+         <template>
+           <div>Draggable dialog</div>
+           <div class="draggable">Draggable area</div>
+           <internally-draggable></internally-draggable>
+           <button>OK</button>
+         </template>
+-      </vaadin-dialog>
++      </vaadin24-dialog>
+     `);
+     container = dialog.$.overlay.$.resizerContainer;
+     content = dialog.$.overlay.$.content;
+@@ -580,7 +581,7 @@
+ 
+   function getFrontmostOverlayFromScreenCenter() {
+     let elementFromPoint = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
+-    while (elementFromPoint && elementFromPoint.localName !== 'vaadin-dialog-overlay') {
++    while (elementFromPoint && elementFromPoint.localName !== 'vaadin24-dialog-overlay') {
+       elementFromPoint = elementFromPoint.host || elementFromPoint.parentNode;
+     }
+     return elementFromPoint;
+@@ -596,21 +597,21 @@
+ 
+   beforeEach(() => {
+     resizable = fixtureSync(`
+-      <vaadin-dialog resizable opened modeless>
++      <vaadin24-dialog resizable opened modeless>
+         <template>
+           <div>Resizable dialog</div>
+         </template>
+-      </vaadin-dialog>
++      </vaadin24-dialog>
+     `);
+     draggable = fixtureSync(`
+-      <vaadin-dialog draggable opened modeless>
++      <vaadin24-dialog draggable opened modeless>
+         <template>
+           <div>Draggable dialog</div>
+           <div class="draggable">Draggable area</div>
+           <internally-draggable></internally-draggable>
+           <button>OK</button>
+         </template>
+-      </vaadin-dialog>
++      </vaadin24-dialog>
+     `);
+     resizableOverlay = resizable.$.overlay;
+     draggableOverlay = draggable.$.overlay;
+@@ -704,16 +705,16 @@
+   beforeEach(() => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-dialog id="modalDialog">
++        <vaadin24-dialog id="modalDialog">
+           <template>
+             MODAL_DIALOG
+           </template>
+-        </vaadin-dialog>
+-        <vaadin-dialog id="modelessDialog" modeless>
++        </vaadin24-dialog>
++        <vaadin24-dialog id="modelessDialog" modeless>
+           <template>
+             MODELESS_DIALOG
+           </template>
+-        </vaadin-dialog>
++        </vaadin24-dialog>
+       </div>
+     `);
+     dialogs = wrapper.children;
+@@ -748,9 +749,9 @@
+ 
+   beforeEach(() => {
+     dialog = fixtureSync(`
+-      <vaadin-dialog resizable opened modeless>
++      <vaadin24-dialog resizable opened modeless>
+         <template></template>
+-      </vaadin-dialog>
++      </vaadin24-dialog>
+     `);
+     overlay = dialog.$.overlay;
+     overlayPart = overlay.$.overlay;
+@@ -769,7 +770,7 @@
+   });
+ 
+   it('should not overflow when using vaadin-textarea in the content', async () => {
+-    const textarea = document.createElement('vaadin-text-area');
++    const textarea = document.createElement('vaadin24-text-area');
+     textarea.value = Array(20).join('Lorem ipsum dolor sit amet');
+     overlay.content.appendChild(textarea);
+     overlay.$.content.style.padding = '20px';

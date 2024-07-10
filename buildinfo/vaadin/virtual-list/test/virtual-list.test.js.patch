@@ -1,0 +1,22 @@
+Index: test/virtual-list.test.js
+===================================================================
+--- test/virtual-list.test.js
++++ test/virtual-list.test.js
+@@ -6,7 +6,7 @@
+   let list;
+ 
+   beforeEach(() => {
+-    list = fixtureSync(`<vaadin-virtual-list></vaadin-virtual-list>`);
++    list = fixtureSync(`<vaadin24-virtual-list></vaadin24-virtual-list>`);
+   });
+ 
+   it('should have a default height', () => {
+@@ -31,7 +31,7 @@
+   it('should not collapse inside a flexbox', () => {
+     const flexBox = fixtureSync(`
+       <div style="display:flex">
+-        <vaadin-virtual-list></vaadin-virtual-list>
++        <vaadin24-virtual-list></vaadin24-virtual-list>
+       </div>`);
+ 
+     expect(flexBox.firstElementChild.offsetWidth).to.equal(flexBox.offsetWidth);

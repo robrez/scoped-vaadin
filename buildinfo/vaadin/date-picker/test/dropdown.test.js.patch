@@ -1,0 +1,13 @@
+Index: test/dropdown.test.js
+===================================================================
+--- test/dropdown.test.js
++++ test/dropdown.test.js
+@@ -9,7 +9,7 @@
+   let datePicker, input, overlay;
+ 
+   beforeEach(() => {
+-    datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
+     input = datePicker.inputElement;
+     overlay = datePicker.$.overlay;
+   });

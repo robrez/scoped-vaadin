@@ -1,0 +1,138 @@
+Index: test/selection.test.js
+===================================================================
+--- test/selection.test.js
++++ test/selection.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { click, fixtureSync, listenOnce, mousedown } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import '../vaadin-grid-selection-column.js';
+ import '../vaadin-grid-filter.js';
+@@ -20,20 +20,20 @@
+ 
+ const fixtures = {
+   renderer: `
+-    <vaadin-grid style="width: 200px; height: 200px;" size="10">
+-      <vaadin-grid-column></vaadin-grid-column>
+-      <vaadin-grid-column></vaadin-grid-column>
+-    </vaadin-grid>
++    <vaadin24-grid style="width: 200px; height: 200px;" size="10">
++      <vaadin24-grid-column></vaadin24-grid-column>
++      <vaadin24-grid-column></vaadin24-grid-column>
++    </vaadin24-grid>
+   `,
+   template: `
+-    <vaadin-grid style="width: 200px; height: 200px;" size="10">
+-      <vaadin-grid-column>
++    <vaadin24-grid style="width: 200px; height: 200px;" size="10">
++      <vaadin24-grid-column>
+         <template>foo</template>
+-      </vaadin-grid-column>
+-      <vaadin-grid-column>
++      </vaadin24-grid-column>
++      <vaadin24-grid-column>
+         <template>bar</template>
+-      </vaadin-grid-column>
+-    </vaadin-grid>
++      </vaadin24-grid-column>
++    </vaadin24-grid>
+   `,
+ };
+ 
+@@ -180,24 +180,24 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 200px;">
+-        <vaadin-grid-selection-column auto-select></vaadin-grid-selection-column>
+-        <vaadin-grid-selection-column>
++      <vaadin24-grid style="width: 200px; height: 200px;">
++        <vaadin24-grid-selection-column auto-select></vaadin24-grid-selection-column>
++        <vaadin24-grid-selection-column>
+           <template class="header">header</template>
+           <template>[[item]]</template>
+-        </vaadin-grid-selection-column>
+-        <vaadin-grid-column-group>
+-          <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-        </vaadin-grid-column-group>
+-        <vaadin-grid-column>
++        </vaadin24-grid-selection-column>
++        <vaadin24-grid-column-group>
++          <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++        </vaadin24-grid-column-group>
++        <vaadin24-grid-column>
+           <template class="header">
+-            <vaadin-grid-filter path="value" value="[[filter]]">
++            <vaadin24-grid-filter path="value" value="[[filter]]">
+               <input id="filter" slot="filter" value="{{filter::input}}">
+-            </vaadin-grid-filter>
++            </vaadin24-grid-filter>
+           </template>
+           <template></template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.items = ['foo', 'bar', 'baz'];
+@@ -224,7 +224,7 @@
+   });
+ 
+   it('should have a checkbox in the body cell', () => {
+-    expect(firstBodyCheckbox.localName).to.eql('vaadin-checkbox');
++    expect(firstBodyCheckbox.localName).to.eql('vaadin24-checkbox');
+   });
+ 
+   it('should select item when checkbox is checked', () => {
+@@ -271,7 +271,7 @@
+   });
+ 
+   it('should have a select all checkbox in the header', () => {
+-    expect(selectAllCheckbox.localName).to.eql('vaadin-checkbox');
++    expect(selectAllCheckbox.localName).to.eql('vaadin24-checkbox');
+   });
+ 
+   it('should have class name for the select all checkbox', () => {
+@@ -414,10 +414,10 @@
+ 
+   it('should not clear pre-selected items', () => {
+     const grid = fixtureSync(`
+-      <vaadin-grid selected-items='[{"value": "foo"}]'>
+-        <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-        <vaadin-grid-column path="value"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid selected-items='[{"value": "foo"}]'>
++        <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++        <vaadin24-grid-column path="value"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     expect(grid.selectedItems).to.have.length(1);
+   });
+@@ -538,10 +538,10 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 450px;">
+-          <vaadin-grid-selection-column drag-select></vaadin-grid-selection-column>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 450px;">
++          <vaadin24-grid-selection-column drag-select></vaadin24-grid-selection-column>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.items = [...new Array(100)].map((_, i) => `${i}`);
+       flushGrid(grid);
+@@ -607,7 +607,7 @@
+ 
+     it('should not toggle checkbox after dragging on a single checkbox', () => {
+       const cell = getBodyCellContent(grid, 1, 0);
+-      const checkBox = cell.querySelector('vaadin-checkbox');
++      const checkBox = cell.querySelector('vaadin24-checkbox');
+       const input = checkBox.querySelector('input');
+ 
+       fireTrackEvent(input, input, 'start');

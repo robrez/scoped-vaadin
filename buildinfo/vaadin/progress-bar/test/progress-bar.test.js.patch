@@ -1,0 +1,22 @@
+Index: test/progress-bar.test.js
+===================================================================
+--- test/progress-bar.test.js
++++ test/progress-bar.test.js
+@@ -6,7 +6,7 @@
+   let progress, value;
+ 
+   beforeEach(() => {
+-    progress = fixtureSync('<vaadin-progress-bar></vaadin-progress-bar>');
++    progress = fixtureSync('<vaadin24-progress-bar></vaadin24-progress-bar>');
+     value = progress.shadowRoot.querySelector('[part="value"]');
+   });
+ 
+@@ -92,7 +92,7 @@
+   beforeEach(() => {
+     layout = fixtureSync(`
+       <div style="display: flex; flex-direction: column; align-items: flex-start;">
+-        <vaadin-progress-bar></vaadin-progress-bar>
++        <vaadin24-progress-bar></vaadin24-progress-bar>
+       </div>
+     `);
+     progress = layout.firstElementChild;

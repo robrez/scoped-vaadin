@@ -1,0 +1,46 @@
+Index: test/hidden-grid.test.js
+===================================================================
+--- test/hidden-grid.test.js
++++ test/hidden-grid.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
+ import '../vaadin-grid.js';
+ import { fire, flushGrid, getBodyCellContent, infiniteDataProvider } from './helpers.js';
+ 
+@@ -11,12 +11,12 @@
+   describe('initially hidden', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-      <vaadin-grid style="height: 200px; width: 200px;" hidden size="1">
+-        <vaadin-grid-column>
++      <vaadin24-grid style="height: 200px; width: 200px;" hidden size="1">
++        <vaadin24-grid-column>
+           <template class="header">foo</template>
+           <template>[[index]]</template>
+-        </vaadin-grid-column>
+-      </vaadin-grid>
++        </vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+       grid.dataProvider = infiniteDataProvider;
+       flushGrid(grid);
+@@ -38,11 +38,11 @@
+   describe('hiding the grid', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid size="1000">
+-          <vaadin-grid-column header="foo"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid size="1000">
++          <vaadin24-grid-column header="foo"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+-      grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++      grid.querySelector('vaadin24-grid-column').renderer = (root, _, model) => {
+         root.textContent = model.index + 1;
+       };
+       grid.dataProvider = sinon.spy(infiniteDataProvider);
