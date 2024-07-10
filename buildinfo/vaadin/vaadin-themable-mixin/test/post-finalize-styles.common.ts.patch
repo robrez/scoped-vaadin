@@ -1,0 +1,60 @@
+Index: test/post-finalize-styles.common.ts
+===================================================================
+--- test/post-finalize-styles.common.ts
++++ test/post-finalize-styles.common.ts
+@@ -1,12 +1,13 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import { css, registerStyles, ThemableMixin } from '../vaadin-themable-mixin.js';
+ 
+ function defineComponent(tagName, parentTagName = 'test-element') {
+-  customElements.define(
++  internalCustomElements.define(
+     tagName,
+-    class CustomElement extends ThemableMixin(customElements.get(parentTagName)!) {
++    class CustomElement extends ThemableMixin(internalCustomElements.get(parentTagName)!) {
+       static is = tagName;
+     },
+   );
+@@ -32,7 +33,7 @@
+     return `custom-element-${tagId}`;
+   }
+ 
+-  before(() => customElements.whenDefined('test-element'));
++  before(() => internalCustomElements.whenDefined('test-element'));
+ 
+   beforeEach(() => {
+     warn = sinon.stub(console, 'warn');
+@@ -255,10 +256,10 @@
+     );
+ 
+     const childTagName = uniqueTagName();
+-    class Child extends (customElements.get(parentTagName)!) {
++    class Child extends (internalCustomElements.get(parentTagName)!) {
+       static is = childTagName;
+     }
+-    customElements.define(childTagName, Child);
++    internalCustomElements.define(childTagName, Child);
+ 
+     const child = fixtureSync(`<${childTagName}></${childTagName}>`);
+     await nextFrame();
+@@ -268,7 +269,7 @@
+   });
+ 
+   it('should not throw for components without shadow root', async () => {
+-    class Component extends ThemableMixin(customElements.get('test-element')!) {
++    class Component extends ThemableMixin(internalCustomElements.get('test-element')!) {
+       static is = 'rootless-component';
+ 
+       // LitElement
+@@ -282,7 +283,7 @@
+       }
+     }
+ 
+-    customElements.define('rootless-component', Component);
++    internalCustomElements.define('rootless-component', Component);
+     fixtureSync('<rootless-component></rootless-component>');
+     await nextFrame();
+ 

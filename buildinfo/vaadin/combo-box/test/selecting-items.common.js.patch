@@ -1,0 +1,22 @@
+Index: test/selecting-items.common.js
+===================================================================
+--- test/selecting-items.common.js
++++ test/selecting-items.common.js
+@@ -8,7 +8,7 @@
+   let valueChangedSpy, selectedItemChangedSpy, selectionChangedSpy, changeSpy;
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box style="width: 320px"></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box style="width: 320px"></vaadin24-combo-box>');
+     await nextRender();
+     comboBox.items = ['foo', 'bar'];
+ 
+@@ -245,7 +245,7 @@
+   let comboBox;
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box style="width: 320px" allow-custom-value></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box style="width: 320px" allow-custom-value></vaadin24-combo-box>');
+     comboBox.items = ['foo', 'bar', 'barbar'];
+     comboBox.open();
+     await aTimeout(0);

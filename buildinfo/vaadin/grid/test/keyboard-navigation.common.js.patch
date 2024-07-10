@@ -1,0 +1,202 @@
+Index: test/keyboard-navigation.common.js
+===================================================================
+--- test/keyboard-navigation.common.js
++++ test/keyboard-navigation.common.js
+@@ -17,7 +17,7 @@
+ } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+-import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
++import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ import {
+   attributeRenderer,
+   flushGrid,
+@@ -203,11 +203,11 @@
+ describe('keyboard navigation', () => {
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid theme="no-border">
+-        <vaadin-grid-column id="column-0"></vaadin-grid-column>
+-        <vaadin-grid-column id="column-1"></vaadin-grid-column>
+-        <vaadin-grid-column id="column-2"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid theme="no-border">
++        <vaadin24-grid-column id="column-0"></vaadin24-grid-column>
++        <vaadin24-grid-column id="column-1"></vaadin24-grid-column>
++        <vaadin24-grid-column id="column-2"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.rowDetailsRenderer = inputRenderer;
+@@ -444,7 +444,7 @@
+     });
+ 
+     it('should be possible to tab through the grid when first column is hidden', () => {
+-      const firstColumn = grid.querySelectorAll('vaadin-grid-column')[0];
++      const firstColumn = grid.querySelectorAll('vaadin24-grid-column')[0];
+       firstColumn.hidden = true;
+ 
+       const tabbableElements = getTabbableElements(grid.shadowRoot);
+@@ -469,7 +469,7 @@
+     });
+ 
+     it('should be possible to shift-tab through grid when first column is hidden', () => {
+-      const firstColumn = grid.querySelectorAll('vaadin-grid-column')[0];
++      const firstColumn = grid.querySelectorAll('vaadin24-grid-column')[0];
+       firstColumn.hidden = true;
+ 
+       const tabbableElements = getTabbableElements(grid.shadowRoot);
+@@ -1168,8 +1168,8 @@
+ 
+       it('should not throw when focusing a group header cell', () => {
+         // Wrap the columns in a group
+-        const group = document.createElement('vaadin-grid-column-group');
+-        group.append(...grid.querySelectorAll('vaadin-grid-column'));
++        const group = document.createElement('vaadin24-grid-column-group');
++        group.append(...grid.querySelectorAll('vaadin24-grid-column'));
+         group.header = 'group';
+         grid.appendChild(group);
+         flushGrid(grid);
+@@ -1515,7 +1515,7 @@
+ 
+       it('should allow toggling a checkbox with space keypress', async () => {
+         // Add a selection column
+-        grid.appendChild(document.createElement('vaadin-grid-selection-column'));
++        grid.appendChild(document.createElement('vaadin24-grid-selection-column'));
+         await nextFrame();
+         flushGrid(grid);
+ 
+@@ -1585,11 +1585,11 @@
+   describe('interaction mode', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid theme="no-border">
+-          <vaadin-grid-column id="column-0"></vaadin-grid-column>
+-          <vaadin-grid-column id="column-1"></vaadin-grid-column>
+-          <vaadin-grid-column id="column-2"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid theme="no-border">
++          <vaadin24-grid-column id="column-0"></vaadin24-grid-column>
++          <vaadin24-grid-column id="column-1"></vaadin24-grid-column>
++          <vaadin24-grid-column id="column-2"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+ 
+       grid.rowDetailsRenderer = inputRenderer;
+@@ -1992,7 +1992,7 @@
+       grid.items = Array.from(Array(100), (_, i) => `item-${i}`);
+ 
+       // Remove an unused column
+-      const columns = grid.querySelectorAll('vaadin-grid-column');
++      const columns = grid.querySelectorAll('vaadin24-grid-column');
+       columns[2].hidden = true;
+       flushGrid(grid);
+ 
+@@ -2037,7 +2037,7 @@
+   describe('focus events on cell content', () => {
+     it('should dispatch cell-focus on keyboard navigation', () => {
+       const expectedContext = {
+-        column: grid.querySelector('vaadin-grid-column'),
++        column: grid.querySelector('vaadin24-grid-column'),
+         detailsOpened: false,
+         expanded: false,
+         index: 0,
+@@ -2126,20 +2126,20 @@
+ describe('keyboard navigation on column groups', () => {
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column-group header="main group header" footer="main group footer">
+-          <vaadin-grid-column-group header="sub group header">
+-            <vaadin-grid-column header="column header" footer="column footer"></vaadin-grid-column>
+-          </vaadin-grid-column-group>
+-        </vaadin-grid-column-group>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column-group header="main group header" footer="main group footer">
++          <vaadin24-grid-column-group header="sub group header">
++            <vaadin24-grid-column header="column header" footer="column footer"></vaadin24-grid-column>
++          </vaadin24-grid-column-group>
++        </vaadin24-grid-column-group>
++      </vaadin24-grid>
+     `);
+ 
+     grid.querySelectorAll('[footer]').forEach((col) => {
+       col.footerRenderer = attributeRenderer('footer');
+     });
+ 
+-    grid.querySelector('vaadin-grid-column').renderer = indexItemRenderer;
++    grid.querySelector('vaadin24-grid-column').renderer = indexItemRenderer;
+ 
+     grid.items = ['foo', 'bar'];
+     flushGrid(grid);
+@@ -2228,9 +2228,9 @@
+ 
+       beforeEach(() => {
+         header = grid.$.header;
+-        mainGroup = grid.querySelector('vaadin-grid-column-group');
+-        subGroup = mainGroup.querySelector('vaadin-grid-column-group');
+-        column = subGroup.querySelector('vaadin-grid-column');
++        mainGroup = grid.querySelector('vaadin24-grid-column-group');
++        subGroup = mainGroup.querySelector('vaadin24-grid-column-group');
++        column = subGroup.querySelector('vaadin24-grid-column');
+       });
+ 
+       it('should update tabbable header cell on header row hide', async () => {
+@@ -2317,7 +2317,7 @@
+ 
+       it('should remain on the first column after a tabbable cell row is hidden', async () => {
+         // Add a second column
+-        const column = document.createElement('vaadin-grid-column');
++        const column = document.createElement('vaadin24-grid-column');
+         grid.appendChild(column);
+         await nextFrame();
+ 
+@@ -2360,9 +2360,9 @@
+ describe('empty grid', () => {
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column header="header"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column header="header"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     flushGrid(grid);
+   });
+@@ -2410,9 +2410,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-tree-column path="name"></vaadin-grid-tree-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-tree-column path="name"></vaadin24-grid-tree-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.dataProvider = hierarchicalDataProvider;
+@@ -2479,9 +2479,9 @@
+   beforeEach(() => {
+     dataProviderCallbacks = [];
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="name"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column path="name"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     cellFocusSpy = sinon.spy();
+     grid.addEventListener('cell-focus', cellFocusSpy);
+@@ -2495,7 +2495,7 @@
+ 
+   it('should dispatch cell-focused event for lazily loaded item', async () => {
+     const expectedContext = {
+-      column: grid.querySelector('vaadin-grid-column'),
++      column: grid.querySelector('vaadin24-grid-column'),
+       detailsOpened: false,
+       expanded: false,
+       index: 999,

@@ -1,0 +1,47 @@
+Index: test/overlay-content.common.js
+===================================================================
+--- test/overlay-content.common.js
++++ test/overlay-content.common.js
+@@ -4,7 +4,7 @@
+ import { getDefaultI18n, getFirstVisibleItem, monthsEqual, waitForScrollToFinish } from './helpers.js';
+ 
+ async function customizeFixture({ initialPosition, monthScrollerItems, monthScrollerOffset }) {
+-  const overlay = fixtureSync(`<vaadin-date-picker-overlay-content></vaadin-date-picker-overlay-content>`);
++  const overlay = fixtureSync(`<vaadin24-date-picker-overlay-content></vaadin24-date-picker-overlay-content>`);
+   await nextRender();
+   const monthScroller = overlay._monthScroller;
+   monthScroller.style.setProperty('--vaadin-infinite-scroller-buffer-offset', monthScrollerOffset);
+@@ -22,10 +22,10 @@
+   describe('basic', () => {
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-date-picker-overlay-content
++        <vaadin24-date-picker-overlay-content
+           style="position: absolute; top: 0"
+           scroll-duration="0"
+-        ></vaadin-date-picker-overlay-content>
++        ></vaadin24-date-picker-overlay-content>
+       `);
+       overlay.i18n = getDefaultI18n();
+       overlay.initialPosition = new Date(2021, 1, 1);
+@@ -82,7 +82,7 @@
+ 
+       it('should set ignoreTaps to calendar on scroll', (done) => {
+         listenOnce(monthScroller.$.scroller, 'scroll', () => {
+-          expect(monthScroller.querySelector('vaadin-month-calendar').ignoreTaps).to.be.true;
++          expect(monthScroller.querySelector('vaadin24-month-calendar').ignoreTaps).to.be.true;
+           done();
+         });
+ 
+@@ -300,9 +300,9 @@
+   describe('scrollToDate', () => {
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-date-picker-overlay-content
++        <vaadin24-date-picker-overlay-content
+           style="position: absolute; top: 0;"
+-        ></vaadin-date-picker-overlay-content>
++        ></vaadin24-date-picker-overlay-content>
+       `);
+       overlay.i18n = getDefaultI18n();
+       overlay.initialPosition = new Date(2021, 1, 1);

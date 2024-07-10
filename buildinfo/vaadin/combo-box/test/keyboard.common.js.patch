@@ -1,0 +1,13 @@
+Index: test/keyboard.common.js
+===================================================================
+--- test/keyboard.common.js
++++ test/keyboard.common.js
+@@ -22,7 +22,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+     input = comboBox.inputElement;

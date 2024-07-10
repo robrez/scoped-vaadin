@@ -1,0 +1,31 @@
+Index: test/validation.common.js
+===================================================================
+--- test/validation.common.js
++++ test/validation.common.js
+@@ -8,7 +8,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      checkbox = document.createElement('vaadin-checkbox');
++      checkbox = document.createElement('vaadin24-checkbox');
+       validateSpy = sinon.spy(checkbox, 'validate');
+     });
+ 
+@@ -40,7 +40,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(async () => {
+-      checkbox = fixtureSync('<vaadin-checkbox label="Checkbox"></vaadin-checkbox>');
++      checkbox = fixtureSync('<vaadin24-checkbox label="Checkbox"></vaadin24-checkbox>');
+       await nextRender();
+       validateSpy = sinon.spy(checkbox, 'validate');
+     });
+@@ -120,7 +120,7 @@
+     let checkboxes;
+ 
+     beforeEach(async () => {
+-      checkbox = fixtureSync('<vaadin-checkbox label="Checkbox" required></vaadin-checkbox>');
++      checkbox = fixtureSync('<vaadin24-checkbox label="Checkbox" required></vaadin24-checkbox>');
+       await nextFrame();
+       validateSpy = sinon.spy(checkbox, 'validate');
+     });

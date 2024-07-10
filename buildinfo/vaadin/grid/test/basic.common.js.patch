@@ -1,0 +1,49 @@
+Index: test/basic.common.js
+===================================================================
+--- test/basic.common.js
++++ test/basic.common.js
+@@ -20,9 +20,9 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 300px;" size="1000">
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px; height: 300px;" size="1000">
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     column = grid.firstElementChild;
+@@ -276,9 +276,9 @@
+ 
+   it('should render all items with varying row heights when all rows visible', async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid all-rows-visible>
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid all-rows-visible>
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     const rowHeights = [30, 100, 30, 30, 100, 30];
+     grid.items = rowHeights.map((value) => {
+@@ -303,13 +303,13 @@
+     layout = fixtureSync(`
+       <div style="display: flex; width: 300px; height: 300px;">
+         <div style="width: 100px; height: 100px; flex-shrink: 0;">Layout sibling</div>
+-        <vaadin-grid size="1000">
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid size="1000">
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       </div>
+     `);
+-    grid = layout.querySelector('vaadin-grid');
+-    column = grid.querySelector('vaadin-grid-column');
++    grid = layout.querySelector('vaadin24-grid');
++    column = grid.querySelector('vaadin24-grid-column');
+     column.renderer = (root, _, model) => {
+       root.textContent = model.index;
+     };

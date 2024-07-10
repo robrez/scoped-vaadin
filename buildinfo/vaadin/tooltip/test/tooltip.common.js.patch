@@ -1,0 +1,109 @@
+Index: test/tooltip.common.js
+===================================================================
+--- test/tooltip.common.js
++++ test/tooltip.common.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   escKeyDown,
+@@ -12,12 +13,12 @@
+   tabKeyDown,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import '@vaadin/overlay/vaadin-overlay.js';
++import '@scoped-vaadin/overlay/vaadin-overlay.js';
+ import { html, render } from 'lit';
+ import { mouseenter, mouseleave, waitForIntersectionObserver } from './helpers.js';
+ 
+-describe('vaadin-tooltip', () => {
+-  const Tooltip = customElements.get('vaadin-tooltip');
++describe('vaadin24-tooltip', () => {
++  const Tooltip = internalCustomElements.get('vaadin24-tooltip');
+ 
+   before(() => {
+     Tooltip.setDefaultFocusDelay(0);
+@@ -28,9 +29,9 @@
+   let tooltip, overlay, srLabel;
+ 
+   beforeEach(async () => {
+-    tooltip = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin24-tooltip></vaadin24-tooltip>');
+     await nextRender();
+-    overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+     srLabel = tooltip.querySelector('[slot="sr-label"]');
+   });
+ 
+@@ -42,11 +43,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -287,7 +288,7 @@
+             html`
+               ${items.map(
+                 (item) => html`
+-                  <vaadin-tooltip for="${item}"></vaadin-tooltip>
++                  <vaadin24-tooltip for="${item}"></vaadin24-tooltip>
+                   <div id=${item}></div>
+                 `,
+               )}
+@@ -300,7 +301,7 @@
+         renderTooltips(['foo']);
+ 
+         await nextFrame();
+-        expect(container.querySelector('vaadin-tooltip[for="foo"]').target).to.equal(container.querySelector('#foo'));
++        expect(container.querySelector('vaadin24-tooltip[for="foo"]').target).to.equal(container.querySelector('#foo'));
+       });
+     });
+ 
+@@ -451,10 +452,10 @@
+       tabKeyDown(target);
+       target.focus();
+ 
+-      const tooltip2 = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
++      const tooltip2 = fixtureSync('<vaadin24-tooltip></vaadin24-tooltip>');
+       tooltip2.target = target;
+       await nextRender();
+-      const overlay2 = tooltip2.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      const overlay2 = tooltip2.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+ 
+       mouseenter(target);
+ 
+@@ -575,7 +576,7 @@
+ 
+       expect(overlay.opened).to.be.true;
+ 
+-      const otherOverlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      const otherOverlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay>');
+       otherOverlay.opened = true;
+       await nextRender();
+ 
+@@ -832,7 +833,7 @@
+       tooltip.opened = true;
+       expect(overlay.opened).to.be.true;
+ 
+-      const otherOverlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      const otherOverlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay>');
+       otherOverlay.opened = true;
+       await nextRender();
+ 
+@@ -870,7 +871,7 @@
+   let tooltip, overlay;
+ 
+   beforeEach(async () => {
+-    tooltip = fixtureSync('<vaadin-tooltip text="Test" manual opened></vaadin-tooltip>');
++    tooltip = fixtureSync('<vaadin24-tooltip text="Test" manual opened></vaadin24-tooltip>');
+     await nextRender();
+     overlay = tooltip._overlayElement;
+   });

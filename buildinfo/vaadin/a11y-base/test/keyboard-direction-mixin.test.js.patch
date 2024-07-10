@@ -1,0 +1,18 @@
+Index: test/keyboard-direction-mixin.test.js
+===================================================================
+--- test/keyboard-direction-mixin.test.js
++++ test/keyboard-direction-mixin.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import {
+   arrowDownKeyDown,
+@@ -12,7 +13,7 @@
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { KeyboardDirectionMixin } from '../src/keyboard-direction-mixin.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'keyboard-direction-mixin-element',
+   class extends KeyboardDirectionMixin(PolymerElement) {
+     static get template() {

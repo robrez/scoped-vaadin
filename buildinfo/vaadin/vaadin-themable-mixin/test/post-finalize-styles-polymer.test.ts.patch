@@ -1,0 +1,14 @@
+Index: test/post-finalize-styles-polymer.test.ts
+===================================================================
+--- test/post-finalize-styles-polymer.test.ts
++++ test/post-finalize-styles-polymer.test.ts
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import './post-finalize-styles.common.ts';
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ 
+-customElements.define(
++internalCustomElements.define(
+   'test-element',
+   class extends PolymerElement {
+     static get template() {

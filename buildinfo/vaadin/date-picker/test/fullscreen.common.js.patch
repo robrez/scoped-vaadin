@@ -1,0 +1,13 @@
+Index: test/fullscreen.common.js
+===================================================================
+--- test/fullscreen.common.js
++++ test/fullscreen.common.js
+@@ -14,7 +14,7 @@
+ 
+   beforeEach(async () => {
+     await setViewport({ width: 420, height });
+-    datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++    datePicker = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
+     await nextRender();
+     input = datePicker.inputElement;
+     overlay = datePicker.$.overlay;

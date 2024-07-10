@@ -1,0 +1,67 @@
+Index: test/external-filtering.common.js
+===================================================================
+--- test/external-filtering.common.js
++++ test/external-filtering.common.js
+@@ -7,7 +7,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       comboBox.filteredItems = ['foo', 'bar', 'baz'];
+       await nextRender();
+       overlay = comboBox.$.overlay;
+@@ -86,7 +86,7 @@
+ 
+   describe('requestContentUpdate', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       comboBox.filteredItems = ['Item 0'];
+       await nextRender();
+       comboBox.opened = true;
+@@ -107,7 +107,7 @@
+ 
+   describe('filtered items attribute', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box filtered-items='["a", "b", "c"]' value='b'></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box filtered-items='["a", "b", "c"]' value='b'></vaadin24-combo-box>`);
+       await nextRender();
+     });
+ 
+@@ -119,7 +119,7 @@
+ 
+   describe('value is set after', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box></vaadin24-combo-box>`);
+       await nextRender();
+       comboBox.filteredItems = ['foo', 'bar'];
+       comboBox.value = 'foo';
+@@ -157,7 +157,7 @@
+ 
+   describe('value is set before', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box value="foo"></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box value="foo"></vaadin24-combo-box>`);
+       await nextRender();
+       comboBox.filteredItems = ['foo', 'bar'];
+     });
+@@ -186,7 +186,7 @@
+ 
+   describe('value is set before + autoOpenDisabled', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box auto-open-disabled value="bar"></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box auto-open-disabled value="bar"></vaadin24-combo-box>`);
+       await nextRender();
+       comboBox.filteredItems = ['foo', 'bar'];
+     });
+@@ -244,7 +244,7 @@
+     ];
+ 
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box></vaadin24-combo-box>`);
+       await nextRender();
+       comboBox.selectedItem = items[0];
+       comboBox.filteredItems = items;

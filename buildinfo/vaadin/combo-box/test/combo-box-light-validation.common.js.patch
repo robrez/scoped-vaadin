@@ -1,0 +1,28 @@
+Index: test/combo-box-light-validation.common.js
+===================================================================
+--- test/combo-box-light-validation.common.js
++++ test/combo-box-light-validation.common.js
+@@ -11,9 +11,9 @@
+ 
+     beforeEach(async () => {
+       comboBox = fixtureSync(`
+-        <vaadin-combo-box-light>
++        <vaadin24-combo-box-light>
+           <input class="input" />
+-        </vaadin-combo-box-light>
++        </vaadin24-combo-box-light>
+       `);
+       comboBox.items = ['foo', 'bar', 'baz'];
+       await nextRender();
+@@ -64,9 +64,9 @@
+   describe('required', () => {
+     beforeEach(async () => {
+       comboBox = fixtureSync(`
+-        <vaadin-combo-box-light>
++        <vaadin24-combo-box-light>
+           <input class="input" />
+-        </vaadin-combo-box-light>
++        </vaadin24-combo-box-light>
+       `);
+       comboBox.items = ['foo', 'bar', 'baz'];
+       comboBox.required = true;

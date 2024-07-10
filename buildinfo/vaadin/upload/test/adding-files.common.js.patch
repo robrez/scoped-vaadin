@@ -1,0 +1,13 @@
+Index: test/adding-files.common.js
+===================================================================
+--- test/adding-files.common.js
++++ test/adding-files.common.js
+@@ -8,7 +8,7 @@
+   const testFileSize = 512;
+ 
+   beforeEach(async () => {
+-    upload = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    upload = fixtureSync(`<vaadin24-upload></vaadin24-upload>`);
+     upload.target = 'http://foo.com/bar';
+     upload._createXhr = xhrCreator({ size: testFileSize, uploadTime: 200, stepTime: 50 });
+     await nextRender();
