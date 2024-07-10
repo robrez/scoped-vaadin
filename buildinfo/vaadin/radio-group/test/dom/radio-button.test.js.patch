@@ -11,12 +11,12 @@ Index: test/dom/radio-button.test.js
  
 -describe('vaadin-radio-button', () => {
 +describe('vaadin24-radio-button', () => {
-   let radio;
+   let checkbox;
  
    beforeEach(() => {
      resetUniqueId();
--    radio = fixtureSync('<vaadin-radio-button label="Radio button"></vaadin-radio-button>');
-+    radio = fixtureSync('<vaadin24-radio-button label="Radio button"></vaadin24-radio-button>');
+-    checkbox = fixtureSync('<vaadin-radio-button label="Radio button"></vaadin-radio-button>');
++    checkbox = fixtureSync('<vaadin24-radio-button label="Radio button"></vaadin24-radio-button>');
    });
  
    describe('host', () => {

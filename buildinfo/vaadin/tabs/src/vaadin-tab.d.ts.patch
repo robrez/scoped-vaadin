@@ -3,7 +3,7 @@ Index: src/vaadin-tab.d.ts
 --- src/vaadin-tab.d.ts
 +++ src/vaadin-tab.d.ts
 @@ -3,18 +3,18 @@
-  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';

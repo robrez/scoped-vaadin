@@ -20,5 +20,5 @@ Index: test/visual/common.js
 -  'vaadin-month-calendar',
 +  'vaadin24-month-calendar',
    css`
-     [part~='focused']::before {
+     [part='date'][focused]::before {
        animation: none !important;

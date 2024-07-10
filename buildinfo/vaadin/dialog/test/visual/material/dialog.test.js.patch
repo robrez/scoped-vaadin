@@ -10,4 +10,4 @@ Index: test/visual/material/dialog.test.js
 +    element = fixtureSync(`<vaadin24-dialog></vaadin24-dialog>`, div);
      element.renderer = createRenderer('Simple dialog with text');
      element.opened = true;
-     await nextRender();
+   });

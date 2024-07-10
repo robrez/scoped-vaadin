@@ -2,13 +2,7 @@ Index: test/typings/virtual-list.types.ts
 ===================================================================
 --- test/typings/virtual-list.types.ts
 +++ test/typings/virtual-list.types.ts
-@@ -1,11 +1,11 @@
- import '../../vaadin-virtual-list.js';
--import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
--import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin';
-+import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin';
- import type { VirtualList, VirtualListItemModel, VirtualListRenderer } from '../../vaadin-virtual-list.js';
+@@ -3,7 +3,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  

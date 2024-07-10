@@ -14,10 +14,10 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/icons)](https://www.npmjs.com/package/@vaadin/icons)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/icons)](https://www.npmjs.com/package/@scoped-vaadin/icons)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/icons/screenshot.png" width="728" alt="Screenshot of vaadin-icons">](https://vaadin.com/docs/latest/ds/foundation/icons/vaadin)
-@@ -14,19 +16,19 @@
+ 
+@@ -13,19 +15,19 @@
  Install the iconset:
  
  ```sh

@@ -2,20 +2,17 @@ Index: src/vaadin-icon.d.ts
 ===================================================================
 --- src/vaadin-icon.d.ts
 +++ src/vaadin-icon.d.ts
-@@ -3,29 +3,29 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+@@ -3,27 +3,27 @@
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { SlotStylesMixin } from '@vaadin/component-base/src/slot-styles-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { IconFontSizeMixin } from './vaadin-icon-font-size-mixin.js';
- import type { IconSvgLiteral } from './vaadin-icon-svg.js';
+ import { IconMixin } from './vaadin-icon-mixin.js';
  
  /**
 - * `<vaadin-icon>` is a Web Component for displaying SVG icons.
@@ -40,7 +37,7 @@ Index: src/vaadin-icon.d.ts
   * ```
   *
   * ### Custom SVG icon
-@@ -41,10 +41,10 @@
+@@ -39,10 +39,10 @@
   * render() {
   *   const svgIcon = svg`<path d="M13 4v2l-5 5-5-5v-2l5 5z"></path>`;
   *   return html`
@@ -53,19 +50,7 @@ Index: src/vaadin-icon.d.ts
   *   `;
   * }
   * ```
-@@ -58,9 +58,9 @@
-    * to omit the first part and only use `icon_name` as a value.
-    *
-    * Setting the `icon` property updates the `svg` and `size` based on the
--   * values provided by the corresponding `vaadin-iconset` element.
-+   * values provided by the corresponding `vaadin24-iconset` element.
-    *
--   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin-iconset`.
-+   * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin24-iconset`.
-    *
-    * @attr {string} icon
-    */
-@@ -123,7 +123,7 @@
+@@ -51,7 +51,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

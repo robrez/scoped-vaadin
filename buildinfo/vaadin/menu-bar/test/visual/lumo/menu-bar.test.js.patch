@@ -21,7 +21,7 @@ Index: test/visual/lumo/menu-bar.test.js
            element.items = [
              { text: 'Home' },
              {
-@@ -51,7 +51,7 @@
+@@ -61,7 +61,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  
@@ -30,18 +30,18 @@ Index: test/visual/lumo/menu-bar.test.js
            element.items = [{ text: 'Actions' }];
          });
  
-@@ -70,8 +70,8 @@
-         let overlay;
+@@ -78,8 +78,8 @@
  
+       describe('theme', () => {
          function makeIcon(img) {
--          const item = document.createElement('vaadin-menu-bar-item');
+-          const item = document.createElement('vaadin-context-menu-item');
 -          const icon = document.createElement('vaadin-icon');
-+          const item = document.createElement('vaadin24-menu-bar-item');
++          const item = document.createElement('vaadin24-context-menu-item');
 +          const icon = document.createElement('vaadin24-icon');
            icon.setAttribute('icon', img);
            item.appendChild(icon);
-           return item;
-@@ -81,7 +81,7 @@
+           item.setAttribute('theme', 'menu-bar-item');
+@@ -90,7 +90,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  

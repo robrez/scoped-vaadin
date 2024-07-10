@@ -6,8 +6,8 @@ Index: vaadin-themable-mixin.js
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
-  * Copyright (c) 2017 - 2023 Vaadin Ltd.
-@@ -38,7 +39,7 @@
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+@@ -48,7 +49,7 @@
   * @returns {boolean}
   */
  function hasThemes(tagName) {
@@ -16,3 +16,30 @@ Index: vaadin-themable-mixin.js
  }
  
  /**
+@@ -59,7 +60,7 @@
+  */
+ function flattenStyles(styles = []) {
+   return [styles].flat(Infinity).filter((style) => {
+-    if (style instanceof CSSResult) {
++    if (style instanceof CSSResult || style['_$cssResult$'] === true) {
+       return true;
+     }
+     console.warn('An item in styles is not of type CSSResult. Use `unsafeCSS` or `css`.');
+@@ -165,7 +166,7 @@
+ 
+   // Update the styles of inheriting types
+   themableTagNames.forEach((inheritingTagName) => {
+-    const inheritingClass = customElements.get(inheritingTagName);
++    const inheritingClass = internalCustomElements.get(inheritingTagName);
+     if (inheritingClass !== componentClass && inheritingClass.prototype instanceof componentClass) {
+       updateComponentStyles(inheritingClass);
+     }
+@@ -218,7 +219,7 @@
+     // Update styles of the component types that match themeFor and have already been finalized
+     themableTagNames.forEach((tagName) => {
+       if (matchesThemeFor(themeFor, tagName) && hasThemes(tagName)) {
+-        const componentClass = customElements.get(tagName);
++        const componentClass = internalCustomElements.get(tagName);
+ 
+         if (hasMatchingStyle(componentClass, styles)) {
+           // Show a warning if the component type already has some of the given styles

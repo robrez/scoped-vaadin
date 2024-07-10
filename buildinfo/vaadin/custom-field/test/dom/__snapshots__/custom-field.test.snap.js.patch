@@ -53,7 +53,7 @@ Index: test/dom/__snapshots__/custom-field.test.snap.js
  snapshots["vaadin-custom-field host helper"] = 
 -`<vaadin-custom-field
 +`<vaadin24-custom-field
-   aria-describedby="helper-vaadin-custom-field-1"
+   aria-labelledby="helper-vaadin-custom-field-1"
    has-helper=""
    role="group"
 @@ -84,12 +84,12 @@
@@ -68,7 +68,7 @@ Index: test/dom/__snapshots__/custom-field.test.snap.js
  snapshots["vaadin-custom-field host error"] = 
 -`<vaadin-custom-field
 +`<vaadin24-custom-field
-   aria-describedby="error-message-vaadin-custom-field-2"
+   aria-labelledby="error-message-vaadin-custom-field-2"
    has-error-message=""
    invalid=""
 @@ -107,7 +107,7 @@

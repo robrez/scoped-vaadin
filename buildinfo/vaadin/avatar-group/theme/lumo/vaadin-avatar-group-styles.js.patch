@@ -44,3 +44,12 @@ Index: theme/lumo/vaadin-avatar-group-styles.js
    [
      item,
      css`
+@@ -73,7 +73,7 @@
+         align-items: center;
+       }
+ 
+-      [part='content'] ::slotted(vaadin-avatar) {
++      [part='content'] ::slotted(vaadin24-avatar) {
+         width: var(--lumo-size-xs);
+         height: var(--lumo-size-xs);
+         margin-inline-end: var(--lumo-space-s);

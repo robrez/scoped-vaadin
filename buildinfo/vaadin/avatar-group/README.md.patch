@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,16 +1,18 @@
+@@ -1,15 +1,17 @@
 -# @vaadin/avatar-group
 +# @scoped-vaadin/avatar-group
  
@@ -15,7 +15,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/avatar-group)](https://www.npmjs.com/package/@vaadin/avatar-group)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/avatar-group)](https://www.npmjs.com/package/@scoped-vaadin/avatar-group)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-avatar-group max-items-visible="3"></vaadin-avatar-group>
@@ -26,7 +25,7 @@ Index: README.md
      { name: 'Foo Bar', colorIndex: 1 },
      { colorIndex: 2 },
      { name: 'Foo Bar', colorIndex: 3 },
-@@ -26,13 +28,13 @@
+@@ -25,13 +27,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -43,19 +45,19 @@
+@@ -42,19 +44,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

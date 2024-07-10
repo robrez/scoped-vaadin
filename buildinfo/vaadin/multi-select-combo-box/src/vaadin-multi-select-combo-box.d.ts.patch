@@ -3,7 +3,7 @@ Index: src/vaadin-multi-select-combo-box.d.ts
 --- src/vaadin-multi-select-combo-box.d.ts
 +++ src/vaadin-multi-select-combo-box.d.ts
 @@ -3,29 +3,29 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import type { DelegateFocusMixinClass } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
@@ -85,7 +85,7 @@ Index: src/vaadin-multi-select-combo-box.d.ts
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -308,8 +308,8 @@
+@@ -314,8 +314,8 @@
     * Custom function for rendering the content of every item.
     * Receives three arguments:
     *
@@ -96,7 +96,7 @@ Index: src/vaadin-multi-select-combo-box.d.ts
     * - `model` The object with the properties related with the rendered
     *   item, contains:
     *   - `model.index` The index of the rendered item.
-@@ -387,7 +387,7 @@
+@@ -393,7 +393,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

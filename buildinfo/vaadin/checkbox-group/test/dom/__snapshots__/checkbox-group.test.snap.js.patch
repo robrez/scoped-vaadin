@@ -13,7 +13,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 1"
-@@ -23,8 +23,8 @@
+@@ -22,8 +22,8 @@
        type="checkbox"
        value="1"
      >
@@ -24,7 +24,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 2"
-@@ -44,7 +44,7 @@
+@@ -42,7 +42,7 @@
        type="checkbox"
        value="2"
      >
@@ -33,7 +33,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -56,17 +56,17 @@
+@@ -54,17 +54,17 @@
      slot="error-message"
    >
    </div>
@@ -54,7 +54,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      aria-disabled="true"
      disabled=""
      has-label=""
-@@ -89,8 +89,8 @@
+@@ -87,8 +87,8 @@
        type="checkbox"
        value="1"
      >
@@ -65,7 +65,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      aria-disabled="true"
      disabled=""
      has-label=""
-@@ -113,7 +113,7 @@
+@@ -111,7 +111,7 @@
        type="checkbox"
        value="2"
      >
@@ -74,7 +74,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -125,7 +125,7 @@
+@@ -123,7 +123,7 @@
      slot="error-message"
    >
    </div>
@@ -83,7 +83,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
  `;
  /* end snapshot vaadin-checkbox-group host disabled */
  
-@@ -159,12 +159,12 @@
+@@ -157,12 +157,12 @@
  /* end snapshot vaadin-checkbox-group shadow default */
  
  snapshots["vaadin-checkbox-group host label"] = 
@@ -98,7 +98,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 1"
-@@ -184,8 +184,8 @@
+@@ -181,8 +181,8 @@
        type="checkbox"
        value="1"
      >
@@ -109,7 +109,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 2"
-@@ -205,7 +205,7 @@
+@@ -201,7 +201,7 @@
        type="checkbox"
        value="2"
      >
@@ -118,7 +118,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -218,17 +218,17 @@
+@@ -214,17 +214,17 @@
      slot="error-message"
    >
    </div>
@@ -139,7 +139,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 1"
-@@ -248,8 +248,8 @@
+@@ -243,8 +243,8 @@
        type="checkbox"
        value="1"
      >
@@ -150,7 +150,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 2"
-@@ -269,7 +269,7 @@
+@@ -263,7 +263,7 @@
        type="checkbox"
        value="2"
      >
@@ -159,7 +159,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -281,17 +281,17 @@
+@@ -275,17 +275,17 @@
      slot="error-message"
    >
    </div>
@@ -171,7 +171,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
  snapshots["vaadin-checkbox-group host helper"] = 
 -`<vaadin-checkbox-group
 +`<vaadin24-checkbox-group
-   aria-describedby="helper-vaadin-checkbox-group-1"
+   aria-labelledby="helper-vaadin-checkbox-group-1"
    has-helper=""
    role="group"
  >
@@ -180,7 +180,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 1"
-@@ -311,8 +311,8 @@
+@@ -304,8 +304,8 @@
        type="checkbox"
        value="1"
      >
@@ -191,7 +191,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 2"
-@@ -332,7 +332,7 @@
+@@ -324,7 +324,7 @@
        type="checkbox"
        value="2"
      >
@@ -200,7 +200,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -350,18 +350,18 @@
+@@ -342,18 +342,18 @@
    >
      Helper
    </div>
@@ -212,7 +212,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
  snapshots["vaadin-checkbox-group host error"] = 
 -`<vaadin-checkbox-group
 +`<vaadin24-checkbox-group
-   aria-describedby="error-message-vaadin-checkbox-group-2"
+   aria-labelledby="error-message-vaadin-checkbox-group-2"
    has-error-message=""
    invalid=""
    role="group"
@@ -222,7 +222,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 1"
-@@ -381,8 +381,8 @@
+@@ -372,8 +372,8 @@
        type="checkbox"
        value="1"
      >
@@ -233,7 +233,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
      has-label=""
      has-value=""
      label="Checkbox 2"
-@@ -402,7 +402,7 @@
+@@ -392,7 +392,7 @@
        type="checkbox"
        value="2"
      >
@@ -242,7 +242,7 @@ Index: test/dom/__snapshots__/checkbox-group.test.snap.js
    <label
      id="label-vaadin-checkbox-group-0"
      slot="label"
-@@ -415,7 +415,7 @@
+@@ -405,7 +405,7 @@
    >
      Error
    </div>

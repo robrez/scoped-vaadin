@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,17 +1,19 @@
+@@ -1,16 +1,18 @@
 -# @vaadin/details
 +# @scoped-vaadin/details
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/details)](https://www.npmjs.com/package/@vaadin/details)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/details)](https://www.npmjs.com/package/@scoped-vaadin/details)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-details opened>
@@ -27,7 +26,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/details/screenshot.png" alt="Screenshot of vaadin-details" width="320">](https://vaadin.com/docs/latest/components/details)
-@@ -21,13 +23,13 @@
+@@ -20,13 +22,13 @@
  Install the component:
  
  ```sh
@@ -43,7 +42,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -38,19 +40,19 @@
+@@ -37,19 +39,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

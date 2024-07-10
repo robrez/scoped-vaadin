@@ -22,16 +22,7 @@ Index: test/visual/material/button.test.js
    });
  
    afterEach(async () => {
-@@ -40,7 +40,7 @@
-     it('flex-shrink', async () => {
-       const wrapper = fixtureSync(`
-         <div style="display: flex; align-items: baseline; gap: 20px; width: 400px">
--          <vaadin-button>This is a button</vaadin-button>
-+          <vaadin24-button>This is a button</vaadin24-button>
-   
-           <span style="flex-basis: 100%; background-color: #eee;">Sibling</span>
-         </div>
-@@ -77,7 +77,7 @@
+@@ -66,7 +66,7 @@
      let icon;
  
      beforeEach(() => {

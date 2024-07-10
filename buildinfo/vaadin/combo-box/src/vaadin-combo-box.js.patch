@@ -3,7 +3,7 @@ Index: src/vaadin-combo-box.js
 --- src/vaadin-combo-box.js
 +++ src/vaadin-combo-box.js
 @@ -3,32 +3,32 @@
-  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * Copyright (c) 2015 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-input-container.js';

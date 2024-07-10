@@ -67,6 +67,15 @@ Index: src/vaadin-app-layout.js
   * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
   *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
   *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
+@@ -266,7 +266,7 @@
+         }
+ 
+         /* If a vaadin-scroller is used in the drawer, allow it to take all remaining space and contain scrolling */
+-        [part='drawer'] ::slotted(vaadin-scroller) {
++        [part='drawer'] ::slotted(vaadin24-scroller) {
+           flex: 1;
+           overscroll-behavior: contain;
+         }
 @@ -291,7 +291,7 @@
    }
  

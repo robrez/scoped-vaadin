@@ -2,12 +2,16 @@ Index: src/vaadin-drawer-toggle.d.ts
 ===================================================================
 --- src/vaadin-drawer-toggle.d.ts
 +++ src/vaadin-drawer-toggle.d.ts
-@@ -3,15 +3,15 @@
-  * Copyright (c) 2018 - 2023 Vaadin Ltd.
+@@ -3,17 +3,17 @@
+  * Copyright (c) 2018 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { Button } from '@vaadin/button/src/vaadin-button.js';
-+import { Button } from '@scoped-vaadin/button/src/vaadin-button.js';
+-import { ButtonMixin } from '@vaadin/button/src/vaadin-button-mixin.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ButtonMixin } from '@scoped-vaadin/button/src/vaadin-button-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  /**
   * The Drawer Toggle component controls the drawer in App Layout component.
@@ -21,8 +25,8 @@ Index: src/vaadin-drawer-toggle.d.ts
 + * </vaadin24-app-layout>
   * ```
   */
- declare class DrawerToggle extends Button {
-@@ -20,7 +20,7 @@
+ declare class DrawerToggle extends ButtonMixin(DirMixin(ThemableMixin(HTMLElement))) {
+@@ -22,7 +22,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

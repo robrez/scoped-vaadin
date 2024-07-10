@@ -3,7 +3,7 @@ Index: src/vaadin-grid-data-provider-mixin.js
 --- src/vaadin-grid-data-provider-mixin.js
 +++ src/vaadin-grid-data-provider-mixin.js
 @@ -3,10 +3,10 @@
-  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * Copyright (c) 2016 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { microTask, timeOut } from '@vaadin/component-base/src/async.js';
@@ -35,7 +35,7 @@ Index: src/vaadin-grid-data-provider-mixin.js
        return this._flatSize;
      }
  
-@@ -314,7 +314,7 @@
+@@ -316,7 +316,7 @@
       * @deprecated since 24.3 and will be removed in Vaadin 25.
       */
      _loadPage(page, cache) {
@@ -44,7 +44,7 @@ Index: src/vaadin-grid-data-provider-mixin.js
        this._dataProviderController.__loadCachePage(cache, page);
      }
  
-@@ -392,7 +392,7 @@
+@@ -407,7 +407,7 @@
      _checkSize() {
        if (this.size === undefined && this._flatSize === 0) {
          console.warn(

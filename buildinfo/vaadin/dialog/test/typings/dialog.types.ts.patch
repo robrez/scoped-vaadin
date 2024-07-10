@@ -2,23 +2,12 @@ Index: test/typings/dialog.types.ts
 ===================================================================
 --- test/typings/dialog.types.ts
 +++ test/typings/dialog.types.ts
-@@ -1,7 +1,7 @@
- import '../../vaadin-dialog.js';
--import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
--import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
--import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
-+import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
-+import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
- import type { DialogDraggableMixinClass } from '../../src/vaadin-dialog-draggable-mixin.js';
- import type { DialogResizableMixinClass } from '../../src/vaadin-dialog-resizable-mixin.js';
- import type {
-@@ -14,7 +14,7 @@
+@@ -9,7 +9,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
 -const dialog = document.createElement('vaadin-dialog');
 +const dialog = document.createElement('vaadin24-dialog');
  
- // Mixins
- assertType<ElementMixinClass>(dialog);
+ dialog.addEventListener('opened-changed', (event) => {
+   assertType<DialogOpenedChangedEvent>(event);

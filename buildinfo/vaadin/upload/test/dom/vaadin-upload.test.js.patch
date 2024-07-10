@@ -16,12 +16,3 @@ Index: test/dom/vaadin-upload.test.js
      upload.files = [
        { name: 'Annual Report.docx', complete: true },
        {
-@@ -22,7 +22,7 @@
-   describe('host', () => {
-     const SNAPSHOT_CONFIG = {
-       // Exclude inline style as we are not testing
--      // the `vaadin-progress-bar` internal logic.
-+      // the `vaadin24-progress-bar` internal logic.
-       ignoreAttributes: ['style'],
-     };
- 

@@ -2,16 +2,7 @@ Index: test/visual/lumo/text-field.test.js
 ===================================================================
 --- test/visual/lumo/text-field.test.js
 +++ test/visual/lumo/text-field.test.js
-@@ -1,7 +1,7 @@
- import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
- import { sendKeys } from '@web/test-runner-commands';
- import { visualDiff } from '@web/test-runner-visual-regression';
--import '@vaadin/vaadin-lumo-styles/test/autoload.js';
-+import '@scoped-vaadin/vaadin-lumo-styles/test/autoload.js';
- import '../common.js';
- import '../../../theme/lumo/vaadin-text-field.js';
- 
-@@ -12,7 +12,7 @@
+@@ -11,7 +11,7 @@
      div = document.createElement('div');
      div.style.display = 'inline-block';
      div.style.padding = '10px';
@@ -20,7 +11,7 @@ Index: test/visual/lumo/text-field.test.js
    });
  
    it('basic', async () => {
-@@ -105,7 +105,7 @@
+@@ -104,7 +104,7 @@
      let field;
  
      beforeEach(() => {

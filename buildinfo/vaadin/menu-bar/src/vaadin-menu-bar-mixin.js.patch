@@ -3,7 +3,7 @@ Index: src/vaadin-menu-bar-mixin.js
 --- src/vaadin-menu-bar-mixin.js
 +++ src/vaadin-menu-bar-mixin.js
 @@ -3,13 +3,13 @@
-  * Copyright (c) 2019 - 2023 Vaadin Ltd.
+  * Copyright (c) 2019 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
@@ -44,7 +44,7 @@ Index: src/vaadin-menu-bar-mixin.js
           * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
           * @property {boolean} checked - If true, the item shows a checkmark next to it.
           * @property {SubMenuItem[]} children - Array of child submenu items.
-@@ -209,12 +209,12 @@
+@@ -221,12 +221,12 @@
       * @protected
       */
      get _buttons() {
@@ -59,7 +59,7 @@ Index: src/vaadin-menu-bar-mixin.js
      }
  
      /** @protected */
-@@ -223,7 +223,7 @@
+@@ -235,7 +235,7 @@
  
        this.setAttribute('role', 'menubar');
  
@@ -68,7 +68,7 @@ Index: src/vaadin-menu-bar-mixin.js
          initializer: (btn) => {
            btn.setAttribute('hidden', '');
  
-@@ -474,7 +474,7 @@
+@@ -516,7 +516,7 @@
  
      /** @protected */
      _initButton(item) {
@@ -77,7 +77,7 @@ Index: src/vaadin-menu-bar-mixin.js
  
        const itemCopy = { ...item };
        button.item = itemCopy;
-@@ -536,10 +536,10 @@
+@@ -578,10 +578,10 @@
  
        const isElement = itemComponent instanceof HTMLElement;
        // Use existing item component, if any
@@ -90,7 +90,7 @@ Index: src/vaadin-menu-bar-mixin.js
          component.appendChild(isElement ? itemComponent : document.createElement(itemComponent));
        }
        if (item.text) {
-@@ -649,7 +649,7 @@
+@@ -703,7 +703,7 @@
  
      /** @private */
      _getButtonFromEvent(e) {

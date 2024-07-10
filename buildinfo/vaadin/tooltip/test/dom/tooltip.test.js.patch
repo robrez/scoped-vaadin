@@ -4,7 +4,7 @@ Index: test/dom/tooltip.test.js
 +++ test/dom/tooltip.test.js
 @@ -1,14 +1,14 @@
  import { expect } from '@esm-bundle/chai';
- import { fixtureSync, oneEvent } from '@vaadin/testing-helpers';
+ import { fixtureSync } from '@vaadin/testing-helpers';
  import '../../src/vaadin-tooltip.js';
 -import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
 +import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
@@ -19,13 +19,4 @@ Index: test/dom/tooltip.test.js
 +    tooltip = fixtureSync('<vaadin24-tooltip></vaadin24-tooltip>');
    });
  
-   it('host', async () => {
-@@ -43,7 +43,7 @@
-     let overlay;
- 
-     beforeEach(async () => {
--      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
-+      overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
-       tooltip.manual = true;
-       tooltip.opened = true;
-       await oneEvent(overlay, 'vaadin-overlay-open');
+   it('default', async () => {

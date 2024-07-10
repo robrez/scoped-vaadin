@@ -3,7 +3,7 @@ Index: src/vaadin-combo-box-light.d.ts
 --- src/vaadin-combo-box-light.d.ts
 +++ src/vaadin-combo-box-light.d.ts
 @@ -3,13 +3,13 @@
-  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * Copyright (c) 2015 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
@@ -21,9 +21,9 @@ Index: src/vaadin-combo-box-light.d.ts
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
  import type { ComboBoxDataProviderMixinClass } from './vaadin-combo-box-data-provider-mixin.js';
+ import type { ComboBoxLightMixinClass } from './vaadin-combo-box-light-mixin.js';
  import type { ComboBoxDefaultItem, ComboBoxMixinClass } from './vaadin-combo-box-mixin.js';
- export {
-@@ -80,19 +80,19 @@
+@@ -81,19 +81,19 @@
  }
  
  /**
@@ -49,7 +49,7 @@ Index: src/vaadin-combo-box-light.d.ts
   * ```
   *
   * If you are using custom input field that has other property for value,
-@@ -100,20 +100,20 @@
+@@ -101,20 +101,20 @@
   * attribute to specify which property to use:
   *
   * ```html
@@ -74,7 +74,7 @@ Index: src/vaadin-combo-box-light.d.ts
   * ```
   *
   * @fires {Event} change - Fired when the user commits a value change.
-@@ -159,7 +159,7 @@
+@@ -154,7 +154,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

@@ -3,7 +3,7 @@ Index: src/helper-controller.d.ts
 --- src/helper-controller.d.ts
 +++ src/helper-controller.d.ts
 @@ -3,7 +3,7 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { SlotChildObserveController } from '@vaadin/component-base/src/slot-child-observe-controller.js';

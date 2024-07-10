@@ -3,7 +3,7 @@ Index: src/vaadin-menu-bar-button.js
 --- src/vaadin-menu-bar-button.js
 +++ src/vaadin-menu-bar-button.js
 @@ -3,12 +3,12 @@
-  * Copyright (c) 2019 - 2023 Vaadin Ltd.
+  * Copyright (c) 2019 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { Button } from '@vaadin/button/src/vaadin-button.js';
@@ -19,6 +19,15 @@ Index: src/vaadin-menu-bar-button.js
    css`
      :host {
        flex-shrink: 0;
+@@ -18,7 +18,7 @@
+       margin-inline-end: 0;
+     }
+ 
+-    [part='label'] ::slotted(vaadin-menu-bar-item) {
++    [part='label'] ::slotted(vaadin24-menu-bar-item) {
+       position: relative;
+       z-index: 1;
+     }
 @@ -27,7 +27,7 @@
  );
  

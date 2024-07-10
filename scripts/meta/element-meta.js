@@ -4,7 +4,8 @@ export const elementMeta = [
     "elementNames": [],
     "eventNames": [
       "blur",
-      "focus"
+      "focus",
+      "lit-debug"
     ]
   },
   {
@@ -16,6 +17,7 @@ export const elementMeta = [
     ],
     "eventNames": [
       "items-changed",
+      "lit-debug",
       "opened-changed"
     ]
   },
@@ -29,6 +31,7 @@ export const elementMeta = [
       "close-overlay-drawer",
       "drawer-opened-changed",
       "drawer-toggle-click",
+      "lit-debug",
       "overlay-changed",
       "primary-section-changed"
     ]
@@ -38,7 +41,9 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-avatar"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/avatar-group",
@@ -48,14 +53,18 @@ export const elementMeta = [
       "vaadin-avatar-group-menu-item",
       "vaadin-avatar-group-overlay"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/button",
     "elementNames": [
       "vaadin-button"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/checkbox",
@@ -66,6 +75,9 @@ export const elementMeta = [
       "change",
       "checked-changed",
       "indeterminate-changed",
+      "invalid-changed",
+      "lit-debug",
+      "validated",
       "value-changed"
     ]
   },
@@ -109,11 +121,13 @@ export const elementMeta = [
     "package": "@vaadin/component-base",
     "elementNames": [],
     "eventNames": [
+      "lit-debug",
       "page-loaded",
       "page-received",
       "page-requested",
       "slot-content-changed",
-      "tooltip-changed"
+      "tooltip-changed",
+      "virtualizer-element-focused"
     ]
   },
   {
@@ -126,6 +140,7 @@ export const elementMeta = [
     "eventNames": [
       "cancel",
       "confirm",
+      "lit-debug",
       "opened-changed",
       "reject"
     ]
@@ -142,6 +157,7 @@ export const elementMeta = [
       "close-all-menus",
       "item-selected",
       "items-outside-click",
+      "lit-debug",
       "opened-changed",
       "opensubmenu",
       "vaadin-contextmenu"
@@ -156,6 +172,7 @@ export const elementMeta = [
       "change",
       "internal-tab",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -182,6 +199,7 @@ export const elementMeta = [
       "init-done",
       "input",
       "invalid-changed",
+      "lit-debug",
       "opened-changed",
       "scroll-animation-finished",
       "unparsable-change",
@@ -208,6 +226,7 @@ export const elementMeta = [
       "vaadin-details-summary"
     ],
     "eventNames": [
+      "lit-debug",
       "opened-changed"
     ]
   },
@@ -218,6 +237,7 @@ export const elementMeta = [
       "vaadin-dialog-overlay"
     ],
     "eventNames": [
+      "lit-debug",
       "opened-changed",
       "resize"
     ]
@@ -231,6 +251,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -242,6 +263,7 @@ export const elementMeta = [
       "change",
       "has-input-value-changed",
       "input",
+      "lit-debug",
       "validated"
     ]
   },
@@ -255,6 +277,7 @@ export const elementMeta = [
       "vaadin-user-tags-overlay"
     ],
     "eventNames": [
+      "lit-debug",
       "user-tag-click"
     ]
   },
@@ -295,12 +318,14 @@ export const elementMeta = [
       "grid-dragend",
       "grid-dragstart",
       "grid-drop",
+      "lit-debug",
       "loading-changed",
       "select-all-changed",
       "selected-items-changed",
       "size-changed",
       "sorter-changed",
-      "value-changed"
+      "value-changed",
+      "virtualizer-element-focused"
     ]
   },
   {
@@ -316,7 +341,9 @@ export const elementMeta = [
       "vaadin-icon",
       "vaadin-iconset"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/icons",
@@ -328,7 +355,9 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-input-container"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/integer-field",
@@ -364,7 +393,9 @@ export const elementMeta = [
   {
     "package": "@vaadin/lit-renderer",
     "elementNames": [],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/login",
@@ -379,6 +410,7 @@ export const elementMeta = [
       "disabled-changed",
       "error-changed",
       "forgot-password",
+      "lit-debug",
       "login"
     ]
   },
@@ -394,6 +426,7 @@ export const elementMeta = [
     ],
     "eventNames": [
       "item-selected",
+      "lit-debug",
       "opensubmenu"
     ]
   },
@@ -412,7 +445,9 @@ export const elementMeta = [
       "vaadin-message",
       "vaadin-message-list"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/multi-select-combo-box",
@@ -446,6 +481,7 @@ export const elementMeta = [
       "vaadin-notification-container"
     ],
     "eventNames": [
+      "lit-debug",
       "opened-changed"
     ]
   },
@@ -458,6 +494,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "lit-debug",
       "unparsable-change",
       "validated",
       "value-changed"
@@ -469,6 +506,7 @@ export const elementMeta = [
       "vaadin-overlay"
     ],
     "eventNames": [
+      "lit-debug",
       "vaadin-overlay-close",
       "vaadin-overlay-closed",
       "vaadin-overlay-closing",
@@ -487,6 +525,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -497,14 +536,18 @@ export const elementMeta = [
       "vaadin-template-renderer-grid-templatizer",
       "vaadin-template-renderer-templatizer"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/progress-bar",
     "elementNames": [
       "vaadin-progress-bar"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/radio-group",
@@ -515,6 +558,7 @@ export const elementMeta = [
     "eventNames": [
       "checked-changed",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -538,6 +582,7 @@ export const elementMeta = [
     "eventNames": [
       "change",
       "invalid-changed",
+      "lit-debug",
       "opened-changed",
       "validated",
       "value-changed"
@@ -560,6 +605,7 @@ export const elementMeta = [
     ],
     "eventNames": [
       "items-changed",
+      "lit-debug",
       "selected-changed"
     ]
   },
@@ -588,6 +634,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -601,6 +648,7 @@ export const elementMeta = [
       "change",
       "input",
       "invalid-changed",
+      "lit-debug",
       "validated",
       "value-changed"
     ]
@@ -647,6 +695,7 @@ export const elementMeta = [
       "file-retry",
       "file-start",
       "files-changed",
+      "lit-debug",
       "max-files-reached-changed",
       "upload-",
       "upload-abort",
@@ -682,7 +731,9 @@ export const elementMeta = [
   {
     "package": "@vaadin/vaadin-themable-mixin",
     "elementNames": [],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/vaadin-usage-statistics",
@@ -701,6 +752,8 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-virtual-list"
     ],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   }
 ]

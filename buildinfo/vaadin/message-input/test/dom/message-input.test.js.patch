@@ -2,7 +2,7 @@ Index: test/dom/message-input.test.js
 ===================================================================
 --- test/dom/message-input.test.js
 +++ test/dom/message-input.test.js
-@@ -1,14 +1,14 @@
+@@ -1,9 +1,9 @@
  import { expect } from '@esm-bundle/chai';
  import { fixtureSync } from '@vaadin/testing-helpers';
  import '../../src/vaadin-message-input.js';
@@ -12,6 +12,9 @@ Index: test/dom/message-input.test.js
 -describe('vaadin-message-input', () => {
 +describe('vaadin24-message-input', () => {
    let input;
+ 
+   // Ignore pattern because of escape characters
+@@ -13,7 +13,7 @@
  
    beforeEach(() => {
      resetUniqueId();

@@ -15,8 +15,8 @@ Index: test/user-tags.test.js
  
    const getTags = () => {
      const { overlay } = wrapper.$;
--    return overlay.querySelectorAll('vaadin-user-tag');
-+    return overlay.querySelectorAll('vaadin24-user-tag');
+-    return overlay.content.querySelectorAll('vaadin-user-tag');
++    return overlay.content.querySelectorAll('vaadin24-user-tag');
    };
  
    const addUser = (user) => {

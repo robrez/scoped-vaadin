@@ -2,20 +2,7 @@ Index: test/typings/context-menu.types.ts
 ===================================================================
 --- test/typings/context-menu.types.ts
 +++ test/typings/context-menu.types.ts
-@@ -1,8 +1,8 @@
- import '../../vaadin-context-menu.js';
--import type { ListMixinClass } from '@vaadin/a11y-base/src/list-mixin.js';
--import type { DirMixinClass } from '@vaadin/component-base/src/dir-mixin.js';
--import type { ItemMixinClass } from '@vaadin/item/src/vaadin-item-mixin.js';
--import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import type { ListMixinClass } from '@scoped-vaadin/a11y-base/src/list-mixin.js';
-+import type { DirMixinClass } from '@scoped-vaadin/component-base/src/dir-mixin.js';
-+import type { ItemMixinClass } from '@scoped-vaadin/item/src/vaadin-item-mixin.js';
-+import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import type { ContextMenuItem } from '../../src/vaadin-context-menu-item.js';
- import type { ContextMenuListBox } from '../../src/vaadin-context-menu-list-box.js';
- import type {
-@@ -14,7 +14,7 @@
+@@ -8,7 +8,7 @@
    ContextMenuRendererContext,
  } from '../../vaadin-context-menu.js';
  
@@ -24,21 +11,3 @@ Index: test/typings/context-menu.types.ts
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
-@@ -46,7 +46,7 @@
- menu.renderer = renderer;
- 
- // Item
--const item = document.createElement('vaadin-context-menu-item');
-+const item = document.createElement('vaadin24-context-menu-item');
- 
- assertType<ContextMenuItem>(item);
- assertType<ItemMixinClass>(item);
-@@ -54,7 +54,7 @@
- assertType<ThemableMixinClass>(item);
- 
- // List-box
--const listBox = document.createElement('vaadin-context-menu-list-box');
-+const listBox = document.createElement('vaadin24-context-menu-list-box');
- 
- assertType<ContextMenuListBox>(listBox);
- assertType<DirMixinClass>(listBox);

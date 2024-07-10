@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,19 +1,21 @@
+@@ -1,18 +1,20 @@
 -# @vaadin/grid
 +# @scoped-vaadin/grid
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/grid)](https://www.npmjs.com/package/@vaadin/grid)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/grid)](https://www.npmjs.com/package/@scoped-vaadin/grid)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-grid theme="row-dividers" column-reordering-allowed multi-sort>
@@ -32,7 +31,7 @@ Index: README.md
  
  <script>
    // Customize the "Address" column's renderer
-@@ -22,7 +24,7 @@
+@@ -21,7 +23,7 @@
    };
  
    // Populate the grid with data
@@ -41,7 +40,7 @@ Index: README.md
    fetch('https://demo.vaadin.com/demo-data/1.0/people?count=200')
      .then((res) => res.json())
      .then((json) => (grid.items = json.result));
-@@ -36,18 +38,18 @@
+@@ -35,18 +37,18 @@
  Install the component:
  
  ```sh
@@ -67,7 +66,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -58,32 +60,32 @@
+@@ -57,32 +59,32 @@
  To use the Material theme, import the components from the `theme/material` folder:
  
  ```js

@@ -28,7 +28,7 @@ Index: test/validation.test.js
        `);
        await nextRender();
        validateSpy = sinon.spy(group, 'validate');
-@@ -137,14 +137,14 @@
+@@ -115,14 +115,14 @@
  
      beforeEach(async () => {
        group = fixtureSync(`

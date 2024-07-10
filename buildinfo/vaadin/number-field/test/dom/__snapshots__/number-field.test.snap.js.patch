@@ -206,3 +206,21 @@ Index: test/dom/__snapshots__/number-field.test.snap.js
  `;
  /* end snapshot vaadin-number-field host step */
  
+@@ -552,7 +552,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin24-input-container part="input-field">
+     <div
+       aria-hidden="true"
+       part="decrease-button"
+@@ -584,7 +584,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin24-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>

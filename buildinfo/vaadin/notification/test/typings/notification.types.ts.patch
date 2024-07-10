@@ -2,23 +2,12 @@ Index: test/typings/notification.types.ts
 ===================================================================
 --- test/typings/notification.types.ts
 +++ test/typings/notification.types.ts
-@@ -1,7 +1,7 @@
- import '../../vaadin-notification.js';
--import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
--import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
--import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
-+import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
-+import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
- import type {
-   NotificationOpenedChangedEvent,
-   NotificationPosition,
-@@ -11,7 +11,7 @@
+@@ -4,7 +4,7 @@
  
  const assertType = <TExpected>(value: TExpected) => value;
  
 -const notification = document.createElement('vaadin-notification');
 +const notification = document.createElement('vaadin24-notification');
  
- // Mixins
- assertType<ElementMixinClass>(notification);
+ notification.addEventListener('opened-changed', (event) => {
+   assertType<NotificationOpenedChangedEvent>(event);

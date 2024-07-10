@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,17 +1,19 @@
+@@ -1,16 +1,18 @@
 -# @vaadin/menu-bar
 +# @scoped-vaadin/menu-bar
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/menu-bar)](https://www.npmjs.com/package/@vaadin/menu-bar)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/menu-bar)](https://www.npmjs.com/package/@scoped-vaadin/menu-bar)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-menu-bar></vaadin-menu-bar>
@@ -26,7 +25,7 @@ Index: README.md
      { text: 'View' },
      { text: 'Edit' },
      {
-@@ -30,13 +32,13 @@
+@@ -29,13 +31,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -47,19 +49,19 @@
+@@ -46,19 +48,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

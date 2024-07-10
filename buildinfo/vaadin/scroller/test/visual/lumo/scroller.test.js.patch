@@ -2,7 +2,7 @@ Index: test/visual/lumo/scroller.test.js
 ===================================================================
 --- test/visual/lumo/scroller.test.js
 +++ test/visual/lumo/scroller.test.js
-@@ -13,9 +13,9 @@
+@@ -12,9 +12,9 @@
  
      element = fixtureSync(
        `

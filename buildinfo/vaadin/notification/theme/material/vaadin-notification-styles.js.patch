@@ -18,6 +18,15 @@ Index: theme/material/vaadin-notification-styles.js
    css`
      :host {
        inset: 0 4px;
+@@ -49,7 +49,7 @@
+   }
+ 
+   /* NOTE(platosha): Makes the button take exactly 1 line of vertical space */
+-  [part='content'] ::slotted(vaadin-button) {
++  [part='content'] ::slotted(vaadin24-button) {
+     margin: -8px 0;
+   }
+ 
 @@ -145,6 +145,6 @@
    }
  `;

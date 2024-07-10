@@ -3,12 +3,12 @@ Index: src/vaadin-lit-text-field.js
 --- src/vaadin-lit-text-field.js
 +++ src/vaadin-lit-text-field.js
 @@ -3,18 +3,18 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-lit-input-container.js';
 +import '@scoped-vaadin/input-container/src/vaadin-lit-input-container.js';
- import { css, html, LitElement } from 'lit';
+ import { html, LitElement } from 'lit';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
@@ -38,7 +38,7 @@ Index: src/vaadin-lit-text-field.js
    }
  
    static get styles() {
-@@ -47,7 +47,7 @@
+@@ -40,7 +40,7 @@
            <span part="required-indicator" aria-hidden="true" @click="${this.focus}"></span>
          </div>
  
@@ -47,10 +47,10 @@ Index: src/vaadin-lit-text-field.js
            part="input-field"
            .readonly="${this.readonly}"
            .disabled="${this.disabled}"
-@@ -58,7 +58,7 @@
+@@ -50,7 +50,7 @@
+           <slot name="prefix" slot="prefix"></slot>
            <slot name="input"></slot>
-           <slot name="suffix" slot="suffix"></slot>
-           <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>
+           ${this._renderSuffix()}
 -        </vaadin-input-container>
 +        </vaadin24-input-container>
  

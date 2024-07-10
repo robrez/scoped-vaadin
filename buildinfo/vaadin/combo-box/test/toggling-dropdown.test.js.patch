@@ -2,7 +2,7 @@ Index: test/toggling-dropdown.test.js
 ===================================================================
 --- test/toggling-dropdown.test.js
 +++ test/toggling-dropdown.test.js
-@@ -20,7 +20,7 @@
+@@ -10,7 +10,7 @@
    let comboBox, overlay, input;
  
    beforeEach(() => {

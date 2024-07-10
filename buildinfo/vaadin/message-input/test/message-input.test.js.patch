@@ -7,19 +7,15 @@ Index: test/message-input.test.js
  import { expect } from '@esm-bundle/chai';
  import { enterKeyDown, fixtureSync } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -7,9 +8,9 @@
+@@ -7,7 +8,7 @@
    let messageInput, textArea, button;
  
    beforeEach(() => {
 -    messageInput = fixtureSync('<vaadin-message-input></vaadin-message-input>');
--    textArea = messageInput.querySelector('vaadin-text-area');
--    button = messageInput.querySelector('vaadin-button');
 +    messageInput = fixtureSync('<vaadin24-message-input></vaadin24-message-input>');
-+    textArea = messageInput.querySelector('vaadin24-text-area');
-+    button = messageInput.querySelector('vaadin24-button');
+     textArea = messageInput.shadowRoot.querySelector('vaadin-message-input-text-area');
+     button = messageInput.shadowRoot.querySelector('vaadin-message-input-button');
    });
- 
-   describe('custom element definition', () => {
 @@ -20,11 +21,11 @@
      });
  

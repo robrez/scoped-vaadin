@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,17 +1,19 @@
+@@ -1,16 +1,18 @@
 -# @vaadin/dialog
 +# @scoped-vaadin/dialog
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/dialog)](https://www.npmjs.com/package/@vaadin/dialog)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/dialog)](https://www.npmjs.com/package/@scoped-vaadin/dialog)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-dialog opened></vaadin-dialog>
@@ -26,7 +25,7 @@ Index: README.md
    dialog.renderer = function (root, dialog) {
      root.textContent = 'Sample dialog';
    };
-@@ -25,13 +27,13 @@
+@@ -24,13 +26,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -42,19 +44,19 @@
+@@ -41,19 +43,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

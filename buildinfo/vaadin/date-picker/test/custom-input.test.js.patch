@@ -13,13 +13,13 @@ Index: test/custom-input.test.js
 +      </vaadin24-date-picker-light>
      `);
      overlay = datePicker.$.overlay;
-   });
-@@ -70,7 +70,7 @@
+     input = datePicker.inputElement;
+@@ -74,7 +74,7 @@
        it('should propagate theme attribute to month calendar', async () => {
-         const overlayContent = datePicker._overlayContent;
+         const overlayContent = getOverlayContent(datePicker);
          await waitForScrollToFinish(overlayContent);
--        const monthCalendar = overlayContent.querySelector('vaadin-month-calendar');
-+        const monthCalendar = overlayContent.querySelector('vaadin24-month-calendar');
+-        const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin-month-calendar');
++        const monthCalendar = overlayContent.$.monthScroller.querySelector('vaadin24-month-calendar');
          expect(monthCalendar.getAttribute('theme')).to.equal('foo');
        });
      });

@@ -3,7 +3,7 @@ Index: src/vaadin-combo-box-overlay-mixin.js
 --- src/vaadin-combo-box-overlay-mixin.js
 +++ src/vaadin-combo-box-overlay-mixin.js
 @@ -3,7 +3,7 @@
-  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * Copyright (c) 2015 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';

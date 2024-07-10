@@ -7,7 +7,7 @@ Index: test/accordion.test.js
  import { expect } from '@esm-bundle/chai';
  import {
    arrowDownKeyDown,
-@@ -11,7 +12,7 @@
+@@ -12,7 +13,7 @@
  import sinon from 'sinon';
  import '../vaadin-accordion.js';
  
@@ -16,41 +16,36 @@ Index: test/accordion.test.js
    let accordion, heading;
  
    function getHeading(idx) {
-@@ -20,22 +21,22 @@
+@@ -21,20 +22,20 @@
  
    beforeEach(async () => {
      accordion = fixtureSync(`
 -      <vaadin-accordion>
 -        <vaadin-accordion-panel>
--          <vaadin-accordion-heading slot="summary">Panel 1</vaadin-accordion-heading>
 +      <vaadin24-accordion>
 +        <vaadin24-accordion-panel>
-+          <vaadin24-accordion-heading slot="summary">Panel 1</vaadin24-accordion-heading>
-           <div>
-             <input />
-           </div>
+           <div slot="summary">Panel 1</div>
+           <input />
 -        </vaadin-accordion-panel>
 -        <vaadin-accordion-panel>
--          <vaadin-accordion-heading slot="summary">Panel 2</vaadin-accordion-heading>
 +        </vaadin24-accordion-panel>
 +        <vaadin24-accordion-panel>
-+          <vaadin24-accordion-heading slot="summary">Panel 2</vaadin24-accordion-heading>
-           <div>Content 2</div>
+           <div slot="summary">Panel 2</div>
+           Content 2
 -        </vaadin-accordion-panel>
 -        <vaadin-accordion-panel>
--          <vaadin-accordion-heading slot="summary"><div>Panel 3</div></vaadin-accordion-heading>
 +        </vaadin24-accordion-panel>
 +        <vaadin24-accordion-panel>
-+          <vaadin24-accordion-heading slot="summary"><div>Panel 3</div></vaadin24-accordion-heading>
-           <div>Content 3</div>
+           <div slot="summary">Panel 3</div>
+           Content 3
 -        </vaadin-accordion-panel>
 -      </vaadin-accordion>
 +        </vaadin24-accordion-panel>
 +      </vaadin24-accordion>
      `);
-     await nextRender();
+     await nextFrame();
    });
-@@ -48,11 +49,11 @@
+@@ -47,11 +48,11 @@
      });
  
      it('should be defined in custom element registry', () => {
@@ -64,7 +59,7 @@ Index: test/accordion.test.js
      });
    });
  
-@@ -69,7 +70,7 @@
+@@ -68,7 +69,7 @@
      });
  
      it('should update items value when adding nodes', () => {
@@ -73,7 +68,7 @@ Index: test/accordion.test.js
        accordion.appendChild(panel);
        accordion._observer.flush();
        expect(accordion.items.length).to.be.equal(4);
-@@ -170,7 +171,7 @@
+@@ -157,7 +158,7 @@
      });
  
      it('should not throw when calling `focus()` before items are set', () => {
@@ -82,12 +77,3 @@ Index: test/accordion.test.js
        expect(focus()).to.not.throw;
      });
    });
-@@ -298,7 +299,7 @@
-     let heading, content;
- 
-     beforeEach(() => {
--      heading = accordion.items[0].querySelector('vaadin-accordion-heading');
-+      heading = accordion.items[0].querySelector('vaadin24-accordion-heading');
-       content = accordion.items[0].querySelector('div');
-     });
- 

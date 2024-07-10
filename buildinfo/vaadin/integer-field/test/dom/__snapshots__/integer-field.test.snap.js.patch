@@ -158,3 +158,21 @@ Index: test/dom/__snapshots__/integer-field.test.snap.js
    <div part="helper-text">
      <slot name="helper">
      </slot>
+@@ -474,7 +474,7 @@
+     >
+     </span>
+   </div>
+-  <vaadin-input-container part="input-field">
++  <vaadin24-input-container part="input-field">
+     <div
+       aria-hidden="true"
+       part="decrease-button"
+@@ -506,7 +506,7 @@
+       slot="suffix"
+     >
+     </div>
+-  </vaadin-input-container>
++  </vaadin24-input-container>
+   <div part="helper-text">
+     <slot name="helper">
+     </slot>

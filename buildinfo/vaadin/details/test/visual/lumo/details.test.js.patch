@@ -7,9 +7,8 @@ Index: test/visual/lumo/details.test.js
      element = fixtureSync(
        `
 -      <vaadin-details>
--        <vaadin-details-summary slot="summary">Summary</vaadin-details-summary>
 +      <vaadin24-details>
-+        <vaadin24-details-summary slot="summary">Summary</vaadin24-details-summary>
+         <div slot="summary">Summary</div>
          <span>Content</span>
 -      </vaadin-details>
 +      </vaadin24-details>

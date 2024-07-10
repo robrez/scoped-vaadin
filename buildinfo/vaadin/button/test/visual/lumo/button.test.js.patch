@@ -22,16 +22,7 @@ Index: test/visual/lumo/button.test.js
    });
  
    afterEach(async () => {
-@@ -45,7 +45,7 @@
-     it('flex-shrink', async () => {
-       const wrapper = fixtureSync(`
-         <div style="display: flex; align-items: baseline; gap: 20px; width: 400px">
--          <vaadin-button>This is a button</vaadin-button>
-+          <vaadin24-button>This is a button</vaadin24-button>
-   
-           <span style="flex-basis: 100%; background-color: #eee;">Sibling</span>
-         </div>
-@@ -172,7 +172,7 @@
+@@ -161,7 +161,7 @@
        let icon;
  
        beforeEach(() => {
@@ -40,7 +31,7 @@ Index: test/visual/lumo/button.test.js
          icon.setAttribute('icon', 'lumo:edit');
          icon.setAttribute('slot', 'prefix');
          element.appendChild(icon);
-@@ -197,7 +197,7 @@
+@@ -186,7 +186,7 @@
        let icon;
  
        beforeEach(() => {
@@ -49,7 +40,7 @@ Index: test/visual/lumo/button.test.js
          icon.setAttribute('icon', 'lumo:arrow-right');
          icon.setAttribute('slot', 'suffix');
          element.appendChild(icon);
-@@ -223,7 +223,7 @@
+@@ -212,7 +212,7 @@
  
        beforeEach(() => {
          element.textContent = '';

@@ -21,7 +21,7 @@ Index: test/visual/material/menu-bar.test.js
            element.items = [
              { text: 'Home' },
              {
-@@ -51,7 +51,7 @@
+@@ -62,7 +62,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  
@@ -30,18 +30,18 @@ Index: test/visual/material/menu-bar.test.js
            element.items = [{ text: 'Actions' }];
            element.setAttribute('theme', 'outlined');
          });
-@@ -71,8 +71,8 @@
-         let overlay;
+@@ -80,8 +80,8 @@
  
+       describe('theme', () => {
          function makeIcon(img) {
--          const item = document.createElement('vaadin-menu-bar-item');
+-          const item = document.createElement('vaadin-context-menu-item');
 -          const icon = document.createElement('vaadin-icon');
-+          const item = document.createElement('vaadin24-menu-bar-item');
++          const item = document.createElement('vaadin24-context-menu-item');
 +          const icon = document.createElement('vaadin24-icon');
            icon.setAttribute('icon', img);
            item.appendChild(icon);
-           return item;
-@@ -82,7 +82,7 @@
+           item.setAttribute('theme', 'menu-bar-item');
+@@ -92,7 +92,7 @@
            div = document.createElement('div');
            div.style.padding = '10px';
  

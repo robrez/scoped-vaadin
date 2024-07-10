@@ -45,7 +45,7 @@ Index: test/basic.test.js
        expect(() => {
          combo.clearCache();
        }).to.not.throw(Error);
-@@ -313,7 +314,7 @@
+@@ -302,7 +303,7 @@
  
      it('should clear input element value after clicking matching value', async () => {
        await sendKeys({ type: 'ora' });
@@ -54,7 +54,7 @@ Index: test/basic.test.js
        item.click();
        expect(internal.value).to.equal('');
        expect(inputElement.value).to.equal('');
-@@ -321,7 +322,7 @@
+@@ -310,7 +311,7 @@
  
      it('should clear filter property after clicking matching value', async () => {
        await sendKeys({ type: 'ora' });
@@ -63,7 +63,7 @@ Index: test/basic.test.js
        item.click();
        expect(comboBox.filter).to.equal('');
      });
-@@ -392,7 +393,7 @@
+@@ -381,7 +382,7 @@
  
        const [root, owner, model] = spy.firstCall.args;
  
@@ -72,7 +72,7 @@ Index: test/basic.test.js
        expect(owner).to.eql(comboBox);
        expect(model).to.deep.equal({
          item: 'apple',
-@@ -409,7 +410,7 @@
+@@ -398,7 +399,7 @@
        };
        comboBox.opened = true;
  
@@ -81,7 +81,7 @@ Index: test/basic.test.js
        expect(item.textContent.trim()).to.equal('apple 0');
      });
  
-@@ -430,7 +431,7 @@
+@@ -419,7 +420,7 @@
      });
  
      it('should not throw if requestContentUpdate() called before attached', () => {
@@ -90,7 +90,7 @@ Index: test/basic.test.js
        expect(() => {
          combo.requestContentUpdate();
        }).to.not.throw(Error);
-@@ -442,7 +443,7 @@
+@@ -431,7 +432,7 @@
        };
        comboBox.opened = true;
  
@@ -99,7 +99,7 @@ Index: test/basic.test.js
        expect(item.textContent).to.equal('APPLE');
  
        comboBox.renderer = null;
-@@ -453,7 +454,7 @@
+@@ -442,7 +443,7 @@
      it('should clear the old content after assigning a new renderer', () => {
        comboBox.opened = true;
        comboBox.renderer = () => {};

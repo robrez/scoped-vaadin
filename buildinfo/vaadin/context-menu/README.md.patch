@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,31 +1,33 @@
+@@ -1,30 +1,32 @@
 -# @vaadin/context-menu
 +# @scoped-vaadin/context-menu
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/context-menu)](https://www.npmjs.com/package/@vaadin/context-menu)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/context-menu)](https://www.npmjs.com/package/@scoped-vaadin/context-menu)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-context-menu>
@@ -43,7 +42,7 @@ Index: README.md
        item.textContent = name + ' menu item';
        listBox.appendChild(item);
      });
-@@ -35,20 +37,20 @@
+@@ -34,20 +36,20 @@
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/context-menu/screenshot.png" width="493" alt="Screenshot of vaadin-context-menu">](https://vaadin.com/docs/latest/components/context-menu)
  
@@ -67,7 +66,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -59,19 +61,19 @@
+@@ -58,19 +60,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

@@ -20,3 +20,20 @@ Index: theme/lumo/vaadin-input-container-styles.js
    css`
      :host {
        background: var(--_background);
+@@ -98,14 +98,14 @@
+     }
+ 
+     /* Slotted icons */
+-    ::slotted(vaadin-icon) {
++    ::slotted(vaadin24-icon) {
+       color: var(--_icon-color);
+       width: var(--_icon-size);
+       height: var(--_icon-size);
+     }
+ 
+     /* Vaadin icons are based on a 16x16 grid (unlike Lumo and Material icons with 24x24), so they look too big by default */
+-    ::slotted(vaadin-icon[icon^='vaadin:']) {
++    ::slotted(vaadin24-icon[icon^='vaadin:']) {
+       padding: 0.25em;
+       box-sizing: border-box !important;
+     }

@@ -20,3 +20,54 @@ Index: theme/lumo/vaadin-tab-styles.js
    css`
      :host {
        box-sizing: border-box;
+@@ -150,23 +150,23 @@
+       color: inherit !important;
+     }
+ 
+-    :host ::slotted(vaadin-icon) {
++    :host ::slotted(vaadin24-icon) {
+       margin: 0 4px;
+       width: var(--lumo-icon-size-m);
+       height: var(--lumo-icon-size-m);
+     }
+ 
+     /* Vaadin icons are based on a 16x16 grid (unlike Lumo and Material icons with 24x24), so they look too big by default */
+-    :host ::slotted(vaadin-icon[icon^='vaadin:']) {
++    :host ::slotted(vaadin24-icon[icon^='vaadin:']) {
+       padding: 0.25rem;
+       box-sizing: border-box !important;
+     }
+ 
+-    :host(:not([dir='rtl'])) ::slotted(vaadin-icon:first-child) {
++    :host(:not([dir='rtl'])) ::slotted(vaadin24-icon:first-child) {
+       margin-left: 0;
+     }
+ 
+-    :host(:not([dir='rtl'])) ::slotted(vaadin-icon:last-child) {
++    :host(:not([dir='rtl'])) ::slotted(vaadin24-icon:last-child) {
+       margin-right: 0;
+     }
+ 
+@@ -187,7 +187,7 @@
+       padding-top: 0.25rem;
+     }
+ 
+-    :host([theme~='icon-on-top']) ::slotted(vaadin-icon) {
++    :host([theme~='icon-on-top']) ::slotted(vaadin24-icon) {
+       margin: 0;
+     }
+ 
+@@ -220,11 +220,11 @@
+       transform: translateX(50%) scale(1);
+     }
+ 
+-    :host([dir='rtl']) ::slotted(vaadin-icon:first-child) {
++    :host([dir='rtl']) ::slotted(vaadin24-icon:first-child) {
+       margin-right: 0;
+     }
+ 
+-    :host([dir='rtl']) ::slotted(vaadin-icon:last-child) {
++    :host([dir='rtl']) ::slotted(vaadin24-icon:last-child) {
+       margin-left: 0;
+     }
+ 

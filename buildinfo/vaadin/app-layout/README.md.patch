@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,32 +1,34 @@
+@@ -1,31 +1,33 @@
 -# @vaadin/app-layout
 +# @scoped-vaadin/app-layout
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/app-layout)](https://www.npmjs.com/package/@vaadin/app-layout)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/app-layout)](https://www.npmjs.com/package/@scoped-vaadin/app-layout)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-app-layout>
@@ -50,7 +49,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/app-layout/screenshot.png" width="900" alt="Screenshot of vaadin-app-layout">](https://vaadin.com/docs/latest/components/app-layout)
-@@ -38,14 +40,14 @@
+@@ -37,14 +39,14 @@
  Install the component:
  
  ```sh
@@ -68,7 +67,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -56,22 +58,22 @@
+@@ -55,22 +57,22 @@
  To use the Material theme, import the components from the `theme/material` folder:
  
  ```js

@@ -7,21 +7,24 @@ Index: test/combo-box-light.test.js
  import { expect } from '@esm-bundle/chai';
  import {
    arrowDownKeyDown,
-@@ -15,11 +16,11 @@
+@@ -16,13 +17,13 @@
  } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
 -import '@vaadin/text-field/vaadin-text-field.js';
+-import '@vaadin/polymer-legacy-adapter/template-renderer.js';
 +import '@scoped-vaadin/text-field/vaadin-text-field.js';
++import '@scoped-vaadin/polymer-legacy-adapter/template-renderer.js';
  import './not-animated-styles.js';
  import '../vaadin-combo-box-light.js';
+ import '@polymer/polymer/lib/elements/dom-repeat.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 +import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
  import { getFirstItem } from './helpers.js';
  
  class MyInput extends PolymerElement {
-@@ -30,7 +31,7 @@
+@@ -33,7 +34,7 @@
            display: inline-block;
          }
        </style>
@@ -30,7 +33,7 @@ Index: test/combo-box-light.test.js
      `;
    }
  
-@@ -44,21 +45,21 @@
+@@ -47,21 +48,21 @@
    }
  }
  
@@ -58,7 +61,7 @@ Index: test/combo-box-light.test.js
    });
  
    it('should find the input element correctly', () => {
-@@ -169,9 +170,9 @@
+@@ -172,9 +173,9 @@
  
    beforeEach(async () => {
      comboBox = fixtureSync(`
@@ -70,7 +73,7 @@ Index: test/combo-box-light.test.js
      `);
      await nextRender();
      comboBox.items = ['foo', 'bar', 'baz'];
-@@ -214,9 +215,9 @@
+@@ -217,9 +218,9 @@
    describe('input in light DOM', () => {
      beforeEach(async () => {
        comboBox = fixtureSync(`
@@ -83,7 +86,7 @@ Index: test/combo-box-light.test.js
        `);
        await nextRender();
        comboBox.items = ['foo', 'bar', 'baz'];
-@@ -239,9 +240,9 @@
+@@ -242,9 +243,9 @@
    describe('input in Shadow DOM', () => {
      beforeEach(async () => {
        comboBox = fixtureSync(`
@@ -95,7 +98,7 @@ Index: test/combo-box-light.test.js
        `);
        await nextRender();
        comboBox.items = ['foo', 'bar', 'baz'];
-@@ -267,12 +268,12 @@
+@@ -270,12 +271,12 @@
  
    beforeEach(async () => {
      comboBox = fixtureSync(`
@@ -112,7 +115,7 @@ Index: test/combo-box-light.test.js
      `);
      await nextRender();
      comboBox.items = ['foo', 'bar', 'baz'];
-@@ -452,9 +453,9 @@
+@@ -455,9 +456,9 @@
  
    beforeEach(() => {
      comboBox = fixtureSync(`
@@ -125,3 +128,25 @@ Index: test/combo-box-light.test.js
      `);
    });
  
+@@ -477,8 +478,8 @@
+ 
+   beforeEach(async () => {
+     comboBox = fixtureSync(`
+-      <vaadin-combo-box-light>
+-        <vaadin-text-field>
++      <vaadin24-combo-box-light>
++        <vaadin24-text-field>
+           <div slot="prefix">
+             <dom-repeat items="[1, 2]">
+               <template>
+@@ -486,8 +487,8 @@
+               </template>
+             </dom-repeat>
+           </div>
+-        </vaadin-text-field>
+-      </vaadin-combo-box-light>
++        </vaadin24-text-field>
++      </vaadin24-combo-box-light>
+     `);
+     await nextRender();
+     comboBox.items = ['bar', 'baz', 'qux'];

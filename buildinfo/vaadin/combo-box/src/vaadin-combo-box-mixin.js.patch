@@ -3,7 +3,7 @@ Index: src/vaadin-combo-box-mixin.js
 --- src/vaadin-combo-box-mixin.js
 +++ src/vaadin-combo-box-mixin.js
 @@ -3,18 +3,18 @@
-  * Copyright (c) 2015 - 2023 Vaadin Ltd.
+  * Copyright (c) 2015 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
@@ -33,7 +33,7 @@ Index: src/vaadin-combo-box-mixin.js
  import { ComboBoxPlaceholder } from './vaadin-combo-box-placeholder.js';
  
  /**
-@@ -96,8 +96,8 @@
+@@ -98,8 +98,8 @@
           * Custom function for rendering the content of every item.
           * Receives three arguments:
           *
@@ -44,7 +44,7 @@ Index: src/vaadin-combo-box-mixin.js
           * - `model` The object with the properties related with the rendered
           *   item, contains:
           *   - `model.index` The index of the rendered item.
-@@ -279,7 +279,7 @@
+@@ -306,7 +306,7 @@
       * @return {string}
       */
      get _tagNamePrefix() {
@@ -53,7 +53,16 @@ Index: src/vaadin-combo-box-mixin.js
      }
  
      /**
-@@ -610,7 +610,7 @@
+@@ -507,7 +507,7 @@
+       if (scroller) {
+         if (opened) {
+           scroller.style.maxHeight =
+-            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix}-overlay-max-height`) || '65vh';
++            getComputedStyle(this).getPropertyValue(`--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-overlay-max-height`) || '65vh';
+         }
+ 
+         scroller.setProperties({
+@@ -654,7 +654,7 @@
       * @private
       */
      _onToggleButtonClick(event) {
@@ -62,7 +71,7 @@ Index: src/vaadin-combo-box-mixin.js
        // from handling the click event after it bubbles.
        event.preventDefault();
  
-@@ -1351,13 +1351,13 @@
+@@ -1405,13 +1405,13 @@
       */
  
      /**

@@ -4,7 +4,7 @@ Index: test/dom/radio-group.test.js
 +++ test/dom/radio-group.test.js
 @@ -1,18 +1,18 @@
  import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { aTimeout, fixtureSync } from '@vaadin/testing-helpers';
  import '../../vaadin-radio-group.js';
 -import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
 +import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
@@ -13,7 +13,7 @@ Index: test/dom/radio-group.test.js
 +describe('vaadin24-radio-group', () => {
    let group;
  
-   beforeEach(async () => {
+   beforeEach(() => {
      resetUniqueId();
      group = fixtureSync(`
 -      <vaadin-radio-group>
@@ -25,5 +25,5 @@ Index: test/dom/radio-group.test.js
 +        <vaadin24-radio-button value="2" label="Radio 2"></vaadin24-radio-button>
 +      </vaadin24-radio-group>
      `);
-     await nextRender();
    });
+ 

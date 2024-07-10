@@ -20,7 +20,7 @@ Index: test/dom/select.test.js
      select.items = [
        { label: 'Option 1', value: 'Option 1' },
        { label: 'Option 2', value: 'Option 2' },
-@@ -68,7 +68,7 @@
+@@ -63,7 +63,7 @@
        };
  
        beforeEach(async () => {

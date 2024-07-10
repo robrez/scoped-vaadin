@@ -16,7 +16,7 @@ Index: test/visual/lumo/input-container.test.js
  describe('input-container', () => {
 @@ -12,7 +12,7 @@
      div = document.createElement('div');
-     div.style.width = 'fit-content';
+     div.style.display = 'inline-block';
      div.style.padding = '10px';
 -    element = fixtureSync('<vaadin-input-container><input></vaadin-input-container>', div);
 +    element = fixtureSync('<vaadin24-input-container><input></vaadin24-input-container>', div);

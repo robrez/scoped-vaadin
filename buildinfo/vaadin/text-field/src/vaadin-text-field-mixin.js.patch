@@ -3,7 +3,7 @@ Index: src/vaadin-text-field-mixin.js
 --- src/vaadin-text-field-mixin.js
 +++ src/vaadin-text-field-mixin.js
 @@ -3,9 +3,9 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { InputController } from '@vaadin/field-base/src/input-controller.js';

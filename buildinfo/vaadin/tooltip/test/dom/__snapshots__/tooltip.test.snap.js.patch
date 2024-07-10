@@ -2,35 +2,21 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 ===================================================================
 --- test/dom/__snapshots__/tooltip.test.snap.js
 +++ test/dom/__snapshots__/tooltip.test.snap.js
-@@ -2,188 +2,188 @@
+@@ -2,7 +2,7 @@
  export const snapshots = {};
- 
- snapshots["vaadin-tooltip host"] = 
--`<vaadin-tooltip>
-+`<vaadin24-tooltip>
-   <div
-     id="vaadin-tooltip-0"
-     role="tooltip"
-     slot="sr-label"
-   >
-   </div>
--</vaadin-tooltip>
-+</vaadin24-tooltip>
- `;
- /* end snapshot vaadin-tooltip host */
  
  snapshots["vaadin-tooltip default"] = 
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -10,12 +10,12 @@
    position="bottom"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip default */
  
@@ -38,14 +24,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -23,12 +23,12 @@
    position="top-start"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip top-start */
  
@@ -53,14 +39,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -36,12 +36,12 @@
    position="top"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip top */
  
@@ -68,14 +54,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -49,12 +49,12 @@
    position="top-end"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip top-end */
  
@@ -83,14 +69,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -62,12 +62,12 @@
    position="bottom-start"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip bottom-start */
  
@@ -98,14 +84,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -75,12 +75,12 @@
    position="bottom"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip bottom */
  
@@ -113,14 +99,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-vertical-overlap=""
+@@ -88,12 +88,12 @@
    position="bottom-end"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip bottom-end */
  
@@ -128,14 +114,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -101,12 +101,12 @@
    position="start-top"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip start-top */
  
@@ -143,14 +129,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -114,12 +114,12 @@
    position="start"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip start */
  
@@ -158,14 +144,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -127,12 +127,12 @@
    position="start-bottom"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip start-bottom */
  
@@ -173,14 +159,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -140,12 +140,12 @@
    position="end-top"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip end-top */
  
@@ -188,14 +174,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -153,12 +153,12 @@
    position="end"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip end */
  
@@ -203,44 +189,14 @@ Index: test/dom/__snapshots__/tooltip.test.snap.js
 -`<vaadin-tooltip-overlay
 +`<vaadin24-tooltip-overlay
    hidden=""
+   id="vaadin-tooltip-0"
    modeless=""
-   no-horizontal-overlap=""
+@@ -166,7 +166,7 @@
    position="end-bottom"
+   role="tooltip"
  >
 -</vaadin-tooltip-overlay>
 +</vaadin24-tooltip-overlay>
- <slot name="sr-label">
- </slot>
  `;
  /* end snapshot vaadin-tooltip end-bottom */
- 
- snapshots["vaadin-tooltip opened overlay"] = 
--`<vaadin-tooltip-overlay
-+`<vaadin24-tooltip-overlay
-   dir="ltr"
-   hidden=""
-   modeless=""
-@@ -191,12 +191,12 @@
-   opened=""
-   position="bottom"
- >
--</vaadin-tooltip-overlay>
-+</vaadin24-tooltip-overlay>
- `;
- /* end snapshot vaadin-tooltip opened overlay */
- 
- snapshots["vaadin-tooltip opened overlay class"] = 
--`<vaadin-tooltip-overlay
-+`<vaadin24-tooltip-overlay
-   class="custom tooltip-overlay"
-   dir="ltr"
-   hidden=""
-@@ -205,7 +205,7 @@
-   opened=""
-   position="bottom"
- >
--</vaadin-tooltip-overlay>
-+</vaadin24-tooltip-overlay>
- `;
- /* end snapshot vaadin-tooltip opened overlay class */
  

@@ -3,10 +3,10 @@ Index: test/typings/grid.types.ts
 --- test/typings/grid.types.ts
 +++ test/typings/grid.types.ts
 @@ -1,6 +1,6 @@
--import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { DisabledMixinClass } from '@vaadin/component-base/src/disabled-mixin.js';
 -import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
 -import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin';
-+import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/component-base/src/disabled-mixin.js';
 +import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin';
  import type {
@@ -22,7 +22,7 @@ Index: test/typings/grid.types.ts
  
  const narrowedGrid = genericGrid as Grid<TestGridItem>;
 @@ -215,7 +215,7 @@
- assertType<() => void>(narrowedGrid.requestContentUpdate);
+ assertType<string | null | undefined>(narrowedGrid.theme);
  
  /* GridColumn */
 -const genericColumn = document.createElement('vaadin-grid-column');
@@ -30,8 +30,8 @@ Index: test/typings/grid.types.ts
  assertType<GridColumn>(genericColumn);
  
  const bodyRenderer: GridBodyRenderer<TestGridItem> = (root, column, model) => {
-@@ -254,7 +254,7 @@
- assertType<string | null | undefined>(narrowedColumn.footerPartName);
+@@ -251,7 +251,7 @@
+ assertType<boolean>(narrowedColumn.autoWidth);
  
  /* GridColumnGroup */
 -const genericColumnGroup = document.createElement('vaadin-grid-column-group');
@@ -39,8 +39,8 @@ Index: test/typings/grid.types.ts
  assertType<GridColumnGroup>(genericColumnGroup);
  
  const narrowedColumnGroup = genericColumnGroup as GridColumnGroup<TestGridItem>;
-@@ -269,7 +269,7 @@
- };
+@@ -259,7 +259,7 @@
+ assertType<ColumnBaseMixinClass<TestGridItem>>(narrowedColumnGroup);
  
  /* GridFilter */
 -const filter = document.createElement('vaadin-grid-filter');
@@ -48,7 +48,7 @@ Index: test/typings/grid.types.ts
  assertType<GridFilter>(filter);
  assertType<HTMLElement>(filter);
  assertType<string | null | undefined>(filter.path);
-@@ -281,7 +281,7 @@
+@@ -271,7 +271,7 @@
  });
  
  /* GridFilterColumn */
@@ -57,7 +57,7 @@ Index: test/typings/grid.types.ts
  assertType<GridFilterColumn>(genericFilterColumn);
  
  const narrowedFilterColumn = genericFilterColumn as GridFilterColumn<TestGridItem>;
-@@ -290,7 +290,7 @@
+@@ -280,7 +280,7 @@
  assertType<string | null | undefined>(narrowedFilterColumn.path);
  
  /* GridSelectionColumn */
@@ -66,7 +66,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSelectionColumn>(genericSelectionColumn);
  
  const narrowedSelectionColumn = genericSelectionColumn as GridSelectionColumn<TestGridItem>;
-@@ -308,7 +308,7 @@
+@@ -298,7 +298,7 @@
  assertType<boolean>(narrowedSelectionColumn.autoSelect);
  
  /* GridSortColumn */
@@ -75,7 +75,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSortColumn>(genericSortColumn);
  
  const narrowedSortColumn = genericSortColumn as GridSortColumn<TestGridItem>;
-@@ -322,7 +322,7 @@
+@@ -312,7 +312,7 @@
  });
  
  /* GridSorter */
@@ -84,7 +84,7 @@ Index: test/typings/grid.types.ts
  assertType<GridSorter>(sorter);
  
  sorter.addEventListener('sorter-changed', (event) => {
-@@ -340,7 +340,7 @@
+@@ -330,7 +330,7 @@
  assertType<GridSorterDirection | null | undefined>(sorter.direction);
  
  /* GridTreeColumn */
@@ -93,8 +93,8 @@ Index: test/typings/grid.types.ts
  assertType<GridTreeColumn>(genericTreeColumn);
  
  const narrowedTreeColumn = genericTreeColumn as GridTreeColumn<TestGridItem>;
-@@ -348,7 +348,7 @@
- assertType<string | null | undefined>(narrowedTreeColumn.path);
+@@ -339,7 +339,7 @@
+ assertType<string | null | undefined>(narrowedTreeColumn.itemHasChildrenPath);
  
  /* GridTreeToggle */
 -const treeToggle = document.createElement('vaadin-grid-tree-toggle');

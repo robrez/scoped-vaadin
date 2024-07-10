@@ -2,37 +2,43 @@ Index: src/vaadin-multi-select-combo-box-overlay.js
 ===================================================================
 --- src/vaadin-multi-select-combo-box-overlay.js
 +++ src/vaadin-multi-select-combo-box-overlay.js
-@@ -3,13 +3,13 @@
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+@@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ComboBoxOverlayMixin } from '@vaadin/combo-box/src/vaadin-combo-box-overlay-mixin.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
--import { Overlay } from '@vaadin/overlay/src/vaadin-overlay.js';
--import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { css, registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { ComboBoxOverlayMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-overlay-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
-+import { Overlay } from '@scoped-vaadin/overlay/src/vaadin-overlay.js';
-+import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { css, registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
- registerStyles(
--  'vaadin-multi-select-combo-box-overlay',
-+  'vaadin24-multi-select-combo-box-overlay',
-   css`
-     #overlay {
-       width: var(
-@@ -30,7 +30,7 @@
- let memoizedTemplate;
+ const multiSelectComboBoxOverlayStyles = css`
+   #overlay {
+@@ -26,12 +26,12 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-multi-select-combo-box-overlay', [overlayStyles, multiSelectComboBoxOverlayStyles], {
++registerStyles('vaadin24-multi-select-combo-box-overlay', [overlayStyles, multiSelectComboBoxOverlayStyles], {
+   moduleId: 'vaadin-multi-select-combo-box-overlay-styles',
+ });
  
  /**
 - * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
 + * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
   *
   * @customElement
-  * @extends ComboBoxOverlay
-@@ -38,7 +38,7 @@
+  * @extends HTMLElement
+@@ -43,7 +43,7 @@
   */
- class MultiSelectComboBoxOverlay extends ComboBoxOverlayMixin(Overlay) {
+ class MultiSelectComboBoxOverlay extends ComboBoxOverlayMixin(OverlayMixin(DirMixin(ThemableMixin(PolymerElement)))) {
    static get is() {
 -    return 'vaadin-multi-select-combo-box-overlay';
 +    return 'vaadin24-multi-select-combo-box-overlay';

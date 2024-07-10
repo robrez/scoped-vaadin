@@ -2,7 +2,7 @@ Index: src/vaadin-checkbox-mixin.d.ts
 ===================================================================
 --- src/vaadin-checkbox-mixin.d.ts
 +++ src/vaadin-checkbox-mixin.d.ts
-@@ -4,16 +4,16 @@
+@@ -4,18 +4,18 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -14,8 +14,10 @@ Index: src/vaadin-checkbox-mixin.d.ts
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
 -import type { DelegateStateMixinClass } from '@vaadin/component-base/src/delegate-state-mixin.js';
 -import type { CheckedMixinClass } from '@vaadin/field-base/src/checked-mixin.js';
+-import type { FieldMixinClass } from '@vaadin/field-base/src/field-mixin.js';
 -import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
 -import type { LabelMixinClass } from '@vaadin/field-base/src/label-mixin.js';
+-import type { ValidateMixinClass } from '@vaadin/field-base/src/validate-mixin.js';
 +import type { ActiveMixinClass } from '@scoped-vaadin/a11y-base/src/active-mixin.js';
 +import type { DelegateFocusMixinClass } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
 +import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
@@ -24,8 +26,10 @@ Index: src/vaadin-checkbox-mixin.d.ts
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
 +import type { CheckedMixinClass } from '@scoped-vaadin/field-base/src/checked-mixin.js';
++import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 +import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 +import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
++import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
  
  /**
   * A mixin providing common checkbox functionality.

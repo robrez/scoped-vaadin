@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,22 +1,24 @@
+@@ -1,21 +1,23 @@
 -# @vaadin/combo-box
 +# @scoped-vaadin/combo-box
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/combo-box)](https://www.npmjs.com/package/@vaadin/combo-box)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/combo-box)](https://www.npmjs.com/package/@scoped-vaadin/combo-box)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-combo-box
@@ -32,7 +31,7 @@ Index: README.md
  
    fetch('https://randomuser.me/api?results=100&inc=name,email')
      .then((res) => res.json())
-@@ -31,13 +33,13 @@
+@@ -30,13 +32,13 @@
  Install the component:
  
  ```sh
@@ -48,7 +47,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -48,19 +50,19 @@
+@@ -47,19 +49,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

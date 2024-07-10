@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,23 +1,25 @@
+@@ -1,22 +1,24 @@
 -# @vaadin/accordion
 +# @scoped-vaadin/accordion
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/accordion)](https://www.npmjs.com/package/@vaadin/accordion)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/accordion)](https://www.npmjs.com/package/@scoped-vaadin/accordion)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-accordion>
@@ -38,7 +37,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/accordion/screenshot.png" alt="Screenshot of vaadin-accordion" width="900">](https://vaadin.com/docs/latest/components/accordion)
-@@ -27,13 +29,13 @@
+@@ -26,13 +28,13 @@
  Install the component:
  
  ```sh
@@ -54,7 +53,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -44,19 +46,19 @@
+@@ -43,19 +45,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

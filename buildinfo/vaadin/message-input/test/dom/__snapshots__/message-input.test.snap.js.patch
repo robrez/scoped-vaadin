@@ -2,65 +2,58 @@ Index: test/dom/__snapshots__/message-input.test.snap.js
 ===================================================================
 --- test/dom/__snapshots__/message-input.test.snap.js
 +++ test/dom/__snapshots__/message-input.test.snap.js
-@@ -2,16 +2,16 @@
+@@ -2,7 +2,7 @@
  export const snapshots = {};
  
  snapshots["vaadin-message-input default"] = 
--`<vaadin-message-input>
--  <vaadin-button
-+`<vaadin24-message-input>
-+  <vaadin24-button
-     role="button"
-     slot="button"
-     tabindex="0"
-     theme="primary contained"
+-`<vaadin-message-input-text-area placeholder="Message">
++`<vaadin24-message-input-text-area placeholder="Message">
+   <label
+     for="textarea-vaadin-message-input-text-area-3"
+     id="label-vaadin-message-input-text-area-0"
+@@ -24,21 +24,21 @@
+     style="min-height: 0px;"
    >
-     Send
--  </vaadin-button>
--  <vaadin-text-area
-+  </vaadin24-button>
-+  <vaadin24-text-area
-     placeholder="Message"
-     slot="textarea"
-   >
-@@ -36,14 +36,14 @@
-       style="min-height: 0px;"
-     >
-     </textarea>
--  </vaadin-text-area>
--</vaadin-message-input>
-+  </vaadin24-text-area>
-+</vaadin24-message-input>
+   </textarea>
+-</vaadin-message-input-text-area>
+-<vaadin-message-input-button
++</vaadin24-message-input-text-area>
++<vaadin24-message-input-button
+   role="button"
+   tabindex="0"
+   theme="primary contained"
+ >
+   Send
+-</vaadin-message-input-button>
++</vaadin24-message-input-button>
+ <slot name="tooltip">
+ </slot>
  `;
  /* end snapshot vaadin-message-input default */
  
  snapshots["vaadin-message-input disabled"] = 
--`<vaadin-message-input disabled="">
--  <vaadin-button
-+`<vaadin24-message-input disabled="">
-+  <vaadin24-button
-     aria-disabled="true"
-     disabled=""
-     role="button"
-@@ -52,8 +52,8 @@
-     theme="primary contained"
+-`<vaadin-message-input-text-area
++`<vaadin24-message-input-text-area
+   aria-disabled="true"
+   disabled=""
+   placeholder="Message"
+@@ -66,8 +66,8 @@
+     tabindex="-1"
    >
-     Send
--  </vaadin-button>
--  <vaadin-text-area
-+  </vaadin24-button>
-+  <vaadin24-text-area
-     aria-disabled="true"
-     disabled=""
-     placeholder="Message"
-@@ -82,8 +82,8 @@
-       tabindex="-1"
-     >
-     </textarea>
--  </vaadin-text-area>
--</vaadin-message-input>
-+  </vaadin24-text-area>
-+</vaadin24-message-input>
+   </textarea>
+-</vaadin-message-input-text-area>
+-<vaadin-message-input-button
++</vaadin24-message-input-text-area>
++<vaadin24-message-input-button
+   aria-disabled="true"
+   disabled=""
+   role="button"
+@@ -75,7 +75,7 @@
+   theme="primary contained"
+ >
+   Send
+-</vaadin-message-input-button>
++</vaadin24-message-input-button>
+ <slot name="tooltip">
+ </slot>
  `;
- /* end snapshot vaadin-message-input disabled */
- 

@@ -20,10 +20,10 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
    >
 -    <vaadin-login-form-wrapper
 +    <vaadin24-login-form-wrapper
-       id="vaadinLoginFormWrapper"
+       part="vaadin-login-native-form-wrapper"
        theme="with-overlay"
      >
-@@ -24,7 +24,7 @@
+@@ -25,7 +25,7 @@
            id="csrf"
            type="hidden"
          >
@@ -32,7 +32,7 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            autocapitalize="none"
            autocomplete="username"
            autocorrect="off"
-@@ -59,8 +59,8 @@
+@@ -60,8 +60,8 @@
              slot="error-message"
            >
            </div>
@@ -43,7 +43,7 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            autocomplete="current-password"
            has-label=""
            id="vaadinLoginPassword"
-@@ -91,50 +91,50 @@
+@@ -92,42 +92,42 @@
              slot="error-message"
            >
            </div>
@@ -57,32 +57,22 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            >
 -          </vaadin-password-field-button>
 -        </vaadin-password-field>
+-        <vaadin-button
 +          </vaadin24-password-field-button>
 +        </vaadin24-password-field>
++        <vaadin24-button
+           part="vaadin-login-submit"
+           role="button"
+           tabindex="0"
+           theme="primary contained"
+         >
+           Log in
+-        </vaadin-button>
++        </vaadin24-button>
        </form>
--      <vaadin-button
-+      <vaadin24-button
-         role="button"
-         slot="submit"
-         tabindex="0"
-         theme="primary contained submit"
-       >
-         Log in
--      </vaadin-button>
--      <vaadin-button
-+      </vaadin24-button>
-+      <vaadin24-button
-         role="button"
-         slot="forgot-password"
-         tabindex="0"
-         theme="tertiary small"
-       >
-         Forgot password
--      </vaadin-button>
 -    </vaadin-login-form-wrapper>
 -  </vaadin-login-form>
 -</vaadin-login-overlay-wrapper>
-+      </vaadin24-button>
 +    </vaadin24-login-form-wrapper>
 +  </vaadin24-login-form>
 +</vaadin24-login-overlay-wrapper>
@@ -104,10 +94,10 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
    >
 -    <vaadin-login-form-wrapper
 +    <vaadin24-login-form-wrapper
-       id="vaadinLoginFormWrapper"
+       part="vaadin-login-native-form-wrapper"
        theme="with-overlay"
      >
-@@ -146,7 +146,7 @@
+@@ -140,7 +140,7 @@
            id="csrf"
            type="hidden"
          >
@@ -116,7 +106,7 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            autocapitalize="none"
            autocomplete="username"
            autocorrect="off"
-@@ -181,8 +181,8 @@
+@@ -175,8 +175,8 @@
              slot="error-message"
            >
            </div>
@@ -127,7 +117,7 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            autocomplete="current-password"
            has-label=""
            id="vaadinLoginPassword"
-@@ -213,51 +213,51 @@
+@@ -207,27 +207,27 @@
              slot="error-message"
            >
            </div>
@@ -141,120 +131,25 @@ Index: test/dom/__snapshots__/login-overlay.test.snap.js
            >
 -          </vaadin-password-field-button>
 -        </vaadin-password-field>
+-        <vaadin-button
 +          </vaadin24-password-field-button>
 +        </vaadin24-password-field>
++        <vaadin24-button
+           part="vaadin-login-submit"
+           role="button"
+           tabindex="0"
+           theme="primary contained"
+         >
+           Kirjaudu sisään
+-        </vaadin-button>
++        </vaadin24-button>
        </form>
--      <vaadin-button
-+      <vaadin24-button
-         role="button"
-         slot="submit"
-         tabindex="0"
-         theme="primary contained submit"
-       >
-         Kirjaudu sisään
--      </vaadin-button>
--      <vaadin-button
-+      </vaadin24-button>
-+      <vaadin24-button
-         role="button"
-         slot="forgot-password"
-         tabindex="0"
-         theme="tertiary small"
-       >
-         Unohtuiko salasana?
--      </vaadin-button>
 -    </vaadin-login-form-wrapper>
 -  </vaadin-login-form>
 -</vaadin-login-overlay-wrapper>
-+      </vaadin24-button>
 +    </vaadin24-login-form-wrapper>
 +  </vaadin24-login-form>
 +</vaadin24-login-overlay-wrapper>
  `;
  /* end snapshot vaadin-login-overlay host i18n */
- 
- snapshots["vaadin-login-overlay host overlay class"] = 
--`<vaadin-login-overlay-wrapper
-+`<vaadin24-login-overlay-wrapper
-   class="custom login-overlay"
-   focus-trap=""
-   id="vaadinLoginOverlayWrapper"
-   opened=""
-   with-backdrop=""
- >
--  <vaadin-login-form
-+  <vaadin24-login-form
-     id="vaadinLoginForm"
-     theme="with-overlay"
-   >
--    <vaadin-login-form-wrapper
-+    <vaadin24-login-form-wrapper
-       id="vaadinLoginFormWrapper"
-       theme="with-overlay"
-     >
-@@ -269,7 +269,7 @@
-           id="csrf"
-           type="hidden"
-         >
--        <vaadin-text-field
-+        <vaadin24-text-field
-           autocapitalize="none"
-           autocomplete="username"
-           autocorrect="off"
-@@ -304,8 +304,8 @@
-             slot="error-message"
-           >
-           </div>
--        </vaadin-text-field>
--        <vaadin-password-field
-+        </vaadin24-text-field>
-+        <vaadin24-password-field
-           autocomplete="current-password"
-           has-label=""
-           id="vaadinLoginPassword"
-@@ -336,35 +336,35 @@
-             slot="error-message"
-           >
-           </div>
--          <vaadin-password-field-button
-+          <vaadin24-password-field-button
-             aria-label="Show password"
-             aria-pressed="false"
-             role="button"
-             slot="reveal"
-             tabindex="0"
-           >
--          </vaadin-password-field-button>
--        </vaadin-password-field>
-+          </vaadin24-password-field-button>
-+        </vaadin24-password-field>
-       </form>
--      <vaadin-button
-+      <vaadin24-button
-         role="button"
-         slot="submit"
-         tabindex="0"
-         theme="primary contained submit"
-       >
-         Log in
--      </vaadin-button>
--      <vaadin-button
-+      </vaadin24-button>
-+      <vaadin24-button
-         role="button"
-         slot="forgot-password"
-         tabindex="0"
-         theme="tertiary small"
-       >
-         Forgot password
--      </vaadin-button>
--    </vaadin-login-form-wrapper>
--  </vaadin-login-form>
--</vaadin-login-overlay-wrapper>
-+      </vaadin24-button>
-+    </vaadin24-login-form-wrapper>
-+  </vaadin24-login-form>
-+</vaadin24-login-overlay-wrapper>
- `;
- /* end snapshot vaadin-login-overlay host overlay class */
  

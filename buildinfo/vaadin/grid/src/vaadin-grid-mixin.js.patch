@@ -2,8 +2,11 @@ Index: src/vaadin-grid-mixin.js
 ===================================================================
 --- src/vaadin-grid-mixin.js
 +++ src/vaadin-grid-mixin.js
-@@ -3,15 +3,15 @@
-  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+@@ -1,17 +1,18 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { isElementHidden } from '@vaadin/a11y-base/src/focus-utils.js';
@@ -27,12 +30,25 @@ Index: src/vaadin-grid-mixin.js
  import { A11yMixin } from './vaadin-grid-a11y-mixin.js';
  import { ActiveItemMixin } from './vaadin-grid-active-item-mixin.js';
  import { ArrayDataProviderMixin } from './vaadin-grid-array-data-provider-mixin.js';
-@@ -704,7 +704,7 @@
+@@ -480,10 +481,10 @@
+       }
+       const cols = this._getColumns().filter((col) => !col.hidden && col.autoWidth);
+ 
+-      const undefinedCols = cols.filter((col) => !customElements.get(col.localName));
++      const undefinedCols = cols.filter((col) => !internalCustomElements.get(col.localName));
+       if (undefinedCols.length) {
+         // Some of the columns are not defined yet, wait for them to be defined before measuring
+-        Promise.all(undefinedCols.map((col) => customElements.whenDefined(col.localName))).then(() => {
++        Promise.all(undefinedCols.map((col) => internalCustomElements.whenDefined(col.localName))).then(() => {
+           this._recalculateColumnWidths(cols);
+         });
+       } else {
+@@ -722,7 +723,7 @@
            } else {
              // Header & footer
              const tagName = section === 'header' ? 'th' : 'td';
 -            if (isColumnRow || column.localName === 'vaadin-grid-column-group') {
 +            if (isColumnRow || column.localName === 'vaadin24-grid-column-group') {
-               cell = column[`_${section}Cell`] || this._createCell(tagName);
-               cell._column = column;
-               row.appendChild(cell);
+               cell = column[`_${section}Cell`];
+               if (!cell) {
+                 cell = this._createCell(tagName);

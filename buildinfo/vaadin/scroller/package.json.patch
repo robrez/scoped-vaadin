@@ -5,9 +5,9 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/scroller",
--  "version": "24.3.8",
+-  "version": "24.4.2",
 +  "name": "@scoped-vaadin/scroller",
-+  "version": "24.3.7-alpha.1",
++  "version": "24.4.2-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -40,11 +40,11 @@ Index: package.json
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/a11y-base": "~24.3.8",
--    "@vaadin/component-base": "~24.3.8",
--    "@vaadin/vaadin-lumo-styles": "~24.3.8",
--    "@vaadin/vaadin-material-styles": "~24.3.8",
--    "@vaadin/vaadin-themable-mixin": "~24.3.8"
+-    "@vaadin/a11y-base": "~24.4.2",
+-    "@vaadin/component-base": "~24.4.2",
+-    "@vaadin/vaadin-lumo-styles": "~24.4.2",
+-    "@vaadin/vaadin-material-styles": "~24.4.2",
+-    "@vaadin/vaadin-themable-mixin": "~24.4.2"
 -  },
 -  "devDependencies": {
 -    "@esm-bundle/chai": "^4.3.4",
@@ -54,14 +54,14 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
+-  "gitHead": "f280274de1bc894ad4e0426432619999c0cf556d"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/a11y-base": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/vaadin-material-styles": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
++    "@scoped-vaadin/a11y-base": "^24.4.2-alpha.1",
++    "@scoped-vaadin/component-base": "^24.4.2-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.4.2-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.4.2-alpha.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.4.2-alpha.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.4.2-alpha.1"
 +  }
  }

@@ -2,12 +2,12 @@ Index: src/vaadin-grid-active-item-mixin.js
 ===================================================================
 --- src/vaadin-grid-active-item-mixin.js
 +++ src/vaadin-grid-active-item-mixin.js
-@@ -77,7 +77,7 @@
-      */
-     _onClick(e) {
-       if (e.defaultPrevented) {
+@@ -76,7 +76,7 @@
+     _shouldPreventCellActivationOnClick(e) {
+       const { cell } = this._getGridEventLocation(e);
+       return (
 -        // Something has handled this click already, e. g., <vaadin-grid-sorter>
 +        // Something has handled this click already, e. g., <vaadin24-grid-sorter>
-         return;
-       }
- 
+         e.defaultPrevented ||
+         // No clicked cell available
+         !cell ||

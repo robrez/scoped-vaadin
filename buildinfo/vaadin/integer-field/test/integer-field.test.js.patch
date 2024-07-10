@@ -11,7 +11,7 @@ Index: test/integer-field.test.js
      input = integerField.inputElement;
    });
  
-@@ -282,9 +282,9 @@
+@@ -230,9 +230,9 @@
      expect(() =>
        fixtureSync(`
          <div>

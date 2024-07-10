@@ -3,7 +3,7 @@ Index: src/vaadin-lit-select.js
 --- src/vaadin-lit-select.js
 +++ src/vaadin-lit-select.js
 @@ -3,23 +3,23 @@
-  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-lit-input-container.js';
@@ -80,3 +80,12 @@ Index: src/vaadin-lit-select.js
  
        <slot name="tooltip"></slot>
        <div class="sr-only">
+@@ -105,7 +105,7 @@
+   ready() {
+     super.ready();
+ 
+-    const overlay = this.shadowRoot.querySelector('vaadin-select-overlay');
++    const overlay = this.shadowRoot.querySelector('vaadin24-select-overlay');
+     overlay.owner = this;
+     this._overlayElement = overlay;
+   }

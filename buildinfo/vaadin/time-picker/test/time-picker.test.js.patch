@@ -5,14 +5,14 @@ Index: test/time-picker.test.js
 @@ -1,17 +1,18 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
- import { enter, fixtureSync, nextFrame, outsideClick } from '@vaadin/testing-helpers';
+ import { arrowDown, arrowUp, enter, esc, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
  import './not-animated-styles.js';
  import '../vaadin-time-picker.js';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 +import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
- import { setInputValue } from './helpers.js';
+ import { outsideClick, setInputValue } from './helpers.js';
  
  describe('time-picker', () => {
    let timePicker, comboBox, inputElement;
@@ -37,7 +37,7 @@ Index: test/time-picker.test.js
      });
    });
  
-@@ -143,7 +144,7 @@
+@@ -185,7 +186,7 @@
      let overlay;
  
      beforeEach(() => {

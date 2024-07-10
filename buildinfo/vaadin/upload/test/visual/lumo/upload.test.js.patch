@@ -2,7 +2,18 @@ Index: test/visual/lumo/upload.test.js
 ===================================================================
 --- test/visual/lumo/upload.test.js
 +++ test/visual/lumo/upload.test.js
-@@ -18,7 +18,7 @@
+@@ -1,8 +1,8 @@
+ import { fixtureSync } from '@vaadin/testing-helpers/dist/fixture.js';
+ import { sendKeys } from '@web/test-runner-commands';
+ import { visualDiff } from '@web/test-runner-visual-regression';
+-import '@vaadin/form-layout/theme/lumo/vaadin-form-layout.js';
+-import '@vaadin/form-layout/theme/lumo/vaadin-form-item.js';
++import '@scoped-vaadin/form-layout/theme/lumo/vaadin-form-layout.js';
++import '@scoped-vaadin/form-layout/theme/lumo/vaadin-form-item.js';
+ import '../../../theme/lumo/vaadin-upload.js';
+ 
+ describe('upload', () => {
+@@ -20,7 +20,7 @@
        });
  
        beforeEach(() => {
@@ -11,16 +22,16 @@ Index: test/visual/lumo/upload.test.js
        });
  
        after(() => {
-@@ -46,7 +46,7 @@
+@@ -48,7 +48,7 @@
  
    describe('focus', () => {
      beforeEach(() => {
 -      element = fixtureSync('<vaadin-upload></vaadin-upload>', div);
 +      element = fixtureSync('<vaadin24-upload></vaadin24-upload>', div);
-       element.files = [
-         {
-           name: 'Don Quixote.pdf',
-@@ -105,7 +105,7 @@
+       element.files = [{ name: 'Don Quixote.pdf' }, { name: 'Hamlet.pdf', progress: 100, complete: true }];
+       // To show the start button
+       element.files[0].held = true;
+@@ -104,7 +104,7 @@
  
    describe('states', () => {
      beforeEach(() => {
@@ -29,12 +40,35 @@ Index: test/visual/lumo/upload.test.js
      });
  
      it('max files reached', async () => {
-@@ -118,7 +118,7 @@
- 
-   describe('width', () => {
+@@ -118,21 +118,21 @@
+   describe('form-item', () => {
      beforeEach(() => {
--      element = fixtureSync('<vaadin-upload style="width: 400px"></vaadin-upload>', div);
-+      element = fixtureSync('<vaadin24-upload style="width: 400px"></vaadin24-upload>', div);
+       element = fixtureSync(
+-        `<vaadin-form-layout>
+-          <vaadin-upload></vaadin-upload>
+-          <vaadin-form-item>
++        `<vaadin24-form-layout>
++          <vaadin24-upload></vaadin24-upload>
++          <vaadin24-form-item>
+             <label slot="label">Description</label>
+             <textarea></textarea>
+-          </vaadin-form-item>
+-          <vaadin-form-item>
++          </vaadin24-form-item>
++          <vaadin24-form-item>
+             <label slot="label">File</label>
+-            <vaadin-upload></vaadin-upload>
+-          </vaadin-form-item>
+-          <vaadin-form-item>
++            <vaadin24-upload></vaadin24-upload>
++          </vaadin24-form-item>
++          <vaadin24-form-item>
+             <label slot="label">Description</label>
+             <textarea></textarea>
+-          </vaadin-form-item>
+-        </vaadin-form-layout>`,
++          </vaadin24-form-item>
++        </vaadin24-form-layout>`,
+         div,
+       );
      });
- 
-     it('width', async () => {

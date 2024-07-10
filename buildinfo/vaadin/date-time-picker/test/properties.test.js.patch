@@ -24,9 +24,9 @@ Index: test/properties.test.js
        value="2019-09-16T15:00"
        min="2019-09-01T08:00"
        max="2019-09-30T22:00"
-@@ -28,10 +28,10 @@
-       disabled
+@@ -29,10 +29,10 @@
        readonly
+       invalid
        auto-open-disabled
 -    ></vaadin-date-time-picker>
 +    ></vaadin24-date-time-picker>
@@ -37,7 +37,7 @@ Index: test/properties.test.js
        label="Birth date and time"
        error-message="error-message"
        required
-@@ -41,20 +41,20 @@
+@@ -43,20 +43,20 @@
        min="2019-09-01T08:00"
        max="2019-09-30T22:00"
      >

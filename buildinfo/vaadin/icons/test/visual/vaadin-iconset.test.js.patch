@@ -4,7 +4,7 @@ Index: test/visual/vaadin-iconset.test.js
 +++ test/visual/vaadin-iconset.test.js
 @@ -2,7 +2,7 @@
  import { visualDiff } from '@web/test-runner-visual-regression';
- import '../../vaadin-icons.js';
+ import '../../vaadin-iconset.js';
  
 -describe('vaadin-iconset', () => {
 +describe('vaadin24-iconset', () => {

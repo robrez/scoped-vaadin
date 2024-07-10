@@ -23,3 +23,12 @@ Index: theme/material/vaadin-date-picker-overlay-content-styles.js
    css`
      :host {
        background: var(--material-background-color);
+@@ -124,7 +124,7 @@
+       order: 2;
+     }
+ 
+-    ::slotted(vaadin-button) {
++    ::slotted(vaadin24-button) {
+       margin: 0 4px;
+     }
+   `,

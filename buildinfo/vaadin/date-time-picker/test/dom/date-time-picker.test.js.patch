@@ -2,21 +2,17 @@ Index: test/dom/date-time-picker.test.js
 ===================================================================
 --- test/dom/date-time-picker.test.js
 +++ test/dom/date-time-picker.test.js
-@@ -1,14 +1,14 @@
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
  import '../../src/vaadin-date-time-picker.js';
--import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
-+import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
  
 -describe('vaadin-date-time-picker', () => {
 +describe('vaadin24-date-time-picker', () => {
    let dateTimePicker;
  
-   beforeEach(async () => {
-     resetUniqueId();
+   beforeEach(() => {
 -    dateTimePicker = fixtureSync('<vaadin-date-time-picker></vaadin-date-time-picker>');
 +    dateTimePicker = fixtureSync('<vaadin24-date-time-picker></vaadin24-date-time-picker>');
-     await nextRender();
    });
  
+   it('default', async () => {

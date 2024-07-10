@@ -93,9 +93,9 @@ Index: src/vaadin-multi-select-combo-box.js
 -        <vaadin-multi-select-combo-box-internal
 +        <vaadin24-multi-select-combo-box-internal
            id="comboBox"
-           items="[[__effectiveItems]]"
+           items="[[items]]"
            item-id-path="[[itemIdPath]]"
-@@ -189,7 +189,7 @@
+@@ -190,7 +190,7 @@
            on-custom-value-set="_onCustomValueSet"
            on-filtered-items-changed="_onFilteredItemsChanged"
          >
@@ -104,7 +104,7 @@ Index: src/vaadin-multi-select-combo-box.js
              part="input-field"
              auto-expand-vertically="[[autoExpandVertically]]"
              readonly="[[readonly]]"
-@@ -210,8 +210,8 @@
+@@ -211,8 +211,8 @@
                aria-hidden="true"
              ></div>
              <div id="toggleButton" class="toggle-button" part="toggle-button" slot="suffix" aria-hidden="true"></div>
@@ -115,7 +115,7 @@ Index: src/vaadin-multi-select-combo-box.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -447,8 +447,8 @@
+@@ -456,8 +456,8 @@
         * Custom function for rendering the content of every item.
         * Receives three arguments:
         *
@@ -126,7 +126,7 @@ Index: src/vaadin-multi-select-combo-box.js
         * - `model` The object with the properties related with the rendered
         *   item, contains:
         *   - `model.index` The index of the rendered item.
-@@ -592,7 +592,7 @@
+@@ -589,7 +589,7 @@
  
      this._inputField = this.shadowRoot.querySelector('[part="input-field"]');
  
@@ -135,7 +135,7 @@ Index: src/vaadin-multi-select-combo-box.js
        initializer: (chip) => {
          chip.addEventListener('mousedown', (e) => this._preventBlur(e));
          this._overflow = chip;
-@@ -909,7 +909,7 @@
+@@ -923,7 +923,7 @@
  
    /** @private */
    __createChip(item) {

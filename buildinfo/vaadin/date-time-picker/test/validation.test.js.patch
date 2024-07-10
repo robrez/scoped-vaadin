@@ -2,15 +2,13 @@ Index: test/validation.test.js
 ===================================================================
 --- test/validation.test.js
 +++ test/validation.test.js
-@@ -1,25 +1,26 @@
+@@ -1,24 +1,25 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { fixtureSync, nextRender } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
  import '../vaadin-date-time-picker.js';
--import { waitForOverlayRender } from '@vaadin/date-picker/test/helpers.js';
-+import { waitForOverlayRender } from '@scoped-vaadin/date-picker/test/helpers.js';
  
 -class DateTimePicker2020Element extends customElements.get('vaadin-date-time-picker') {
 +class DateTimePicker2020Element extends internalCustomElements.get('vaadin24-date-time-picker') {
@@ -37,7 +35,7 @@ Index: test/validation.test.js
    `,
  };
  
-@@ -230,7 +231,7 @@
+@@ -180,7 +181,7 @@
    let validateSpy, dateTimePicker;
  
    beforeEach(() => {
@@ -46,7 +44,7 @@ Index: test/validation.test.js
      validateSpy = sinon.spy(dateTimePicker, 'validate');
    });
  
-@@ -282,7 +283,7 @@
+@@ -232,7 +233,7 @@
    let dateTimePicker;
  
    beforeEach(() => {

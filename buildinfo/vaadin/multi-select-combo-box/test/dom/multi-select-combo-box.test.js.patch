@@ -2,21 +2,17 @@ Index: test/dom/multi-select-combo-box.test.js
 ===================================================================
 --- test/dom/multi-select-combo-box.test.js
 +++ test/dom/multi-select-combo-box.test.js
-@@ -1,14 +1,14 @@
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+@@ -2,11 +2,11 @@
+ import { fixtureSync } from '@vaadin/testing-helpers';
  import '../../src/vaadin-multi-select-combo-box.js';
--import { resetUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
-+import { resetUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
  
 -describe('vaadin-multi-select-combo-box', () => {
 +describe('vaadin24-multi-select-combo-box', () => {
-   let multiSelectComboBox, comboBox;
+   let multiSelectComboBox;
  
-   beforeEach(async () => {
-     resetUniqueId();
+   beforeEach(() => {
 -    multiSelectComboBox = fixtureSync('<vaadin-multi-select-combo-box></vaadin-multi-select-combo-box>');
 +    multiSelectComboBox = fixtureSync('<vaadin24-multi-select-combo-box></vaadin24-multi-select-combo-box>');
-     await nextRender();
-     comboBox = multiSelectComboBox.$.comboBox;
    });
+ 
+   it('default', async () => {
