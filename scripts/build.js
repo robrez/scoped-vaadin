@@ -48,6 +48,7 @@ function findPackages(dir) {
 
 function findFiles(dir) {
   const files = glob.sync(dir + "/**/*", { dot: true, posix: true });
+  // TODO there is a problem here where nested node_modules are being loaded
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
