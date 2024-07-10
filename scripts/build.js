@@ -18,9 +18,9 @@ import {
   transformPackageJson,
   transformReadmeMd,
   transformWebTypes,
+  replaceNpmScope,
 } from "./transform/index.js";
 
-const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
 const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
@@ -175,6 +175,7 @@ function processVendorPackageJson(content) {
   if (dependencies) {
     Object.keys(dependencies).forEach((dep) => {
       const originalDepVersion = dependencies[dep];
+      const newDepName = replaceNpmScope(dep);
       const newDepVersion =
         dep.indexOf("@scoped-vaadin") <= -1
           ? originalDepVersion
@@ -189,7 +190,7 @@ function processVendorPackageJson(content) {
   };
 
   if (dependencies) {
-    reult = {
+    result = {
       ...result,
       dependencies,
     };

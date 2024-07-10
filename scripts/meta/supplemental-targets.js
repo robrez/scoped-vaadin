@@ -1,4 +1,12 @@
 /**
+ * TagNames that must not be rewritten
+ */
+export const ignoreElementNames = [
+  //
+  "vaadin-grid-cell-content",
+];
+
+/**
  * additional string literals to treat like tag names
  */
 export const supplementalElementNames = [
@@ -28,8 +36,12 @@ export const supplementalCssSelectors = [
   // avatar-group/test/avatar-group.test.js
   "vaadin-avatar:not([hidden])",
 
+  // details test
+  "/^vaadin-details-content-\\d+$/",
+
   // login/test/login-form.common.js
-  `vaadin-button[slot="forgot-password"]`,
+  `'vaadin-button[slot`,
+  `'vaadin-button[part`,
 
   // context-menu/test/selection.common.js
   "#menu vaadin-item",
@@ -43,6 +55,9 @@ export const supplementalCssSelectors = [
 
   // grid/test/column-auto-width.common.js
   "vaadin-grid::part(cell) {",
+
+  // notification test
+  `vaadin-notification-card[slot`,
 
   // tooltip/test/tooltip.common.js
   `vaadin-tooltip[for="foo"]`,

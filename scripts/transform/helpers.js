@@ -3,6 +3,7 @@ import {
   allEventNames,
   allPackageNames,
   ignorePackages,
+  ignoreElementNames,
   supplementalCssSelectors,
   versionMeta,
 } from "../meta/index.js";
@@ -46,6 +47,21 @@ function computeTagRe() {
   return new RegExp(`([<]|<\\/)(${names})`, "g");
 }
 
+function computdSlottedTagRe() {
+  // tries to match opening of a slotted selector
+  // eg:  ::slotted(foo-bar)
+  const names = allElementNames().join("|");
+  return new RegExp(`::slotted[(](${names})`, "g");
+}
+
+function computeUndoTagRe() {
+  // UNDO renaming of tagNames that should be ignored
+  const names = [...ignoreElementNames]
+    .map((value) => value.replace(`vaadin-`, `vaadin${majorVersion}-`))
+    .join("|");
+  return new RegExp(names, "g");
+}
+
 function computeUndoEventsRe() {
   // tries to rename event-name literals that were over-aggressively renamed
   // due to they align with a tagName
@@ -73,8 +89,10 @@ function computeUndoEventsStrictRe() {
 
 const literalRe = computeLiteralRe();
 const tagRe = computeTagRe();
+const slottedRe = computdSlottedTagRe();
 const tagNaiveRe = computeTagNaiveRe();
 const tagInCssRe = computeTagInCssRe();
+const undoTagRe = computeUndoTagRe();
 const undoEventsRe = computeUndoEventsRe();
 const undoEventsStrictRe = computeUndoEventsStrictRe();
 
@@ -101,8 +119,16 @@ export function processTagNames(content) {
     return matched.replaceAll(`vaadin-`, `vaadin${majorVersion}-`);
   });
 
+  result = result.replace(slottedRe, (matched) => {
+    return matched.replaceAll(`vaadin-`, `vaadin${majorVersion}-`);
+  });
+
   result = result.replace(tagInCssRe, (matched) => {
     return matched.replaceAll(`vaadin-`, `vaadin${majorVersion}-`);
+  });
+
+  result = result.replace(undoTagRe, (matched) => {
+    return matched.replaceAll(`vaadin${majorVersion}-`, `vaadin-`);
   });
 
   result = result.replace(undoEventsRe, (matched) => {
@@ -140,10 +166,19 @@ export function processLocalName(content) {
   // standard-fare custom property names
   // we want this:  --_vaadin-time-picker-overlay-default-width
   // not this:      --_vaadin24-time-picker-overlay-default-width
-  return content.replaceAll(
+  content = content.replaceAll(
     `const propPrefix = this.localName;`,
     `const propPrefix = this.localName.replace('vaadin${majorVersion}', 'vaadin');`
   );
+
+  // same as above but against _tagNamePrefix rather than localName
+  // we want this:   --vaadin-combo-box-overlay-max-height
+  // not this:       --vaadin24-combo-box-overlay-max-height
+  content = content.replaceAll(
+    "--${this._tagNamePrefix}-",
+    `--\${this._tagNamePrefix.replace('vaadin${majorVersion}', 'vaadin')}-`
+  );
+  return content;
 }
 
 function computePackagesRe() {

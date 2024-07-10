@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "web-dev-server --node-resolve --open /dev",
+    "clean:node": "rm -rf node_modules && find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "build:clean": "rimraf ./git_modules && rimraf ./packages && rimraf ./buildinfo && npm run git_modules && npm run build",
     "build": "npm run build:meta && npm run build:packages",
     "build:packages": "node scripts/build.js",
@@ -13,7 +14,7 @@
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "test:chrome": "web-test-runner --config web-test-runner-chrome.config.cjs",
-    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v24.3.8 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
+    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v23.4.1 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -23,7 +24,8 @@
   ],
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4",
-    "@vaadin/testing-helpers": "^0.6.0",
+    "@polymer/iron-overlay-behavior": "^3.0.0",
+    "@vaadin/testing-helpers": "^0.5.0",
     "@web/dev-server": "^0.4.3",
     "@web/dev-server-esbuild": "^1.0.2",
     "@web/rollup-plugin-html": "^2.1.2",
