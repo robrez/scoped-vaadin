@@ -70,7 +70,7 @@ const allPackages = [
 ];
 
 let packageFilter = [];
- packageFilter = [...packageFilter, "grid"];
+ packageFilter = [...packageFilter, "component-base"];
  console.log("packages", packageFilter.join(', '));
 
 /**

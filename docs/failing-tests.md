@@ -6,22 +6,6 @@ $ npm run test
 
 yarn.lock has changed, testing all packages
 
-packages\avatar\test\avatar-polymer.test.js:
-
- 🚧 404 network requests:
-    - thisisnotavalidimagesource
-
-packages\component-base\test\virtualizer-reorder-elements.test.js:
-
- ❌ reorder elements > focus > should tab through the elements in order
-      AssertionError: expected 'item-13' to equal 'item-11'
-      + expected - actual
-
-      -item-13
-      +item-11
-
-      at n.<anonymous> (packages\component-base\test\virtualizer-reorder-elements.test.js:163:46)
-
 
 packages\icon\test\icon-font-lit.test.js:
 

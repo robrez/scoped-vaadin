@@ -11,6 +11,7 @@ import {
   ignorePackages,
   versionMeta,
   ignoreTests as _ignoreTests,
+  ignoreTests,
 } from "./meta/index.js";
 import { createPatch } from "diff";
 import {
@@ -25,10 +26,6 @@ const nodePackagesRoot = "node_modules/@vaadin";
 const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
-
-const ignoreTests = new Set(
-  _ignoreTests.map((test) => test.replace("packages", clonePackagesRoot))
-);
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -58,19 +55,20 @@ function findFiles(dir) {
 }
 
 const findTestFiles = (dir) => {
-  const snapTestPattern = `/test/dom/`;
-  const visiaulTestPattern = `/test/visual/`
   const files = glob.sync(dir + "/test/**/*", { dot: true, posix: true });
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
-    // do not use snapshot tests
-    .filter(name => name.indexOf(snapTestPattern) < 0)
-    // do not use visual regression tests
-    .filter(name => name.indexOf(visiaulTestPattern) < 0)
     // note -- could have provided ignoredTests as negation globs
     // but choosing to - instead - not create the ignored tests
-    .filter((name) => !ignoreTests.has(name))
+    .filter((name) => {
+      for (let pattern of ignoreTests) {
+        if (name.indexOf(pattern) > -1) {
+          return false;
+        }
+      }
+      return true;
+    })
     .sort()
     .map((name) => Path.parse(name));
   return paths;
