@@ -17,7 +17,7 @@ export const supplementalElementNames = [
 ];
 
 /**
- * CSS selectors which should undergo naive tag-name replacement
+ * Supplemental strings which should undergo naive tag-name replacement
  * Choosing to handle these individually for now, rather than risk breaking
  * HTML and JS replacements which are trying to target string literals
  * and HTML tags.  Consider filename whitelisting?
@@ -37,7 +37,10 @@ export const supplementalCssSelectors = [
   "vaadin-avatar:not([hidden])",
 
   // details test
-  "/^vaadin-details-content-\\d+$/",
+  "/^content-vaadin-details-\\d+$/",
+
+  // grid test
+  ", vaadin-grid-column",
 
   // login/test/login-form.common.js
   `'vaadin-button[slot`,

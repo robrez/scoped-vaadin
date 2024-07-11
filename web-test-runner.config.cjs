@@ -70,8 +70,8 @@ const allPackages = [
 ];
 
 let packageFilter = [];
-// packageFilter = [...packageFilter, "tabs"];
-// console.log("packages", packageFilter.join(', '));
+ packageFilter = [...packageFilter, "grid"];
+ console.log("packages", packageFilter.join(', '));
 
 /**
  * @type {TestRunnerConfig}

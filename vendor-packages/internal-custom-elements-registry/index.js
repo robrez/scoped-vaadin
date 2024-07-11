@@ -24,12 +24,12 @@ class InternalCustomElementsRegistry {
 
   // upgrade(root: Node): void;
   upgrade() {
-    nativeRegistry.get.upgrade(nativeRegistry, arguments);
+    nativeRegistry.upgrade.apply(nativeRegistry, arguments);
   }
 
   // whenDefined(name: string): Promise<CustomElementConstructor>;
   whenDefined() {
-    return nativeRegistry.get.wenDefined(nativeRegistry, arguments);
+    return nativeRegistry.whenDefined.apply(nativeRegistry, arguments);
   }
 }
 

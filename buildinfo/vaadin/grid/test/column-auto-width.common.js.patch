@@ -53,7 +53,14 @@ Index: test/column-auto-width.common.js
            padding-right: 20px;
          }
        </style>
-@@ -238,9 +239,9 @@
+@@ -232,15 +233,15 @@
+     // Replace 'a' column with a new one
+     grid.removeChild(columns[0]);
+     grid.insertBefore(newColumn, columns[1]);
+-    columns = grid.querySelectorAll(`${tagName}, vaadin-grid-column`);
++    columns = grid.querySelectorAll(`${tagName}, vaadin24-grid-column`);
+     grid.items = testItems;
+ 
      // Define the custom column element after a delay
      await new Promise((resolve) => {
        setTimeout(() => {

@@ -75,7 +75,14 @@ Index: test/details.common.js
        `,
      };
  
-@@ -200,16 +201,16 @@
+@@ -194,22 +195,22 @@
+   });
+ 
+   describe('unique IDs', () => {
+-    const idRegex = /^content-vaadin-details-\d+$/u;
++    const idRegex = /^content-vaadin24-details-\d+$/u;
+     let container, details;
+ 
      beforeEach(async () => {
        container = fixtureSync(`
          <div>
