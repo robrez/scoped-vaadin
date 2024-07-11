@@ -1,88 +1,6 @@
+All of the failed tests are from `tabs` and seem to pertain to life-cycle problems relating to vaadin test helpers / polymer / ResizeObserver
+
 ```bash
-$ npm run test
-
-> @robrez/scoped-vaadin-web-components@24.4.2-alpha.1 test
-> web-test-runner
-
-yarn.lock has changed, testing all packages
-
-
-packages\icon\test\icon-font-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/icon/test/icon-font-lit.test.js?wtr-session-id=THXalzTup5o5TGSkKhbsk
-
- 🚧 404 network requests:
-    - packages/icon/vaadin-lit-icon.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information. 
-
-packages\icon\test\icon-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/icon/test/icon-lit.test.js?wtr-session-id=N0JsB9LzUZi4V9EUYBqMG
-
- 🚧 404 network requests:
-    - packages/icon/vaadin-lit-icon.js
-    - packages/icon/vaadin-lit-iconset.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information.
-
-packages\icon\test\iconset-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/icon/test/iconset-lit.test.js?wtr-session-id=PC3Pzo-7cvKr28L5j_HHD
-
- 🚧 404 network requests:
-    - packages/icon/vaadin-lit-iconset.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information.
-
-packages\icon\test\icon-polymer.test.js:
-
- 🚧 Browser logs:
-      Error: Error loading icon
-        at packages\icon\src\vaadin-icon-mixin.js:275:25
-        at async Icon.__srcChanged (packages\icon\src\vaadin-icon-mixin.js:281:27)
-
- 🚧 404 network requests:
-    - icon.svg
-
-packages\integer-field\test\integer-field-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/integer-field/test/integer-field-lit.test.js?wtr-session-id=NTkvFBnYihgfTrC4i6sxh
-
- 🚧 404 network requests:
-    - packages/integer-field/src/vaadin-lit-integer-field.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information.
-
-packages\integer-field\test\validation-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/integer-field/test/validation-lit.test.js?wtr-session-id=2Vlpe9dinY3L_exGXVB32     
-
- 🚧 404 network requests:
-    - packages/integer-field/src/vaadin-lit-integer-field.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information.
-
-packages\integer-field\test\value-commit-lit.test.js:
-
- 🚧 Browser logs:
-      TypeError: Failed to fetch dynamically imported module: http://localhost:8000/packages/integer-field/test/value-commit-lit.test.js?wtr-session-id=3IBnRjMctzqgEq08f2w9K
-
- 🚧 404 network requests:
-    - packages/integer-field/src/vaadin-lit-integer-field.js
-
- ❌ Could not import your test module. Check the browser logs or open the browser in debug mode for more information.
-
-packages\login\test\login-submit-polymer.test.js:
-
- 🚧 404 network requests:
-    - login-action?username=username&password=password
-    - login-action?username=username&password=password&foo=bar&code=1234
 
 packages\tabs\test\scroll.test.js:
 
@@ -125,11 +43,11 @@ packages\tabs\test\scroll.test.js:
       at n.<anonymous> (packages\tabs\test\scroll.test.js:151:11)
 
  ❌ scrollable tabs > horizontal > ltr > should not get stuck with wide tabs when scrolled forward to the end via button
-      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:117)       
+      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:117)    
         at n.<anonymous> (packages\tabs\test\scroll.test.js:173:27)
 
  ❌ scrollable tabs > horizontal > ltr > should not get stuck with wide tabs when scrolled back to the start via button
-      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:150)       
+      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:150)    
         at n.<anonymous> (packages\tabs\test\scroll.test.js:194:24)
 
  ❌ scrollable tabs > horizontal > rtl > should have displayed all the items fully when scrolled forward to the end via button
@@ -153,11 +71,11 @@ packages\tabs\test\scroll.test.js:
       at n.<anonymous> (packages\tabs\test\scroll.test.js:151:11)
 
  ❌ scrollable tabs > horizontal > rtl > should not get stuck with wide tabs when scrolled forward to the end via button
-      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:117)       
+      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:117)
         at n.<anonymous> (packages\tabs\test\scroll.test.js:173:27)
 
  ❌ scrollable tabs > horizontal > rtl > should not get stuck with wide tabs when scrolled back to the start via button
-      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:150)       
+      Error: Uncaught TypeError: Cannot read properties of undefined (reading 'getBoundingClientRect') (http://localhost:8000/packages/tabs/src/vaadin-tabs-mixin.js:150)    
         at n.<anonymous> (packages\tabs\test\scroll.test.js:194:24)
 
 packages\tabs\test\tabs.test.js:
@@ -189,18 +107,7 @@ packages\tabs\test\tabs.test.js:
 
       at n.<anonymous> (packages\tabs\test\tabs.test.js:277:45)
 
-packages\vaadin-themable-mixin\test\post-finalize-styles-polymer.test.ts:
+Chromium: |██████████████████████████████| 429/429 test files | 11631 passed, 11 failed, 76 skipped
 
- ❌ TypeError: nativeRegistry.get.wenDefined is not a function
-      at InternalCustomElementsRegistry.whenDefined (vendor-packages\internal-custom-elements-registry\index.js:32:31)
-      at n.<anonymous> (packages\vaadin-themable-mixin\test\post-finalize-styles.common.ts:36:38)
-
-packages\vaadin-themable-mixin\test\post-finalize-styles-lit.test.ts:
-
- ❌ TypeError: nativeRegistry.get.wenDefined is not a function 
-      at InternalCustomElementsRegistry.whenDefined (vendor-packages\internal-custom-elements-registry\index.js:32:31)
-      at n.<anonymous> (packages\vaadin-themable-mixin\test\post-finalize-styles.common.ts:36:38)
-
-Chromium: |██████████████████████████████| 435/435 test files | 11597 passed, 45 failed, 76 skipped
-
+Finished running tests in 515.4s with 11 failed tests.
 ```
