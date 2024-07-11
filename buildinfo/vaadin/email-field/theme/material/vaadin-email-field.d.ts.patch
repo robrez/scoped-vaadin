@@ -1,0 +1,12 @@
+Index: theme/material/vaadin-email-field.d.ts
+===================================================================
+--- theme/material/vaadin-email-field.d.ts
++++ theme/material/vaadin-email-field.d.ts
+@@ -3,6 +3,6 @@
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/text-field/theme/material/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/theme/material/vaadin-text-field.js';
+ import './vaadin-email-field-styles.js';
+ import '../../src/vaadin-email-field.js';

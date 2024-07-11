@@ -40,7 +40,7 @@ Index: test/validation.common.js
        await nextRender();
        input = datePicker.inputElement;
        validateSpy = sinon.spy(datePicker, 'validate');
-@@ -224,7 +225,7 @@
+@@ -230,7 +231,7 @@
      let input;
  
      beforeEach(async () => {
@@ -49,7 +49,7 @@ Index: test/validation.common.js
        await nextRender();
        input = datePicker.inputElement;
        input.focus();
-@@ -269,7 +270,7 @@
+@@ -275,7 +276,7 @@
  
    describe('required', () => {
      beforeEach(async () => {
@@ -58,7 +58,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -285,7 +286,7 @@
+@@ -291,7 +292,7 @@
  
    describe('min', () => {
      beforeEach(async () => {
@@ -67,7 +67,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -311,7 +312,7 @@
+@@ -317,7 +318,7 @@
  
    describe('max', () => {
      beforeEach(async () => {
@@ -76,7 +76,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -337,7 +338,7 @@
+@@ -343,7 +344,7 @@
  
    describe('custom validator', () => {
      beforeEach(() => {

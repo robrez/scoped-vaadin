@@ -1,0 +1,40 @@
+Index: src/vaadin-iconset-mixin.js
+===================================================================
+--- src/vaadin-iconset-mixin.js
++++ src/vaadin-iconset-mixin.js
+@@ -42,7 +42,7 @@
+          * The name of the iconset. Every iconset is required to have its own unique name.
+          * All the SVG icons in the iconset must have IDs conforming to its name.
+          *
+-         * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin-icon`.
++         * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin24-icon`.
+          */
+         name: {
+           type: String,
+@@ -52,7 +52,7 @@
+         /**
+          * The size of an individual icon. Note that icons must be square.
+          *
+-         * When using `vaadin-icon`, the size of the iconset will take precedence
++         * When using `vaadin24-icon`, the size of the iconset will take precedence
+          * over the size defined by the user to ensure correct appearance.
+          */
+         size: {
+@@ -64,7 +64,7 @@
+     }
+ 
+     /**
+-     * Set of the `vaadin-icon` instances in the DOM.
++     * Set of the `vaadin24-icon` instances in the DOM.
+      *
+      * @return {Set<Icon>}
+      */
+@@ -117,7 +117,7 @@
+      */
+     static register(name, size, template) {
+       if (!iconsetRegistry[name]) {
+-        const iconset = document.createElement('vaadin-iconset');
++        const iconset = document.createElement('vaadin24-iconset');
+         iconset.appendChild(template.content.cloneNode(true));
+         iconsetRegistry[name] = iconset;
+         initIconsMap(iconset, name);

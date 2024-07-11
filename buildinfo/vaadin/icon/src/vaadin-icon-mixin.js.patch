@@ -1,0 +1,37 @@
+Index: src/vaadin-icon-mixin.js
+===================================================================
+--- src/vaadin-icon-mixin.js
++++ src/vaadin-icon-mixin.js
+@@ -1,16 +1,17 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { SlotStylesMixin } from '@vaadin/component-base/src/slot-styles-mixin.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
++import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
+ import { IconFontSizeMixin } from './vaadin-icon-font-size-mixin.js';
+ import { ensureSvgLiteral, renderSvg, unsafeSvgLiteral } from './vaadin-icon-svg.js';
+ 
+ const srcCache = new Map();
+ 
+-const Iconset = customElements.get('vaadin-iconset');
++const Iconset = internalCustomElements.get('vaadin24-iconset');
+ 
+ /**
+  * @polymerMixin
+@@ -27,9 +28,9 @@
+          * to omit the first part and only use `icon_name` as a value.
+          *
+          * Setting the `icon` property updates the `svg` and `size` based on the
+-         * values provided by the corresponding `vaadin-iconset` element.
++         * values provided by the corresponding `vaadin24-iconset` element.
+          *
+-         * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin-iconset`.
++         * See also [`name`](#/elements/vaadin-iconset#property-name) property of `vaadin24-iconset`.
+          *
+          * @attr {string} icon
+          * @type {string}

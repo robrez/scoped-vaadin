@@ -2,7 +2,7 @@ Index: test/selection.common.js
 ===================================================================
 --- test/selection.common.js
 +++ test/selection.common.js
-@@ -30,10 +30,10 @@
+@@ -31,10 +31,10 @@
    describe('with renderer', () => {
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -17,7 +17,7 @@ Index: test/selection.common.js
        `);
  
        const cols = grid.children;
-@@ -116,10 +116,10 @@
+@@ -117,10 +117,10 @@
    describe('renderer cells', () => {
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -32,7 +32,7 @@ Index: test/selection.common.js
        `);
  
        const cols = grid.children;
-@@ -171,16 +171,16 @@
+@@ -172,16 +172,16 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -57,7 +57,7 @@ Index: test/selection.common.js
      `);
      await nextFrame();
  
-@@ -212,7 +212,7 @@
+@@ -213,7 +213,7 @@
    });
  
    it('should have a checkbox in the body cell', () => {
@@ -66,7 +66,7 @@ Index: test/selection.common.js
    });
  
    it('should select item when checkbox is checked', async () => {
-@@ -261,7 +261,7 @@
+@@ -329,7 +329,7 @@
    });
  
    it('should have a select all checkbox in the header', () => {
@@ -75,7 +75,7 @@ Index: test/selection.common.js
    });
  
    it('should have class name for the select all checkbox', () => {
-@@ -414,10 +414,10 @@
+@@ -497,10 +497,10 @@
  
    it('should not clear pre-selected items', () => {
      const grid = fixtureSync(`
@@ -90,7 +90,7 @@ Index: test/selection.common.js
      `);
      expect(grid.selectedItems).to.have.length(1);
    });
-@@ -468,7 +468,7 @@
+@@ -551,7 +551,7 @@
      firstBodyCheckbox.checked = true;
  
      await nextFrame();
@@ -99,7 +99,7 @@ Index: test/selection.common.js
      filter.value = 'foo';
      filter.dispatchEvent(new CustomEvent('input', { bubbles: true, composed: true }));
  
-@@ -546,10 +546,10 @@
+@@ -629,10 +629,10 @@
  
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -114,7 +114,7 @@ Index: test/selection.common.js
        `);
        await nextFrame();
        grid.items = [...new Array(100)].map((_, i) => `${i}`);
-@@ -616,7 +616,7 @@
+@@ -699,7 +699,7 @@
  
      it('should not toggle checkbox after dragging on a single checkbox', () => {
        const cell = getBodyCellContent(grid, 1, 0);

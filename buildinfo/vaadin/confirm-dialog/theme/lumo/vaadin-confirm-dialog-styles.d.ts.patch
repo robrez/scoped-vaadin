@@ -1,0 +1,9 @@
+Index: theme/lumo/vaadin-confirm-dialog-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-confirm-dialog-styles.d.ts
++++ theme/lumo/vaadin-confirm-dialog-styles.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

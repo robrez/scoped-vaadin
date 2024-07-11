@@ -66,6 +66,8 @@ export const elementMeta = [
       "change",
       "checked-changed",
       "indeterminate-changed",
+      "invalid-changed",
+      "validated",
       "value-changed"
     ]
   },
@@ -113,7 +115,8 @@ export const elementMeta = [
       "page-received",
       "page-requested",
       "slot-content-changed",
-      "tooltip-changed"
+      "tooltip-changed",
+      "virtualizer-element-focused"
     ]
   },
   {
@@ -300,7 +303,8 @@ export const elementMeta = [
       "selected-items-changed",
       "size-changed",
       "sorter-changed",
-      "value-changed"
+      "value-changed",
+      "virtualizer-element-focused"
     ]
   },
   {
@@ -577,7 +581,9 @@ export const elementMeta = [
   {
     "package": "@vaadin/testing-helpers",
     "elementNames": [],
-    "eventNames": []
+    "eventNames": [
+      "lit-debug"
+    ]
   },
   {
     "package": "@vaadin/text-area",

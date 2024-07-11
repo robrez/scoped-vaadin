@@ -201,7 +201,7 @@ Index: test/form-layout.test.js
        await nextRender(container);
      });
  
-@@ -573,7 +574,7 @@
+@@ -588,7 +589,7 @@
        const itemWidth = layout.children[0].getBoundingClientRect().width;
        expect(itemWidth).to.be.above(0);
  
@@ -210,7 +210,7 @@ Index: test/form-layout.test.js
        newFormItem.hidden = true;
        layout.appendChild(newFormItem);
        await nextRender(container);
-@@ -588,7 +589,7 @@
+@@ -603,7 +604,7 @@
      it('should update layout after updating a colspan attribute on the lazily stamped node', async () => {
        container.push('items', { label: 'Email', colspan: 1 });
        await nextRender(container);
@@ -219,7 +219,7 @@ Index: test/form-layout.test.js
        expect(estimateEffectiveColspan(item)).to.be.closeTo(1, 0.1);
  
        container.set('items.0.colspan', 2);
-@@ -597,7 +598,7 @@
+@@ -612,7 +613,7 @@
      });
  
      it('should update layout after a new item is added', async () => {
@@ -228,7 +228,7 @@ Index: test/form-layout.test.js
        newFormItem.innerHTML = '<label slot="label">Age</label><input class="full-width">';
        layout.appendChild(newFormItem);
        await nextRender(container);
-@@ -605,7 +606,7 @@
+@@ -620,7 +621,7 @@
      });
  
      it('should update layout after an item is removed', async () => {

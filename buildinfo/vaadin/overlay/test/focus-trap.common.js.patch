@@ -19,16 +19,16 @@ Index: test/focus-trap.common.js
        overlay.renderer = (root) => {
          if (!root.firstChild) {
            root.innerHTML = `
-@@ -83,7 +83,7 @@
+@@ -79,7 +79,7 @@
  
    describe('empty', () => {
      beforeEach(async () => {
--      overlay = fixtureSync('<vaadin-overlay focus-trap></vaadin-overlay>');
-+      overlay = fixtureSync('<vaadin24-overlay focus-trap></vaadin24-overlay>');
+-      overlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      overlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay>');
        await nextRender();
        overlayPart = overlay.$.overlay;
-       focusableElements = getFocusableElements(overlayPart);
-@@ -108,7 +108,7 @@
+     });
+@@ -106,7 +106,7 @@
      let nested;
  
      beforeEach(async () => {
@@ -37,7 +37,7 @@ Index: test/focus-trap.common.js
        await nextRender();
        overlay.renderer = (root) => {
          if (!root.firstChild) {
-@@ -116,7 +116,7 @@
+@@ -114,7 +114,7 @@
            button.textContent = 'Button';
            root.appendChild(button);
  
@@ -46,7 +46,7 @@ Index: test/focus-trap.common.js
            nested.renderer = (root) => {
              root.textContent = 'Inner content';
            };
-@@ -127,7 +127,7 @@
+@@ -125,7 +125,7 @@
        await oneEvent(overlay, 'vaadin-overlay-open');
        focusableElements = getFocusableElements(overlay.$.overlay);
        await nextRender();
@@ -55,7 +55,7 @@ Index: test/focus-trap.common.js
      });
  
      afterEach(() => {
-@@ -159,14 +159,14 @@
+@@ -157,14 +157,14 @@
          `
          <div>
            <button>Foo</button>

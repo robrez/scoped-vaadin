@@ -2,25 +2,14 @@ Index: test/multi-select-list-mixin.test.js
 ===================================================================
 --- test/multi-select-list-mixin.test.js
 +++ test/multi-select-list-mixin.test.js
-@@ -1,10 +1,11 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+@@ -1,8 +1,8 @@
  import { expect } from '@esm-bundle/chai';
- import { fixtureSync } from '@vaadin/testing-helpers';
+ import { defineLit, definePolymer, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { MultiSelectListMixin } from '../src/vaadin-multi-select-list-mixin.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'test-list-element',
-   class extends MultiSelectListMixin(PolymerElement) {
-     static get template() {
-@@ -36,7 +37,7 @@
-   },
- );
- 
--customElements.define(
-+internalCustomElements.define(
-   'test-item-element',
-   class extends PolymerElement {
-     static get template() {
+ const runTests = (defineHelper, baseMixin) => {

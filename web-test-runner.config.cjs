@@ -69,9 +69,9 @@ const allPackages = [
   "virtual-list",
 ];
 
-let packageFilter = null;
-// packageFilter = ["avatar-group"];
-// console.log("packages", packageFilter.join(', '));
+let packageFilter = [];
+ // packageFilter = [...packageFilter, "tabs"];
+ // console.log("packages", packageFilter.join(', '));
 
 /**
  * @type {TestRunnerConfig}

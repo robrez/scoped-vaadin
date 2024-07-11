@@ -49,7 +49,7 @@ Index: test/select.common.js
          `;
        };
        select.renderer = renderer;
-@@ -89,26 +89,26 @@
+@@ -89,28 +89,28 @@
  
    describe('with items', () => {
      beforeEach(async () => {
@@ -61,23 +61,27 @@ Index: test/select.common.js
            html`
 -            <vaadin-list-box>
 -              <vaadin-item>Option 1</vaadin-item>
--              <vaadin-item value="v2" label="o2">Option 2</vaadin-item>
+-              <vaadin-item value="v2" label="o2"><span>Option 2</span></vaadin-item>
 -              <vaadin-item value="">Option 3</vaadin-item>
 -              <vaadin-item></vaadin-item>
 -              <vaadin-item label="">Empty</vaadin-item>
 -              <vaadin-item value="v4" disabled>Disabled</vaadin-item>
 -              <vaadin-item value="5">A number</vaadin-item>
 -              <vaadin-item value="false">A boolean</vaadin-item>
+-              <vaadin-item label="foo"></vaadin-item>
+-              <vaadin-item><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" /></vaadin-item>
 -            </vaadin-list-box>
 +            <vaadin24-list-box>
 +              <vaadin24-item>Option 1</vaadin24-item>
-+              <vaadin24-item value="v2" label="o2">Option 2</vaadin24-item>
++              <vaadin24-item value="v2" label="o2"><span>Option 2</span></vaadin24-item>
 +              <vaadin24-item value="">Option 3</vaadin24-item>
 +              <vaadin24-item></vaadin24-item>
 +              <vaadin24-item label="">Empty</vaadin24-item>
 +              <vaadin24-item value="v4" disabled>Disabled</vaadin24-item>
 +              <vaadin24-item value="5">A number</vaadin24-item>
 +              <vaadin24-item value="false">A boolean</vaadin24-item>
++              <vaadin24-item label="foo"></vaadin24-item>
++              <vaadin24-item><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" /></vaadin24-item>
 +            </vaadin24-list-box>
            `,
            root,
@@ -88,7 +92,7 @@ Index: test/select.common.js
        await nextUpdate(select);
      });
  
-@@ -170,7 +170,7 @@
+@@ -184,7 +184,7 @@
          menu.selected = 1;
          await nextUpdate(select);
          const item = valueButton.firstElementChild;
@@ -97,7 +101,7 @@ Index: test/select.common.js
          expect(item.textContent).to.equal('o2');
          expect(item.selected).to.be.true;
          expect(item.getAttribute('tabindex')).to.be.null;
-@@ -426,7 +426,7 @@
+@@ -440,7 +440,7 @@
  
        // IOS Safari has incorrect viewport height when navigation bar is
        // visible in landscape orientation. This is workarounded by exposing
@@ -106,7 +110,7 @@ Index: test/select.common.js
        it('should support --vaadin-overlay-viewport-bottom CSS property', () => {
          overlay.setAttribute('phone', '');
          overlay.style.setProperty('--vaadin-overlay-viewport-bottom', '50px');
-@@ -604,20 +604,20 @@
+@@ -659,20 +659,20 @@
      let menu, valueButton;
  
      beforeEach(async () => {
@@ -133,7 +137,7 @@ Index: test/select.common.js
        await nextUpdate(select);
        menu = select._menuElement;
      });
-@@ -634,14 +634,14 @@
+@@ -689,14 +689,14 @@
      beforeEach(async () => {
        container = fixtureSync(`
          <div style="display: flex; flex-direction: column; width: 500px;">

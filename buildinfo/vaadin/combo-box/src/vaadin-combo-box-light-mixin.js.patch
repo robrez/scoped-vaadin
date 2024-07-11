@@ -1,0 +1,31 @@
+Index: src/vaadin-combo-box-light-mixin.js
+===================================================================
+--- src/vaadin-combo-box-light-mixin.js
++++ src/vaadin-combo-box-light-mixin.js
+@@ -5,7 +5,7 @@
+  */
+ import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
+ import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+-import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
++import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
+ import { ComboBoxDataProviderMixin } from './vaadin-combo-box-data-provider-mixin.js';
+ import { ComboBoxMixin } from './vaadin-combo-box-mixin.js';
+ 
+@@ -68,7 +68,7 @@
+           return input;
+         }
+ 
+-        // Support `<input>` in light DOM (e.g. `vaadin-text-field`)
++        // Support `<input>` in light DOM (e.g. `vaadin24-text-field`)
+         const slottedInput = input.querySelector('input');
+         if (slottedInput) {
+           return slottedInput;
+@@ -94,7 +94,7 @@
+ 
+       // Wait until the slotted input DOM is ready
+       afterNextRender(this, () => {
+-        this._setInputElement(this.querySelector('vaadin-text-field,.input'));
++        this._setInputElement(this.querySelector('vaadin24-text-field,.input'));
+         this._revertInputValue();
+       });
+     }

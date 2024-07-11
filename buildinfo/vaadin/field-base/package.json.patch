@@ -5,9 +5,9 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/field-base",
--  "version": "24.3.8",
+-  "version": "24.4.2",
 +  "name": "@scoped-vaadin/field-base",
-+  "version": "24.3.7-alpha.1",
++  "version": "24.4.2-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -38,8 +38,8 @@ Index: package.json
    "dependencies": {
      "@open-wc/dedupe-mixin": "^1.3.0",
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/a11y-base": "~24.3.8",
--    "@vaadin/component-base": "~24.3.8",
+-    "@vaadin/a11y-base": "~24.4.2",
+-    "@vaadin/component-base": "~24.4.2",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
@@ -47,10 +47,10 @@ Index: package.json
 -    "@vaadin/testing-helpers": "^0.6.0",
 -    "sinon": "^13.0.2"
 -  },
--  "gitHead": "144e479d60d7d52edd4d35aba032c6863c02e878"
-+    "@scoped-vaadin/a11y-base": "^24.3.7-alpha.1",
-+    "@scoped-vaadin/component-base": "^24.3.7-alpha.1",
+-  "gitHead": "f280274de1bc894ad4e0426432619999c0cf556d"
++    "@scoped-vaadin/a11y-base": "^24.4.2-alpha.1",
++    "@scoped-vaadin/component-base": "^24.4.2-alpha.1",
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.3.7-alpha.1"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.4.2-alpha.1"
 +  }
  }

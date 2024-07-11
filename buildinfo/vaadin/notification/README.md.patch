@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,17 +1,19 @@
+@@ -1,16 +1,18 @@
 -# @vaadin/notification
 +# @scoped-vaadin/notification
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/notification)](https://www.npmjs.com/package/@vaadin/notification)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/notification)](https://www.npmjs.com/package/@scoped-vaadin/notification)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-notification opened position="middle" duration="-1"></vaadin-notification>
@@ -26,7 +25,7 @@ Index: README.md
  
    notification.renderer = function (root) {
      root.textContent = 'Your work has been saved';
-@@ -26,13 +28,13 @@
+@@ -25,13 +27,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -43,19 +45,19 @@
+@@ -42,19 +44,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

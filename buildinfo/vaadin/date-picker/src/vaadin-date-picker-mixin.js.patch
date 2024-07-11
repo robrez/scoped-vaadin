@@ -3,7 +3,7 @@ Index: src/vaadin-date-picker-mixin.js
 --- src/vaadin-date-picker-mixin.js
 +++ src/vaadin-date-picker-mixin.js
 @@ -3,15 +3,15 @@
-  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * Copyright (c) 2016 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { hideOthers } from '@vaadin/a11y-base/src/aria-hidden.js';
@@ -27,7 +27,7 @@ Index: src/vaadin-date-picker-mixin.js
  import {
    dateAllowed,
    dateEquals,
-@@ -410,7 +410,7 @@
+@@ -421,7 +421,7 @@
      /**
       * Override a getter from `InputControlMixin` to make it optional
       * and to prevent warning when a clear button is missing,
@@ -36,7 +36,7 @@ Index: src/vaadin-date-picker-mixin.js
       * @protected
       * @return {Element | null | undefined}
       */
-@@ -524,7 +524,7 @@
+@@ -535,7 +535,7 @@
        }
  
        // Create and store document content element

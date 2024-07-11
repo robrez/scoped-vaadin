@@ -1,0 +1,13 @@
+Index: src/vaadin-drawer-toggle-styles.js
+===================================================================
+--- src/vaadin-drawer-toggle-styles.js
++++ src/vaadin-drawer-toggle-styles.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { css } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export const drawerToggle = css`
+   :host {

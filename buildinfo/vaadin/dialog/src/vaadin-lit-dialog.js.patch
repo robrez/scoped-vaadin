@@ -44,9 +44,9 @@ Index: src/vaadin-lit-dialog.js
 -      <vaadin-dialog-overlay
 +      <vaadin24-dialog-overlay
          id="overlay"
+         role="dialog"
          .owner="${this}"
-         .opened="${this.opened}"
-@@ -88,7 +88,7 @@
+@@ -89,7 +89,7 @@
          ?resizable="${this.resizable}"
          restore-focus-on-close
          focus-trap
@@ -54,4 +54,4 @@ Index: src/vaadin-lit-dialog.js
 +      ></vaadin24-dialog-overlay>
      `;
    }
- 
+ }

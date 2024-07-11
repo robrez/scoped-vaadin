@@ -32,7 +32,7 @@ Index: src/vaadin-avatar.js
   * ```
   *
   * ### Styling
-@@ -78,7 +78,7 @@
+@@ -84,7 +84,7 @@
    }
  
    static get is() {

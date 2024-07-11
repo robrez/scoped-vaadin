@@ -18,5 +18,5 @@ Index: test/typings/accordion.types.ts
 -const panel = document.createElement('vaadin-accordion-panel');
 +const panel = document.createElement('vaadin24-accordion-panel');
  
- panel.addEventListener('opened-changed', (event) => {
-   assertType<AccordionPanelOpenedChangedEvent>(event);
+ assertType<string | null | undefined>(panel.summary);
+ 

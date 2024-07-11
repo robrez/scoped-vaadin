@@ -3,7 +3,7 @@ Index: src/vaadin-text-field.js
 --- src/vaadin-text-field.js
 +++ src/vaadin-text-field.js
 @@ -3,36 +3,36 @@
-  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-input-container.js';
@@ -60,7 +60,7 @@ Index: src/vaadin-text-field.js
    }
  
    static get template() {
-@@ -102,7 +102,7 @@
+@@ -96,7 +96,7 @@
            <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
          </div>
  
@@ -69,7 +69,7 @@ Index: src/vaadin-text-field.js
            part="input-field"
            readonly="[[readonly]]"
            disabled="[[disabled]]"
-@@ -113,7 +113,7 @@
+@@ -107,7 +107,7 @@
            <slot name="input"></slot>
            <slot name="suffix" slot="suffix"></slot>
            <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>

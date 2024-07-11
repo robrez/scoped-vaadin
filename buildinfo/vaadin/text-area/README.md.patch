@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,14 +1,16 @@
+@@ -1,13 +1,15 @@
 -# @vaadin/text-area
 +# @scoped-vaadin/text-area
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/text-area)](https://www.npmjs.com/package/@vaadin/text-area)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/text-area)](https://www.npmjs.com/package/@scoped-vaadin/text-area)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-text-area label="Comment"></vaadin-text-area>
@@ -22,7 +21,7 @@ Index: README.md
  ```
  
  ## Installation
-@@ -16,13 +18,13 @@
+@@ -15,13 +17,13 @@
  Install the component:
  
  ```sh
@@ -38,7 +37,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -33,19 +35,19 @@
+@@ -32,19 +34,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

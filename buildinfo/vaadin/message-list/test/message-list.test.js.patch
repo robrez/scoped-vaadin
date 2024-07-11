@@ -85,7 +85,16 @@ Index: test/message-list.test.js
          expect(items.length).to.equal(2);
          expect(items[0]).to.eql(firstMessage);
          expect(items[1]).to.not.eql(firstMessage);
-@@ -195,7 +196,7 @@
+@@ -148,7 +149,7 @@
+       it('should not remove vaadin-avatar elements when updating items', async () => {
+         messageList.items = [{ text: '', userName: 'Assistant' }];
+         await nextRender();
+-        expect(messageList.querySelector('vaadin-avatar')).to.be.ok;
++        expect(messageList.querySelector('vaadin24-avatar')).to.be.ok;
+       });
+     });
+ 
+@@ -201,7 +202,7 @@
  
      describe('tabindex', () => {
        it('should set tabindex 0 on first message after removing the one that had it previously', async () => {
@@ -94,7 +103,7 @@ Index: test/message-list.test.js
          const thirdMessage = messages[2];
  
          // Click on third item to give it tabindex=0
-@@ -231,7 +232,7 @@
+@@ -237,7 +238,7 @@
        });
  
        it('should preserve tabindex when adding new messages', async () => {
@@ -103,7 +112,7 @@ Index: test/message-list.test.js
          mousedown(secondMessage);
          focusin(secondMessage);
          messageList.items = [
-@@ -247,14 +248,14 @@
+@@ -253,14 +254,14 @@
            },
          ];
          await nextRender(messageList);
@@ -120,7 +129,7 @@ Index: test/message-list.test.js
          mousedown(secondMessage);
          focusin(secondMessage);
  
-@@ -281,7 +282,7 @@
+@@ -287,7 +288,7 @@
          ];
  
          await nextRender(messageList);
@@ -129,7 +138,7 @@ Index: test/message-list.test.js
          // Verify that the second item got the new tabIndex=0.
          expect(messages[0].tabIndex).to.be.equal(-1);
          expect(messages[1].tabIndex).to.be.equal(0);
-@@ -295,7 +296,7 @@
+@@ -301,7 +302,7 @@
      beforeEach(async () => {
        messageList.items = messages;
        await nextRender(messageList);
@@ -138,7 +147,7 @@ Index: test/message-list.test.js
        message = messageElements[1];
      });
  
-@@ -343,7 +344,7 @@
+@@ -349,7 +350,7 @@
      beforeEach(async () => {
        messageList.items = messages;
        await nextRender(messageList);

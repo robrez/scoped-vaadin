@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,16 +1,18 @@
+@@ -1,15 +1,17 @@
 -# @vaadin/checkbox
 +# @scoped-vaadin/checkbox
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/checkbox)](https://www.npmjs.com/package/@vaadin/checkbox)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/checkbox)](https://www.npmjs.com/package/@scoped-vaadin/checkbox)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-checkbox label="Checked" checked></vaadin-checkbox>
@@ -26,7 +25,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/checkbox/screenshot.png" width="400" alt="Screenshot of vaadin-checkbox">](https://vaadin.com/docs/latest/components/checkbox)
-@@ -20,13 +22,13 @@
+@@ -19,13 +21,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -37,19 +39,19 @@
+@@ -36,19 +38,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

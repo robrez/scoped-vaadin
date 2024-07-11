@@ -5,21 +5,23 @@ Index: test/filtering.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  import { expect } from '@esm-bundle/chai';
- import { fire, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import { fire, fixtureSync, nextFrame, nextRender, oneEvent } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -25,9 +26,9 @@
+@@ -25,11 +26,11 @@
            display: block;
          }
        </style>
--      <vaadin-grid-filter path="foo" .value="${this._filterValue}">
-+      <vaadin24-grid-filter path="foo" .value="${this._filterValue}">
-         <input @input="${this._onFilterInput}" />
--      </vaadin-grid-filter>
-+      </vaadin24-grid-filter>
+-      <vaadin-grid-filter
++      <vaadin24-grid-filter
+         path="foo"
+         .value="${this._filterValue}"
+         @value-changed="${this._onValueChanged}"
+-      ></vaadin-grid-filter>
++      ></vaadin24-grid-filter>
      `;
    }
  
-@@ -36,10 +37,10 @@
+@@ -38,10 +39,10 @@
    }
  }
  
@@ -32,16 +34,16 @@ Index: test/filtering.common.js
      (filter) => filter._debouncerFilterChanged && filter._debouncerFilterChanged.flush(),
    );
  }
-@@ -52,7 +53,7 @@
+@@ -54,7 +55,7 @@
    beforeEach(async () => {
      filterWrapper = fixtureSync('<filter-wrapper></filter-wrapper>');
-     await filterWrapper.updateComplete;
+     await nextRender();
 -    filter = filterWrapper.shadowRoot.querySelector('vaadin-grid-filter');
 +    filter = filterWrapper.shadowRoot.querySelector('vaadin24-grid-filter');
-     clock = sinon.useFakeTimers();
+     clock = sinon.useFakeTimers({ shouldClearNativeTimers: true });
    });
  
-@@ -100,25 +101,25 @@
+@@ -126,25 +127,25 @@
  
  function gridFiltersFixture() {
    const grid = fixtureSync(`
@@ -76,7 +78,7 @@ Index: test/filtering.common.js
      }
    };
  
-@@ -147,7 +148,7 @@
+@@ -173,7 +174,7 @@
  
    it('should have default inputs', () => {
      grid._filters.forEach((filter) => {
@@ -85,7 +87,7 @@ Index: test/filtering.common.js
        expect(field.clientHeight).to.be.greaterThan(0);
      });
    });
-@@ -214,7 +215,7 @@
+@@ -240,7 +241,7 @@
      flushFilters(grid);
      grid.style.width = '200px';
      const filterWidth = grid._filters[0].parentElement.offsetWidth;
@@ -94,7 +96,7 @@ Index: test/filtering.common.js
      expect(filterWidth).to.be.greaterThan(textFieldWidth);
    });
  
-@@ -222,10 +223,10 @@
+@@ -248,10 +249,10 @@
      let filterColumn, filterCellContent, filter, filterTextField;
  
      beforeEach(() => {
@@ -107,7 +109,7 @@ Index: test/filtering.common.js
        filterTextField = filter.firstElementChild;
      });
  
-@@ -337,7 +338,7 @@
+@@ -376,7 +377,7 @@
    it('should sort filtered items', async () => {
      grid._filters[1].value = 'r';
      await nextFrame();

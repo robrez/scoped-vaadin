@@ -1,0 +1,14 @@
+Index: theme/material/vaadin-custom-field-styles.d.ts
+===================================================================
+--- theme/material/vaadin-custom-field-styles.d.ts
++++ theme/material/vaadin-custom-field-styles.d.ts
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
+ declare const customField: import("lit").CSSResult;
+ export { customField };

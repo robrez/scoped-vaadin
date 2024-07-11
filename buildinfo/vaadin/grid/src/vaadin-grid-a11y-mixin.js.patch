@@ -2,7 +2,7 @@ Index: src/vaadin-grid-a11y-mixin.js
 ===================================================================
 --- src/vaadin-grid-a11y-mixin.js
 +++ src/vaadin-grid-a11y-mixin.js
-@@ -129,7 +129,7 @@
+@@ -131,7 +131,7 @@
  
      /** @protected */
      _a11yUpdateSorters() {

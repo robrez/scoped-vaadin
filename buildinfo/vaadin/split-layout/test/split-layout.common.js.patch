@@ -149,7 +149,7 @@ Index: test/split-layout.common.js
      `);
      await aTimeout(0);
      first = splitLayout.$.primary.assignedNodes({ flatten: true })[0];
-@@ -426,10 +426,10 @@
+@@ -442,10 +442,10 @@
  describe('moving nodes between layouts', () => {
    beforeEach(async () => {
      splitLayout = fixtureSync(`
@@ -162,7 +162,7 @@ Index: test/split-layout.common.js
      `);
      await aTimeout(0);
      first = splitLayout.$.primary.assignedNodes({ flatten: true })[0];
-@@ -438,7 +438,7 @@
+@@ -454,7 +454,7 @@
  
    it('should not clear slot attribute when moving to a different split layout', async () => {
      const otherLayout = fixtureSync(`

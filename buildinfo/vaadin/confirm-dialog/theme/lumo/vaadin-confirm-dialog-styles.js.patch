@@ -2,14 +2,12 @@ Index: theme/lumo/vaadin-confirm-dialog-styles.js
 ===================================================================
 --- theme/lumo/vaadin-confirm-dialog-styles.js
 +++ theme/lumo/vaadin-confirm-dialog-styles.js
-@@ -1,12 +1,12 @@
--import '@vaadin/button/theme/lumo/vaadin-button-styles.js';
+@@ -1,11 +1,11 @@
 -import '@vaadin/vaadin-lumo-styles/color.js';
 -import '@vaadin/vaadin-lumo-styles/spacing.js';
 -import { dialogOverlay } from '@vaadin/dialog/theme/lumo/vaadin-dialog-styles.js';
 -import { overlay } from '@vaadin/vaadin-lumo-styles/mixins/overlay.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import '@scoped-vaadin/button/theme/lumo/vaadin-button-styles.js';
 +import '@scoped-vaadin/vaadin-lumo-styles/color.js';
 +import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
 +import { dialogOverlay } from '@scoped-vaadin/dialog/theme/lumo/vaadin-dialog-styles.js';

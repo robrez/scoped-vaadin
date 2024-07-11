@@ -38,3 +38,12 @@ Index: theme/material/vaadin-avatar-group-styles.js
    [
      item,
      css`
+@@ -69,7 +69,7 @@
+         display: none;
+       }
+ 
+-      [part='content'] ::slotted(vaadin-avatar) {
++      [part='content'] ::slotted(vaadin24-avatar) {
+         margin-inline-end: 8px;
+       }
+     `,

@@ -16,7 +16,21 @@ Index: theme/lumo/vaadin-menu-bar-item-styles.js
  
  const menuBarItem = css`
    [part='content'] {
-@@ -24,4 +24,4 @@
+@@ -12,16 +12,16 @@
+     justify-content: inherit;
+   }
+ 
+-  [part='content'] ::slotted(vaadin-icon) {
++  [part='content'] ::slotted(vaadin24-icon) {
+     display: inline-block;
+     width: var(--lumo-icon-size-m);
+     height: var(--lumo-icon-size-m);
+   }
+ 
+-  [part='content'] ::slotted(vaadin-icon[icon^='vaadin:']) {
++  [part='content'] ::slotted(vaadin24-icon[icon^='vaadin:']) {
+     padding: var(--lumo-space-xs);
+     box-sizing: border-box !important;
    }
  `;
  

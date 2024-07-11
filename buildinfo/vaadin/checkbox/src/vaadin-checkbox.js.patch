@@ -30,7 +30,7 @@ Index: src/vaadin-checkbox.js
   * ```
   *
   * ### Styling
-@@ -54,7 +54,7 @@
+@@ -62,7 +62,7 @@
   */
  export class Checkbox extends CheckboxMixin(ElementMixin(ThemableMixin(PolymerElement))) {
    static get is() {

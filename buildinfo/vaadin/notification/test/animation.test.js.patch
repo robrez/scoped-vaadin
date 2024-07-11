@@ -2,20 +2,7 @@ Index: test/animation.test.js
 ===================================================================
 --- test/animation.test.js
 +++ test/animation.test.js
-@@ -1,10 +1,10 @@
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, oneEvent } from '@vaadin/testing-helpers';
- import '../vaadin-notification.js';
--import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- 
- registerStyles(
--  'vaadin-notification-card',
-+  'vaadin24-notification-card',
-   css`
-     @keyframes test-animation {
-       100% {
-@@ -34,8 +34,8 @@
+@@ -10,8 +10,8 @@
    beforeEach(async () => {
      wrapper = fixtureSync(`
        <div>

@@ -6,7 +6,7 @@ Index: src/define.js
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
-  * Copyright (c) 2021 - 2023 Vaadin Ltd.
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
 @@ -5,7 +6,7 @@
   */
  

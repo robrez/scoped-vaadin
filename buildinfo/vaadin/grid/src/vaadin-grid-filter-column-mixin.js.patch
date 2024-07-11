@@ -2,7 +2,7 @@ Index: src/vaadin-grid-filter-column-mixin.js
 ===================================================================
 --- src/vaadin-grid-filter-column-mixin.js
 +++ src/vaadin-grid-filter-column-mixin.js
-@@ -49,8 +49,8 @@
+@@ -43,8 +43,8 @@
        let textField = filter ? filter.firstElementChild : undefined;
  
        if (!filter) {

@@ -2,7 +2,7 @@ Index: src/vaadin-iconset.js
 ===================================================================
 --- src/vaadin-iconset.js
 +++ src/vaadin-iconset.js
-@@ -4,8 +4,8 @@
+@@ -4,12 +4,12 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -10,11 +10,7 @@ Index: src/vaadin-iconset.js
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
- import { cloneSvgNode } from './vaadin-icon-svg.js';
- 
- const iconsetRegistry = {};
-@@ -36,7 +36,7 @@
- }
+ import { IconsetMixin } from './vaadin-iconset-mixin.js';
  
  /**
 - * `<vaadin-iconset>` is a Web Component for creating SVG icon collections.
@@ -22,48 +18,12 @@ Index: src/vaadin-iconset.js
   *
   * @customElement
   * @extends HTMLElement
-@@ -48,7 +48,7 @@
+@@ -22,7 +22,7 @@
    }
  
    static get is() {
 -    return 'vaadin-iconset';
 +    return 'vaadin24-iconset';
    }
- 
-   static get properties() {
-@@ -57,7 +57,7 @@
-        * The name of the iconset. Every iconset is required to have its own unique name.
-        * All the SVG icons in the iconset must have IDs conforming to its name.
-        *
--       * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin-icon`.
-+       * See also [`name`](#/elements/vaadin-icon#property-name) property of `vaadin24-icon`.
-        */
-       name: {
-         type: String,
-@@ -67,7 +67,7 @@
-       /**
-        * The size of an individual icon. Note that icons must be square.
-        *
--       * When using `vaadin-icon`, the size of the iconset will take precedence
-+       * When using `vaadin24-icon`, the size of the iconset will take precedence
-        * over the size defined by the user to ensure correct appearance.
-        */
-       size: {
-@@ -78,7 +78,7 @@
-   }
- 
-   /**
--   * Set of the `vaadin-icon` instances in the DOM.
-+   * Set of the `vaadin24-icon` instances in the DOM.
-    *
-    * @return {Set<Icon>}
-    */
-@@ -132,7 +132,7 @@
-    */
-   static register(name, size, template) {
-     if (!iconsetRegistry[name]) {
--      const iconset = document.createElement('vaadin-iconset');
-+      const iconset = document.createElement('vaadin24-iconset');
-       iconset.appendChild(template.content.cloneNode(true));
-       iconsetRegistry[name] = iconset;
+ }
  

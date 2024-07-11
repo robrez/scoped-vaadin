@@ -7,7 +7,7 @@ Index: test/data-provider.common.js
  import { expect } from '@esm-bundle/chai';
  import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -26,9 +27,9 @@
+@@ -27,9 +28,9 @@
            height: 30px;
          }
        </style>
@@ -20,7 +20,7 @@ Index: test/data-provider.common.js
      `;
    }
  
-@@ -43,14 +44,14 @@
+@@ -44,14 +45,14 @@
    }
  }
  
@@ -39,7 +39,7 @@ Index: test/data-provider.common.js
      `;
    }
  
-@@ -69,7 +70,7 @@
+@@ -70,7 +71,7 @@
    }
  }
  
@@ -48,7 +48,7 @@ Index: test/data-provider.common.js
  
  function simulateScrollToStart(grid) {
    // Make sure not over scroll more than the delta threshold limit of 10k.
-@@ -119,11 +120,11 @@
+@@ -120,11 +121,11 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -64,7 +64,7 @@ Index: test/data-provider.common.js
        root.textContent = model.index;
      };
      flushGrid(grid);
-@@ -208,9 +209,9 @@
+@@ -209,9 +210,9 @@
        // Initialize a fresh grid
        grid.remove();
        grid = fixtureSync(`
@@ -77,7 +77,7 @@ Index: test/data-provider.common.js
        `);
  
        // Set data provider
-@@ -230,9 +231,9 @@
+@@ -231,9 +232,9 @@
        // Add multiple pre-sorted sort columns
        const columns = fixtureSync`
          <div>
@@ -90,7 +90,7 @@ Index: test/data-provider.common.js
          </div>
        `;
        grid.multiSort = true;
-@@ -290,7 +291,7 @@
+@@ -300,7 +301,7 @@
      }
  
      beforeEach(async () => {
@@ -99,7 +99,7 @@ Index: test/data-provider.common.js
        await nextFrame();
        treeColumn.path = 'value';
        grid.itemHasChildrenPath = 'value';
-@@ -666,8 +667,8 @@
+@@ -710,8 +711,8 @@
  
  describe('attached', () => {
    it('should have rows when attached and shown after cache is cleared on hidden grid', async () => {
@@ -110,7 +110,7 @@ Index: test/data-provider.common.js
      col.setAttribute('path', 'item');
      grid.appendChild(col);
  
-@@ -692,7 +693,7 @@
+@@ -736,7 +737,7 @@
  
  describe('unattached', () => {
    it('should not throw on clearCache', () => {

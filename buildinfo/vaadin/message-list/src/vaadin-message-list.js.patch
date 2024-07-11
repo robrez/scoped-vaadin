@@ -73,12 +73,14 @@ Index: src/vaadin-message-list.js
                  role="listitem"
                  .time="${item.time}"
                  .userAbbr="${item.userAbbr}"
-@@ -163,7 +163,7 @@
+@@ -163,8 +163,8 @@
                  theme="${ifDefined(item.theme)}"
                  class="${ifDefined(item.className)}"
                  @focusin="${this._onMessageFocusIn}"
--                >${item.text}</vaadin-message
-+                >${item.text}</vaadin24-message
-               >
+-                >${item.text}<vaadin-avatar slot="avatar"></vaadin-avatar
+-              ></vaadin-message>
++                >${item.text}<vaadin24-avatar slot="avatar"></vaadin24-avatar
++              ></vaadin24-message>
              `,
          )}
+       `,

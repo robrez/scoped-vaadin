@@ -126,7 +126,7 @@ Index: src/vaadin-form-layout.js
    }
  
    static get properties() {
-@@ -525,7 +525,7 @@
+@@ -528,7 +528,7 @@
          // Move the column counter
          col = (col + colspan) % this._columnCount;
  

@@ -79,16 +79,7 @@ Index: test/radio-button.common.js
          await nextRender();
          input = radio.querySelector('[slot=input]');
        });
-@@ -252,7 +253,7 @@
- 
-   describe('has-label attribute', () => {
-     beforeEach(async () => {
--      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
-+      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
-       await nextRender();
-     });
- 
-@@ -274,7 +275,7 @@
+@@ -254,7 +255,7 @@
      let inputX, inputY;
  
      beforeEach(async () => {

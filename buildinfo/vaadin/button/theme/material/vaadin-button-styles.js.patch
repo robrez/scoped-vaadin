@@ -14,7 +14,42 @@ Index: theme/material/vaadin-button-styles.js
  
  const button = css`
    :host {
-@@ -165,6 +165,6 @@
+@@ -117,18 +117,18 @@
+ 
+   /* Icon alignment */
+ 
+-  [part] ::slotted(vaadin-icon) {
++  [part] ::slotted(vaadin24-icon) {
+     display: block;
+     width: 18px;
+     height: 18px;
+   }
+ 
+-  [part='prefix'] ::slotted(vaadin-icon) {
++  [part='prefix'] ::slotted(vaadin24-icon) {
+     margin-right: 8px;
+     margin-left: -4px;
+   }
+ 
+-  [part='suffix'] ::slotted(vaadin-icon) {
++  [part='suffix'] ::slotted(vaadin24-icon) {
+     margin-left: 8px;
+     margin-right: -4px;
+   }
+@@ -154,17 +154,17 @@
+     transform: translate(50%, -50%) scale(1);
+   }
+ 
+-  :host([dir='rtl']) [part='prefix'] ::slotted(vaadin-icon) {
++  :host([dir='rtl']) [part='prefix'] ::slotted(vaadin24-icon) {
+     margin-right: -4px;
+     margin-left: 8px;
+   }
+ 
+-  :host([dir='rtl']) [part='suffix'] ::slotted(vaadin-icon) {
++  :host([dir='rtl']) [part='suffix'] ::slotted(vaadin24-icon) {
+     margin-left: -4px;
+     margin-right: 8px;
    }
  `;
  

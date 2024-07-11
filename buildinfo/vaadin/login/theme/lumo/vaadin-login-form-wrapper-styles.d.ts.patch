@@ -1,0 +1,7 @@
+Index: theme/lumo/vaadin-login-form-wrapper-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-login-form-wrapper-styles.d.ts
++++ theme/lumo/vaadin-login-form-wrapper-styles.d.ts
+@@ -1,1 +1,1 @@
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

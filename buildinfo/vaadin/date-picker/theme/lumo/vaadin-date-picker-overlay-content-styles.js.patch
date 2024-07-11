@@ -25,3 +25,12 @@ Index: theme/lumo/vaadin-date-picker-overlay-content-styles.js
    css`
      :host {
        position: relative;
+@@ -90,7 +90,7 @@
+       margin-right: 57px;
+     }
+ 
+-    [part='toolbar'] ::slotted(vaadin-button) {
++    [part='toolbar'] ::slotted(vaadin24-button) {
+       margin: 0;
+     }
+ 

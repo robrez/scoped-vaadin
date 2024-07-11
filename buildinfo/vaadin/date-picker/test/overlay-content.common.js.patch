@@ -33,7 +33,7 @@ Index: test/overlay-content.common.js
            done();
          });
  
-@@ -288,9 +288,9 @@
+@@ -300,9 +300,9 @@
    describe('scrollToDate', () => {
      beforeEach(async () => {
        overlay = fixtureSync(`

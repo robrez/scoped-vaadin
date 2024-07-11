@@ -2,7 +2,7 @@ Index: test/keyboard-navigation-cell-button.common.js
 ===================================================================
 --- test/keyboard-navigation-cell-button.common.js
 +++ test/keyboard-navigation-cell-button.common.js
-@@ -18,12 +18,12 @@
+@@ -22,12 +22,12 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`

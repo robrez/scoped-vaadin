@@ -3,7 +3,7 @@ Index: src/vaadin-select-base-mixin.js
 --- src/vaadin-select-base-mixin.js
 +++ src/vaadin-select-base-mixin.js
 @@ -3,16 +3,16 @@
-  * Copyright (c) 2017 - 2023 Vaadin Ltd.
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { setAriaIDReference } from '@vaadin/a11y-base/src/aria-id-reference.js';
@@ -54,16 +54,7 @@ Index: src/vaadin-select-base-mixin.js
           * @type {!SelectRenderer | undefined}
           */
          renderer: {
-@@ -171,7 +171,7 @@
-     ready() {
-       super.ready();
- 
--      const overlay = this.shadowRoot.querySelector('vaadin-select-overlay');
-+      const overlay = this.shadowRoot.querySelector('vaadin24-select-overlay');
-       overlay.owner = this;
-       this._overlayElement = overlay;
- 
-@@ -254,7 +254,7 @@
+@@ -250,7 +250,7 @@
          });
  
          menuElement.addEventListener('selected-changed', () => this.__updateValueButton());
@@ -72,7 +63,7 @@ Index: src/vaadin-select-base-mixin.js
          // to override and handle the keydown event before the value change happens.
          menuElement.addEventListener('keydown', (e) => this._onKeyDownInside(e), true);
          menuElement.addEventListener(
-@@ -295,7 +295,7 @@
+@@ -293,7 +293,7 @@
       * @private
       */
      _onClick(event) {
@@ -81,7 +72,7 @@ Index: src/vaadin-select-base-mixin.js
        // from handling the click event after it bubbles.
        event.preventDefault();
  
-@@ -426,7 +426,7 @@
+@@ -424,7 +424,7 @@
       * @private
       */
      __createItemElement(item) {
@@ -90,7 +81,7 @@ Index: src/vaadin-select-base-mixin.js
        if (item.label) {
          itemElement.textContent = item.label;
        }
-@@ -604,7 +604,7 @@
+@@ -609,7 +609,7 @@
  
        let listBox = root.firstElementChild;
        if (!listBox) {

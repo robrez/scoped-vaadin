@@ -11,3 +11,14 @@ Index: test/value-control-buttons.common.js
      await nextRender();
      input = numberField.inputElement;
      decreaseButton = numberField.shadowRoot.querySelector('[part=decrease-button]');
+@@ -663,8 +663,8 @@
+   beforeEach(async () => {
+     container = fixtureSync(`
+       <div>
+-        <vaadin-number-field step-buttons-visible></vaadin-number-field>
+-        <vaadin-number-field step-buttons-visible></vaadin-number-field>
++        <vaadin24-number-field step-buttons-visible></vaadin24-number-field>
++        <vaadin24-number-field step-buttons-visible></vaadin24-number-field>
+       </div>
+     `);
+     await nextRender();

@@ -15,7 +15,20 @@ Index: test/basic.common.js
      `);
      grid.dataProvider = infiniteDataProvider;
      column = grid.firstElementChild;
-@@ -282,13 +282,13 @@
+@@ -276,9 +276,9 @@
+ 
+   it('should render all items with varying row heights when all rows visible', async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid all-rows-visible>
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid all-rows-visible>
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     const rowHeights = [30, 100, 30, 30, 100, 30];
+     grid.items = rowHeights.map((value) => {
+@@ -303,13 +303,13 @@
      layout = fixtureSync(`
        <div style="display: flex; width: 300px; height: 300px;">
          <div style="width: 100px; height: 100px; flex-shrink: 0;">Layout sibling</div>

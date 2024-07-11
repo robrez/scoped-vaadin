@@ -34,3 +34,12 @@ Index: test/message-input.test.js
      });
    });
  
+@@ -132,7 +133,7 @@
+     });
+ 
+     it('should not throw on focus when not attached to the DOM', () => {
+-      const element = document.createElement('vaadin-message-input');
++      const element = document.createElement('vaadin24-message-input');
+       expect(() => element.focus()).not.to.throw(Error);
+     });
+   });

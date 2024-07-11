@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,14 +1,16 @@
+@@ -1,13 +1,15 @@
 -# @vaadin/login
 +# @scoped-vaadin/login
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/login)](https://www.npmjs.com/package/@vaadin/login)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/login)](https://www.npmjs.com/package/@scoped-vaadin/login)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-login-overlay opened></vaadin-login-overlay>
@@ -22,7 +21,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/login/screenshot.png" width="456" alt="Screenshot of vaadin-login-overlay">](https://vaadin.com/docs/latest/components/login)
-@@ -18,13 +20,13 @@
+@@ -17,13 +19,13 @@
  Install the component:
  
  ```sh
@@ -38,7 +37,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -35,22 +37,22 @@
+@@ -34,22 +36,22 @@
  To use the Material theme, import the components from the `theme/material` folder:
  
  ```js

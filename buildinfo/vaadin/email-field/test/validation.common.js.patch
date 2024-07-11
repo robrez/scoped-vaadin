@@ -2,7 +2,7 @@ Index: test/validation.common.js
 ===================================================================
 --- test/validation.common.js
 +++ test/validation.common.js
-@@ -35,7 +35,7 @@
+@@ -37,7 +37,7 @@
  
    describe('basic', () => {
      beforeEach(async () => {
@@ -11,7 +11,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -86,7 +86,7 @@
+@@ -88,7 +88,7 @@
  
    describe('custom pattern', () => {
      beforeEach(async () => {
@@ -20,7 +20,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -99,7 +99,7 @@
+@@ -101,7 +101,7 @@
      let validateSpy;
  
      beforeEach(() => {

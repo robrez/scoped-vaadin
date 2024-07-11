@@ -2,9 +2,7 @@ Index: theme/material/vaadin-lit-grid-filter.js
 ===================================================================
 --- theme/material/vaadin-lit-grid-filter.js
 +++ theme/material/vaadin-lit-grid-filter.js
-@@ -1,3 +1,3 @@
--import '@vaadin/text-field/theme/material/vaadin-text-field-styles.js';
--import '@vaadin/input-container/theme/material/vaadin-input-container-styles.js';
-+import '@scoped-vaadin/text-field/theme/material/vaadin-text-field-styles.js';
-+import '@scoped-vaadin/input-container/theme/material/vaadin-input-container-styles.js';
+@@ -1,2 +1,2 @@
+-import '@vaadin/text-field/theme/material/vaadin-lit-text-field.js';
++import '@scoped-vaadin/text-field/theme/material/vaadin-lit-text-field.js';
  import '../../src/vaadin-lit-grid-filter.js';

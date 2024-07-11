@@ -1,0 +1,21 @@
+Index: test/interactions.common.js
+===================================================================
+--- test/interactions.common.js
++++ test/interactions.common.js
+@@ -14,14 +14,14 @@
+ } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
+ import sinon from 'sinon';
+-import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
++import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ import { getFirstItem, setInputValue } from './helpers.js';
+ 
+ describe('interactions', () => {
+   let comboBox, overlay, input;
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box label="Label"></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box label="Label"></vaadin24-combo-box>');
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+     input = comboBox.inputElement;

@@ -1,0 +1,32 @@
+Index: test/iconset.common.js
+===================================================================
+--- test/iconset.common.js
++++ test/iconset.common.js
+@@ -1,22 +1,23 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { isValidSvg } from '../src/vaadin-icon-svg.js';
+ 
+-const Iconset = customElements.get('vaadin-iconset');
++const Iconset = internalCustomElements.get('vaadin24-iconset');
+ 
+-describe('vaadin-iconset', () => {
++describe('vaadin24-iconset', () => {
+   let iconset;
+ 
+   beforeEach(async () => {
+     iconset = fixtureSync(`
+-      <vaadin-iconset name="vaadin" size="16">
++      <vaadin24-iconset name="vaadin" size="16">
+         <svg xmlns="http://www.w3.org/2000/svg">
+           <defs>
+             <g id="vaadin:caret-down"><path d="M3 4h10l-5 7z"></path></g>
+             <g id="caret-up"><path d="M13 12h-10l5-7z"></path></g>
+           </defs>
+         </svg>
+-      </vaadin-iconset>
++      </vaadin24-iconset>
+     `);
+     await nextFrame();
+   });

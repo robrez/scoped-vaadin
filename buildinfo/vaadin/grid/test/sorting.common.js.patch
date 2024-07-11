@@ -53,7 +53,7 @@ Index: test/sorting.common.js
        );
  
        grid.items = [
-@@ -186,35 +187,35 @@
+@@ -237,35 +238,35 @@
  
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -68,8 +68,8 @@ Index: test/sorting.common.js
 +          <vaadin24-grid-sort-column></vaadin24-grid-sort-column>
 +        </vaadin24-grid>
        `);
--      const columns = [...grid.querySelectorAll('vaadin-grid-column')];
-+      const columns = [...grid.querySelectorAll('vaadin24-grid-column')];
+-      columns = [...grid.querySelectorAll('vaadin-grid-column')];
++      columns = [...grid.querySelectorAll('vaadin24-grid-column')];
        columns[0].headerRenderer = (root) => {
          if (!root.firstChild) {
            root.innerHTML = `
@@ -100,7 +100,7 @@ Index: test/sorting.common.js
        );
  
        grid.items = [
-@@ -524,29 +525,29 @@
+@@ -607,29 +608,29 @@
  
      describe('set multi-sort-priority', () => {
        it('should change default multi-sort-priority for newly created grid', () => {
@@ -135,7 +135,7 @@ Index: test/sorting.common.js
          expect(grid2.multiSortPriority).to.be.equal('prepend');
        });
      });
-@@ -610,9 +611,9 @@
+@@ -693,9 +694,9 @@
        let sortColumn, sortCellContent, sorter;
  
        beforeEach(() => {
@@ -147,7 +147,7 @@ Index: test/sorting.common.js
        });
  
        it('should propagate path property to the internal grid sorter', () => {
-@@ -661,18 +662,18 @@
+@@ -744,18 +745,18 @@
  
      beforeEach(() => {
        grid = fixtureSync(`
@@ -173,7 +173,7 @@ Index: test/sorting.common.js
            `;
          }
        };
-@@ -680,7 +681,7 @@
+@@ -763,7 +764,7 @@
          if (!root.firstChild) {
            root.innerHTML = `
              <span class="title">last</span>
@@ -182,7 +182,7 @@ Index: test/sorting.common.js
            `;
          }
        };
-@@ -688,7 +689,7 @@
+@@ -771,7 +772,7 @@
      });
  
      it('should set direction to also other than last sorter', () => {
@@ -191,7 +191,7 @@ Index: test/sorting.common.js
        expect(sorterFirst.direction).to.eql('asc');
      });
    });
-@@ -698,28 +699,28 @@
+@@ -781,28 +782,28 @@
  
      beforeEach(async () => {
        grid = fixtureSync(`

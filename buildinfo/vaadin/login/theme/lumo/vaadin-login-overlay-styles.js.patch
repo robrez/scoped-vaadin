@@ -30,7 +30,7 @@ Index: theme/lumo/vaadin-login-overlay-styles.js
    }
  `;
  
--registerStyles('vaadin-login-form-wrapper', [color, typography, loginFormWrapper], {
-+registerStyles('vaadin24-login-form-wrapper', [color, typography, loginFormWrapper], {
+-registerStyles('vaadin-login-form-wrapper', [loginFormWrapper], {
++registerStyles('vaadin24-login-form-wrapper', [loginFormWrapper], {
    moduleId: 'lumo-login-overlay',
  });

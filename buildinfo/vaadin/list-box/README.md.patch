@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,21 +1,23 @@
+@@ -1,20 +1,22 @@
 -# @vaadin/list-box
 +# @scoped-vaadin/list-box
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/list-box)](https://www.npmjs.com/package/@vaadin/list-box)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/list-box)](https://www.npmjs.com/package/@scoped-vaadin/list-box)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-list-box selected="2">
@@ -34,7 +33,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/list-box/screenshot.png" width="150" alt="Screenshot of vaadin-list-box">](https://vaadin.com/docs/latest/components/list-box)
-@@ -25,13 +27,13 @@
+@@ -24,13 +26,13 @@
  Install the component:
  
  ```sh
@@ -50,7 +49,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -42,19 +44,19 @@
+@@ -41,19 +43,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

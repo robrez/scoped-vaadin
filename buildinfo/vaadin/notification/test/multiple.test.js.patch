@@ -71,3 +71,12 @@ Index: test/multiple.test.js
      });
  
      it('container should be a singleton', () => {
+@@ -132,7 +132,7 @@
+ 
+     it('should stack top notifications on top of each other', () => {
+       ['top-start', 'top-center', 'top-end'].forEach((regionName) => {
+-        const notifications = Array.from(container.querySelectorAll(`vaadin-notification-card[slot="${regionName}"]`));
++        const notifications = Array.from(container.querySelectorAll(`vaadin24-notification-card[slot="${regionName}"]`));
+         expect(notifications[0].offsetTop).to.be.below(notifications[1].offsetTop);
+         expect(notifications[0].innerText.trim()).to.be.equal('Notification 2');
+         expect(notifications[1].innerText.trim()).to.be.equal('Notification 1');

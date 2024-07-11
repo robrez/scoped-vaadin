@@ -26,7 +26,7 @@ Index: test/styling.common.js
        column.hidden = true;
        await nextRender();
        column.hidden = false;
-@@ -204,7 +204,7 @@
+@@ -220,7 +220,7 @@
      let footerCell;
  
      beforeEach(() => {
@@ -35,7 +35,7 @@ Index: test/styling.common.js
        column.footerRenderer = (root) => {
          root.textContent = 'footer';
        };
-@@ -285,7 +285,7 @@
+@@ -301,7 +301,7 @@
      });
  
      it('should not override custom part names', () => {

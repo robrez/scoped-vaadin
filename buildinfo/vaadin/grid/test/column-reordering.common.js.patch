@@ -45,7 +45,25 @@ Index: test/column-reordering.common.js
        grid.appendChild(col);
        await nextFrame();
        expect(col._order).to.equal(50000000);
-@@ -368,7 +368,7 @@
+@@ -368,12 +368,12 @@
+     describe('focus button mode', () => {
+       beforeEach(() => {
+         grid = fixtureSync(`
+-          <vaadin-grid column-reordering-allowed>
+-            <vaadin-grid-column path="name"></vaadin-grid-column>
+-            <vaadin-grid-column path="age"></vaadin-grid-column>
+-          </vaadin-grid>
++          <vaadin24-grid column-reordering-allowed>
++            <vaadin24-grid-column path="name"></vaadin24-grid-column>
++            <vaadin24-grid-column path="age"></vaadin24-grid-column>
++          </vaadin24-grid>
+         `);
+-        grid.querySelectorAll('vaadin-grid-column').forEach((col) => {
++        grid.querySelectorAll('vaadin24-grid-column').forEach((col) => {
+           col._focusButtonMode = true;
+         });
+         grid.items = [
+@@ -403,7 +403,7 @@
  
    describe('frozen columns', () => {
      beforeEach(() => {
@@ -54,7 +72,7 @@ Index: test/column-reordering.common.js
        columns[0].frozen = true;
        columns[1].frozen = true;
      });
-@@ -406,7 +406,7 @@
+@@ -441,7 +441,7 @@
  
    describe('columns frozen to end', () => {
      beforeEach(() => {
@@ -63,7 +81,7 @@ Index: test/column-reordering.common.js
        columns[2].frozenToEnd = true;
        columns[3].frozenToEnd = true;
      });
-@@ -448,26 +448,26 @@
+@@ -483,26 +483,26 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -97,7 +115,7 @@ Index: test/column-reordering.common.js
        column.footerRenderer = attributeRenderer('footer');
        column.renderer = attributeRenderer('prefix');
      });
-@@ -533,7 +533,7 @@
+@@ -568,7 +568,7 @@
      let groups;
  
      beforeEach(() => {
@@ -106,7 +124,7 @@ Index: test/column-reordering.common.js
      });
  
      it('should reflect the physically reordered columns order', () => {
-@@ -543,7 +543,7 @@
+@@ -578,7 +578,7 @@
      });
  
      it('should reflect the physically reordered child columns order', async () => {
@@ -115,7 +133,7 @@ Index: test/column-reordering.common.js
        groups[0].insertBefore(columns[1], columns[0]);
        await nextFrame();
        flushGrid(grid);
-@@ -553,7 +553,7 @@
+@@ -588,7 +588,7 @@
      it('should reset drag orders on physical order', async () => {
        dragAndDropOver(getVisualHeaderCellContent(grid, 1, 2), getVisualHeaderCellContent(grid, 1, 3));
        expectVisualOrder(grid, [11, 12, 22, 21]);
@@ -124,7 +142,7 @@ Index: test/column-reordering.common.js
  
        groups[0].insertBefore(columns[1], columns[0]);
        await nextFrame();
-@@ -568,10 +568,10 @@
+@@ -603,10 +603,10 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -139,7 +157,7 @@ Index: test/column-reordering.common.js
      `);
      grid.dataProvider = infiniteDataProvider;
      flushGrid(grid);
-@@ -598,20 +598,20 @@
+@@ -633,20 +633,20 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -167,7 +185,7 @@ Index: test/column-reordering.common.js
        col.renderer = attributeRenderer('prefix');
        col.footerRenderer = attributeRenderer('footer');
      });
-@@ -631,16 +631,16 @@
+@@ -666,16 +666,16 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -188,7 +206,7 @@ Index: test/column-reordering.common.js
        const renderer = (root) => {
          root.innerHTML = `<div draggable="true">${col.getAttribute('index')}</div>`;
        };
-@@ -685,17 +685,17 @@
+@@ -720,17 +720,17 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`

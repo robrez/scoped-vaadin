@@ -20,3 +20,12 @@ Index: theme/lumo/vaadin-notification-styles.js
    css`
      :host {
        position: relative;
+@@ -34,7 +34,7 @@
+       justify-content: space-between;
+     }
+ 
+-    [part='content'] ::slotted(vaadin-button) {
++    [part='content'] ::slotted(vaadin24-button) {
+       flex: none;
+       margin: 0 calc(var(--lumo-space-s) * -1) 0 var(--lumo-space-m);
+     }

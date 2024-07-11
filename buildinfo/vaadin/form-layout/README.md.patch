@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,18 +1,20 @@
+@@ -1,17 +1,19 @@
 -# @vaadin/form-layout
 +# @scoped-vaadin/form-layout
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/form-layout)](https://www.npmjs.com/package/@vaadin/form-layout)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/form-layout)](https://www.npmjs.com/package/@scoped-vaadin/form-layout)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-form-layout>
@@ -30,7 +29,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/form-layout/screenshot.png" width="880" alt="Screenshot of vaadin-form-layout">](https://vaadin.com/docs/latest/components/form-layout)
-@@ -22,13 +24,13 @@
+@@ -21,13 +23,13 @@
  Install the component:
  
  ```sh
@@ -46,7 +45,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -39,19 +41,19 @@
+@@ -38,19 +40,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

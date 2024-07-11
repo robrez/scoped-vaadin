@@ -2,9 +2,9 @@ Index: test/scroll.test.js
 ===================================================================
 --- test/scroll.test.js
 +++ test/scroll.test.js
-@@ -7,24 +7,24 @@
+@@ -8,24 +8,24 @@
  
-   beforeEach(() => {
+   beforeEach(async () => {
      tabs = fixtureSync(`
 -      <vaadin-tabs style="width: 400px; height: 150px;">
 -        <vaadin-tab>Foo</vaadin-tab>
@@ -42,5 +42,5 @@ Index: test/scroll.test.js
 +        <vaadin24-tab>Baz4</vaadin24-tab>
 +      </vaadin24-tabs>
      `);
+     await nextRender();
      tabs._observer.flush();
-     items = tabs.items;

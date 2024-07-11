@@ -17,3 +17,23 @@ Index: test/column-rendering.common.js
          column.header = `Col ${i}`;
  
          // eslint-disable-next-line @typescript-eslint/no-loop-func
+@@ -217,15 +217,15 @@
+ 
+     it('should render new appended column', async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid item-id-path="name" column-rendering="lazy">
+-          <vaadin-grid-column path="name"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid item-id-path="name" column-rendering="lazy">
++          <vaadin24-grid-column path="name"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.items = [{ name: `Item 1` }];
+       await onceResized(grid);
+       flushGrid(grid);
+ 
+-      const newColumn = document.createElement('vaadin-grid-column');
++      const newColumn = document.createElement('vaadin24-grid-column');
+       grid.appendChild(newColumn);
+       await nextFrame();
+ 

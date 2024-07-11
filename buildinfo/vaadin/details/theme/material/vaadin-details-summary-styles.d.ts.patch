@@ -1,0 +1,13 @@
+Index: theme/material/vaadin-details-summary-styles.d.ts
+===================================================================
+--- theme/material/vaadin-details-summary-styles.d.ts
++++ theme/material/vaadin-details-summary-styles.d.ts
+@@ -1,5 +1,5 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/font-icons.js';
+-import '@vaadin/vaadin-material-styles/typography.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-material-styles/typography.js';
+ declare const detailsSummary: import("lit").CSSResult;
+ export { detailsSummary };

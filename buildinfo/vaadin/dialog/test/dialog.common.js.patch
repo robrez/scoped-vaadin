@@ -51,7 +51,7 @@ Index: test/dialog.common.js
        `);
        await nextRender();
  
-@@ -193,7 +194,7 @@
+@@ -194,7 +195,7 @@
      let dialog;
  
      beforeEach(async () => {
@@ -60,7 +60,7 @@ Index: test/dialog.common.js
        await nextRender();
      });
  
-@@ -223,7 +224,7 @@
+@@ -226,7 +227,7 @@
      beforeEach(async () => {
        const wrapper = fixtureSync(`
          <div>

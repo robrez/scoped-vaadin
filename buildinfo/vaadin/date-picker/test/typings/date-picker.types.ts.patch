@@ -32,7 +32,7 @@ Index: test/typings/date-picker.types.ts
 +import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';
 +import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import type { DatePickerMixinClass } from '../../src/vaadin-date-picker-mixin.js';
+ import type { DatePickerDate, DatePickerMixinClass } from '../../src/vaadin-date-picker-mixin.js';
  import type {
    DatePicker,
 @@ -33,7 +33,7 @@
@@ -44,7 +44,7 @@ Index: test/typings/date-picker.types.ts
  
  assertType<DatePicker>(datePicker);
  
-@@ -106,7 +106,7 @@
+@@ -107,7 +107,7 @@
  assertType<OverlayClassMixinClass>(datePicker);
  
  /* DatePickerLight */

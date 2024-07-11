@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,19 +1,21 @@
+@@ -1,18 +1,20 @@
 -# @vaadin/checkbox-group
 +# @scoped-vaadin/checkbox-group
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/checkbox-group)](https://www.npmjs.com/package/@vaadin/checkbox-group)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/checkbox-group)](https://www.npmjs.com/package/@scoped-vaadin/checkbox-group)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-checkbox-group label="Export data">
@@ -32,7 +31,7 @@ Index: README.md
  ```
  
  ## Installation
-@@ -21,13 +23,13 @@
+@@ -20,13 +22,13 @@
  Install the component:
  
  ```sh
@@ -48,7 +47,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -38,19 +40,19 @@
+@@ -37,19 +39,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

@@ -2,7 +2,17 @@ Index: test/lit.common.js
 ===================================================================
 --- test/lit.common.js
 +++ test/lit.common.js
-@@ -10,11 +10,11 @@
+@@ -1,7 +1,8 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@esm-bundle/chai';
+ import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { html, render } from 'lit';
+-import { flush } from '@vaadin/component-base/src/debounce.js';
++import { flush } from '@scoped-vaadin/component-base/src/debounce.js';
+ import { getBodyCellContent, getPhysicalItems } from './helpers.js';
+ 
+ describe('lit', () => {
+@@ -11,11 +12,11 @@
      function renderGrid(columnPaths, items) {
        render(
          html`
@@ -17,7 +27,7 @@ Index: test/lit.common.js
          `,
          wrapper,
        );
-@@ -38,11 +38,11 @@
+@@ -39,11 +40,11 @@
      function renderGrid(columnPaths, items) {
        render(
          html`
@@ -32,7 +42,7 @@ Index: test/lit.common.js
          `,
          wrapper,
        );
-@@ -53,7 +53,7 @@
+@@ -54,7 +55,7 @@
  
      await aTimeout(0);
  
@@ -41,3 +51,27 @@ Index: test/lit.common.js
  
      // Then render a grid with one column
      renderGrid(['c1'], [{ c1: '1-1', c2: '1-2' }]);
+@@ -77,7 +78,7 @@
+         flush();
+       }
+     }
+-    customElements.define(testComponentName, TestComponent);
++    internalCustomElements.define(testComponentName, TestComponent);
+ 
+     // Build items
+     const rootItem = { id: 'item', children: [] };
+@@ -111,10 +112,10 @@
+ 
+     const grid = render(
+       html`
+-        <vaadin-grid .dataProvider=${dataProvider} .expandedItems=${expandedItems}>
+-          <vaadin-grid-tree-column width="80px" flex-grow="0"></vaadin-grid-tree-column>
+-          <vaadin-grid-column .renderer=${renderer}></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid .dataProvider=${dataProvider} .expandedItems=${expandedItems}>
++          <vaadin24-grid-tree-column width="80px" flex-grow="0"></vaadin24-grid-tree-column>
++          <vaadin24-grid-column .renderer=${renderer}></vaadin24-grid-column>
++        </vaadin24-grid>
+       `,
+       fixtureSync(`<div></div>`),
+     ).parentNode.firstElementChild;

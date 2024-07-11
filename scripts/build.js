@@ -11,6 +11,7 @@ import {
   ignorePackages,
   versionMeta,
   ignoreTests as _ignoreTests,
+  ignoreTests,
 } from "./meta/index.js";
 import { createPatch } from "diff";
 import {
@@ -18,17 +19,13 @@ import {
   transformPackageJson,
   transformReadmeMd,
   transformWebTypes,
+  replaceNpmScope,
 } from "./transform/index.js";
 
-const majorVersion = versionMeta.vaadinVersion;
 const nodePackagesRoot = "node_modules/@vaadin";
 const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
-
-const ignoreTests = new Set(
-  _ignoreTests.map((test) => test.replace("packages", clonePackagesRoot))
-);
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -48,6 +45,7 @@ function findPackages(dir) {
 
 function findFiles(dir) {
   const files = glob.sync(dir + "/**/*", { dot: true, posix: true });
+  // TODO there is a problem here where nested node_modules are being loaded
   const paths = files
     .filter((fileName) => fs.lstatSync(fileName).isFile())
     .map((name) => posixify(name))
@@ -63,7 +61,14 @@ const findTestFiles = (dir) => {
     .map((name) => posixify(name))
     // note -- could have provided ignoredTests as negation globs
     // but choosing to - instead - not create the ignored tests
-    .filter((name) => !ignoreTests.has(name))
+    .filter((name) => {
+      for (let pattern of ignoreTests) {
+        if (name.indexOf(pattern) > -1) {
+          return false;
+        }
+      }
+      return true;
+    })
     .sort()
     .map((name) => Path.parse(name));
   return paths;
@@ -175,6 +180,7 @@ function processVendorPackageJson(content) {
   if (dependencies) {
     Object.keys(dependencies).forEach((dep) => {
       const originalDepVersion = dependencies[dep];
+      const newDepName = replaceNpmScope(dep);
       const newDepVersion =
         dep.indexOf("@scoped-vaadin") <= -1
           ? originalDepVersion
@@ -189,7 +195,7 @@ function processVendorPackageJson(content) {
   };
 
   if (dependencies) {
-    reult = {
+    result = {
       ...result,
       dependencies,
     };

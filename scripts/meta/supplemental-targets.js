@@ -1,4 +1,12 @@
 /**
+ * TagNames that must not be rewritten
+ */
+export const ignoreElementNames = [
+  //
+  "vaadin-grid-cell-content",
+];
+
+/**
  * additional string literals to treat like tag names
  */
 export const supplementalElementNames = [
@@ -9,7 +17,7 @@ export const supplementalElementNames = [
 ];
 
 /**
- * CSS selectors which should undergo naive tag-name replacement
+ * Supplemental strings which should undergo naive tag-name replacement
  * Choosing to handle these individually for now, rather than risk breaking
  * HTML and JS replacements which are trying to target string literals
  * and HTML tags.  Consider filename whitelisting?
@@ -28,8 +36,15 @@ export const supplementalCssSelectors = [
   // avatar-group/test/avatar-group.test.js
   "vaadin-avatar:not([hidden])",
 
+  // details test
+  "/^content-vaadin-details-\\d+$/",
+
+  // grid test
+  ", vaadin-grid-column",
+
   // login/test/login-form.common.js
-  `vaadin-button[slot="forgot-password"]`,
+  `'vaadin-button[slot`,
+  `'vaadin-button[part`,
 
   // context-menu/test/selection.common.js
   "#menu vaadin-item",
@@ -43,6 +58,9 @@ export const supplementalCssSelectors = [
 
   // grid/test/column-auto-width.common.js
   "vaadin-grid::part(cell) {",
+
+  // notification test
+  `vaadin-notification-card[slot`,
 
   // tooltip/test/tooltip.common.js
   `vaadin-tooltip[for="foo"]`,

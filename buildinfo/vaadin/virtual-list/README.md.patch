@@ -2,7 +2,7 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,17 +1,19 @@
+@@ -1,16 +1,18 @@
 -# @vaadin/virtual-list
 +# @scoped-vaadin/virtual-list
  
@@ -14,7 +14,6 @@ Index: README.md
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/virtual-list)](https://www.npmjs.com/package/@vaadin/virtual-list)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/virtual-list)](https://www.npmjs.com/package/@scoped-vaadin/virtual-list)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
  ```html
 -<vaadin-virtual-list></vaadin-virtual-list>
@@ -26,7 +25,7 @@ Index: README.md
    list.items = items; // An array of data items
    list.renderer = (root, list, { item, index }) => {
      root.textContent = `#${index}: ${item.name}`;
-@@ -24,13 +26,13 @@
+@@ -23,13 +25,13 @@
  Install the component:
  
  ```sh
@@ -42,7 +41,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -41,19 +43,19 @@
+@@ -40,19 +42,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

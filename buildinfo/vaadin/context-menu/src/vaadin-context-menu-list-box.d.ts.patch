@@ -3,7 +3,7 @@ Index: src/vaadin-context-menu-list-box.d.ts
 --- src/vaadin-context-menu-list-box.d.ts
 +++ src/vaadin-context-menu-list-box.d.ts
 @@ -3,19 +3,19 @@
-  * Copyright (c) 2016 - 2023 Vaadin Ltd.
+  * Copyright (c) 2016 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ListMixin } from '@vaadin/a11y-base/src/list-mixin.js';

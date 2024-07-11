@@ -16,10 +16,10 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
 +import { addListener, setTouchAction } from '@scoped-vaadin/component-base/src/gestures.js';
 +import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';
 +import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
- import { dateAfterXMonths, dateEquals, extractDateParts, getClosestDate } from './vaadin-date-picker-helper.js';
- 
- /**
-@@ -180,7 +180,7 @@
+ import {
+   dateAfterXMonths,
+   dateAllowed,
+@@ -197,7 +197,7 @@
        );
  
        this.addController(
@@ -28,7 +28,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (btn) => {
              btn.setAttribute('theme', 'tertiary');
-@@ -192,7 +192,7 @@
+@@ -209,7 +209,7 @@
        );
  
        this.addController(
@@ -37,7 +37,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (btn) => {
              btn.setAttribute('theme', 'tertiary');
-@@ -231,7 +231,7 @@
+@@ -248,7 +248,7 @@
      /** @private */
      __initMonthScroller() {
        this.addController(
@@ -46,7 +46,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (scroller) => {
              scroller.addEventListener('custom-scroll', () => {
-@@ -247,7 +247,7 @@
+@@ -264,7 +264,7 @@
              });
  
              scroller.addEventListener('init-done', () => {
@@ -55,7 +55,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
  
                // Two-way binding for selectedDate property
                calendars.forEach((calendar) => {
-@@ -268,7 +268,7 @@
+@@ -285,7 +285,7 @@
      /** @private */
      __initYearScroller() {
        this.addController(
@@ -64,7 +64,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (scroller) => {
              scroller.setAttribute('aria-hidden', 'true');
-@@ -286,7 +286,7 @@
+@@ -303,7 +303,7 @@
              });
  
              scroller.addEventListener('init-done', () => {
@@ -73,7 +73,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
              });
  
              this._yearScroller = scroller;
-@@ -899,7 +899,7 @@
+@@ -923,7 +923,7 @@
      async focusDateElement(reveal = true) {
        this.__pendingDateFocus = this.focusedDate;
  

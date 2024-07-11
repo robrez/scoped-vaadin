@@ -2,13 +2,14 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,6 +1,8 @@
+@@ -1,7 +1,9 @@
  # Lumo
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/vaadin-lumo-styles)](https://www.npmjs.com/package/@vaadin/vaadin-lumo-styles)
 +This component is based on [@vaadin/vaadin-lumo-styles](https://www.npmjs.com/package/@vaadin/vaadin-lumo-styles)
-+
-+[![npm version](https://badgen.net/npm/v/@scoped-vaadin/vaadin-lumo-styles)](https://www.npmjs.com/package/@scoped-vaadin/vaadin-lumo-styles)
- [![Discord](https://img.shields.io/discord/732335336448852018?label=discord)](https://discord.gg/PHmkCKC)
  
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/vaadin-lumo-styles)](https://www.npmjs.com/package/@scoped-vaadin/vaadin-lumo-styles)
++
  > Lumo – ✨ enchantment (Finnish) and 🔆 light (Esperanto)
+ 
+ **Lumo is a design system foundation** for modern, beautiful and accessible web applications.

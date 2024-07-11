@@ -1,0 +1,49 @@
+Index: src/vaadin-lit-combo-box-light.js
+===================================================================
+--- src/vaadin-lit-combo-box-light.js
++++ src/vaadin-lit-combo-box-light.js
+@@ -8,13 +8,13 @@
+ import './vaadin-lit-combo-box-scroller.js';
+ import { css, html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { ComboBoxLightMixin } from './vaadin-combo-box-light-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-combo-box-light>` web component.
++ * LitElement based version of `<vaadin24-combo-box-light>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -24,7 +24,7 @@
+  */
+ class ComboBoxLight extends ComboBoxLightMixin(ThemableMixin(PolylitMixin(LitElement))) {
+   static get is() {
+-    return 'vaadin-combo-box-light';
++    return 'vaadin24-combo-box-light';
+   }
+ 
+   static get styles() {
+@@ -40,7 +40,7 @@
+     return html`
+       <slot></slot>
+ 
+-      <vaadin-combo-box-overlay
++      <vaadin24-combo-box-overlay
+         id="overlay"
+         .opened="${this._overlayOpened}"
+         ?loading="${this.loading}"
+@@ -48,7 +48,7 @@
+         .positionTarget="${this.inputElement}"
+         .restoreFocusNode="${this.inputElement}"
+         no-vertical-overlap
+-      ></vaadin-combo-box-overlay>
++      ></vaadin24-combo-box-overlay>
+     `;
+   }
+ }

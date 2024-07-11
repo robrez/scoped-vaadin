@@ -11,7 +11,16 @@ Index: test/tree-toggle.common.js
        await nextFrame();
      });
  
-@@ -88,11 +88,11 @@
+@@ -51,7 +51,7 @@
+       });
+ 
+       it('should have the correct expanded state on listener invocation', (done) => {
+-        toggle = document.createElement('vaadin-grid-tree-toggle');
++        toggle = document.createElement('vaadin24-grid-tree-toggle');
+         toggle.addEventListener('click', () => {
+           expect(toggle.expanded).to.be.true;
+           done();
+@@ -99,11 +99,11 @@
    describe('with content', () => {
      beforeEach(async () => {
        toggle = fixtureSync(`
@@ -25,7 +34,7 @@ Index: test/tree-toggle.common.js
        `);
        await nextFrame();
      });
-@@ -121,11 +121,11 @@
+@@ -132,11 +132,11 @@
  
      beforeEach(() => {
        grid = fixtureSync(`

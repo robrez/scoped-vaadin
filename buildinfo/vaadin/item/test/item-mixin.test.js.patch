@@ -2,17 +2,14 @@ Index: test/item-mixin.test.js
 ===================================================================
 --- test/item-mixin.test.js
 +++ test/item-mixin.test.js
-@@ -1,3 +1,4 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import {
-   enterKeyDown,
-@@ -21,7 +22,7 @@
-   }
- }
+@@ -16,8 +16,8 @@
+   tabKeyDown,
+ } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
+ import { ItemMixin } from '../src/vaadin-item-mixin.js';
  
--customElements.define('test-item', TestItem);
-+internalCustomElements.define('test-item', TestItem);
- 
- describe('vaadin-item-mixin', () => {
-   let item;
+ const runTests = (defineHelper, baseMixin) => {

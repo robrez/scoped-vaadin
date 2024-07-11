@@ -2,18 +2,15 @@ Index: src/vaadin-combo-box-light.js
 ===================================================================
 --- src/vaadin-combo-box-light.js
 +++ src/vaadin-combo-box-light.js
-@@ -9,26 +9,26 @@
- import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
- import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+@@ -7,24 +7,24 @@
+ import './vaadin-combo-box-overlay.js';
+ import './vaadin-combo-box-scroller.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
--import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
-+import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { ComboBoxDataProviderMixin } from './vaadin-combo-box-data-provider-mixin.js';
- import { ComboBoxMixin } from './vaadin-combo-box-mixin.js';
+ import { ComboBoxLightMixin } from './vaadin-combo-box-light-mixin.js';
  
  /**
 - * `<vaadin-combo-box-light>` is a customizable version of the `<vaadin-combo-box>` providing
@@ -38,7 +35,7 @@ Index: src/vaadin-combo-box-light.js
   * ```
   *
   * If you are using custom input field that has other property for value,
-@@ -36,20 +36,20 @@
+@@ -32,20 +32,20 @@
   * attribute to specify which property to use:
   *
   * ```html
@@ -63,16 +60,16 @@ Index: src/vaadin-combo-box-light.js
   * ```
   *
   * @fires {Event} change - Fired when the user commits a value change.
-@@ -70,7 +70,7 @@
+@@ -64,7 +64,7 @@
   */
- class ComboBoxLight extends ComboBoxDataProviderMixin(ComboBoxMixin(ValidateMixin(ThemableMixin(PolymerElement)))) {
+ class ComboBoxLight extends ComboBoxLightMixin(ThemableMixin(PolymerElement)) {
    static get is() {
 -    return 'vaadin-combo-box-light';
 +    return 'vaadin24-combo-box-light';
    }
  
    static get template() {
-@@ -83,7 +83,7 @@
+@@ -77,7 +77,7 @@
  
        <slot></slot>
  
@@ -81,7 +78,7 @@ Index: src/vaadin-combo-box-light.js
          id="overlay"
          opened="[[_overlayOpened]]"
          loading$="[[loading]]"
-@@ -91,7 +91,7 @@
+@@ -85,7 +85,7 @@
          position-target="[[inputElement]]"
          no-vertical-overlap
          restore-focus-node="[[inputElement]]"
@@ -89,22 +86,4 @@ Index: src/vaadin-combo-box-light.js
 +      ></vaadin24-combo-box-overlay>
      `;
    }
- 
-@@ -146,7 +146,7 @@
-         return input;
-       }
- 
--      // Support `<input>` in light DOM (e.g. `vaadin-text-field`)
-+      // Support `<input>` in light DOM (e.g. `vaadin24-text-field`)
-       const slottedInput = input.querySelector('input');
-       if (slottedInput) {
-         return slottedInput;
-@@ -172,7 +172,7 @@
- 
-     // Wait until the slotted input DOM is ready
-     afterNextRender(this, () => {
--      this._setInputElement(this.querySelector('vaadin-text-field,.input'));
-+      this._setInputElement(this.querySelector('vaadin24-text-field,.input'));
-       this._revertInputValue();
-     });
-   }
+ }

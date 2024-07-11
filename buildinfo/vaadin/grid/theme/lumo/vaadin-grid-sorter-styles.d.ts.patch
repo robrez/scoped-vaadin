@@ -1,0 +1,11 @@
+Index: theme/lumo/vaadin-grid-sorter-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-grid-sorter-styles.d.ts
++++ theme/lumo/vaadin-grid-sorter-styles.d.ts
+@@ -1,3 +1,3 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

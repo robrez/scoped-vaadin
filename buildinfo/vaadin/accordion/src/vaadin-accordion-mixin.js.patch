@@ -1,0 +1,38 @@
+Index: src/vaadin-accordion-mixin.js
+===================================================================
+--- src/vaadin-accordion-mixin.js
++++ src/vaadin-accordion-mixin.js
+@@ -1,11 +1,12 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import { SlotObserver } from '@vaadin/component-base/src/slot-observer.js';
++import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
+ 
+ /**
+  * A mixin providing common accordion functionality.
+@@ -31,7 +32,7 @@
+         },
+ 
+         /**
+-         * The list of `<vaadin-accordion-panel>` child elements.
++         * The list of `<vaadin24-accordion-panel>` child elements.
+          * It is populated from the elements passed to the light DOM,
+          * and updated dynamically when adding or removing panels.
+          * @type {!Array<!AccordionPanel>}
+@@ -108,7 +109,7 @@
+      * @protected
+      */
+     _filterItems(array) {
+-      return array.filter((el) => el instanceof customElements.get('vaadin-accordion-panel'));
++      return array.filter((el) => el instanceof internalCustomElements.get('vaadin24-accordion-panel'));
+     }
+ 
+     /** @private */

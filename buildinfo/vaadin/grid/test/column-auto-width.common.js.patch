@@ -53,7 +53,41 @@ Index: test/column-auto-width.common.js
            padding-right: 20px;
          }
        </style>
-@@ -228,9 +229,9 @@
+@@ -232,15 +233,15 @@
+     // Replace 'a' column with a new one
+     grid.removeChild(columns[0]);
+     grid.insertBefore(newColumn, columns[1]);
+-    columns = grid.querySelectorAll(`${tagName}, vaadin-grid-column`);
++    columns = grid.querySelectorAll(`${tagName}, vaadin24-grid-column`);
+     grid.items = testItems;
+ 
+     // Define the custom column element after a delay
+     await new Promise((resolve) => {
+       setTimeout(() => {
+-        customElements.define(
++        internalCustomElements.define(
+           tagName,
+-          class extends customElements.get('vaadin-grid-column') {
++          class extends internalCustomElements.get('vaadin24-grid-column') {
+             static is = tagName;
+           },
+         );
+@@ -254,12 +255,12 @@
+ 
+   describe('focusButtonMode column', () => {
+     beforeEach(async () => {
+-      const column = document.createElement('vaadin-grid-column');
++      const column = document.createElement('vaadin24-grid-column');
+       column.autoWidth = true;
+       column.path = 'b';
+       column._focusButtonMode = true;
+       grid.insertBefore(column, grid.firstElementChild);
+-      columns = grid.querySelectorAll('vaadin-grid-column');
++      columns = grid.querySelectorAll('vaadin24-grid-column');
+ 
+       await aTimeout(0);
+     });
+@@ -278,9 +279,9 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -66,7 +100,7 @@ Index: test/column-auto-width.common.js
      `);
  
      const data = [
-@@ -258,9 +259,9 @@
+@@ -308,9 +309,9 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -79,7 +113,7 @@ Index: test/column-auto-width.common.js
      `);
    });
  
-@@ -327,7 +328,7 @@
+@@ -377,7 +378,7 @@
    const num = (str) => parseInt(str, 10);
  
    function expectColumnsWidthToBeOk(grid, ws, delta = 5) {
@@ -88,7 +122,7 @@ Index: test/column-auto-width.common.js
  
      Array.from(columns).forEach((col, i) => {
        const columnWidth = num(col.width);
-@@ -345,23 +346,23 @@
+@@ -395,23 +396,23 @@
  
    it('should consider column group when calculating column width', () => {
      const grid = createGrid(`
@@ -123,7 +157,7 @@ Index: test/column-auto-width.common.js
      `);
  
      expectColumnsWidthToBeOk(grid, [217, 217], 20);
-@@ -372,30 +373,30 @@
+@@ -422,30 +423,30 @@
  
      const grid = createGrid(
        `
@@ -168,7 +202,7 @@ Index: test/column-auto-width.common.js
  
      expect(columnA.width).to.equal(columnA2.width);
      expect(columnB.width).to.equal(columnB2.width);
-@@ -403,53 +404,53 @@
+@@ -453,53 +454,53 @@
  
    it('should distribute the excess space to all columns according to their initial width', () => {
      const grid = createGrid(`
@@ -248,7 +282,7 @@ Index: test/column-auto-width.common.js
  
      columnGroup.footerRenderer = (root) => {
        const footer = document.createElement('footer');
-@@ -471,15 +472,15 @@
+@@ -521,15 +522,15 @@
  
    it('should consider vaadin-grid-column footer when calculating column width', () => {
      const grid = createGrid(`
@@ -271,7 +305,7 @@ Index: test/column-auto-width.common.js
  
      columnGroup.footerRenderer = (root) => {
        const footer = document.createElement('footer');
-@@ -501,12 +502,12 @@
+@@ -551,12 +552,12 @@
  
    it('should not error when there is no vaadin-grid-column-group', () => {
      const grid = createGrid(`
