@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/date-time-picker",
-  "version": "23.4.1-litcompat.0",
+  "version": "23.4.100",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -40,14 +40,14 @@
   ],
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/component-base": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/custom-field": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/date-picker": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/field-base": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/time-picker": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/vaadin-lumo-styles": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/vaadin-material-styles": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/vaadin-themable-mixin": "^23.4.1-litcompat.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.1-litcompat.0"
+    "@scoped-vaadin/component-base": "^23.4.100",
+    "@scoped-vaadin/custom-field": "^23.4.100",
+    "@scoped-vaadin/date-picker": "^23.4.100",
+    "@scoped-vaadin/field-base": "^23.4.100",
+    "@scoped-vaadin/time-picker": "^23.4.100",
+    "@scoped-vaadin/vaadin-lumo-styles": "^23.4.100",
+    "@scoped-vaadin/vaadin-material-styles": "^23.4.100",
+    "@scoped-vaadin/vaadin-themable-mixin": "^23.4.100",
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.100"
   }
 }

@@ -8,7 +8,7 @@ Index: web-types.lit.json
 -  "name": "@vaadin/avatar",
 -  "version": "23.4.1",
 +  "name": "@scoped-vaadin/avatar",
-+  "version": "23.4.1-litcompat.0",
++  "version": "23.4.100",
    "description-markup": "markdown",
    "framework": "lit",
    "framework-config": {

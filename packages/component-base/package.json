@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/component-base",
-  "version": "23.4.1-litcompat.0",
+  "version": "23.4.100",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -36,6 +36,6 @@
     "@vaadin/vaadin-development-mode-detector": "^2.0.0",
     "@vaadin/vaadin-usage-statistics": "^2.1.0",
     "lit": "^2.0.0 || ^3.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.1-litcompat.0"
+    "@scoped-vaadin/internal-custom-elements-registry": "^23.4.100"
   }
 }
