@@ -2,14 +2,16 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,6 +1,6 @@
+@@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/text-field",
+-  "version": "23.4.1",
 +  "name": "@scoped-vaadin/text-field",
-   "version": "23.4.1",
++  "version": "23.4.1-litcompat.0",
    "description-markup": "markdown",
    "framework": "lit",
+   "framework-config": {
 @@ -15,8 +15,8 @@
      "html": {
        "elements": [

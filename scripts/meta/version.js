@@ -1,5 +1,5 @@
 export const versionMeta = {
-  version: "23.4.1",
+  version: "23.4.1-litcompat.0",
   selector: "^",
   repository: {
     type: "git",

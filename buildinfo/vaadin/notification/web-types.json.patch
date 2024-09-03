@@ -6,8 +6,9 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/notification",
+-  "version": "23.4.1",
 +  "name": "@scoped-vaadin/notification",
-   "version": "23.4.1",
++  "version": "23.4.1-litcompat.0",
    "description-markup": "markdown",
    "contributions": {
      "html": {
