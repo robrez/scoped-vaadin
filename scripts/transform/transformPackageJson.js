@@ -30,6 +30,10 @@ export function transformPackageJson(content, filePath) {
     newDependencies[newDepName] = newDepVersion;
   });
 
+  if (newDependencies["lit"] && newDependencies["lit"] === "^2.0.0") {
+    newDependencies["lit"] = "^2.0.0 || ^3.0.0";
+  }
+
   const additionalDependencies = {
     "@scoped-vaadin/internal-custom-elements-registry": versionMetaSelector,
   };

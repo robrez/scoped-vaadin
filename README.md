@@ -77,10 +77,11 @@ This repository is not mature. Ideally, versions here would align 1:1 w/ the und
 
 Below, you can find which underlying vaadin version is used
 
-| local version | vaadin version |
-| ------------- | -------------- |
-| `v23.4.1`     | `23.4.1`       |
-| `v23.0.1`     | `~23.3.8`      |
-| `v23.0.0`     | `~23.3.8`      |
-| `v0.2.0`      | `~23.3.8`      |
-| `v0.1.0`      | `^23.3.7`      |
+| local version | vaadin version                                                 |
+| ------------- | -------------------------------------------------------------- |
+| `v23.4.100`   | `23.4.1` - note: compatibilit expiriment to allow lit v2 or v3 |
+| `v23.4.1`     | `23.4.1`                                                       |
+| `v23.0.1`     | `~23.3.8`                                                      |
+| `v23.0.0`     | `~23.3.8`                                                      |
+| `v0.2.0`      | `~23.3.8`                                                      |
+| `v0.1.0`      | `^23.3.7`                                                      |
