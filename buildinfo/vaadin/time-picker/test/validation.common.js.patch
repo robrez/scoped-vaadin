@@ -1,0 +1,104 @@
+Index: test/validation.common.js
+===================================================================
+--- test/validation.common.js
++++ test/validation.common.js
+@@ -1,15 +1,16 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { enter, fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import { setInputValue } from './helpers.js';
+ 
+-class TimePicker20Element extends customElements.get('vaadin-time-picker') {
++class TimePicker20Element extends internalCustomElements.get('vaadin24-time-picker') {
+   checkValidity() {
+     return this.value === '20:00';
+   }
+ }
+ 
+-customElements.define('vaadin-time-picker-20', TimePicker20Element);
++internalCustomElements.define('vaadin24-time-picker-20', TimePicker20Element);
+ 
+ describe('validation', () => {
+   let timePicker;
+@@ -18,7 +19,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      timePicker = document.createElement('vaadin-time-picker');
++      timePicker = document.createElement('vaadin24-time-picker');
+       validateSpy = sinon.spy(timePicker, 'validate');
+     });
+ 
+@@ -70,7 +71,7 @@
+     let validateSpy, changeSpy, valueChangedSpy;
+ 
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker></vaadin24-time-picker>`);
+       await nextRender();
+       validateSpy = sinon.spy(timePicker, 'validate');
+       changeSpy = sinon.spy();
+@@ -133,7 +134,7 @@
+ 
+   describe('input value', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker></vaadin24-time-picker>`);
+       await nextRender();
+     });
+ 
+@@ -159,7 +160,7 @@
+ 
+   describe('required', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker required></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker required></vaadin24-time-picker>`);
+       await nextRender();
+     });
+ 
+@@ -175,7 +176,7 @@
+ 
+   describe('min', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker min="10:00"></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker min="10:00"></vaadin24-time-picker>`);
+       await nextRender();
+     });
+ 
+@@ -201,7 +202,7 @@
+ 
+   describe('max', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker max="10:00"></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker max="10:00"></vaadin24-time-picker>`);
+       await nextRender();
+     });
+ 
+@@ -227,7 +228,7 @@
+ 
+   describe('pattern', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker pattern="^1\\d:.*"></vaadin-time-picker>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker pattern="^1\\d:.*"></vaadin24-time-picker>`);
+       await nextRender();
+     });
+ 
+@@ -248,7 +249,7 @@
+ 
+   describe('custom validator', () => {
+     beforeEach(async () => {
+-      timePicker = fixtureSync(`<vaadin-time-picker-20></vaadin-time-picker-20>`);
++      timePicker = fixtureSync(`<vaadin24-time-picker-20></vaadin24-time-picker-20>`);
+       await nextRender();
+     });
+ 
+@@ -267,7 +268,7 @@
+ 
+   describe('incorrect value', () => {
+     it('should not throw error when setting incorrect value using attribute', () => {
+-      expect(() => fixtureSync(`<vaadin-time-picker value="1500"></vaadin-time-picker>`)).to.not.throw(Error);
++      expect(() => fixtureSync(`<vaadin24-time-picker value="1500"></vaadin24-time-picker>`)).to.not.throw(Error);
+     });
+   });
+ });

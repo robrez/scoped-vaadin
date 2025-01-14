@@ -4,7 +4,7 @@ Index: test/post-finalize-styles.common.ts
 +++ test/post-finalize-styles.common.ts
 @@ -1,12 +1,13 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
  import { css, registerStyles, ThemableMixin } from '../vaadin-themable-mixin.js';

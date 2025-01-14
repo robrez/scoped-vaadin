@@ -19,7 +19,7 @@ Index: src/vaadin-accordion-panel-mixin.js
  
  /**
   * A mixin providing common accordion panel functionality.
-@@ -47,7 +47,7 @@
+@@ -43,7 +43,7 @@
      constructor() {
        super();
  

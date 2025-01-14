@@ -33,7 +33,7 @@ Index: src/vaadin-horizontal-layout.js
   *
   * Theme variation | Description
   * ---|---
-@@ -65,7 +65,7 @@
+@@ -66,7 +66,7 @@
    }
  
    static get is() {

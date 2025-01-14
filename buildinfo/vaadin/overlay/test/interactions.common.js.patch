@@ -2,7 +2,7 @@ Index: test/interactions.common.js
 ===================================================================
 --- test/interactions.common.js
 +++ test/interactions.common.js
-@@ -67,7 +67,7 @@
+@@ -66,7 +66,7 @@
  
      beforeEach(async () => {
        parent = document.createElement('div');

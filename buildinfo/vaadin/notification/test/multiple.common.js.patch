@@ -1,0 +1,69 @@
+Index: test/multiple.common.js
+===================================================================
+--- test/multiple.common.js
++++ test/multiple.common.js
+@@ -8,25 +8,25 @@
+   beforeEach(async () => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-notification opened position="top-stretch"></vaadin-notification>
+-        <vaadin-notification opened position="top-start" suffix=" 1"></vaadin-notification>
+-        <vaadin-notification opened position="top-center" suffix=" 1"></vaadin-notification>
+-        <vaadin-notification opened position="top-end" suffix=" 1"></vaadin-notification>
+-        <vaadin-notification opened position="middle"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-start"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-center"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-end"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-stretch"></vaadin-notification>
++        <vaadin24-notification opened position="top-stretch"></vaadin24-notification>
++        <vaadin24-notification opened position="top-start" suffix=" 1"></vaadin24-notification>
++        <vaadin24-notification opened position="top-center" suffix=" 1"></vaadin24-notification>
++        <vaadin24-notification opened position="top-end" suffix=" 1"></vaadin24-notification>
++        <vaadin24-notification opened position="middle"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-start"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-center"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-end"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-stretch"></vaadin24-notification>
+ 
+-        <vaadin-notification opened position="top-stretch"></vaadin-notification>
+-        <vaadin-notification opened position="top-start" suffix=" 2"></vaadin-notification>
+-        <vaadin-notification opened position="top-center" suffix=" 2"></vaadin-notification>
+-        <vaadin-notification opened position="top-end" suffix=" 2"></vaadin-notification>
+-        <vaadin-notification opened position="middle"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-start"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-center"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-end"></vaadin-notification>
+-        <vaadin-notification opened position="bottom-stretch"></vaadin-notification>
++        <vaadin24-notification opened position="top-stretch"></vaadin24-notification>
++        <vaadin24-notification opened position="top-start" suffix=" 2"></vaadin24-notification>
++        <vaadin24-notification opened position="top-center" suffix=" 2"></vaadin24-notification>
++        <vaadin24-notification opened position="top-end" suffix=" 2"></vaadin24-notification>
++        <vaadin24-notification opened position="middle"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-start"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-center"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-end"></vaadin24-notification>
++        <vaadin24-notification opened position="bottom-stretch"></vaadin24-notification>
+       </div>
+     `);
+     notifications = Array.from(wrapper.children);
+@@ -53,9 +53,9 @@
+     delete notifications[0].constructor._container;
+   });
+ 
+-  describe('vaadin-notification-container', () => {
++  describe('vaadin24-notification-container', () => {
+     it('should be only one instance of vaadin-notification-container in the dom', () => {
+-      expect(document.body.querySelectorAll('vaadin-notification-container').length).to.be.equal(1);
++      expect(document.body.querySelectorAll('vaadin24-notification-container').length).to.be.equal(1);
+     });
+ 
+     it('container should be a singleton', () => {
+@@ -118,7 +118,7 @@
+ 
+     it('should stack top notifications on top of each other', () => {
+       ['top-start', 'top-center', 'top-end'].forEach((regionName) => {
+-        const notifications = Array.from(container.querySelectorAll(`vaadin-notification-card[slot="${regionName}"]`));
++        const notifications = Array.from(container.querySelectorAll(`vaadin24-notification-card[slot="${regionName}"]`));
+         expect(notifications[0].offsetTop).to.be.below(notifications[1].offsetTop);
+         expect(notifications[0].innerText.trim()).to.be.equal('Notification 2');
+         expect(notifications[1].innerText.trim()).to.be.equal('Notification 1');

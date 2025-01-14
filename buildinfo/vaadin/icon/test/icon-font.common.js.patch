@@ -2,16 +2,16 @@ Index: test/icon-font.common.js
 ===================================================================
 --- test/icon-font.common.js
 +++ test/icon-font.common.js
-@@ -39,7 +39,7 @@
+@@ -16,7 +16,7 @@
      let icon;
  
      beforeEach(async () => {
 -      icon = fixtureSync('<vaadin-icon icon-class="my-icon-font icon-before"></vaadin-icon>');
 +      icon = fixtureSync('<vaadin24-icon icon-class="my-icon-font icon-before"></vaadin24-icon>');
-       await onceResized(icon);
+       await nextResize(icon);
      });
  
-@@ -84,21 +84,21 @@
+@@ -71,21 +71,21 @@
      let icon;
  
      it('should add the icon class to element class list', async () => {
@@ -36,7 +36,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.iconClass = 'my-icon-font icon-after';
        expect(icon.classList.contains('icon-before')).to.be.false;
-@@ -106,7 +106,7 @@
+@@ -93,7 +93,7 @@
      });
  
      it('should remove all icon classes', async () => {
@@ -45,7 +45,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.iconClass = '';
        expect(icon.classList.contains('my-icon-font')).to.be.false;
-@@ -115,7 +115,7 @@
+@@ -102,7 +102,7 @@
      });
  
      it('should restore the icon class to element class list', async () => {
@@ -54,7 +54,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.className = 'foo';
        expect(icon.classList.contains('my-icon-font')).to.be.true;
-@@ -124,7 +124,7 @@
+@@ -111,7 +111,7 @@
      });
  
      it('should restore the missing icon class to element class list', async () => {
@@ -63,7 +63,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.className = 'my-icon-font';
        expect(icon.classList.contains('my-icon-font')).to.be.true;
-@@ -132,7 +132,7 @@
+@@ -119,7 +119,7 @@
      });
  
      it('should restore the removed icon class to element class list', async () => {
@@ -72,7 +72,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.classList.remove('my-icon-font');
        expect(icon.classList.contains('my-icon-font')).to.be.true;
-@@ -140,28 +140,28 @@
+@@ -127,28 +127,28 @@
      });
  
      it('should reflect icon class as an attribute', async () => {
@@ -105,7 +105,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.iconClass = 'my-icon-font icon-before';
        expect(icon.icon).to.equal('foo:bar');
-@@ -172,21 +172,21 @@
+@@ -159,21 +159,21 @@
      let icon;
  
      it('should reflect unprefixed char as font-icon-content attribute', async () => {
@@ -130,7 +130,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.char = 'e900';
        icon.char = null;
-@@ -194,7 +194,7 @@
+@@ -181,7 +181,7 @@
      });
  
      it('should add icon attribute if char is set', async () => {
@@ -139,7 +139,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.char = '\ue900';
        icon.style.fontFamily = 'My icons';
-@@ -202,7 +202,7 @@
+@@ -189,7 +189,7 @@
      });
  
      it('should not add icon attribute if char is not set', async () => {
@@ -148,7 +148,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.char = null;
        icon.style.fontFamily = 'My icons';
-@@ -210,7 +210,7 @@
+@@ -197,7 +197,7 @@
      });
  
      it('should not override existing icon', async () => {
@@ -157,7 +157,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.char = '\ue900';
        icon.style.fontFamily = 'My icons';
-@@ -222,14 +222,14 @@
+@@ -209,14 +209,14 @@
      let icon;
  
      it('should reflect ligature as font-icon-content attribute', async () => {
@@ -174,7 +174,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.ligature = 'foo';
        icon.ligature = null;
-@@ -237,7 +237,7 @@
+@@ -224,7 +224,7 @@
      });
  
      it('should add icon attribute if ligature is set', async () => {
@@ -183,7 +183,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.ligature = '\ue900';
        icon.style.fontFamily = 'My icons';
-@@ -245,7 +245,7 @@
+@@ -232,7 +232,7 @@
      });
  
      it('should not add icon attribute if ligature is not set', async () => {
@@ -192,7 +192,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.ligature = null;
        icon.style.fontFamily = 'My icons';
-@@ -253,7 +253,7 @@
+@@ -240,7 +240,7 @@
      });
  
      it('should not override existing icon', async () => {
@@ -201,7 +201,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.ligature = 'foo';
        icon.style.fontFamily = 'My icons';
-@@ -265,7 +265,7 @@
+@@ -252,7 +252,7 @@
      let icon;
  
      it('should set font-family for the icon element', async () => {
@@ -210,7 +210,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.fontFamily = 'My icons';
        const fontIconStyle = getComputedStyle(icon, ':before');
-@@ -273,7 +273,7 @@
+@@ -260,7 +260,7 @@
      });
  
      it('should set font-family with numbers for the icon element', async () => {
@@ -219,7 +219,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.fontFamily = 'My icons 6';
        const fontIconStyle = getComputedStyle(icon, ':before');
-@@ -304,32 +304,32 @@
+@@ -291,32 +291,32 @@
      });
  
      fallBackIt('should have the custom property (iconClass)', async () => {
@@ -257,7 +257,7 @@ Index: test/icon-font.common.js
        await nextFrame();
        icon.style.width = '100px';
        icon.style.height = '100px';
-@@ -338,7 +338,7 @@
+@@ -325,7 +325,7 @@
      });
  
      fallBackIt('should not update the custom property', async () => {

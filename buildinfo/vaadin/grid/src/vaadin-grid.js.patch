@@ -107,7 +107,7 @@ Index: src/vaadin-grid.js
   * to be displayed.
   *
   * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
-@@ -286,7 +286,7 @@
+@@ -298,7 +298,7 @@
    }
  
    static get is() {

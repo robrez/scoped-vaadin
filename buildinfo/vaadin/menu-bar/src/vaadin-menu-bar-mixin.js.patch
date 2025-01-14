@@ -8,14 +8,14 @@ Index: src/vaadin-menu-bar-mixin.js
   */
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
 -import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
--import { isElementFocused, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { isElementFocused, isElementHidden, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 -import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
 +import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
 +import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
-+import { isElementFocused, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { isElementFocused, isElementHidden, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
@@ -44,7 +44,7 @@ Index: src/vaadin-menu-bar-mixin.js
           * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
           * @property {boolean} checked - If true, the item shows a checkmark next to it.
           * @property {SubMenuItem[]} children - Array of child submenu items.
-@@ -221,12 +221,12 @@
+@@ -231,12 +231,12 @@
       * @protected
       */
      get _buttons() {
@@ -59,7 +59,7 @@ Index: src/vaadin-menu-bar-mixin.js
      }
  
      /** @protected */
-@@ -235,7 +235,7 @@
+@@ -245,7 +245,7 @@
  
        this.setAttribute('role', 'menubar');
  
@@ -68,7 +68,7 @@ Index: src/vaadin-menu-bar-mixin.js
          initializer: (btn) => {
            btn.setAttribute('hidden', '');
  
-@@ -516,7 +516,7 @@
+@@ -542,7 +542,7 @@
  
      /** @protected */
      _initButton(item) {
@@ -77,7 +77,7 @@ Index: src/vaadin-menu-bar-mixin.js
  
        const itemCopy = { ...item };
        button.item = itemCopy;
-@@ -578,10 +578,10 @@
+@@ -604,10 +604,10 @@
  
        const isElement = itemComponent instanceof HTMLElement;
        // Use existing item component, if any
@@ -90,7 +90,7 @@ Index: src/vaadin-menu-bar-mixin.js
          component.appendChild(isElement ? itemComponent : document.createElement(itemComponent));
        }
        if (item.text) {
-@@ -703,7 +703,7 @@
+@@ -733,7 +733,7 @@
  
      /** @private */
      _getButtonFromEvent(e) {

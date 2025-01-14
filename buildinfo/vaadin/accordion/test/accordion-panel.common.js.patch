@@ -44,7 +44,7 @@ Index: test/accordion-panel.common.js
        `,
      };
  
-@@ -156,13 +156,13 @@
+@@ -166,13 +166,13 @@
  
      beforeEach(async () => {
        panel = fixtureSync(`

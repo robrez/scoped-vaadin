@@ -5,9 +5,9 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/polymer-legacy-adapter",
--  "version": "24.4.2",
+-  "version": "24.6.2",
 +  "name": "@scoped-vaadin/polymer-legacy-adapter",
-+  "version": "24.4.2-alpha.1",
++  "version": "24.6.2-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -38,20 +38,20 @@ Index: package.json
    ],
    "dependencies": {
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/vaadin-themable-mixin": "~24.4.2",
+-    "@vaadin/vaadin-themable-mixin": "~24.6.2",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@esm-bundle/chai": "^4.3.4",
--    "@vaadin/checkbox": "~24.4.2",
--    "@vaadin/grid": "~24.4.2",
--    "@vaadin/grid-pro": "~24.4.2",
--    "@vaadin/testing-helpers": "^0.6.0",
--    "sinon": "^13.0.2"
+-    "@vaadin/chai-plugins": "~24.6.2",
+-    "@vaadin/checkbox": "~24.6.2",
+-    "@vaadin/grid": "~24.6.2",
+-    "@vaadin/grid-pro": "~24.6.2",
+-    "@vaadin/testing-helpers": "^1.1.0",
+-    "sinon": "^18.0.0"
 -  },
--  "gitHead": "f280274de1bc894ad4e0426432619999c0cf556d"
-+    "@scoped-vaadin/vaadin-themable-mixin": "^24.4.2-alpha.1",
+-  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.6.2-alpha.1",
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.4.2-alpha.1"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
 +  }
  }

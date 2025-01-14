@@ -1,0 +1,29 @@
+Index: src/vaadin-lit-email-field.js
+===================================================================
+--- src/vaadin-lit-email-field.js
++++ src/vaadin-lit-email-field.js
+@@ -3,12 +3,12 @@
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { TextField } from '@vaadin/text-field/src/vaadin-lit-text-field.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { TextField } from '@scoped-vaadin/text-field/src/vaadin-lit-text-field.js';
+ import { emailFieldStyles } from './vaadin-email-field-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-email-field>` web component.
++ * LitElement based version of `<vaadin24-email-field>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -18,7 +18,7 @@
+  */
+ export class EmailField extends TextField {
+   static get is() {
+-    return 'vaadin-email-field';
++    return 'vaadin24-email-field';
+   }
+ 
+   static get styles() {

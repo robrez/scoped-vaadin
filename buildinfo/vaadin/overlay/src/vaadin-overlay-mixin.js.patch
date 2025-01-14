@@ -11,7 +11,7 @@ Index: src/vaadin-overlay-mixin.js
  import { OverlayFocusMixin } from './vaadin-overlay-focus-mixin.js';
  import { OverlayStackMixin } from './vaadin-overlay-stack-mixin.js';
  
-@@ -114,8 +114,8 @@
+@@ -121,8 +121,8 @@
  
        // Need to add dummy click listeners to this and the backdrop or else
        // the document click event listener (_outsideClickListener) may never

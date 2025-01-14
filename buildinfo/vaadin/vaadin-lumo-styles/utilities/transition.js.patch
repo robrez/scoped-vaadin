@@ -10,4 +10,4 @@ Index: utilities/transition.js
 +import { css } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';
  
  export const transition = css`
-   .transition {
+   .transition-none {

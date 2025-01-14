@@ -4,7 +4,7 @@ Index: test/accordion.common.js
 +++ test/accordion.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import {
    arrowDownKeyDown,
 @@ -11,7 +12,7 @@

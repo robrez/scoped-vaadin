@@ -16,15 +16,6 @@ Index: test/lit-renderer-directives.common.js
  }
  
  describe('lit renderer directives', () => {
-@@ -24,7 +24,7 @@
-     describe('basic', () => {
-       beforeEach(async () => {
-         select = await renderOpenedSelect(container, { content: 'Content' });
--        overlay = select.shadowRoot.querySelector('vaadin-select-overlay');
-+        overlay = select.shadowRoot.querySelector('vaadin24-select-overlay');
-       });
- 
-       it('should set `renderer` property when the directive is attached', () => {
 @@ -51,9 +51,9 @@
  
        beforeEach(async () => {

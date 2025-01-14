@@ -4,7 +4,7 @@ Index: test/data-provider.common.js
 +++ test/data-provider.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 @@ -27,9 +28,9 @@

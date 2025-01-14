@@ -69,7 +69,7 @@ Index: src/vaadin-lit-combo-box.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -100,7 +100,7 @@
+@@ -100,14 +100,14 @@
          </div>
        </div>
  
@@ -78,9 +78,8 @@ Index: src/vaadin-lit-combo-box.js
          id="overlay"
          .opened="${this._overlayOpened}"
          ?loading="${this.loading}"
-@@ -108,7 +108,7 @@
+         theme="${ifDefined(this._theme)}"
          .positionTarget="${this._positionTarget}"
-         .restoreFocusNode="${this.inputElement}"
          no-vertical-overlap
 -      ></vaadin-combo-box-overlay>
 +      ></vaadin24-combo-box-overlay>

@@ -1,0 +1,8 @@
+Index: theme/lumo/vaadin-lit-integer-field.d.ts
+===================================================================
+--- theme/lumo/vaadin-lit-integer-field.d.ts
++++ theme/lumo/vaadin-lit-integer-field.d.ts
+@@ -1,2 +1,2 @@
+-import '@vaadin/number-field/theme/lumo/vaadin-lit-number-field.js';
++import '@scoped-vaadin/number-field/theme/lumo/vaadin-lit-number-field.js';
+ import '../../src/vaadin-lit-integer-field.js';

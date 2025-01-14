@@ -2,28 +2,18 @@ Index: src/vaadin-date-time-picker.d.ts
 ===================================================================
 --- src/vaadin-date-time-picker.d.ts
 +++ src/vaadin-date-time-picker.d.ts
-@@ -3,13 +3,13 @@
+@@ -3,8 +3,8 @@
   * Copyright (c) 2019 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
--import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import type { DatePickerI18n } from '@vaadin/date-picker/src/vaadin-date-picker.js';
--import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
--import type { TimePickerI18n } from '@vaadin/time-picker/src/vaadin-time-picker.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
-+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import type { DatePickerI18n } from '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
-+import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
-+import type { TimePickerI18n } from '@scoped-vaadin/time-picker/src/vaadin-time-picker.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DateTimePickerMixin } from './vaadin-date-time-picker-mixin.js';
  
- export interface DateTimePickerI18n extends DatePickerI18n, TimePickerI18n {
-   /**
-@@ -62,10 +62,10 @@
+ export { DateTimePickerI18n } from './vaadin-date-time-picker-mixin.js';
+@@ -44,10 +44,10 @@
  }
  
  /**
@@ -36,7 +26,7 @@ Index: src/vaadin-date-time-picker.d.ts
   * ```
   *
   * ```js
-@@ -101,12 +101,12 @@
+@@ -83,12 +83,12 @@
   *
   * ### Internal components
   *
@@ -53,30 +43,7 @@ Index: src/vaadin-date-time-picker.d.ts
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -220,17 +220,17 @@
-    * `i18n` object or just the properties you want to modify.
-    *
-    * The object is a combination of the i18n properties supported by
--   * [`<vaadin-date-picker>`](#/elements/vaadin-date-picker) and
--   * [`<vaadin-time-picker>`](#/elements/vaadin-time-picker).
-+   * [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker) and
-+   * [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker).
-    */
-   i18n: DateTimePickerI18n;
- 
-   /**
-    * A space-delimited list of CSS class names to set on the overlay elements
--   * of the internal components controlled by the `<vaadin-date-time-picker>`:
-+   * of the internal components controlled by the `<vaadin24-date-time-picker>`:
-    *
--   * - [`<vaadin-date-picker>`](#/elements/vaadin-date-picker#property-overlayClass)
--   * - [`<vaadin-time-picker>`](#/elements/vaadin-time-picker#property-overlayClass)
-+   * - [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker#property-overlayClass)
-+   * - [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker#property-overlayClass)
-    *
-    * @attr {string} overlay-class
-    */
-@@ -251,7 +251,7 @@
+@@ -114,7 +114,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

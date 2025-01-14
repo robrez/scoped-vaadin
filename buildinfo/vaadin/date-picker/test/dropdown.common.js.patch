@@ -2,12 +2,12 @@ Index: test/dropdown.common.js
 ===================================================================
 --- test/dropdown.common.js
 +++ test/dropdown.common.js
-@@ -18,7 +18,7 @@
-   let datePicker, input, overlay;
- 
+@@ -10,7 +10,7 @@
    beforeEach(async () => {
--    datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
-+    datePicker = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
-     await nextRender();
-     input = datePicker.inputElement;
-     overlay = datePicker.$.overlay;
+     datePicker = fixtureSync(
+       `<div>
+-        <vaadin-date-picker></vaadin-date-picker>
++        <vaadin24-date-picker></vaadin24-date-picker>
+         <input id="last-global-focusable" />
+       </div>`,
+     ).firstElementChild;

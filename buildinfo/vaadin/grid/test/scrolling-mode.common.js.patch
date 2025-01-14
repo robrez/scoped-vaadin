@@ -18,7 +18,7 @@ Index: test/scrolling-mode.common.js
        root.textContent = model.index;
      };
      grid.dataProvider = infiniteDataProvider;
-@@ -151,11 +151,11 @@
+@@ -147,11 +147,11 @@
  
    beforeEach(() => {
      grid = fixtureSync(`
@@ -34,7 +34,7 @@ Index: test/scrolling-mode.common.js
        root.textContent = model.index;
      };
      flushGrid(grid);
-@@ -173,11 +173,11 @@
+@@ -169,11 +169,11 @@
      document.documentElement.scrollTop = 10000;
      const scrollTop = document.documentElement.scrollTop;
      const grid = fixtureSync(`

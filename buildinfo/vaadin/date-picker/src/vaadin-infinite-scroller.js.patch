@@ -2,16 +2,14 @@ Index: src/vaadin-infinite-scroller.js
 ===================================================================
 --- src/vaadin-infinite-scroller.js
 +++ src/vaadin-infinite-scroller.js
-@@ -3,10 +3,10 @@
-  * Copyright (c) 2016 - 2024 Vaadin Ltd.
+@@ -4,9 +4,9 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+ import { flush } from '@polymer/polymer/lib/utils/flush.js';
 -import { timeOut } from '@vaadin/component-base/src/async.js';
--import { isFirefox } from '@vaadin/component-base/src/browser-utils.js';
 -import { Debouncer } from '@vaadin/component-base/src/debounce.js';
 -import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
 +import { timeOut } from '@scoped-vaadin/component-base/src/async.js';
-+import { isFirefox } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
 +import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
  

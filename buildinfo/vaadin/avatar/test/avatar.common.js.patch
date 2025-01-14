@@ -4,7 +4,7 @@ Index: test/avatar.common.js
 +++ test/avatar.common.js
 @@ -1,14 +1,15 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, focusin, focusout, mousedown, nextUpdate, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import '@vaadin/tooltip/vaadin-tooltip.js';
@@ -49,8 +49,8 @@ Index: test/avatar.common.js
      });
  
      it('should not override custom role set on the avatar', () => {
--      const custom = fixtureSync('<vaadin-avatar role="image"></vaadin-avatar>');
-+      const custom = fixtureSync('<vaadin24-avatar role="image"></vaadin24-avatar>');
-       expect(custom.getAttribute('role')).to.equal('image');
+-      const custom = fixtureSync('<vaadin-avatar role="button"></vaadin-avatar>');
++      const custom = fixtureSync('<vaadin24-avatar role="button"></vaadin24-avatar>');
+       expect(custom.getAttribute('role')).to.equal('button');
      });
-   });
+ 

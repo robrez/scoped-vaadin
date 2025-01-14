@@ -1,9 +1,0 @@
-Index: theme/lumo/vaadin-date-time-picker-styles.d.ts
-===================================================================
---- theme/lumo/vaadin-date-time-picker-styles.d.ts
-+++ theme/lumo/vaadin-date-time-picker-styles.d.ts
-@@ -1,2 +1,2 @@
--import '@vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
--import '@vaadin/time-picker/theme/lumo/vaadin-time-picker.js';
-+import '@scoped-vaadin/date-picker/theme/lumo/vaadin-date-picker.js';
-+import '@scoped-vaadin/time-picker/theme/lumo/vaadin-time-picker.js';

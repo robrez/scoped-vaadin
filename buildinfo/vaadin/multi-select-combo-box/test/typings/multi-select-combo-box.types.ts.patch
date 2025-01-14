@@ -43,9 +43,9 @@ Index: test/typings/multi-select-combo-box.types.ts
 +import type { ValidateMixinClass } from '@scoped-vaadin/field-base/src/validate-mixin.js';
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin';
  import type { MultiSelectComboBoxItem } from '../../src/vaadin-multi-select-combo-box-item.js';
+ import type { MultiSelectComboBoxMixinClass } from '../../src/vaadin-multi-select-combo-box-mixin.js';
  import type {
-   MultiSelectComboBox,
-@@ -39,7 +39,7 @@
+@@ -40,7 +40,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
@@ -54,7 +54,7 @@ Index: test/typings/multi-select-combo-box.types.ts
  assertType<MultiSelectComboBox>(genericComboBox);
  
  const narrowedComboBox = genericComboBox as MultiSelectComboBox<TestComboBoxItem>;
-@@ -126,7 +126,7 @@
+@@ -129,7 +129,7 @@
  assertType<ThemableMixinClass>(narrowedComboBox);
  
  // Item

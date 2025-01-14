@@ -4,7 +4,7 @@ Index: test/focus-trap-controller.test.js
 +++ test/focus-trap-controller.test.js
 @@ -1,12 +1,13 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';

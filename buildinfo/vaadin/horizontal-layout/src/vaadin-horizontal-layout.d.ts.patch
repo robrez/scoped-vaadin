@@ -31,7 +31,7 @@ Index: src/vaadin-horizontal-layout.d.ts
   *
   * Theme variation | Description
   * ---|---
-@@ -30,7 +30,7 @@
+@@ -31,7 +31,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

@@ -2,7 +2,7 @@ Index: src/vaadin-upload-mixin.d.ts
 ===================================================================
 --- src/vaadin-upload-mixin.d.ts
 +++ src/vaadin-upload-mixin.d.ts
-@@ -92,7 +92,7 @@
+@@ -97,7 +97,7 @@
     * Key-Value map to send to the server. If you set this property as an
     * attribute, use a valid JSON string, for example:
     * ```

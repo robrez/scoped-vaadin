@@ -2,22 +2,19 @@ Index: src/vaadin-lit-login-overlay-wrapper.js
 ===================================================================
 --- src/vaadin-lit-login-overlay-wrapper.js
 +++ src/vaadin-lit-login-overlay-wrapper.js
-@@ -4,23 +4,23 @@
+@@ -4,22 +4,22 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { html, LitElement } from 'lit';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
--import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
--import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
 -import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
-+import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
-+import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
 +import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { LoginOverlayWrapperMixin } from './vaadin-login-overlay-wrapper-mixin.js';
  import { loginOverlayWrapperStyles } from './vaadin-login-overlay-wrapper-styles.js';
  
  /**
@@ -27,7 +24,7 @@ Index: src/vaadin-lit-login-overlay-wrapper.js
   * @extends HTMLElement
   * @private
   */
- class LoginOverlayWrapper extends OverlayMixin(DirMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+ class LoginOverlayWrapper extends LoginOverlayWrapperMixin(ThemableMixin(PolylitMixin(LitElement))) {
    static get is() {
 -    return 'vaadin-login-overlay-wrapper';
 +    return 'vaadin24-login-overlay-wrapper';

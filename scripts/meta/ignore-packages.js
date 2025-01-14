@@ -14,6 +14,7 @@ export const ignorePackages = [
   // "@vaadin/component-base",
   // "@vaadin/field-base",
   // "@vaadin/lit-renderer",
+  "@vaadin/chai-plugins",
   "@vaadin/vaadin-development-mode-detector",
   // "@vaadin/vaadin-list-mixin",
   // "@vaadin/vaadin-themable-mixin",

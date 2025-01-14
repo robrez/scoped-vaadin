@@ -1,0 +1,29 @@
+Index: test/data-provider-filtering.common.js
+===================================================================
+--- test/data-provider-filtering.common.js
++++ test/data-provider-filtering.common.js
+@@ -4,17 +4,17 @@
+ import { setInputValue } from './helpers.js';
+ 
+ const TEMPLATES = {
+-  'vaadin-combo-box': `
+-    <vaadin-combo-box></vaadin-combo-box>
++  'vaadin24-combo-box': `
++    <vaadin24-combo-box></vaadin24-combo-box>
+   `,
+-  'vaadin-combo-box-light': `
+-    <vaadin-combo-box-light>
+-      <vaadin-text-field></vaadin-text-field>
+-    </vaadin-combo-box-light>
++  'vaadin24-combo-box-light': `
++    <vaadin24-combo-box-light>
++      <vaadin24-text-field></vaadin24-text-field>
++    </vaadin24-combo-box-light>
+   `,
+ };
+ 
+-['vaadin-combo-box', 'vaadin-combo-box-light'].forEach((tag) => {
++['vaadin24-combo-box', 'vaadin24-combo-box-light'].forEach((tag) => {
+   describe(`data provider filtering - ${tag}`, () => {
+     let comboBox;
+ 

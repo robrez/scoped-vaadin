@@ -1,0 +1,32 @@
+Index: src/vaadin-lit-multi-select-combo-box-scroller.js
+===================================================================
+--- src/vaadin-lit-multi-select-combo-box-scroller.js
++++ src/vaadin-lit-multi-select-combo-box-scroller.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { ComboBoxPlaceholder } from '@vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
+-import { ComboBoxScrollerMixin } from '@vaadin/combo-box/src/vaadin-combo-box-scroller-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ComboBoxPlaceholder } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-placeholder.js';
++import { ComboBoxScrollerMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-scroller-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-multi-select-combo-box>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-multi-select-combo-box>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -19,7 +19,7 @@
+  */
+ export class MultiSelectComboBoxScroller extends ComboBoxScrollerMixin(PolylitMixin(LitElement)) {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-scroller';
++    return 'vaadin24-multi-select-combo-box-scroller';
+   }
+ 
+   static get styles() {

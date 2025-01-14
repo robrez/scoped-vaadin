@@ -2,27 +2,21 @@ Index: src/vaadin-avatar-group.d.ts
 ===================================================================
 --- src/vaadin-avatar-group.d.ts
 +++ src/vaadin-avatar-group.d.ts
-@@ -3,12 +3,12 @@
+@@ -3,27 +3,27 @@
   * Copyright (c) 2020 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { AvatarI18n } from '@vaadin/avatar/src/vaadin-avatar.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
--import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { AvatarI18n } from '@scoped-vaadin/avatar/src/vaadin-avatar.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
-+import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { AvatarGroupI18n, AvatarGroupItem, AvatarGroupMixin } from './vaadin-avatar-group-mixin.js';
  
- export { AvatarI18n };
- 
-@@ -30,18 +30,18 @@
- }
+ export { AvatarGroupI18n, AvatarGroupItem, AvatarI18n };
  
  /**
 - * `<vaadin-avatar-group>` is a Web Component providing avatar group displaying functionality.
@@ -43,7 +37,7 @@ Index: src/vaadin-avatar-group.d.ts
   *   {name: 'John Doe'},
   *   {abbr: 'AB'}
   * ];
-@@ -55,19 +55,19 @@
+@@ -37,25 +37,25 @@
   * ----------- | ---------------
   * `container` | The container element
   *
@@ -66,9 +60,7 @@ Index: src/vaadin-avatar-group.d.ts
 + * - `<vaadin24-avatar-group-menu>` - has the same API as [`<vaadin24-list-box>`](#/elements/vaadin-list-box).
 + * - `<vaadin24-avatar-group-menu-item>` - has the same API as [`<vaadin24-item>`](#/elements/vaadin-item).
   */
- declare class AvatarGroup extends ResizeMixin(
-   OverlayClassMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))),
-@@ -139,7 +139,7 @@
+ declare class AvatarGroup extends AvatarGroupMixin(ElementMixin(ThemableMixin(ControllerMixin(HTMLElement)))) {}
  
  declare global {
    interface HTMLElementTagNameMap {

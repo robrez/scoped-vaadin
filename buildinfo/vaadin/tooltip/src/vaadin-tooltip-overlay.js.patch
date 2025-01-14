@@ -9,12 +9,13 @@ Index: src/vaadin-tooltip-overlay.js
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
 -import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { PopoverOverlayMixin } from '@vaadin/popover/src/vaadin-popover-overlay-mixin.js';
 -import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 +import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { PopoverOverlayMixin } from '@scoped-vaadin/popover/src/vaadin-popover-overlay-mixin.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { TooltipOverlayMixin } from './vaadin-tooltip-overlay-mixin.js';
  import { tooltipOverlayStyles } from './vaadin-tooltip-overlay-styles.js';
  
 -registerStyles('vaadin-tooltip-overlay', [overlayStyles, tooltipOverlayStyles], {
@@ -30,14 +31,23 @@ Index: src/vaadin-tooltip-overlay.js
   * @extends HTMLElement
 @@ -27,7 +27,7 @@
   */
- class TooltipOverlay extends TooltipOverlayMixin(DirMixin(ThemableMixin(PolymerElement))) {
+ class TooltipOverlay extends PopoverOverlayMixin(DirMixin(ThemableMixin(PolymerElement))) {
    static get is() {
 -    return 'vaadin-tooltip-overlay';
 +    return 'vaadin24-tooltip-overlay';
    }
  
    static get template() {
-@@ -44,7 +44,7 @@
+@@ -45,7 +45,7 @@
+    * @return {string}
+    */
+   get _tagNamePrefix() {
+-    return 'vaadin-tooltip';
++    return 'vaadin24-tooltip';
+   }
+ 
+   /** @protected */
+@@ -53,7 +53,7 @@
      super.ready();
  
      // When setting `manual` and `opened` attributes, the overlay is already moved to body

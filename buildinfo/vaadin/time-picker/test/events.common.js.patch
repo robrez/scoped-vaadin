@@ -1,0 +1,13 @@
+Index: test/events.common.js
+===================================================================
+--- test/events.common.js
++++ test/events.common.js
+@@ -12,7 +12,7 @@
+     beforeEach(async () => {
+       hasInputValueChangedSpy = sinon.spy();
+       valueChangedSpy = sinon.spy();
+-      timePicker = fixtureSync('<vaadin-time-picker clear-button-visible></vaadin-time-picker>');
++      timePicker = fixtureSync('<vaadin24-time-picker clear-button-visible></vaadin24-time-picker>');
+       await nextRender();
+       clearButton = timePicker.shadowRoot.querySelector('[part=clear-button]');
+       timePicker.addEventListener('has-input-value-changed', hasInputValueChangedSpy);

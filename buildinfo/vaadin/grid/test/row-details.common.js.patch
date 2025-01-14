@@ -4,10 +4,10 @@ Index: test/row-details.common.js
 +++ test/row-details.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { aTimeout, click, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -26,9 +27,9 @@
+@@ -25,9 +26,9 @@
  class GridDetailsWrapper extends PolymerElement {
    static get template() {
      return html`
@@ -20,7 +20,7 @@ Index: test/row-details.common.js
      `;
    }
  
-@@ -41,7 +42,7 @@
+@@ -40,7 +41,7 @@
    }
  }
  
@@ -29,7 +29,7 @@ Index: test/row-details.common.js
  
  describe('row details', () => {
    let grid;
-@@ -59,12 +60,12 @@
+@@ -58,12 +59,12 @@
  
    it('should not increase row update count', () => {
      grid = fixtureSync(`
@@ -46,7 +46,7 @@ Index: test/row-details.common.js
  
      const spy = sinon.spy(grid, '_updateRow');
      grid.size = 1;
-@@ -76,12 +77,12 @@
+@@ -75,12 +76,12 @@
    describe('simple', () => {
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -63,7 +63,7 @@ Index: test/row-details.common.js
  
        grid.dataProvider = infiniteDataProvider;
        flushGrid(grid);
-@@ -255,9 +256,9 @@
+@@ -254,9 +255,9 @@
  
      beforeEach(() => {
        grid = fixtureSync(`
@@ -76,7 +76,7 @@ Index: test/row-details.common.js
        `);
  
        grid.rowDetailsRenderer = (root, _grid, { item }) => {
-@@ -268,7 +269,7 @@
+@@ -267,7 +268,7 @@
          `;
        };
  
@@ -85,7 +85,7 @@ Index: test/row-details.common.js
      });
  
      it('should have correct height', () => {
-@@ -293,12 +294,12 @@
+@@ -292,12 +293,12 @@
      beforeEach(async () => {
        dataset = buildDataSet(10);
        grid = fixtureSync(`
@@ -102,7 +102,7 @@ Index: test/row-details.common.js
  
        grid.dataProvider = dataProvider;
        flushGrid(grid);
-@@ -370,9 +371,9 @@
+@@ -369,9 +370,9 @@
    describe('lazily set details renderer', () => {
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -115,7 +115,7 @@ Index: test/row-details.common.js
        `);
        grid.items = [{ name: 'foo' }];
        await nextFrame();
-@@ -410,9 +411,9 @@
+@@ -409,9 +410,9 @@
  
      beforeEach(async () => {
        grid = fixtureSync(`
@@ -126,5 +126,5 @@ Index: test/row-details.common.js
 +          <vaadin24-grid-column path="name"></vaadin24-grid-column>
 +        </vaadin24-grid>
        `);
-       grid.rowDetailsRenderer = (root, _, { item }) => {
+       grid.rowDetailsRenderer = (root) => {
          // Render the details cell with a height of 100px

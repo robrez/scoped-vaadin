@@ -14,7 +14,7 @@ Index: theme/lumo/vaadin-login-form-wrapper-styles.js
  
  const loginFormWrapper = css`
    :host {
-@@ -83,6 +83,6 @@
+@@ -89,6 +89,6 @@
    }
  `;
  

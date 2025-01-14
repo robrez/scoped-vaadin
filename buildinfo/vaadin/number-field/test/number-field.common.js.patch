@@ -4,7 +4,7 @@ Index: test/number-field.common.js
 +++ test/number-field.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { arrowDown, arrowUp, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
 @@ -10,16 +11,16 @@

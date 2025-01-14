@@ -1,0 +1,37 @@
+Index: src/vaadin-popover-overlay.js
+===================================================================
+--- src/vaadin-popover-overlay.js
++++ src/vaadin-popover-overlay.js
+@@ -4,16 +4,16 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { PopoverOverlayMixin } from './vaadin-popover-overlay-mixin.js';
+ 
+ /**
+- * An element used internally by `<vaadin-popover>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-popover>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -24,7 +24,7 @@
+  */
+ class PopoverOverlay extends PopoverOverlayMixin(DirMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-popover-overlay';
++    return 'vaadin24-popover-overlay';
+   }
+ 
+   static get styles() {

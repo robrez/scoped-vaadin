@@ -1,0 +1,29 @@
+Index: test/combo-box.common.js
+===================================================================
+--- test/combo-box.common.js
++++ test/combo-box.common.js
+@@ -6,13 +6,13 @@
+   let timePicker, comboBox;
+ 
+   beforeEach(async () => {
+-    timePicker = fixtureSync(`<vaadin-time-picker></vaadin-time-picker>`);
++    timePicker = fixtureSync(`<vaadin24-time-picker></vaadin24-time-picker>`);
+     await nextRender();
+     comboBox = timePicker.$.comboBox;
+   });
+ 
+   it('should store a reference to a combo-box instance', () => {
+-    expect(comboBox.localName).to.equal('vaadin-time-picker-combo-box');
++    expect(comboBox.localName).to.equal('vaadin24-time-picker-combo-box');
+   });
+ 
+   it('should define a toggle element on the combo-box', () => {
+@@ -111,7 +111,7 @@
+   let timePicker, inputElement;
+ 
+   beforeEach(async () => {
+-    timePicker = fixtureSync(`<vaadin-time-picker auto-open-disabled value="05:00"></vaadin-time-picker>`);
++    timePicker = fixtureSync(`<vaadin24-time-picker auto-open-disabled value="05:00"></vaadin24-time-picker>`);
+     await nextRender();
+     inputElement = timePicker.inputElement;
+   });

@@ -58,6 +58,11 @@ export const elementMeta = [
     "eventNames": []
   },
   {
+    "package": "@vaadin/chai-plugins",
+    "elementNames": [],
+    "eventNames": []
+  },
+  {
     "package": "@vaadin/checkbox",
     "elementNames": [
       "vaadin-checkbox"
@@ -128,6 +133,7 @@ export const elementMeta = [
     ],
     "eventNames": [
       "cancel",
+      "closed",
       "confirm",
       "opened-changed",
       "reject"
@@ -221,6 +227,8 @@ export const elementMeta = [
       "vaadin-dialog-overlay"
     ],
     "eventNames": [
+      "closed",
+      "dragged",
       "opened-changed",
       "resize"
     ]
@@ -450,6 +458,7 @@ export const elementMeta = [
       "vaadin-notification-container"
     ],
     "eventNames": [
+      "closed",
       "opened-changed"
     ]
   },
@@ -502,6 +511,17 @@ export const elementMeta = [
       "vaadin-template-renderer-templatizer"
     ],
     "eventNames": []
+  },
+  {
+    "package": "@vaadin/popover",
+    "elementNames": [
+      "vaadin-popover",
+      "vaadin-popover-overlay"
+    ],
+    "eventNames": [
+      "closed",
+      "opened-changed"
+    ]
   },
   {
     "package": "@vaadin/progress-bar",

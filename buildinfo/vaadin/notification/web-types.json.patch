@@ -6,9 +6,9 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/notification",
--  "version": "24.4.2",
+-  "version": "24.6.2",
 +  "name": "@scoped-vaadin/notification",
-+  "version": "24.4.2-alpha.1",
++  "version": "24.6.2-alpha.1",
    "description-markup": "markdown",
    "contributions": {
      "html": {
@@ -21,7 +21,7 @@ Index: web-types.json
            "attributes": [
              {
                "name": "overlay-class",
-@@ -102,7 +102,7 @@
+@@ -124,7 +124,7 @@
                },
                {
                  "name": "renderer",

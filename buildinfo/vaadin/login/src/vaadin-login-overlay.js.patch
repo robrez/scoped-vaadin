@@ -59,8 +59,8 @@ Index: src/vaadin-login-overlay.js
 +      <vaadin24-login-overlay-wrapper
          id="vaadinLoginOverlayWrapper"
          opened="{{opened}}"
-         focus-trap
-@@ -64,7 +64,7 @@
+         role="dialog"
+@@ -65,7 +65,7 @@
          on-vaadin-overlay-escape-press="_preventClosingLogin"
          on-vaadin-overlay-outside-click="_preventClosingLogin"
        >
@@ -69,7 +69,7 @@ Index: src/vaadin-login-overlay.js
            theme="with-overlay"
            id="vaadinLoginForm"
            action="[[action]]"
-@@ -75,8 +75,8 @@
+@@ -76,8 +76,8 @@
            i18n="{{i18n}}"
            on-login="_retargetEvent"
            on-forgot-password="_retargetEvent"
@@ -80,7 +80,7 @@ Index: src/vaadin-login-overlay.js
  
        <div hidden>
          <slot name="custom-form-area"></slot>
-@@ -86,7 +86,7 @@
+@@ -87,7 +87,7 @@
    }
  
    static get is() {

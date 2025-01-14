@@ -4,7 +4,7 @@ Index: test/column.common.js
 +++ test/column.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 @@ -15,23 +16,23 @@

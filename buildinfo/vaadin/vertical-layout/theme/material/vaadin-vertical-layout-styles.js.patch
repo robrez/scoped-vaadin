@@ -8,7 +8,7 @@ Index: theme/material/vaadin-vertical-layout-styles.js
  
  const verticalLayout = css`
    [theme~='margin'] {
-@@ -30,4 +30,4 @@
+@@ -34,4 +34,4 @@
    }
  `;
  

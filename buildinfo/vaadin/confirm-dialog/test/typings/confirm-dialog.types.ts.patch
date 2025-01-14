@@ -8,7 +8,7 @@ Index: test/typings/confirm-dialog.types.ts
 -import type { ThemePropertyMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 +import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
- import type { ConfirmDialogOpenedChangedEvent } from '../../vaadin-confirm-dialog.js';
+ import type { ConfirmDialogClosedEvent, ConfirmDialogOpenedChangedEvent } from '../../vaadin-confirm-dialog.js';
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  

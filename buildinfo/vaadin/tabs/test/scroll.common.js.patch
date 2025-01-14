@@ -1,0 +1,46 @@
+Index: test/scroll.common.js
+===================================================================
+--- test/scroll.common.js
++++ test/scroll.common.js
+@@ -6,24 +6,24 @@
+ 
+   beforeEach(async () => {
+     tabs = fixtureSync(`
+-      <vaadin-tabs style="width: 400px; height: 150px;">
+-        <vaadin-tab>Foo</vaadin-tab>
+-        <vaadin-tab>Bar</vaadin-tab>
++      <vaadin24-tabs style="width: 400px; height: 150px;">
++        <vaadin24-tab>Foo</vaadin24-tab>
++        <vaadin24-tab>Bar</vaadin24-tab>
+         <separator>___</separator>
+-        <vaadin-tab disabled>Baz</vaadin-tab>
+-        <vaadin-tab>Foo1</vaadin-tab>
+-        <vaadin-tab>Bar1</vaadin-tab>
+-        <vaadin-tab>Baz1</vaadin-tab>
+-        <vaadin-tab>Foo2</vaadin-tab>
+-        <vaadin-tab>Bar2</vaadin-tab>
+-        <vaadin-tab>Baz2</vaadin-tab>
+-        <vaadin-tab>Foo3</vaadin-tab>
+-        <vaadin-tab>Bar3</vaadin-tab>
+-        <vaadin-tab>Baz3</vaadin-tab>
+-        <vaadin-tab>Foo4</vaadin-tab>
+-        <vaadin-tab>Bar4</vaadin-tab>
+-        <vaadin-tab>Baz4</vaadin-tab>
+-      </vaadin-tabs>
++        <vaadin24-tab disabled>Baz</vaadin24-tab>
++        <vaadin24-tab>Foo1</vaadin24-tab>
++        <vaadin24-tab>Bar1</vaadin24-tab>
++        <vaadin24-tab>Baz1</vaadin24-tab>
++        <vaadin24-tab>Foo2</vaadin24-tab>
++        <vaadin24-tab>Bar2</vaadin24-tab>
++        <vaadin24-tab>Baz2</vaadin24-tab>
++        <vaadin24-tab>Foo3</vaadin24-tab>
++        <vaadin24-tab>Bar3</vaadin24-tab>
++        <vaadin24-tab>Baz3</vaadin24-tab>
++        <vaadin24-tab>Foo4</vaadin24-tab>
++        <vaadin24-tab>Bar4</vaadin24-tab>
++        <vaadin24-tab>Baz4</vaadin24-tab>
++      </vaadin24-tabs>
+     `);
+     await nextRender();
+     tabs._observer.flush();

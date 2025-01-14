@@ -40,6 +40,15 @@ Index: test/internal-filtering.common.js
        overlay = comboBox.$.overlay;
 @@ -244,7 +244,7 @@
  
+   describe('filtering with many items', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       comboBox.items = makeItems(1000);
+       await nextRender();
+     });
+@@ -259,7 +259,7 @@
+ 
    describe('setting items when opened', () => {
      beforeEach(async () => {
 -      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
@@ -47,7 +56,7 @@ Index: test/internal-filtering.common.js
        await nextRender();
        comboBox.items = [];
      });
-@@ -258,7 +258,7 @@
+@@ -273,7 +273,7 @@
  
    describe('setting placeholder items', () => {
      beforeEach(async () => {

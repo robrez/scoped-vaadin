@@ -23,8 +23,8 @@ Index: test/field-components.test.js
 +import '@scoped-vaadin/select';
 +import '@scoped-vaadin/text-field';
  import { html, render } from 'lit';
--import { close, waitForOverlayRender } from '@vaadin/date-picker/test/helpers.js';
-+import { close, waitForOverlayRender } from '@scoped-vaadin/date-picker/test/helpers.js';
+-import { waitForOverlayRender } from '@vaadin/date-picker/test/helpers.js';
++import { waitForOverlayRender } from '@scoped-vaadin/date-picker/test/helpers.js';
  import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
  
  async function waitForIntersectionObserver() {
@@ -124,15 +124,20 @@ Index: test/field-components.test.js
        `);
        FieldHighlighter.init(field);
        showSpy = sinon.spy();
-@@ -397,7 +397,7 @@
+@@ -397,10 +397,10 @@
      let time;
  
      beforeEach(async () => {
 -      field = fixtureSync(`<vaadin-date-time-picker></vaadin-date-time-picker>`);
 +      field = fixtureSync(`<vaadin24-date-time-picker></vaadin24-date-time-picker>`);
        FieldHighlighter.init(field);
-       date = field.__inputs[0];
-       time = field.__inputs[1];
+-      date = field.querySelector('vaadin-date-picker');
+-      time = field.querySelector('vaadin-time-picker');
++      date = field.querySelector('vaadin24-date-picker');
++      time = field.querySelector('vaadin24-time-picker');
+       overlay = field.$.overlay;
+       showSpy = sinon.spy();
+       hideSpy = sinon.spy();
 @@ -497,11 +497,11 @@
  
      beforeEach(async () => {

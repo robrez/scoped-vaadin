@@ -66,16 +66,16 @@ Index: src/vaadin-dialog.js
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
   *
-@@ -101,7 +101,7 @@
+@@ -103,7 +103,7 @@
          }
        </style>
  
 -      <vaadin-dialog-overlay
 +      <vaadin24-dialog-overlay
          id="overlay"
-         role="dialog"
+         role$="[[overlayRole]]"
          header-title="[[headerTitle]]"
-@@ -114,12 +114,12 @@
+@@ -116,12 +116,12 @@
          resizable$="[[resizable]]"
          restore-focus-on-close
          focus-trap

@@ -16,7 +16,7 @@ Index: theme/lumo/vaadin-tabsheet-styles.js
  
  const tabsheet = css`
    :host {
-@@ -40,6 +40,6 @@
+@@ -44,6 +44,6 @@
    }
  `;
  

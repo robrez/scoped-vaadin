@@ -10,4 +10,4 @@ Index: test/typings/upload-file.types.ts
 +const uploadFile = document.createElement('vaadin24-upload-file');
  
  // Properties
- assertType<boolean>(uploadFile.complete);
+ assertType<boolean>(uploadFile.disabled);

@@ -37,4 +37,4 @@ Index: src/vaadin-lit-menu-bar-overlay.js
 +    return 'vaadin24-menu-bar-overlay';
    }
  
-   static get properties() {
+   static get styles() {

@@ -2,9 +2,10 @@ Index: test/field-mixin.test.js
 ===================================================================
 --- test/field-mixin.test.js
 +++ test/field-mixin.test.js
-@@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+@@ -1,8 +1,8 @@
+ import { expect } from '@vaadin/chai-plugins';
  import { aTimeout, defineLit, definePolymer, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';

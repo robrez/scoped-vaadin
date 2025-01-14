@@ -2,11 +2,13 @@ Index: src/error-controller.js
 ===================================================================
 --- src/error-controller.js
 +++ src/error-controller.js
-@@ -3,7 +3,7 @@
+@@ -3,8 +3,8 @@
   * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+-import { announce } from '@vaadin/a11y-base/src/announce.js';
 -import { SlotChildObserveController } from '@vaadin/component-base/src/slot-child-observe-controller.js';
++import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
 +import { SlotChildObserveController } from '@scoped-vaadin/component-base/src/slot-child-observe-controller.js';
  
  /**

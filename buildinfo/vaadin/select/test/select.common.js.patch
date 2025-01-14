@@ -101,7 +101,7 @@ Index: test/select.common.js
          expect(item.textContent).to.equal('o2');
          expect(item.selected).to.be.true;
          expect(item.getAttribute('tabindex')).to.be.null;
-@@ -440,7 +440,7 @@
+@@ -431,7 +431,7 @@
  
        // IOS Safari has incorrect viewport height when navigation bar is
        // visible in landscape orientation. This is workarounded by exposing
@@ -110,7 +110,7 @@ Index: test/select.common.js
        it('should support --vaadin-overlay-viewport-bottom CSS property', () => {
          overlay.setAttribute('phone', '');
          overlay.style.setProperty('--vaadin-overlay-viewport-bottom', '50px');
-@@ -659,20 +659,20 @@
+@@ -754,20 +754,20 @@
      let menu, valueButton;
  
      beforeEach(async () => {
@@ -137,7 +137,7 @@ Index: test/select.common.js
        await nextUpdate(select);
        menu = select._menuElement;
      });
-@@ -689,14 +689,14 @@
+@@ -784,14 +784,14 @@
      beforeEach(async () => {
        container = fixtureSync(`
          <div style="display: flex; flex-direction: column; width: 500px;">
@@ -154,3 +154,12 @@ Index: test/select.common.js
        expect(window.getComputedStyle(container).width).to.eql('500px');
        expect(parseFloat(window.getComputedStyle(select).width)).to.eql(500);
      });
+@@ -799,7 +799,7 @@
+ 
+   describe('pre-opened', () => {
+     beforeEach(() => {
+-      select = document.createElement('vaadin-select');
++      select = document.createElement('vaadin24-select');
+       select.items = [{ label: 'Option 1', value: 'value-1' }];
+     });
+ 

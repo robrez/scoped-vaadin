@@ -1,0 +1,19 @@
+Index: src/vaadin-login-overlay-wrapper-mixin.js
+===================================================================
+--- src/vaadin-login-overlay-wrapper-mixin.js
++++ src/vaadin-login-overlay-wrapper-mixin.js
+@@ -3,10 +3,10 @@
+  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { SlotObserver } from '@vaadin/component-base/src/slot-observer.js';
+-import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { SlotObserver } from '@scoped-vaadin/component-base/src/slot-observer.js';
++import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
+ 
+ /**
+  * @polymerMixin

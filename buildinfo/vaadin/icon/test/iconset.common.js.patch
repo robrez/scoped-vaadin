@@ -4,7 +4,7 @@ Index: test/iconset.common.js
 +++ test/iconset.common.js
 @@ -1,22 +1,23 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import { isValidSvg } from '../src/vaadin-icon-svg.js';
  

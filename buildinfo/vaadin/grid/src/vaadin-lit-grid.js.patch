@@ -2,10 +2,10 @@ Index: src/vaadin-lit-grid.js
 ===================================================================
 --- src/vaadin-lit-grid.js
 +++ src/vaadin-lit-grid.js
-@@ -5,16 +5,16 @@
-  */
+@@ -6,16 +6,16 @@
  import './vaadin-lit-grid-column.js';
  import { html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
 -import { isIOS, isSafari } from '@vaadin/component-base/src/browser-utils.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
@@ -25,7 +25,7 @@ Index: src/vaadin-lit-grid.js
   *
   * ## Disclaimer
   *
-@@ -24,7 +24,7 @@
+@@ -25,7 +25,7 @@
   */
  class Grid extends GridMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
    static get is() {

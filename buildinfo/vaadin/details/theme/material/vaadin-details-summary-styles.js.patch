@@ -14,7 +14,7 @@ Index: theme/material/vaadin-details-summary-styles.js
  
  const detailsSummary = css`
    :host {
-@@ -99,6 +99,6 @@
+@@ -101,6 +101,6 @@
    }
  `;
  

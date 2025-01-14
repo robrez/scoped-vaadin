@@ -4,7 +4,7 @@ Index: test/touch.common.js
 +++ test/touch.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import {
    fire,
 @@ -12,14 +13,14 @@

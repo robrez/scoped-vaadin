@@ -20,7 +20,7 @@ Index: theme/lumo/vaadin-details-summary-styles.js
  
  const detailsSummary = css`
    :host {
-@@ -118,6 +118,6 @@
+@@ -122,6 +122,6 @@
    }
  `;
  

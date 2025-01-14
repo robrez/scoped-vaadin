@@ -46,7 +46,7 @@ Index: theme/lumo/vaadin-select-styles.js
    css`
      :host {
        font-family: var(--lumo-font-family);
-@@ -123,4 +123,4 @@
+@@ -127,4 +127,4 @@
    }
  `;
  

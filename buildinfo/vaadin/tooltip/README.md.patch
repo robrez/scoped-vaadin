@@ -2,13 +2,15 @@ Index: README.md
 ===================================================================
 --- README.md
 +++ README.md
-@@ -1,12 +1,14 @@
+@@ -1,14 +1,16 @@
 -# @vaadin/tooltip
 +# @scoped-vaadin/tooltip
  
 +This component is based on [@vaadin/tooltip](https://www.npmjs.com/package/@vaadin/tooltip)
 +
  A web component for creating tooltips.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/tooltip)
  
 -[![npm version](https://badgen.net/npm/v/@vaadin/tooltip)](https://www.npmjs.com/package/@vaadin/tooltip)
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/tooltip)](https://www.npmjs.com/package/@scoped-vaadin/tooltip)
@@ -21,7 +23,7 @@ Index: README.md
  ```
  
  [<img src="https://raw.githubusercontent.com/vaadin/web-components/main/packages/tooltip/screenshot.png" width="200" alt="Screenshot of vaadin-tooltip">](https://vaadin.com/docs/latest/components/tooltip)
-@@ -16,13 +18,13 @@
+@@ -18,13 +20,13 @@
  Install the component:
  
  ```sh
@@ -37,7 +39,7 @@ Index: README.md
  ```
  
  ## Themes
-@@ -33,19 +35,19 @@
+@@ -35,19 +37,19 @@
  To use the Material theme, import the component from the `theme/material` folder:
  
  ```js

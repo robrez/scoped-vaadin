@@ -20,18 +20,7 @@ Index: src/vaadin-contextmenu-items-mixin.js
           * @property {boolean} disabled - If true, the item is disabled and cannot be selected
           * @property {boolean} checked - If true, the item shows a checkmark next to it
           * @property {boolean} keepOpen - If true, the menu will not be closed on item selection
-@@ -59,8 +59,8 @@
-          *
-          * ### Styling
-          *
--         * The `<vaadin-context-menu-item>` sub-menu elements have the following additional state attributes on top of
--         * the built-in `<vaadin-item>` state attributes (see `<vaadin-item>` documentation for full listing).
-+         * The `<vaadin24-context-menu-item>` sub-menu elements have the following additional state attributes on top of
-+         * the built-in `<vaadin24-item>` state attributes (see `<vaadin24-item>` documentation for full listing).
-          *
-          * Part name | Attribute | Description
-          * ----------------|----------------|----------------
-@@ -94,7 +94,7 @@
+@@ -84,7 +84,7 @@
       * @return {string}
       */
      get _tagNamePrefix() {

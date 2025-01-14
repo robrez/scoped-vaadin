@@ -2,10 +2,10 @@ Index: test/form-layout.test.js
 ===================================================================
 --- test/form-layout.test.js
 +++ test/form-layout.test.js
-@@ -1,8 +1,9 @@
+@@ -1,33 +1,34 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { aTimeout, fixtureSync, nextFrame, nextRender, nextResize } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
  import '@polymer/polymer/lib/elements/dom-repeat.js';
 -import '@vaadin/text-field/vaadin-text-field.js';
@@ -13,9 +13,6 @@ Index: test/form-layout.test.js
  import '../vaadin-form-layout.js';
  import '../vaadin-form-item.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-@@ -27,27 +28,27 @@
-   await onceInvoked(layout, '_updateLayout');
- }
  
 -customElements.define(
 +internalCustomElements.define(
@@ -50,7 +47,7 @@ Index: test/form-layout.test.js
        `;
      }
  
-@@ -75,10 +76,10 @@
+@@ -55,10 +56,10 @@
  
      beforeEach(() => {
        layout = fixtureSync(`
@@ -65,7 +62,7 @@ Index: test/form-layout.test.js
        `);
      });
  
-@@ -94,7 +95,7 @@
+@@ -74,7 +75,7 @@
      });
  
      it('should distribute vaadin-text-field', () => {
@@ -74,7 +71,7 @@ Index: test/form-layout.test.js
        const slot = layout.shadowRoot.querySelector('slot');
        expect(textField).to.be.ok;
        expect(slot.assignedNodes()).to.contain(textField);
-@@ -106,12 +107,12 @@
+@@ -86,12 +87,12 @@
  
      beforeEach(() => {
        layout = fixtureSync(`
@@ -92,7 +89,7 @@ Index: test/form-layout.test.js
      });
  
      it('should have default label-width', () => {
-@@ -162,14 +163,14 @@
+@@ -142,14 +143,14 @@
  
      beforeEach(() => {
        layout = fixtureSync(`
@@ -115,7 +112,7 @@ Index: test/form-layout.test.js
        `);
      });
  
-@@ -200,7 +201,7 @@
+@@ -180,7 +181,7 @@
      beforeEach(() => {
        container = fixtureSync(`
        <div style="width: 300px; overflow: auto;">
@@ -124,7 +121,7 @@ Index: test/form-layout.test.js
              <div at-start>1 start</div>
              <div>2 mid</div>
              <div at-end>3 end</div>
-@@ -214,7 +215,7 @@
+@@ -194,7 +195,7 @@
              <div colspan="2" at-start>7 start</div>
              <div at-end>8 end</div>
              <div colspan="3" at-start at-end>9 start to end</div>
@@ -133,7 +130,7 @@ Index: test/form-layout.test.js
          </div>
        `);
        layout = container.firstElementChild;
-@@ -273,11 +274,11 @@
+@@ -253,11 +254,11 @@
  
      beforeEach(async () => {
        layout = fixtureSync(`
@@ -150,7 +147,7 @@ Index: test/form-layout.test.js
        `);
        await aTimeout(100);
      });
-@@ -314,7 +315,7 @@
+@@ -294,7 +295,7 @@
  
      describe('custom label-position', () => {
        beforeEach(async () => {
@@ -159,7 +156,7 @@ Index: test/form-layout.test.js
          item.setAttribute('label-position', 'top');
          layout.insertBefore(item, layout.lastElementChild);
          await nextRender();
-@@ -496,14 +497,14 @@
+@@ -476,14 +477,14 @@
        container = fixtureSync(`
          <div style="display: flex;">
            <div>Foo</div>
@@ -179,12 +176,16 @@ Index: test/form-layout.test.js
      });
  
      it('should have less width than then flexbox', () => {
-@@ -519,10 +520,10 @@
+@@ -499,13 +500,13 @@
      beforeEach(() => {
        container = fixtureSync(`
          <div hidden>
--          <vaadin-form-layout></vaadin-form-layout>
-+          <vaadin24-form-layout></vaadin24-form-layout>
+-          <vaadin-form-layout>
++          <vaadin24-form-layout>
+             <div>Foo</div>
+             <div>Bar</div>
+-          </vaadin-form-layout>
++          </vaadin24-form-layout>
          </div>
        `);
 -      layout = container.querySelector('vaadin-form-layout');
@@ -192,7 +193,30 @@ Index: test/form-layout.test.js
      });
  
      it('should update steps on show after hidden', (done) => {
-@@ -553,7 +554,7 @@
+@@ -567,7 +568,7 @@
+       container = fixtureSync(`
+         <div style="height: 100px; overflow: auto">
+           <div style="height: 25px">
+-            <vaadin-form-layout style="height: 100%">
++            <vaadin24-form-layout style="height: 100%">
+               <div>1</div>
+               <div>2</div>
+               <div>3</div>
+@@ -578,11 +579,11 @@
+               <div>8</div>
+               <div>9</div>
+               <div>10</div>
+-            </vaadin-form-layout>
++            </vaadin24-form-layout>
+           </div>
+         </div>
+       `);
+-      layout = container.querySelector('vaadin-form-layout');
++      layout = container.querySelector('vaadin24-form-layout');
+       layout.responsiveSteps = [{ columns: 1 }];
+       await nextRender();
+     });
+@@ -601,7 +602,7 @@
  
      beforeEach(async () => {
        container = fixtureSync('<mutable-layout></mutable-layout>');
@@ -201,7 +225,7 @@ Index: test/form-layout.test.js
        await nextRender(container);
      });
  
-@@ -588,7 +589,7 @@
+@@ -636,7 +637,7 @@
        const itemWidth = layout.children[0].getBoundingClientRect().width;
        expect(itemWidth).to.be.above(0);
  
@@ -210,7 +234,7 @@ Index: test/form-layout.test.js
        newFormItem.hidden = true;
        layout.appendChild(newFormItem);
        await nextRender(container);
-@@ -603,7 +604,7 @@
+@@ -651,7 +652,7 @@
      it('should update layout after updating a colspan attribute on the lazily stamped node', async () => {
        container.push('items', { label: 'Email', colspan: 1 });
        await nextRender(container);
@@ -219,7 +243,7 @@ Index: test/form-layout.test.js
        expect(estimateEffectiveColspan(item)).to.be.closeTo(1, 0.1);
  
        container.set('items.0.colspan', 2);
-@@ -612,7 +613,7 @@
+@@ -660,7 +661,7 @@
      });
  
      it('should update layout after a new item is added', async () => {
@@ -228,7 +252,7 @@ Index: test/form-layout.test.js
        newFormItem.innerHTML = '<label slot="label">Age</label><input class="full-width">';
        layout.appendChild(newFormItem);
        await nextRender(container);
-@@ -620,7 +621,7 @@
+@@ -668,7 +669,7 @@
      });
  
      it('should update layout after an item is removed', async () => {

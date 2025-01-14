@@ -2,7 +2,7 @@ Index: src/data-provider-controller/cache.js
 ===================================================================
 --- src/data-provider-controller/cache.js
 +++ src/data-provider-controller/cache.js
-@@ -131,7 +131,7 @@
+@@ -132,7 +132,7 @@
     */
    get effectiveSize() {
      console.warn(
@@ -11,7 +11,7 @@ Index: src/data-provider-controller/cache.js
      );
      return this.flatSize;
    }
-@@ -226,7 +226,7 @@
+@@ -267,7 +267,7 @@
     */
    getItemForIndex(index) {
      console.warn(
@@ -20,7 +20,7 @@ Index: src/data-provider-controller/cache.js
      );
      const { item } = getFlatIndexContext(this, index);
      return item;
-@@ -237,7 +237,7 @@
+@@ -278,7 +278,7 @@
     */
    getCacheAndIndex(index) {
      console.warn(
@@ -29,7 +29,7 @@ Index: src/data-provider-controller/cache.js
      );
      const { cache, index: scaledIndex } = getFlatIndexContext(this, index);
      return { cache, scaledIndex };
-@@ -247,7 +247,7 @@
+@@ -288,7 +288,7 @@
     * @deprecated since 24.3 and will be removed in Vaadin 25.
     */
    updateSize() {
@@ -38,7 +38,7 @@ Index: src/data-provider-controller/cache.js
      this.recalculateFlatSize();
    }
  
-@@ -256,7 +256,7 @@
+@@ -297,7 +297,7 @@
     */
    ensureSubCacheForScaledIndex(scaledIndex) {
      console.warn(
@@ -47,7 +47,7 @@ Index: src/data-provider-controller/cache.js
      );
  
      if (!this.getSubCache(scaledIndex)) {
-@@ -269,7 +269,7 @@
+@@ -310,7 +310,7 @@
     * @deprecated since 24.3 and will be removed in Vaadin 25.
     */
    get grid() {
@@ -56,7 +56,7 @@ Index: src/data-provider-controller/cache.js
      return this.context.__controller.host;
    }
  
-@@ -278,7 +278,7 @@
+@@ -319,7 +319,7 @@
     */
    get itemCaches() {
      console.warn(

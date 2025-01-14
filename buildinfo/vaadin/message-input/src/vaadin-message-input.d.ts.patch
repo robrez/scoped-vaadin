@@ -2,21 +2,17 @@ Index: src/vaadin-message-input.d.ts
 ===================================================================
 --- src/vaadin-message-input.d.ts
 +++ src/vaadin-message-input.d.ts
-@@ -3,9 +3,9 @@
+@@ -3,14 +3,14 @@
   * Copyright (c) 2021 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { MessageInputMixin } from './vaadin-message-input-mixin.js';
  
- export interface MessageInputI18n {
-   send: string;
-@@ -13,7 +13,7 @@
- }
+ export { MessageInputI18n } from './vaadin-message-input-mixin.js';
  
  /**
 - * Fired when a new message is submitted with `<vaadin-message-input>`, either
@@ -24,7 +20,7 @@ Index: src/vaadin-message-input.d.ts
   * by clicking the "send" button, or pressing the Enter key.
   */
  export type MessageInputSubmitEvent = CustomEvent<{ value: string }>;
-@@ -25,7 +25,7 @@
+@@ -22,7 +22,7 @@
  export type MessageInputEventMap = HTMLElementEventMap & MessageInputCustomEventMap;
  
  /**
@@ -33,7 +29,7 @@ Index: src/vaadin-message-input.d.ts
   * It consists of a text area that grows on along with the content, and a send button to send message.
   *
   * The message can be sent by one of the following actions:
-@@ -33,7 +33,7 @@
+@@ -30,7 +30,7 @@
   * - by clicking `submit` button.
   *
   * ```html
@@ -41,8 +37,8 @@ Index: src/vaadin-message-input.d.ts
 + * <vaadin24-message-input></vaadin24-message-input>
   * ```
   */
- declare class MessageInput extends ThemableMixin(ElementMixin(ControllerMixin(HTMLElement))) {
-@@ -81,7 +81,7 @@
+ declare class MessageInput extends MessageInputMixin(ThemableMixin(ElementMixin(HTMLElement))) {
+@@ -49,7 +49,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

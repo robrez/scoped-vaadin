@@ -1,0 +1,35 @@
+Index: src/vaadin-popover-overlay-mixin.js
+===================================================================
+--- src/vaadin-popover-overlay-mixin.js
++++ src/vaadin-popover-overlay-mixin.js
+@@ -3,8 +3,8 @@
+  * Copyright (c) 2022 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+ 
+ /**
+  * A mixin providing common popover overlay functionality.
+@@ -30,7 +30,7 @@
+      * @return {string}
+      */
+     get _tagNamePrefix() {
+-      return 'vaadin-popover';
++      return 'vaadin24-popover';
+     }
+ 
+     requestContentUpdate() {
+@@ -41,8 +41,8 @@
+         const style = getComputedStyle(this.owner);
+         ['top', 'bottom', 'start', 'end'].forEach((prop) => {
+           this.style.setProperty(
+-            `--${this._tagNamePrefix}-offset-${prop}`,
+-            style.getPropertyValue(`--${this._tagNamePrefix}-offset-${prop}`),
++            `--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-offset-${prop}`,
++            style.getPropertyValue(`--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-offset-${prop}`),
+           );
+         });
+       }

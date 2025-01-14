@@ -29,16 +29,19 @@ Index: test/login-submit.common.js
        await nextRender();
        login = overlay.$.vaadinLoginForm;
      });
-@@ -97,10 +97,10 @@
+@@ -97,12 +97,12 @@
  
      beforeEach(async () => {
        overlay = fixtureSync(`
 -        <vaadin-login-overlay opened>
 +        <vaadin24-login-overlay opened>
-           <input name="foo" value="bar" slot="custom-form-area">
--          <vaadin-text-field name="code" value="1234" slot="custom-form-area"></vaadin-text-field>
+           <input name="nativeCheckbox" type="checkbox" slot="custom-form-area">
+-          <vaadin-checkbox name="vaadinCheckbox" slot="custom-form-area"></vaadin-checkbox>
++          <vaadin24-checkbox name="vaadinCheckbox" slot="custom-form-area"></vaadin24-checkbox>
+           <input name="nativeTextField" value="bar" slot="custom-form-area">
+-          <vaadin-text-field name="vaadinTextField" value="1234" slot="custom-form-area"></vaadin-text-field>
 -        </vaadin-login-overlay>
-+          <vaadin24-text-field name="code" value="1234" slot="custom-form-area"></vaadin24-text-field>
++          <vaadin24-text-field name="vaadinTextField" value="1234" slot="custom-form-area"></vaadin24-text-field>
 +        </vaadin24-login-overlay>
        `);
        await nextRender();

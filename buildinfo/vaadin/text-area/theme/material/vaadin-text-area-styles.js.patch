@@ -15,7 +15,7 @@ Index: theme/material/vaadin-text-area-styles.js
  
  const textArea = css`
    [part='input-field'] {
-@@ -24,4 +24,4 @@
+@@ -38,4 +38,4 @@
    }
  `;
  

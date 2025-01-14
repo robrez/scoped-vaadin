@@ -15,7 +15,7 @@ Index: src/vaadin-dialog.d.ts
  import { DialogBaseMixin } from './vaadin-dialog-base-mixin.js';
  import { DialogDraggableMixin } from './vaadin-dialog-draggable-mixin.js';
  import { DialogRendererMixin } from './vaadin-dialog-renderer-mixin.js';
-@@ -43,7 +43,7 @@
+@@ -64,7 +64,7 @@
  export type DialogEventMap = DialogCustomEventMap & HTMLElementEventMap;
  
  /**
@@ -24,7 +24,7 @@ Index: src/vaadin-dialog.d.ts
   *
   * ### Rendering
   *
-@@ -55,7 +55,7 @@
+@@ -76,7 +76,7 @@
   * users are able to check if there is already content in `root` for reusing it.
   *
   * ```html
@@ -33,7 +33,7 @@ Index: src/vaadin-dialog.d.ts
   * ```
   * ```js
   * const dialog = document.querySelector('#dialog');
-@@ -71,13 +71,13 @@
+@@ -92,13 +92,13 @@
   *
   * ### Styling
   *
@@ -51,7 +51,7 @@ Index: src/vaadin-dialog.d.ts
   *
   * Part name        | Description
   * -----------------|-------------------------------------------
-@@ -95,8 +95,8 @@
+@@ -116,8 +116,8 @@
   * `has-footer`     | Set when the element has footer renderer
   * `overflow`       | Set to `top`, `bottom`, none or both
   *
@@ -62,7 +62,7 @@ Index: src/vaadin-dialog.d.ts
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
   *
-@@ -130,7 +130,7 @@
+@@ -153,7 +153,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

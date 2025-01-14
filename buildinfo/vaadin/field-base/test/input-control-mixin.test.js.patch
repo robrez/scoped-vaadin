@@ -2,9 +2,9 @@ Index: test/input-control-mixin.test.js
 ===================================================================
 --- test/input-control-mixin.test.js
 +++ test/input-control-mixin.test.js
-@@ -11,9 +11,9 @@
-   nextUpdate,
+@@ -12,9 +12,9 @@
  } from '@vaadin/testing-helpers';
+ import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';

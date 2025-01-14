@@ -3,13 +3,22 @@ Index: test/a11y.common.js
 --- test/a11y.common.js
 +++ test/a11y.common.js
 @@ -1,13 +1,13 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { arrowDown, arrowRight, enter, fixtureSync, nextRender, outsideClick } from '@vaadin/testing-helpers';
 -import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
 +import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
  
  describe('a11y', () => {
-   describe('focus restoration', () => {
+   describe('ARIA attributes', () => {
+     let menu, buttons, subMenu, overflow;
+ 
+     beforeEach(async () => {
+-      menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++      menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+       menu.items = [
+         {
+           text: 'Menu Item 1',
+@@ -100,7 +100,7 @@
      let menuBar, overlay, buttons;
  
      beforeEach(async () => {
@@ -18,7 +27,7 @@ Index: test/a11y.common.js
        menuBar.items = [
          {
            text: 'Item 0',
-@@ -22,7 +22,7 @@
+@@ -115,7 +115,7 @@
        ];
        await nextRender();
        overlay = menuBar._subMenu._overlayElement;

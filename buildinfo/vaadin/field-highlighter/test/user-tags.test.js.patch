@@ -3,7 +3,7 @@ Index: test/user-tags.test.js
 --- test/user-tags.test.js
 +++ test/user-tags.test.js
 @@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import '@vaadin/text-field';

@@ -15,7 +15,7 @@ Index: src/vaadin-details-base-mixin.js
  import { CollapsibleMixin } from './collapsible-mixin.js';
  import { SummaryController } from './summary-controller.js';
  
-@@ -45,7 +45,7 @@
+@@ -41,7 +41,7 @@
      constructor() {
        super();
  

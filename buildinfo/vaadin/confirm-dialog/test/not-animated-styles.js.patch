@@ -7,8 +7,8 @@ Index: test/not-animated-styles.js
 +import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  registerStyles(
--  'vaadin-dialog-overlay',
-+  'vaadin24-dialog-overlay',
+-  'vaadin-confirm-dialog-overlay',
++  'vaadin24-confirm-dialog-overlay',
    css`
      :host([opening]),
      :host([closing]),

@@ -1,0 +1,77 @@
+Index: src/vaadin-notification-mixin.js
+===================================================================
+--- src/vaadin-notification-mixin.js
++++ src/vaadin-notification-mixin.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+@@ -5,11 +6,11 @@
+  */
+ import { render } from 'lit';
+ import { isTemplateResult } from 'lit/directive-helpers.js';
+-import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
+-import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
+-import { processTemplates } from '@vaadin/component-base/src/templates.js';
+-import { OverlayStackMixin } from '@vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
+-import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
++import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
++import { OverlayStackMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
++import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
+ 
+ /**
+  * A mixin providing common notification container functionality.
+@@ -147,9 +148,9 @@
+          * Custom function for rendering the content of the notification.
+          * Receives two arguments:
+          *
+-         * - `root` The `<vaadin-notification-card>` DOM element. Append
++         * - `root` The `<vaadin24-notification-card>` DOM element. Append
+          *   your content to it.
+-         * - `notification` The reference to the `<vaadin-notification>` element.
++         * - `notification` The reference to the `<vaadin24-notification>` element.
+          * @type {!NotificationRenderer | undefined}
+          */
+         renderer: {
+@@ -187,7 +188,7 @@
+      * @param options optional options for customizing the notification.
+      */
+     static show(contents, options) {
+-      const Notification = customElements.get('vaadin-notification');
++      const Notification = internalCustomElements.get('vaadin24-notification');
+       if (isTemplateResult(contents)) {
+         return Notification._createAndShowNotification((root) => {
+           render(contents, root);
+@@ -200,7 +201,7 @@
+ 
+     /** @private */
+     static _createAndShowNotification(renderer, options) {
+-      const notification = document.createElement('vaadin-notification');
++      const notification = document.createElement('vaadin24-notification');
+       if (options && Number.isFinite(options.duration)) {
+         notification.duration = options.duration;
+       }
+@@ -228,9 +229,9 @@
+ 
+     /** @private */
+     get _container() {
+-      const Notification = customElements.get('vaadin-notification');
++      const Notification = internalCustomElements.get('vaadin24-notification');
+       if (!Notification._container) {
+-        Notification._container = document.createElement('vaadin-notification-container');
++        Notification._container = document.createElement('vaadin24-notification-container');
+         document.body.appendChild(Notification._container);
+       }
+       return Notification._container;
+@@ -245,7 +246,7 @@
+     ready() {
+       super.ready();
+ 
+-      this._overlayElement = this.shadowRoot.querySelector('vaadin-notification-card');
++      this._overlayElement = this.shadowRoot.querySelector('vaadin24-notification-card');
+ 
+       processTemplates(this);
+     }

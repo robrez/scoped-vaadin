@@ -3,7 +3,7 @@ Index: test/column-reordering.common.js
 --- test/column-reordering.common.js
 +++ test/column-reordering.common.js
 @@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';

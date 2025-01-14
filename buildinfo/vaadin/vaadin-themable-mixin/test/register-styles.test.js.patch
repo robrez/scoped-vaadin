@@ -4,7 +4,7 @@ Index: test/register-styles.test.js
 +++ test/register-styles.test.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import sinon from 'sinon';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 @@ -9,7 +10,7 @@
@@ -16,7 +16,7 @@ Index: test/register-styles.test.js
        name,
        class extends ThemableMixin(PolymerElement) {
          static get is() {
-@@ -213,7 +214,7 @@
+@@ -212,7 +213,7 @@
          expect(console.warn.called).to.be.false;
        });
  

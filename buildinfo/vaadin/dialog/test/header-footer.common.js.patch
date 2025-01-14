@@ -11,7 +11,7 @@ Index: test/header-footer.common.js
      await nextRender();
      overlay = dialog.$.overlay;
    });
-@@ -599,7 +599,7 @@
+@@ -593,7 +593,7 @@
    let dialog;
  
    beforeEach(() => {

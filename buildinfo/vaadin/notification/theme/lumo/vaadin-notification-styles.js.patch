@@ -20,7 +20,7 @@ Index: theme/lumo/vaadin-notification-styles.js
    css`
      :host {
        position: relative;
-@@ -34,7 +34,7 @@
+@@ -36,7 +36,7 @@
        justify-content: space-between;
      }
  

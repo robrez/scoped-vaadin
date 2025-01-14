@@ -1,0 +1,43 @@
+Index: src/vaadin-lit-time-picker-overlay.js
+===================================================================
+--- src/vaadin-lit-time-picker-overlay.js
++++ src/vaadin-lit-time-picker-overlay.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { ComboBoxOverlayMixin } from '@vaadin/combo-box/src/vaadin-combo-box-overlay-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
+-import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxOverlayMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-overlay-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
++import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ const timePickerOverlayStyles = css`
+   #overlay {
+@@ -25,7 +25,7 @@
+ `;
+ 
+ /**
+- * An element used internally by `<vaadin-time-picker>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-time-picker>`. Not intended to be used separately.
+  *
+  * @extends HTMLElement
+  * @mixes ComboBoxOverlayMixin
+@@ -38,7 +38,7 @@
+   OverlayMixin(DirMixin(ThemableMixin(PolylitMixin(LitElement)))),
+ ) {
+   static get is() {
+-    return 'vaadin-time-picker-overlay';
++    return 'vaadin24-time-picker-overlay';
+   }
+ 
+   static get styles() {

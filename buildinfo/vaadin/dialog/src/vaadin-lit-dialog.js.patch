@@ -44,7 +44,7 @@ Index: src/vaadin-lit-dialog.js
 -      <vaadin-dialog-overlay
 +      <vaadin24-dialog-overlay
          id="overlay"
-         role="dialog"
+         role="${this.overlayRole}"
          .owner="${this}"
 @@ -89,7 +89,7 @@
          ?resizable="${this.resizable}"

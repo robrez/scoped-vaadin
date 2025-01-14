@@ -3,7 +3,7 @@ Index: test/accessibility.common.js
 --- test/accessibility.common.js
 +++ test/accessibility.common.js
 @@ -1,21 +1,21 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
 -import '@vaadin/item/vaadin-item.js';

@@ -7,16 +7,16 @@ Index: test/lit-setup.js
  import { LitElement, unsafeCSS } from 'lit';
  import { ThemableMixin } from '../vaadin-themable-mixin.js';
  
-@@ -8,7 +9,7 @@
+@@ -7,7 +8,7 @@
+  * -lit.test.js tests, we specifically want to create LitElement based custom elements instead.
   */
- // eslint-disable-next-line max-params
  window.defineCustomElementFunction = (name, parentName, content, styles, noIs) => {
 -  const parentElement = parentName ? customElements.get(parentName) : LitElement;
 +  const parentElement = parentName ? internalCustomElements.get(parentName) : LitElement;
    class CustomElement extends ThemableMixin(parentElement) {
      static get styles() {
        if (Array.isArray(styles)) {
-@@ -35,5 +36,5 @@
+@@ -34,5 +35,5 @@
      });
    }
  

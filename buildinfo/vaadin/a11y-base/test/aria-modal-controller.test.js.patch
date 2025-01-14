@@ -3,7 +3,7 @@ Index: test/aria-modal-controller.test.js
 --- test/aria-modal-controller.test.js
 +++ test/aria-modal-controller.test.js
 @@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { defineLit, definePolymer, fixtureSync, nextRender } from '@vaadin/testing-helpers';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';

@@ -7,19 +7,22 @@ Index: src/define.js
  /**
   * @license
   * Copyright (c) 2021 - 2024 Vaadin Ltd.
-@@ -5,7 +6,7 @@
-  */
+@@ -38,7 +39,7 @@
+         set(value) {
+           if (!!value && experimentalMap[featureFlagKey].size > 0) {
+             experimentalMap[featureFlagKey].forEach((elementClass) => {
+-              customElements.define(elementClass.is, elementClass);
++              internalCustomElements.define(elementClass.is, elementClass);
+             });
+             experimentalMap[featureFlagKey].clear();
+           }
+@@ -53,9 +54,9 @@
+     }
+   }
  
- export function defineCustomElement(CustomElement) {
 -  const defined = customElements.get(CustomElement.is);
 +  const defined = internalCustomElements.get(CustomElement.is);
    if (!defined) {
-     Object.defineProperty(CustomElement, 'version', {
-       get() {
-@@ -13,7 +14,7 @@
-       },
-     });
- 
 -    customElements.define(CustomElement.is, CustomElement);
 +    internalCustomElements.define(CustomElement.is, CustomElement);
    } else {

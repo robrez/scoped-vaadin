@@ -2,10 +2,11 @@ Index: test/restore-focus.common.js
 ===================================================================
 --- test/restore-focus.common.js
 +++ test/restore-focus.common.js
-@@ -1,14 +1,15 @@
+@@ -1,15 +1,16 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { escKeyDown, fixtureSync, mousedown, nextRender, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
 +import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
@@ -21,7 +22,7 @@ Index: test/restore-focus.common.js
          <input id="focusable" />
        `;
      }
-@@ -30,7 +31,7 @@
+@@ -31,7 +32,7 @@
    },
  );
  

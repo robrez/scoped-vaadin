@@ -4,7 +4,7 @@ Index: test/button.common.ts
 +++ test/button.common.ts
 @@ -1,33 +1,34 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';

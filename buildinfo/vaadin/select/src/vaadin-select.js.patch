@@ -62,12 +62,14 @@ Index: src/vaadin-select.js
   *     item.textContent = name;
   *     item.setAttribute('label', name)
   *     listBox.appendChild(item);
-@@ -85,38 +85,38 @@
+@@ -85,39 +85,39 @@
   * Custom property                    | Description                  | Target element          | Default
   * -----------------------------------|------------------------------|----------------------------------
   * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
 - * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin-select-overlay` |
+- * `--vaadin-select-overlay-width`    | Width of the overlay         | `vaadin-select-overlay` |
 + * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin24-select-overlay` |
++ * `--vaadin-select-overlay-width`    | Width of the overlay         | `vaadin24-select-overlay` |
   *
 - * `<vaadin-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
 - * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
@@ -114,7 +116,7 @@ Index: src/vaadin-select.js
   * propagated to the internal components listed above.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -135,7 +135,7 @@
+@@ -136,7 +136,7 @@
   */
  class Select extends SelectBaseMixin(ElementMixin(ThemableMixin(PolymerElement))) {
    static get is() {
@@ -123,7 +125,7 @@ Index: src/vaadin-select.js
    }
  
    static get template() {
-@@ -156,7 +156,7 @@
+@@ -157,7 +157,7 @@
            <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
          </div>
  
@@ -132,7 +134,7 @@ Index: src/vaadin-select.js
            part="input-field"
            readonly="[[readonly]]"
            disabled="[[disabled]]"
-@@ -167,7 +167,7 @@
+@@ -168,7 +168,7 @@
            <slot name="prefix" slot="prefix"></slot>
            <slot name="value"></slot>
            <div part="toggle-button" slot="suffix" aria-hidden="true" on-mousedown="_onToggleMouseDown"></div>
@@ -141,7 +143,7 @@ Index: src/vaadin-select.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -178,14 +178,14 @@
+@@ -179,7 +179,7 @@
          </div>
        </div>
  
@@ -150,8 +152,9 @@ Index: src/vaadin-select.js
          position-target="[[_inputContainer]]"
          opened="{{opened}}"
          with-backdrop="[[_phone]]"
-         phone$="[[_phone]]"
+@@ -187,7 +187,7 @@
          theme$="[[_theme]]"
+         no-vertical-overlap$="[[noVerticalOverlap]]"
          on-vaadin-overlay-open="_onOverlayOpen"
 -      ></vaadin-select-overlay>
 +      ></vaadin24-select-overlay>

@@ -1,0 +1,44 @@
+Index: test/lit-renderer-directives.common.js
+===================================================================
+--- test/lit-renderer-directives.common.js
++++ test/lit-renderer-directives.common.js
+@@ -6,13 +6,13 @@
+ 
+ async function renderNotification(container, { content }) {
+   render(
+-    html`<vaadin-notification
++    html`<vaadin24-notification
+       ${content ? notificationRenderer(() => html`${content}`, content) : null}
+-    ></vaadin-notification>`,
++    ></vaadin24-notification>`,
+     container,
+   );
+   await nextFrame();
+-  return container.querySelector('vaadin-notification');
++  return container.querySelector('vaadin24-notification');
+ }
+ 
+ describe('lit renderer directives', () => {
+@@ -26,7 +26,7 @@
+     describe('basic', () => {
+       beforeEach(async () => {
+         notification = await renderNotification(container, { content: 'Content' });
+-        card = notification.shadowRoot.querySelector('vaadin-notification-card');
++        card = notification.shadowRoot.querySelector('vaadin24-notification-card');
+         notification.open();
+       });
+ 
+@@ -55,11 +55,11 @@
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+         render(
+-          html`<vaadin-notification opened ${notificationRenderer(rendererSpy)}></vaadin-notification>`,
++          html`<vaadin24-notification opened ${notificationRenderer(rendererSpy)}></vaadin24-notification>`,
+           container,
+         );
+         await nextFrame();
+-        notification = container.querySelector('vaadin-notification');
++        notification = container.querySelector('vaadin24-notification');
+       });
+ 
+       it('should pass the notification instance to the renderer', () => {

@@ -4,8 +4,8 @@ Index: test/column-observer.test.js
 +++ test/column-observer.test.js
 @@ -1,10 +1,11 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
  import { ColumnObserver } from '../src/vaadin-grid-helpers.js';
  

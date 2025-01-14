@@ -28,7 +28,7 @@ Index: test/typings/menu-bar.types.ts
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
-@@ -39,7 +39,7 @@
+@@ -40,7 +40,7 @@
  assertType<HTMLElement | string | undefined>(menuItem.component);
  
  // Item
@@ -37,7 +37,7 @@ Index: test/typings/menu-bar.types.ts
  
  assertType<MenuBarItem>(item);
  assertType<ItemMixinClass>(item);
-@@ -47,7 +47,7 @@
+@@ -48,7 +48,7 @@
  assertType<ThemableMixinClass>(item);
  
  // List-box

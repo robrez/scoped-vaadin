@@ -3,7 +3,7 @@ Index: test/label-mixin.test.js
 --- test/label-mixin.test.js
 +++ test/label-mixin.test.js
 @@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { defineLit, definePolymer, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';

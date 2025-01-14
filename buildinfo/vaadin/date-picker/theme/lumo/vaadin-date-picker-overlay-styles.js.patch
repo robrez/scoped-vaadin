@@ -14,7 +14,7 @@ Index: theme/lumo/vaadin-date-picker-overlay-styles.js
  
  const datePickerOverlay = css`
    [part='overlay'] {
-@@ -53,6 +53,6 @@
+@@ -50,6 +50,6 @@
    }
  `;
  

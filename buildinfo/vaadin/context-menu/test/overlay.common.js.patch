@@ -2,19 +2,19 @@ Index: test/overlay.common.js
 ===================================================================
 --- test/overlay.common.js
 +++ test/overlay.common.js
-@@ -6,9 +6,9 @@
+@@ -7,9 +7,9 @@
  
    beforeEach(async () => {
      menu = fixtureSync(`
 -      <vaadin-context-menu>
 +      <vaadin24-context-menu>
-         <div id="target">FOOOO</div>
+         <div id="target" style="width: 100px; outline: 1px dashed #000;">FOOOO</div>
 -      </vaadin-context-menu>
 +      </vaadin24-context-menu>
      `);
      menu.renderer = (root) => {
        root.textContent = 'OVERLAY CONTENT';
-@@ -307,7 +307,7 @@
+@@ -308,7 +308,7 @@
        });
      });
  

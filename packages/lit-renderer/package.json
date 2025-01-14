@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/lit-renderer",
-  "version": "24.4.2-alpha.1",
+  "version": "24.6.2-alpha.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -31,6 +31,6 @@
   ],
   "dependencies": {
     "lit": "^3.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^24.4.2-alpha.1"
+    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
   }
 }

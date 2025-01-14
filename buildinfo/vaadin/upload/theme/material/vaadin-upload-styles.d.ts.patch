@@ -6,10 +6,10 @@ Index: theme/material/vaadin-upload-styles.d.ts
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/font-icons.js';
 -import '@vaadin/vaadin-material-styles/typography.js';
--import '@vaadin/button/theme/material/vaadin-button.js';
--import '@vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
+-import '@vaadin/button/theme/material/vaadin-button-styles.js';
+-import '@vaadin/progress-bar/theme/material/vaadin-progress-bar-styles.js';
 +import '@scoped-vaadin/vaadin-material-styles/color.js';
 +import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 +import '@scoped-vaadin/vaadin-material-styles/typography.js';
-+import '@scoped-vaadin/button/theme/material/vaadin-button.js';
-+import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
++import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar-styles.js';

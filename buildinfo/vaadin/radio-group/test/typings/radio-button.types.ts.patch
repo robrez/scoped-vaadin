@@ -46,5 +46,5 @@ Index: test/typings/radio-button.types.ts
 -const group = document.createElement('vaadin-radio-group');
 +const group = document.createElement('vaadin24-radio-group');
  
- // Group mixins
- assertType<ControllerMixinClass>(group);
+ // Group properties
+ assertType<string | null | undefined>(group.name);

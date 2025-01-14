@@ -13,8 +13,8 @@ Index: theme/lumo/vaadin-date-picker-styles.js
 +import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  const datePicker = css`
-   :host {
-@@ -31,4 +31,4 @@
+   [part='toggle-button']::before {
+@@ -27,4 +27,4 @@
    }
  `;
  

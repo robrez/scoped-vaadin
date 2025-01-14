@@ -13,7 +13,7 @@ Index: src/vaadin-custom-field.d.ts
  import { CustomFieldMixin } from './vaadin-custom-field-mixin.js';
  
  export { CustomFieldFormatValueFn, CustomFieldParseValueFn } from './vaadin-custom-field-mixin.js';
-@@ -53,13 +53,13 @@
+@@ -54,13 +54,13 @@
  }
  
  /**
@@ -32,7 +32,7 @@ Index: src/vaadin-custom-field.d.ts
   * ```
   *
   * ### Styling
-@@ -86,7 +86,7 @@
+@@ -87,7 +87,7 @@
   * `has-error-message` | Set when the element has an error message | :host
   *
   * You may also manually set `disabled` or `readonly` attribute on this component to make the label

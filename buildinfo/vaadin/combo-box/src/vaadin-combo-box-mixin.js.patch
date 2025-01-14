@@ -8,7 +8,7 @@ Index: src/vaadin-combo-box-mixin.js
   */
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
 -import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
--import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { isElementFocused, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { KeyboardMixin } from '@vaadin/a11y-base/src/keyboard-mixin.js';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
@@ -20,7 +20,7 @@ Index: src/vaadin-combo-box-mixin.js
 -import { VirtualKeyboardController } from '@vaadin/field-base/src/virtual-keyboard-controller.js';
 +import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
 +import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
-+import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { isElementFocused, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 +import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -44,7 +44,7 @@ Index: src/vaadin-combo-box-mixin.js
           * - `model` The object with the properties related with the rendered
           *   item, contains:
           *   - `model.index` The index of the rendered item.
-@@ -306,7 +306,7 @@
+@@ -316,7 +316,7 @@
       * @return {string}
       */
      get _tagNamePrefix() {
@@ -53,7 +53,7 @@ Index: src/vaadin-combo-box-mixin.js
      }
  
      /**
-@@ -507,7 +507,7 @@
+@@ -529,7 +529,7 @@
        if (scroller) {
          if (opened) {
            scroller.style.maxHeight =
@@ -62,7 +62,7 @@ Index: src/vaadin-combo-box-mixin.js
          }
  
          scroller.setProperties({
-@@ -654,7 +654,7 @@
+@@ -675,7 +675,7 @@
       * @private
       */
      _onToggleButtonClick(event) {
@@ -71,7 +71,7 @@ Index: src/vaadin-combo-box-mixin.js
        // from handling the click event after it bubbles.
        event.preventDefault();
  
-@@ -1405,13 +1405,13 @@
+@@ -1433,13 +1433,13 @@
       */
  
      /**
