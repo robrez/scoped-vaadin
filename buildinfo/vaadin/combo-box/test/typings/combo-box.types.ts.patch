@@ -51,7 +51,7 @@ Index: test/typings/combo-box.types.ts
  assertType<ComboBox>(genericComboBox);
  
  const narrowedComboBox = genericComboBox as ComboBox<TestComboBoxItem>;
-@@ -154,7 +154,7 @@
+@@ -155,7 +155,7 @@
  assertType<ThemableMixinClass>(narrowedComboBox);
  
  /* ComboBoxLight */
@@ -60,7 +60,7 @@ Index: test/typings/combo-box.types.ts
  assertType<ComboBoxLight>(genericComboBoxLight);
  
  const narrowedComboBoxLight = genericComboBoxLight as ComboBoxLight<TestComboBoxItem>;
-@@ -223,7 +223,7 @@
+@@ -224,7 +224,7 @@
  assertType<ValidateMixinClass>(narrowedComboBoxLight);
  
  // Item

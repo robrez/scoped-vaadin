@@ -4,7 +4,7 @@ Index: test/light-dom-observing.common.js
 +++ test/light-dom-observing.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 @@ -16,18 +17,18 @@

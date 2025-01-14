@@ -2,7 +2,7 @@ Index: test/overflow.common.js
 ===================================================================
 --- test/overflow.common.js
 +++ test/overflow.common.js
-@@ -44,10 +44,10 @@
+@@ -23,10 +23,10 @@
        wrapper = fixtureSync(`
          <div style="display: flex">
            <div style="width: 100px;"></div>
@@ -15,7 +15,7 @@ Index: test/overflow.common.js
        await nextRender(menu);
        menu.items = [
          { text: 'Item 1' },
-@@ -246,7 +246,7 @@
+@@ -241,7 +241,7 @@
      let menu, buttons, overflow;
  
      beforeEach(async () => {
@@ -24,7 +24,7 @@ Index: test/overflow.common.js
        menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
        await nextRender(menu);
        buttons = menu._buttons;
-@@ -318,7 +318,7 @@
+@@ -313,7 +313,7 @@
  
      beforeEach(async () => {
        container = fixtureSync(
@@ -33,7 +33,7 @@ Index: test/overflow.common.js
        );
        menu = container.firstChild;
  
-@@ -378,7 +378,7 @@
+@@ -373,7 +373,7 @@
        container = fixtureSync('<div style="display: flex; max-width: 300px"></div>');
        text = document.createElement('div');
        text.textContent = 'Sibling';
@@ -42,7 +42,7 @@ Index: test/overflow.common.js
        menu.items = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
        menu.style.minWidth = '100px';
      });
-@@ -448,13 +448,13 @@
+@@ -443,13 +443,13 @@
      }
  
      beforeEach(async () => {
@@ -58,7 +58,7 @@ Index: test/overflow.common.js
          { component: makeComponent('6'), children: [{ text: 'SubItem6.1' }, { text: 'SubItem6.2' }] },
        ];
        await nextRender(menu);
-@@ -486,7 +486,7 @@
+@@ -481,7 +481,7 @@
      it('should teleport the same component to overflow sub-menu and back', async () => {
        overflow.click();
        await nextRender(subMenu);

@@ -18,7 +18,7 @@ Index: theme/lumo/vaadin-item-styles.js
  
  const item = css`
    :host {
-@@ -83,12 +83,12 @@
+@@ -85,12 +85,12 @@
    }
  
    /* Slotted icons */

@@ -1,0 +1,135 @@
+Index: test/basic.common.js
+===================================================================
+--- test/basic.common.js
++++ test/basic.common.js
+@@ -6,24 +6,24 @@
+ 
+ const fixtures = {
+   'default-inputs': `
+-    <vaadin-date-time-picker>
+-      <vaadin-date-picker slot="date-picker"></vaadin-date-picker>
+-      <vaadin-time-picker slot="time-picker"></vaadin-time-picker>
+-    </vaadin-date-time-picker>
++    <vaadin24-date-time-picker>
++      <vaadin24-date-picker slot="date-picker"></vaadin24-date-picker>
++      <vaadin24-time-picker slot="time-picker"></vaadin24-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+   'lazy-inputs': `
+-    <vaadin-date-time-picker>
+-    </vaadin-date-time-picker>
++    <vaadin24-date-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+   'default-values': `
+-    <vaadin-date-time-picker>
+-      <vaadin-date-picker slot="date-picker" value="2019-09-16"></vaadin-date-picker>
+-      <vaadin-time-picker slot="time-picker" value="15:00"></vaadin-time-picker>
+-    </vaadin-date-time-picker>
++    <vaadin24-date-time-picker>
++      <vaadin24-date-picker slot="date-picker" value="2019-09-16"></vaadin24-date-picker>
++      <vaadin24-time-picker slot="time-picker" value="15:00"></vaadin24-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+   'lazy-values': `
+-    <vaadin-date-time-picker>
+-    </vaadin-date-time-picker>
++    <vaadin24-date-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+ };
+ 
+@@ -48,7 +48,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    dateTimePicker = fixtureSync('<vaadin-date-time-picker></vaadin-date-time-picker>');
++    dateTimePicker = fixtureSync('<vaadin24-date-time-picker></vaadin24-date-time-picker>');
+     await nextRender();
+     datePicker = getDatePicker(dateTimePicker);
+     timePicker = getTimePicker(dateTimePicker);
+@@ -109,7 +109,7 @@
+     });
+ 
+     it('should not throw on focus when not attached to the DOM', () => {
+-      const element = document.createElement('vaadin-date-time-picker');
++      const element = document.createElement('vaadin24-date-time-picker');
+       expect(() => element.focus()).not.to.throw(Error);
+     });
+   });
+@@ -387,7 +387,7 @@
+   let datePicker;
+ 
+   beforeEach(async () => {
+-    dateTimePicker = fixtureSync('<vaadin-date-time-picker autofocus></vaadin-date-time-picker>');
++    dateTimePicker = fixtureSync('<vaadin24-date-time-picker autofocus></vaadin24-date-time-picker>');
+     await nextRender();
+     datePicker = getDatePicker(dateTimePicker);
+   });
+@@ -401,7 +401,7 @@
+   let dateTimePicker;
+ 
+   beforeEach(async () => {
+-    dateTimePicker = fixtureSync('<vaadin-date-time-picker value="2019-09-16T15:00"></vaadin-date-time-picker>');
++    dateTimePicker = fixtureSync('<vaadin24-date-time-picker value="2019-09-16T15:00"></vaadin24-date-time-picker>');
+     await nextRender();
+   });
+ 
+@@ -417,7 +417,7 @@
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+-      dateTimePicker = fixtureSync('<vaadin-date-time-picker theme="foo"></vaadin-date-time-picker>');
++      dateTimePicker = fixtureSync('<vaadin24-date-time-picker theme="foo"></vaadin24-date-time-picker>');
+       await nextRender();
+       datePicker = getDatePicker(dateTimePicker);
+       timePicker = getTimePicker(dateTimePicker);
+@@ -434,13 +434,13 @@
+ 
+   describe('slotted', () => {
+     beforeEach(() => {
+-      dateTimePicker = document.createElement('vaadin-date-time-picker');
++      dateTimePicker = document.createElement('vaadin24-date-time-picker');
+ 
+-      datePicker = document.createElement('vaadin-date-picker');
++      datePicker = document.createElement('vaadin24-date-picker');
+       datePicker.setAttribute('slot', 'date-picker');
+       dateTimePicker.appendChild(datePicker);
+ 
+-      timePicker = document.createElement('vaadin-time-picker');
++      timePicker = document.createElement('vaadin24-time-picker');
+       timePicker.setAttribute('slot', 'time-picker');
+       dateTimePicker.appendChild(timePicker);
+     });
+@@ -478,14 +478,14 @@
+       await nextRender();
+       originalDatePicker = getDatePicker(dateTimePicker);
+       originalTimePicker = getTimePicker(dateTimePicker);
+-      datePicker = dateTimePicker.querySelector('vaadin-date-picker');
+-      timePicker = dateTimePicker.querySelector('vaadin-time-picker');
++      datePicker = dateTimePicker.querySelector('vaadin24-date-picker');
++      timePicker = dateTimePicker.querySelector('vaadin24-time-picker');
+ 
+       if (set === 'lazy') {
+         // Add slotted children lazily simulating the case where Flow adds the slotted elements after date time picker is ready
+-        datePicker = document.createElement('vaadin-date-picker');
++        datePicker = document.createElement('vaadin24-date-picker');
+         datePicker.slot = 'date-picker';
+-        timePicker = document.createElement('vaadin-time-picker');
++        timePicker = document.createElement('vaadin24-time-picker');
+         timePicker.slot = 'time-picker';
+         dateTimePicker.appendChild(datePicker);
+         dateTimePicker.appendChild(timePicker);
+@@ -591,10 +591,10 @@
+ 
+       if (set === 'lazy') {
+         // Add slotted children lazily simulating the case where Flow adds the slotted elements after date time picker is ready
+-        const datePicker = document.createElement('vaadin-date-picker');
++        const datePicker = document.createElement('vaadin24-date-picker');
+         datePicker.value = '2019-09-16';
+         datePicker.slot = 'date-picker';
+-        const timePicker = document.createElement('vaadin-time-picker');
++        const timePicker = document.createElement('vaadin24-time-picker');
+         timePicker.value = '15:00';
+         timePicker.slot = 'time-picker';
+         dateTimePicker.appendChild(datePicker);

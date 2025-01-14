@@ -1,0 +1,34 @@
+Index: src/vaadin-lit-radio-group.js
+===================================================================
+--- src/vaadin-lit-radio-group.js
++++ src/vaadin-lit-radio-group.js
+@@ -5,15 +5,15 @@
+  */
+ import './vaadin-lit-radio-button.js';
+ import { html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { RadioGroupMixin } from './vaadin-radio-group-mixin.js';
+ import { radioGroupStyles } from './vaadin-radio-group-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-radio-group>` web component.
++ * LitElement based version of `<vaadin24-radio-group>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -23,7 +23,7 @@
+  */
+ class RadioGroup extends RadioGroupMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-radio-group';
++    return 'vaadin24-radio-group';
+   }
+ 
+   static get styles() {

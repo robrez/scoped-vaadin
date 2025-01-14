@@ -12,7 +12,7 @@ Index: theme/material/vaadin-login-form-wrapper-styles.js
  
  const loginFormWrapper = css`
    :host {
-@@ -97,6 +97,6 @@
+@@ -104,6 +104,6 @@
    }
  `;
  

@@ -18,7 +18,7 @@ Index: theme/lumo/vaadin-button-styles.js
  
  const button = css`
    :host {
-@@ -215,14 +215,14 @@
+@@ -228,14 +228,14 @@
  
    /* Icons */
  
@@ -35,7 +35,7 @@ Index: theme/lumo/vaadin-button-styles.js
      padding: 0.25em;
      box-sizing: border-box !important;
    }
-@@ -270,6 +270,6 @@
+@@ -283,6 +283,6 @@
    }
  `;
  

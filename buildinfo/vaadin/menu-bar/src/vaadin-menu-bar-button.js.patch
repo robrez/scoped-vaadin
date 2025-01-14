@@ -19,16 +19,7 @@ Index: src/vaadin-menu-bar-button.js
    css`
      :host {
        flex-shrink: 0;
-@@ -18,7 +18,7 @@
-       margin-inline-end: 0;
-     }
- 
--    [part='label'] ::slotted(vaadin-menu-bar-item) {
-+    [part='label'] ::slotted(vaadin24-menu-bar-item) {
-       position: relative;
-       z-index: 1;
-     }
-@@ -27,7 +27,7 @@
+@@ -22,7 +22,7 @@
  );
  
  /**
@@ -37,7 +28,7 @@ Index: src/vaadin-menu-bar-button.js
   *
   * @customElement
   * @extends Button
-@@ -35,7 +35,7 @@
+@@ -30,7 +30,7 @@
   */
  class MenuBarButton extends Button {
    static get is() {

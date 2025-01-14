@@ -4,7 +4,7 @@ Index: test/dir-mixin.test.js
 +++ test/dir-mixin.test.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 @@ -12,7 +13,7 @@

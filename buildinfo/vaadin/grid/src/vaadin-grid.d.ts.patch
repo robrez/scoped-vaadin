@@ -109,7 +109,7 @@ Index: src/vaadin-grid.d.ts
   * to be displayed.
   *
   * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
-@@ -277,7 +277,7 @@
+@@ -281,7 +281,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

@@ -54,7 +54,7 @@ Index: src/vaadin-select-base-mixin.js
           * @type {!SelectRenderer | undefined}
           */
          renderer: {
-@@ -250,7 +250,7 @@
+@@ -265,7 +265,7 @@
          });
  
          menuElement.addEventListener('selected-changed', () => this.__updateValueButton());
@@ -63,16 +63,16 @@ Index: src/vaadin-select-base-mixin.js
          // to override and handle the keydown event before the value change happens.
          menuElement.addEventListener('keydown', (e) => this._onKeyDownInside(e), true);
          menuElement.addEventListener(
-@@ -293,7 +293,7 @@
-      * @private
-      */
-     _onClick(event) {
+@@ -312,7 +312,7 @@
+         return;
+       }
+ 
 -      // Prevent parent components such as `vaadin-grid`
 +      // Prevent parent components such as `vaadin24-grid`
        // from handling the click event after it bubbles.
        event.preventDefault();
  
-@@ -424,7 +424,7 @@
+@@ -446,7 +446,7 @@
       * @private
       */
      __createItemElement(item) {
@@ -81,7 +81,7 @@ Index: src/vaadin-select-base-mixin.js
        if (item.label) {
          itemElement.textContent = item.label;
        }
-@@ -609,7 +609,7 @@
+@@ -636,7 +636,7 @@
  
        let listBox = root.firstElementChild;
        if (!listBox) {

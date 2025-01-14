@@ -2,24 +2,28 @@ Index: src/vaadin-notification.js
 ===================================================================
 --- src/vaadin-notification.js
 +++ src/vaadin-notification.js
-@@ -6,16 +6,16 @@
+@@ -4,22 +4,22 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
- import { render } from 'lit';
- import { isTemplateResult } from 'lit/directive-helpers.js';
--import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
--import { processTemplates } from '@vaadin/component-base/src/templates.js';
--import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
--import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
-+import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
-+import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
-+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { NotificationContainerMixin, NotificationMixin } from './vaadin-notification-mixin.js';
+ import { notificationCardStyles, notificationContainerStyles } from './vaadin-notification-styles.js';
+ 
+-registerStyles('vaadin-notification-container', notificationContainerStyles, {
++registerStyles('vaadin24-notification-container', notificationContainerStyles, {
+   moduleId: 'vaadin-notification-container-styles',
+ });
+ 
+-registerStyles('vaadin-notification-card', notificationCardStyles, {
++registerStyles('vaadin24-notification-card', notificationCardStyles, {
+   moduleId: 'vaadin-notification-card-styles',
+ });
  
  /**
 - * An element used internally by `<vaadin-notification>`. Not intended to be used separately.
@@ -27,16 +31,13 @@ Index: src/vaadin-notification.js
   *
   * @customElement
   * @extends HTMLElement
-@@ -96,7 +96,7 @@
+@@ -48,12 +48,12 @@
    }
  
    static get is() {
 -    return 'vaadin-notification-container';
 +    return 'vaadin24-notification-container';
    }
- 
-   static get properties() {
-@@ -166,7 +166,7 @@
  }
  
  /**
@@ -45,7 +46,7 @@ Index: src/vaadin-notification.js
   *
   * @customElement
   * @extends HTMLElement
-@@ -201,7 +201,7 @@
+@@ -72,7 +72,7 @@
    }
  
    static get is() {
@@ -54,7 +55,7 @@ Index: src/vaadin-notification.js
    }
  
    /** @protected */
-@@ -213,7 +213,7 @@
+@@ -83,7 +83,7 @@
  }
  
  /**
@@ -63,7 +64,7 @@ Index: src/vaadin-notification.js
   *
   * ### Rendering
   *
-@@ -225,7 +225,7 @@
+@@ -95,7 +95,7 @@
   * users are able to check if there is already content in `root` for reusing it.
   *
   * ```html
@@ -72,7 +73,7 @@ Index: src/vaadin-notification.js
   * ```
   * ```js
   * const notification = document.querySelector('#notification');
-@@ -241,10 +241,10 @@
+@@ -111,10 +111,10 @@
   *
   * ### Styling
   *
@@ -85,7 +86,7 @@ Index: src/vaadin-notification.js
   *
   * Part name | Description
   * ----------------|----------------
-@@ -253,8 +253,8 @@
+@@ -123,8 +123,8 @@
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
   *
@@ -95,13 +96,17 @@ Index: src/vaadin-notification.js
 + * propagated to the internal `<vaadin24-notification-card>`.
   *
   * @fires {CustomEvent} opened-changed - Fired when the `opened` property changes.
-  *
-@@ -272,12 +272,12 @@
+  * @fires {CustomEvent} closed - Fired when the notification is closed.
+@@ -142,15 +142,15 @@
            display: none !important;
          }
        </style>
--      <vaadin-notification-card theme$="[[_theme]]"> </vaadin-notification-card>
-+      <vaadin24-notification-card theme$="[[_theme]]"> </vaadin24-notification-card>
+-      <vaadin-notification-card
++      <vaadin24-notification-card
+         theme$="[[_theme]]"
+         aria-live$="[[__computeAriaLive(assertive)]]"
+-      ></vaadin-notification-card>
++      ></vaadin24-notification-card>
      `;
    }
  
@@ -109,35 +114,5 @@ Index: src/vaadin-notification.js
 -    return 'vaadin-notification';
 +    return 'vaadin24-notification';
    }
+ }
  
-   static get properties() {
-@@ -318,9 +318,9 @@
-        * Custom function for rendering the content of the notification.
-        * Receives two arguments:
-        *
--       * - `root` The `<vaadin-notification-card>` DOM element. Append
-+       * - `root` The `<vaadin24-notification-card>` DOM element. Append
-        *   your content to it.
--       * - `notification` The reference to the `<vaadin-notification>` element.
-+       * - `notification` The reference to the `<vaadin24-notification>` element.
-        * @type {!NotificationRenderer | undefined}
-        */
-       renderer: Function,
-@@ -391,7 +391,7 @@
-   /** @private */
-   get _container() {
-     if (!Notification._container) {
--      Notification._container = document.createElement('vaadin-notification-container');
-+      Notification._container = document.createElement('vaadin24-notification-container');
-       document.body.appendChild(Notification._container);
-     }
-     return Notification._container;
-@@ -406,7 +406,7 @@
-   ready() {
-     super.ready();
- 
--    this._overlayElement = this.shadowRoot.querySelector('vaadin-notification-card');
-+    this._overlayElement = this.shadowRoot.querySelector('vaadin24-notification-card');
- 
-     processTemplates(this);
-   }

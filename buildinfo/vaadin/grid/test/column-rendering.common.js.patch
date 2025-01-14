@@ -29,7 +29,7 @@ Index: test/column-rendering.common.js
 +        </vaadin24-grid>
        `);
        grid.items = [{ name: `Item 1` }];
-       await onceResized(grid);
+       await nextResize(grid);
        flushGrid(grid);
  
 -      const newColumn = document.createElement('vaadin-grid-column');

@@ -2,28 +2,26 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,7 +1,7 @@
+@@ -1,6 +1,6 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/upload",
--  "version": "24.4.2",
 +  "name": "@scoped-vaadin/upload",
-+  "version": "24.4.2-alpha.1",
+   "version": "24.6.2",
    "description-markup": "markdown",
    "framework": "lit",
-   "framework-config": {
 @@ -15,8 +15,8 @@
      "html": {
        "elements": [
          {
 -          "name": "vaadin-upload-file",
--          "description": "`<vaadin-upload-file>` element represents a file in the file list of `<vaadin-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
+-          "description": "`<vaadin-upload-file>` element represents a file in the file list of `<vaadin-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`disabled`       | Set when the element is disabled\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
 +          "name": "vaadin24-upload-file",
-+          "description": "`<vaadin24-upload-file>` element represents a file in the file list of `<vaadin24-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
++          "description": "`<vaadin24-upload-file>` element represents a file in the file list of `<vaadin24-upload>`.\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name        | Description\n-----------------|-------------\n`row`            | File container\n`info`           | Container for file status icon, file name, status and error messages\n`done-icon`      | File done status icon\n`warning-icon`   | File warning status icon\n`meta`           | Container for file name, status and error messages\n`name`           | File name\n`error`          | Error message, shown when error happens\n`status`         | Status message\n`commands`       | Container for file command buttons\n`start-button`   | Start file upload button\n`retry-button`   | Retry file upload button\n`remove-button`  | Remove file button\n\nThe following state attributes are available for styling:\n\nAttribute        | Description\n-----------------|-------------\n`disabled`       | Set when the element is disabled\n`focus-ring`     | Set when the element is focused using the keyboard.\n`focused`        | Set when the element is focused.\n`error`          | An error has happened during uploading.\n`indeterminate`  | Uploading is in progress, but the progress value is unknown.\n`uploading`      | Uploading is in progress.\n`complete`       | Uploading has finished successfully.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
            "extension": true,
            "attributes": [
              {
-@@ -91,21 +91,21 @@
+@@ -98,21 +98,21 @@
              },
              {
                "name": "@file-abort",
@@ -48,18 +46,18 @@ Index: web-types.lit.json
                "value": {
                  "kind": "expression"
                }
-@@ -113,8 +113,8 @@
+@@ -120,8 +120,8 @@
            ]
          },
          {
 -          "name": "vaadin-upload",
--          "description": "`<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin-upload></vaadin-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name          | Description\n-------------------|-------------------------------------\n`primary-buttons`  | Upload container\n`drop-label`       | Element wrapping drop label and icon\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
+-          "description": "`<vaadin-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin-upload></vaadin-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name          | Description\n-------------------|-------------------------------------\n`primary-buttons`  | Upload container\n`drop-label`       | Element wrapping drop label and icon\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`disabled` | Set when the element is disabled | `:host`\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
 +          "name": "vaadin24-upload",
-+          "description": "`<vaadin24-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin24-upload></vaadin24-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name          | Description\n-------------------|-------------------------------------\n`primary-buttons`  | Upload container\n`drop-label`       | Element wrapping drop label and icon\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
++          "description": "`<vaadin24-upload>` is a Web Component for uploading multiple files with drag and drop support.\n\nExample:\n\n```\n<vaadin24-upload></vaadin24-upload>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name          | Description\n-------------------|-------------------------------------\n`primary-buttons`  | Upload container\n`drop-label`       | Element wrapping drop label and icon\n\nThe following state attributes are available for styling:\n\nAttribute | Description | Part name\n---|---|---\n`disabled` | Set when the element is disabled | `:host`\n`nodrop` | Set when drag and drop is disabled (e. g., on touch devices) | `:host`\n`dragover` | A file is being dragged over the element | `:host`\n`dragover-valid` | A dragged file is valid with `maxFiles` and `accept` criteria | `:host`\n`max-files-reached` | The maximum number of files that the user is allowed to add to the upload has been reached | `:host`\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
            "extension": true,
            "attributes": [
              {
-@@ -154,7 +154,7 @@
+@@ -168,7 +168,7 @@
              },
              {
                "name": ".headers",
@@ -68,7 +66,7 @@ Index: web-types.lit.json
                "value": {
                  "kind": "expression"
                }
-@@ -252,14 +252,14 @@
+@@ -266,14 +266,14 @@
              },
              {
                "name": "@upload-request",

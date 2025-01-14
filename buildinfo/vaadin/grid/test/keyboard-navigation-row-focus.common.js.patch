@@ -2,7 +2,7 @@ Index: test/keyboard-navigation-row-focus.common.js
 ===================================================================
 --- test/keyboard-navigation-row-focus.common.js
 +++ test/keyboard-navigation-row-focus.common.js
-@@ -131,10 +131,10 @@
+@@ -115,10 +115,10 @@
  describe('keyboard navigation - row focus', () => {
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -17,7 +17,7 @@ Index: test/keyboard-navigation-row-focus.common.js
      `);
  
      grid.dataProvider = hierarchicalDataProvider;
-@@ -399,16 +399,16 @@
+@@ -416,16 +416,16 @@
  describe('keyboard navigation on column groups - row focus', () => {
    beforeEach(async () => {
      grid = fixtureSync(`
@@ -42,7 +42,7 @@ Index: test/keyboard-navigation-row-focus.common.js
        root.textContent = model.item;
      };
      flushGrid(grid);
-@@ -431,9 +431,9 @@
+@@ -448,9 +448,9 @@
  
        beforeEach(() => {
          header = grid.$.header;
@@ -55,7 +55,7 @@ Index: test/keyboard-navigation-row-focus.common.js
        });
  
        it('should update tabbable header row on header row hide', async () => {
-@@ -523,9 +523,9 @@
+@@ -540,9 +540,9 @@
  ['header', 'footer', 'body'].forEach((section) => {
    describe(`empty grid - row focus - ${section}`, () => {
      beforeEach(() => {

@@ -60,12 +60,14 @@ Index: src/vaadin-select.d.ts
   *     item.textContent = name;
   *     item.setAttribute('label', name)
   *     listBox.appendChild(item);
-@@ -129,38 +129,38 @@
+@@ -129,39 +129,39 @@
   * Custom property                    | Description                  | Target element          | Default
   * -----------------------------------|------------------------------|----------------------------------
   * `--vaadin-field-default-width`     | Default width of the field   | :host                   | `12em`
 - * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin-select-overlay` |
+- * `--vaadin-select-overlay-width`    | Width of the overlay         | `vaadin-select-overlay` |
 + * `--vaadin-select-text-field-width` | Effective width of the field | `vaadin24-select-overlay` |
++ * `--vaadin-select-overlay-width`    | Width of the overlay         | `vaadin24-select-overlay` |
   *
 - * `<vaadin-select>` provides mostly the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.
 - * See [`<vaadin-text-field>`](#/elements/vaadin-text-field) for the styling documentation.
@@ -112,7 +114,7 @@ Index: src/vaadin-select.d.ts
   * propagated to the internal components listed above.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -187,7 +187,7 @@
+@@ -188,7 +188,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

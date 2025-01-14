@@ -4,7 +4,7 @@ Index: test/text-area-controller.test.js
 +++ test/text-area-controller.test.js
 @@ -1,11 +1,12 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync } from '@vaadin/testing-helpers';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';

@@ -1,0 +1,31 @@
+Index: src/vaadin-lit-multi-select-combo-box-chip.js
+===================================================================
+--- src/vaadin-lit-multi-select-combo-box-chip.js
++++ src/vaadin-lit-multi-select-combo-box-chip.js
+@@ -4,13 +4,13 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { multiSelectComboBoxChip } from './vaadin-multi-select-combo-box-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-multi-select-combo-box-chip>` web component.
++ * LitElement based version of `<vaadin24-multi-select-combo-box-chip>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -20,7 +20,7 @@
+  */
+ class MultiSelectComboBoxChip extends ThemableMixin(PolylitMixin(LitElement)) {
+   static get is() {
+-    return 'vaadin-multi-select-combo-box-chip';
++    return 'vaadin24-multi-select-combo-box-chip';
+   }
+ 
+   static get styles() {

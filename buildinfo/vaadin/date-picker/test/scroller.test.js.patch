@@ -4,7 +4,7 @@ Index: test/scroller.test.js
 +++ test/scroller.test.js
 @@ -1,10 +1,11 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { aTimeout, fixtureSync, listenOnce } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
  import { InfiniteScroller } from '../src/vaadin-infinite-scroller.js';

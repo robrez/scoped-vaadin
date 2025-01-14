@@ -1,0 +1,44 @@
+Index: src/vaadin-message-input-mixin.js
+===================================================================
+--- src/vaadin-message-input-mixin.js
++++ src/vaadin-message-input-mixin.js
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
+-import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
++import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
+ 
+ /**
+  * @polymerMixin
+@@ -89,7 +89,7 @@
+     ready() {
+       super.ready();
+ 
+-      this._buttonController = new SlotController(this, 'button', 'vaadin-button', {
++      this._buttonController = new SlotController(this, 'button', 'vaadin24-button', {
+         initializer: (btn) => {
+           btn.setAttribute('theme', 'primary contained');
+ 
+@@ -102,7 +102,7 @@
+       });
+       this.addController(this._buttonController);
+ 
+-      this._textAreaController = new SlotController(this, 'textarea', 'vaadin-text-area', {
++      this._textAreaController = new SlotController(this, 'textarea', 'vaadin24-text-area', {
+         initializer: (textarea) => {
+           textarea.addEventListener('value-changed', (event) => {
+             this.value = event.detail.value;
+@@ -181,7 +181,7 @@
+     }
+ 
+     /**
+-     * Fired when a new message is submitted with `<vaadin-message-input>`, either
++     * Fired when a new message is submitted with `<vaadin24-message-input>`, either
+      * by clicking the "send" button, or pressing the Enter key.
+      * @event submit
+      */

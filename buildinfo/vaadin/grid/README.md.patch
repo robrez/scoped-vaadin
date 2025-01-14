@@ -16,17 +16,17 @@ Index: README.md
 +[![npm version](https://badgen.net/npm/v/@scoped-vaadin/grid)](https://www.npmjs.com/package/@scoped-vaadin/grid)
  
  ```html
--<vaadin-grid theme="row-dividers" column-reordering-allowed multi-sort>
+-<vaadin-grid column-reordering-allowed multi-sort>
 -  <vaadin-grid-selection-column auto-select frozen></vaadin-grid-selection-column>
--  <vaadin-grid-sort-column width="9em" path="firstName"></vaadin-grid-sort-column>
--  <vaadin-grid-sort-column width="9em" path="lastName"></vaadin-grid-sort-column>
--  <vaadin-grid-column id="address" width="15em" flex-grow="2" header="Address"></vaadin-grid-column>
+-  <vaadin-grid-sort-column width="9rem" path="firstName"></vaadin-grid-sort-column>
+-  <vaadin-grid-sort-column width="9rem" path="lastName"></vaadin-grid-sort-column>
+-  <vaadin-grid-column id="address" width="15rem" flex-grow="2" header="Address"></vaadin-grid-column>
 -</vaadin-grid>
-+<vaadin24-grid theme="row-dividers" column-reordering-allowed multi-sort>
++<vaadin24-grid column-reordering-allowed multi-sort>
 +  <vaadin24-grid-selection-column auto-select frozen></vaadin24-grid-selection-column>
-+  <vaadin24-grid-sort-column width="9em" path="firstName"></vaadin24-grid-sort-column>
-+  <vaadin24-grid-sort-column width="9em" path="lastName"></vaadin24-grid-sort-column>
-+  <vaadin24-grid-column id="address" width="15em" flex-grow="2" header="Address"></vaadin24-grid-column>
++  <vaadin24-grid-sort-column width="9rem" path="firstName"></vaadin24-grid-sort-column>
++  <vaadin24-grid-sort-column width="9rem" path="lastName"></vaadin24-grid-sort-column>
++  <vaadin24-grid-column id="address" width="15rem" flex-grow="2" header="Address"></vaadin24-grid-column>
 +</vaadin24-grid>
  
  <script>

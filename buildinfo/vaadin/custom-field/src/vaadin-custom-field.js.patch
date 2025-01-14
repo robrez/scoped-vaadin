@@ -43,7 +43,7 @@ Index: src/vaadin-custom-field.js
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
   *
-@@ -64,7 +64,7 @@
+@@ -63,7 +63,7 @@
   */
  class CustomField extends CustomFieldMixin(ThemableMixin(ElementMixin(PolymerElement))) {
    static get is() {

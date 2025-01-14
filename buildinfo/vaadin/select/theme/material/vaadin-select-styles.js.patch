@@ -29,7 +29,7 @@ Index: theme/material/vaadin-select-styles.js
  
  const select = css`
    :host {
-@@ -52,10 +52,10 @@
+@@ -51,10 +51,10 @@
    }
  `;
  
@@ -42,9 +42,9 @@ Index: theme/material/vaadin-select-styles.js
    css`
      :host {
        font: inherit;
-@@ -81,4 +81,4 @@
-   }
- `;
+@@ -74,4 +74,4 @@
+   { moduleId: 'material-select-value-button' },
+ );
  
--registerStyles('vaadin-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'material-select-overlay' });
-+registerStyles('vaadin24-select-overlay', [menuOverlay, selectOverlay], { moduleId: 'material-select-overlay' });
+-registerStyles('vaadin-select-overlay', [menuOverlay], { moduleId: 'material-select-overlay' });
++registerStyles('vaadin24-select-overlay', [menuOverlay], { moduleId: 'material-select-overlay' });

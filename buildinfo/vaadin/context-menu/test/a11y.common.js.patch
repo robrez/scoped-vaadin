@@ -3,7 +3,7 @@ Index: test/a11y.common.js
 --- test/a11y.common.js
 +++ test/a11y.common.js
 @@ -1,7 +1,7 @@
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextRender, outsideClick } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
 -import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
@@ -14,12 +14,12 @@ Index: test/a11y.common.js
 @@ -12,9 +12,9 @@
        const wrapper = fixtureSync(`
          <div>
-           <button>Before</button>
+           <input id="first-global-focusable" />
 -          <vaadin-context-menu open-on="click">
 +          <vaadin24-context-menu open-on="click">
              <button>Open context menu</button>
 -          </vaadin-context-menu>
 +          </vaadin24-context-menu>
-           <button>After</button>
+           <input id="last-global-focusable" />
          </div>
        `);

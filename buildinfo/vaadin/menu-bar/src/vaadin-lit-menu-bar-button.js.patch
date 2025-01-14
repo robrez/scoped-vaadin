@@ -28,12 +28,3 @@ Index: src/vaadin-lit-menu-bar-button.js
    }
  
    static get styles() {
-@@ -31,7 +31,7 @@
-           margin-inline-end: 0;
-         }
- 
--        [part='label'] ::slotted(vaadin-menu-bar-item) {
-+        [part='label'] ::slotted(vaadin24-menu-bar-item) {
-           position: relative;
-           z-index: 1;
-         }

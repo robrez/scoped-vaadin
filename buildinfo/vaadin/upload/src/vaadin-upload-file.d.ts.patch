@@ -22,7 +22,7 @@ Index: src/vaadin-upload-file.d.ts
   *
   * ### Styling
   *
-@@ -85,7 +85,7 @@
+@@ -86,7 +86,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

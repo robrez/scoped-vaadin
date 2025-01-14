@@ -1,0 +1,34 @@
+Index: src/vaadin-lit-time-picker-item.js
+===================================================================
+--- src/vaadin-lit-time-picker-item.js
++++ src/vaadin-lit-time-picker-item.js
+@@ -4,14 +4,14 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { ComboBoxItemMixin } from '@vaadin/combo-box/src/vaadin-combo-box-item-mixin.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { ComboBoxItemMixin } from '@scoped-vaadin/combo-box/src/vaadin-combo-box-item-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-time-picker-item>` web component.
++ * LitElement based version of `<vaadin24-time-picker-item>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -21,7 +21,7 @@
+  */
+ export class TimePickerItem extends ComboBoxItemMixin(ThemableMixin(DirMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-time-picker-item';
++    return 'vaadin24-time-picker-item';
+   }
+ 
+   static get styles() {

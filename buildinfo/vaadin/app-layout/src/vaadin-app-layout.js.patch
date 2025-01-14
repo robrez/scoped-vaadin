@@ -67,7 +67,7 @@ Index: src/vaadin-app-layout.js
   * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
   *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
   *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
-@@ -266,7 +266,7 @@
+@@ -268,7 +268,7 @@
          }
  
          /* If a vaadin-scroller is used in the drawer, allow it to take all remaining space and contain scrolling */
@@ -76,7 +76,7 @@ Index: src/vaadin-app-layout.js
            flex: 1;
            overscroll-behavior: contain;
          }
-@@ -291,7 +291,7 @@
+@@ -293,7 +293,7 @@
    }
  
    static get is() {
@@ -85,7 +85,7 @@ Index: src/vaadin-app-layout.js
    }
  
    static get properties() {
-@@ -407,7 +407,7 @@
+@@ -409,7 +409,7 @@
  
      // Hide all the elements except the drawer toggle and drawer content
      this.__ariaModalController = new AriaModalController(this, () => [
@@ -94,7 +94,7 @@ Index: src/vaadin-app-layout.js
      ]);
      this.__focusTrapController = new FocusTrapController(this);
    }
-@@ -553,7 +553,7 @@
+@@ -555,7 +555,7 @@
  
    /** @private */
    __setAriaExpanded() {
@@ -103,7 +103,7 @@ Index: src/vaadin-app-layout.js
      if (toggle) {
        toggle.setAttribute('aria-expanded', this.drawerOpened);
      }
-@@ -693,7 +693,7 @@
+@@ -695,7 +695,7 @@
      this.$.drawer.removeAttribute('tabindex');
  
      // Move focus to the drawer toggle when closing the drawer.

@@ -29,7 +29,7 @@ Index: src/vaadin-lit-combo-box-light.js
    }
  
    static get styles() {
-@@ -40,7 +40,7 @@
+@@ -40,14 +40,14 @@
      return html`
        <slot></slot>
  
@@ -38,9 +38,8 @@ Index: src/vaadin-lit-combo-box-light.js
          id="overlay"
          .opened="${this._overlayOpened}"
          ?loading="${this.loading}"
-@@ -48,7 +48,7 @@
+         theme="${ifDefined(this._theme)}"
          .positionTarget="${this.inputElement}"
-         .restoreFocusNode="${this.inputElement}"
          no-vertical-overlap
 -      ></vaadin-combo-box-overlay>
 +      ></vaadin24-combo-box-overlay>

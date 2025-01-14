@@ -2,24 +2,22 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,7 +1,7 @@
+@@ -1,6 +1,6 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/email-field",
--  "version": "24.4.2",
 +  "name": "@scoped-vaadin/email-field",
-+  "version": "24.4.2-alpha.1",
+   "version": "24.6.2",
    "description-markup": "markdown",
    "framework": "lit",
-   "framework-config": {
 @@ -15,8 +15,8 @@
      "html": {
        "elements": [
          {
 -          "name": "vaadin-email-field",
--          "description": "`<vaadin-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin-email-field label=\"Email\"></vaadin-email-field>\n```\n\n### Styling\n\n`<vaadin-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.\nSee [`<vaadin-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.4.2/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
+-          "description": "`<vaadin-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin-email-field label=\"Email\"></vaadin-email-field>\n```\n\n### Styling\n\n`<vaadin-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin-text-field>`.\nSee [`<vaadin-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.6.2/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
 +          "name": "vaadin24-email-field",
-+          "description": "`<vaadin24-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin24-email-field label=\"Email\"></vaadin24-email-field>\n```\n\n### Styling\n\n`<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.4.2/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
++          "description": "`<vaadin24-email-field>` is a Web Component for email field control in forms.\n\n```html\n<vaadin24-email-field label=\"Email\"></vaadin24-email-field>\n```\n\n### Styling\n\n`<vaadin24-email-field>` provides the same set of shadow DOM parts and state attributes as `<vaadin24-text-field>`.\nSee [`<vaadin24-text-field>`](https://cdn.vaadin.com/vaadin-web-components/24.6.2/#/elements/vaadin-text-field) for the styling documentation.\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.",
            "extension": true,
            "attributes": [
              {

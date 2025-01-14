@@ -34,7 +34,7 @@ Index: src/vaadin-upload.js
   * ```
   *
   * ### Styling
-@@ -104,7 +104,7 @@
+@@ -105,7 +105,7 @@
    }
  
    static get is() {
@@ -43,7 +43,7 @@ Index: src/vaadin-upload.js
    }
  
    /**
-@@ -131,7 +131,7 @@
+@@ -132,7 +132,7 @@
    /**
     * Fired when the XHR has been opened but not sent yet. Useful for appending
     * data keys to the FormData object, for changing some parameters like
@@ -52,7 +52,7 @@ Index: src/vaadin-upload.js
     * send the request allowing the user to do something on his own.
     *
     * @event upload-request
-@@ -165,7 +165,7 @@
+@@ -166,7 +166,7 @@
     * on the server response. If the event is defaultPrevented the vaadin-upload
     * will return allowing the user to do something on his own like retry the
     * upload, etc. since he has full access to the `xhr` and `file` objects.

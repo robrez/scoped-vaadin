@@ -4,7 +4,7 @@ Index: test/draggable-resizable.common.js
 +++ test/draggable-resizable.common.js
 @@ -1,9 +1,10 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import '@vaadin/text-area/vaadin-text-area.js';
@@ -35,7 +35,7 @@ Index: test/draggable-resizable.common.js
      `);
      await nextRender();
      dialog.renderer = (root) => {
-@@ -351,7 +352,7 @@
+@@ -387,7 +388,7 @@
  
    beforeEach(async () => {
      dialog = fixtureSync(`
@@ -44,7 +44,7 @@ Index: test/draggable-resizable.common.js
      `);
      await nextRender();
      dialog.renderer = (root) => {
-@@ -591,7 +592,7 @@
+@@ -667,7 +668,7 @@
  
    function getFrontmostOverlayFromScreenCenter() {
      let elementFromPoint = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
@@ -53,7 +53,7 @@ Index: test/draggable-resizable.common.js
        elementFromPoint = elementFromPoint.host || elementFromPoint.parentNode;
      }
      return elementFromPoint;
-@@ -606,12 +607,12 @@
+@@ -682,12 +683,12 @@
      draggableContainer;
  
    beforeEach(async () => {
@@ -68,7 +68,7 @@ Index: test/draggable-resizable.common.js
      draggable.renderer = (root) => {
        root.innerHTML = `
          <div>Draggable dialog</div>
-@@ -715,8 +716,8 @@
+@@ -793,8 +794,8 @@
    beforeEach(async () => {
      wrapper = fixtureSync(`
        <div>
@@ -79,7 +79,7 @@ Index: test/draggable-resizable.common.js
        </div>
      `);
      await nextRender();
-@@ -759,7 +760,7 @@
+@@ -837,7 +838,7 @@
  
    beforeEach(async () => {
      dialog = fixtureSync(`
@@ -88,7 +88,7 @@ Index: test/draggable-resizable.common.js
      `);
      await nextRender();
  
-@@ -780,7 +781,7 @@
+@@ -858,7 +859,7 @@
    });
  
    it('should not overflow when using vaadin-textarea in the content', async () => {

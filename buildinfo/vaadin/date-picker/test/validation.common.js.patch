@@ -2,13 +2,12 @@ Index: test/validation.common.js
 ===================================================================
 --- test/validation.common.js
 +++ test/validation.common.js
-@@ -1,16 +1,17 @@
+@@ -1,15 +1,16 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { enter, fixtureSync, nextRender, nextUpdate, outsideClick } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
+ import { expect } from '@vaadin/chai-plugins';
+ import { enter, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
- import { close, open, setInputValue, waitForOverlayRender, waitForScrollToFinish } from './helpers.js';
+ import { open, setInputValue, waitForOverlayRender } from './helpers.js';
  
 -class DatePicker2016 extends customElements.get('vaadin-date-picker') {
 +class DatePicker2016 extends internalCustomElements.get('vaadin24-date-picker') {
@@ -20,9 +19,9 @@ Index: test/validation.common.js
 -customElements.define('vaadin-date-picker-2016', DatePicker2016);
 +internalCustomElements.define('vaadin24-date-picker-2016', DatePicker2016);
  
- function waitForValueChange(datePicker, callback) {
-   let stub;
-@@ -32,7 +33,7 @@
+ describe('validation', () => {
+   let datePicker;
+@@ -18,7 +19,7 @@
      let validateSpy;
  
      beforeEach(() => {
@@ -31,7 +30,7 @@ Index: test/validation.common.js
        validateSpy = sinon.spy(datePicker, 'validate');
      });
  
-@@ -84,7 +85,7 @@
+@@ -70,7 +71,7 @@
      let valueChangedSpy, validateSpy, changeSpy, input;
  
      beforeEach(async () => {
@@ -40,7 +39,7 @@ Index: test/validation.common.js
        await nextRender();
        input = datePicker.inputElement;
        validateSpy = sinon.spy(datePicker, 'validate');
-@@ -230,7 +231,7 @@
+@@ -216,7 +217,7 @@
      let input;
  
      beforeEach(async () => {
@@ -49,7 +48,7 @@ Index: test/validation.common.js
        await nextRender();
        input = datePicker.inputElement;
        input.focus();
-@@ -275,7 +276,7 @@
+@@ -261,7 +262,7 @@
  
    describe('required', () => {
      beforeEach(async () => {
@@ -58,7 +57,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -291,7 +292,7 @@
+@@ -277,7 +278,7 @@
  
    describe('min', () => {
      beforeEach(async () => {
@@ -67,7 +66,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -317,7 +318,7 @@
+@@ -303,7 +304,7 @@
  
    describe('max', () => {
      beforeEach(async () => {
@@ -76,7 +75,7 @@ Index: test/validation.common.js
        await nextRender();
      });
  
-@@ -343,7 +344,7 @@
+@@ -329,7 +330,7 @@
  
    describe('custom validator', () => {
      beforeEach(() => {

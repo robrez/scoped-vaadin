@@ -2,7 +2,7 @@ Index: src/vaadin-upload-file-list-mixin.js
 ===================================================================
 --- src/vaadin-upload-file-list-mixin.js
 +++ src/vaadin-upload-file-list-mixin.js
-@@ -40,7 +40,7 @@
+@@ -49,7 +49,7 @@
      }
  
      /**
@@ -11,16 +11,16 @@ Index: src/vaadin-upload-file-list-mixin.js
       *
       * It is not guaranteed that the update happens immediately (synchronously) after it is requested.
       */
-@@ -52,7 +52,7 @@
+@@ -61,7 +61,7 @@
            ${items.map(
              (file) => html`
                <li>
 -                <vaadin-upload-file
 +                <vaadin24-upload-file
+                   .disabled="${disabled}"
                    .file="${file}"
                    .complete="${file.complete}"
-                   .errorMessage="${file.error}"
-@@ -63,7 +63,7 @@
+@@ -73,7 +73,7 @@
                    .status="${file.status}"
                    .uploading="${file.uploading}"
                    .i18n="${i18n}"

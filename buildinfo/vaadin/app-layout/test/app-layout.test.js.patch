@@ -4,12 +4,12 @@ Index: test/app-layout.test.js
 +++ test/app-layout.test.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import {
    aTimeout,
-@@ -32,29 +33,29 @@
-   await onceInvoked(layout, '_updateOffsetSize');
- }
+@@ -14,29 +15,29 @@
+ import '../vaadin-drawer-toggle.js';
+ import './not-animated-styles.js';
  
 -describe('vaadin-app-layout', () => {
 +describe('vaadin24-app-layout', () => {
@@ -42,7 +42,7 @@ Index: test/app-layout.test.js
      });
  
      it('should be set to navbar by default', () => {
-@@ -80,7 +81,7 @@
+@@ -62,7 +63,7 @@
  
    describe('navbar', () => {
      beforeEach(() => {
@@ -51,7 +51,7 @@ Index: test/app-layout.test.js
      });
  
      describe('default', () => {
-@@ -89,7 +90,7 @@
+@@ -71,7 +72,7 @@
        });
  
        it('should move added node to navbar', async () => {
@@ -60,7 +60,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -97,7 +98,7 @@
+@@ -79,7 +80,7 @@
        });
  
        it('should make node added to navbar visible', async () => {
@@ -69,7 +69,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -127,7 +128,7 @@
+@@ -109,7 +110,7 @@
        });
  
        it('should move added node to navbar-bottom', async () => {
@@ -78,7 +78,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -135,7 +136,7 @@
+@@ -117,7 +118,7 @@
        });
  
        it('should make node added to navbar-bottom visible', async () => {
@@ -87,7 +87,7 @@ Index: test/app-layout.test.js
          toggle.setAttribute('slot', 'navbar touch-optimized');
          layout.appendChild(toggle);
          await aTimeout(0);
-@@ -183,15 +184,15 @@
+@@ -165,15 +166,15 @@
        const overlayMode = String(layoutMode === 'mobile');
  
        layout = fixtureSync(`
@@ -106,7 +106,7 @@ Index: test/app-layout.test.js
        `);
        await nextRender();
        toggle = layout.querySelector('#toggle');
-@@ -309,7 +310,7 @@
+@@ -291,7 +292,7 @@
        it('should use the drawer width as offset width', async () => {
          fixtureSync(`
            <style>

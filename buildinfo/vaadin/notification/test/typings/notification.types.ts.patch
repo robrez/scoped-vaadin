@@ -11,9 +11,9 @@ Index: test/typings/notification.types.ts
 +import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import type { ThemePropertyMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
  import type {
+   NotificationClosedEvent,
    NotificationOpenedChangedEvent,
-   NotificationPosition,
-@@ -11,7 +11,7 @@
+@@ -12,7 +12,7 @@
  
  const assertType = <TExpected>(value: TExpected) => value;
  

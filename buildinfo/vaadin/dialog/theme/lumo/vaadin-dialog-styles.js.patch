@@ -12,7 +12,7 @@ Index: theme/lumo/vaadin-dialog-styles.js
  
  const dialogOverlay = css`
    /* Optical centering */
-@@ -102,6 +102,6 @@
+@@ -104,6 +104,6 @@
    }
  `;
  

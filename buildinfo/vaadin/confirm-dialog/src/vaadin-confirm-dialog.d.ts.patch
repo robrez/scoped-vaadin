@@ -52,7 +52,7 @@ Index: src/vaadin-confirm-dialog.d.ts
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
   *
-@@ -74,7 +74,7 @@
+@@ -75,7 +75,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

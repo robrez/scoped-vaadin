@@ -1,0 +1,13 @@
+Index: test/timezone.common.js
+===================================================================
+--- test/timezone.common.js
++++ test/timezone.common.js
+@@ -7,7 +7,7 @@
+   let timePicker;
+ 
+   beforeEach(async () => {
+-    dateTimePicker = fixtureSync('<vaadin-date-time-picker></vaadin-date-time-picker>');
++    dateTimePicker = fixtureSync('<vaadin24-date-time-picker></vaadin24-date-time-picker>');
+     await nextRender();
+     datePicker = dateTimePicker.querySelector('[slot="date-picker"]');
+     timePicker = dateTimePicker.querySelector('[slot="time-picker"]');

@@ -1,0 +1,39 @@
+Index: test/timers.test.js
+===================================================================
+--- test/timers.test.js
++++ test/timers.test.js
+@@ -12,7 +12,7 @@
+   const DEFAULT_DELAY = 500;
+ 
+   async function createPopover(target, focus) {
+-    const element = fixtureSync('<vaadin-popover></vaadin-popover>');
++    const element = fixtureSync('<vaadin24-popover></vaadin24-popover>');
+     element.target = target;
+     element.trigger = focus ? ['focus'] : ['hover'];
+ 
+@@ -24,7 +24,7 @@
+       await nextUpdate(element);
+     }
+ 
+-    return element.shadowRoot.querySelector('vaadin-popover-overlay');
++    return element.shadowRoot.querySelector('vaadin24-popover-overlay');
+   }
+ 
+   before(() => {
+@@ -34,14 +34,14 @@
+   });
+ 
+   beforeEach(async () => {
+-    popover = fixtureSync('<vaadin-popover></vaadin-popover>');
++    popover = fixtureSync('<vaadin24-popover></vaadin24-popover>');
+     popover.renderer = (root) => {
+       root.textContent = 'Content';
+     };
+     target = fixtureSync('<button>Target</button>');
+     popover.target = target;
+     await nextRender();
+-    overlay = popover.shadowRoot.querySelector('vaadin-popover-overlay');
++    overlay = popover.shadowRoot.querySelector('vaadin24-popover-overlay');
+   });
+ 
+   describe('hoverDelay', () => {

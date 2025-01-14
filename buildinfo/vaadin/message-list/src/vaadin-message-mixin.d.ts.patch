@@ -1,0 +1,15 @@
+Index: src/vaadin-message-mixin.d.ts
+===================================================================
+--- src/vaadin-message-mixin.d.ts
++++ src/vaadin-message-mixin.d.ts
+@@ -4,8 +4,8 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
++import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
+ 
+ export declare function MessageMixin<T extends Constructor<HTMLElement>>(
+   base: T,

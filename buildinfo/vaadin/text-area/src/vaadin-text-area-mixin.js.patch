@@ -17,3 +17,12 @@ Index: src/vaadin-text-area-mixin.js
  
  /**
   * A mixin providing common text area functionality.
+@@ -258,7 +258,7 @@
+      */
+     __minRowsChanged(minRows) {
+       if (minRows < 2) {
+-        console.warn('<vaadin-text-area> minRows must be at least 2.');
++        console.warn('<vaadin24-text-area> minRows must be at least 2.');
+       }
+     }
+ 

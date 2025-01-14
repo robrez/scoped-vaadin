@@ -45,7 +45,7 @@ Index: theme/lumo/vaadin-menu-bar-button-styles.js
      margin: 0;
      padding: 0;
    }
-@@ -97,6 +97,6 @@
+@@ -123,6 +123,6 @@
    }
  `;
  

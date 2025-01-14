@@ -1,0 +1,65 @@
+Index: test/properties.common.js
+===================================================================
+--- test/properties.common.js
++++ test/properties.common.js
+@@ -4,15 +4,15 @@
+ import { dispatchChange } from './helpers.js';
+ 
+ const fixtures = {
+-  default: '<vaadin-date-time-picker></vaadin-date-time-picker>',
++  default: '<vaadin24-date-time-picker></vaadin24-date-time-picker>',
+   slotted: `
+-    <vaadin-date-time-picker>
+-      <vaadin-date-picker slot="date-picker"></vaadin-date-picker>
+-      <vaadin-time-picker slot="time-picker"></vaadin-time-picker>
+-    </vaadin-date-time-picker>
++    <vaadin24-date-time-picker>
++      <vaadin24-date-picker slot="date-picker"></vaadin24-date-picker>
++      <vaadin24-time-picker slot="time-picker"></vaadin24-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+   'default-initial': `
+-    <vaadin-date-time-picker
++    <vaadin24-date-time-picker
+       value="2019-09-16T15:00"
+       min="2019-09-01T08:00"
+       max="2019-09-30T22:00"
+@@ -27,10 +27,10 @@
+       disabled
+       readonly
+       auto-open-disabled
+-    ></vaadin-date-time-picker>
++    ></vaadin24-date-time-picker>
+   `,
+   'slotted-initial': `
+-    <vaadin-date-time-picker
++    <vaadin24-date-time-picker
+       label="Birth date and time"
+       error-message="error-message"
+       required
+@@ -40,20 +40,20 @@
+       min="2019-09-01T08:00"
+       max="2019-09-30T22:00"
+     >
+-      <vaadin-date-picker
++      <vaadin24-date-picker
+         slot="date-picker"
+         value="2019-09-16"
+         placeholder="Pick a date"
+         initial-position="1980-01-01"
+         show-week-numbers
+-      ></vaadin-date-picker>
+-      <vaadin-time-picker
++      ></vaadin24-date-picker>
++      <vaadin24-time-picker
+         slot="time-picker"
+         value="15:00"
+         placeholder="Pick a time"
+         step="1800"
+-      ></vaadin-time-picker>
+-    </vaadin-date-time-picker>
++      ></vaadin24-time-picker>
++    </vaadin24-date-time-picker>
+   `,
+ };
+ 

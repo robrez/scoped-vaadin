@@ -1,0 +1,34 @@
+Index: src/lit/renderer-directives.d.ts
+===================================================================
+--- src/lit/renderer-directives.d.ts
++++ src/lit/renderer-directives.d.ts
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { DirectiveResult } from 'lit/directive.js';
+-import { LitRendererDirective, type LitRendererResult } from '@vaadin/lit-renderer';
++import { LitRendererDirective, type LitRendererResult } from '@scoped-vaadin/lit-renderer';
+ import type { Popover } from '../vaadin-popover.js';
+ 
+ export type PopoverLitRenderer = (popover: Popover) => LitRendererResult;
+@@ -27,7 +27,7 @@
+ }
+ 
+ /**
+- * A Lit directive for populating the content of the `<vaadin-popover-overlay>` element.
++ * A Lit directive for populating the content of the `<vaadin24-popover-overlay>` element.
+  *
+  * The directive accepts a renderer callback returning a Lit template and assigns it to the popover
+  * via the `renderer` property. The renderer is called once to populate the content when assigned
+@@ -43,9 +43,9 @@
+  *
+  * Example of usage:
+  * ```js
+- * `<vaadin-popover
++ * `<vaadin24-popover
+  *   ${popoverRenderer((popover) => html`...`)}
+- * ></vaadin-popover>`
++ * ></vaadin24-popover>`
+  * ```
+  *
+  * @param renderer the renderer callback that returns a Lit template.

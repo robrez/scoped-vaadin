@@ -3,8 +3,8 @@ Index: test/focus-trap.common.js
 --- test/focus-trap.common.js
 +++ test/focus-trap.common.js
 @@ -1,6 +1,6 @@
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextRender, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextRender, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
 -import { getFocusableElements, isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
 +import { getFocusableElements, isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
  
@@ -19,7 +19,7 @@ Index: test/focus-trap.common.js
        overlay.renderer = (root) => {
          if (!root.firstChild) {
            root.innerHTML = `
-@@ -79,7 +79,7 @@
+@@ -76,7 +76,7 @@
  
    describe('empty', () => {
      beforeEach(async () => {
@@ -28,16 +28,15 @@ Index: test/focus-trap.common.js
        await nextRender();
        overlayPart = overlay.$.overlay;
      });
-@@ -106,7 +106,7 @@
+@@ -103,14 +103,14 @@
      let nested;
  
      beforeEach(async () => {
 -      overlay = fixtureSync('<vaadin-overlay focus-trap></vaadin-overlay>');
 +      overlay = fixtureSync('<vaadin24-overlay focus-trap></vaadin24-overlay>');
-       await nextRender();
        overlay.renderer = (root) => {
          if (!root.firstChild) {
-@@ -114,7 +114,7 @@
+           const button = document.createElement('button');
            button.textContent = 'Button';
            root.appendChild(button);
  
@@ -46,16 +45,16 @@ Index: test/focus-trap.common.js
            nested.renderer = (root) => {
              root.textContent = 'Inner content';
            };
-@@ -125,7 +125,7 @@
+@@ -120,7 +120,7 @@
+       overlay.opened = true;
        await oneEvent(overlay, 'vaadin-overlay-open');
        focusableElements = getFocusableElements(overlay.$.overlay);
-       await nextRender();
 -      nested = overlay.querySelector('vaadin-overlay');
 +      nested = overlay.querySelector('vaadin24-overlay');
      });
  
      afterEach(() => {
-@@ -157,14 +157,14 @@
+@@ -153,14 +153,14 @@
          `
          <div>
            <button>Foo</button>
@@ -69,6 +68,6 @@ Index: test/focus-trap.common.js
  
 -      overlay = inner.querySelector('vaadin-overlay');
 +      overlay = inner.querySelector('vaadin24-overlay');
-       await nextRender();
        overlay.renderer = (root) => {
          root.innerHTML = '<input placeholder="Input">';
+       };

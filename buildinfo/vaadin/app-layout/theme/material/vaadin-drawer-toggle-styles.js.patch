@@ -12,7 +12,7 @@ Index: theme/material/vaadin-drawer-toggle-styles.js
  
  const drawerToggle = css`
    :host {
-@@ -39,6 +39,6 @@
+@@ -34,6 +34,6 @@
    }
  `;
  

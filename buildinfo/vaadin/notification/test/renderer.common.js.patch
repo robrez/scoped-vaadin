@@ -1,0 +1,22 @@
+Index: test/renderer.common.js
+===================================================================
+--- test/renderer.common.js
++++ test/renderer.common.js
+@@ -11,7 +11,7 @@
+       rendererContent = document.createElement('p');
+       rendererContent.textContent = 'renderer-content';
+ 
+-      notification = fixtureSync('<vaadin-notification></vaadin-notification>');
++      notification = fixtureSync('<vaadin24-notification></vaadin24-notification>');
+       await nextFrame();
+ 
+       // Force sync card attaching and removal instead of waiting for the animation
+@@ -110,7 +110,7 @@
+     let notification;
+ 
+     beforeEach(() => {
+-      notification = document.createElement('vaadin-notification');
++      notification = document.createElement('vaadin24-notification');
+     });
+ 
+     afterEach(() => {

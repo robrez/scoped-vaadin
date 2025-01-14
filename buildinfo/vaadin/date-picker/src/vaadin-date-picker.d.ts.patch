@@ -99,9 +99,9 @@ Index: src/vaadin-date-picker.d.ts
   *
   * Part name             | Description
   * ----------------------|--------------------
-@@ -143,14 +143,14 @@
-  * `selected`            | Selected date element
-  * `today`               | Date element corresponding to the current day
+@@ -145,14 +145,14 @@
+  * `past`                | Date element corresponding to the date in the past
+  * `future`              | Date element corresponding to the date in the future
   *
 - * In order to style year scroller elements, use `<vaadin-date-picker-year>` shadow DOM parts:
 + * In order to style year scroller elements, use `<vaadin24-date-picker-year>` shadow DOM parts:
@@ -116,7 +116,7 @@ Index: src/vaadin-date-picker.d.ts
   * propagated to the internal components listed above.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -194,7 +194,7 @@
+@@ -196,7 +196,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

@@ -4,7 +4,7 @@ Index: test/radio-group.common.js
 +++ test/radio-group.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fixtureSync, nextFrame, nextRender, nextUpdate } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
 @@ -10,29 +11,29 @@
@@ -63,8 +63,8 @@ Index: test/radio-group.common.js
 +      buttons = [...group.querySelectorAll('vaadin24-radio-button')];
      });
  
-     it('should propagate disabled property to radio buttons', async () => {
-@@ -74,7 +75,7 @@
+     it('should propagate disabled property to radio buttons', () => {
+@@ -73,7 +74,7 @@
      });
  
      it('should set disabled property to dynamically added radio buttons', async () => {
@@ -73,7 +73,16 @@ Index: test/radio-group.common.js
        group.appendChild(radio);
        await nextFrame();
        expect(radio.disabled).to.be.true;
-@@ -86,18 +87,18 @@
+@@ -81,7 +82,7 @@
+ 
+     it('should not override disabled property on dynamically added radio buttons', async () => {
+       group.disabled = false;
+-      const radio = document.createElement('vaadin-radio-button');
++      const radio = document.createElement('vaadin24-radio-button');
+       radio.disabled = true;
+       group.appendChild(radio);
+       await nextFrame();
+@@ -94,18 +95,18 @@
  
      beforeEach(async () => {
        group = fixtureSync(`
@@ -92,13 +101,22 @@ Index: test/radio-group.common.js
        groupName = group._fieldName;
      });
  
-     it('should set the group name to the dynamically added radio buttons', async () => {
+     it('should set the default name to the dynamically added radio buttons', async () => {
 -      const radio = document.createElement('vaadin-radio-button');
 +      const radio = document.createElement('vaadin24-radio-button');
        group.appendChild(radio);
        await nextFrame();
  
-@@ -108,13 +109,13 @@
+@@ -122,7 +123,7 @@
+     it('should propagate the group name to the dynamically added radio buttons', async () => {
+       group.name = 'name';
+ 
+-      const radio = document.createElement('vaadin-radio-button');
++      const radio = document.createElement('vaadin24-radio-button');
+       group.appendChild(radio);
+       await nextFrame();
+ 
+@@ -142,13 +143,13 @@
    describe('readonly property', () => {
      beforeEach(async () => {
        group = fixtureSync(`
@@ -117,25 +135,25 @@ Index: test/radio-group.common.js
      });
  
      it('should disable unchecked buttons when readonly', () => {
-@@ -152,7 +153,7 @@
-       group.readonly = true;
-       await nextUpdate(group);
+@@ -179,7 +180,7 @@
+     });
  
+     it('should disable a new button when added to a readonly group', async () => {
 -      const newRadioButton = document.createElement('vaadin-radio-button');
 +      const newRadioButton = document.createElement('vaadin24-radio-button');
        newRadioButton.label = 'Button 3';
        newRadioButton.value = '3';
        group.appendChild(newRadioButton);
-@@ -165,7 +166,7 @@
-       group.readonly = true;
-       await nextUpdate(group);
+@@ -189,7 +190,7 @@
+     });
  
+     it('should not disable a checked button when added to a readonly group', async () => {
 -      const newRadioButton = document.createElement('vaadin-radio-button');
 +      const newRadioButton = document.createElement('vaadin24-radio-button');
        newRadioButton.label = 'Button 3';
        newRadioButton.value = '3';
        newRadioButton.checked = true;
-@@ -178,7 +179,7 @@
+@@ -202,7 +203,7 @@
  
    describe('aria-invalid attribute', () => {
      beforeEach(async () => {
@@ -144,26 +162,28 @@ Index: test/radio-group.common.js
        await nextRender();
      });
  
-@@ -196,13 +197,13 @@
-   describe('focused state', () => {
-     beforeEach(async () => {
-       group = fixtureSync(`
--        <vaadin-radio-group>
--          <vaadin-radio-button label="Button 1"></vaadin-radio-button>
--          <vaadin-radio-button label="Button 2"></vaadin-radio-button>
--        </vaadin-radio-group>
-+        <vaadin24-radio-group>
-+          <vaadin24-radio-button label="Button 1"></vaadin24-radio-button>
-+          <vaadin24-radio-button label="Button 2"></vaadin24-radio-button>
-+        </vaadin24-radio-group>
-       `);
+@@ -224,15 +225,15 @@
+       [firstGlobalFocusable, group] = fixtureSync(
+         `<div>
+           <input id="first-global-focusable" />
+-          <vaadin-radio-group>
+-            <vaadin-radio-button label="Button 1"></vaadin-radio-button>
+-            <vaadin-radio-button label="Button 2"></vaadin-radio-button>
+-          </vaadin-radio-group>
++          <vaadin24-radio-group>
++            <vaadin24-radio-button label="Button 1"></vaadin24-radio-button>
++            <vaadin24-radio-button label="Button 2"></vaadin24-radio-button>
++          </vaadin24-radio-group>
+         </div>`,
+       ).children;
+       firstGlobalFocusable.focus();
        await nextFrame();
 -      buttons = [...group.querySelectorAll('vaadin-radio-button')];
 +      buttons = [...group.querySelectorAll('vaadin24-radio-button')];
      });
  
      it('should set focused attribute on Tab', async () => {
-@@ -240,13 +241,13 @@
+@@ -270,13 +271,13 @@
    describe('value property', () => {
      beforeEach(async () => {
        group = fixtureSync(`
@@ -182,7 +202,7 @@ Index: test/radio-group.common.js
      });
  
      it('should be an empty string by default', () => {
-@@ -333,13 +334,13 @@
+@@ -350,13 +351,13 @@
    describe('has-value attribute', () => {
      beforeEach(async () => {
        group = fixtureSync(`
@@ -200,8 +220,8 @@ Index: test/radio-group.common.js
 +      buttons = [...group.querySelectorAll('vaadin24-radio-button')];
      });
  
-     it('should add and keep the attribute on radio button click', async () => {
-@@ -368,14 +369,14 @@
+     it('should add and keep the attribute on radio button click', () => {
+@@ -381,14 +382,14 @@
  
      beforeEach(async () => {
        group = fixtureSync(`
@@ -222,7 +242,7 @@ Index: test/radio-group.common.js
  
        spy = sinon.spy();
        group.addEventListener('change', spy);
-@@ -473,15 +474,15 @@
+@@ -486,15 +487,15 @@
    describe('initial value', () => {
      beforeEach(async () => {
        group = fixtureSync(`
@@ -245,8 +265,8 @@ Index: test/radio-group.common.js
      });
  
      it('should set the value based on the initially checked radio button', () => {
-@@ -503,7 +504,7 @@
-       group.__radioButtons.forEach((button) => group.removeChild(button));
+@@ -516,7 +517,7 @@
+       buttons.forEach((button) => group.removeChild(button));
  
        ['value1', 'value2', 'value3'].forEach((value) => {
 -        const radio = document.createElement('vaadin-radio-button');
@@ -254,7 +274,7 @@ Index: test/radio-group.common.js
          radio.value = value;
          group.appendChild(radio);
        });
-@@ -520,20 +521,20 @@
+@@ -533,20 +534,20 @@
      beforeEach(async () => {
        wrapper = fixtureSync(`
          <div style="width: 500px">

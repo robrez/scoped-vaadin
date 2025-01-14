@@ -2,7 +2,7 @@ Index: test/multiple.common.js
 ===================================================================
 --- test/multiple.common.js
 +++ test/multiple.common.js
-@@ -194,7 +194,7 @@
+@@ -166,7 +166,7 @@
  
      const getFrontmostOverlayFromScreenCenter = () => {
        let elementFromPoint = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
@@ -11,7 +11,7 @@ Index: test/multiple.common.js
          elementFromPoint = elementFromPoint.host || elementFromPoint.parentNode;
        }
        return elementFromPoint;
-@@ -203,8 +203,8 @@
+@@ -175,8 +175,8 @@
      beforeEach(async () => {
        parent = fixtureSync(`
          <div id="parent">

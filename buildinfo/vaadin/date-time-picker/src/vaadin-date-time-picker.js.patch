@@ -2,51 +2,27 @@ Index: src/vaadin-date-time-picker.js
 ===================================================================
 --- src/vaadin-date-time-picker.js
 +++ src/vaadin-date-time-picker.js
-@@ -4,20 +4,20 @@
+@@ -3,22 +3,22 @@
+  * Copyright (c) 2019 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+-import '@vaadin/date-picker/src/vaadin-date-picker.js';
+-import '@vaadin/time-picker/src/vaadin-time-picker.js';
++import '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
++import '@scoped-vaadin/time-picker/src/vaadin-time-picker.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
--import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
--import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
--import { TooltipController } from '@vaadin/component-base/src/tooltip-controller.js';
--import { DatePicker } from '@vaadin/date-picker/src/vaadin-date-picker.js';
--import { dateEquals, parseDate } from '@vaadin/date-picker/src/vaadin-date-picker-helper.js';
--import { FieldMixin } from '@vaadin/field-base/src/field-mixin.js';
 -import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
--import { TimePicker } from '@vaadin/time-picker/src/vaadin-time-picker.js';
 -import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
-+import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
-+import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
-+import { DatePicker } from '@scoped-vaadin/date-picker/src/vaadin-date-picker.js';
-+import { dateEquals, parseDate } from '@scoped-vaadin/date-picker/src/vaadin-date-picker-helper.js';
-+import { FieldMixin } from '@scoped-vaadin/field-base/src/field-mixin.js';
 +import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
-+import { TimePicker } from '@scoped-vaadin/time-picker/src/vaadin-time-picker.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { DateTimePickerMixin } from './vaadin-date-time-picker-mixin.js';
  
 -registerStyles('vaadin-date-time-picker', inputFieldShared, { moduleId: 'vaadin-date-time-picker' });
 +registerStyles('vaadin24-date-time-picker', inputFieldShared, { moduleId: 'vaadin24-date-time-picker' });
- 
- /**
-  * @typedef {object} TimePickerTime
-@@ -49,7 +49,7 @@
-  */
- class PickerSlotController extends SlotController {
-   constructor(host, type) {
--    super(host, `${type}-picker`, `vaadin-${type}-picker`, {
-+    super(host, `${type}-picker`, `vaadin24-${type}-picker`, {
-       initializer: (picker, host) => {
-         const prop = `__${type}Picker`;
-         host[prop] = picker;
-@@ -59,10 +59,10 @@
- }
  
  /**
 - * `<vaadin-date-time-picker>` is a Web Component providing a date time selection field.
@@ -58,7 +34,7 @@ Index: src/vaadin-date-time-picker.js
   * ```
   *
   * ```js
-@@ -98,12 +98,12 @@
+@@ -54,12 +54,12 @@
   *
   * ### Internal components
   *
@@ -75,37 +51,12 @@ Index: src/vaadin-date-time-picker.js
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -170,7 +170,7 @@
+@@ -124,7 +124,7 @@
    }
  
    static get is() {
 -    return 'vaadin-date-time-picker';
 +    return 'vaadin24-date-time-picker';
    }
+ }
  
-   static get properties() {
-@@ -339,8 +339,8 @@
-        * `i18n` object or just the properties you want to modify.
-        *
-        * The object is a combination of the i18n properties supported by
--       * [`<vaadin-date-picker>`](#/elements/vaadin-date-picker) and
--       * [`<vaadin-time-picker>`](#/elements/vaadin-time-picker).
-+       * [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker) and
-+       * [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker).
-        * @type {!DateTimePickerI18n}
-        */
-       i18n: {
-@@ -350,10 +350,10 @@
- 
-       /**
-        * A space-delimited list of CSS class names to set on the overlay elements
--       * of the internal components controlled by the `<vaadin-date-time-picker>`:
-+       * of the internal components controlled by the `<vaadin24-date-time-picker>`:
-        *
--       * - [`<vaadin-date-picker>`](#/elements/vaadin-date-picker#property-overlayClass)
--       * - [`<vaadin-time-picker>`](#/elements/vaadin-time-picker#property-overlayClass)
-+       * - [`<vaadin24-date-picker>`](#/elements/vaadin-date-picker#property-overlayClass)
-+       * - [`<vaadin24-time-picker>`](#/elements/vaadin-time-picker#property-overlayClass)
-        *
-        * @attr {string} overlay-class
-        */

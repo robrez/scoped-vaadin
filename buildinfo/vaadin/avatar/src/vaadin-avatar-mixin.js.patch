@@ -11,7 +11,7 @@ Index: src/vaadin-avatar-mixin.js
  
  /**
   * A mixin providing common avatar functionality.
-@@ -191,7 +191,7 @@
+@@ -199,7 +199,7 @@
      __withTooltipChanged(withTooltip, oldWithTooltip) {
        if (withTooltip) {
          // Create and attach tooltip
@@ -20,7 +20,7 @@ Index: src/vaadin-avatar-mixin.js
          tooltipNode.setAttribute('slot', 'tooltip');
          this.appendChild(tooltipNode);
          this.__tooltipNode = tooltipNode;
-@@ -232,7 +232,7 @@
+@@ -240,7 +240,7 @@
      /** @protected */
      __onImageLoadError() {
        if (this.img) {

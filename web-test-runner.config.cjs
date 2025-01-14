@@ -1,5 +1,6 @@
 /* eslint-env node */
-const { playwrightLauncher } = require("@web/test-runner-playwright");
+const { puppeteerLauncher } = require("@web/test-runner-puppeteer");
+// const { playwrightLauncher } = require("@web/test-runner-puppeteer");
 const { createUnitTestsConfig } = require("./wtr-utils.cjs");
 const devServerConfig = require("./web-dev-server.config.cjs");
 /**
@@ -70,15 +71,21 @@ const allPackages = [
 ];
 
 let packageFilter = [];
- // packageFilter = [...packageFilter, "tabs"];
- // console.log("packages", packageFilter.join(', '));
+// packageFilter = [...packageFilter, "text-field"];
+// console.log("packages", packageFilter.join(', '));
 
 /**
  * @type {TestRunnerConfig}
  */
 const baseConfig = {
   staticLogging: false,
-  browsers: [playwrightLauncher()],
+  browsers: [
+    puppeteerLauncher({
+      launchOptions: {
+        headless: "shell",
+      },
+    }),
+  ],
   packageFilter,
   coverageConfig: {
     include: [`packages/**/src/**/*`, `packages/**/*.js`],

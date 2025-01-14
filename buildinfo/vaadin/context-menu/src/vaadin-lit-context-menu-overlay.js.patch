@@ -35,4 +35,4 @@ Index: src/vaadin-lit-context-menu-overlay.js
 +    return 'vaadin24-context-menu-overlay';
    }
  
-   static get properties() {
+   static get styles() {

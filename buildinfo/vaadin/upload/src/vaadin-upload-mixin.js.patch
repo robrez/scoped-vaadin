@@ -20,7 +20,7 @@ Index: src/vaadin-upload-mixin.js
    }
  
    /**
-@@ -106,7 +106,7 @@
+@@ -116,7 +116,7 @@
           * Key-Value map to send to the server. If you set this property as an
           * attribute, use a valid JSON string, for example:
           * ```
@@ -29,7 +29,7 @@ Index: src/vaadin-upload-mixin.js
           * ```
           * @type {object | string}
           */
-@@ -440,14 +440,14 @@
+@@ -450,14 +450,14 @@
        this.addController(this._dropLabelController);
  
        this.addController(

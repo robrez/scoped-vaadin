@@ -2,7 +2,7 @@ Index: src/vaadin-lit-select.js
 ===================================================================
 --- src/vaadin-lit-select.js
 +++ src/vaadin-lit-select.js
-@@ -3,23 +3,23 @@
+@@ -3,24 +3,24 @@
   * Copyright (c) 2017 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
@@ -13,6 +13,7 @@ Index: src/vaadin-lit-select.js
  import './vaadin-lit-select-overlay.js';
  import './vaadin-lit-select-value-button.js';
  import { css, html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
 -import { screenReaderOnly } from '@vaadin/a11y-base/src/styles/sr-only-styles.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
@@ -35,7 +36,7 @@ Index: src/vaadin-lit-select.js
   *
   * ## Disclaimer
   *
-@@ -31,7 +31,7 @@
+@@ -32,7 +32,7 @@
   */
  class Select extends SelectBaseMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
    static get is() {
@@ -44,7 +45,7 @@ Index: src/vaadin-lit-select.js
    }
  
    static get styles() {
-@@ -60,7 +60,7 @@
+@@ -61,7 +61,7 @@
            <span part="required-indicator" aria-hidden="true" @click="${this.focus}"></span>
          </div>
  
@@ -53,7 +54,7 @@ Index: src/vaadin-lit-select.js
            part="input-field"
            .readonly="${this.readonly}"
            .disabled="${this.disabled}"
-@@ -71,7 +71,7 @@
+@@ -72,7 +72,7 @@
            <slot name="prefix" slot="prefix"></slot>
            <slot name="value"></slot>
            <div part="toggle-button" slot="suffix" aria-hidden="true" @mousedown="${this._onToggleMouseDown}"></div>
@@ -62,7 +63,7 @@ Index: src/vaadin-lit-select.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -82,7 +82,7 @@
+@@ -83,7 +83,7 @@
          </div>
        </div>
  
@@ -71,8 +72,8 @@ Index: src/vaadin-lit-select.js
          .owner="${this}"
          .positionTarget="${this._inputContainer}"
          .opened="${this.opened}"
-@@ -92,7 +92,7 @@
-         theme="${this._theme}"
+@@ -94,7 +94,7 @@
+         ?no-vertical-overlap="${this.noVerticalOverlap}"
          @opened-changed="${this._onOpenedChanged}"
          @vaadin-overlay-open="${this._onOverlayOpen}"
 -      ></vaadin-select-overlay>
@@ -80,7 +81,7 @@ Index: src/vaadin-lit-select.js
  
        <slot name="tooltip"></slot>
        <div class="sr-only">
-@@ -105,7 +105,7 @@
+@@ -107,7 +107,7 @@
    ready() {
      super.ready();
  

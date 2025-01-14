@@ -47,6 +47,6 @@ Index: test/tree-toggle.common.js
        `);
 -      column = grid.querySelector('vaadin-grid-tree-column');
 +      column = grid.querySelector('vaadin24-grid-tree-column');
-       grid.dataProvider = (params, cb) => {
+       grid.dataProvider = (_, cb) => {
          cb([{ name: 'foo', hasChildren: true }], 1);
        };

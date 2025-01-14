@@ -2,7 +2,7 @@ Index: test/keyboard-input.common.js
 ===================================================================
 --- test/keyboard-input.common.js
 +++ test/keyboard-input.common.js
-@@ -14,7 +14,7 @@
+@@ -21,7 +21,7 @@
    }
  
    beforeEach(async () => {

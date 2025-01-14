@@ -23,7 +23,7 @@ Index: theme/lumo/vaadin-multi-select-combo-box-chip-styles.js
  
  const chip = css`
    :host {
-@@ -98,6 +98,6 @@
+@@ -102,6 +102,6 @@
    }
  `;
  

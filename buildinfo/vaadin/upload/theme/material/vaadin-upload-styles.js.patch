@@ -6,14 +6,14 @@ Index: theme/material/vaadin-upload-styles.js
 -import '@vaadin/vaadin-material-styles/color.js';
 -import '@vaadin/vaadin-material-styles/font-icons.js';
 -import '@vaadin/vaadin-material-styles/typography.js';
--import '@vaadin/button/theme/material/vaadin-button.js';
--import '@vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
+-import '@vaadin/button/theme/material/vaadin-button-styles.js';
+-import '@vaadin/progress-bar/theme/material/vaadin-progress-bar-styles.js';
 -import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import '@scoped-vaadin/vaadin-material-styles/color.js';
 +import '@scoped-vaadin/vaadin-material-styles/font-icons.js';
 +import '@scoped-vaadin/vaadin-material-styles/typography.js';
-+import '@scoped-vaadin/button/theme/material/vaadin-button.js';
-+import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar.js';
++import '@scoped-vaadin/button/theme/material/vaadin-button-styles.js';
++import '@scoped-vaadin/progress-bar/theme/material/vaadin-progress-bar-styles.js';
 +import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  registerStyles(
@@ -22,7 +22,7 @@ Index: theme/material/vaadin-upload-styles.js
    css`
      :host(:not([nodrop])) {
        overflow: hidden;
-@@ -78,7 +78,7 @@
+@@ -81,7 +81,7 @@
  );
  
  registerStyles(
@@ -31,7 +31,7 @@ Index: theme/material/vaadin-upload-styles.js
    css`
      :host {
        margin-right: 8px;
-@@ -95,7 +95,7 @@
+@@ -98,7 +98,7 @@
  );
  
  registerStyles(

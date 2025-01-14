@@ -42,7 +42,7 @@ Index: test/basic.common.js
      await nextRender();
      clearButton = datePicker.shadowRoot.querySelector('[part="clear-button"]');
    });
-@@ -359,11 +359,11 @@
+@@ -376,11 +376,11 @@
      container = fixtureSync(`
        <div style="height: 100px; overflow: scroll;">
          <div style="height: 1000px;">
@@ -56,7 +56,7 @@ Index: test/basic.common.js
    });
  
    it('should match the parent width', () => {
-@@ -377,7 +377,7 @@
+@@ -394,7 +394,7 @@
    let datePicker, input;
  
    beforeEach(async () => {
@@ -65,7 +65,7 @@ Index: test/basic.common.js
      await nextRender();
      input = datePicker.inputElement;
    });
-@@ -391,7 +391,7 @@
+@@ -408,7 +408,7 @@
    let datePicker, input, toggleButton;
  
    beforeEach(async () => {
@@ -74,7 +74,7 @@ Index: test/basic.common.js
      await nextRender();
      input = datePicker.inputElement;
      toggleButton = datePicker.shadowRoot.querySelector('[part="toggle-button"]');
-@@ -424,7 +424,7 @@
+@@ -441,7 +441,7 @@
    let datePicker, input;
  
    beforeEach(async () => {
@@ -83,7 +83,7 @@ Index: test/basic.common.js
      await nextRender();
      input = datePicker.inputElement;
      datePicker._ios = true;
-@@ -468,7 +468,7 @@
+@@ -485,7 +485,7 @@
    let datePicker;
  
    beforeEach(async () => {

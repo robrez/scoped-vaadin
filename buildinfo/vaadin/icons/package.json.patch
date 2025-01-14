@@ -5,9 +5,8 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/icons",
--  "version": "24.4.2",
 +  "name": "@scoped-vaadin/icons",
-+  "version": "24.4.2-alpha.1",
+   "version": "24.6.2",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -38,7 +37,7 @@ Index: package.json
    ],
    "dependencies": {
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/icon": "~24.4.2"
+-    "@vaadin/icon": "~24.6.2"
 -  },
 -  "devDependencies": {
 -    "cheerio": "^1.0.0-rc.10",
@@ -47,8 +46,8 @@ Index: package.json
 -    "gulp-concat": "^2.6.1",
 -    "gulp-modify": "^0.1.1"
 -  },
--  "gitHead": "f280274de1bc894ad4e0426432619999c0cf556d"
-+    "@scoped-vaadin/icon": "^24.4.2-alpha.1",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.4.2-alpha.1"
+-  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
++    "@scoped-vaadin/icon": "^24.6.2",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2"
 +  }
  }

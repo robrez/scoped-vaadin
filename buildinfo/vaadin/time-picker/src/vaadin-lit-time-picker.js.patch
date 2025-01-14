@@ -1,0 +1,69 @@
+Index: src/vaadin-lit-time-picker.js
+===================================================================
+--- src/vaadin-lit-time-picker.js
++++ src/vaadin-lit-time-picker.js
+@@ -3,19 +3,19 @@
+  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import '@vaadin/input-container/src/vaadin-lit-input-container.js';
++import '@scoped-vaadin/input-container/src/vaadin-lit-input-container.js';
+ import './vaadin-lit-time-picker-combo-box.js';
+ import { css, html, LitElement } from 'lit';
+ import { ifDefined } from 'lit/directives/if-defined.js';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { TimePickerMixin } from './vaadin-time-picker-mixin.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-time-picker>` web component.
++ * LitElement based version of `<vaadin24-time-picker>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -25,7 +25,7 @@
+  */
+ class TimePicker extends TimePickerMixin(ThemableMixin(ElementMixin(PolylitMixin(LitElement)))) {
+   static get is() {
+-    return 'vaadin-time-picker';
++    return 'vaadin24-time-picker';
+   }
+ 
+   static get styles() {
+@@ -58,7 +58,7 @@
+           <span part="required-indicator" aria-hidden="true" @click="${this.focus}"></span>
+         </div>
+ 
+-        <vaadin-time-picker-combo-box
++        <vaadin24-time-picker-combo-box
+           id="comboBox"
+           .filteredItems="${this.__dropdownItems}"
+           .value="${this._comboBoxValue}"
+@@ -75,7 +75,7 @@
+           @change="${this.__onComboBoxChange}"
+           @has-input-value-changed="${this.__onComboBoxHasInputValueChanged}"
+         >
+-          <vaadin-input-container
++          <vaadin24-input-container
+             part="input-field"
+             .readonly="${this.readonly}"
+             .disabled="${this.disabled}"
+@@ -86,8 +86,8 @@
+             <slot name="input"></slot>
+             <div id="clearButton" part="clear-button" slot="suffix" aria-hidden="true"></div>
+             <div id="toggleButton" class="toggle-button" part="toggle-button" slot="suffix" aria-hidden="true"></div>
+-          </vaadin-input-container>
+-        </vaadin-time-picker-combo-box>
++          </vaadin24-input-container>
++        </vaadin24-time-picker-combo-box>
+ 
+         <div part="helper-text">
+           <slot name="helper"></slot>

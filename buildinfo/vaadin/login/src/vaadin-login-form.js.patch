@@ -65,8 +65,8 @@ Index: src/vaadin-login-form.js
              name="username"
              label="[[i18n.form.username]]"
              error-message="[[i18n.errorMessage.username]]"
-@@ -77,9 +77,9 @@
-             autocomplete="username"
+@@ -78,9 +78,9 @@
+             manual-validation
            >
              <input type="text" slot="input" on-keyup="_handleInputKeyup" />
 -          </vaadin-text-field>
@@ -77,8 +77,8 @@ Index: src/vaadin-login-form.js
              name="password"
              label="[[i18n.form.password]]"
              error-message="[[i18n.errorMessage.password]]"
-@@ -90,27 +90,27 @@
-             autocomplete="current-password"
+@@ -92,27 +92,27 @@
+             manual-validation
            >
              <input type="password" slot="input" on-keyup="_handleInputKeyup" />
 -          </vaadin-password-field>

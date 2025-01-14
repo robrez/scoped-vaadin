@@ -4,10 +4,10 @@ Index: test/resizing.common.js
 +++ test/resizing.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { aTimeout, fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { aTimeout, fixtureSync, nextFrame, nextResize, oneEvent } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -24,9 +25,9 @@
+@@ -23,9 +24,9 @@
          }
        </style>
  
@@ -20,7 +20,7 @@ Index: test/resizing.common.js
      `;
    }
  
-@@ -45,7 +46,7 @@
+@@ -44,7 +45,7 @@
    }
  }
  
@@ -29,7 +29,7 @@ Index: test/resizing.common.js
  
  describe('resizing', () => {
    let component, grid;
-@@ -120,7 +121,7 @@
+@@ -119,7 +120,7 @@
    it('should have correct layout after column width change', async () => {
      grid.style.height = '';
      grid.allRowsVisible = true;
@@ -38,7 +38,7 @@ Index: test/resizing.common.js
      // Before next render
      await nextFrame();
      // After next render
-@@ -168,11 +169,11 @@
+@@ -167,11 +168,11 @@
    describe('renderer', () => {
      beforeEach(() => {
        grid = fixtureSync(`
@@ -54,7 +54,7 @@ Index: test/resizing.common.js
          root.textContent = model.index;
        };
      });
-@@ -191,9 +192,9 @@
+@@ -190,9 +191,9 @@
    describe('path', () => {
      beforeEach(() => {
        grid = fixtureSync(`
@@ -67,7 +67,7 @@ Index: test/resizing.common.js
        `);
        grid.firstElementChild.header = null;
        grid.allRowsVisible = true;
-@@ -220,9 +221,9 @@
+@@ -219,9 +220,9 @@
      beforeEach(() => {
        wrapper = fixtureSync(`
          <div>
@@ -80,7 +80,7 @@ Index: test/resizing.common.js
          </div>
        `);
        grid = wrapper.firstElementChild;
-@@ -292,9 +293,9 @@
+@@ -291,9 +292,9 @@
    describe('tree grid', () => {
      beforeEach(() => {
        grid = fixtureSync(`
@@ -93,7 +93,7 @@ Index: test/resizing.common.js
        `);
        grid.allRowsVisible = true;
        grid.itemIdPath = 'value';
-@@ -336,7 +337,7 @@
+@@ -335,7 +336,7 @@
          { value: '0-0-0-0-0-0-0-0' },
        ];
  

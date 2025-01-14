@@ -2,7 +2,7 @@ Index: test/validation.common.js
 ===================================================================
 --- test/validation.common.js
 +++ test/validation.common.js
-@@ -2,15 +2,15 @@
+@@ -2,8 +2,8 @@
  import { fixtureSync, nextRender, nextUpdate, outsideClick } from '@vaadin/testing-helpers';
  import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
@@ -13,15 +13,16 @@ Index: test/validation.common.js
  
  describe('validation', () => {
    let select, validateSpy, valueChangedSpy, changeSpy;
- 
-   describe('basic', () => {
+@@ -12,7 +12,7 @@
      beforeEach(async () => {
--      select = fixtureSync('<vaadin-select></vaadin-select>');
-+      select = fixtureSync('<vaadin24-select></vaadin24-select>');
-       select.items = [
-         { label: 'Option 1', value: 'option-1' },
-         { label: 'Option 2', value: 'option-2' },
-@@ -139,7 +139,7 @@
+       select = fixtureSync(
+         `<div>
+-          <vaadin-select></vaadin-select>
++          <vaadin24-select></vaadin24-select>
+           <input id="last-global-focusable" />
+         </div>`,
+       ).firstElementChild;
+@@ -144,7 +144,7 @@
  
    describe('required', () => {
      beforeEach(async () => {
@@ -30,7 +31,7 @@ Index: test/validation.common.js
        select.items = [
          { label: '', value: '' },
          { label: 'Option 1', value: 'option-1' },
-@@ -190,7 +190,7 @@
+@@ -195,7 +195,7 @@
      let validateSpy;
  
      beforeEach(() => {

@@ -28,7 +28,7 @@ Index: src/vaadin-upload-file.js
   *
   * ### Styling
   *
-@@ -104,11 +104,11 @@
+@@ -108,11 +108,11 @@
    }
  
    static get is() {
@@ -42,7 +42,7 @@ Index: src/vaadin-upload-file.js
     * which will start a new upload process of this file.
     *
     * @event file-retry
-@@ -117,7 +117,7 @@
+@@ -121,7 +121,7 @@
     */
  
    /**
@@ -51,7 +51,7 @@ Index: src/vaadin-upload-file.js
     * which will start a new upload process of this file.
     *
     * @event file-start
-@@ -126,7 +126,7 @@
+@@ -130,7 +130,7 @@
     */
  
    /**

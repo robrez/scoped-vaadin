@@ -2,14 +2,16 @@ Index: src/vaadin-form-layout.js
 ===================================================================
 --- src/vaadin-form-layout.js
 +++ src/vaadin-form-layout.js
-@@ -4,34 +4,34 @@
+@@ -4,35 +4,35 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+-import { isElementHidden } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { isElementHidden } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
@@ -50,7 +52,7 @@ Index: src/vaadin-form-layout.js
   * ```
   *
   * It supports any child elements as layout items.
-@@ -48,24 +48,24 @@
+@@ -49,24 +49,24 @@
   * In the example below, the first text field spans on two columns:
   *
   * ```html
@@ -83,7 +85,7 @@ Index: src/vaadin-form-layout.js
   * ```
   *
   * ### Explicit New Row
-@@ -73,26 +73,26 @@
+@@ -74,26 +74,26 @@
   * Use the `<br>` line break element to wrap the items on a new row:
   *
   * ```html
@@ -117,7 +119,7 @@ Index: src/vaadin-form-layout.js
   * element:
   *
   * Custom CSS property | Description | Default
-@@ -160,7 +160,7 @@
+@@ -161,7 +161,7 @@
    }
  
    static get is() {
@@ -126,7 +128,7 @@ Index: src/vaadin-form-layout.js
    }
  
    static get properties() {
-@@ -528,7 +528,7 @@
+@@ -557,7 +557,7 @@
          // Move the column counter
          col = (col + colspan) % this._columnCount;
  

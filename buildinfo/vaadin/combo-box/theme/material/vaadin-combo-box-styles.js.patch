@@ -16,7 +16,7 @@ Index: theme/material/vaadin-combo-box-styles.js
  
  const comboBox = css`
    :host {
-@@ -20,4 +20,4 @@
+@@ -18,4 +18,4 @@
    }
  `;
  

@@ -4,7 +4,7 @@ Index: test/tooltip-position.common.js
 +++ test/tooltip-position.common.js
 @@ -1,10 +1,11 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
+ import { expect } from '@vaadin/chai-plugins';
  import { fire, fixtureSync, nextRender, nextUpdate, oneEvent } from '@vaadin/testing-helpers';
  
  describe('position', () => {

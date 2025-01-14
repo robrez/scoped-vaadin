@@ -2,8 +2,8 @@ Index: test/sub-menu.common.js
 ===================================================================
 --- test/sub-menu.common.js
 +++ test/sub-menu.common.js
-@@ -19,7 +19,7 @@
- } from '@vaadin/testing-helpers';
+@@ -20,7 +20,7 @@
+ import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
  import { setCancelSyntheticClickEvents } from '@polymer/polymer/lib/utils/settings.js';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
@@ -11,7 +11,7 @@ Index: test/sub-menu.common.js
  
  setCancelSyntheticClickEvents(false);
  
-@@ -29,13 +29,13 @@
+@@ -30,13 +30,13 @@
    let menu, buttons, subMenu, subMenuOverlay, item;
  
    const createComponent = (text) => {
@@ -27,7 +27,7 @@ Index: test/sub-menu.common.js
      menu.items = [
        {
          text: 'Menu Item 1',
-@@ -98,7 +98,7 @@
+@@ -122,7 +122,7 @@
      buttons[0].click();
      await nextRender(subMenu);
      expect(spy.calledOnce).to.be.true;
@@ -36,7 +36,7 @@ Index: test/sub-menu.common.js
      expect(item.hasAttribute('focused')).to.be.false;
    });
  
-@@ -106,7 +106,7 @@
+@@ -130,7 +130,7 @@
      buttons[0].click();
      await nextRender(subMenu);
      const overlay = subMenuOverlay.$.overlay;
@@ -45,7 +45,7 @@ Index: test/sub-menu.common.js
      const spy = sinon.spy(item, 'focus');
      arrowDown(overlay);
      expect(spy.calledOnce).to.be.true;
-@@ -116,7 +116,7 @@
+@@ -140,7 +140,7 @@
      buttons[0].click();
      await nextRender(subMenu);
      const overlay = subMenuOverlay.$.overlay;
@@ -54,7 +54,7 @@ Index: test/sub-menu.common.js
      const last = items[items.length - 1];
      const spy = sinon.spy(last, 'focus');
      arrowUp(overlay);
-@@ -136,7 +136,7 @@
+@@ -160,7 +160,7 @@
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
@@ -63,7 +63,7 @@ Index: test/sub-menu.common.js
      const spy = sinon.spy(item, 'focus');
      await nextRender(subMenu);
      expect(spy.calledOnce).to.be.true;
-@@ -145,14 +145,14 @@
+@@ -169,14 +169,14 @@
    it('should focus the first item on button space', async () => {
      space(buttons[0]);
      await nextRender(subMenu);
@@ -80,7 +80,7 @@ Index: test/sub-menu.common.js
      expect(item.hasAttribute('focused')).to.be.true;
    });
  
-@@ -160,7 +160,7 @@
+@@ -184,7 +184,7 @@
      arrowUp(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
@@ -89,7 +89,7 @@ Index: test/sub-menu.common.js
      const last = items[items.length - 1];
      const spy = sinon.spy(last, 'focus');
      await nextRender(subMenu);
-@@ -171,7 +171,7 @@
+@@ -195,7 +195,7 @@
      arrowDown(buttons[2]);
      await nextRender(subMenu);
  
@@ -98,7 +98,7 @@ Index: test/sub-menu.common.js
      arrowDown(items[0]);
      expect(items[1].hasAttribute('focus-ring')).to.be.true;
  
-@@ -189,7 +189,7 @@
+@@ -213,7 +213,7 @@
      arrowDown(buttons[2]);
      await nextRender(subMenu);
  
@@ -107,7 +107,7 @@ Index: test/sub-menu.common.js
      expect(items[1].hasAttribute('focus-ring')).to.be.true;
  
      // Close and re-open
-@@ -203,7 +203,7 @@
+@@ -227,7 +227,7 @@
    it('should close sub-menu on first item arrow up', async () => {
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
@@ -116,7 +116,7 @@ Index: test/sub-menu.common.js
      expect(item).to.be.ok;
      await nextRender(subMenu);
      arrowUp(item);
-@@ -216,7 +216,7 @@
+@@ -240,7 +240,7 @@
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
      await nextRender(subMenu);
@@ -125,7 +125,7 @@ Index: test/sub-menu.common.js
      arrowLeft(item);
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.true;
-@@ -228,7 +228,7 @@
+@@ -252,7 +252,7 @@
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
      await nextRender(subMenu);
@@ -134,7 +134,7 @@ Index: test/sub-menu.common.js
      arrowLeft(item);
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.false;
-@@ -241,7 +241,7 @@
+@@ -265,7 +265,7 @@
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
      await nextRender(subMenu);
@@ -143,7 +143,7 @@ Index: test/sub-menu.common.js
      arrowRight(item);
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.true;
-@@ -253,7 +253,7 @@
+@@ -277,7 +277,7 @@
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
      await nextRender(subMenu);
@@ -152,7 +152,7 @@ Index: test/sub-menu.common.js
      arrowRight(item);
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.false;
-@@ -265,11 +265,11 @@
+@@ -323,11 +323,11 @@
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
@@ -166,7 +166,7 @@ Index: test/sub-menu.common.js
      const spy = sinon.spy(item, 'focus');
      arrowDown(buttons[2]);
      expect(spy.calledOnce).to.be.true;
-@@ -279,11 +279,11 @@
+@@ -337,11 +337,11 @@
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
@@ -180,7 +180,7 @@ Index: test/sub-menu.common.js
      const last = items[items.length - 1];
      const spy = sinon.spy(last, 'focus');
      arrowUp(buttons[2]);
-@@ -301,7 +301,7 @@
+@@ -359,7 +359,7 @@
      await nextRender(menu);
      arrowDown(buttons[0]);
      await nextRender(subMenu);
@@ -189,7 +189,7 @@ Index: test/sub-menu.common.js
      arrowLeft(item);
      await nextRender(subMenu);
      arrowLeft(buttons[2]);
-@@ -316,7 +316,7 @@
+@@ -374,7 +374,7 @@
      await oneEvent(subMenu, 'opened-changed');
      expect(subMenu.opened).to.be.true;
      await nextRender(subMenu);
@@ -198,7 +198,7 @@ Index: test/sub-menu.common.js
      arrowLeft(item);
      await nextRender(subMenu);
      esc(buttons[2]);
-@@ -340,7 +340,7 @@
+@@ -398,7 +398,7 @@
  
      const spy = sinon.spy();
      menu.addEventListener('item-selected', spy);
@@ -207,7 +207,7 @@ Index: test/sub-menu.common.js
      item.click();
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.false;
-@@ -360,7 +360,7 @@
+@@ -418,7 +418,7 @@
    it('should not close submenu on item contextmenu event', async () => {
      buttons[0].click();
      await nextRender(subMenu);
@@ -216,7 +216,7 @@ Index: test/sub-menu.common.js
      item.dispatchEvent(new CustomEvent('contextmenu', { bubbles: true, composed: true }));
      await nextRender(subMenu);
      expect(subMenu.opened).to.be.true;
-@@ -369,7 +369,7 @@
+@@ -427,7 +427,7 @@
    it('should not close on parent item click', async () => {
      arrowUp(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
@@ -225,7 +225,7 @@ Index: test/sub-menu.common.js
      const last = items[items.length - 1];
      await nextRender(subMenu);
      last.click();
-@@ -464,7 +464,7 @@
+@@ -538,7 +538,7 @@
        await nextRender(subMenu);
        expect(buttons[0].hasAttribute('expanded')).to.be.true;
  
@@ -234,7 +234,7 @@ Index: test/sub-menu.common.js
        arrowUp(item);
        await nextRender(subMenu);
        expect(buttons[0].hasAttribute('expanded')).to.be.false;
-@@ -499,7 +499,7 @@
+@@ -573,7 +573,7 @@
    const openOnHoverEvent = 'mouseover';
  
    beforeEach(async () => {
@@ -243,16 +243,7 @@ Index: test/sub-menu.common.js
      menu.items = [
        {
          text: 'Menu Item 1',
-@@ -579,7 +579,7 @@
-   let menu, buttons, subMenu, overflow;
- 
-   beforeEach(async () => {
--    menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
-+    menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
-     menu.items = [
-       {
-         text: 'Menu Item 1',
-@@ -635,7 +635,7 @@
+@@ -653,7 +653,7 @@
    let menu, subMenu, subMenuOverlay, buttons;
  
    beforeEach(async () => {
@@ -261,7 +252,7 @@ Index: test/sub-menu.common.js
      menu.items = [
        {
          text: 'Menu Item 1',
-@@ -671,7 +671,7 @@
+@@ -689,7 +689,7 @@
    });
  
    it('should override the component theme attribute with the item.theme property', async () => {
@@ -270,7 +261,7 @@ Index: test/sub-menu.common.js
  
      expect(items[0].getAttribute('theme')).to.equal('sub-item-theme');
      expect(items[1].getAttribute('theme')).to.equal('foo');
-@@ -685,7 +685,7 @@
+@@ -703,7 +703,7 @@
      buttons[0].dispatchEvent(new CustomEvent(menuOpenEvent, { bubbles: true, composed: true }));
      await nextRender(subMenu);
  
@@ -279,7 +270,7 @@ Index: test/sub-menu.common.js
  
      expect(items[0].getAttribute('theme')).to.equal('sub-item-theme');
      expect(items[1].hasAttribute('theme')).to.be.false;
-@@ -706,7 +706,7 @@
+@@ -724,7 +724,7 @@
    };
  
    beforeEach(async () => {
@@ -288,7 +279,7 @@ Index: test/sub-menu.common.js
      menu.items = [
        {
          text: 'Menu Item 1',
-@@ -737,12 +737,12 @@
+@@ -755,12 +755,12 @@
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      await nextRender(subMenu);
@@ -304,7 +295,7 @@ Index: test/sub-menu.common.js
      item = items[items.length - 1];
      touchstart(item);
      touchend(item);
-@@ -755,13 +755,13 @@
+@@ -773,13 +773,13 @@
      arrowDown(buttons[0]);
      await oneEvent(subMenu, 'opened-changed');
      await nextRender(subMenu);

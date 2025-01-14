@@ -23,7 +23,7 @@ Index: src/vaadin-radio-group-mixin.js
  
  /**
   * A mixin providing common radio-group functionality.
-@@ -143,7 +143,7 @@
+@@ -154,7 +154,7 @@
       * @private
       */
      __filterRadioButtons(nodes) {
@@ -32,7 +32,7 @@ Index: src/vaadin-radio-group-mixin.js
      }
  
      /**
-@@ -160,7 +160,7 @@
+@@ -171,7 +171,7 @@
  
        const radioButton = event
          .composedPath()

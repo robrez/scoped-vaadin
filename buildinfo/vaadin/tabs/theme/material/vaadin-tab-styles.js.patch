@@ -16,7 +16,7 @@ Index: theme/material/vaadin-tab-styles.js
    css`
      :host {
        display: flex;
-@@ -125,7 +125,7 @@
+@@ -127,7 +127,7 @@
      }
  
      /* Small space between icon and label */

@@ -1,0 +1,15 @@
+Index: test/animation.common.js
+===================================================================
+--- test/animation.common.js
++++ test/animation.common.js
+@@ -9,8 +9,8 @@
+   beforeEach(async () => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-notification position="bottom-center"></vaadin-notification>
+-        <vaadin-notification position="middle"></vaadin-notification>
++        <vaadin24-notification position="bottom-center"></vaadin24-notification>
++        <vaadin24-notification position="middle"></vaadin24-notification>
+       </div>
+     `);
+     await nextFrame();

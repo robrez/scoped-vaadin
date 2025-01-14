@@ -20,7 +20,7 @@ Index: src/vaadin-grid-column-mixin.d.ts
     */
    footerRenderer: GridHeaderFooterRenderer<TItem, Column> | null | undefined;
  
-@@ -137,7 +137,7 @@
+@@ -138,7 +138,7 @@
     * Receives three arguments:
     *
     * - `root` The cell content DOM element. Append your content to it.

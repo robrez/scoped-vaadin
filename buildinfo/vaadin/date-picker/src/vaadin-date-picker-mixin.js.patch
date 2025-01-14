@@ -2,12 +2,13 @@ Index: src/vaadin-date-picker-mixin.js
 ===================================================================
 --- src/vaadin-date-picker-mixin.js
 +++ src/vaadin-date-picker-mixin.js
-@@ -3,15 +3,15 @@
+@@ -3,16 +3,16 @@
   * Copyright (c) 2016 - 2024 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { hideOthers } from '@vaadin/a11y-base/src/aria-hidden.js';
 -import { DelegateFocusMixin } from '@vaadin/a11y-base/src/delegate-focus-mixin.js';
+-import { isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { KeyboardMixin } from '@vaadin/a11y-base/src/keyboard-mixin.js';
 -import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
@@ -17,6 +18,7 @@ Index: src/vaadin-date-picker-mixin.js
 -import { VirtualKeyboardController } from '@vaadin/field-base/src/virtual-keyboard-controller.js';
 +import { hideOthers } from '@scoped-vaadin/a11y-base/src/aria-hidden.js';
 +import { DelegateFocusMixin } from '@scoped-vaadin/a11y-base/src/delegate-focus-mixin.js';
++import { isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { KeyboardMixin } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 +import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
@@ -27,7 +29,7 @@ Index: src/vaadin-date-picker-mixin.js
  import {
    dateAllowed,
    dateEquals,
-@@ -421,7 +421,7 @@
+@@ -407,7 +407,7 @@
      /**
       * Override a getter from `InputControlMixin` to make it optional
       * and to prevent warning when a clear button is missing,
@@ -36,7 +38,7 @@ Index: src/vaadin-date-picker-mixin.js
       * @protected
       * @return {Element | null | undefined}
       */
-@@ -535,7 +535,7 @@
+@@ -521,7 +521,7 @@
        }
  
        // Create and store document content element

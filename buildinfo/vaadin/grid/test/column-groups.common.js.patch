@@ -4,10 +4,10 @@ Index: test/column-groups.common.js
 +++ test/column-groups.common.js
 @@ -1,3 +1,4 @@
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@esm-bundle/chai';
- import { fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextFrame, nextRender, nextResize } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
-@@ -14,7 +15,7 @@
+@@ -13,7 +14,7 @@
  } from './helpers.js';
  
  const createColumn = () => {
@@ -16,7 +16,7 @@ Index: test/column-groups.common.js
    column.footerRenderer = (root) => {
      root.textContent = 'Footer';
    };
-@@ -55,16 +56,16 @@
+@@ -54,16 +55,16 @@
    describe('No header/footer renderers', () => {
      beforeEach(() => {
        grid = fixtureSync(`
@@ -41,7 +41,7 @@ Index: test/column-groups.common.js
          col.renderer = attributeRenderer('prefix');
        });
  
-@@ -93,7 +94,7 @@
+@@ -92,7 +93,7 @@
        let emptyGroup;
  
        beforeEach(() => {
@@ -50,7 +50,7 @@ Index: test/column-groups.common.js
          emptyGroup.header = 'Header';
        });
  
-@@ -123,7 +124,7 @@
+@@ -122,7 +123,7 @@
        let emptyGroup;
  
        beforeEach(() => {
@@ -59,7 +59,7 @@ Index: test/column-groups.common.js
          emptyGroup.headerRenderer = (root) => {
            root.textContent = 'header';
          };
-@@ -158,16 +159,16 @@
+@@ -157,16 +158,16 @@
        //  |          | group-0             |
        //  | header-0 | header-1 | header-2 |
        grid = fixtureSync(`
@@ -84,7 +84,7 @@ Index: test/column-groups.common.js
          col.renderer = attributeRenderer('prefix');
        });
  
-@@ -233,7 +234,7 @@
+@@ -232,7 +233,7 @@
      });
  
      it('should have a column frozen to end', () => {
@@ -93,7 +93,7 @@ Index: test/column-groups.common.js
        col.frozen = false;
        col.frozenToEnd = true;
        expect(getHeaderCell(0, 0).hasAttribute('frozen-to-end')).to.be.true;
-@@ -241,7 +242,7 @@
+@@ -240,7 +241,7 @@
      });
  
      it('should have a group frozen to end', () => {
@@ -102,7 +102,7 @@ Index: test/column-groups.common.js
        group.frozen = false;
        group.frozenToEnd = true;
        expect(getHeaderCell(0, 1).hasAttribute('frozen-to-end')).to.be.true;
-@@ -250,7 +251,7 @@
+@@ -249,7 +250,7 @@
      });
  
      it('should add frozen-to-end to cell part attribute', () => {
@@ -111,7 +111,7 @@ Index: test/column-groups.common.js
        col.frozen = false;
        col.frozenToEnd = true;
        expect(getHeaderCell(0, 0).getAttribute('part')).to.contain('frozen-to-end-cell');
-@@ -295,34 +296,34 @@
+@@ -294,34 +295,34 @@
        //  |           |         | group-2            | group-3             |          |
        //  | group-0             | group-1                                  |          |
        grid = fixtureSync(`
@@ -165,7 +165,7 @@ Index: test/column-groups.common.js
          group.footerRenderer = attributeRenderer('footer');
        });
  
-@@ -448,30 +449,30 @@
+@@ -447,30 +448,30 @@
    describe('hidden group', () => {
      it('should hide children', async () => {
        grid = fixtureSync(`
@@ -212,7 +212,7 @@ Index: test/column-groups.common.js
        expect(columns[0].hidden).to.be.true;
        expect(columns[1].hidden).not.to.be.true;
      });
-@@ -482,22 +483,22 @@
+@@ -481,22 +482,22 @@
  
      beforeEach(() => {
        grid = fixtureSync(`
@@ -243,7 +243,7 @@ Index: test/column-groups.common.js
        `);
      });
  
-@@ -514,17 +515,17 @@
+@@ -513,17 +514,17 @@
  
      beforeEach(() => {
        grid = fixtureSync(`
@@ -266,7 +266,7 @@ Index: test/column-groups.common.js
        `);
      });
  
-@@ -541,14 +542,14 @@
+@@ -540,14 +541,14 @@
        describe(frozenAttr, () => {
          it('should not warn when grouping frozen only columns', async () => {
            fixtureSync(`
@@ -288,7 +288,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -558,14 +559,14 @@
+@@ -557,14 +558,14 @@
  
          it('should not warn when freezing a root level group', async () => {
            fixtureSync(`
@@ -310,7 +310,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -575,14 +576,14 @@
+@@ -574,14 +575,14 @@
  
          it('should not warn when freezing a root level column', async () => {
            fixtureSync(`
@@ -332,7 +332,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -591,17 +592,17 @@
+@@ -590,17 +591,17 @@
          });
  
          it('should not warn when grouping a frozen column with unimported frozen column', async () => {
@@ -358,7 +358,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -611,14 +612,14 @@
+@@ -610,14 +611,14 @@
  
          it('should warn when grouping frozen and non-frozen columns', async () => {
            fixtureSync(`
@@ -380,7 +380,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -627,20 +628,20 @@
+@@ -626,20 +627,20 @@
          });
  
          it('should warn when grouping a frozen column with an unimported column', async () => {
@@ -409,7 +409,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -650,16 +651,16 @@
+@@ -649,16 +650,16 @@
  
          it('should warn when grouping frozen group and non-frozen column', async () => {
            fixtureSync(`
@@ -435,7 +435,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -669,16 +670,16 @@
+@@ -668,16 +669,16 @@
  
          it('should not warn when grouping frozen group and frozen column', async () => {
            fixtureSync(`
@@ -461,7 +461,7 @@ Index: test/column-groups.common.js
            `);
  
            await nextFrame();
-@@ -688,17 +689,17 @@
+@@ -687,17 +688,17 @@
  
          it('should only warn once', async () => {
            fixtureSync(`

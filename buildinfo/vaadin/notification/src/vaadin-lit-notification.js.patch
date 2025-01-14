@@ -1,0 +1,77 @@
+Index: src/vaadin-lit-notification.js
+===================================================================
+--- src/vaadin-lit-notification.js
++++ src/vaadin-lit-notification.js
+@@ -4,15 +4,15 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { css, html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { NotificationContainerMixin, NotificationMixin } from './vaadin-notification-mixin.js';
+ import { notificationCardStyles, notificationContainerStyles } from './vaadin-notification-styles.js';
+ 
+ /**
+- * An element used internally by `<vaadin-notification>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -45,12 +45,12 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-notification-container';
++    return 'vaadin24-notification-container';
+   }
+ }
+ 
+ /**
+- * An element used internally by `<vaadin-notification>`. Not intended to be used separately.
++ * An element used internally by `<vaadin24-notification>`. Not intended to be used separately.
+  *
+  * @customElement
+  * @extends HTMLElement
+@@ -74,7 +74,7 @@
+   }
+ 
+   static get is() {
+-    return 'vaadin-notification-card';
++    return 'vaadin24-notification-card';
+   }
+ 
+   /** @protected */
+@@ -85,7 +85,7 @@
+ }
+ 
+ /**
+- * LitElement based version of `<vaadin-notification>` web component.
++ * LitElement based version of `<vaadin24-notification>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -104,15 +104,15 @@
+ 
+   render() {
+     return html`
+-      <vaadin-notification-card
++      <vaadin24-notification-card
+         theme="${this._theme || ''}"
+         aria-live="${this.__computeAriaLive(this.assertive)}"
+-      ></vaadin-notification-card>
++      ></vaadin24-notification-card>
+     `;
+   }
+ 
+   static get is() {
+-    return 'vaadin-notification';
++    return 'vaadin24-notification';
+   }
+ 
+   /**
