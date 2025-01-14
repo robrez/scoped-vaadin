@@ -5,8 +5,9 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/integer-field",
+-  "version": "24.6.2",
 +  "name": "@scoped-vaadin/integer-field",
-   "version": "24.6.2",
++  "version": "24.6.2-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -56,10 +57,10 @@ Index: package.json
 -  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/component-base": "^24.6.2",
-+    "@scoped-vaadin/number-field": "^24.6.2",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2",
-+    "@scoped-vaadin/vaadin-material-styles": "^24.6.2",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2"
++    "@scoped-vaadin/component-base": "^24.6.2-alpha.1",
++    "@scoped-vaadin/number-field": "^24.6.2-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.6.2-alpha.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
 +  }
  }

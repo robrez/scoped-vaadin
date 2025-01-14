@@ -2,14 +2,16 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,6 +1,6 @@
+@@ -1,7 +1,7 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/icon",
+-  "version": "24.6.2",
 +  "name": "@scoped-vaadin/icon",
-   "version": "24.6.2",
++  "version": "24.6.2-alpha.1",
    "description-markup": "markdown",
    "framework": "lit",
+   "framework-config": {
 @@ -15,20 +15,20 @@
      "html": {
        "elements": [

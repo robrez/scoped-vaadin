@@ -6,8 +6,9 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/upload",
+-  "version": "24.6.2",
 +  "name": "@scoped-vaadin/upload",
-   "version": "24.6.2",
++  "version": "24.6.2-alpha.1",
    "description-markup": "markdown",
    "contributions": {
      "html": {
