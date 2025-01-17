@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/component-base",
-  "version": "24.6.2-alpha.1",
+  "version": "24.6.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -36,6 +36,6 @@
     "@vaadin/vaadin-development-mode-detector": "^2.0.0",
     "@vaadin/vaadin-usage-statistics": "^2.1.0",
     "lit": "^3.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
+    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2"
   }
 }
