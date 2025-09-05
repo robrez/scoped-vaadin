@@ -8,7 +8,7 @@ Index: web-types.lit.json
 -  "name": "@vaadin/avatar-group",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/avatar-group",
-+  "version": "24.8.6",
++  "version": "24.8.7",
    "description-markup": "markdown",
    "framework": "lit",
    "framework-config": {

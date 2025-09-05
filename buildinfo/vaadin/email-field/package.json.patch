@@ -7,7 +7,7 @@ Index: package.json
 -  "name": "@vaadin/email-field",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/email-field",
-+  "version": "24.8.6",
++  "version": "24.8.7",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -60,12 +60,12 @@ Index: package.json
 -  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
-+    "@scoped-vaadin/component-base": "^24.8.6",
-+    "@scoped-vaadin/text-field": "^24.8.6",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^24.8.6",
-+    "@scoped-vaadin/vaadin-material-styles": "^24.8.6",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^24.8.6",
++    "@scoped-vaadin/component-base": "^24.8.7",
++    "@scoped-vaadin/text-field": "^24.8.7",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.8.7",
++    "@scoped-vaadin/vaadin-material-styles": "^24.8.7",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.8.7",
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.6"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.7"
 +  }
  }

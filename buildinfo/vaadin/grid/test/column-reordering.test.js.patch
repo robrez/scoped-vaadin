@@ -206,7 +206,7 @@ Index: test/column-reordering.test.js
        const renderer = (root) => {
          root.innerHTML = `<div draggable="true">${col.getAttribute('index')}</div>`;
        };
-@@ -721,17 +721,17 @@
+@@ -728,17 +728,17 @@
  
    beforeEach(async () => {
      grid = fixtureSync(`

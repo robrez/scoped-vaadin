@@ -8,7 +8,7 @@ Index: web-types.json
 -  "name": "@vaadin/context-menu",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/context-menu",
-+  "version": "24.8.6",
++  "version": "24.8.7",
    "description-markup": "markdown",
    "contributions": {
      "html": {

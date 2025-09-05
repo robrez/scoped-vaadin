@@ -79,7 +79,7 @@ Below, you can find which underlying vaadin version is used
 
 | local version     | vaadin version |
 | ----------------- | -------------- |
-| `v24.8.6`         | `24.8.6`       |
+| `v24.8.7`         | `24.8.7`       |
 | `v24.3.7-alpha.1` | `24.3.7`       |
 | `v24.0.0-alpha.1` | `24.0.0`       |
 | `v23.0.1`         | `~23.3.8`      |
