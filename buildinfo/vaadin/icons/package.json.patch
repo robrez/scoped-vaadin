@@ -7,7 +7,7 @@ Index: package.json
 -  "name": "@vaadin/icons",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/icons",
-+  "version": "24.6.2-alpha.1",
++  "version": "24.8.6-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -48,7 +48,7 @@ Index: package.json
 -    "gulp-modify": "^0.1.1"
 -  },
 -  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
-+    "@scoped-vaadin/icon": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
++    "@scoped-vaadin/icon": "^24.8.6-alpha.1",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.6-alpha.1"
 +  }
  }

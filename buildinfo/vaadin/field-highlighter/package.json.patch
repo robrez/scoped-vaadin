@@ -7,7 +7,7 @@ Index: package.json
 -  "name": "@vaadin/field-highlighter",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/field-highlighter",
-+  "version": "24.6.2-alpha.1",
++  "version": "24.8.6-alpha.1",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -65,13 +65,13 @@ Index: package.json
 -    "sinon": "^18.0.0"
 -  },
 -  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
-+    "@scoped-vaadin/a11y-base": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/component-base": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/overlay": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/vaadin-material-styles": "^24.6.2-alpha.1",
-+    "@scoped-vaadin/vaadin-themable-mixin": "^24.6.2-alpha.1",
++    "@scoped-vaadin/a11y-base": "^24.8.6-alpha.1",
++    "@scoped-vaadin/component-base": "^24.8.6-alpha.1",
++    "@scoped-vaadin/overlay": "^24.8.6-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.8.6-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.8.6-alpha.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.8.6-alpha.1",
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.6-alpha.1"
 +  }
  }
