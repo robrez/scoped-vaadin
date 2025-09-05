@@ -2,12 +2,14 @@ Index: src/vaadin-lit-avatar-group.js
 ===================================================================
 --- src/vaadin-lit-avatar-group.js
 +++ src/vaadin-lit-avatar-group.js
-@@ -3,20 +3,20 @@
-  * Copyright (c) 2020 - 2024 Vaadin Ltd.
+@@ -3,21 +3,21 @@
+  * Copyright (c) 2020 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/avatar/src/vaadin-lit-avatar.js';
+-import '@vaadin/tooltip/src/vaadin-lit-tooltip.js';
 +import '@scoped-vaadin/avatar/src/vaadin-lit-avatar.js';
++import '@scoped-vaadin/tooltip/src/vaadin-lit-tooltip.js';
  import './vaadin-lit-avatar-group-menu.js';
  import './vaadin-lit-avatar-group-menu-item.js';
  import './vaadin-lit-avatar-group-overlay.js';
@@ -29,7 +31,7 @@ Index: src/vaadin-lit-avatar-group.js
   *
   * ## Disclaimer
   *
-@@ -26,7 +26,7 @@
+@@ -27,7 +27,7 @@
   */
  class AvatarGroup extends AvatarGroupMixin(ElementMixin(ThemableMixin(PolylitMixin(LitElement)))) {
    static get is() {
@@ -38,7 +40,7 @@ Index: src/vaadin-lit-avatar-group.js
    }
  
    static get styles() {
-@@ -41,7 +41,7 @@
+@@ -42,7 +42,7 @@
          <slot name="overflow"></slot>
        </div>
  
@@ -47,7 +49,7 @@ Index: src/vaadin-lit-avatar-group.js
          id="overlay"
          .opened="${this._opened}"
          .positionTarget="${this._overflow}"
-@@ -49,7 +49,7 @@
+@@ -50,7 +50,7 @@
          @vaadin-overlay-close="${this._onVaadinOverlayClose}"
          @vaadin-overlay-open="${this._onVaadinOverlayOpen}"
          @opened-changed="${this._onOpenedChanged}"

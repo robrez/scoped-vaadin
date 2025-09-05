@@ -1,0 +1,46 @@
+Index: test/multiple.test.js
+===================================================================
+--- test/multiple.test.js
++++ test/multiple.test.js
+@@ -2,7 +2,7 @@
+ import { click, escKeyDown, fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../src/vaadin-overlay.js';
+-import { setNestedOverlay } from '@vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
++import { setNestedOverlay } from '@scoped-vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
+ import { createOverlay } from './helpers.js';
+ 
+ describe('multiple overlays', () => {
+@@ -168,7 +168,7 @@
+ 
+     const getFrontmostOverlayFromScreenCenter = () => {
+       let elementFromPoint = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
+-      while (elementFromPoint && elementFromPoint.localName !== 'vaadin-overlay') {
++      while (elementFromPoint && elementFromPoint.localName !== 'vaadin24-overlay') {
+         elementFromPoint = elementFromPoint.host || elementFromPoint.parentNode;
+       }
+       return elementFromPoint;
+@@ -177,8 +177,8 @@
+     beforeEach(async () => {
+       parent = fixtureSync(`
+         <div id="parent">
+-          <vaadin-overlay modeless></vaadin-overlay>
+-          <vaadin-overlay modeless></vaadin-overlay>
++          <vaadin24-overlay modeless></vaadin24-overlay>
++          <vaadin24-overlay modeless></vaadin24-overlay>
+         </div>
+       `);
+       modeless1 = parent.children[0];
+@@ -326,9 +326,9 @@
+       overlays = Array.from(
+         fixtureSync(`
+         <div id="parent">
+-          <vaadin-overlay modeless></vaadin-overlay>
+-          <vaadin-overlay modeless></vaadin-overlay>
+-          <vaadin-overlay modeless></vaadin-overlay>
++          <vaadin24-overlay modeless></vaadin24-overlay>
++          <vaadin24-overlay modeless></vaadin24-overlay>
++          <vaadin24-overlay modeless></vaadin24-overlay>
+         </div>
+       `).children,
+       );

@@ -1,0 +1,16 @@
+Index: test/view-transitions.test.js
+===================================================================
+--- test/view-transitions.test.js
++++ test/view-transitions.test.js
+@@ -32,9 +32,9 @@
+ 
+   beforeEach(async () => {
+     layout = fixtureSync(`
+-      <vaadin-master-detail-layout>
++      <vaadin24-master-detail-layout>
+         <master-content></master-content>
+-      </vaadin-master-detail-layout>
++      </vaadin24-master-detail-layout>
+     `);
+     await nextRender();
+   });

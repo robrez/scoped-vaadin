@@ -3,7 +3,7 @@ Index: src/vaadin-date-time-picker.d.ts
 --- src/vaadin-date-time-picker.d.ts
 +++ src/vaadin-date-time-picker.d.ts
 @@ -3,8 +3,8 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * Copyright (c) 2019 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
@@ -43,7 +43,7 @@ Index: src/vaadin-date-time-picker.d.ts
   * propagated to these components.
   *
   * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
-@@ -114,7 +114,7 @@
+@@ -137,7 +137,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

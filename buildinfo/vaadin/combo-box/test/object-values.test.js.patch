@@ -1,0 +1,22 @@
+Index: test/object-values.test.js
+===================================================================
+--- test/object-values.test.js
++++ test/object-values.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('label and value paths', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       input = comboBox.inputElement;
+ 
+@@ -293,7 +293,7 @@
+     });
+ 
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       input = comboBox.inputElement;
+       comboBox.itemValuePath = undefined;

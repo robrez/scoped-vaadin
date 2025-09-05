@@ -1,0 +1,13 @@
+Index: src/vaadin-grid-drag-and-drop-mixin.js
+===================================================================
+--- src/vaadin-grid-drag-and-drop-mixin.js
++++ src/vaadin-grid-drag-and-drop-mixin.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isChrome, isSafari } from '@vaadin/component-base/src/browser-utils.js';
++import { isChrome, isSafari } from '@scoped-vaadin/component-base/src/browser-utils.js';
+ import {
+   iterateChildren,
+   iterateRowCells,

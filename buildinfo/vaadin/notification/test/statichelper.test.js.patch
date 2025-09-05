@@ -1,0 +1,32 @@
+Index: test/statichelper.test.js
+===================================================================
+--- test/statichelper.test.js
++++ test/statichelper.test.js
+@@ -1,15 +1,16 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { aTimeout, nextFrame } from '@vaadin/testing-helpers';
+ import '../src/vaadin-notification.js';
+ import { html } from 'lit';
+ 
+-const Notification = customElements.get('vaadin-notification');
++const Notification = internalCustomElements.get('vaadin24-notification');
+ 
+ describe('static helpers', () => {
+   it('show should show a text notification', async () => {
+     const notification = Notification.show('Hello world');
+     await nextFrame();
+-    const notificationDom = document.body.querySelector('vaadin-notification');
++    const notificationDom = document.body.querySelector('vaadin24-notification');
+     expect(notification).to.equal(notificationDom);
+ 
+     expect(notification._card.innerText.trim()).to.equal('Hello world');
+@@ -20,7 +21,7 @@
+     await nextFrame();
+ 
+     // FIXME: This causes 'TypeError: Converting circular structure to JSON'
+-    // const notificationDom = document.body.querySelector('vaadin-notification');
++    // const notificationDom = document.body.querySelector('vaadin24-notification');
+     // expect(notification).to.equal(notificationDom);
+ 
+     expect(notification._card.innerText.trim()).to.equal('Hello world');

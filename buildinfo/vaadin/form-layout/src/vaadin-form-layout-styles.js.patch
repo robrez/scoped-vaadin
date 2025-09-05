@@ -1,0 +1,27 @@
+Index: src/vaadin-form-layout-styles.js
+===================================================================
+--- src/vaadin-form-layout-styles.js
++++ src/vaadin-form-layout-styles.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { css } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export const formLayoutStyles = css`
+   :host {
+@@ -97,11 +97,11 @@
+       its width needs to be constrained:
+ 
+       1. "width" is used instead of "max-width" because, together with the default "flex: 0 1 auto",
+-      it allows the layout to shrink to its minimum width inside <vaadin-horizontal-layout>, which
++      it allows the layout to shrink to its minimum width inside <vaadin24-horizontal-layout>, which
+       wouldn't work otherwise.
+ 
+       2. "width" is used instead of "flex-basis" to make the layout expand to the maximum
+-      number of columns inside <vaadin-overlay>, which creates a new stacking context
++      number of columns inside <vaadin24-overlay>, which creates a new stacking context
+       without a predefined width.
+     */
+     width: var(--_max-width);

@@ -1,0 +1,13 @@
+Index: test/slots.test.js
+===================================================================
+--- test/slots.test.js
++++ test/slots.test.js
+@@ -8,7 +8,7 @@
+   let upload;
+ 
+   beforeEach(async () => {
+-    upload = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    upload = fixtureSync(`<vaadin24-upload></vaadin24-upload>`);
+     await nextRender();
+   });
+ 

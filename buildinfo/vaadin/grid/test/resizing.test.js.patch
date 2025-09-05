@@ -1,0 +1,108 @@
+Index: test/resizing.test.js
+===================================================================
+--- test/resizing.test.js
++++ test/resizing.test.js
+@@ -20,16 +20,16 @@
+   beforeEach(async () => {
+     component = fixtureSync(`
+       <div>
+-        <vaadin-grid id="grid" style="width: 200px; height: 400px;" size="10" hidden>
+-          <vaadin-grid-column id="column" header="header"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid id="grid" style="width: 200px; height: 400px;" size="10" hidden>
++          <vaadin24-grid-column id="column" header="header"></vaadin24-grid-column>
++        </vaadin24-grid>
+       </div>
+     `);
+     grid = component.firstElementChild;
+     grid.rowDetailsRenderer = (root, _, model) => {
+       root.textContent = model.index;
+     };
+-    column = grid.querySelector('vaadin-grid-column');
++    column = grid.querySelector('vaadin24-grid-column');
+     column.renderer = (root, _, model) => {
+       root.textContent = model.index;
+     };
+@@ -115,13 +115,13 @@
+     // Have a full width grid inside a fixed width container
+     component = fixtureSync(`
+     <div style="height: 200px;">
+-      <vaadin-grid style="height: 100%;">
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid style="height: 100%;">
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     </div>
+     `);
+-    grid = component.querySelector('vaadin-grid');
+-    grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++    grid = component.querySelector('vaadin24-grid');
++    grid.querySelector('vaadin24-grid-column').renderer = (root, _, model) => {
+       root.textContent = model.item.name;
+     };
+     const itemCount = 1000;
+@@ -201,11 +201,11 @@
+   describe('renderer', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+-      grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++      grid.querySelector('vaadin24-grid-column').renderer = (root, _, model) => {
+         root.textContent = model.index;
+       };
+     });
+@@ -224,9 +224,9 @@
+   describe('path', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="value"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="value"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.firstElementChild.header = null;
+       grid.allRowsVisible = true;
+@@ -253,9 +253,9 @@
+     beforeEach(() => {
+       wrapper = fixtureSync(`
+         <div>
+-          <vaadin-grid>
+-            <vaadin-grid-column path="value"></vaadin-grid-column>
+-          </vaadin-grid>
++          <vaadin24-grid>
++            <vaadin24-grid-column path="value"></vaadin24-grid-column>
++          </vaadin24-grid>
+         </div>
+       `);
+       grid = wrapper.firstElementChild;
+@@ -325,9 +325,9 @@
+   describe('tree grid', () => {
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-tree-column path="value"></vaadin-grid-tree-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-tree-column path="value"></vaadin24-grid-tree-column>
++        </vaadin24-grid>
+       `);
+       grid.allRowsVisible = true;
+       grid.itemIdPath = 'value';
+@@ -369,7 +369,7 @@
+         { value: '0-0-0-0-0-0-0-0' },
+       ];
+ 
+-      const column = grid.querySelector('vaadin-grid-tree-column');
++      const column = grid.querySelector('vaadin24-grid-tree-column');
+       column.header = null;
+ 
+       flushGrid(grid);

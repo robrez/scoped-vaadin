@@ -17,7 +17,7 @@ Index: theme/lumo/vaadin-login-overlay-styles.js
  
  const loginOverlayWrapper = css`
    :host {
-@@ -154,7 +154,7 @@
+@@ -160,7 +160,7 @@
    }
  `;
  
@@ -26,7 +26,7 @@ Index: theme/lumo/vaadin-login-overlay-styles.js
    moduleId: 'lumo-login-overlay-wrapper',
  });
  
-@@ -177,6 +177,6 @@
+@@ -183,6 +183,6 @@
    }
  `;
  

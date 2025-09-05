@@ -20,7 +20,7 @@ Index: theme/lumo/vaadin-tab-styles.js
    css`
      :host {
        box-sizing: border-box;
-@@ -150,23 +150,23 @@
+@@ -149,23 +149,23 @@
        color: inherit !important;
      }
  
@@ -48,7 +48,7 @@ Index: theme/lumo/vaadin-tab-styles.js
        margin-right: 0;
      }
  
-@@ -187,7 +187,7 @@
+@@ -186,7 +186,7 @@
        padding-top: 0.25rem;
      }
  
@@ -57,7 +57,7 @@ Index: theme/lumo/vaadin-tab-styles.js
        margin: 0;
      }
  
-@@ -220,11 +220,11 @@
+@@ -219,11 +219,11 @@
        transform: translateX(50%) scale(1);
      }
  

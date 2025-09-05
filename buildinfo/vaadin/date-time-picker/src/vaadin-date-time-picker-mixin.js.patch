@@ -3,7 +3,7 @@ Index: src/vaadin-date-time-picker-mixin.js
 --- src/vaadin-date-time-picker-mixin.js
 +++ src/vaadin-date-time-picker-mixin.js
 @@ -3,20 +3,20 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * Copyright (c) 2019 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
@@ -39,9 +39,9 @@ Index: src/vaadin-date-time-picker-mixin.js
 -    super(host, `${type}-picker`, `vaadin-${type}-picker`, {
 +    super(host, `${type}-picker`, `vaadin24-${type}-picker`, {
        initializer: (picker, host) => {
-         // Ensure initial value-changed is fired on the slotted pickers
-         // synchronously in Lit version to avoid overriding host value.
-@@ -235,8 +235,8 @@
+         const prop = `__${type}Picker`;
+         host[prop] = picker;
+@@ -230,8 +230,8 @@
           * `i18n` object or just the properties you want to modify.
           *
           * The object is a combination of the i18n properties supported by
@@ -52,7 +52,7 @@ Index: src/vaadin-date-time-picker-mixin.js
           * @type {!DateTimePickerI18n}
           */
          i18n: {
-@@ -247,10 +247,10 @@
+@@ -242,10 +242,10 @@
  
          /**
           * A space-delimited list of CSS class names to set on the overlay elements

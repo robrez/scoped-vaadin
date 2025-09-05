@@ -3,7 +3,7 @@ Index: src/vaadin-combo-box-data-provider-mixin.js
 --- src/vaadin-combo-box-data-provider-mixin.js
 +++ src/vaadin-combo-box-data-provider-mixin.js
 @@ -3,7 +3,7 @@
-  * Copyright (c) 2015 - 2024 Vaadin Ltd.
+  * Copyright (c) 2015 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { DataProviderController } from '@vaadin/component-base/src/data-provider-controller/data-provider-controller.js';

@@ -1,0 +1,20 @@
+Index: theme/material/vaadin-master-detail-layout-styles.js
+===================================================================
+--- theme/material/vaadin-master-detail-layout-styles.js
++++ theme/material/vaadin-master-detail-layout-styles.js
+@@ -1,10 +1,10 @@
+-import '@vaadin/vaadin-material-styles/color.js';
+-import '@vaadin/vaadin-material-styles/shadow.js';
+-import '@vaadin/vaadin-material-styles/style.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-material-styles/color.js';
++import '@scoped-vaadin/vaadin-material-styles/shadow.js';
++import '@scoped-vaadin/vaadin-material-styles/style.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ registerStyles(
+-  'vaadin-master-detail-layout',
++  'vaadin24-master-detail-layout',
+   css`
+     :host(:is([drawer], [stack])) [part='detail'] {
+       background-color: var(--material-background-color);

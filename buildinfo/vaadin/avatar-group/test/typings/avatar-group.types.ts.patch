@@ -2,15 +2,17 @@ Index: test/typings/avatar-group.types.ts
 ===================================================================
 --- test/typings/avatar-group.types.ts
 +++ test/typings/avatar-group.types.ts
-@@ -1,15 +1,15 @@
+@@ -1,16 +1,16 @@
  import '../../vaadin-avatar-group.js';
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
 -import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 -import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
 -import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
 -import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 +import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';

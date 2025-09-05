@@ -2,9 +2,9 @@ Index: src/vaadin-date-picker-light.js
 ===================================================================
 --- src/vaadin-date-picker-light.js
 +++ src/vaadin-date-picker-light.js
-@@ -7,13 +7,13 @@
+@@ -6,9 +6,9 @@
+ import './vaadin-date-picker-overlay-content.js';
  import './vaadin-date-picker-overlay.js';
- import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
@@ -14,13 +14,17 @@ Index: src/vaadin-date-picker-light.js
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  import { DatePickerMixin } from './vaadin-date-picker-mixin.js';
  
+ function dashToCamelCase(dash) {
+@@ -16,7 +16,7 @@
+ }
+ 
  /**
 - * `<vaadin-date-picker-light>` is a customizable version of the `<vaadin-date-picker>` providing
 + * `<vaadin24-date-picker-light>` is a customizable version of the `<vaadin24-date-picker>` providing
   * only the scrollable month calendar view and leaving the input field definition to the user.
   *
   * To create a custom input field, you need to add a child element which has a two-way
-@@ -22,23 +22,23 @@
+@@ -25,23 +25,23 @@
   * using an `<input>` element.
   *
   * ```html
@@ -51,7 +55,7 @@ Index: src/vaadin-date-picker-light.js
   * is propagated to the internal themable components listed above.
   *
   * @fires {Event} change - Fired when the user commits a value change.
-@@ -65,7 +65,7 @@
+@@ -68,7 +68,7 @@
        </style>
        <slot></slot>
  
@@ -60,7 +64,7 @@ Index: src/vaadin-date-picker-light.js
          id="overlay"
          fullscreen$="[[_fullscreen]]"
          opened="{{opened}}"
-@@ -75,12 +75,12 @@
+@@ -78,12 +78,12 @@
          restore-focus-on-close
          restore-focus-node="[[inputElement]]"
          theme$="[[_theme]]"
@@ -75,7 +79,7 @@ Index: src/vaadin-date-picker-light.js
    }
  
    static get properties() {
-@@ -113,7 +113,7 @@
+@@ -116,7 +116,7 @@
    /** @protected */
    connectedCallback() {
      super.connectedCallback();

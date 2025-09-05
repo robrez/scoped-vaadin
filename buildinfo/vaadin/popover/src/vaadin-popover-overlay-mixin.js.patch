@@ -2,18 +2,20 @@ Index: src/vaadin-popover-overlay-mixin.js
 ===================================================================
 --- src/vaadin-popover-overlay-mixin.js
 +++ src/vaadin-popover-overlay-mixin.js
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2022 - 2024 Vaadin Ltd.
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2022 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { OverlayMixin } from '@vaadin/overlay/src/vaadin-overlay-mixin.js';
 -import { PositionMixin } from '@vaadin/overlay/src/vaadin-overlay-position-mixin.js';
+-import { setNestedOverlay } from '@vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
 +import { OverlayMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-mixin.js';
 +import { PositionMixin } from '@scoped-vaadin/overlay/src/vaadin-overlay-position-mixin.js';
++import { setNestedOverlay } from '@scoped-vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
  
  /**
-  * A mixin providing common popover overlay functionality.
-@@ -30,7 +30,7 @@
+  * Returns the closest parent overlay for given node, if any.
+@@ -54,7 +54,7 @@
       * @return {string}
       */
      get _tagNamePrefix() {
@@ -21,15 +23,13 @@ Index: src/vaadin-popover-overlay-mixin.js
 +      return 'vaadin24-popover';
      }
  
-     requestContentUpdate() {
-@@ -41,8 +41,8 @@
+     /**
+@@ -72,7 +72,7 @@
+       if (this.owner) {
          const style = getComputedStyle(this.owner);
          ['top', 'bottom', 'start', 'end'].forEach((prop) => {
-           this.style.setProperty(
--            `--${this._tagNamePrefix}-offset-${prop}`,
--            style.getPropertyValue(`--${this._tagNamePrefix}-offset-${prop}`),
-+            `--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-offset-${prop}`,
-+            style.getPropertyValue(`--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-offset-${prop}`),
-           );
+-          const propertyName = `--${this._tagNamePrefix}-offset-${prop}`;
++          const propertyName = `--${this._tagNamePrefix.replace('vaadin24', 'vaadin')}-offset-${prop}`;
+           this.style.setProperty(propertyName, style.getPropertyValue(propertyName));
          });
        }

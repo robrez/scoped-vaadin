@@ -1,0 +1,39 @@
+Index: test/keyboard-interaction-mode.test.js
+===================================================================
+--- test/keyboard-interaction-mode.test.js
++++ test/keyboard-interaction-mode.test.js
+@@ -3,7 +3,7 @@
+ import { aTimeout, fixtureSync, keyDownOn, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../all-imports.js';
+-import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
++import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ import { flushGrid, getCellContent, getFocusedCellIndex, getFocusedRowIndex } from './helpers.js';
+ 
+ let grid, focusable;
+@@ -116,11 +116,11 @@
+ describe('keyboard interaction mode', () => {
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid theme="no-border">
+-        <vaadin-grid-column id="column-0"></vaadin-grid-column>
+-        <vaadin-grid-column id="column-1"></vaadin-grid-column>
+-        <vaadin-grid-column id="column-2"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid theme="no-border">
++        <vaadin24-grid-column id="column-0"></vaadin24-grid-column>
++        <vaadin24-grid-column id="column-1"></vaadin24-grid-column>
++        <vaadin24-grid-column id="column-2"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.rowDetailsRenderer = inputRenderer;
+@@ -521,7 +521,7 @@
+     grid.items = Array.from(Array(100), (_, i) => `item-${i}`);
+ 
+     // Remove an unused column
+-    const columns = grid.querySelectorAll('vaadin-grid-column');
++    const columns = grid.querySelectorAll('vaadin24-grid-column');
+     columns[2].hidden = true;
+     flushGrid(grid);
+ 

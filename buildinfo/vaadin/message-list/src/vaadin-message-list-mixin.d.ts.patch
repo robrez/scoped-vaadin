@@ -2,12 +2,14 @@ Index: src/vaadin-message-list-mixin.d.ts
 ===================================================================
 --- src/vaadin-message-list-mixin.d.ts
 +++ src/vaadin-message-list-mixin.d.ts
-@@ -4,7 +4,7 @@
+@@ -4,8 +4,8 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
 -import type { KeyboardDirectionMixinClass } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import type { SlotStylesMixinClass } from '@vaadin/component-base/src/slot-styles-mixin.js';
 +import type { KeyboardDirectionMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import type { SlotStylesMixinClass } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
  
  export interface MessageListItem {
    text?: string;

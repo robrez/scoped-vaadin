@@ -1,0 +1,63 @@
+Index: test/item-components.test.js
+===================================================================
+--- test/item-components.test.js
++++ test/item-components.test.js
+@@ -15,11 +15,11 @@
+     }
+ 
+     beforeEach(async () => {
+-      menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++      menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+       menu.items = [
+         { component: makeComponent('1') },
+         { text: 'Item 2 text', component: makeComponent('2') },
+-        { text: 'Item 3', component: document.createElement('vaadin-menu-bar-item') },
++        { text: 'Item 3', component: document.createElement('vaadin24-menu-bar-item') },
+         { text: 'Item 4' },
+       ];
+       await nextRender(menu);
+@@ -29,7 +29,7 @@
+     it('should wrap the provided item component with the menu-bar item', () => {
+       const item = buttons[0].firstElementChild;
+       expect(item).to.equal(buttons[0].item.component);
+-      expect(item.localName).to.equal('vaadin-menu-bar-item');
++      expect(item.localName).to.equal('vaadin24-menu-bar-item');
+       const div = item.firstChild;
+       expect(div).to.equal(menu.items[0].component);
+       expect(div.localName).to.equal('div');
+@@ -40,7 +40,7 @@
+     it('should override the component text when defined on the item', () => {
+       const item = buttons[1].firstElementChild;
+       expect(item).to.equal(buttons[1].item.component);
+-      expect(item.localName).to.equal('vaadin-menu-bar-item');
++      expect(item.localName).to.equal('vaadin24-menu-bar-item');
+       const div = item.firstElementChild;
+       expect(div).to.equal(menu.items[1].component);
+       expect(div.localName).to.equal('div');
+@@ -97,7 +97,7 @@
+     const components = new Map();
+ 
+     function makeItem(value) {
+-      const item = document.createElement('vaadin-menu-bar-item');
++      const item = document.createElement('vaadin24-menu-bar-item');
+       item.textContent = `Item ${value}`;
+       return item;
+     }
+@@ -140,7 +140,7 @@
+         const button = buttons[idx];
+         const item = button.firstElementChild;
+         expect(item).to.equal(button.item.component);
+-        expect(item.localName).to.equal('vaadin-menu-bar-item');
++        expect(item.localName).to.equal('vaadin24-menu-bar-item');
+         expect(item.textContent).to.equal(`Item ${value}`);
+ 
+         if (className) {
+@@ -155,7 +155,7 @@
+ 
+     beforeEach(async () => {
+       div = document.createElement('div');
+-      menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++      menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+       await nextRender();
+ 
+       items = [{ value: 'foo' }, { value: 'bar' }, { value: 'baz' }];

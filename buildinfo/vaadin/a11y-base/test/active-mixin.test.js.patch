@@ -2,16 +2,14 @@ Index: test/active-mixin.test.js
 ===================================================================
 --- test/active-mixin.test.js
 +++ test/active-mixin.test.js
-@@ -1,10 +1,11 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync, isIOS, mousedown, mouseup, touchend, touchstart } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -9,8 +9,8 @@
+   touchend,
+   touchstart,
+ } from '@vaadin/testing-helpers';
+-import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
++import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { ActiveMixin } from '../src/active-mixin.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'active-mixin-element',
-   class extends ActiveMixin(PolymerElement) {
-     static get template() {
+ const runTests = (defineHelper, baseMixin) => {

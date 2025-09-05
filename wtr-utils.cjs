@@ -14,6 +14,7 @@ const MY_HIDDEN_WARNINGS = [
   "Multiple versions of Lit loaded. Loading multiple versions is not recommended. See https://lit.dev/msg/multiple-versions for more information.",
   /^Overriding .* is deprecated.*/u,
   /^Element.*scheduled an update.*after an update completed.*/u,
+  /^.*is deprecated and will be removed in.*/u,
 ];
 
 const HIDDEN_WARNINGS = [

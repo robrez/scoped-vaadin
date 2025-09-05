@@ -2,10 +2,10 @@ Index: src/vaadin-lit-select-overlay.js
 ===================================================================
 --- src/vaadin-lit-select-overlay.js
 +++ src/vaadin-lit-select-overlay.js
-@@ -4,14 +4,14 @@
+@@ -4,15 +4,15 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
- import { css, html, LitElement } from 'lit';
+ import { html, LitElement } from 'lit';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 -import { overlayStyles } from '@vaadin/overlay/src/vaadin-overlay-styles.js';
@@ -14,6 +14,7 @@ Index: src/vaadin-lit-select-overlay.js
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { overlayStyles } from '@scoped-vaadin/overlay/src/vaadin-overlay-styles.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { selectOverlayStyles } from './vaadin-select-overlay-core-styles.js';
  import { SelectOverlayMixin } from './vaadin-select-overlay-mixin.js';
  
  /**
@@ -22,7 +23,7 @@ Index: src/vaadin-lit-select-overlay.js
   *
   * @extends HTMLElement
   * @mixes SelectOverlayMixin
-@@ -20,7 +20,7 @@
+@@ -21,7 +21,7 @@
   */
  class SelectOverlay extends SelectOverlayMixin(ThemableMixin(PolylitMixin(LitElement))) {
    static get is() {

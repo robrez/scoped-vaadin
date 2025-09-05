@@ -1,0 +1,13 @@
+Index: test/events.test.js
+===================================================================
+--- test/events.test.js
++++ test/events.test.js
+@@ -12,7 +12,7 @@
+     let changeSpy;
+ 
+     beforeEach(async () => {
+-      datePicker = fixtureSync('<vaadin-date-picker></vaadin-date-picker>');
++      datePicker = fixtureSync('<vaadin24-date-picker></vaadin24-date-picker>');
+       await nextRender();
+       changeSpy = sinon.spy();
+       datePicker.addEventListener('change', changeSpy);

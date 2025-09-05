@@ -2,14 +2,16 @@ Index: src/vaadin-virtual-list-mixin.js
 ===================================================================
 --- src/vaadin-virtual-list-mixin.js
 +++ src/vaadin-virtual-list-mixin.js
-@@ -3,10 +3,10 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+@@ -3,11 +3,11 @@
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+-import { isChrome, isSafari } from '@vaadin/component-base/src/browser-utils.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
 -import { OverflowController } from '@vaadin/component-base/src/overflow-controller.js';
 -import { processTemplates } from '@vaadin/component-base/src/templates.js';
 -import { Virtualizer } from '@vaadin/component-base/src/virtualizer.js';
++import { isChrome, isSafari } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { OverflowController } from '@scoped-vaadin/component-base/src/overflow-controller.js';
 +import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
@@ -17,7 +19,7 @@ Index: src/vaadin-virtual-list-mixin.js
  
  /**
   * @polymerMixin
-@@ -27,7 +27,7 @@
+@@ -28,7 +28,7 @@
           * Receives three arguments:
           *
           * - `root` The render target element representing one item at a time.

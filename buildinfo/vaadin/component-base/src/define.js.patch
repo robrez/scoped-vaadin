@@ -6,7 +6,7 @@ Index: src/define.js
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
 @@ -38,7 +39,7 @@
          set(value) {
            if (!!value && experimentalMap[featureFlagKey].size > 0) {

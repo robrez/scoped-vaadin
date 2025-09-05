@@ -48,6 +48,7 @@
     "@scoped-vaadin/item": "^24.6.2-alpha.1",
     "@scoped-vaadin/list-box": "^24.6.2-alpha.1",
     "@scoped-vaadin/overlay": "^24.6.2-alpha.1",
+    "@scoped-vaadin/tooltip": "^24.6.2-alpha.1",
     "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2-alpha.1",
     "@scoped-vaadin/vaadin-material-styles": "^24.6.2-alpha.1",
     "@scoped-vaadin/vaadin-themable-mixin": "^24.6.2-alpha.1",

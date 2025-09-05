@@ -12,9 +12,9 @@ Index: src/vaadin-grid-selection-column.d.ts
   *
   * #### Example:
   * ```html
-- * <vaadin-grid items="[[items]]">
+- * <vaadin-grid>
 - *  <vaadin-grid-selection-column frozen auto-select></vaadin-grid-selection-column>
-+ * <vaadin24-grid items="[[items]]">
++ * <vaadin24-grid>
 + *  <vaadin24-grid-selection-column frozen auto-select></vaadin24-grid-selection-column>
   *
 - *  <vaadin-grid-column>

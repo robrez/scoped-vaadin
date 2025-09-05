@@ -37,10 +37,10 @@ Index: src/vaadin-lit-tooltip.js
      return html`
 -      <vaadin-tooltip-overlay
 +      <vaadin24-tooltip-overlay
+         id="overlay"
          .renderer="${this._renderer}"
          .owner="${this}"
-         theme="${ifDefined(this._theme)}"
-@@ -58,7 +58,7 @@
+@@ -59,7 +59,7 @@
          @mouseenter="${this.__onOverlayMouseEnter}"
          @mouseleave="${this.__onOverlayMouseLeave}"
          modeless
@@ -49,12 +49,3 @@ Index: src/vaadin-lit-tooltip.js
  
        <slot name="sr-label"></slot>
      `;
-@@ -68,7 +68,7 @@
-   ready() {
-     super.ready();
- 
--    this._overlayElement = this.shadowRoot.querySelector('vaadin-tooltip-overlay');
-+    this._overlayElement = this.shadowRoot.querySelector('vaadin24-tooltip-overlay');
-   }
- }
- 

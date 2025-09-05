@@ -3,7 +3,7 @@ Index: src/vaadin-text-area-mixin.js
 --- src/vaadin-text-area-mixin.js
 +++ src/vaadin-text-area-mixin.js
 @@ -3,10 +3,10 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
@@ -17,12 +17,12 @@ Index: src/vaadin-text-area-mixin.js
  
  /**
   * A mixin providing common text area functionality.
-@@ -258,7 +258,7 @@
+@@ -251,7 +251,7 @@
       */
      __minRowsChanged(minRows) {
-       if (minRows < 2) {
--        console.warn('<vaadin-text-area> minRows must be at least 2.');
-+        console.warn('<vaadin24-text-area> minRows must be at least 2.');
+       if (minRows < 1) {
+-        console.warn('<vaadin-text-area> minRows must be at least 1.');
++        console.warn('<vaadin24-text-area> minRows must be at least 1.');
        }
      }
  

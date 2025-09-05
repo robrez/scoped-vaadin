@@ -1,0 +1,39 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -11,10 +11,10 @@
+ 
+     beforeEach(async () => {
+       customField = fixtureSync(`
+-        <vaadin-custom-field>
++        <vaadin24-custom-field>
+           <input type="text" />
+           <input type="number" />
+-        </vaadin-custom-field>
++        </vaadin24-custom-field>
+       `);
+       await nextRender();
+       validateSpy = sinon.spy(customField, 'validate');
+@@ -66,7 +66,7 @@
+ 
+     it('should not throw when checkValidity() called without inputs', () => {
+       expect(() => {
+-        document.createElement('vaadin-custom-field').checkValidity();
++        document.createElement('vaadin24-custom-field').checkValidity();
+       }).to.not.throw(Error);
+     });
+   });
+@@ -74,10 +74,10 @@
+   describe('required', () => {
+     beforeEach(async () => {
+       customField = fixtureSync(`
+-        <vaadin-custom-field required>
++        <vaadin24-custom-field required>
+           <input type="text" />
+           <input type="number" />
+-        </vaadin-custom-field>
++        </vaadin24-custom-field>
+       `);
+       await nextRender();
+     });

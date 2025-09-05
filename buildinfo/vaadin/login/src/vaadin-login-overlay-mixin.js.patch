@@ -3,7 +3,7 @@ Index: src/vaadin-login-overlay-mixin.js
 --- src/vaadin-login-overlay-mixin.js
 +++ src/vaadin-login-overlay-mixin.js
 @@ -3,7 +3,7 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
@@ -11,7 +11,7 @@ Index: src/vaadin-login-overlay-mixin.js
  import { LoginMixin } from './vaadin-login-mixin.js';
  
  /**
-@@ -137,7 +137,7 @@
+@@ -132,7 +132,7 @@
          this._undoFieldsTeleport = this._teleport(
            'custom-form-area',
            form.$.vaadinLoginFormWrapper,

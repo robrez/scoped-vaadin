@@ -1,0 +1,13 @@
+Index: test/renderer.test.js
+===================================================================
+--- test/renderer.test.js
++++ test/renderer.test.js
+@@ -7,7 +7,7 @@
+   let overlay, content;
+ 
+   beforeEach(async () => {
+-    overlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++    overlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay>');
+     await nextRender();
+     content = document.createElement('p');
+     content.textContent = 'renderer-content';

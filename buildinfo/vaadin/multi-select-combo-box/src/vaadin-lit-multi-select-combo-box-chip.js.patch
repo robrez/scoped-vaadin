@@ -15,12 +15,12 @@ Index: src/vaadin-lit-multi-select-combo-box-chip.js
  import { multiSelectComboBoxChip } from './vaadin-multi-select-combo-box-styles.js';
  
  /**
-- * LitElement based version of `<vaadin-multi-select-combo-box-chip>` web component.
-+ * LitElement based version of `<vaadin24-multi-select-combo-box-chip>` web component.
+- * An element used by `<vaadin-multi-select-combo-box>` to display selected items.
++ * An element used by `<vaadin24-multi-select-combo-box>` to display selected items.
   *
-  * ## Disclaimer
+  * ### Styling
   *
-@@ -20,7 +20,7 @@
+@@ -29,7 +29,7 @@
   */
  class MultiSelectComboBoxChip extends ThemableMixin(PolylitMixin(LitElement)) {
    static get is() {

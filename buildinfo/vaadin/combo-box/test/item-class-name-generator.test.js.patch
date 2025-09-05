@@ -1,0 +1,13 @@
+Index: test/item-class-name-generator.test.js
+===================================================================
+--- test/item-class-name-generator.test.js
++++ test/item-class-name-generator.test.js
+@@ -7,7 +7,7 @@
+   let comboBox;
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+   });

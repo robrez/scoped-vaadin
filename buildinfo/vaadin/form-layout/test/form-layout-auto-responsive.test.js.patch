@@ -1,0 +1,164 @@
+Index: test/form-layout-auto-responsive.test.js
+===================================================================
+--- test/form-layout-auto-responsive.test.js
++++ test/form-layout-auto-responsive.test.js
+@@ -11,10 +11,10 @@
+   describe('column width', () => {
+     beforeEach(() => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout auto-responsive>
++        <vaadin24-form-layout auto-responsive>
+           <input placeholder="First name">
+           <input placeholder="Last name">
+-        </vaadin-form-layout>
++        </vaadin24-form-layout>
+       `);
+     });
+ 
+@@ -29,13 +29,13 @@
+   describe('auto rows', () => {
+     beforeEach(async () => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout auto-responsive auto-rows>
++        <vaadin24-form-layout auto-responsive auto-rows>
+           <input placeholder="First name">
+           <input placeholder="Last Name">
+           <input placeholder="Address" hidden>
+           <input placeholder="Email">
+           <input placeholder="Phone">
+-        </vaadin-form-layout>
++        </vaadin24-form-layout>
+       `);
+       await nextResize(layout);
+       fields = [...layout.children];
+@@ -48,8 +48,8 @@
+       expect(getComputedStyle(fields[3]).gridColumnStart).to.equal('1');
+     });
+ 
+-    it('should add line break after inserted <vaadin-form-row>', async () => {
+-      const row = document.createElement('vaadin-form-row');
++    it('should add line break after inserted <vaadin24-form-row>', async () => {
++      const row = document.createElement('vaadin24-form-row');
+       row.innerHTML = `
+         <input placeholder="Country">
+         <input placeholder="City">
+@@ -68,8 +68,8 @@
+       expect(getComputedStyle(fields[3]).gridColumnStart).to.equal('auto');
+     });
+ 
+-    it('should remove line break after removed <vaadin-form-row>', async () => {
+-      const row = document.createElement('vaadin-form-row');
++    it('should remove line break after removed <vaadin24-form-row>', async () => {
++      const row = document.createElement('vaadin24-form-row');
+       row.innerHTML = `
+         <input placeholder="Country">
+         <input placeholder="City">
+@@ -97,8 +97,8 @@
+       expect(getComputedStyle(fields[3]).gridColumnStart).to.equal('1');
+     });
+ 
+-    it('should maintain line break after <vaadin-form-row> when fields visibility changes', async () => {
+-      const row = document.createElement('vaadin-form-row');
++    it('should maintain line break after <vaadin24-form-row> when fields visibility changes', async () => {
++      const row = document.createElement('vaadin24-form-row');
+       row.innerHTML = `
+         <input placeholder="Country">
+         <input placeholder="City">
+@@ -122,7 +122,7 @@
+     beforeEach(async () => {
+       container = fixtureSync(`
+         <div style="width: 350px;">
+-          <vaadin-form-layout
++          <vaadin24-form-layout
+             auto-responsive
+             auto-rows
+             column-width="100px"
+@@ -133,7 +133,7 @@
+             <input placeholder="Email">
+             <input placeholder="Phone">
+             <input placeholder="Address">
+-          </vaadin-form-layout>
++          </vaadin24-form-layout>
+         </div>`);
+       layout = container.firstElementChild;
+       await nextResize(layout);
+@@ -170,7 +170,7 @@
+     beforeEach(async () => {
+       container = fixtureSync(`
+         <div style="width: 600px;">
+-          <vaadin-form-layout
++          <vaadin24-form-layout
+             auto-responsive
+             auto-rows
+             labels-aside
+@@ -181,23 +181,23 @@
+               --vaadin-form-layout-column-spacing: 0px;
+             "
+           >
+-            <vaadin-form-item>
++            <vaadin24-form-item>
+               <label slot="label">First name</label>
+               <input />
+-            </vaadin-form-item>
+-            <vaadin-form-item>
++            </vaadin24-form-item>
++            <vaadin24-form-item>
+               <label slot="label">Last Name</label>
+               <input />
+-            </vaadin-form-item>
+-            <vaadin-form-item>
++            </vaadin24-form-item>
++            <vaadin24-form-item>
+               <label slot="label">Email</label>
+               <input />
+-            </vaadin-form-item>
+-            <vaadin-form-item>
++            </vaadin24-form-item>
++            <vaadin24-form-item>
+               <label slot="label">Phone</label>
+               <input />
+-            </vaadin-form-item>
+-          </vaadin-form-layout>
++            </vaadin24-form-item>
++          </vaadin24-form-layout>
+         </div>`);
+       layout = container.firstElementChild;
+       await nextResize(layout);
+@@ -233,13 +233,13 @@
+     beforeEach(async () => {
+       container = fixtureSync(`
+         <div>
+-          <vaadin-form-layout auto-responsive auto-rows>
++          <vaadin24-form-layout auto-responsive auto-rows>
+             <input placeholder="First name">
+             <input placeholder="Last Name">
+             <input placeholder="Email">
+             <input placeholder="Phone">
+             <input placeholder="Address" colspan="2">
+-          </vaadin-form-layout>
++          </vaadin24-form-layout>
+         </div>
+       `);
+       layout = container.firstElementChild;
+@@ -271,15 +271,15 @@
+ 
+     beforeEach(async () => {
+       layout = fixtureSync(`
+-        <vaadin-form-layout auto-responsive style="width: 1024px; height: 768px;">
+-          <vaadin-form-row>
++        <vaadin24-form-layout auto-responsive style="width: 1024px; height: 768px;">
++          <vaadin24-form-row>
+             <input placeholder="First name" />
+             <input placeholder="Last name" />
+-          </vaadin-form-row>
+-          <vaadin-form-row>
++          </vaadin24-form-row>
++          <vaadin24-form-row>
+             <input placeholder="Address" />
+-          </vaadin-form-row>
+-        </vaadin-form-layout>
++          </vaadin24-form-row>
++        </vaadin24-form-layout>
+       `);
+       await nextResize(layout);
+       rows = [...layout.children];

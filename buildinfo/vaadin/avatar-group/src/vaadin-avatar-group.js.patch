@@ -2,12 +2,14 @@ Index: src/vaadin-avatar-group.js
 ===================================================================
 --- src/vaadin-avatar-group.js
 +++ src/vaadin-avatar-group.js
-@@ -3,33 +3,33 @@
-  * Copyright (c) 2020 - 2024 Vaadin Ltd.
+@@ -3,34 +3,34 @@
+  * Copyright (c) 2020 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/avatar/src/vaadin-avatar.js';
+-import '@vaadin/tooltip/src/vaadin-tooltip.js';
 +import '@scoped-vaadin/avatar/src/vaadin-avatar.js';
++import '@scoped-vaadin/tooltip/src/vaadin-tooltip.js';
  import './vaadin-avatar-group-menu.js';
  import './vaadin-avatar-group-menu-item.js';
  import './vaadin-avatar-group-overlay.js';
@@ -45,7 +47,7 @@ Index: src/vaadin-avatar-group.js
   *   {name: 'John Doe'},
   *   {abbr: 'AB'}
   * ];
-@@ -43,19 +43,19 @@
+@@ -44,19 +44,19 @@
   * ----------- | ---------------
   * `container` | The container element
   *
@@ -70,7 +72,7 @@ Index: src/vaadin-avatar-group.js
   *
   * @customElement
   * @extends HTMLElement
-@@ -71,19 +71,19 @@
+@@ -72,19 +72,19 @@
          <slot></slot>
          <slot name="overflow"></slot>
        </div>

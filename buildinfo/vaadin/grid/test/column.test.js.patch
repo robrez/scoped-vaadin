@@ -1,0 +1,107 @@
+Index: test/column.test.js
+===================================================================
+--- test/column.test.js
++++ test/column.test.js
+@@ -17,13 +17,13 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid id="grid" size="10">
+-        <vaadin-grid-column-group header="group header1">
+-          <vaadin-grid-column header="header1"></vaadin-grid-column>
+-          <vaadin-grid-column header="header2"></vaadin-grid-column>
+-        </vaadin-grid-column-group>
+-        <vaadin-grid-column id="emptycolumn"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid id="grid" size="10">
++        <vaadin24-grid-column-group header="group header1">
++          <vaadin24-grid-column header="header1"></vaadin24-grid-column>
++          <vaadin24-grid-column header="header2"></vaadin24-grid-column>
++        </vaadin24-grid-column-group>
++        <vaadin24-grid-column id="emptycolumn"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     grid.dataProvider = infiniteDataProvider;
+     columns = [...grid.querySelectorAll('vaadin-grid-column[header]')];
+@@ -167,7 +167,7 @@
+       });
+ 
+       it('should not throw on render with initially hidden columns with header/footerRenderer', () => {
+-        const newColumn = document.createElement('vaadin-grid-column');
++        const newColumn = document.createElement('vaadin24-grid-column');
+         newColumn.hidden = true;
+         newColumn.headerRenderer = () => {};
+         newColumn.footerRenderer = () => {};
+@@ -262,7 +262,7 @@
+       });
+ 
+       it('should not invoke body renderers of other columns', () => {
+-        const newColumn = document.createElement('vaadin-grid-column');
++        const newColumn = document.createElement('vaadin24-grid-column');
+         grid.appendChild(newColumn);
+         flushGrid(grid);
+         emptyColumn.renderer = sinon.spy();
+@@ -332,14 +332,14 @@
+       });
+ 
+       it('should not hide the header row', () => {
+-        grid.removeChild(grid.querySelector('vaadin-grid-column-group'));
++        grid.removeChild(grid.querySelector('vaadin24-grid-column-group'));
+         flushGrid(grid);
+         expect(grid.$.header.children[0].hidden).not.to.be.ok;
+       });
+ 
+       it('should not hide the header row with empty header', () => {
+         emptyColumn.header = '';
+-        grid.removeChild(grid.querySelector('vaadin-grid-column-group'));
++        grid.removeChild(grid.querySelector('vaadin24-grid-column-group'));
+         flushGrid(grid);
+         expect(grid.$.header.children[0].hidden).not.to.be.ok;
+       });
+@@ -347,7 +347,7 @@
+       it('should hide the header row with null header', () => {
+         emptyColumn.path = 'foo';
+         emptyColumn.header = null;
+-        grid.removeChild(grid.querySelector('vaadin-grid-column-group'));
++        grid.removeChild(grid.querySelector('vaadin24-grid-column-group'));
+         flushGrid(grid);
+         expect(grid.$.header.children[0].hidden).to.be.ok;
+       });
+@@ -360,7 +360,7 @@
+ 
+       it('should hide the header', () => {
+         emptyColumn.header = undefined;
+-        grid.removeChild(grid.querySelector('vaadin-grid-column-group'));
++        grid.removeChild(grid.querySelector('vaadin24-grid-column-group'));
+         flushGrid(grid);
+         expect(getContainerCell(grid.$.header, 0, 0).parentElement.hidden).to.be.true;
+       });
+@@ -438,9 +438,9 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+ 
+       grid.items = ['item1', 'item2'];
+@@ -509,11 +509,11 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="value"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column path="value"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+-    column = grid.querySelector('vaadin-grid-column');
++    column = grid.querySelector('vaadin24-grid-column');
+     grid.size = 1;
+     grid.dataProvider = infiniteDataProvider;
+     await nextFrame();

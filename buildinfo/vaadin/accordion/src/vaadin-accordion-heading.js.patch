@@ -14,7 +14,7 @@ Index: src/vaadin-accordion-heading.js
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { accordionHeading } from './vaadin-accordion-heading-styles.js';
+ import { accordionHeading } from './vaadin-accordion-heading-core-styles.js';
  
 -registerStyles('vaadin-accordion-heading', accordionHeading, { moduleId: 'vaadin-accordion-heading-styles' });
 +registerStyles('vaadin24-accordion-heading', accordionHeading, { moduleId: 'vaadin-accordion-heading-styles' });

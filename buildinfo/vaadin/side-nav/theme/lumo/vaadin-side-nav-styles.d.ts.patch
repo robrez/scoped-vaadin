@@ -1,0 +1,18 @@
+Index: theme/lumo/vaadin-side-nav-styles.d.ts
+===================================================================
+--- theme/lumo/vaadin-side-nav-styles.d.ts
++++ theme/lumo/vaadin-side-nav-styles.d.ts
+@@ -1,7 +1,7 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
+ export declare const sideNavStyles: import("lit").CSSResult;

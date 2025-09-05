@@ -1,0 +1,37 @@
+Index: test/frozen-columns.test.js
+===================================================================
+--- test/frozen-columns.test.js
++++ test/frozen-columns.test.js
+@@ -4,8 +4,8 @@
+ import sinon from 'sinon';
+ import './grid-test-styles.js';
+ import '../src/vaadin-grid.js';
+-import { isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { setNormalizedScrollLeft } from '@vaadin/component-base/src/dir-utils.js';
++import { isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { setNormalizedScrollLeft } from '@scoped-vaadin/component-base/src/dir-utils.js';
+ import { flushGrid, getRowCells, getRows, infiniteDataProvider, isWithinParentConstraints } from './helpers.js';
+ 
+ // Returns true if the element's computed transform style matches with the
+@@ -22,15 +22,15 @@
+ 
+ const frozenGridFixture = (frozen, frozenToEnd) => {
+   const grid = fixtureSync(`
+-    <vaadin-grid style="width: 200px; height: 400px;" size="10">
+-      <vaadin-grid-column ${frozen ? 'frozen ' : ''} header="foo"></vaadin-grid-column>
+-      <vaadin-grid-column header="bar"></vaadin-grid-column>
+-      <vaadin-grid-column ${frozenToEnd ? 'frozen-to-end' : ''} header="baz"></vaadin-grid-column>
+-    </vaadin-grid>
++    <vaadin24-grid style="width: 200px; height: 400px;" size="10">
++      <vaadin24-grid-column ${frozen ? 'frozen ' : ''} header="foo"></vaadin24-grid-column>
++      <vaadin24-grid-column header="bar"></vaadin24-grid-column>
++      <vaadin24-grid-column ${frozenToEnd ? 'frozen-to-end' : ''} header="baz"></vaadin24-grid-column>
++    </vaadin24-grid>
+   `);
+ 
+   const values = ['foo', 'bar', 'baz'];
+-  const columns = grid.querySelectorAll('vaadin-grid-column');
++  const columns = grid.querySelectorAll('vaadin24-grid-column');
+   columns.forEach((col, idx) => {
+     col.renderer = (root) => {
+       root.textContent = values[idx];

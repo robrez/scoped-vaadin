@@ -3,7 +3,7 @@ Index: src/vaadin-lit-login-form.js
 --- src/vaadin-lit-login-form.js
 +++ src/vaadin-lit-login-form.js
 @@ -3,20 +3,20 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/button/src/vaadin-lit-button.js';
@@ -54,16 +54,16 @@ Index: src/vaadin-lit-login-form.js
          id="vaadinLoginFormWrapper"
          theme="${ifDefined(this._theme)}"
          .error="${this.error}"
-@@ -53,7 +53,7 @@
+@@ -54,7 +54,7 @@
        >
-         <form method="POST" action="${this.action}" @formdata="${this._onFormData}" slot="form">
+         <form method="POST" action="${ifDefined(this.action)}" @formdata="${this._onFormData}" slot="form">
            <input id="csrf" type="hidden" />
 -          <vaadin-text-field
 +          <vaadin24-text-field
              name="username"
-             label="${this.i18n.form.username}"
-             .errorMessage="${this.i18n.errorMessage.username}"
-@@ -67,9 +67,9 @@
+             .label="${this.__effectiveI18n.form.username}"
+             .errorMessage="${this.__effectiveI18n.errorMessage.username}"
+@@ -68,9 +68,9 @@
              manual-validation
            >
              <input type="text" slot="input" @keyup="${this._handleInputKeyup}" />
@@ -73,9 +73,9 @@ Index: src/vaadin-lit-login-form.js
 -          <vaadin-password-field
 +          <vaadin24-password-field
              name="password"
-             .label="${this.i18n.form.password}"
-             .errorMessage="${this.i18n.errorMessage.password}"
-@@ -81,27 +81,27 @@
+             .label="${this.__effectiveI18n.form.password}"
+             .errorMessage="${this.__effectiveI18n.errorMessage.password}"
+@@ -82,27 +82,27 @@
              manual-validation
            >
              <input type="password" slot="input" @keyup="${this._handleInputKeyup}" />
@@ -90,7 +90,7 @@ Index: src/vaadin-lit-login-form.js
            @click="${this.submit}"
            .disabled="${this.disabled}"
          >
-           ${this.i18n.form.submit}
+           ${this.__effectiveI18n.form.submit}
 -        </vaadin-button>
 +        </vaadin24-button>
  
@@ -101,7 +101,7 @@ Index: src/vaadin-lit-login-form.js
            @click="${this._onForgotPasswordClick}"
            ?hidden="${this.noForgotPassword}"
          >
-           ${this.i18n.form.forgotPassword}
+           ${this.__effectiveI18n.form.forgotPassword}
 -        </vaadin-button>
 -      </vaadin-login-form-wrapper>
 +        </vaadin24-button>

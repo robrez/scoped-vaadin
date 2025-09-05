@@ -1,0 +1,13 @@
+Index: test/integration.test.js
+===================================================================
+--- test/integration.test.js
++++ test/integration.test.js
+@@ -8,7 +8,7 @@
+   beforeEach(async () => {
+     wrapper = fixtureSync(`
+       <div>
+-        <vaadin-context-menu></vaadin-context-menu>
++        <vaadin24-context-menu></vaadin24-context-menu>
+         <button style="margin: 20px">Show context menu</button>
+       </div>
+     `);

@@ -2,12 +2,14 @@ Index: src/vaadin-avatar-mixin.d.ts
 ===================================================================
 --- src/vaadin-avatar-mixin.d.ts
 +++ src/vaadin-avatar-mixin.d.ts
-@@ -4,7 +4,7 @@
+@@ -4,8 +4,8 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
 -import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 +import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
  
  export interface AvatarI18n {
-   anonymous: string;
+   anonymous?: string;

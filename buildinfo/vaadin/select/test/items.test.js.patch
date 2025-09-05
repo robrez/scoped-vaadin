@@ -1,0 +1,37 @@
+Index: test/items.test.js
+===================================================================
+--- test/items.test.js
++++ test/items.test.js
+@@ -7,19 +7,19 @@
+   let select, overlay, listBox;
+ 
+   beforeEach(async () => {
+-    select = fixtureSync(`<vaadin-select></vaadin-select>`);
++    select = fixtureSync(`<vaadin24-select></vaadin24-select>`);
+     await nextRender();
+     select.items = [{ label: 'Option 1', value: 'value-1' }];
+-    overlay = select.shadowRoot.querySelector('vaadin-select-overlay');
++    overlay = select.shadowRoot.querySelector('vaadin24-select-overlay');
+     select.opened = true;
+     await oneEvent(overlay, 'vaadin-overlay-open');
+-    listBox = overlay.querySelector('vaadin-select-list-box');
++    listBox = overlay.querySelector('vaadin24-select-list-box');
+   });
+ 
+   it('should render items', () => {
+     expect(listBox).to.be.ok;
+     expect(listBox.childNodes).to.have.lengthOf(1);
+-    expect(listBox.childNodes[0].localName).to.equal('vaadin-select-item');
++    expect(listBox.childNodes[0].localName).to.equal('vaadin24-select-item');
+     expect(listBox.childNodes[0].textContent).to.equal('Option 1');
+     expect(listBox.childNodes[0].value).to.equal('value-1');
+     expect(listBox.childNodes[0].disabled).to.be.false;
+@@ -94,7 +94,7 @@
+     it('should render items when removing the renderer', async () => {
+       select.renderer = null;
+       await nextUpdate(select);
+-      const newListBox = overlay.querySelector('vaadin-select-list-box');
++      const newListBox = overlay.querySelector('vaadin24-select-list-box');
+       expect(newListBox).to.be.ok;
+       expect(newListBox.childNodes).to.have.lengthOf(1);
+       expect(newListBox.childNodes[0].textContent).to.equal('Option 1');

@@ -2,7 +2,7 @@ Index: test/typings/upload.types.ts
 ===================================================================
 --- test/typings/upload.types.ts
 +++ test/typings/upload.types.ts
-@@ -19,7 +19,7 @@
+@@ -20,7 +20,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  

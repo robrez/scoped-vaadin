@@ -1,0 +1,30 @@
+Index: theme/lumo/vaadin-side-nav-item-styles.js
+===================================================================
+--- theme/lumo/vaadin-side-nav-item-styles.js
++++ theme/lumo/vaadin-side-nav-item-styles.js
+@@ -1,11 +1,11 @@
+-import '@vaadin/vaadin-lumo-styles/color.js';
+-import '@vaadin/vaadin-lumo-styles/typography.js';
+-import '@vaadin/vaadin-lumo-styles/sizing.js';
+-import '@vaadin/vaadin-lumo-styles/spacing.js';
+-import '@vaadin/vaadin-lumo-styles/style.js';
+-import '@vaadin/vaadin-lumo-styles/font-icons.js';
+-import { fieldButton } from '@vaadin/vaadin-lumo-styles/mixins/field-button.js';
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import '@scoped-vaadin/vaadin-lumo-styles/color.js';
++import '@scoped-vaadin/vaadin-lumo-styles/typography.js';
++import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
++import '@scoped-vaadin/vaadin-lumo-styles/style.js';
++import '@scoped-vaadin/vaadin-lumo-styles/font-icons.js';
++import { fieldButton } from '@scoped-vaadin/vaadin-lumo-styles/mixins/field-button.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ export const sideNavItemStyles = css`
+   :host {
+@@ -122,4 +122,4 @@
+   }
+ `;
+ 
+-registerStyles('vaadin-side-nav-item', [fieldButton, sideNavItemStyles], { moduleId: 'lumo-side-nav-item' });
++registerStyles('vaadin24-side-nav-item', [fieldButton, sideNavItemStyles], { moduleId: 'lumo-side-nav-item' });

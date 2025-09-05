@@ -14,7 +14,7 @@ Index: theme/material/vaadin-combo-box-overlay-styles.js
  
  const comboBoxOverlay = css`
    [part='overlay'] {
-@@ -27,7 +27,7 @@
+@@ -32,7 +32,7 @@
  `;
  
  registerStyles(

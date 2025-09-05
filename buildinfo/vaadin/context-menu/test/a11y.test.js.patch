@@ -1,0 +1,25 @@
+Index: test/a11y.test.js
+===================================================================
+--- test/a11y.test.js
++++ test/a11y.test.js
+@@ -2,7 +2,7 @@
+ import { sendKeys } from '@vaadin/test-runner-commands';
+ import { fixtureSync, nextRender, oneEvent, outsideClick } from '@vaadin/testing-helpers';
+ import '../src/vaadin-context-menu.js';
+-import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
++import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ import { getMenuItems } from './helpers.js';
+ 
+ describe('a11y', () => {
+@@ -13,9 +13,9 @@
+       const wrapper = fixtureSync(`
+         <div>
+           <input id="first-global-focusable" />
+-          <vaadin-context-menu open-on="click">
++          <vaadin24-context-menu open-on="click">
+             <button>Open context menu</button>
+-          </vaadin-context-menu>
++          </vaadin24-context-menu>
+           <input id="last-global-focusable" />
+         </div>
+       `);

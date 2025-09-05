@@ -3,7 +3,7 @@ Index: src/vaadin-lit-number-field.js
 --- src/vaadin-lit-number-field.js
 +++ src/vaadin-lit-number-field.js
 @@ -3,19 +3,19 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-lit-input-container.js';
@@ -20,8 +20,8 @@ Index: src/vaadin-lit-number-field.js
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { numberFieldStyles } from './vaadin-number-field-core-styles.js';
  import { NumberFieldMixin } from './vaadin-number-field-mixin.js';
- import { numberFieldStyles } from './vaadin-number-field-styles.js';
  
  /**
 - * LitElement based version of `<vaadin-number-field>` web component.

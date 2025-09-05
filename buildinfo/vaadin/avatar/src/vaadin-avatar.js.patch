@@ -2,8 +2,12 @@ Index: src/vaadin-avatar.js
 ===================================================================
 --- src/vaadin-avatar.js
 +++ src/vaadin-avatar.js
-@@ -5,21 +5,21 @@
+@@ -3,24 +3,24 @@
+  * Copyright (c) 2020 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
+-import '@vaadin/tooltip/src/vaadin-tooltip.js';
++import '@scoped-vaadin/tooltip/src/vaadin-tooltip.js';
  import './vaadin-avatar-icons.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
@@ -32,7 +36,7 @@ Index: src/vaadin-avatar.js
   * ```
   *
   * ### Styling
-@@ -84,7 +84,7 @@
+@@ -85,7 +85,7 @@
    }
  
    static get is() {

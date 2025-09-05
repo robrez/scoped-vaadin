@@ -1,0 +1,32 @@
+Index: src/vaadin-lit-form-item.js
+===================================================================
+--- src/vaadin-lit-form-item.js
++++ src/vaadin-lit-form-item.js
+@@ -4,14 +4,14 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import { html, LitElement } from 'lit';
+-import { defineCustomElement } from '@vaadin/component-base/src/define.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { FormItemMixin } from './vaadin-form-item-mixin.js';
+ import { formItemStyles } from './vaadin-form-layout-styles.js';
+ 
+ /**
+- * LitElement based version of `<vaadin-form-item>` web component.
++ * LitElement based version of `<vaadin24-form-item>` web component.
+  *
+  * ## Disclaimer
+  *
+@@ -21,7 +21,7 @@
+  */
+ class FormItem extends FormItemMixin(ThemableMixin(PolylitMixin(LitElement))) {
+   static get is() {
+-    return 'vaadin-form-item';
++    return 'vaadin24-form-item';
+   }
+ 
+   static get styles() {

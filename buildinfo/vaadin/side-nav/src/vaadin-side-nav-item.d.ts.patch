@@ -1,0 +1,68 @@
+Index: src/vaadin-side-nav-item.d.ts
+===================================================================
+--- src/vaadin-side-nav-item.d.ts
++++ src/vaadin-side-nav-item.d.ts
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2023 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
+-import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { SideNavChildrenMixin } from './vaadin-side-nav-children-mixin.js';
+ 
+ /**
+@@ -20,19 +20,19 @@
+ export type SideNavItemEventMap = HTMLElementEventMap & SideNavItemCustomEventMap;
+ 
+ /**
+- * A navigation item to be used within `<vaadin-side-nav>`. Represents a navigation target.
++ * A navigation item to be used within `<vaadin24-side-nav>`. Represents a navigation target.
+  * Not intended to be used separately.
+  *
+  * ```html
+- * <vaadin-side-nav-item>
++ * <vaadin24-side-nav-item>
+  *   Item 1
+- *   <vaadin-side-nav-item path="/path1" slot="children">
++ *   <vaadin24-side-nav-item path="/path1" slot="children">
+  *     Child item 1
+- *   </vaadin-side-nav-item>
+- *   <vaadin-side-nav-item path="/path2" slot="children">
++ *   </vaadin24-side-nav-item>
++ *   <vaadin24-side-nav-item path="/path2" slot="children">
+  *     Child item 2
+- *   </vaadin-side-nav-item>
+- * </vaadin-side-nav-item>
++ *   </vaadin24-side-nav-item>
++ * </vaadin24-side-nav-item>
+  * ```
+  *
+  * ### Customization
+@@ -47,11 +47,11 @@
+  * #### Example
+  *
+  * ```html
+- * <vaadin-side-nav-item>
+- *   <vaadin-icon icon="vaadin:chart" slot="prefix"></vaadin-icon>
++ * <vaadin24-side-nav-item>
++ *   <vaadin24-icon icon="vaadin:chart" slot="prefix"></vaadin24-icon>
+  *   Item
+  *   <span theme="badge primary" slot="suffix">Suffix</span>
+- * </vaadin-side-nav-item>
++ * </vaadin24-side-nav-item>
+  * ```
+  *
+  * ### Styling
+@@ -151,7 +151,7 @@
+ 
+ declare global {
+   interface HTMLElementTagNameMap {
+-    'vaadin-side-nav-item': SideNavItem;
++    'vaadin24-side-nav-item': SideNavItem;
+   }
+ }
+ 

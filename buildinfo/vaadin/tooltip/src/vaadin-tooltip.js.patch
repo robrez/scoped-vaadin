@@ -70,10 +70,10 @@ Index: src/vaadin-tooltip.js
        </style>
 -      <vaadin-tooltip-overlay
 +      <vaadin24-tooltip-overlay
+         id="overlay"
+         owner="[[__overlayOwner]]"
          renderer="[[_renderer]]"
-         theme$="[[_theme]]"
-         opened="[[__computeOpened(manual, opened, _autoOpened, _isConnected)]]"
-@@ -81,7 +81,7 @@
+@@ -83,7 +83,7 @@
          on-mouseenter="__onOverlayMouseEnter"
          on-mouseleave="__onOverlayMouseLeave"
          modeless

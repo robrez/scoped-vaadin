@@ -11,7 +11,7 @@ Index: test/typings/login.types.ts
  import type {
    LoginFormDisabledChangedEvent,
    LoginFormErrorChangedEvent,
-@@ -15,7 +15,7 @@
+@@ -16,7 +16,7 @@
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
@@ -20,12 +20,12 @@ Index: test/typings/login.types.ts
  
  assertType<ElementMixinClass>(overlay);
  assertType<OverlayClassMixinClass>(overlay);
-@@ -42,7 +42,7 @@
+@@ -46,7 +46,7 @@
    assertType<string>(event.detail.value);
  });
  
 -const form = document.createElement('vaadin-login-form');
 +const form = document.createElement('vaadin24-login-form');
  
- form.addEventListener('login', (event) => {
-   assertType<LoginFormLoginEvent>(event);
+ assertType<number>(form.headingLevel);
+ assertType<LoginI18n>(form.i18n);

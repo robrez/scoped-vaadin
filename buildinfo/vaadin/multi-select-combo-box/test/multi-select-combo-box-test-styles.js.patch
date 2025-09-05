@@ -1,0 +1,43 @@
+Index: test/multi-select-combo-box-test-styles.js
+===================================================================
+--- test/multi-select-combo-box-test-styles.js
++++ test/multi-select-combo-box-test-styles.js
+@@ -1,9 +1,9 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ // TODO: subset of Lumo needed for unit tests to pass.
+ // These should be eventually covered by base styles.
+ registerStyles(
+-  'vaadin-multi-select-combo-box',
++  'vaadin24-multi-select-combo-box',
+   css`
+     ::slotted([slot='chip']),
+     ::slotted([slot='overflow']) {
+@@ -38,7 +38,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-container',
++  'vaadin24-multi-select-combo-box-container',
+   css`
+     :host {
+       padding: 0 6px;
+@@ -47,7 +47,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-chip',
++  'vaadin24-multi-select-combo-box-chip',
+   css`
+     :host {
+       font-family: -apple-system, 'system-ui', Roboto, 'Segoe UI', Helvetica, Arial, sans-serif;
+@@ -68,7 +68,7 @@
+ );
+ 
+ registerStyles(
+-  'vaadin-multi-select-combo-box-item',
++  'vaadin24-multi-select-combo-box-item',
+   css`
+     :host {
+       min-height: 2.25rem;

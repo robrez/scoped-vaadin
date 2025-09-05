@@ -3,14 +3,14 @@ Index: src/vaadin-context-menu-mixin.js
 --- src/vaadin-context-menu-mixin.js
 +++ src/vaadin-context-menu-mixin.js
 @@ -3,10 +3,10 @@
-  * Copyright (c) 2016 - 2024 Vaadin Ltd.
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { isElementFocusable } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { isElementFocusable, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { isAndroid, isIOS } from '@vaadin/component-base/src/browser-utils.js';
 -import { addListener, deepTargetFind, gestures, removeListener } from '@vaadin/component-base/src/gestures.js';
 -import { MediaQueryController } from '@vaadin/component-base/src/media-query-controller.js';
-+import { isElementFocusable } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { isElementFocusable, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { isAndroid, isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { addListener, deepTargetFind, gestures, removeListener } from '@scoped-vaadin/component-base/src/gestures.js';
 +import { MediaQueryController } from '@scoped-vaadin/component-base/src/media-query-controller.js';

@@ -2,28 +2,14 @@ Index: test/focus-trap-controller.test.js
 ===================================================================
 --- test/focus-trap-controller.test.js
 +++ test/focus-trap-controller.test.js
-@@ -1,12 +1,13 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
+@@ -2,8 +2,8 @@
+ import { sendKeys } from '@vaadin/test-runner-commands';
+ import { defineLit, definePolymer, fixtureSync } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { FocusTrapController } from '../src/focus-trap-controller.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'focus-trap-wrapper',
-   class FocusTrapWrapper extends ControllerMixin(PolymerElement) {
-     static get template() {
-@@ -24,7 +25,7 @@
-   },
- );
- 
--customElements.define(
-+internalCustomElements.define(
-   'focus-trap-element',
-   class FocusTrapElement extends ControllerMixin(PolymerElement) {
-     static get template() {
+ async function tab() {

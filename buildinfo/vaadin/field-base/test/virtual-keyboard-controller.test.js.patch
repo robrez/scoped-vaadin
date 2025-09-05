@@ -2,18 +2,14 @@ Index: test/virtual-keyboard-controller.test.js
 ===================================================================
 --- test/virtual-keyboard-controller.test.js
 +++ test/virtual-keyboard-controller.test.js
-@@ -1,11 +1,12 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+@@ -1,8 +1,8 @@
  import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync, touchstart } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { sendKeys } from '@vaadin/test-runner-commands';
+ import { defineLit, definePolymer, fixtureSync, touchstart } from '@vaadin/testing-helpers';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { VirtualKeyboardController } from '../src/virtual-keyboard-controller.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'virtual-keyboard-controller-element',
-   class extends ControllerMixin(PolymerElement) {
-     static get template() {
+ const runTests = (defineHelper, baseMixin) => {

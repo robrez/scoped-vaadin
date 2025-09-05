@@ -2,17 +2,21 @@ Index: src/vaadin-item.js
 ===================================================================
 --- src/vaadin-item.js
 +++ src/vaadin-item.js
-@@ -4,26 +4,26 @@
+@@ -4,29 +4,29 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { DirMixin } from '@vaadin/component-base/src/dir-mixin.js';
--import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
-+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { itemStyles } from './vaadin-item-core-styles.js';
  import { ItemMixin } from './vaadin-item-mixin.js';
+ 
+-registerStyles('vaadin-item', itemStyles, { moduleId: 'vaadin-item-styles' });
++registerStyles('vaadin24-item', itemStyles, { moduleId: 'vaadin-item-styles' });
  
  /**
 - * `<vaadin-item>` is a Web Component providing layout for items in tabs and menus.
@@ -38,7 +42,7 @@ Index: src/vaadin-item.js
   * the `selected` property on the items, e. g. on mousedown or when Enter / Spacebar is pressed.
   *
   * ### Styling
-@@ -73,7 +73,7 @@
+@@ -67,7 +67,7 @@
    }
  
    static get is() {
@@ -47,7 +51,7 @@ Index: src/vaadin-item.js
    }
  
    constructor() {
-@@ -86,7 +86,7 @@
+@@ -80,7 +80,7 @@
      this.value;
  
      /**

@@ -3,7 +3,7 @@ Index: src/vaadin-select.js
 --- src/vaadin-select.js
 +++ src/vaadin-select.js
 @@ -3,34 +3,34 @@
-  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/src/vaadin-input-container.js';
@@ -17,20 +17,19 @@ Index: src/vaadin-select.js
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { processTemplates } from '@vaadin/component-base/src/templates.js';
--import { fieldShared } from '@vaadin/field-base/src/styles/field-shared-styles.js';
--import { inputFieldContainer } from '@vaadin/field-base/src/styles/input-field-container-styles.js';
+-import { inputFieldShared } from '@vaadin/field-base/src/styles/input-field-shared-styles.js';
 -import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { screenReaderOnly } from '@scoped-vaadin/a11y-base/src/styles/sr-only-styles.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { processTemplates } from '@scoped-vaadin/component-base/src/templates.js';
-+import { fieldShared } from '@scoped-vaadin/field-base/src/styles/field-shared-styles.js';
-+import { inputFieldContainer } from '@scoped-vaadin/field-base/src/styles/input-field-container-styles.js';
++import { inputFieldShared } from '@scoped-vaadin/field-base/src/styles/input-field-shared-styles.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  import { SelectBaseMixin } from './vaadin-select-base-mixin.js';
+ import { selectStyles } from './vaadin-select-core-styles.js';
  
--registerStyles('vaadin-select', [fieldShared, inputFieldContainer, screenReaderOnly], {
-+registerStyles('vaadin24-select', [fieldShared, inputFieldContainer, screenReaderOnly], {
+-registerStyles('vaadin-select', [inputFieldShared, screenReaderOnly, selectStyles], {
++registerStyles('vaadin24-select', [inputFieldShared, screenReaderOnly, selectStyles], {
    moduleId: 'vaadin-select-styles',
  });
  
@@ -125,7 +124,7 @@ Index: src/vaadin-select.js
    }
  
    static get template() {
-@@ -157,7 +157,7 @@
+@@ -147,7 +147,7 @@
            <span part="required-indicator" aria-hidden="true" on-click="focus"></span>
          </div>
  
@@ -134,7 +133,7 @@ Index: src/vaadin-select.js
            part="input-field"
            readonly="[[readonly]]"
            disabled="[[disabled]]"
-@@ -168,7 +168,7 @@
+@@ -158,7 +158,7 @@
            <slot name="prefix" slot="prefix"></slot>
            <slot name="value"></slot>
            <div part="toggle-button" slot="suffix" aria-hidden="true" on-mousedown="_onToggleMouseDown"></div>
@@ -143,16 +142,16 @@ Index: src/vaadin-select.js
  
          <div part="helper-text">
            <slot name="helper"></slot>
-@@ -179,7 +179,7 @@
+@@ -169,7 +169,7 @@
          </div>
        </div>
  
 -      <vaadin-select-overlay
 +      <vaadin24-select-overlay
+         id="overlay"
+         owner="[[__overlayOwner]]"
          position-target="[[_inputContainer]]"
-         opened="{{opened}}"
-         with-backdrop="[[_phone]]"
-@@ -187,7 +187,7 @@
+@@ -179,7 +179,7 @@
          theme$="[[_theme]]"
          no-vertical-overlap$="[[noVerticalOverlap]]"
          on-vaadin-overlay-open="_onOverlayOpen"

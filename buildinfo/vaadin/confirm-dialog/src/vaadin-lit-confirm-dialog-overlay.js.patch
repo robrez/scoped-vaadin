@@ -70,8 +70,8 @@ Index: src/vaadin-lit-confirm-dialog-overlay.js
          id="overlay"
          .owner="${this}"
          .opened="${this.opened}"
-@@ -113,7 +113,7 @@
-         ?resizable="${this.resizable}"
+@@ -114,7 +114,7 @@
+         aria-label="${this.ariaLabel}"
          restore-focus-on-close
          focus-trap
 -      ></vaadin-confirm-dialog-overlay>

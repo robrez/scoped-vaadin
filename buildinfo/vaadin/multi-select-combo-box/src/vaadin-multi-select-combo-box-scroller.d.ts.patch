@@ -3,7 +3,7 @@ Index: src/vaadin-multi-select-combo-box-scroller.d.ts
 --- src/vaadin-multi-select-combo-box-scroller.d.ts
 +++ src/vaadin-multi-select-combo-box-scroller.d.ts
 @@ -3,16 +3,16 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ComboBoxScrollerMixin } from '@vaadin/combo-box/src/vaadin-combo-box-scroller-mixin.js';

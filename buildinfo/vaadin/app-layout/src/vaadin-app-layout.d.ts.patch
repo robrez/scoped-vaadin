@@ -3,7 +3,7 @@ Index: src/vaadin-app-layout.d.ts
 --- src/vaadin-app-layout.d.ts
 +++ src/vaadin-app-layout.d.ts
 @@ -3,9 +3,9 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
@@ -12,10 +12,10 @@ Index: src/vaadin-app-layout.d.ts
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { AppLayoutMixin } from './vaadin-app-layout-mixin.js';
  
- export interface AppLayoutI18n {
-   drawer: string;
-@@ -37,21 +37,21 @@
+ export type { AppLayoutI18n } from './vaadin-app-layout-mixin.js';
+@@ -36,21 +36,21 @@
  export type AppLayoutEventMap = AppLayoutCustomEventMap & HTMLElementEventMap;
  
  /**
@@ -44,7 +44,7 @@ Index: src/vaadin-app-layout.d.ts
   * ```
   *
   * For best results, the component should be added to the root level of your application (i.e., as a direct child of `<body>`).
-@@ -71,7 +71,7 @@
+@@ -70,7 +70,7 @@
   *
   * ### Styling
   *
@@ -62,7 +62,7 @@ Index: src/vaadin-app-layout.d.ts
   * - If not, a custom event `close-overlay-drawer` can be dispatched either by calling
   *  `window.dispatchEvent(new CustomEvent('close-overlay-drawer'))` or by calling
   *  `AppLayout.dispatchCloseOverlayDrawerEvent()`
-@@ -197,7 +197,7 @@
+@@ -144,7 +144,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

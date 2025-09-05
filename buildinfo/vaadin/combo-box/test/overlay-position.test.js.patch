@@ -1,0 +1,20 @@
+Index: test/overlay-position.test.js
+===================================================================
+--- test/overlay-position.test.js
++++ test/overlay-position.test.js
+@@ -22,13 +22,13 @@
+   beforeEach(async () => {
+     fixtureSync(`
+       <style>
+-        vaadin-combo-box-overlay::part(overlay) {
++        vaadin24-combo-box-overlay::part(overlay) {
+           margin: 0 !important;
+         }
+       </style>
+     `);
+ 
+-    comboBox = fixtureSync(`<vaadin-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin-combo-box>`);
++    comboBox = fixtureSync(`<vaadin24-combo-box label='comboBox' style='width: 300px;' items='[1]'></vaadin24-combo-box>`);
+     await nextRender();
+     const comboBoxRect = comboBox.getBoundingClientRect();
+     comboBox.items = makeItems(20);

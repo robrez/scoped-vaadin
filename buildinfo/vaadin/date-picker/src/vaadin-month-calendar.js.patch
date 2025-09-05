@@ -2,7 +2,7 @@ Index: src/vaadin-month-calendar.js
 ===================================================================
 --- src/vaadin-month-calendar.js
 +++ src/vaadin-month-calendar.js
-@@ -5,13 +5,13 @@
+@@ -5,12 +5,12 @@
   */
  import '@polymer/polymer/lib/elements/dom-repeat.js';
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
@@ -10,7 +10,6 @@ Index: src/vaadin-month-calendar.js
 -import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { dateAllowed, dateEquals, normalizeDate } from './vaadin-date-picker-helper.js';
  import { MonthCalendarMixin } from './vaadin-month-calendar-mixin.js';
  import { monthCalendarStyles } from './vaadin-month-calendar-styles.js';
  
@@ -19,12 +18,12 @@ Index: src/vaadin-month-calendar.js
    moduleId: 'vaadin-month-calendar-styles',
  });
  
-@@ -68,7 +68,7 @@
+@@ -71,7 +71,7 @@
    }
  
    static get is() {
 -    return 'vaadin-month-calendar';
 +    return 'vaadin24-month-calendar';
    }
+ }
  
-   static get properties() {

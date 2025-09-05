@@ -1,0 +1,40 @@
+Index: test/data-provider.test.js
+===================================================================
+--- test/data-provider.test.js
++++ test/data-provider.test.js
+@@ -2,7 +2,7 @@
+ import { arrowDownKeyDown, aTimeout, enterKeyDown, fixtureSync, nextFrame, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import './data-provider-styles.js';
+-import '@vaadin/text-field/src/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
+ import '../src/vaadin-combo-box-light.js';
+ import '../src/vaadin-combo-box.js';
+ import { ComboBoxPlaceholder } from '../src/vaadin-combo-box-placeholder.js';
+@@ -21,18 +21,18 @@
+ } from './helpers.js';
+ 
+ const TEMPLATES = {
+-  'vaadin-combo-box': `
+-    <vaadin-combo-box></vaadin-combo-box>
++  'vaadin24-combo-box': `
++    <vaadin24-combo-box></vaadin24-combo-box>
+   `,
+-  'vaadin-combo-box-light': `
+-    <vaadin-combo-box-light>
+-      <vaadin-text-field></vaadin-text-field>
+-    </vaadin-combo-box-light>
++  'vaadin24-combo-box-light': `
++    <vaadin24-combo-box-light>
++      <vaadin24-text-field></vaadin24-text-field>
++    </vaadin24-combo-box-light>
+   `,
+ };
+ 
+-['vaadin-combo-box', 'vaadin-combo-box-light'].forEach((tag) => {
+-  const isComboBoxLight = tag === 'vaadin-combo-box-light';
++['vaadin24-combo-box', 'vaadin24-combo-box-light'].forEach((tag) => {
++  const isComboBoxLight = tag === 'vaadin24-combo-box-light';
+ 
+   describe(`data provider - ${tag}`, () => {
+     let comboBox;

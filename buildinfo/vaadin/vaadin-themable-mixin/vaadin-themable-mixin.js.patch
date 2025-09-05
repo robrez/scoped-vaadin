@@ -6,8 +6,8 @@ Index: vaadin-themable-mixin.js
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
-  * Copyright (c) 2017 - 2024 Vaadin Ltd.
-@@ -48,7 +49,7 @@
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
+@@ -49,7 +50,7 @@
   * @returns {boolean}
   */
  function hasThemes(tagName) {
@@ -16,7 +16,7 @@ Index: vaadin-themable-mixin.js
  }
  
  /**
-@@ -59,7 +60,7 @@
+@@ -60,7 +61,7 @@
   */
  function flattenStyles(styles = []) {
    return [styles].flat(Infinity).filter((style) => {
@@ -25,7 +25,7 @@ Index: vaadin-themable-mixin.js
        return true;
      }
      console.warn('An item in styles is not of type CSSResult. Use `unsafeCSS` or `css`.');
-@@ -165,7 +166,7 @@
+@@ -160,7 +161,7 @@
  
    // Update the styles of inheriting types
    themableTagNames.forEach((inheritingTagName) => {
@@ -34,7 +34,7 @@ Index: vaadin-themable-mixin.js
      if (inheritingClass !== componentClass && inheritingClass.prototype instanceof componentClass) {
        updateComponentStyles(inheritingClass);
      }
-@@ -218,7 +219,7 @@
+@@ -213,7 +214,7 @@
      // Update styles of the component types that match themeFor and have already been finalized
      themableTagNames.forEach((tagName) => {
        if (matchesThemeFor(themeFor, tagName) && hasThemes(tagName)) {

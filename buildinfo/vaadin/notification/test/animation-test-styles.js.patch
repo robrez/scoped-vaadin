@@ -1,0 +1,14 @@
+Index: test/animation-test-styles.js
+===================================================================
+--- test/animation-test-styles.js
++++ test/animation-test-styles.js
+@@ -1,7 +1,7 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin';
+ 
+ registerStyles(
+-  'vaadin-notification-card',
++  'vaadin24-notification-card',
+   css`
+     @keyframes test-fade-in {
+       0% {

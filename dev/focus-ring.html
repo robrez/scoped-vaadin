@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus ring</title>
+    <script type="module" src="./common.js"></script>
+
+    <script type="module">
+      import '@scoped-vaadin/avatar';
+      import '@scoped-vaadin/button';
+      import '@scoped-vaadin/checkbox';
+      import '@scoped-vaadin/combo-box';
+      import '@scoped-vaadin/date-picker';
+      import '@scoped-vaadin/details';
+      import '@scoped-vaadin/item';
+      import '@scoped-vaadin/list-box';
+      import '@scoped-vaadin/radio-group';
+      import '@scoped-vaadin/password-field';
+      // import '@vaadin/rich-text-editor';
+      import '@scoped-vaadin/tabs';
+      import '@scoped-vaadin/text-field';
+    </script>
+
+    <style>
+      html {
+        --vaadin-focus-ring-color: purple;
+        --vaadin-focus-ring-width: 1px;
+      }
+
+      vaadin24-button {
+        --vaadin-focus-ring-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <vaadin24-avatar></vaadin24-avatar>
+
+    <vaadin24-button>Button</vaadin24-button>
+
+    <vaadin24-checkbox label="Checkbox"></vaadin24-checkbox>
+
+    <vaadin24-radio-group label="Radio group">
+      <vaadin24-radio-button value="y" label="Yes"></vaadin24-radio-button>
+      <vaadin24-radio-button value="n" label="No"></vaadin24-radio-button>
+    </vaadin24-radio-group>
+
+    <vaadin24-details summary="Details">
+      <div>Toggle using mouse, Enter and Space keys.</div>
+    </vaadin24-details>
+
+    <br />
+
+    <vaadin24-list-box>
+      <vaadin24-item>Foo</vaadin24-item>
+      <vaadin24-item>Bar</vaadin24-item>
+    </vaadin24-list-box>
+
+    <br />
+
+    <vaadin24-combo-box label="Combo box" items='["Foo", "Bar", "Baz"]'></vaadin24-combo-box>
+
+    <vaadin24-text-field label="Text field"></vaadin24-text-field>
+
+    <vaadin24-password-field label="Password field"></vaadin24-password-field>
+
+    <vaadin24-date-picker label="Date picker"></vaadin24-date-picker>
+
+    <vaadin24-tabs>
+      <vaadin24-tab>Foo</vaadin24-tab>
+      <vaadin24-tab>Bar</vaadin24-tab>
+    </vaadin24-tabs>
+
+    <br />
+
+    <vaadin-rich-text-editor></vaadin-rich-text-editor>
+  </body>
+</html>

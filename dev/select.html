@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,27 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Select</title>
     <script type="module" src="./common.js"></script>
+
     <script type="module">
+      import '@scoped-vaadin/icon';
+      import '@scoped-vaadin/icons';
       import '@scoped-vaadin/select';
-      import '@scoped-vaadin/tooltip';
+      import '@scoped-vaadin/vaadin-lumo-styles/vaadin-iconset.js';
     </script>
   </head>
   <body>
-    <vaadin24-select label="Size">
-      <vaadin24-tooltip slot="tooltip" text="Stock availability may vary"></vaadin24-tooltip>
-    </vaadin24-select>
+    <section>
+      <h2>Plain</h2>
+      <vaadin24-select value="s"></vaadin24-select>
+      <vaadin24-select placeholder="Placeholder"></vaadin24-select>
+    </section>
+
+    <section>
+      <h2>Bells & Whistles</h2>
+      <vaadin24-select
+        label="Label"
+        helper-text="Description for this field."
+        value="s"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-select>
+    </section>
+
+    <section>
+      <h2>States</h2>
+      <vaadin24-select
+        label="Read-only"
+        helper-text="Description for this field."
+        value="s"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        readonly
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-select>
+
+      <vaadin24-select
+        label="Disabled"
+        helper-text="Description for this field."
+        value="s"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        disabled
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-select>
+    </section>
 
     <script>
-      const select = document.querySelector('vaadin24-select');
-      select.items = items = [
-        { label: 'Show all', value: 'all' },
-        { component: 'hr' },
-        { label: 'XS (out of stock)', value: 'xs', disabled: true },
-        { label: 'S', value: 's' },
-        { label: 'M', value: 'm' },
-        { label: 'L', value: 'l' },
-        { label: 'XL', value: 'xl' },
-      ];
+      document.querySelectorAll('vaadin24-select').forEach((select) => {
+        select.items = items = [
+          { label: 'Show all', value: 'all' },
+          { component: 'hr' },
+          { label: 'XS (out of stock)', value: 'xs', disabled: true },
+          { label: 'S', value: 's' },
+          { label: 'M', value: 'm' },
+          { label: 'L', value: 'l' },
+          { label: 'XL', value: 'xl' },
+        ];
+      });
     </script>
   </body>
 </html>

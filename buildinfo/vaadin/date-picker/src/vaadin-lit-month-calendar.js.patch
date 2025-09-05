@@ -12,10 +12,10 @@ Index: src/vaadin-lit-month-calendar.js
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { dateAllowed, dateEquals, normalizeDate } from './vaadin-date-picker-helper.js';
  import { MonthCalendarMixin } from './vaadin-month-calendar-mixin.js';
  import { monthCalendarStyles } from './vaadin-month-calendar-styles.js';
-@@ -17,7 +17,7 @@
+ 
+@@ -16,7 +16,7 @@
   */
  class MonthCalendar extends MonthCalendarMixin(ThemableMixin(PolylitMixin(LitElement))) {
    static get is() {

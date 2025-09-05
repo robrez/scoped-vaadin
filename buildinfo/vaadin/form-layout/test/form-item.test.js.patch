@@ -2,17 +2,17 @@ Index: test/form-item.test.js
 ===================================================================
 --- test/form-item.test.js
 +++ test/form-item.test.js
-@@ -1,8 +1,8 @@
- import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+@@ -2,8 +2,8 @@
+ import { fire, fixtureSync, nextFrame } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
--import '@vaadin/custom-field';
--import '@vaadin/text-field';
-+import '@scoped-vaadin/custom-field';
-+import '@scoped-vaadin/text-field';
- import '../vaadin-form-item.js';
+ import '../src/vaadin-form-item.js';
+-import '@vaadin/custom-field/src/vaadin-custom-field.js';
+-import '@vaadin/text-field/src/vaadin-text-field.js';
++import '@scoped-vaadin/custom-field/src/vaadin-custom-field.js';
++import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
  
  describe('form-item', () => {
+   let item, label, input;
 @@ -13,10 +13,10 @@
  
      beforeEach(() => {
@@ -161,7 +161,23 @@ Index: test/form-item.test.js
        `);
        label = item.querySelector('label');
        input = item.querySelector('input');
-@@ -483,9 +483,9 @@
+@@ -479,11 +479,11 @@
+ 
+     beforeEach(async () => {
+       item = fixtureSync(`
+-        <vaadin-form-item>
+-          <vaadin-text-field></vaadin-text-field>
+-        </vaadin-form-item>
++        <vaadin24-form-item>
++          <vaadin24-text-field></vaadin24-text-field>
++        </vaadin24-form-item>
+       `);
+-      field = item.querySelector('vaadin-text-field');
++      field = item.querySelector('vaadin24-text-field');
+       await nextFrame();
+     });
+ 
+@@ -540,9 +540,9 @@
  
      it('should not warn when a single field is placed to an item', async () => {
        fixtureSync(`
@@ -173,7 +189,7 @@ Index: test/form-item.test.js
        `);
        await nextFrame();
  
-@@ -494,24 +494,24 @@
+@@ -551,24 +551,24 @@
  
      it('should warn when multiple fields are placed to an item initially', async () => {
        fixtureSync(`
@@ -203,7 +219,7 @@ Index: test/form-item.test.js
        `);
        await nextFrame();
  
-@@ -521,7 +521,7 @@
+@@ -578,7 +578,7 @@
  
        expect(stub.calledOnce).to.be.true;
        expect(stub.args[0][0]).to.include(

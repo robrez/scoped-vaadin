@@ -18,9 +18,9 @@ Index: src/vaadin-grid-tree-column.js
   *
   * #### Example:
   * ```html
-- * <vaadin-grid items="[[items]]">
+- * <vaadin-grid>
 - *  <vaadin-grid-tree-column path="name.first"></vaadin-grid-tree-column>
-+ * <vaadin24-grid items="[[items]]">
++ * <vaadin24-grid>
 + *  <vaadin24-grid-tree-column path="name.first"></vaadin24-grid-tree-column>
   *
 - *  <vaadin-grid-column>

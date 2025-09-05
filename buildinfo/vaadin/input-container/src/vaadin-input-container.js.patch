@@ -12,8 +12,8 @@ Index: src/vaadin-input-container.js
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { inputContainerStyles } from './vaadin-input-container-core-styles.js';
  import { InputContainerMixin } from './vaadin-input-container-mixin.js';
- import { inputContainerStyles } from './vaadin-input-container-styles.js';
  
 -registerStyles('vaadin-input-container', inputContainerStyles, { moduleId: 'vaadin-input-container-styles' });
 +registerStyles('vaadin24-input-container', inputContainerStyles, { moduleId: 'vaadin-input-container-styles' });

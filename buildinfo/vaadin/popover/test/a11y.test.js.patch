@@ -3,12 +3,12 @@ Index: test/a11y.test.js
 --- test/a11y.test.js
 +++ test/a11y.test.js
 @@ -12,7 +12,7 @@
- import { sendKeys } from '@web/test-runner-commands';
+ } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
  import './not-animated-styles.js';
 -import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
 +import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
- import { Popover } from '../vaadin-popover.js';
+ import { Popover } from '../src/vaadin-popover.js';
  import { mouseenter, mouseleave } from './helpers.js';
  
 @@ -26,7 +26,7 @@

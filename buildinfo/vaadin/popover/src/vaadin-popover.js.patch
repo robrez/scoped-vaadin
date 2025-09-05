@@ -12,7 +12,7 @@ Index: src/vaadin-popover.js
 -import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 -import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
--import { isLastOverlay } from '@vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
+-import { isLastOverlay as isLastOverlayBase } from '@vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
 -import { ThemePropertyMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
 +} from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
@@ -20,13 +20,19 @@ Index: src/vaadin-popover.js
 +import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
-+import { isLastOverlay } from '@scoped-vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
++import { isLastOverlay as isLastOverlayBase } from '@scoped-vaadin/overlay/src/vaadin-overlay-stack-mixin.js';
 +import { ThemePropertyMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-theme-property-mixin.js';
  import { PopoverPositionMixin } from './vaadin-popover-position-mixin.js';
  import { PopoverTargetMixin } from './vaadin-popover-target-mixin.js';
  
-@@ -141,21 +141,21 @@
- }
+@@ -156,26 +156,26 @@
+  */
+ const isLastOverlay = (overlay) => {
+   // Ignore tooltips, popovers should still close when a tooltip is present
+-  const filter = (o) => o.localName !== 'vaadin-tooltip-overlay';
++  const filter = (o) => o.localName !== 'vaadin24-tooltip-overlay';
+   return isLastOverlayBase(overlay, filter);
+ };
  
  /**
 - * `<vaadin-popover>` is a Web Component for creating overlays
@@ -53,7 +59,7 @@ Index: src/vaadin-popover.js
   *
   * Part name        | Description
   * -----------------|-------------------------------------------
-@@ -167,12 +167,12 @@
+@@ -187,12 +187,12 @@
   * -----------------|----------------------------------------
   * `position`       | Reflects the `position` property value.
   *
@@ -69,7 +75,7 @@ Index: src/vaadin-popover.js
   *
   * Custom CSS property              | Description
   * ---------------------------------|-------------
-@@ -198,7 +198,7 @@
+@@ -218,7 +218,7 @@
    PopoverTargetMixin(OverlayClassMixin(ThemePropertyMixin(ElementMixin(PolylitMixin(LitElement))))),
  ) {
    static get is() {
@@ -78,7 +84,7 @@ Index: src/vaadin-popover.js
    }
  
    static get styles() {
-@@ -317,7 +317,7 @@
+@@ -337,7 +337,7 @@
         * Receives two arguments:
         *
         * - `root` The root container DOM element. Append your content to it.
@@ -87,7 +93,7 @@ Index: src/vaadin-popover.js
         */
        renderer: {
          type: Object,
-@@ -464,7 +464,7 @@
+@@ -484,7 +484,7 @@
      const effectivePosition = this.__effectivePosition;
  
      return html`
@@ -96,7 +102,7 @@ Index: src/vaadin-popover.js
          id="${this.__overlayId}"
          role="${this.overlayRole}"
          aria-label="${ifDefined(this.accessibleName)}"
-@@ -494,7 +494,7 @@
+@@ -514,7 +514,7 @@
          @vaadin-overlay-outside-click="${this.__onOutsideClick}"
          @vaadin-overlay-open="${this.__onOverlayOpened}"
          @vaadin-overlay-closed="${this.__onOverlayClosed}"
@@ -105,12 +111,3 @@ Index: src/vaadin-popover.js
      `;
    }
  
-@@ -516,7 +516,7 @@
-   ready() {
-     super.ready();
- 
--    this._overlayElement = this.shadowRoot.querySelector('vaadin-popover-overlay');
-+    this._overlayElement = this.shadowRoot.querySelector('vaadin24-popover-overlay');
-   }
- 
-   /** @protected */

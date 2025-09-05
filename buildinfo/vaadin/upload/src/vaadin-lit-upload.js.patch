@@ -3,11 +3,11 @@ Index: src/vaadin-lit-upload.js
 --- src/vaadin-lit-upload.js
 +++ src/vaadin-lit-upload.js
 @@ -3,20 +3,20 @@
-  * Copyright (c) 2016 - 2024 Vaadin Ltd.
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import '@vaadin/button/src/vaadin-button.js';
-+import '@scoped-vaadin/button/src/vaadin-button.js';
+-import '@vaadin/button/src/vaadin-lit-button.js';
++import '@scoped-vaadin/button/src/vaadin-lit-button.js';
  import './vaadin-lit-upload-icon.js';
  import './vaadin-upload-icons.js';
  import './vaadin-lit-upload-file-list.js';

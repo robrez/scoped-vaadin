@@ -17,12 +17,12 @@ Index: src/vaadin-lit-combo-box-item.js
  import { ComboBoxItemMixin } from './vaadin-combo-box-item-mixin.js';
  
  /**
-- * LitElement based version of `<vaadin-combo-box-item>` web component.
-+ * LitElement based version of `<vaadin24-combo-box-item>` web component.
+- * An item element used by the `<vaadin-combo-box>` dropdown.
++ * An item element used by the `<vaadin24-combo-box>` dropdown.
   *
-  * ## Disclaimer
+  * ### Styling
   *
-@@ -21,7 +21,7 @@
+@@ -39,7 +39,7 @@
   */
  export class ComboBoxItem extends ComboBoxItemMixin(ThemableMixin(DirMixin(PolylitMixin(LitElement)))) {
    static get is() {

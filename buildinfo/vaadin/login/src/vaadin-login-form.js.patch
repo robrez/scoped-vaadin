@@ -3,7 +3,7 @@ Index: src/vaadin-login-form.js
 --- src/vaadin-login-form.js
 +++ src/vaadin-login-form.js
 @@ -3,33 +3,33 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/button/src/vaadin-button.js';
@@ -47,7 +47,7 @@ Index: src/vaadin-login-form.js
   *
   * Part name      | Description
   * ---------------|---------------------------------------------------------|
-@@ -57,14 +57,14 @@
+@@ -57,11 +57,11 @@
    static get template() {
      return html`
        <style>
@@ -56,16 +56,21 @@ Index: src/vaadin-login-form.js
            width: 100%;
          }
        </style>
--      <vaadin-login-form-wrapper id="vaadinLoginFormWrapper" theme$="[[_theme]]" error="[[error]]" i18n="[[i18n]]">
-+      <vaadin24-login-form-wrapper id="vaadinLoginFormWrapper" theme$="[[_theme]]" error="[[error]]" i18n="[[i18n]]">
+-      <vaadin-login-form-wrapper
++      <vaadin24-login-form-wrapper
+         id="vaadinLoginFormWrapper"
+         theme$="[[_theme]]"
+         error="[[error]]"
+@@ -70,7 +70,7 @@
+       >
          <form method="POST" action$="[[action]]" on-formdata="_onFormData" slot="form">
            <input id="csrf" type="hidden" />
 -          <vaadin-text-field
 +          <vaadin24-text-field
              name="username"
-             label="[[i18n.form.username]]"
-             error-message="[[i18n.errorMessage.username]]"
-@@ -78,9 +78,9 @@
+             label="[[__effectiveI18n.form.username]]"
+             error-message="[[__effectiveI18n.errorMessage.username]]"
+@@ -84,9 +84,9 @@
              manual-validation
            >
              <input type="text" slot="input" on-keyup="_handleInputKeyup" />
@@ -75,9 +80,9 @@ Index: src/vaadin-login-form.js
 -          <vaadin-password-field
 +          <vaadin24-password-field
              name="password"
-             label="[[i18n.form.password]]"
-             error-message="[[i18n.errorMessage.password]]"
-@@ -92,27 +92,27 @@
+             label="[[__effectiveI18n.form.password]]"
+             error-message="[[__effectiveI18n.errorMessage.password]]"
+@@ -98,27 +98,27 @@
              manual-validation
            >
              <input type="password" slot="input" on-keyup="_handleInputKeyup" />
@@ -87,7 +92,7 @@ Index: src/vaadin-login-form.js
  
 -        <vaadin-button slot="submit" theme="primary contained submit" on-click="submit" disabled$="[[disabled]]">
 +        <vaadin24-button slot="submit" theme="primary contained submit" on-click="submit" disabled$="[[disabled]]">
-           [[i18n.form.submit]]
+           [[__effectiveI18n.form.submit]]
 -        </vaadin-button>
 +        </vaadin24-button>
  
@@ -98,7 +103,7 @@ Index: src/vaadin-login-form.js
            on-click="_onForgotPasswordClick"
            hidden$="[[noForgotPassword]]"
          >
-           [[i18n.form.forgotPassword]]
+           [[__effectiveI18n.form.forgotPassword]]
 -        </vaadin-button>
 -      </vaadin-login-form-wrapper>
 +        </vaadin24-button>

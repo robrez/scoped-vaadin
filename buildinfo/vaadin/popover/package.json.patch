@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/popover",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/popover",
 +  "version": "24.6.2-alpha.1",
 +  "repository": {
@@ -34,23 +34,24 @@ Index: package.json
    "main": "vaadin-popover.js",
    "module": "vaadin-popover.js",
    "type": "module",
-@@ -35,25 +35,20 @@
+@@ -35,26 +35,20 @@
      "web-components",
      "web-component"
    ],
 -  "dependencies": {
 -    "@open-wc/dedupe-mixin": "^1.3.0",
--    "@vaadin/a11y-base": "~24.6.2",
--    "@vaadin/component-base": "~24.6.2",
--    "@vaadin/lit-renderer": "~24.6.2",
--    "@vaadin/overlay": "~24.6.2",
--    "@vaadin/vaadin-lumo-styles": "~24.6.2",
--    "@vaadin/vaadin-material-styles": "~24.6.2",
--    "@vaadin/vaadin-themable-mixin": "~24.6.2",
+-    "@vaadin/a11y-base": "~24.8.6",
+-    "@vaadin/component-base": "~24.8.6",
+-    "@vaadin/lit-renderer": "~24.8.6",
+-    "@vaadin/overlay": "~24.8.6",
+-    "@vaadin/vaadin-lumo-styles": "~24.8.6",
+-    "@vaadin/vaadin-material-styles": "~24.8.6",
+-    "@vaadin/vaadin-themable-mixin": "~24.8.6",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.6.2",
+-    "@vaadin/chai-plugins": "~24.8.6",
+-    "@vaadin/test-runner-commands": "~24.8.6",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
@@ -58,7 +59,7 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +  "dependencies": {
 +    "@open-wc/dedupe-mixin": "^1.3.0",
 +    "@scoped-vaadin/a11y-base": "^24.6.2-alpha.1",

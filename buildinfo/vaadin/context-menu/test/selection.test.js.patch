@@ -1,0 +1,62 @@
+Index: test/selection.test.js
+===================================================================
+--- test/selection.test.js
++++ test/selection.test.js
+@@ -2,22 +2,22 @@
+ import { click, enter, fire, fixtureSync, isIOS, nextRender, oneEvent } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../src/vaadin-context-menu.js';
+-import '@vaadin/item/src/vaadin-item.js';
+-import '@vaadin/list-box/src/vaadin-list-box.js';
++import '@scoped-vaadin/item/src/vaadin-item.js';
++import '@scoped-vaadin/list-box/src/vaadin-list-box.js';
+ 
+ describe('selection', () => {
+   let menu, overlay;
+ 
+   beforeEach(async () => {
+-    menu = fixtureSync('<vaadin-context-menu></vaadin-context-menu>');
++    menu = fixtureSync('<vaadin24-context-menu></vaadin24-context-menu>');
+     overlay = menu._overlayElement;
+     menu.renderer = (root) => {
+       root.innerHTML = `
+-        <vaadin-list-box id="menu">
+-          <vaadin-item>item1</vaadin-item>
+-          <vaadin-item>item2</vaadin-item>
+-          <vaadin-item>item3</vaadin-item>
+-        </vaadin-list-box>
++        <vaadin24-list-box id="menu">
++          <vaadin24-item>item1</vaadin24-item>
++          <vaadin24-item>item2</vaadin24-item>
++          <vaadin24-item>item3</vaadin24-item>
++        </vaadin24-list-box>
+       `;
+     };
+     await nextRender();
+@@ -41,7 +41,7 @@
+     const spy = sinon.spy();
+     menu.addEventListener('opened-changed', spy);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     enter(item);
+     await nextRender();
+     expect(spy.calledOnce).to.be.true;
+@@ -52,7 +52,7 @@
+     await oneEvent(overlay, 'vaadin-overlay-open');
+     await nextRender(overlay);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     expect(document.activeElement).to.eql(item);
+   });
+ 
+@@ -61,7 +61,7 @@
+     await oneEvent(overlay, 'vaadin-overlay-open');
+     await nextRender(overlay);
+ 
+-    const item = overlay.querySelector('#menu vaadin-item');
++    const item = overlay.querySelector('#menu vaadin24-item');
+     expect(document.activeElement).to.eql(item);
+   });
+ });

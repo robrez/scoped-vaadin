@@ -2,7 +2,7 @@ Index: src/vaadin-text-area-styles.js
 ===================================================================
 --- src/vaadin-text-area-styles.js
 +++ src/vaadin-text-area-styles.js
-@@ -50,7 +50,7 @@
+@@ -46,7 +46,7 @@
      box-shadow: none;
    }
  

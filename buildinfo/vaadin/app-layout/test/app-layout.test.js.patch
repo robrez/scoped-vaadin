@@ -8,8 +8,8 @@ Index: test/app-layout.test.js
  import {
    aTimeout,
 @@ -14,29 +15,29 @@
- import '../vaadin-drawer-toggle.js';
- import './not-animated-styles.js';
+ import '../src/vaadin-app-layout.js';
+ import '../src/vaadin-drawer-toggle.js';
  
 -describe('vaadin-app-layout', () => {
 +describe('vaadin24-app-layout', () => {

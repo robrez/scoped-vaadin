@@ -1,0 +1,22 @@
+Index: test/header-footer.test.js
+===================================================================
+--- test/header-footer.test.js
++++ test/header-footer.test.js
+@@ -8,7 +8,7 @@
+   let dialog, overlay;
+ 
+   beforeEach(async () => {
+-    dialog = fixtureSync('<vaadin-dialog></vaadin-dialog>');
++    dialog = fixtureSync('<vaadin24-dialog></vaadin24-dialog>');
+     await nextRender();
+     overlay = dialog.$.overlay;
+   });
+@@ -597,7 +597,7 @@
+   let dialog;
+ 
+   beforeEach(() => {
+-    dialog = document.createElement('vaadin-dialog');
++    dialog = document.createElement('vaadin24-dialog');
+     dialog.renderer = createRenderer('Content');
+   });
+ 

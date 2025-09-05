@@ -12,8 +12,8 @@ Index: src/vaadin-accordion-panel.js
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { accordionPanel } from './vaadin-accordion-panel-core-styles.js';
  import { AccordionPanelMixin } from './vaadin-accordion-panel-mixin.js';
- import { accordionPanel } from './vaadin-accordion-panel-styles.js';
  
 -registerStyles('vaadin-accordion-panel', accordionPanel, { moduleId: 'vaadin-accordion-panel-styles' });
 +registerStyles('vaadin24-accordion-panel', accordionPanel, { moduleId: 'vaadin-accordion-panel-styles' });

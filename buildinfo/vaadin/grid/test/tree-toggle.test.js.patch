@@ -1,0 +1,52 @@
+Index: test/tree-toggle.test.js
+===================================================================
+--- test/tree-toggle.test.js
++++ test/tree-toggle.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+-      toggle = fixtureSync('<vaadin-grid-tree-toggle></vaadin-grid-tree-toggle>');
++      toggle = fixtureSync('<vaadin24-grid-tree-toggle></vaadin24-grid-tree-toggle>');
+       await nextFrame();
+     });
+ 
+@@ -52,7 +52,7 @@
+       });
+ 
+       it('should have the correct expanded state on listener invocation', (done) => {
+-        toggle = document.createElement('vaadin-grid-tree-toggle');
++        toggle = document.createElement('vaadin24-grid-tree-toggle');
+         toggle.addEventListener('click', () => {
+           expect(toggle.expanded).to.be.true;
+           done();
+@@ -100,11 +100,11 @@
+   describe('with content', () => {
+     beforeEach(async () => {
+       toggle = fixtureSync(`
+-        <vaadin-grid-tree-toggle>
++        <vaadin24-grid-tree-toggle>
+           <label for="foo-input">foo label</label>
+           <input id="foo-input">
+           <div>foo</div>
+-        </vaadin-grid-tree-toggle>
++        </vaadin24-grid-tree-toggle>
+       `);
+       await nextFrame();
+     });
+@@ -133,11 +133,11 @@
+ 
+     beforeEach(() => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-tree-column></vaadin-grid-tree-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-tree-column></vaadin24-grid-tree-column>
++        </vaadin24-grid>
+       `);
+-      column = grid.querySelector('vaadin-grid-tree-column');
++      column = grid.querySelector('vaadin24-grid-tree-column');
+       grid.dataProvider = (_, cb) => {
+         cb([{ name: 'foo', hasChildren: true }], 1);
+       };

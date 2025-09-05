@@ -2,7 +2,7 @@ Index: src/vaadin-date-picker-mixin.d.ts
 ===================================================================
 --- src/vaadin-date-picker-mixin.d.ts
 +++ src/vaadin-date-picker-mixin.d.ts
-@@ -4,13 +4,13 @@
+@@ -4,14 +4,14 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -10,6 +10,7 @@ Index: src/vaadin-date-picker-mixin.d.ts
 -import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
 -import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
 -import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 -import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
 -import type { InputConstraintsMixinClass } from '@vaadin/field-base/src/input-constraints-mixin.js';
 -import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
@@ -17,6 +18,7 @@ Index: src/vaadin-date-picker-mixin.d.ts
 +import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
 +import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 +import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import type { InputConstraintsMixinClass } from '@scoped-vaadin/field-base/src/input-constraints-mixin.js';
 +import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';

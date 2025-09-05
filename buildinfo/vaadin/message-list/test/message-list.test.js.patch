@@ -1,0 +1,158 @@
+Index: test/message-list.test.js
+===================================================================
+--- test/message-list.test.js
++++ test/message-list.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import {
+   arrowDown,
+@@ -22,7 +23,7 @@
+     root.style.setProperty('--vaadin-user-color-1', 'purple');
+     root.style.setProperty('--vaadin-user-color-2', 'blue');
+ 
+-    messageList = fixtureSync('<vaadin-message-list></vaadin-message-list>');
++    messageList = fixtureSync('<vaadin24-message-list></vaadin24-message-list>');
+ 
+     // Transparent 1px gif
+     const img = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+@@ -70,11 +71,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+@@ -89,7 +90,7 @@
+     });
+ 
+     it('should render vaadin-message element for each item', () => {
+-      const items = messageList.querySelectorAll('vaadin-message');
++      const items = messageList.querySelectorAll('vaadin24-message');
+       expect(items.length).to.equal(4);
+     });
+ 
+@@ -100,7 +101,7 @@
+     });
+ 
+     it('message properties should be correctly set', () => {
+-      const firstMessage = messageList.querySelector('vaadin-message');
++      const firstMessage = messageList.querySelector('vaadin24-message');
+       expect(firstMessage.time).to.be.equal(messages[0].time);
+       expect(firstMessage.userName).to.be.equal(messages[0].userName);
+       expect(firstMessage.userAbbr).to.be.equal(messages[0].userAbbr);
+@@ -114,14 +115,14 @@
+       it('should remove vaadin-message elements for removed items', async () => {
+         messageList.items = [messages[1], messages[2]];
+         await nextRender();
+-        const items = messageList.querySelectorAll('vaadin-message');
++        const items = messageList.querySelectorAll('vaadin24-message');
+         expect(items.length).to.equal(2);
+       });
+ 
+       it('should append vaadin-message elements for items added at the end', async () => {
+         messageList.items = [messages[1], messages[2], { userAbbr: 'SK', text: 'Hi' }];
+         await nextRender();
+-        const items = messageList.querySelectorAll('vaadin-message');
++        const items = messageList.querySelectorAll('vaadin24-message');
+         expect(items.length).to.equal(3);
+         expect(items[2].textContent).to.equal('Hi');
+       });
+@@ -129,16 +130,16 @@
+       it('should insert vaadin-message elements for items added in the middle', async () => {
+         messageList.items = [messages[1], { userAbbr: 'SK', text: 'Hi' }, messages[2]];
+         await nextRender();
+-        const items = messageList.querySelectorAll('vaadin-message');
++        const items = messageList.querySelectorAll('vaadin24-message');
+         expect(items.length).to.equal(3);
+         expect(items[1].textContent).to.equal('Hi');
+       });
+ 
+       it('should reuse existing vaadin-message element when updating items', async () => {
+-        const firstMessage = messageList.querySelector('vaadin-message');
++        const firstMessage = messageList.querySelector('vaadin24-message');
+         messageList.items = [messages[1], messages[2]];
+         await nextRender();
+-        const items = messageList.querySelectorAll('vaadin-message');
++        const items = messageList.querySelectorAll('vaadin24-message');
+         expect(items.length).to.equal(2);
+         expect(items[0]).to.eql(firstMessage);
+         expect(items[1]).to.not.eql(firstMessage);
+@@ -147,7 +148,7 @@
+       it('should not remove vaadin-avatar elements when updating items', async () => {
+         messageList.items = [{ text: '', userName: 'Assistant' }];
+         await nextRender();
+-        expect(messageList.querySelector('vaadin-avatar')).to.be.ok;
++        expect(messageList.querySelector('vaadin24-avatar')).to.be.ok;
+       });
+     });
+ 
+@@ -196,7 +197,7 @@
+ 
+     describe('tabindex', () => {
+       it('should set tabindex 0 on first message after removing the one that had it previously', async () => {
+-        const messages = messageList.querySelectorAll('vaadin-message');
++        const messages = messageList.querySelectorAll('vaadin24-message');
+         const thirdMessage = messages[2];
+ 
+         // Click on third item to give it tabindex=0
+@@ -228,7 +229,7 @@
+       });
+ 
+       it('should preserve tabindex when adding new messages', async () => {
+-        const secondMessage = messageList.querySelectorAll('vaadin-message')[1];
++        const secondMessage = messageList.querySelectorAll('vaadin24-message')[1];
+         mousedown(secondMessage);
+         focusin(secondMessage);
+         messageList.items = [
+@@ -242,14 +243,14 @@
+           },
+         ];
+         await nextRender(messageList);
+-        const messages = messageList.querySelectorAll('vaadin-message');
++        const messages = messageList.querySelectorAll('vaadin24-message');
+         messages.forEach((msg, idx) => {
+           expect(msg.tabIndex).to.equal(idx === 1 ? 0 : -1);
+         });
+       });
+ 
+       it('should preserve tabindex when removing messages if possible', async () => {
+-        const secondMessage = messageList.querySelectorAll('vaadin-message')[1];
++        const secondMessage = messageList.querySelectorAll('vaadin24-message')[1];
+         mousedown(secondMessage);
+         focusin(secondMessage);
+ 
+@@ -272,7 +273,7 @@
+         ];
+ 
+         await nextRender(messageList);
+-        const messages = messageList.querySelectorAll('vaadin-message');
++        const messages = messageList.querySelectorAll('vaadin24-message');
+         // Verify that the second item got the new tabIndex=0.
+         expect(messages[0].tabIndex).to.be.equal(-1);
+         expect(messages[1].tabIndex).to.be.equal(0);
+@@ -286,7 +287,7 @@
+     beforeEach(async () => {
+       messageList.items = messages;
+       await nextRender(messageList);
+-      messageElements = messageList.querySelectorAll('vaadin-message');
++      messageElements = messageList.querySelectorAll('vaadin24-message');
+       message = messageElements[1];
+     });
+ 
+@@ -334,7 +335,7 @@
+     beforeEach(async () => {
+       messageList.items = messages;
+       await nextRender(messageList);
+-      messageElements = messageList.querySelectorAll('vaadin-message');
++      messageElements = messageList.querySelectorAll('vaadin24-message');
+     });
+ 
+     it('should set tabindex on the next message on "arrow-down" keydown', () => {

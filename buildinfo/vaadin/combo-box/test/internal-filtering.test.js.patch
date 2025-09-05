@@ -1,0 +1,67 @@
+Index: test/internal-filtering.test.js
+===================================================================
+--- test/internal-filtering.test.js
++++ test/internal-filtering.test.js
+@@ -10,7 +10,7 @@
+ 
+   describe('value is set before', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync(`<vaadin-combo-box value="foo"></vaadin-combo-box>`);
++      comboBox = fixtureSync(`<vaadin24-combo-box value="foo"></vaadin24-combo-box>`);
+       await nextRender();
+       comboBox.items = ['foo', 'bar'];
+     });
+@@ -26,7 +26,7 @@
+ 
+   describe('setting the input field value', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       comboBox.items = ['foo', 'bar', 'baz'];
+     });
+@@ -85,7 +85,7 @@
+ 
+   describe('focusing items while filtering', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       comboBox.items = ['foo', 'bar', 'baz'];
+     });
+@@ -136,7 +136,7 @@
+     let overlay;
+ 
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       comboBox.items = ['foo', 'bar', 'baz'];
+       overlay = comboBox.$.overlay;
+@@ -245,7 +245,7 @@
+ 
+   describe('filtering with many items', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       comboBox.items = makeItems(1000);
+       await nextRender();
+     });
+@@ -260,7 +260,7 @@
+ 
+   describe('setting items when opened', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       comboBox.items = [];
+     });
+@@ -274,7 +274,7 @@
+ 
+   describe('setting placeholder items', () => {
+     beforeEach(async () => {
+-      comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++      comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+       await nextRender();
+       comboBox.items = [new ComboBoxPlaceholder(), new ComboBoxPlaceholder()];
+     });

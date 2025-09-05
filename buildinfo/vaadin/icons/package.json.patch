@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/icons",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/icons",
 +  "version": "24.6.2-alpha.1",
 +  "repository": {
@@ -38,16 +38,16 @@ Index: package.json
    ],
    "dependencies": {
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/icon": "~24.6.2"
+-    "@vaadin/icon": "~24.8.6"
 -  },
 -  "devDependencies": {
 -    "cheerio": "^1.0.0-rc.10",
--    "gulp": "^4.0.2",
--    "gulp-cli": "^2.3.0",
+-    "gulp": "^5.0.0",
+-    "gulp-cli": "^3.0.0",
 -    "gulp-concat": "^2.6.1",
 -    "gulp-modify": "^0.1.1"
 -  },
--  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +    "@scoped-vaadin/icon": "^24.6.2-alpha.1",
 +    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
 +  }

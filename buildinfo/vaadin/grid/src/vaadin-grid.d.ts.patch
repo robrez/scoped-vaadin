@@ -3,7 +3,7 @@ Index: src/vaadin-grid.d.ts
 --- src/vaadin-grid.d.ts
 +++ src/vaadin-grid.d.ts
 @@ -3,11 +3,11 @@
-  * Copyright (c) 2016 - 2024 Vaadin Ltd.
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
@@ -96,7 +96,7 @@ Index: src/vaadin-grid.d.ts
 + * - [`<vaadin24-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
   *
   * __Note that the helper elements must be explicitly imported.__
-  * If you want to import everything at once you can use the `all-imports.html` bundle.
+  * If you want to import everything at once you can use the `all-imports.js` entrypoint.
 @@ -108,9 +108,9 @@
   * ### Lazy Loading with Function Data Provider
   *
@@ -109,7 +109,7 @@ Index: src/vaadin-grid.d.ts
   * to be displayed.
   *
   * See the [`dataProvider`](#/elements/vaadin-grid#property-dataProvider) property
-@@ -281,7 +281,7 @@
+@@ -282,7 +282,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

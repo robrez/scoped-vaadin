@@ -2,7 +2,7 @@ Index: test/nested.test.js
 ===================================================================
 --- test/nested.test.js
 +++ test/nested.test.js
-@@ -14,7 +14,7 @@
+@@ -15,7 +15,7 @@
    });
  
    beforeEach(async () => {
@@ -11,7 +11,7 @@ Index: test/nested.test.js
      target = fixtureSync('<button>Target</button>');
      popover.target = target;
      popover.renderer = (root) => {
-@@ -23,7 +23,7 @@
+@@ -24,7 +24,7 @@
        }
        root.innerHTML = `
          <button id="second-target">Second target</button>

@@ -1,0 +1,13 @@
+Index: test/keyboard.test.js
+===================================================================
+--- test/keyboard.test.js
++++ test/keyboard.test.js
+@@ -25,7 +25,7 @@
+   beforeEach(async () => {
+     [comboBox, lastGlobalFocusable] = fixtureSync(
+       `<div>
+-        <vaadin-combo-box></vaadin-combo-box>
++        <vaadin24-combo-box></vaadin24-combo-box>
+         <input id="last-global-focusable" />
+       </div>`,
+     ).children;

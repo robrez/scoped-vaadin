@@ -2,16 +2,18 @@ Index: src/vaadin-avatar-group-mixin.d.ts
 ===================================================================
 --- src/vaadin-avatar-group-mixin.d.ts
 +++ src/vaadin-avatar-group-mixin.d.ts
-@@ -4,9 +4,9 @@
+@@ -4,10 +4,10 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
 -import type { AvatarI18n } from '@vaadin/avatar/src/vaadin-avatar.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 -import type { OverlayClassMixinClass } from '@vaadin/component-base/src/overlay-class-mixin.js';
 -import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
 +import type { AvatarI18n } from '@scoped-vaadin/avatar/src/vaadin-avatar.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import type { OverlayClassMixinClass } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
  
  export interface AvatarGroupI18n extends AvatarI18n {
-   activeUsers: {
+   activeUsers?: {

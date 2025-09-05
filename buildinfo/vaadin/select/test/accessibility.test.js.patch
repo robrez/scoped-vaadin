@@ -1,0 +1,123 @@
+Index: test/accessibility.test.js
+===================================================================
+--- test/accessibility.test.js
++++ test/accessibility.test.js
+@@ -3,21 +3,21 @@
+ import { fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import './not-animated-styles.js';
+ import '../src/vaadin-select.js';
+-import '@vaadin/item/src/vaadin-item.js';
+-import '@vaadin/list-box/src/vaadin-list-box.js';
++import '@scoped-vaadin/item/src/vaadin-item.js';
++import '@scoped-vaadin/list-box/src/vaadin-list-box.js';
+ 
+ describe('accessibility', () => {
+   let select, valueButton;
+ 
+   beforeEach(async () => {
+-    select = fixtureSync(`<vaadin-select label="Label"></vaadin-select>`);
++    select = fixtureSync(`<vaadin24-select label="Label"></vaadin24-select>`);
+     await nextRender();
+     select.items = [
+       { label: 'Option 1', value: 'Option 1' },
+       { label: 'Option 2', value: 'Option 2' },
+     ];
+     await nextUpdate(select);
+-    valueButton = select.querySelector('vaadin-select-value-button');
++    valueButton = select.querySelector('vaadin24-select-value-button');
+   });
+ 
+   it('should toggle aria-expanded attribute on the value button on open', async () => {
+@@ -61,14 +61,14 @@
+ 
+   describe('accessible-name', () => {
+     beforeEach(async () => {
+-      select = fixtureSync('<vaadin-select label="label"></vaadin-select>');
++      select = fixtureSync('<vaadin24-select label="label"></vaadin24-select>');
+       await nextRender();
+       select.items = [
+         { label: 'Option 1', value: 'Option 1' },
+         { label: 'Option 2', value: 'Option 2' },
+       ];
+       await nextUpdate(select);
+-      valueButton = select.querySelector('vaadin-select-value-button');
++      valueButton = select.querySelector('vaadin24-select-value-button');
+     });
+ 
+     it('should be null by default', () => {
+@@ -151,14 +151,14 @@
+ 
+     describe('accessible-name is set initially', () => {
+       beforeEach(async () => {
+-        select = fixtureSync('<vaadin-select label="label" accessible-name="accessible name"></vaadin-select>');
++        select = fixtureSync('<vaadin24-select label="label" accessible-name="accessible name"></vaadin24-select>');
+         await nextRender();
+         select.items = [
+           { label: 'Option 1', value: 'Option 1' },
+           { label: 'Option 2', value: 'Option 2' },
+         ];
+         await nextUpdate(select);
+-        valueButton = select.querySelector('vaadin-select-value-button');
++        valueButton = select.querySelector('vaadin24-select-value-button');
+       });
+ 
+       it('should have accessible-name value as slotted element text content', () => {
+@@ -180,9 +180,9 @@
+ 
+       describe('no items added initially', () => {
+         beforeEach(async () => {
+-          select = fixtureSync('<vaadin-select label="label" accessible-name="accessible name"></vaadin-select>');
++          select = fixtureSync('<vaadin24-select label="label" accessible-name="accessible name"></vaadin24-select>');
+           await nextRender();
+-          valueButton = select.querySelector('vaadin-select-value-button');
++          valueButton = select.querySelector('vaadin24-select-value-button');
+         });
+ 
+         it('should have slotted element id value in aria-labelledby', () => {
+@@ -195,14 +195,14 @@
+ 
+   describe('accessible-name-ref', () => {
+     beforeEach(async () => {
+-      select = fixtureSync('<vaadin-select label="label"></vaadin-select>');
++      select = fixtureSync('<vaadin24-select label="label"></vaadin24-select>');
+       await nextRender();
+       select.items = [
+         { label: 'Option 1', value: 'Option 1' },
+         { label: 'Option 2', value: 'Option 2' },
+       ];
+       await nextUpdate(select);
+-      valueButton = select.querySelector('vaadin-select-value-button');
++      valueButton = select.querySelector('vaadin24-select-value-button');
+     });
+ 
+     it('should be null by default', () => {
+@@ -271,14 +271,14 @@
+ 
+     describe('accessible-name-ref is set initially', () => {
+       beforeEach(async () => {
+-        select = fixtureSync('<vaadin-select label="label" accessible-name-ref="accessible-name-ref"></vaadin-select>');
++        select = fixtureSync('<vaadin24-select label="label" accessible-name-ref="accessible-name-ref"></vaadin24-select>');
+         await nextRender();
+         select.items = [
+           { label: 'Option 1', value: 'Option 1' },
+           { label: 'Option 2', value: 'Option 2' },
+         ];
+         await nextUpdate(select);
+-        valueButton = select.querySelector('vaadin-select-value-button');
++        valueButton = select.querySelector('vaadin24-select-value-button');
+       });
+ 
+       it('should have property value in aria-labelledby', () => {
+@@ -295,10 +295,10 @@
+       describe('no items added initially', () => {
+         beforeEach(async () => {
+           select = fixtureSync(
+-            '<vaadin-select label="label" accessible-name-ref="accessible-name-ref"></vaadin-select>',
++            '<vaadin24-select label="label" accessible-name-ref="accessible-name-ref"></vaadin24-select>',
+           );
+           await nextRender();
+-          valueButton = select.querySelector('vaadin-select-value-button');
++          valueButton = select.querySelector('vaadin24-select-value-button');
+         });
+ 
+         it('should have property value in aria-labelledby', () => {

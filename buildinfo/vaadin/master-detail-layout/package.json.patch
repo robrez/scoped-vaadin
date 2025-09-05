@@ -1,0 +1,68 @@
+Index: package.json
+===================================================================
+--- package.json
++++ package.json
+@@ -1,21 +1,21 @@
+ {
+-  "name": "@vaadin/master-detail-layout",
+-  "version": "24.8.6",
++  "name": "@scoped-vaadin/master-detail-layout",
++  "version": "24.6.2-alpha.1",
++  "repository": {
++    "type": "git",
++    "url": "https://github.com/robrez/scoped-vaadin.git",
++    "directory": "packages/master-detail-layout"
++  },
++  "bugs": {
++    "url": "https://github.com/robrez/scoped-vaadin/issues"
++  },
+   "publishConfig": {
+     "access": "public"
+   },
+   "description": "Web component for building UIs with a master area and a detail area.",
+   "license": "Apache-2.0",
+-  "repository": {
+-    "type": "git",
+-    "url": "https://github.com/vaadin/web-components.git",
+-    "directory": "packages/master-detail-layout"
+-  },
+   "author": "Vaadin Ltd",
+   "homepage": "https://vaadin.com/components",
+-  "bugs": {
+-    "url": "https://github.com/vaadin/web-components/issues"
+-  },
+   "main": "vaadin-master-detail-layout.js",
+   "module": "vaadin-master-detail-layout.js",
+   "type": "module",
+@@ -33,22 +33,17 @@
+     "web-components",
+     "web-component"
+   ],
+-  "dependencies": {
+-    "@vaadin/a11y-base": "~24.8.6",
+-    "@vaadin/component-base": "~24.8.6",
+-    "@vaadin/vaadin-lumo-styles": "~24.8.6",
+-    "@vaadin/vaadin-material-styles": "~24.8.6",
+-    "@vaadin/vaadin-themable-mixin": "~24.8.6",
+-    "lit": "^3.0.0"
+-  },
+-  "devDependencies": {
+-    "@vaadin/chai-plugins": "~24.8.6",
+-    "@vaadin/testing-helpers": "^1.1.0",
+-    "sinon": "^18.0.0"
+-  },
+   "web-types": [
+     "web-types.json",
+     "web-types.lit.json"
+   ],
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
++  "dependencies": {
++    "@scoped-vaadin/a11y-base": "^24.6.2-alpha.1",
++    "@scoped-vaadin/component-base": "^24.6.2-alpha.1",
++    "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2-alpha.1",
++    "@scoped-vaadin/vaadin-material-styles": "^24.6.2-alpha.1",
++    "@scoped-vaadin/vaadin-themable-mixin": "^24.6.2-alpha.1",
++    "lit": "^3.0.0",
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
++  }
+ }

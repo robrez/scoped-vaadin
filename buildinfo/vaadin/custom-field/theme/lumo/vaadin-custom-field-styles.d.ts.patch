@@ -3,7 +3,7 @@ Index: theme/lumo/vaadin-custom-field-styles.d.ts
 --- theme/lumo/vaadin-custom-field-styles.d.ts
 +++ theme/lumo/vaadin-custom-field-styles.d.ts
 @@ -3,9 +3,9 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * Copyright (c) 2019 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/vaadin-lumo-styles/color.js';

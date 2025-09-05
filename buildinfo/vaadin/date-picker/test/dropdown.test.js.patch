@@ -1,0 +1,13 @@
+Index: test/dropdown.test.js
+===================================================================
+--- test/dropdown.test.js
++++ test/dropdown.test.js
+@@ -11,7 +11,7 @@
+   beforeEach(async () => {
+     datePicker = fixtureSync(
+       `<div>
+-        <vaadin-date-picker></vaadin-date-picker>
++        <vaadin24-date-picker></vaadin24-date-picker>
+         <input id="last-global-focusable" />
+       </div>`,
+     ).firstElementChild;

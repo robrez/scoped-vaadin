@@ -2,18 +2,29 @@ Index: test/helpers.js
 ===================================================================
 --- test/helpers.js
 +++ test/helpers.js
-@@ -1,8 +1,8 @@
- import { fire, nextRender, oneEvent } from '@vaadin/testing-helpers';
+@@ -1,5 +1,5 @@
+ import { fire, oneEvent } from '@vaadin/testing-helpers';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 +import { isTouch } from '@scoped-vaadin/component-base/src/browser-utils.js';
  
+ export function activateItem(target, event = isTouch ? 'click' : 'mouseover') {
+   const { right, bottom } = target.getBoundingClientRect();
+@@ -7,11 +7,11 @@
+ }
+ 
  export async function openMenu(target, event = isTouch ? 'click' : 'mouseover') {
--  const menu = target.closest('vaadin-context-menu');
-+  const menu = target.closest('vaadin24-context-menu');
-   if (menu) {
-     menu.__openListenerActive = true;
+-  let menu = target.closest('vaadin-context-menu');
++  let menu = target.closest('vaadin24-context-menu');
+   if (!menu) {
+     // If the target is a menu item, get reference to the submenu.
+-    const overlay = target.closest('vaadin-context-menu-overlay');
+-    menu = overlay.querySelector('vaadin-context-menu');
++    const overlay = target.closest('vaadin24-context-menu-overlay');
++    menu = overlay.querySelector('vaadin24-context-menu');
    }
-@@ -16,7 +16,7 @@
+   // Disable logic that delays opening submenu
+   menu.__openListenerActive = true;
+@@ -24,7 +24,7 @@
  }
  
  export function getSubMenu(menu) {

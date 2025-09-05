@@ -1,0 +1,22 @@
+Index: test/helpers.js
+===================================================================
+--- test/helpers.js
++++ test/helpers.js
+@@ -5,7 +5,7 @@
+  */
+ export function assertFormLayoutGrid(layout, { columns, rows }) {
+   const children = [...layout.children]
+-    .flatMap((child) => (child.localName === 'vaadin-form-row' ? [...child.children] : child))
++    .flatMap((child) => (child.localName === 'vaadin24-form-row' ? [...child.children] : child))
+     .filter((child) => child.localName !== 'br');
+   expect(new Set(children.map((child) => child.offsetLeft)).size).to.equal(columns, `expected ${columns} columns`);
+   expect(new Set(children.map((child) => child.offsetTop)).size).to.equal(rows, `expected ${rows} rows`);
+@@ -20,7 +20,7 @@
+   const labelSpacing = parseFloat(getComputedStyle(layout).getPropertyValue('--vaadin-form-layout-label-spacing'));
+ 
+   [...layout.children].forEach((child) => {
+-    if (child.localName !== 'vaadin-form-item') {
++    if (child.localName !== 'vaadin24-form-item') {
+       return;
+     }
+ 
