@@ -2,28 +2,34 @@ Index: src/vaadin-menu-bar-mixin.js
 ===================================================================
 --- src/vaadin-menu-bar-mixin.js
 +++ src/vaadin-menu-bar-mixin.js
-@@ -3,13 +3,13 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
-  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
-  */
+@@ -6,16 +6,16 @@
+ import { html, noChange, nothing, render } from 'lit';
+ import { Directive, directive } from 'lit/directive.js';
+ import { ifDefined } from 'lit/directives/if-defined.js';
 -import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
 -import { FocusMixin } from '@vaadin/a11y-base/src/focus-mixin.js';
--import { isElementFocused, isElementHidden, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { isElementFocused, isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
 -import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import { microTask } from '@vaadin/component-base/src/async.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { Debouncer } from '@vaadin/component-base/src/debounce.js';
+-import { I18nMixin } from '@vaadin/component-base/src/i18n-mixin.js';
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 -import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
 +import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
 +import { FocusMixin } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
-+import { isElementFocused, isElementHidden, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { isElementFocused, isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
 +import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import { microTask } from '@scoped-vaadin/component-base/src/async.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { Debouncer } from '@scoped-vaadin/component-base/src/debounce.js';
++import { I18nMixin } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 +import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
  
  /**
-  * @polymerMixin
-@@ -30,9 +30,9 @@
+  * Custom Lit directive for rendering item components
+@@ -77,9 +77,9 @@
           * @type {object}
           * @property {string} text - Text to be set as the menu button component's textContent.
           * @property {string} tooltip - Text to be set as the menu button's tooltip.
@@ -35,7 +41,7 @@ Index: src/vaadin-menu-bar-mixin.js
           * @property {boolean} disabled - If true, the button is disabled and cannot be activated.
           * @property {union: string | string[]} theme - Theme(s) to be set as the theme attribute of the button, overriding any theme set on the menu bar.
           * @property {SubMenuItem[]} children - Array of submenu items.
-@@ -43,7 +43,7 @@
+@@ -90,7 +90,7 @@
           * @type {object}
           * @property {string} text - Text to be set as the menu item component's textContent.
           * @property {union: string | object} component - The component to represent the item.
@@ -44,7 +50,7 @@ Index: src/vaadin-menu-bar-mixin.js
           * @property {boolean} disabled - If true, the item is disabled and cannot be selected.
           * @property {boolean} checked - If true, the item shows a checkmark next to it.
           * @property {SubMenuItem[]} children - Array of child submenu items.
-@@ -231,12 +231,12 @@
+@@ -305,12 +305,12 @@
       * @protected
       */
      get _buttons() {
@@ -59,7 +65,7 @@ Index: src/vaadin-menu-bar-mixin.js
      }
  
      /** @protected */
-@@ -245,7 +245,7 @@
+@@ -319,7 +319,7 @@
  
        this.setAttribute('role', 'menubar');
  
@@ -68,16 +74,7 @@ Index: src/vaadin-menu-bar-mixin.js
          initializer: (btn) => {
            btn.setAttribute('hidden', '');
  
-@@ -542,7 +542,7 @@
- 
-     /** @protected */
-     _initButton(item) {
--      const button = document.createElement('vaadin-menu-bar-button');
-+      const button = document.createElement('vaadin24-menu-bar-button');
- 
-       const itemCopy = { ...item };
-       button.item = itemCopy;
-@@ -604,10 +604,10 @@
+@@ -614,10 +614,10 @@
  
        const isElement = itemComponent instanceof HTMLElement;
        // Use existing item component, if any
@@ -90,7 +87,25 @@ Index: src/vaadin-menu-bar-mixin.js
          component.appendChild(isElement ? itemComponent : document.createElement(itemComponent));
        }
        if (item.text) {
-@@ -733,7 +733,7 @@
+@@ -642,7 +642,7 @@
+             }
+ 
+             return html`
+-              <vaadin-menu-bar-button
++              <vaadin24-menu-bar-button
+                 .item="${itemCopy}"
+                 .disabled="${this.disabled || item.disabled}"
+                 role="${this.tabNavigation ? 'button' : 'menuitem'}"
+@@ -651,7 +651,7 @@
+                 class="${ifDefined(item.className || nothing)}"
+                 theme="${ifDefined(this.__getButtonTheme(item, this._theme) || nothing)}"
+                 @click="${this.__onRootButtonClick}"
+-                >${componentDirective(itemCopy)}</vaadin-menu-bar-button
++                >${componentDirective(itemCopy)}</vaadin24-menu-bar-button
+               >
+             `;
+           })}
+@@ -768,7 +768,7 @@
  
      /** @private */
      _getButtonFromEvent(e) {

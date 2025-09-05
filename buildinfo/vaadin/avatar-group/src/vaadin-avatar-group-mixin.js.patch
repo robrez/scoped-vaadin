@@ -2,22 +2,24 @@ Index: src/vaadin-avatar-group-mixin.js
 ===================================================================
 --- src/vaadin-avatar-group-mixin.js
 +++ src/vaadin-avatar-group-mixin.js
-@@ -6,10 +6,10 @@
- import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+@@ -5,11 +5,11 @@
+  */
  import { html, render } from 'lit';
  import { ifDefined } from 'lit/directives/if-defined.js';
 -import { announce } from '@vaadin/a11y-base/src/announce.js';
+-import { I18nMixin } from '@vaadin/component-base/src/i18n-mixin.js';
 -import { OverlayClassMixin } from '@vaadin/component-base/src/overlay-class-mixin.js';
 -import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 -import { SlotController } from '@vaadin/component-base/src/slot-controller.js';
 +import { announce } from '@scoped-vaadin/a11y-base/src/announce.js';
++import { I18nMixin } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import { OverlayClassMixin } from '@scoped-vaadin/component-base/src/overlay-class-mixin.js';
 +import { ResizeMixin } from '@scoped-vaadin/component-base/src/resize-mixin.js';
 +import { SlotController } from '@scoped-vaadin/component-base/src/slot-controller.js';
  
  const MINIMUM_DISPLAYED_AVATARS = 2;
  
-@@ -170,7 +170,7 @@
+@@ -171,7 +171,7 @@
      ready() {
        super.ready();
  
@@ -26,7 +28,7 @@ Index: src/vaadin-avatar-group-mixin.js
          initializer: (overflow) => {
            overflow.setAttribute('role', 'button');
            overflow.setAttribute('aria-haspopup', 'menu');
-@@ -178,7 +178,7 @@
+@@ -179,7 +179,7 @@
            overflow.addEventListener('click', (e) => this._onOverflowClick(e));
            overflow.addEventListener('keydown', (e) => this._onOverflowKeyDown(e));
  
@@ -35,7 +37,7 @@ Index: src/vaadin-avatar-group-mixin.js
            tooltip.setAttribute('slot', 'tooltip');
            overflow.appendChild(tooltip);
  
-@@ -218,7 +218,7 @@
+@@ -215,7 +215,7 @@
      __overlayRenderer(root) {
        let menu = root.firstElementChild;
        if (!menu) {
@@ -44,7 +46,7 @@ Index: src/vaadin-avatar-group-mixin.js
          menu.addEventListener('keydown', (event) => this._onListKeyDown(event));
          root.appendChild(menu);
        }
-@@ -236,9 +236,9 @@
+@@ -233,9 +233,9 @@
  
      /** @private */
      __createItemElement(item) {
@@ -56,7 +58,7 @@ Index: src/vaadin-avatar-group-mixin.js
        itemElement.appendChild(avatar);
  
        avatar.setAttribute('aria-hidden', 'true');
-@@ -320,7 +320,7 @@
+@@ -317,7 +317,7 @@
          html`
            ${items.map(
              (item) => html`
@@ -65,8 +67,8 @@ Index: src/vaadin-avatar-group-mixin.js
                  .name="${item.name}"
                  .abbr="${item.abbr}"
                  .img="${item.img}"
-@@ -328,7 +328,7 @@
-                 .i18n="${this.i18n}"
+@@ -325,7 +325,7 @@
+                 .i18n="${this.__effectiveI18n}"
                  class="${ifDefined(item.className)}"
                  with-tooltip
 -              ></vaadin-avatar>
@@ -74,7 +76,7 @@ Index: src/vaadin-avatar-group-mixin.js
              `,
            )}
          `,
-@@ -347,7 +347,7 @@
+@@ -344,7 +344,7 @@
  
        this.__renderAvatars(limit ? items.slice(0, limit) : items);
  
@@ -83,7 +85,7 @@ Index: src/vaadin-avatar-group-mixin.js
      }
  
      /** @private */
-@@ -484,7 +484,7 @@
+@@ -481,7 +481,7 @@
  
        if (opened) {
          if (!this._menuElement) {

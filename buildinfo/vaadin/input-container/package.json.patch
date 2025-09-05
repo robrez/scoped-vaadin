@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/input-container",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/input-container",
 +  "version": "24.6.2-alpha.1",
 +  "repository": {
@@ -34,24 +34,25 @@ Index: package.json
    "main": "vaadin-input-container.js",
    "module": "vaadin-input-container.js",
    "type": "module",
-@@ -32,18 +32,11 @@
+@@ -32,19 +32,11 @@
    ],
    "dependencies": {
      "@polymer/polymer": "^3.0.0",
--    "@vaadin/component-base": "~24.6.2",
--    "@vaadin/vaadin-lumo-styles": "~24.6.2",
--    "@vaadin/vaadin-material-styles": "~24.6.2",
--    "@vaadin/vaadin-themable-mixin": "~24.6.2",
+-    "@vaadin/component-base": "~24.8.6",
+-    "@vaadin/vaadin-lumo-styles": "~24.8.6",
+-    "@vaadin/vaadin-material-styles": "~24.8.6",
+-    "@vaadin/vaadin-themable-mixin": "~24.8.6",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.6.2",
--    "@vaadin/icon": "~24.6.2",
--    "@vaadin/icons": "~24.6.2",
+-    "@vaadin/chai-plugins": "~24.8.6",
+-    "@vaadin/icon": "~24.8.6",
+-    "@vaadin/icons": "~24.8.6",
+-    "@vaadin/test-runner-commands": "~24.8.6",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
--  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +    "@scoped-vaadin/component-base": "^24.6.2-alpha.1",
 +    "@scoped-vaadin/vaadin-lumo-styles": "^24.6.2-alpha.1",
 +    "@scoped-vaadin/vaadin-material-styles": "^24.6.2-alpha.1",

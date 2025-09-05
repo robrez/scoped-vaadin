@@ -3,7 +3,7 @@ Index: src/vaadin-lit-tabsheet.js
 --- src/vaadin-lit-tabsheet.js
 +++ src/vaadin-lit-tabsheet.js
 @@ -3,17 +3,17 @@
-  * Copyright (c) 2022 - 2024 Vaadin Ltd.
+  * Copyright (c) 2022 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/tabs/src/vaadin-lit-tabs.js';
@@ -35,7 +35,7 @@ Index: src/vaadin-lit-tabsheet.js
    }
  
    static get styles() {
-@@ -66,10 +66,10 @@
+@@ -70,10 +70,10 @@
          <slot name="suffix"></slot>
        </div>
  

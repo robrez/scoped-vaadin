@@ -1,13 +1,12 @@
 import { glob } from "glob";
 import Path from "path";
 import fs from "fs";
-import { createPatch } from "diff";
 import { versionMeta } from "./meta/index.js";
 import { transformJs, processTagNamesNaive } from "./transform/index.js";
 
 const majorVersion = versionMeta.vaadinVersion;
 
-// this lazily just operates on `dev/` which was copied directly from `@vaadin/web-components/dev`
+// this lazily just operates on `dev/` which was copied directly (and manually) from `git_modules/@vaadin/web-components/dev`
 // TODO make this DRY vs `build.js`
 
 const nodePackagesRoot = "dev";

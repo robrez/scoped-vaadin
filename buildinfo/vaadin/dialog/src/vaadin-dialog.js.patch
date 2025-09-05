@@ -75,8 +75,8 @@ Index: src/vaadin-dialog.js
          id="overlay"
          role$="[[overlayRole]]"
          header-title="[[headerTitle]]"
-@@ -116,12 +116,12 @@
-         resizable$="[[resizable]]"
+@@ -117,12 +117,12 @@
+         draggable$="[[draggable]]"
          restore-focus-on-close
          focus-trap
 -      ></vaadin-dialog-overlay>

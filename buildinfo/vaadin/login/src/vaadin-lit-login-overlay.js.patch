@@ -38,7 +38,7 @@ Index: src/vaadin-lit-login-overlay.js
          id="vaadinLoginOverlayWrapper"
          .opened="${this.opened}"
          .title="${this.title}"
-@@ -43,7 +43,7 @@
+@@ -44,7 +44,7 @@
          @vaadin-overlay-outside-click="${this._preventClosingLogin}"
          @opened-changed="${this._onOpenedChanged}"
        >
@@ -47,7 +47,7 @@ Index: src/vaadin-lit-login-overlay.js
            theme="with-overlay"
            id="vaadinLoginForm"
            .action="${this.action}"
-@@ -55,8 +55,8 @@
+@@ -57,8 +57,8 @@
            @login="${this._retargetEvent}"
            @forgot-password="${this._retargetEvent}"
            @disabled-changed="${this._onDisabledChanged}"

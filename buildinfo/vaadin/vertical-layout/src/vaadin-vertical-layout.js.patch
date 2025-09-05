@@ -2,16 +2,20 @@ Index: src/vaadin-vertical-layout.js
 ===================================================================
 --- src/vaadin-vertical-layout.js
 +++ src/vaadin-vertical-layout.js
-@@ -4,23 +4,23 @@
+@@ -4,26 +4,26 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { verticalLayoutStyles } from './vaadin-vertical-layout-styles.js';
+ 
+-registerStyles('vaadin-vertical-layout', verticalLayoutStyles, { moduleId: 'vaadin-vertical-layout-styles' });
++registerStyles('vaadin24-vertical-layout', verticalLayoutStyles, { moduleId: 'vaadin-vertical-layout-styles' });
  
  /**
 - * `<vaadin-vertical-layout>` provides a simple way to vertically align your HTML elements.
@@ -33,7 +37,7 @@ Index: src/vaadin-vertical-layout.js
   *
   * Theme variation | Description
   * ---|---
-@@ -68,7 +68,7 @@
+@@ -43,7 +43,7 @@
    }
  
    static get is() {

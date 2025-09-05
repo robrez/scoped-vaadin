@@ -3,7 +3,7 @@ Index: src/vaadin-confirm-dialog.js
 --- src/vaadin-confirm-dialog.js
 +++ src/vaadin-confirm-dialog.js
 @@ -3,31 +3,31 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/button/src/vaadin-button.js';
@@ -82,4 +82,4 @@ Index: src/vaadin-confirm-dialog.js
 +    return 'vaadin24-confirm-dialog';
    }
  
-   /** @protected */
+   /**

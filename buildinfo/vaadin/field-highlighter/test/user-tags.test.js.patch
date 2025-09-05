@@ -2,16 +2,16 @@ Index: test/user-tags.test.js
 ===================================================================
 --- test/user-tags.test.js
 +++ test/user-tags.test.js
-@@ -1,7 +1,7 @@
- import { expect } from '@vaadin/chai-plugins';
+@@ -2,7 +2,7 @@
  import { fixtureSync, nextFrame, oneEvent } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
--import '@vaadin/text-field';
-+import '@scoped-vaadin/text-field';
+ import './test-styles.test.js';
+-import '@vaadin/text-field/src/vaadin-text-field.js';
++import '@scoped-vaadin/text-field/src/vaadin-text-field.js';
  import { FieldHighlighter } from '../src/vaadin-field-highlighter.js';
  
  const user1 = { id: 'a', name: 'foo', colorIndex: 0 };
-@@ -20,7 +20,7 @@
+@@ -21,7 +21,7 @@
  
    const getTags = () => {
      const { overlay } = wrapper.$;
@@ -20,7 +20,7 @@ Index: test/user-tags.test.js
    };
  
    const addUser = (user) => {
-@@ -40,9 +40,9 @@
+@@ -41,9 +41,9 @@
  
    describe('default', () => {
      beforeEach(async () => {
@@ -32,7 +32,7 @@ Index: test/user-tags.test.js
        wrapper.duration = 0;
        wrapper.delay = 0;
        await waitForIntersectionObserver();
-@@ -68,9 +68,9 @@
+@@ -69,9 +69,9 @@
  
    describe('opened', () => {
      beforeEach(async () => {
@@ -44,7 +44,7 @@ Index: test/user-tags.test.js
        wrapper.duration = 0;
        wrapper.delay = 0;
        wrapper.show();
-@@ -144,9 +144,9 @@
+@@ -153,9 +153,9 @@
  
    describe('closed', () => {
      beforeEach(async () => {
@@ -56,7 +56,7 @@ Index: test/user-tags.test.js
        wrapper.duration = 0;
        wrapper.delay = 0;
        await waitForIntersectionObserver();
-@@ -195,12 +195,12 @@
+@@ -204,12 +204,12 @@
      beforeEach(async () => {
        container = fixtureSync(`
          <div style="width: 400px; height: 400px; overflow: scroll; border: 1px solid black;">

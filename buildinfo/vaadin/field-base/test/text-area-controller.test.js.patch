@@ -2,18 +2,13 @@ Index: test/text-area-controller.test.js
 ===================================================================
 --- test/text-area-controller.test.js
 +++ test/text-area-controller.test.js
-@@ -1,11 +1,12 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+@@ -1,7 +1,7 @@
  import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync } from '@vaadin/testing-helpers';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+ import { defineLit, definePolymer, fixtureSync } from '@vaadin/testing-helpers';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { InputMixin } from '../src/input-mixin.js';
  import { TextAreaController } from '../src/text-area-controller.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'textarea-controller-element',
-   class extends InputMixin(ControllerMixin(PolymerElement)) {
-     static get template() {

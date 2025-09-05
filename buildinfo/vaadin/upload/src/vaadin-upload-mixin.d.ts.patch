@@ -2,7 +2,16 @@ Index: src/vaadin-upload-mixin.d.ts
 ===================================================================
 --- src/vaadin-upload-mixin.d.ts
 +++ src/vaadin-upload-mixin.d.ts
-@@ -97,7 +97,7 @@
+@@ -4,7 +4,7 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+ import type { Constructor } from '@open-wc/dedupe-mixin';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
+ 
+ export interface UploadFile extends File {
+   uploadTarget: string;
+@@ -102,7 +102,7 @@
     * Key-Value map to send to the server. If you set this property as an
     * attribute, use a valid JSON string, for example:
     * ```

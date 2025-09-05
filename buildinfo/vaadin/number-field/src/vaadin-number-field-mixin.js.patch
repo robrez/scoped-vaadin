@@ -3,7 +3,7 @@ Index: src/vaadin-number-field-mixin.js
 --- src/vaadin-number-field-mixin.js
 +++ src/vaadin-number-field-mixin.js
 @@ -3,11 +3,11 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
@@ -17,5 +17,5 @@ Index: src/vaadin-number-field-mixin.js
 +import { InputFieldMixin } from '@scoped-vaadin/field-base/src/input-field-mixin.js';
 +import { LabelledInputController } from '@scoped-vaadin/field-base/src/labelled-input-controller.js';
  
- /**
-  * A mixin providing common number field functionality.
+ // [type=number] value returns an empty string for invalid numbers,
+ // while valueAsNumber returns NaN for empty strings, which makes

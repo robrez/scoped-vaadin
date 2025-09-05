@@ -3,7 +3,7 @@ Index: src/vaadin-multi-select-combo-box-mixin.js
 --- src/vaadin-multi-select-combo-box-mixin.js
 +++ src/vaadin-multi-select-combo-box-mixin.js
 @@ -3,14 +3,14 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { announce } from '@vaadin/a11y-base/src/announce.js';
@@ -45,7 +45,7 @@ Index: src/vaadin-multi-select-combo-box-mixin.js
          initializer: (chip) => {
            chip.addEventListener('mousedown', (e) => this._preventBlur(e));
            this._overflow = chip;
-@@ -765,7 +765,7 @@
+@@ -780,7 +780,7 @@
  
      /** @private */
      __createChip(item) {

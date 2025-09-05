@@ -12,9 +12,9 @@ Index: src/vaadin-grid-sort-column.d.ts
   *
   * #### Example:
   * ```html
-- * <vaadin-grid items="[[items]]">
+- * <vaadin-grid>
 - *  <vaadin-grid-sort-column path="name.first" direction="asc"></vaadin-grid-sort-column>
-+ * <vaadin24-grid items="[[items]]">
++ * <vaadin24-grid>
 + *  <vaadin24-grid-sort-column path="name.first" direction="asc"></vaadin24-grid-sort-column>
   *
 - *  <vaadin-grid-column>

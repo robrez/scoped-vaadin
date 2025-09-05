@@ -11,7 +11,7 @@ Index: test/helpers.js
  
  export function activateScroller(scroller) {
    scroller.active = true;
-@@ -107,7 +107,7 @@
+@@ -135,7 +135,7 @@
   */
  export function getFocusableCell(root) {
    const overlayContent = root._overlayContent ?? root;

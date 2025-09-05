@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/integer-field",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/integer-field",
 +  "version": "24.6.2-alpha.1",
 +  "repository": {
@@ -34,19 +34,20 @@ Index: package.json
    "main": "vaadin-integer-field.js",
    "module": "vaadin-integer-field.js",
    "type": "module",
-@@ -33,21 +33,16 @@
+@@ -33,22 +33,16 @@
      "web-components",
      "web-component"
    ],
 -  "dependencies": {
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/component-base": "~24.6.2",
--    "@vaadin/number-field": "~24.6.2",
--    "@vaadin/vaadin-lumo-styles": "~24.6.2",
--    "@vaadin/vaadin-material-styles": "~24.6.2"
+-    "@vaadin/component-base": "~24.8.6",
+-    "@vaadin/number-field": "~24.8.6",
+-    "@vaadin/vaadin-lumo-styles": "~24.8.6",
+-    "@vaadin/vaadin-material-styles": "~24.8.6"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.6.2",
+-    "@vaadin/chai-plugins": "~24.8.6",
+-    "@vaadin/test-runner-commands": "~24.8.6",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
@@ -54,7 +55,7 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +  "dependencies": {
 +    "@polymer/polymer": "^3.0.0",
 +    "@scoped-vaadin/component-base": "^24.6.2-alpha.1",

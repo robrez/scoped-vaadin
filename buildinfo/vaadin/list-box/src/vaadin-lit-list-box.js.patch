@@ -2,10 +2,10 @@ Index: src/vaadin-lit-list-box.js
 ===================================================================
 --- src/vaadin-lit-list-box.js
 +++ src/vaadin-lit-list-box.js
-@@ -4,15 +4,15 @@
+@@ -4,16 +4,16 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
- import { css, html, LitElement } from 'lit';
+ import { html, LitElement } from 'lit';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
@@ -16,6 +16,7 @@ Index: src/vaadin-lit-list-box.js
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { listBoxStyles } from './vaadin-list-box-core-styles.js';
  import { MultiSelectListMixin } from './vaadin-multi-select-list-mixin.js';
  
  /**
@@ -24,7 +25,7 @@ Index: src/vaadin-lit-list-box.js
   *
   * ## Disclaimer
   *
-@@ -22,7 +22,7 @@
+@@ -23,7 +23,7 @@
   */
  class ListBox extends ElementMixin(MultiSelectListMixin(ThemableMixin(PolylitMixin(LitElement)))) {
    static get is() {

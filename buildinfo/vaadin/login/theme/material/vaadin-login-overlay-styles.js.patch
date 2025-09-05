@@ -14,7 +14,7 @@ Index: theme/material/vaadin-login-overlay-styles.js
  
  const loginOverlayWrapper = css`
    :host {
-@@ -296,7 +296,7 @@
+@@ -299,7 +299,7 @@
    }
  `;
  
@@ -23,7 +23,7 @@ Index: theme/material/vaadin-login-overlay-styles.js
    moduleId: 'material-login-overlay-wrapper',
  });
  
-@@ -346,4 +346,4 @@
+@@ -349,4 +349,4 @@
    }
  `;
  

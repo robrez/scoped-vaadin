@@ -1,21 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text field</title>
+    <title>Text Field</title>
     <script type="module" src="./common.js"></script>
 
     <script type="module">
       import '@scoped-vaadin/text-field';
-      import '@scoped-vaadin/tooltip';
+      import '@scoped-vaadin/icon';
+      import '@scoped-vaadin/icons';
+      import '@scoped-vaadin/vaadin-lumo-styles/vaadin-iconset.js';
     </script>
   </head>
 
   <body>
-    <vaadin24-text-field label="User name" required>
-      <vaadin24-tooltip slot="tooltip" text="Other users will see this"></vaadin24-tooltip>
-    </vaadin24-text-field>
+    <section>
+      <h2>Plain</h2>
+      <vaadin24-text-field value="Value"></vaadin24-text-field>
+      <vaadin24-text-field placeholder="Placeholder"></vaadin24-text-field>
+    </section>
+
+    <section>
+      <h2>Bells & Whistles</h2>
+      <vaadin24-text-field
+        label="Label"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-text-field>
+    </section>
+
+    <section>
+      <h2>States</h2>
+      <vaadin24-text-field
+        label="Read-only"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        readonly
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-text-field>
+
+      <vaadin24-text-field
+        label="Disabled"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        disabled
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-text-field>
+    </section>
+
+    <section>
+      <h2>Helper Above Field</h2>
+      <vaadin24-text-field
+        theme="helper-above-field"
+        label="Label"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+      >
+        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
+      </vaadin24-text-field>
+    </section>
+
+    <section>
+      <h2>Content &amp; Layout Variations</h2>
+      <p>Resize the field to test how content flows.</p>
+      <vaadin24-text-field
+        label="A very long label for this field"
+        helper-text="If the label wasn't enough to tell what you should input here, then this long description should be."
+        value="I’m not sure what I should write here"
+        placeholder="Perhaps this gives you an idea what to write?"
+        clear-button-visible
+        error-message="In case you didn't write anything in this required field, this error message is here to let you know that you really should write something in this field."
+        required
+        style="resize: horizontal; overflow: hidden; padding: 1px"
+      >
+        <vaadin24-icon icon="vaadin:envelope-o" slot="prefix"></vaadin24-icon>
+      </vaadin24-text-field>
+    </section>
   </body>
 </html>

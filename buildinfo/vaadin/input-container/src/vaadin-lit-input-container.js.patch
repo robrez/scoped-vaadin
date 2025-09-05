@@ -14,8 +14,8 @@ Index: src/vaadin-lit-input-container.js
 +import { DirMixin } from '@scoped-vaadin/component-base/src/dir-mixin.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { inputContainerStyles } from './vaadin-input-container-core-styles.js';
  import { InputContainerMixin } from './vaadin-input-container-mixin.js';
- import { inputContainerStyles } from './vaadin-input-container-styles.js';
  
  /**
 - * LitElement based version of `<vaadin-input-container>` web component.

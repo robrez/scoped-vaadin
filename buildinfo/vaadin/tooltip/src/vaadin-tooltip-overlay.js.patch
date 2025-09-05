@@ -46,13 +46,4 @@ Index: src/vaadin-tooltip-overlay.js
 +    return 'vaadin24-tooltip';
    }
  
-   /** @protected */
-@@ -53,7 +53,7 @@
-     super.ready();
- 
-     // When setting `manual` and `opened` attributes, the overlay is already moved to body
--    // by the time when `ready()` callback of the `vaadin-tooltip` is executed by Polymer,
-+    // by the time when `ready()` callback of the `vaadin24-tooltip` is executed by Polymer,
-     // so querySelector() would return null. So we use this workaround to set properties.
-     this.owner = this.__dataHost;
-     this.owner._overlayElement = this;
+   requestContentUpdate() {

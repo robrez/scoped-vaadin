@@ -94,7 +94,7 @@ Index: src/vaadin-grid.js
 + * - [`<vaadin24-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
   *
   * __Note that the helper elements must be explicitly imported.__
-  * If you want to import everything at once you can use the `all-imports.html` bundle.
+  * If you want to import everything at once you can use the `all-imports.js` entrypoint.
 @@ -108,9 +108,9 @@
   * ### Lazy Loading with Function Data Provider
   *

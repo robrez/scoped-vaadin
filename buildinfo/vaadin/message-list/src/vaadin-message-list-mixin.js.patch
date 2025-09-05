@@ -6,17 +6,19 @@ Index: src/vaadin-message-list-mixin.js
 +import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
  /**
   * @license
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
-@@ -5,7 +6,7 @@
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
+@@ -5,8 +6,8 @@
   */
  import { html, render } from 'lit';
  import { ifDefined } from 'lit/directives/if-defined.js';
 -import { KeyboardDirectionMixin } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
+-import { SlotStylesMixin } from '@vaadin/component-base/src/slot-styles-mixin.js';
 +import { KeyboardDirectionMixin } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
++import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
  
  /**
   * @polymerMixin
-@@ -42,7 +43,7 @@
+@@ -66,7 +67,7 @@
  
      /** @protected */
      get _messages() {
@@ -25,7 +27,29 @@ Index: src/vaadin-message-list-mixin.js
      }
  
      /** @protected */
-@@ -92,7 +93,7 @@
+@@ -128,11 +129,11 @@
+ 
+     /** @private */
+     __markdownChanged(markdown) {
+-      if (markdown && !customElements.get('vaadin-markdown')) {
++      if (markdown && !internalCustomElements.get('vaadin24-markdown')) {
+         // Dynamically import the markdown component
+-        import('@vaadin/markdown/src/vaadin-markdown.js')
++        import('@scoped-vaadin/markdown/src/vaadin-markdown.js')
+           // Wait until the component is defined
+-          .then(() => customElements.whenDefined('vaadin-markdown'))
++          .then(() => internalCustomElements.whenDefined('vaadin24-markdown'))
+           // Render the messages again
+           .then(() => this._renderMessages(this.items));
+       }
+@@ -142,13 +143,13 @@
+     /** @private */
+     _renderMessages(items) {
+       // Check if markdown component is still loading
+-      const loadingMarkdown = this.markdown && !customElements.get('vaadin-markdown');
++      const loadingMarkdown = this.markdown && !internalCustomElements.get('vaadin24-markdown');
+ 
+       render(
          html`
            ${items.map(
              (item) => html`
@@ -34,18 +58,20 @@ Index: src/vaadin-message-list-mixin.js
                  role="listitem"
                  .time="${item.time}"
                  .userAbbr="${item.userAbbr}"
-@@ -102,8 +103,8 @@
-                 theme="${ifDefined(item.theme)}"
-                 class="${ifDefined(item.className)}"
+@@ -160,9 +161,9 @@
                  @focusin="${this._onMessageFocusIn}"
--                >${item.text}<vaadin-avatar slot="avatar"></vaadin-avatar
+                 style="${ifDefined(loadingMarkdown ? 'visibility: hidden' : undefined)}"
+                 >${this.markdown
+-                  ? html`<vaadin-markdown .content=${item.text}></vaadin-markdown>`
+-                  : item.text}<vaadin-avatar slot="avatar"></vaadin-avatar
 -              ></vaadin-message>
-+                >${item.text}<vaadin24-avatar slot="avatar"></vaadin24-avatar
++                  ? html`<vaadin24-markdown .content=${item.text}></vaadin24-markdown>`
++                  : item.text}<vaadin24-avatar slot="avatar"></vaadin24-avatar
 +              ></vaadin24-message>
              `,
            )}
          `,
-@@ -121,7 +122,7 @@
+@@ -180,7 +181,7 @@
  
      /** @private */
      _onMessageFocusIn(e) {

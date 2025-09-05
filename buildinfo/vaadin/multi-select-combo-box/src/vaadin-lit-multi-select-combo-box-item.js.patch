@@ -18,12 +18,12 @@ Index: src/vaadin-lit-multi-select-combo-box-item.js
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
  
  /**
-- * LitElement based version of `<vaadin-multi-select-combo-box-item>` web component.
-+ * LitElement based version of `<vaadin24-multi-select-combo-box-item>` web component.
+- * An item element used by the `<vaadin-multi-select-combo-box>` dropdown.
++ * An item element used by the `<vaadin24-multi-select-combo-box>` dropdown.
   *
-  * ## Disclaimer
+  * ### Styling
   *
-@@ -21,7 +21,7 @@
+@@ -39,7 +39,7 @@
   */
  export class MultiSelectComboBoxItem extends ComboBoxItemMixin(ThemableMixin(DirMixin(PolylitMixin(LitElement)))) {
    static get is() {

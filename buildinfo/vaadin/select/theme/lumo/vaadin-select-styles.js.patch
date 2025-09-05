@@ -3,7 +3,7 @@ Index: theme/lumo/vaadin-select-styles.js
 --- theme/lumo/vaadin-select-styles.js
 +++ theme/lumo/vaadin-select-styles.js
 @@ -3,19 +3,19 @@
-  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/theme/lumo/vaadin-input-container-styles.js';
@@ -32,8 +32,8 @@ Index: theme/lumo/vaadin-select-styles.js
 +registerStyles('vaadin24-select-list-box', listBox, { moduleId: 'lumo-select-list-box' });
  
  const select = css`
-   :host(:not([theme*='align'])) ::slotted([slot='value']) {
-@@ -62,10 +62,10 @@
+   :host {
+@@ -67,10 +67,10 @@
    }
  `;
  
@@ -46,7 +46,7 @@ Index: theme/lumo/vaadin-select-styles.js
    css`
      :host {
        font-family: var(--lumo-font-family);
-@@ -127,4 +127,4 @@
+@@ -132,4 +132,4 @@
    }
  `;
  

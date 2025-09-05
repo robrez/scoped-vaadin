@@ -27,3 +27,17 @@ npm run start
 # runs tests
 npm run test
 ```
+
+## Upgrading Vaadin
+
+TODO: make a better unified script for these steps
+
+Update the version selector in all of the following locations:
+
+- [vaadin-all/package.json](./vendor-packages/vaadin-all/package.json) -- in the dependencies[]
+- [package.json](./package.json) -- in `scripts/git_modules`
+- regenerate package-lock.json
+  - `rm package-lock.json && npm i`
+- run steps above for building
+
+Similarly, search-and-replace the version used internally as appropriate. Note that the internal version aren't necessarily the same as the underlying vaadin versions

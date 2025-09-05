@@ -24,8 +24,8 @@ Index: test/typings/context-menu.types.ts
  
  const assertType = <TExpected>(actual: TExpected) => actual;
  
-@@ -46,7 +46,7 @@
- menu.renderer = renderer;
+@@ -62,7 +62,7 @@
+ });
  
  // Item
 -const item = document.createElement('vaadin-context-menu-item');
@@ -33,7 +33,7 @@ Index: test/typings/context-menu.types.ts
  
  assertType<ContextMenuItem>(item);
  assertType<ItemMixinClass>(item);
-@@ -54,7 +54,7 @@
+@@ -70,7 +70,7 @@
  assertType<ThemableMixinClass>(item);
  
  // List-box

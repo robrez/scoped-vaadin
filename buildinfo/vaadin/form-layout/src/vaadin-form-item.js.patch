@@ -2,18 +2,19 @@ Index: src/vaadin-form-item.js
 ===================================================================
 --- src/vaadin-form-item.js
 +++ src/vaadin-form-item.js
-@@ -4,59 +4,59 @@
+@@ -4,49 +4,49 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
--import { addValueToAttribute, removeValueFromAttribute } from '@vaadin/component-base/src/dom-utils.js';
--import { generateUniqueId } from '@vaadin/component-base/src/unique-id-utils.js';
--import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+-import { registerStyles, ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
-+import { addValueToAttribute, removeValueFromAttribute } from '@scoped-vaadin/component-base/src/dom-utils.js';
-+import { generateUniqueId } from '@scoped-vaadin/component-base/src/unique-id-utils.js';
-+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { registerStyles, ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { FormItemMixin } from './vaadin-form-item-mixin.js';
+ import { formItemStyles } from './vaadin-form-layout-styles.js';
+ 
+-registerStyles('vaadin-form-item', formItemStyles, { moduleId: 'vaadin-form-item-styles' });
++registerStyles('vaadin24-form-item', formItemStyles, { moduleId: 'vaadin-form-item-styles' });
  
  /**
 - * `<vaadin-form-item>` is a Web Component providing labelled form item wrapper
@@ -64,6 +65,10 @@ Index: src/vaadin-form-item.js
 - * `<vaadin-form-layout>`, depending on its width and responsive behavior.
 + * `<vaadin24-form-layout>`, depending on its width and responsive behavior.
   *
+  * **Deprecation note:** The `label-position` attribute is deprecated since 24.7 and
+  * will be removed in Vaadin 25, when a new approach for setting the label position
+@@ -54,15 +54,15 @@
+  *
   * ### Input Width
   *
 - * By default, `<vaadin-form-item>` does not manipulate the width of the slotted
@@ -81,7 +86,7 @@ Index: src/vaadin-form-item.js
   * ```
   *
   * ### Styling
-@@ -77,7 +77,7 @@
+@@ -87,14 +87,14 @@
   *
   * ### Custom CSS Properties Reference
   *
@@ -90,23 +95,22 @@ Index: src/vaadin-form-item.js
   * element:
   *
   * Custom CSS property | Description | Default
-@@ -148,7 +148,7 @@
-   }
- 
+  * ---|---|---
+- * `--vaadin-form-item-label-width` | (DEPRECATED: Use `--vaadin-form-layout-label-width` on `<vaadin-form-layout>` instead) Width of the label column when the labels are aside | `8em`
+- * `--vaadin-form-item-label-spacing` | (DEPRECATED: Use `--vaadin-form-layout-label-spacing` on `<vaadin-form-layout>` instead) Spacing between the label column and the input column when the labels are aside | `1em`
+- * `--vaadin-form-item-row-spacing` | (DEPRECATED: Use `--vaadin-form-layout-row-spacing` on `<vaadin-form-layout>` instead) Height of the spacing between the form item elements | `1em`
++ * `--vaadin-form-item-label-width` | (DEPRECATED: Use `--vaadin-form-layout-label-width` on `<vaadin24-form-layout>` instead) Width of the label column when the labels are aside | `8em`
++ * `--vaadin-form-item-label-spacing` | (DEPRECATED: Use `--vaadin-form-layout-label-spacing` on `<vaadin24-form-layout>` instead) Spacing between the label column and the input column when the labels are aside | `1em`
++ * `--vaadin-form-item-row-spacing` | (DEPRECATED: Use `--vaadin-form-layout-row-spacing` on `<vaadin24-form-layout>` instead) Height of the spacing between the form item elements | `1em`
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  *
+@@ -105,7 +105,7 @@
+  */
+ class FormItem extends FormItemMixin(ThemableMixin(PolymerElement)) {
    static get is() {
 -    return 'vaadin-form-item';
 +    return 'vaadin24-form-item';
    }
  
-   constructor() {
-@@ -291,8 +291,8 @@
-     const fieldNodes = this.$.contentSlot.assignedElements();
-     if (fieldNodes.length > 1) {
-       console.warn(
--        `WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin-form-item> is deprecated.
--Please wrap fields with a <vaadin-custom-field> instead.`,
-+        `WARNING: Since Vaadin 23, placing multiple fields directly to a <vaadin24-form-item> is deprecated.
-+Please wrap fields with a <vaadin24-custom-field> instead.`,
-       );
-     }
- 
+   static get template() {

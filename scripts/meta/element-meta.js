@@ -206,6 +206,7 @@ export const elementMeta = [
     "eventNames": [
       "change",
       "invalid-changed",
+      "unparsable-change",
       "validated",
       "value-changed"
     ]
@@ -251,7 +252,6 @@ export const elementMeta = [
     "elementNames": [],
     "eventNames": [
       "change",
-      "has-input-value-changed",
       "input",
       "validated"
     ]
@@ -273,7 +273,8 @@ export const elementMeta = [
     "package": "@vaadin/form-layout",
     "elementNames": [
       "vaadin-form-item",
-      "vaadin-form-layout"
+      "vaadin-form-layout",
+      "vaadin-form-row"
     ],
     "eventNames": []
   },
@@ -306,6 +307,7 @@ export const elementMeta = [
       "grid-dragend",
       "grid-dragstart",
       "grid-drop",
+      "item-toggle",
       "loading-changed",
       "select-all-changed",
       "selected-items-changed",
@@ -393,6 +395,13 @@ export const elementMeta = [
       "forgot-password",
       "login"
     ]
+  },
+  {
+    "package": "@vaadin/markdown",
+    "elementNames": [
+      "vaadin-markdown"
+    ],
+    "eventNames": []
   },
   {
     "package": "@vaadin/menu-bar",

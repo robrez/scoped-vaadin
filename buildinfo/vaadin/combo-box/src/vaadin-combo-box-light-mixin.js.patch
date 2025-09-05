@@ -2,16 +2,16 @@ Index: src/vaadin-combo-box-light-mixin.js
 ===================================================================
 --- src/vaadin-combo-box-light-mixin.js
 +++ src/vaadin-combo-box-light-mixin.js
-@@ -5,7 +5,7 @@
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2015 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
- import { dashToCamelCase } from '@polymer/polymer/lib/utils/case-map.js';
- import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 -import { ValidateMixin } from '@vaadin/field-base/src/validate-mixin.js';
 +import { ValidateMixin } from '@scoped-vaadin/field-base/src/validate-mixin.js';
  import { ComboBoxDataProviderMixin } from './vaadin-combo-box-data-provider-mixin.js';
  import { ComboBoxMixin } from './vaadin-combo-box-mixin.js';
  
-@@ -68,7 +68,7 @@
+@@ -70,7 +70,7 @@
            return input;
          }
  
@@ -20,10 +20,10 @@ Index: src/vaadin-combo-box-light-mixin.js
          const slottedInput = input.querySelector('input');
          if (slottedInput) {
            return slottedInput;
-@@ -94,7 +94,7 @@
+@@ -96,7 +96,7 @@
  
        // Wait until the slotted input DOM is ready
-       afterNextRender(this, () => {
+       queueMicrotask(() => {
 -        this._setInputElement(this.querySelector('vaadin-text-field,.input'));
 +        this._setInputElement(this.querySelector('vaadin24-text-field,.input'));
          this._revertInputValue();

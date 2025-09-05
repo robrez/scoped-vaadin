@@ -5,7 +5,7 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/component-base",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/component-base",
 +  "version": "24.6.2-alpha.1",
 +  "repository": {
@@ -34,18 +34,19 @@ Index: package.json
    "main": "index.js",
    "module": "index.js",
    "type": "module",
-@@ -35,12 +35,7 @@
+@@ -35,13 +35,7 @@
      "@polymer/polymer": "^3.0.0",
      "@vaadin/vaadin-development-mode-detector": "^2.0.0",
      "@vaadin/vaadin-usage-statistics": "^2.1.0",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.6.2",
+-    "@vaadin/chai-plugins": "~24.8.6",
+-    "@vaadin/test-runner-commands": "~24.8.6",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
--  "gitHead": "ee2ea01a17d888403adb141515a0a3cef82b8b65"
+-  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
 +    "lit": "^3.0.0",
 +    "@scoped-vaadin/internal-custom-elements-registry": "^24.6.2-alpha.1"
 +  }

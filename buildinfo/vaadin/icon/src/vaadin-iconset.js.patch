@@ -2,14 +2,12 @@ Index: src/vaadin-iconset.js
 ===================================================================
 --- src/vaadin-iconset.js
 +++ src/vaadin-iconset.js
-@@ -4,12 +4,12 @@
+@@ -3,11 +3,11 @@
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
- import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
--import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
-+import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
  import { IconsetMixin } from './vaadin-iconset-mixin.js';
  
  /**
@@ -18,9 +16,9 @@ Index: src/vaadin-iconset.js
   *
   * @customElement
   * @extends HTMLElement
-@@ -22,7 +22,7 @@
-   }
- 
+@@ -15,7 +15,7 @@
+  */
+ class Iconset extends IconsetMixin(HTMLElement) {
    static get is() {
 -    return 'vaadin-iconset';
 +    return 'vaadin24-iconset';

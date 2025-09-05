@@ -2,7 +2,7 @@ Index: src/vaadin-radio-button-mixin.d.ts
 ===================================================================
 --- src/vaadin-radio-button-mixin.d.ts
 +++ src/vaadin-radio-button-mixin.d.ts
-@@ -4,15 +4,15 @@
+@@ -4,16 +4,16 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -12,6 +12,7 @@ Index: src/vaadin-radio-button-mixin.d.ts
 -import type { FocusMixinClass } from '@vaadin/a11y-base/src/focus-mixin.js';
 -import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
 -import type { DelegateStateMixinClass } from '@vaadin/component-base/src/delegate-state-mixin.js';
+-import type { SlotStylesMixinClass } from '@vaadin/component-base/src/slot-styles-mixin.js';
 -import type { CheckedMixinClass } from '@vaadin/field-base/src/checked-mixin.js';
 -import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
 -import type { LabelMixinClass } from '@vaadin/field-base/src/label-mixin.js';
@@ -21,6 +22,7 @@ Index: src/vaadin-radio-button-mixin.d.ts
 +import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 +import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 +import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
++import type { SlotStylesMixinClass } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 +import type { CheckedMixinClass } from '@scoped-vaadin/field-base/src/checked-mixin.js';
 +import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';
 +import type { LabelMixinClass } from '@scoped-vaadin/field-base/src/label-mixin.js';

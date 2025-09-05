@@ -14,7 +14,7 @@ Index: theme/material/vaadin-button-styles.js
  
  const button = css`
    :host {
-@@ -117,18 +117,18 @@
+@@ -116,18 +116,18 @@
  
    /* Icon alignment */
  
@@ -36,7 +36,7 @@ Index: theme/material/vaadin-button-styles.js
      margin-left: 8px;
      margin-right: -4px;
    }
-@@ -154,17 +154,17 @@
+@@ -153,17 +153,17 @@
      transform: translate(50%, -50%) scale(1);
    }
  

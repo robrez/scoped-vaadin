@@ -46,8 +46,8 @@ Index: src/vaadin-lit-dialog.js
          id="overlay"
          role="${this.overlayRole}"
          .owner="${this}"
-@@ -89,7 +89,7 @@
-         ?resizable="${this.resizable}"
+@@ -90,7 +90,7 @@
+         ?draggable="${this.draggable}"
          restore-focus-on-close
          focus-trap
 -      ></vaadin-dialog-overlay>

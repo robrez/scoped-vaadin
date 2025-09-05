@@ -6,7 +6,7 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/upload",
--  "version": "24.6.2",
+-  "version": "24.8.6",
 +  "name": "@scoped-vaadin/upload",
 +  "version": "24.6.2-alpha.1",
    "description-markup": "markdown",
@@ -49,7 +49,7 @@ Index: web-types.json
            "attributes": [
              {
                "name": "disabled",
-@@ -427,7 +427,7 @@
+@@ -436,7 +436,7 @@
                },
                {
                  "name": "headers",

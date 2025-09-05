@@ -2,7 +2,7 @@ Index: src/vaadin-checkbox-mixin.d.ts
 ===================================================================
 --- src/vaadin-checkbox-mixin.d.ts
 +++ src/vaadin-checkbox-mixin.d.ts
-@@ -4,18 +4,18 @@
+@@ -4,19 +4,19 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -13,6 +13,7 @@ Index: src/vaadin-checkbox-mixin.d.ts
 -import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
 -import type { DelegateStateMixinClass } from '@vaadin/component-base/src/delegate-state-mixin.js';
+-import type { SlotStylesMixinClass } from '@vaadin/component-base/src/slot-styles-mixin.js';
 -import type { CheckedMixinClass } from '@vaadin/field-base/src/checked-mixin.js';
 -import type { FieldMixinClass } from '@vaadin/field-base/src/field-mixin.js';
 -import type { InputMixinClass } from '@vaadin/field-base/src/input-mixin.js';
@@ -25,6 +26,7 @@ Index: src/vaadin-checkbox-mixin.d.ts
 +import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
 +import type { DelegateStateMixinClass } from '@scoped-vaadin/component-base/src/delegate-state-mixin.js';
++import type { SlotStylesMixinClass } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
 +import type { CheckedMixinClass } from '@scoped-vaadin/field-base/src/checked-mixin.js';
 +import type { FieldMixinClass } from '@scoped-vaadin/field-base/src/field-mixin.js';
 +import type { InputMixinClass } from '@scoped-vaadin/field-base/src/input-mixin.js';

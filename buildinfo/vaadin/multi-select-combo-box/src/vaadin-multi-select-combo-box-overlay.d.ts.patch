@@ -3,7 +3,7 @@ Index: src/vaadin-multi-select-combo-box-overlay.d.ts
 --- src/vaadin-multi-select-combo-box-overlay.d.ts
 +++ src/vaadin-multi-select-combo-box-overlay.d.ts
 @@ -3,13 +3,13 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ComboBoxOverlayMixin } from '@vaadin/combo-box/src/vaadin-combo-box-overlay-mixin.js';

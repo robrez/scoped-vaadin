@@ -3,7 +3,7 @@ Index: theme/material/vaadin-time-picker-styles.js
 --- theme/material/vaadin-time-picker-styles.js
 +++ theme/material/vaadin-time-picker-styles.js
 @@ -3,21 +3,21 @@
-  * Copyright (c) 2018 - 2024 Vaadin Ltd.
+  * Copyright (c) 2018 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import '@vaadin/input-container/theme/material/vaadin-input-container-styles.js';

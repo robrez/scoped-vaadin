@@ -2,12 +2,13 @@ Index: src/vaadin-form-item.d.ts
 ===================================================================
 --- src/vaadin-form-item.d.ts
 +++ src/vaadin-form-item.d.ts
-@@ -3,56 +3,56 @@
-  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+@@ -3,45 +3,45 @@
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { FormItemMixin } from './vaadin-form-item-mixin.js';
  
  /**
 - * `<vaadin-form-item>` is a Web Component providing labelled form item wrapper
@@ -58,6 +59,10 @@ Index: src/vaadin-form-item.d.ts
 - * `<vaadin-form-layout>`, depending on its width and responsive behavior.
 + * `<vaadin24-form-layout>`, depending on its width and responsive behavior.
   *
+  * **Deprecation note:** The `label-position` attribute is deprecated since 24.7 and
+  * will be removed in Vaadin 25, when a new approach for setting the label position
+@@ -49,15 +49,15 @@
+  *
   * ### Input Width
   *
 - * By default, `<vaadin-form-item>` does not manipulate the width of the slotted
@@ -75,7 +80,7 @@ Index: src/vaadin-form-item.d.ts
   * ```
   *
   * ### Styling
-@@ -73,7 +73,7 @@
+@@ -82,14 +82,14 @@
   *
   * ### Custom CSS Properties Reference
   *
@@ -84,6 +89,16 @@ Index: src/vaadin-form-item.d.ts
   * element:
   *
   * Custom CSS property | Description | Default
+  * ---|---|---
+- * `--vaadin-form-item-label-width` | (DEPRECATED: Use `--vaadin-form-layout-label-width` on `<vaadin-form-layout>` instead) Width of the label column when the labels are aside | `8em`
+- * `--vaadin-form-item-label-spacing` | (DEPRECATED: Use `--vaadin-form-layout-label-spacing` on `<vaadin-form-layout>` instead) Spacing between the label column and the input column when the labels are aside | `1em`
+- * `--vaadin-form-item-row-spacing` | (DEPRECATED: Use `--vaadin-form-layout-row-spacing` on `<vaadin-form-layout>` instead) Height of the spacing between the form item elements | `1em`
++ * `--vaadin-form-item-label-width` | (DEPRECATED: Use `--vaadin-form-layout-label-width` on `<vaadin24-form-layout>` instead) Width of the label column when the labels are aside | `8em`
++ * `--vaadin-form-item-label-spacing` | (DEPRECATED: Use `--vaadin-form-layout-label-spacing` on `<vaadin24-form-layout>` instead) Spacing between the label column and the input column when the labels are aside | `1em`
++ * `--vaadin-form-item-row-spacing` | (DEPRECATED: Use `--vaadin-form-layout-row-spacing` on `<vaadin24-form-layout>` instead) Height of the spacing between the form item elements | `1em`
+  *
+  * See [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.
+  */
 @@ -97,7 +97,7 @@
  
  declare global {

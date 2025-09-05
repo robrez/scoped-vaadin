@@ -3,7 +3,7 @@ Index: src/vaadin-custom-field.d.ts
 --- src/vaadin-custom-field.d.ts
 +++ src/vaadin-custom-field.d.ts
 @@ -3,8 +3,8 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * Copyright (c) 2019 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';

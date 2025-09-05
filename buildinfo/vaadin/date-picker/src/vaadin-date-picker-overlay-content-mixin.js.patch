@@ -2,10 +2,10 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
 ===================================================================
 --- src/vaadin-date-picker-overlay-content-mixin.js
 +++ src/vaadin-date-picker-overlay-content-mixin.js
-@@ -5,11 +5,11 @@
+@@ -4,11 +4,11 @@
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import { flush } from '@polymer/polymer/lib/utils/flush.js';
- import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 -import { timeOut } from '@vaadin/component-base/src/async.js';
 -import { Debouncer } from '@vaadin/component-base/src/debounce.js';
 -import { addListener, setTouchAction } from '@vaadin/component-base/src/gestures.js';
@@ -19,7 +19,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
  import {
    dateAfterXMonths,
    dateAllowed,
-@@ -203,7 +203,7 @@
+@@ -202,7 +202,7 @@
        );
  
        this.addController(
@@ -28,7 +28,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (btn) => {
              btn.setAttribute('theme', 'tertiary');
-@@ -215,7 +215,7 @@
+@@ -214,7 +214,7 @@
        );
  
        this.addController(
@@ -37,7 +37,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (btn) => {
              btn.setAttribute('theme', 'tertiary');
-@@ -254,7 +254,7 @@
+@@ -253,7 +253,7 @@
      /** @private */
      __initMonthScroller() {
        this.addController(
@@ -46,7 +46,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (scroller) => {
              scroller.addEventListener('custom-scroll', () => {
-@@ -270,7 +270,7 @@
+@@ -269,7 +269,7 @@
              });
  
              scroller.addEventListener('init-done', () => {
@@ -55,7 +55,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
  
                // Two-way binding for selectedDate property
                calendars.forEach((calendar) => {
-@@ -291,7 +291,7 @@
+@@ -290,7 +290,7 @@
      /** @private */
      __initYearScroller() {
        this.addController(
@@ -64,7 +64,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
            observe: false,
            initializer: (scroller) => {
              scroller.setAttribute('aria-hidden', 'true');
-@@ -309,7 +309,7 @@
+@@ -308,7 +308,7 @@
              });
  
              scroller.addEventListener('init-done', () => {
@@ -73,7 +73,7 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
              });
  
              this._yearScroller = scroller;
-@@ -933,7 +933,7 @@
+@@ -932,7 +932,7 @@
      async focusDateElement(reveal = true) {
        this.__pendingDateFocus = this.focusedDate;
  
@@ -81,4 +81,4 @@ Index: src/vaadin-date-picker-overlay-content-mixin.js
 +      // Wait for `vaadin24-month-calendar` elements to be rendered
        if (!this.calendars.length) {
          await new Promise((resolve) => {
-           afterNextRender(this, () => {
+           requestAnimationFrame(() => {

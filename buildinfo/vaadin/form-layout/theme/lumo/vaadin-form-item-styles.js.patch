@@ -18,5 +18,5 @@ Index: theme/lumo/vaadin-form-item-styles.js
 -  'vaadin-form-item',
 +  'vaadin24-form-item',
    css`
-     :host {
-       --vaadin-form-item-row-spacing: 0;
+     /* font-weight, margin-bottom, transition and line-height same as for part label in text-field */
+     [part='label'] {

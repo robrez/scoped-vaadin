@@ -21,4 +21,4 @@ Index: theme/lumo/vaadin-month-calendar-styles.js
 +  'vaadin24-month-calendar',
    css`
      :host {
-       -moz-user-select: none;
+       -webkit-user-select: none;

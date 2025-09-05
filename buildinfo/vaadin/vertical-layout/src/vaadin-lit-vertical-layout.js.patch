@@ -2,10 +2,10 @@ Index: src/vaadin-lit-vertical-layout.js
 ===================================================================
 --- src/vaadin-lit-vertical-layout.js
 +++ src/vaadin-lit-vertical-layout.js
-@@ -4,13 +4,13 @@
+@@ -4,14 +4,14 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
- import { css, html, LitElement } from 'lit';
+ import { html, LitElement } from 'lit';
 -import { defineCustomElement } from '@vaadin/component-base/src/define.js';
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
@@ -14,6 +14,7 @@ Index: src/vaadin-lit-vertical-layout.js
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { verticalLayoutStyles } from './vaadin-vertical-layout-styles.js';
  
  /**
 - * LitElement based version of `<vaadin-vertical-layout>` web component.
@@ -21,12 +22,12 @@ Index: src/vaadin-lit-vertical-layout.js
   *
   * ## Disclaimer
   *
-@@ -48,7 +48,7 @@
-   }
- 
+@@ -21,7 +21,7 @@
+  */
+ class VerticalLayout extends ThemableMixin(ElementMixin(PolylitMixin(LitElement))) {
    static get is() {
 -    return 'vaadin-vertical-layout';
 +    return 'vaadin24-vertical-layout';
    }
  
-   render() {
+   static get styles() {

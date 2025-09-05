@@ -2,13 +2,15 @@ Index: src/vaadin-contextmenu-event.js
 ===================================================================
 --- src/vaadin-contextmenu-event.js
 +++ src/vaadin-contextmenu-event.js
-@@ -3,8 +3,8 @@
-  * Copyright (c) 2016 - 2024 Vaadin Ltd.
+@@ -3,9 +3,9 @@
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { isIOS } from '@vaadin/component-base/src/browser-utils.js';
+-import { isKeyboardActive } from '@vaadin/a11y-base/src/focus-utils.js';
+-import { isFirefox, isIOS } from '@vaadin/component-base/src/browser-utils.js';
 -import { prevent, register } from '@vaadin/component-base/src/gestures.js';
-+import { isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
++import { isKeyboardActive } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
++import { isFirefox, isIOS } from '@scoped-vaadin/component-base/src/browser-utils.js';
 +import { prevent, register } from '@scoped-vaadin/component-base/src/gestures.js';
  
  register({

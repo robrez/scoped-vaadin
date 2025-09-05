@@ -2,20 +2,14 @@ Index: test/input-controller.test.js
 ===================================================================
 --- test/input-controller.test.js
 +++ test/input-controller.test.js
-@@ -1,13 +1,14 @@
-+import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
- import { expect } from '@vaadin/chai-plugins';
- import { fixtureSync } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
+@@ -2,8 +2,8 @@
+ import { sendKeys } from '@vaadin/test-runner-commands';
+ import { defineLit, definePolymer, fixtureSync } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
- import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';
+-import { PolylitMixin } from '@vaadin/component-base/src/polylit-mixin.js';
 +import { ControllerMixin } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
  import { InputController } from '../src/input-controller.js';
  import { InputMixin } from '../src/input-mixin.js';
  
--customElements.define(
-+internalCustomElements.define(
-   'input-controller-element',
-   class extends InputMixin(ControllerMixin(PolymerElement)) {
-     static get template() {

@@ -2,9 +2,9 @@ Index: test/clear-button-mixin.test.js
 ===================================================================
 --- test/clear-button-mixin.test.js
 +++ test/clear-button-mixin.test.js
-@@ -12,9 +12,9 @@
+@@ -10,9 +10,9 @@
+   nextUpdate,
  } from '@vaadin/testing-helpers';
- import { sendKeys } from '@web/test-runner-commands';
  import sinon from 'sinon';
 -import { isTouch } from '@vaadin/component-base/src/browser-utils.js';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';

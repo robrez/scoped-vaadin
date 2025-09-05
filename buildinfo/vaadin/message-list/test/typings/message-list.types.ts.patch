@@ -22,7 +22,7 @@ Index: test/typings/message-list.types.ts
  
  // Properties
  assertType<MessageListItem[] | null | undefined>(list.items);
-@@ -28,7 +28,7 @@
+@@ -30,7 +30,7 @@
  assertType<ElementMixinClass>(list);
  assertType<ThemableMixinClass>(list);
  

@@ -27,11 +27,25 @@
           userColorIndex: 2,
         },
       ];
+
+      const input = document.querySelector('vaadin24-message-input');
+      input.addEventListener('submit', (e) => {
+        const message = e.detail.value;
+        list.items = [
+          ...list.items,
+          {
+            text: message,
+            time: 'now',
+            userName: 'You',
+            userColorIndex: 0,
+          },
+        ];
+      });
     </script>
   </head>
 
   <body>
-    <vaadin24-message-list></vaadin24-message-list>
+    <vaadin24-message-list announce-messages></vaadin24-message-list>
     <vaadin24-message-input>
       <vaadin24-tooltip slot="tooltip" text="Press Enter to send"></vaadin24-tooltip>
     </vaadin24-message-input>

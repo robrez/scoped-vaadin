@@ -2,7 +2,7 @@ Index: test/helpers.js
 ===================================================================
 --- test/helpers.js
 +++ test/helpers.js
-@@ -194,7 +194,7 @@
+@@ -200,7 +200,7 @@
  export const dragStart = (source) => {
    let grid = source.parentElement;
    while (grid) {

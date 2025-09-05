@@ -2,14 +2,15 @@ Index: src/vaadin-horizontal-layout.d.ts
 ===================================================================
 --- src/vaadin-horizontal-layout.d.ts
 +++ src/vaadin-horizontal-layout.d.ts
-@@ -3,22 +3,22 @@
-  * Copyright (c) 2017 - 2024 Vaadin Ltd.
+@@ -3,23 +3,23 @@
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
 -import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
 -import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 +import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import { HorizontalLayoutMixin } from './vaadin-horizontal-layout-mixin.js';
  
  /**
 - * `<vaadin-horizontal-layout>` provides a simple way to horizontally align your HTML elements.
@@ -31,7 +32,7 @@ Index: src/vaadin-horizontal-layout.d.ts
   *
   * Theme variation | Description
   * ---|---
-@@ -31,7 +31,7 @@
+@@ -42,7 +42,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

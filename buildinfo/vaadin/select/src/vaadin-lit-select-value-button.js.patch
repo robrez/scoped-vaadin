@@ -14,7 +14,7 @@ Index: src/vaadin-lit-select-value-button.js
 +import { defineCustomElement } from '@scoped-vaadin/component-base/src/define.js';
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { valueButton } from './vaadin-select-value-button-styles.js';
+ import { valueButton } from './vaadin-select-value-button-core-styles.js';
  
  /**
 - * An element used internally by `<vaadin-select>`. Not intended to be used separately.

@@ -37,7 +37,7 @@ Index: src/fields/outline.js
        return element.shadowRoot.querySelector('[part="radio"]');
      /* c8 ignore next */
      default:
-@@ -55,7 +55,7 @@
+@@ -59,7 +59,7 @@
      `;
      field.shadowRoot.appendChild(style);
  

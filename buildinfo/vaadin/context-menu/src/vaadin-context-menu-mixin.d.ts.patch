@@ -2,7 +2,7 @@ Index: src/vaadin-context-menu-mixin.d.ts
 ===================================================================
 --- src/vaadin-context-menu-mixin.d.ts
 +++ src/vaadin-context-menu-mixin.d.ts
-@@ -47,7 +47,7 @@
+@@ -48,7 +48,7 @@
     * Receives three arguments:
     *
     * - `root` The root container DOM element. Append your content to it.

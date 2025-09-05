@@ -2,12 +2,14 @@ Index: src/vaadin-message-input-mixin.d.ts
 ===================================================================
 --- src/vaadin-message-input-mixin.d.ts
 +++ src/vaadin-message-input-mixin.d.ts
-@@ -4,7 +4,7 @@
+@@ -4,8 +4,8 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
  
  export interface MessageInputI18n {
-   send: string;
+   send?: string;

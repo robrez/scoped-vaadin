@@ -16,7 +16,7 @@ Index: src/vaadin-lit-button.js
 +import { PolylitMixin } from '@scoped-vaadin/component-base/src/polylit-mixin.js';
 +import { TooltipController } from '@scoped-vaadin/component-base/src/tooltip-controller.js';
 +import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { buttonStyles, buttonTemplate } from './vaadin-button-base.js';
+ import { buttonStyles } from './vaadin-button-core-styles.js';
  import { ButtonMixin } from './vaadin-button-mixin.js';
  
  /**

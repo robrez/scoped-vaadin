@@ -12,9 +12,9 @@ Index: src/vaadin-grid-filter-column.d.ts
   *
   * #### Example:
   * ```html
-- * <vaadin-grid items="[[items]]">
+- * <vaadin-grid>
 - *  <vaadin-grid-filter-column path="name.first"></vaadin-grid-filter-column>
-+ * <vaadin24-grid items="[[items]]">
++ * <vaadin24-grid>
 + *  <vaadin24-grid-filter-column path="name.first"></vaadin24-grid-filter-column>
   *
 - *  <vaadin-grid-column>

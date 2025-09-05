@@ -3,20 +3,20 @@ Index: src/vaadin-menu-bar.d.ts
 --- src/vaadin-menu-bar.d.ts
 +++ src/vaadin-menu-bar.d.ts
 @@ -3,9 +3,9 @@
-  * Copyright (c) 2019 - 2024 Vaadin Ltd.
+  * Copyright (c) 2019 - 2025 Vaadin Ltd.
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
--import { DisabledMixin } from '@vaadin/a11y-base/src/disabled-mixin.js';
--import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
--import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-+import { DisabledMixin } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
-+import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
-+import { ThemableMixin } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
- import { type MenuBarItem, MenuBarMixin } from './vaadin-menu-bar-mixin.js';
+-import type { DisabledMixinClass } from '@vaadin/a11y-base/src/disabled-mixin.js';
+-import type { ElementMixinClass } from '@vaadin/component-base/src/element-mixin.js';
+-import type { ThemableMixinClass } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
++import type { ElementMixinClass } from '@scoped-vaadin/component-base/src/element-mixin.js';
++import type { ThemableMixinClass } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ import type { MenuBarItem, MenuBarMixinClass } from './vaadin-menu-bar-mixin.js';
  
  export { MenuBarItem, MenuBarI18n, SubMenuItem } from './vaadin-menu-bar-mixin.js';
-@@ -22,20 +22,20 @@
- export interface MenuBarEventMap extends HTMLElementEventMap, MenuBarCustomEventMap {}
+@@ -24,20 +24,20 @@
+     MenuBarCustomEventMap<TItem> {}
  
  /**
 - * `<vaadin-menu-bar>` is a Web Component providing a set of horizontally stacked buttons offering
@@ -39,7 +39,7 @@ Index: src/vaadin-menu-bar.d.ts
   * ```
   *
   * ### Styling
-@@ -57,22 +57,22 @@
+@@ -59,22 +59,22 @@
   *
   * ### Internal components
   *
@@ -70,7 +70,7 @@ Index: src/vaadin-menu-bar.d.ts
   * propagated to the internal components listed above.
   *
   * @fires {CustomEvent} item-selected - Fired when a submenu item or menu bar button without children is clicked.
-@@ -93,7 +93,7 @@
+@@ -101,7 +101,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

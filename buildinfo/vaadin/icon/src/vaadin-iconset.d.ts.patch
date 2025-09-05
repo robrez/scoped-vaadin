@@ -2,28 +2,21 @@ Index: src/vaadin-iconset.d.ts
 ===================================================================
 --- src/vaadin-iconset.d.ts
 +++ src/vaadin-iconset.d.ts
-@@ -3,17 +3,17 @@
-  * Copyright (c) 2021 - 2024 Vaadin Ltd.
-  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
-  */
--import { ElementMixin } from '@vaadin/component-base/src/element-mixin.js';
-+import { ElementMixin } from '@scoped-vaadin/component-base/src/element-mixin.js';
- import type { Icon } from './vaadin-icon.js';
- import type { IconSvgLiteral } from './vaadin-icon-svg.js';
+@@ -8,11 +8,11 @@
  import { IconsetMixin } from './vaadin-iconset-mixin.js';
  
  /**
 - * `<vaadin-iconset>` is a Web Component for creating SVG icon collections.
 + * `<vaadin24-iconset>` is a Web Component for creating SVG icon collections.
   */
- declare class Iconset extends ElementMixin(IconsetMixin(HTMLElement)) {
+ declare class Iconset extends IconsetMixin(HTMLElement) {
    /**
 -   * Set of the `vaadin-icon` instances in the DOM.
 +   * Set of the `vaadin24-icon` instances in the DOM.
     */
    static attachedIcons(): Set<Icon>;
  
-@@ -44,7 +44,7 @@
+@@ -43,7 +43,7 @@
  
  declare global {
    interface HTMLElementTagNameMap {

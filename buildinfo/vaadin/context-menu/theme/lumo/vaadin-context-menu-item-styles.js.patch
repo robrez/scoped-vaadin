@@ -18,7 +18,7 @@ Index: theme/lumo/vaadin-context-menu-item-styles.js
  
  const contextMenuItem = css`
    /* :hover needed to workaround https://github.com/vaadin/web-components/issues/3133 */
-@@ -41,6 +41,6 @@
+@@ -40,6 +40,6 @@
    }
  `;
  

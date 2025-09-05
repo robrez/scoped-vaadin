@@ -2,7 +2,7 @@ Index: src/vaadin-menu-bar-mixin.d.ts
 ===================================================================
 --- src/vaadin-menu-bar-mixin.d.ts
 +++ src/vaadin-menu-bar-mixin.d.ts
-@@ -4,12 +4,12 @@
+@@ -4,13 +4,13 @@
   * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
   */
  import type { Constructor } from '@open-wc/dedupe-mixin';
@@ -11,17 +11,19 @@ Index: src/vaadin-menu-bar-mixin.d.ts
 -import type { KeyboardDirectionMixinClass } from '@vaadin/a11y-base/src/keyboard-direction-mixin.js';
 -import type { KeyboardMixinClass } from '@vaadin/a11y-base/src/keyboard-mixin.js';
 -import type { ControllerMixinClass } from '@vaadin/component-base/src/controller-mixin.js';
+-import type { I18nMixinClass } from '@vaadin/component-base/src/i18n-mixin.js';
 -import type { ResizeMixinClass } from '@vaadin/component-base/src/resize-mixin.js';
 +import type { DisabledMixinClass } from '@scoped-vaadin/a11y-base/src/disabled-mixin.js';
 +import type { FocusMixinClass } from '@scoped-vaadin/a11y-base/src/focus-mixin.js';
 +import type { KeyboardDirectionMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-direction-mixin.js';
 +import type { KeyboardMixinClass } from '@scoped-vaadin/a11y-base/src/keyboard-mixin.js';
 +import type { ControllerMixinClass } from '@scoped-vaadin/component-base/src/controller-mixin.js';
++import type { I18nMixinClass } from '@scoped-vaadin/component-base/src/i18n-mixin.js';
 +import type { ResizeMixinClass } from '@scoped-vaadin/component-base/src/resize-mixin.js';
  
- export interface MenuBarItem {
+ export type MenuBarItem<TItemData extends object = object> = {
    /**
-@@ -18,12 +18,12 @@
+@@ -19,12 +19,12 @@
    text?: string;
    /**
     * Text to be set as the menu button's tooltip.
