@@ -5,9 +5,8 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/checkbox",
--  "version": "24.8.6",
 +  "name": "@scoped-vaadin/checkbox",
-+  "version": "24.8.7",
+   "version": "24.8.7",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -41,17 +40,17 @@ Index: package.json
 -  "dependencies": {
 -    "@open-wc/dedupe-mixin": "^1.3.0",
 -    "@polymer/polymer": "^3.0.0",
--    "@vaadin/a11y-base": "~24.8.6",
--    "@vaadin/component-base": "~24.8.6",
--    "@vaadin/field-base": "~24.8.6",
--    "@vaadin/vaadin-lumo-styles": "~24.8.6",
--    "@vaadin/vaadin-material-styles": "~24.8.6",
--    "@vaadin/vaadin-themable-mixin": "~24.8.6",
+-    "@vaadin/a11y-base": "~24.8.7",
+-    "@vaadin/component-base": "~24.8.7",
+-    "@vaadin/field-base": "~24.8.7",
+-    "@vaadin/vaadin-lumo-styles": "~24.8.7",
+-    "@vaadin/vaadin-material-styles": "~24.8.7",
+-    "@vaadin/vaadin-themable-mixin": "~24.8.7",
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.8.6",
--    "@vaadin/test-runner-commands": "~24.8.6",
+-    "@vaadin/chai-plugins": "~24.8.7",
+-    "@vaadin/test-runner-commands": "~24.8.7",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
@@ -59,7 +58,7 @@ Index: package.json
      "web-types.json",
      "web-types.lit.json"
    ],
--  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
+-  "gitHead": "5136ca7537273974e8cf01af79f27963f49cb876"
 +  "dependencies": {
 +    "@open-wc/dedupe-mixin": "^1.3.0",
 +    "@polymer/polymer": "^3.0.0",

@@ -6,9 +6,8 @@ Index: web-types.json
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/list-box",
--  "version": "24.8.6",
 +  "name": "@scoped-vaadin/list-box",
-+  "version": "24.8.7",
+   "version": "24.8.7",
    "description-markup": "markdown",
    "contributions": {
      "html": {
