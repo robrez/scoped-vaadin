@@ -8,7 +8,7 @@ Index: web-types.lit.json
 -  "name": "@vaadin/upload",
 -  "version": "24.8.6",
 +  "name": "@scoped-vaadin/upload",
-+  "version": "24.8.6-alpha.1",
++  "version": "24.8.6",
    "description-markup": "markdown",
    "framework": "lit",
    "framework-config": {
