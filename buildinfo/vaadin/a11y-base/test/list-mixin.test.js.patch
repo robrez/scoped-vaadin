@@ -2,8 +2,8 @@ Index: test/list-mixin.test.js
 ===================================================================
 --- test/list-mixin.test.js
 +++ test/list-mixin.test.js
-@@ -15,8 +15,8 @@
-   oneEvent,
+@@ -14,8 +14,8 @@
+   nextUpdate,
  } from '@vaadin/testing-helpers';
  import sinon from 'sinon';
 -import { ControllerMixin } from '@vaadin/component-base/src/controller-mixin.js';

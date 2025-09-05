@@ -5,9 +5,8 @@ Index: package.json
 @@ -1,21 +1,21 @@
  {
 -  "name": "@vaadin/component-base",
--  "version": "24.8.6",
 +  "name": "@scoped-vaadin/component-base",
-+  "version": "24.8.6",
+   "version": "24.8.7",
 +  "repository": {
 +    "type": "git",
 +    "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -41,13 +40,13 @@ Index: package.json
 -    "lit": "^3.0.0"
 -  },
 -  "devDependencies": {
--    "@vaadin/chai-plugins": "~24.8.6",
--    "@vaadin/test-runner-commands": "~24.8.6",
+-    "@vaadin/chai-plugins": "~24.8.7",
+-    "@vaadin/test-runner-commands": "~24.8.7",
 -    "@vaadin/testing-helpers": "^1.1.0",
 -    "sinon": "^18.0.0"
 -  },
--  "gitHead": "811e267191812c5ac9f1f010782d746785d0fde5"
+-  "gitHead": "5136ca7537273974e8cf01af79f27963f49cb876"
 +    "lit": "^3.0.0",
-+    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.6"
++    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.7"
 +  }
  }

@@ -2,16 +2,14 @@ Index: web-types.lit.json
 ===================================================================
 --- web-types.lit.json
 +++ web-types.lit.json
-@@ -1,7 +1,7 @@
+@@ -1,6 +1,6 @@
  {
    "$schema": "https://json.schemastore.org/web-types",
 -  "name": "@vaadin/login",
--  "version": "24.8.6",
 +  "name": "@scoped-vaadin/login",
-+  "version": "24.8.6",
+   "version": "24.8.7",
    "description-markup": "markdown",
    "framework": "lit",
-   "framework-config": {
 @@ -15,8 +15,8 @@
      "html": {
        "elements": [
@@ -37,9 +35,9 @@ Index: web-types.lit.json
          },
          {
 -          "name": "vaadin-login-overlay",
--          "description": "`<vaadin-login-overlay>` is a wrapper of the `<vaadin-login-form>` which opens a login form in an overlay and\nhaving an additional `brand` part for application title and description. Using `<vaadin-login-overlay>` allows\npassword managers to work with login form.\n\n```\n<vaadin-login-overlay opened></vaadin-login-overlay>\n```\n\n### Styling\n\nThe component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.\nUse `<vaadin-login-overlay-wrapper>` and `<vaadin-login-form-wrapper>` to apply styles.\n\nThe following shadow DOM parts of the `<vaadin-login-overlay-wrapper>` are available for styling:\n\nPart name       | Description\n----------------|---------------------------------------------------------|\n`card`          | Container for the entire component's content\n`brand`         | Container for application title and description\n`form`          | Container for the `<vaadin-login-form>` component\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\nSee [`<vaadin-login-form>`](https://cdn.vaadin.com/vaadin-web-components/24.8.6/#/elements/vaadin-login-form)\ndocumentation for  `<vaadin-login-form-wrapper>` stylable parts.",
+-          "description": "`<vaadin-login-overlay>` is a wrapper of the `<vaadin-login-form>` which opens a login form in an overlay and\nhaving an additional `brand` part for application title and description. Using `<vaadin-login-overlay>` allows\npassword managers to work with login form.\n\n```\n<vaadin-login-overlay opened></vaadin-login-overlay>\n```\n\n### Styling\n\nThe component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.\nUse `<vaadin-login-overlay-wrapper>` and `<vaadin-login-form-wrapper>` to apply styles.\n\nThe following shadow DOM parts of the `<vaadin-login-overlay-wrapper>` are available for styling:\n\nPart name       | Description\n----------------|---------------------------------------------------------|\n`card`          | Container for the entire component's content\n`brand`         | Container for application title and description\n`form`          | Container for the `<vaadin-login-form>` component\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\nSee [`<vaadin-login-form>`](https://cdn.vaadin.com/vaadin-web-components/24.8.7/#/elements/vaadin-login-form)\ndocumentation for  `<vaadin-login-form-wrapper>` stylable parts.",
 +          "name": "vaadin24-login-overlay",
-+          "description": "`<vaadin24-login-overlay>` is a wrapper of the `<vaadin24-login-form>` which opens a login form in an overlay and\nhaving an additional `brand` part for application title and description. Using `<vaadin24-login-overlay>` allows\npassword managers to work with login form.\n\n```\n<vaadin24-login-overlay opened></vaadin24-login-overlay>\n```\n\n### Styling\n\nThe component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.\nUse `<vaadin24-login-overlay-wrapper>` and `<vaadin24-login-form-wrapper>` to apply styles.\n\nThe following shadow DOM parts of the `<vaadin24-login-overlay-wrapper>` are available for styling:\n\nPart name       | Description\n----------------|---------------------------------------------------------|\n`card`          | Container for the entire component's content\n`brand`         | Container for application title and description\n`form`          | Container for the `<vaadin24-login-form>` component\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\nSee [`<vaadin24-login-form>`](https://cdn.vaadin.com/vaadin-web-components/24.8.6/#/elements/vaadin-login-form)\ndocumentation for  `<vaadin24-login-form-wrapper>` stylable parts.",
++          "description": "`<vaadin24-login-overlay>` is a wrapper of the `<vaadin24-login-form>` which opens a login form in an overlay and\nhaving an additional `brand` part for application title and description. Using `<vaadin24-login-overlay>` allows\npassword managers to work with login form.\n\n```\n<vaadin24-login-overlay opened></vaadin24-login-overlay>\n```\n\n### Styling\n\nThe component doesn't have a shadowRoot, so the `<form>` and input fields can be styled from a global scope.\nUse `<vaadin24-login-overlay-wrapper>` and `<vaadin24-login-form-wrapper>` to apply styles.\n\nThe following shadow DOM parts of the `<vaadin24-login-overlay-wrapper>` are available for styling:\n\nPart name       | Description\n----------------|---------------------------------------------------------|\n`card`          | Container for the entire component's content\n`brand`         | Container for application title and description\n`form`          | Container for the `<vaadin24-login-form>` component\n\nSee [Styling Components](https://vaadin.com/docs/latest/styling/styling-components) documentation.\n\nSee [`<vaadin24-login-form>`](https://cdn.vaadin.com/vaadin-web-components/24.8.7/#/elements/vaadin-login-form)\ndocumentation for  `<vaadin24-login-form-wrapper>` stylable parts.",
            "extension": true,
            "attributes": [
              {
