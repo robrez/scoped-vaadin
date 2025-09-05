@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>Form Layout</title>
+    <script type="module" src="./common.js"></script>
+
+    <style>
+      h1 {
+        margin-top: 2em;
+        margin-bottom: 0.5em;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <form-layout-examples></form-layout-examples>
+
+    <script type="module">import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+
+      import '@scoped-vaadin/dialog';
+      import '@scoped-vaadin/button';
+      import '@scoped-vaadin/tabsheet';
+      import '@scoped-vaadin/form-layout';
+      import '@scoped-vaadin/form-layout/vaadin-form-row.js';
+      import '@scoped-vaadin/form-layout/vaadin-form-item.js';
+      import '@scoped-vaadin/text-area';
+      import '@scoped-vaadin/text-field';
+      import '@scoped-vaadin/password-field';
+      import '@scoped-vaadin/horizontal-layout';
+      import { render, html, LitElement } from 'lit';
+      import { dialogRenderer } from '@scoped-vaadin/dialog/lit.js';
+
+      class FormLayoutExamples extends LitElement {
+        constructor() {
+          super();
+          this.openPrevSiblingDialog = this.openPrevSiblingDialog.bind(this);
+        }
+
+        createRenderRoot() {
+          return this;
+        }
+
+        render() {
+          return html`
+            <h1>autoResponsive</h1>
+            <vaadin24-form-layout auto-responsive auto-rows max-columns="2">
+              <vaadin24-text-field label="First name"></vaadin24-text-field>
+              <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+              <vaadin24-password-field label="Password"></vaadin24-password-field>
+              <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              <vaadin24-button>Register</vaadin24-button>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + minColumns</h1>
+            <vaadin24-form-layout auto-responsive auto-rows min-columns="2">
+              <vaadin24-text-field label="First name"></vaadin24-text-field>
+              <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+              <vaadin24-password-field label="Password"></vaadin24-password-field>
+              <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              <vaadin24-button>Register</vaadin24-button>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + expandColumns</h1>
+            <vaadin24-form-layout auto-responsive auto-rows max-columns="2" expand-columns>
+              <vaadin24-text-field label="First name"></vaadin24-text-field>
+              <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+              <vaadin24-password-field label="Password"></vaadin24-password-field>
+              <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              <vaadin24-button>Register</vaadin24-button>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + expandColumns + expandFields</h1>
+            <vaadin24-form-layout auto-responsive auto-rows max-columns="2" expand-columns expand-fields>
+              <vaadin24-text-field label="First name"></vaadin24-text-field>
+              <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+              <vaadin24-password-field label="Password"></vaadin24-password-field>
+              <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              <vaadin24-button>Register</vaadin24-button>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + br</h1>
+            <vaadin24-form-layout auto-responsive auto-rows max-columns="2">
+              <vaadin24-text-field label="First name"></vaadin24-text-field>
+              <br />
+              <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+              <vaadin24-password-field label="Password"></vaadin24-password-field>
+              <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + FormRow</h1>
+            <vaadin24-form-layout auto-responsive>
+              <vaadin24-form-row>
+                <vaadin24-text-field label="First name"></vaadin24-text-field>
+                <vaadin24-text-field label="Last name"></vaadin24-text-field>
+              </vaadin24-form-row>
+              <vaadin24-form-row>
+                <vaadin24-text-field label="Username" colspan="2"></vaadin24-text-field>
+              </vaadin24-form-row>
+              <vaadin24-form-row>
+                <vaadin24-password-field label="Password"></vaadin24-password-field>
+                <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              </vaadin24-form-row>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive + FormItem + expandFields</h1>
+            <vaadin24-form-layout auto-responsive auto-rows max-columns="2" expand-fields>
+              <vaadin24-form-item>
+                <label slot="label"> First name </label>
+                <vaadin24-text-field></vaadin24-text-field>
+              </vaadin24-form-item>
+              <vaadin24-form-item>
+                <label slot="label"> Last name </label>
+                <vaadin24-text-field></vaadin24-text-field>
+              </vaadin24-form-item>
+              <vaadin24-form-item colspan="2">
+                <label slot="label"> Address </label>
+                <vaadin24-text-area></vaadin24-text-area>
+              </vaadin24-form-item>
+              <vaadin24-form-item>
+                <label slot="label"> Password </label>
+                <vaadin24-password-field></vaadin24-password-field>
+              </vaadin24-form-item>
+              <vaadin24-form-item>
+                <label slot="label"> Confirm </label>
+                <vaadin24-password-field></vaadin24-password-field>
+              </vaadin24-form-item>
+            </vaadin24-form-layout>
+
+            <h1>autoResponsive inside HorizontalLayout + flex:1</h1>
+            <vaadin24-horizontal-layout theme="spacing">
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows max-columns="2">
+                <vaadin24-text-field label="First name"></vaadin24-text-field>
+                <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                <vaadin24-password-field label="Password"></vaadin24-password-field>
+                <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              </vaadin24-form-layout>
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows max-columns="2" expand-columns>
+                <vaadin24-text-field label="First name"></vaadin24-text-field>
+                <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                <vaadin24-password-field label="Password"></vaadin24-password-field>
+                <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              </vaadin24-form-layout>
+            </vaadin24-horizontal-layout>
+
+            <h1>autoResponsive inside HorizontalLayout + flex:1 + minColumns</h1>
+            <vaadin24-horizontal-layout theme="spacing">
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows min-columns="2">
+                <vaadin24-text-field label="First name"></vaadin24-text-field>
+                <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                <vaadin24-password-field label="Password"></vaadin24-password-field>
+                <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              </vaadin24-form-layout>
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows min-columns="2" expand-columns>
+                <vaadin24-text-field label="First name"></vaadin24-text-field>
+                <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                <vaadin24-password-field label="Password"></vaadin24-password-field>
+                <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+              </vaadin24-form-layout>
+            </vaadin24-horizontal-layout>
+
+            <h1>autoResponsive inside HorizontalLayout + labels aside</h1>
+            <vaadin24-horizontal-layout theme="spacing">
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows max-columns="2" labels-aside>
+                <vaadin24-form-item>
+                  <label slot="label"> First name </label>
+                  <vaadin24-text-field></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Last name </label>
+                  <vaadin24-text-field></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item colspan="2">
+                  <label slot="label"> Username </label>
+                  <vaadin24-text-field colspan="2"></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Password </label>
+                  <vaadin24-password-field></vaadin24-password-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Confirm </label>
+                  <vaadin24-password-field></vaadin24-password-field>
+                </vaadin24-form-item>
+              </vaadin24-form-layout>
+              <vaadin24-form-layout style="flex: 1;" auto-responsive auto-rows max-columns="2" labels-aside expand-columns expand-fields>
+                <vaadin24-form-item>
+                  <label slot="label"> First name </label>
+                  <vaadin24-text-field></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Last name </label>
+                  <vaadin24-text-field></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item colspan="2">
+                  <label slot="label"> Username </label>
+                  <vaadin24-text-field colspan="2"></vaadin24-text-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Password </label>
+                  <vaadin24-password-field></vaadin24-password-field>
+                </vaadin24-form-item>
+                <vaadin24-form-item>
+                  <label slot="label"> Confirm </label>
+                  <vaadin24-password-field></vaadin24-password-field>
+                </vaadin24-form-item>
+              </vaadin24-form-layout>
+            </vaadin24-horizontal-layout>
+
+            <h1>autoResponsive inside Dialog</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows max-columns="2">
+                    <vaadin24-text-field label="First name"></vaadin24-text-field>
+                    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                    <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                    <vaadin24-password-field label="Password"></vaadin24-password-field>
+                    <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                  </vaadin24-form-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog + minColumns</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+            (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows min-columns="2">
+                    <vaadin24-text-field label="First name"></vaadin24-text-field>
+                    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                    <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                    <vaadin24-password-field label="Password"></vaadin24-password-field>
+                    <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                  </vaadin24-form-layout>
+                `,
+          )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog + expandColumns + expandFields</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows max-columns="2" expand-columns expand-fields>
+                    <vaadin24-text-field label="First name"></vaadin24-text-field>
+                    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                    <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                    <vaadin24-password-field label="Password"></vaadin24-password-field>
+                    <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                  </vaadin24-form-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog + labelsAside</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows max-columns="2" labels-aside>
+                    <vaadin24-form-item>
+                      <label slot="label"> First name </label>
+                      <vaadin24-text-field></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Last name </label>
+                      <vaadin24-text-field></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item colspan="2">
+                      <label slot="label"> Username </label>
+                      <vaadin24-text-field colspan="2"></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Password </label>
+                      <vaadin24-password-field></vaadin24-password-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Confirm </label>
+                      <vaadin24-password-field></vaadin24-password-field>
+                    </vaadin24-form-item>
+                  </vaadin24-form-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog + labelsAside + minColumns</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+            (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows min-columns="2" labels-aside>
+                    <vaadin24-form-item>
+                      <label slot="label"> First name </label>
+                      <vaadin24-text-field></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Last name </label>
+                      <vaadin24-text-field></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item colspan="2">
+                      <label slot="label"> Username </label>
+                      <vaadin24-text-field colspan="2"></vaadin24-text-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Password </label>
+                      <vaadin24-password-field></vaadin24-password-field>
+                    </vaadin24-form-item>
+                    <vaadin24-form-item>
+                      <label slot="label"> Confirm </label>
+                      <vaadin24-password-field></vaadin24-password-field>
+                    </vaadin24-form-item>
+                  </vaadin24-form-layout>
+                `,
+          )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog 80%</h1>
+            <vaadin24-dialog
+              width="80%"
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows max-columns="2">
+                    <vaadin24-text-field label="First name"></vaadin24-text-field>
+                    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                    <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                    <vaadin24-password-field label="Password"></vaadin24-password-field>
+                    <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                  </vaadin24-form-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Dialog 80% + expandColumns + expandFields</h1>
+            <vaadin24-dialog
+              width="80%"
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-form-layout auto-responsive auto-rows max-columns="2" expand-columns expand-fields>
+                    <vaadin24-text-field label="First name"></vaadin24-text-field>
+                    <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                    <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                    <vaadin24-password-field label="Password"></vaadin24-password-field>
+                    <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                  </vaadin24-form-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside HorizontalLayout inside Dialog + flex: 1</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-horizontal-layout theme="spacing">
+                    <vaadin24-form-layout auto-responsive auto-rows max-columns="2" style="flex: 1;">
+                      <vaadin24-text-field label="First name"></vaadin24-text-field>
+                      <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                      <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                      <vaadin24-password-field label="Password"></vaadin24-password-field>
+                      <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                    </vaadin24-form-layout>
+                    <vaadin24-form-layout auto-responsive auto-rows max-columns="2" style="flex: 1;" expand-columns expand-fields>
+                      <vaadin24-text-field label="First name"></vaadin24-text-field>
+                      <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                      <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                      <vaadin24-password-field label="Password"></vaadin24-password-field>
+                      <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                    </vaadin24-form-layout>
+                  </vaadin24-horizontal-layout>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+
+            <h1>autoResponsive inside Tabsheet inside Dialog</h1>
+            <vaadin24-dialog
+              ${dialogRenderer(
+                (dialog) => html`
+                  <vaadin24-tabsheet>
+                    <vaadin24-tabs slot="tabs">
+                      <vaadin24-tab id="tab-0">Tab 0</vaadin24-tab>
+                      <vaadin24-tab id="tab-1">Tab 1</vaadin24-tab>
+                    </vaadin24-tabs>
+                    <vaadin24-form-layout tab="tab-0" auto-responsive auto-rows max-columns="2">
+                      <vaadin24-text-field label="First name"></vaadin24-text-field>
+                      <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                      <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                      <vaadin24-password-field label="Password"></vaadin24-password-field>
+                      <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                    </vaadin24-form-layout>
+                    <vaadin24-form-layout tab="tab-1" auto-responsive auto-rows max-columns="2" expand-columns expand-fields>
+                      <vaadin24-text-field label="First name"></vaadin24-text-field>
+                      <vaadin24-text-field label="Last name"></vaadin24-text-field>
+                      <vaadin24-text-area label="Address" colspan="2"></vaadin24-text-area>
+                      <vaadin24-password-field label="Password"></vaadin24-password-field>
+                      <vaadin24-password-field label="Confirm"></vaadin24-password-field>
+                    </vaadin24-form-layout>
+                  </vaadin24-tabsheet>
+                `,
+              )}
+            ></vaadin24-dialog>
+            <vaadin24-button @click="${this.openPrevSiblingDialog}">Open</vaadin24-button>
+          `;
+        }
+
+        openPrevSiblingDialog(event) {
+          let dialog = event.target;
+          while (dialog && dialog.localName !== 'vaadin24-dialog') {
+            dialog = dialog.previousSibling;
+          }
+          dialog.opened = true;
+        }
+      }
+      internalCustomElements.define('form-layout-examples', FormLayoutExamples);
+    </script>
+  </body>
+</html>

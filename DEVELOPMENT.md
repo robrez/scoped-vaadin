@@ -28,6 +28,8 @@ npm run start
 npm run test
 ```
 
+Note: After running "build" on a new working copy, you may need to re-run `npm i` because the build process potentially creates `packages/*` that aren't present on project checkout
+
 ## Upgrading Vaadin
 
 TODO: make a better unified script for these steps

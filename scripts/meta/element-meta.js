@@ -404,6 +404,16 @@ export const elementMeta = [
     "eventNames": []
   },
   {
+    "package": "@vaadin/master-detail-layout",
+    "elementNames": [
+      "vaadin-master-detail-layout"
+    ],
+    "eventNames": [
+      "backdrop-click",
+      "detail-escape-press"
+    ]
+  },
+  {
     "package": "@vaadin/menu-bar",
     "elementNames": [
       "vaadin-menu-bar",
@@ -577,6 +587,18 @@ export const elementMeta = [
     ]
   },
   {
+    "package": "@vaadin/side-nav",
+    "elementNames": [
+      "vaadin-side-nav",
+      "vaadin-side-nav-item"
+    ],
+    "eventNames": [
+      "collapsed-changed",
+      "expanded-changed",
+      "side-nav-location-changed"
+    ]
+  },
+  {
     "package": "@vaadin/split-layout",
     "elementNames": [
       "vaadin-split-layout"
@@ -606,6 +628,11 @@ export const elementMeta = [
       "items-changed",
       "selected-changed"
     ]
+  },
+  {
+    "package": "@vaadin/test-runner-commands",
+    "elementNames": [],
+    "eventNames": []
   },
   {
     "package": "@vaadin/testing-helpers",

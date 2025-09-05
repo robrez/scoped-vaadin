@@ -1,0 +1,48 @@
+Index: test/a11y.test.js
+===================================================================
+--- test/a11y.test.js
++++ test/a11y.test.js
+@@ -1,14 +1,14 @@
+ import { expect } from '@vaadin/chai-plugins';
+ import { arrowDown, arrowRight, enter, fixtureSync, nextRender, oneEvent, outsideClick } from '@vaadin/testing-helpers';
+ import '../src/vaadin-menu-bar.js';
+-import { getDeepActiveElement } from '@vaadin/a11y-base/src/focus-utils.js';
++import { getDeepActiveElement } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ 
+ describe('a11y', () => {
+   describe('ARIA attributes', () => {
+     let menu, buttons, subMenu, overflow;
+ 
+     beforeEach(async () => {
+-      menu = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++      menu = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+       menu.items = [
+         {
+           text: 'Menu Item 1',
+@@ -96,7 +96,7 @@
+     let menuBar, overlay, buttons;
+ 
+     beforeEach(async () => {
+-      menuBar = fixtureSync(`<vaadin-menu-bar></vaadin-menu-bar>`);
++      menuBar = fixtureSync(`<vaadin24-menu-bar></vaadin24-menu-bar>`);
+       menuBar.items = [
+         {
+           text: 'Item 0',
+@@ -111,7 +111,7 @@
+       ];
+       await nextRender();
+       overlay = menuBar._subMenu._overlayElement;
+-      buttons = menuBar.querySelectorAll('vaadin-menu-bar-button');
++      buttons = menuBar.querySelectorAll('vaadin24-menu-bar-button');
+       buttons[0].focus();
+     });
+ 
+@@ -163,7 +163,7 @@
+       await nextRender();
+       // Open Item 0/1
+       arrowRight(getDeepActiveElement());
+-      const nestedSubMenu = overlay.querySelector('vaadin-menu-bar-submenu');
++      const nestedSubMenu = overlay.querySelector('vaadin24-menu-bar-submenu');
+       await oneEvent(nestedSubMenu._overlayElement, 'vaadin-overlay-open');
+       // Select Item 0/1/0
+       enter(getDeepActiveElement());

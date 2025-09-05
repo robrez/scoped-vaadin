@@ -1,0 +1,149 @@
+Index: test/login-overlay.test.js
+===================================================================
+--- test/login-overlay.test.js
++++ test/login-overlay.test.js
+@@ -8,7 +8,7 @@
+   let overlay;
+ 
+   beforeEach(async () => {
+-    overlay = fixtureSync('<vaadin-login-overlay></vaadin-login-overlay>');
++    overlay = fixtureSync('<vaadin24-login-overlay></vaadin24-login-overlay>');
+     await nextRender();
+   });
+ 
+@@ -19,7 +19,7 @@
+   it('should render form wrapper when opened', async () => {
+     overlay.opened = true;
+     await oneEvent(overlay.$.vaadinLoginOverlayWrapper, 'vaadin-overlay-open');
+-    expect(document.querySelector('vaadin-login-form-wrapper')).to.be.ok;
++    expect(document.querySelector('vaadin24-login-form-wrapper')).to.be.ok;
+   });
+ });
+ 
+@@ -35,7 +35,7 @@
+   });
+ 
+   beforeEach(async () => {
+-    overlay = fixtureSync('<vaadin-login-overlay opened theme="some-theme"></vaadin-login-overlay>');
++    overlay = fixtureSync('<vaadin24-login-overlay opened theme="some-theme"></vaadin24-login-overlay>');
+     await nextRender();
+     await nextUpdate(overlay.$.vaadinLoginForm);
+   });
+@@ -47,13 +47,13 @@
+ 
+   it('should set opened using attribute', () => {
+     expect(overlay.opened).to.be.true;
+-    expect(document.querySelector('vaadin-login-form-wrapper')).to.exist;
++    expect(document.querySelector('vaadin24-login-form-wrapper')).to.exist;
+   });
+ 
+   it('should remove form wrapper when closed', async () => {
+     overlay.opened = false;
+     await nextUpdate(overlay);
+-    expect(document.querySelector('vaadin-login-form-wrapper')).not.to.exist;
++    expect(document.querySelector('vaadin24-login-form-wrapper')).not.to.exist;
+   });
+ 
+   it('should not remove form wrapper when moved within DOM', async () => {
+@@ -62,11 +62,11 @@
+     newParent.appendChild(overlay);
+     await nextRender();
+ 
+-    expect(document.querySelector('vaadin-login-form-wrapper')).to.exist;
++    expect(document.querySelector('vaadin24-login-form-wrapper')).to.exist;
+   });
+ 
+   it('should propagate theme to a wrapper', () => {
+-    const wrapper = document.querySelector('vaadin-login-overlay-wrapper');
++    const wrapper = document.querySelector('vaadin24-login-overlay-wrapper');
+     expect(wrapper.getAttribute('theme')).to.be.equal('some-theme');
+   });
+ 
+@@ -129,7 +129,7 @@
+   let overlay;
+ 
+   beforeEach(() => {
+-    overlay = fixtureSync('<vaadin-login-overlay no-autofocus></vaadin-login-overlay>');
++    overlay = fixtureSync('<vaadin24-login-overlay no-autofocus></vaadin24-login-overlay>');
+   });
+ 
+   it('should not focus the username field', async () => {
+@@ -145,7 +145,7 @@
+ 
+   beforeEach(async () => {
+     overlay = fixtureSync(`
+-      <vaadin-login-overlay title="New title" description="New description" opened></vaadin-login-overlay>
++      <vaadin24-login-overlay title="New title" description="New description" opened></vaadin24-login-overlay>
+     `);
+     await nextRender();
+     headerElement = overlay.$.vaadinLoginOverlayWrapper.shadowRoot.querySelector('[part="title"]');
+@@ -197,7 +197,7 @@
+   let overlay, form;
+ 
+   beforeEach(async () => {
+-    overlay = fixtureSync(`<vaadin-login-overlay opened></vaadin-login-overlay>`);
++    overlay = fixtureSync(`<vaadin24-login-overlay opened></vaadin24-login-overlay>`);
+     await nextRender();
+     form = overlay.$.vaadinLoginForm;
+   });
+@@ -221,9 +221,9 @@
+ 
+   beforeEach(async () => {
+     overlay = fixtureSync(`
+-      <vaadin-login-overlay description="New description" opened>
++      <vaadin24-login-overlay description="New description" opened>
+         <div slot="title">Teleported title</div>
+-      </vaadin-login-overlay>
++      </vaadin24-login-overlay>
+     `);
+     await nextRender();
+     overlayWrapper = overlay.$.vaadinLoginOverlayWrapper;
+@@ -294,10 +294,10 @@
+ 
+   beforeEach(async () => {
+     overlay = fixtureSync(`
+-      <vaadin-login-overlay>
++      <vaadin24-login-overlay>
+         <input id="one" slot="custom-form-area" />
+         <input id="two" slot="custom-form-area" />
+-      </vaadin-login-overlay>
++      </vaadin24-login-overlay>
+     `);
+     await nextRender();
+     form = overlay.$.vaadinLoginForm;
+@@ -308,11 +308,11 @@
+     overlay.opened = true;
+     await oneEvent(overlay.$.vaadinLoginOverlayWrapper, 'vaadin-overlay-open');
+ 
+-    const wrapper = form.querySelector('vaadin-login-form-wrapper');
++    const wrapper = form.querySelector('vaadin24-login-form-wrapper');
+     expect(inputs[0].parentElement).to.equal(wrapper);
+     expect(inputs[1].parentElement).to.equal(wrapper);
+ 
+-    const button = wrapper.querySelector('vaadin-button');
++    const button = wrapper.querySelector('vaadin24-button');
+     expect(inputs[0].nextElementSibling).to.equal(inputs[1]);
+     expect(inputs[1].nextElementSibling).to.equal(button);
+ 
+@@ -329,10 +329,10 @@
+ 
+   beforeEach(async () => {
+     overlay = fixtureSync(`
+-      <vaadin-login-overlay>
++      <vaadin24-login-overlay>
+         <div id="foo" slot="footer">Foo</div>
+         <div id="bar" slot="footer">Bar</div>
+-      </vaadin-login-overlay>
++      </vaadin24-login-overlay>
+     `);
+     await nextRender();
+     form = overlay.$.vaadinLoginForm;
+@@ -343,7 +343,7 @@
+     overlay.opened = true;
+     await oneEvent(overlay.$.vaadinLoginOverlayWrapper, 'vaadin-overlay-open');
+ 
+-    const wrapper = form.querySelector('vaadin-login-form-wrapper');
++    const wrapper = form.querySelector('vaadin24-login-form-wrapper');
+     expect(divs[0].parentElement).to.equal(wrapper);
+     expect(divs[1].parentElement).to.equal(wrapper);
+ 

@@ -1,0 +1,31 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -9,7 +9,7 @@
+ 
+   describe('initial', () => {
+     beforeEach(() => {
+-      checkbox = document.createElement('vaadin-checkbox');
++      checkbox = document.createElement('vaadin24-checkbox');
+       validateSpy = sinon.spy(checkbox, 'validate');
+     });
+ 
+@@ -43,7 +43,7 @@
+     beforeEach(async () => {
+       checkbox = fixtureSync(
+         `<div>
+-          <vaadin-checkbox label="Checkbox"></vaadin-checkbox>
++          <vaadin24-checkbox label="Checkbox"></vaadin24-checkbox>
+           <input id="last-global-focusable" />
+         </div>`,
+       ).firstElementChild;
+@@ -118,7 +118,7 @@
+ 
+   describe('required', () => {
+     beforeEach(async () => {
+-      checkbox = fixtureSync('<vaadin-checkbox label="Checkbox" required></vaadin-checkbox>');
++      checkbox = fixtureSync('<vaadin24-checkbox label="Checkbox" required></vaadin24-checkbox>');
+       await nextFrame();
+     });
+ 

@@ -1,0 +1,22 @@
+Index: test/month-calendar.test.js
+===================================================================
+--- test/month-calendar.test.js
++++ test/month-calendar.test.js
+@@ -4,7 +4,7 @@
+ import '../src/vaadin-month-calendar.js';
+ import { getDefaultI18n } from './helpers.js';
+ 
+-describe('vaadin-month-calendar', () => {
++describe('vaadin24-month-calendar', () => {
+   let monthCalendar, valueChangedSpy;
+ 
+   function getDateCells(calendar) {
+@@ -16,7 +16,7 @@
+   }
+ 
+   beforeEach(async () => {
+-    monthCalendar = fixtureSync('<vaadin-month-calendar></vaadin-month-calendar>');
++    monthCalendar = fixtureSync('<vaadin24-month-calendar></vaadin24-month-calendar>');
+     monthCalendar.i18n = getDefaultI18n();
+     monthCalendar.month = new Date(2016, 1, 1);
+     valueChangedSpy = sinon.spy();

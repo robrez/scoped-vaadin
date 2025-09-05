@@ -1,0 +1,87 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -1,16 +1,17 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { enter, fixtureSync, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+ import '../src/vaadin-date-picker.js';
+ import { open, setInputValue, untilOverlayRendered } from './helpers.js';
+ 
+-class DatePicker2016 extends customElements.get('vaadin-date-picker') {
++class DatePicker2016 extends internalCustomElements.get('vaadin24-date-picker') {
+   checkValidity() {
+     return new Date(this.value).getFullYear() === 2016;
+   }
+ }
+ 
+-customElements.define('vaadin-date-picker-2016', DatePicker2016);
++internalCustomElements.define('vaadin24-date-picker-2016', DatePicker2016);
+ 
+ describe('validation', () => {
+   let datePicker;
+@@ -19,7 +20,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      datePicker = document.createElement('vaadin-date-picker');
++      datePicker = document.createElement('vaadin24-date-picker');
+       validateSpy = sinon.spy(datePicker, 'validate');
+     });
+ 
+@@ -71,7 +72,7 @@
+     let valueChangedSpy, validateSpy, changeSpy, input;
+ 
+     beforeEach(async () => {
+-      datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
+       await nextRender();
+       input = datePicker.inputElement;
+       validateSpy = sinon.spy(datePicker, 'validate');
+@@ -217,7 +218,7 @@
+     let input;
+ 
+     beforeEach(async () => {
+-      datePicker = fixtureSync(`<vaadin-date-picker></vaadin-date-picker>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker></vaadin24-date-picker>`);
+       await nextRender();
+       input = datePicker.inputElement;
+       input.focus();
+@@ -262,7 +263,7 @@
+ 
+   describe('required', () => {
+     beforeEach(async () => {
+-      datePicker = fixtureSync(`<vaadin-date-picker required></vaadin-date-picker>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker required></vaadin24-date-picker>`);
+       await nextRender();
+     });
+ 
+@@ -278,7 +279,7 @@
+ 
+   describe('min', () => {
+     beforeEach(async () => {
+-      datePicker = fixtureSync(`<vaadin-date-picker min="2010-01-01"></vaadin-date-picker>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker min="2010-01-01"></vaadin24-date-picker>`);
+       await nextRender();
+     });
+ 
+@@ -304,7 +305,7 @@
+ 
+   describe('max', () => {
+     beforeEach(async () => {
+-      datePicker = fixtureSync(`<vaadin-date-picker max="2010-01-01"></vaadin-date-picker>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker max="2010-01-01"></vaadin24-date-picker>`);
+       await nextRender();
+     });
+ 
+@@ -330,7 +331,7 @@
+ 
+   describe('custom validator', () => {
+     beforeEach(() => {
+-      datePicker = fixtureSync(`<vaadin-date-picker-2016></vaadin-date-picker-2016>`);
++      datePicker = fixtureSync(`<vaadin24-date-picker-2016></vaadin24-date-picker-2016>`);
+     });
+ 
+     it('should validate correctly with custom validator', () => {

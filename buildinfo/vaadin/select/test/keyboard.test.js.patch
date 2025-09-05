@@ -1,0 +1,13 @@
+Index: test/keyboard.test.js
+===================================================================
+--- test/keyboard.test.js
++++ test/keyboard.test.js
+@@ -9,7 +9,7 @@
+   let select, overlay, menu, valueButton;
+ 
+   beforeEach(async () => {
+-    select = fixtureSync('<vaadin-select></vaadin-select>');
++    select = fixtureSync('<vaadin24-select></vaadin24-select>');
+     select.items = [
+       { label: 'Option 1', value: 'option-1' },
+       { label: 'Option 2', value: 'option-2' },

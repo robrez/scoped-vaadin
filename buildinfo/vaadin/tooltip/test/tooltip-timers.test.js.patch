@@ -1,0 +1,107 @@
+Index: test/tooltip-timers.test.js
+===================================================================
+--- test/tooltip-timers.test.js
++++ test/tooltip-timers.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import {
+   aTimeout,
+@@ -19,7 +20,7 @@
+ describe('timers', () => {
+   let clock;
+ 
+-  const Tooltip = customElements.get('vaadin-tooltip');
++  const Tooltip = internalCustomElements.get('vaadin24-tooltip');
+ 
+   // Used as a fallback delay
+   const DEFAULT_DELAY = 500;
+@@ -31,7 +32,7 @@
+   });
+ 
+   async function createTooltip(target) {
+-    const tooltip = fixtureSync('<vaadin-tooltip></vaadin-tooltip>');
++    const tooltip = fixtureSync('<vaadin24-tooltip></vaadin24-tooltip>');
+     tooltip.target = target;
+ 
+     // We use fake timers in reset tests, so native timers won't work.
+@@ -42,18 +43,18 @@
+       await nextUpdate(tooltip);
+     }
+ 
+-    return tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++    return tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+   }
+ 
+   describe('hoverDelay', () => {
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" hover-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin24-tooltip text="tooltip" hover-delay="1"></vaadin24-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+       await nextRender();
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+     });
+ 
+     afterEach(() => {
+@@ -88,11 +89,11 @@
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" focus-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin24-tooltip text="tooltip" focus-delay="1"></vaadin24-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+       await nextRender();
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+     });
+ 
+     afterEach(() => {
+@@ -128,11 +129,11 @@
+     let tooltip, target, overlay;
+ 
+     beforeEach(async () => {
+-      tooltip = fixtureSync('<vaadin-tooltip text="tooltip" hide-delay="1"></vaadin-tooltip>');
++      tooltip = fixtureSync('<vaadin24-tooltip text="tooltip" hide-delay="1"></vaadin24-tooltip>');
+       target = fixtureSync('<input>');
+       tooltip.target = target;
+       await nextRender();
+-      overlay = tooltip.shadowRoot.querySelector('vaadin-tooltip-overlay');
++      overlay = tooltip.shadowRoot.querySelector('vaadin24-tooltip-overlay');
+     });
+ 
+     afterEach(() => {
+@@ -464,16 +465,16 @@
+     beforeEach(async () => {
+       wrapper = fixtureSync(`
+         <div>
+-          <vaadin-tooltip text="tooltip 1" hover-delay="2" focus-delay="2" hide-delay="2" for="input-1"></vaadin-tooltip>
+-          <vaadin-tooltip text="tooltip 2" hover-delay="2" focus-delay="2" hide-delay="2" for="input-2"></vaadin-tooltip>
++          <vaadin24-tooltip text="tooltip 1" hover-delay="2" focus-delay="2" hide-delay="2" for="input-1"></vaadin24-tooltip>
++          <vaadin24-tooltip text="tooltip 2" hover-delay="2" focus-delay="2" hide-delay="2" for="input-2"></vaadin24-tooltip>
+           <input id="input-1">
+           <input id="input-2">
+         </div>
+       `);
+-      tooltips = Array.from(wrapper.querySelectorAll('vaadin-tooltip'));
++      tooltips = Array.from(wrapper.querySelectorAll('vaadin24-tooltip'));
+       targets = wrapper.querySelectorAll('input');
+       await nextRender();
+-      overlays = tooltips.map((el) => el.shadowRoot.querySelector('vaadin-tooltip-overlay'));
++      overlays = tooltips.map((el) => el.shadowRoot.querySelector('vaadin24-tooltip-overlay'));
+     });
+ 
+     afterEach(() => {
+@@ -713,7 +714,7 @@
+ 
+     beforeEach(async () => {
+       tooltip = fixtureSync(`
+-        <vaadin-tooltip text="tooltip 1" hover-delay="2" hide-delay="2" manual></vaadin-tooltip>
++        <vaadin24-tooltip text="tooltip 1" hover-delay="2" hide-delay="2" manual></vaadin24-tooltip>
+       `);
+       await nextRender();
+       controller = tooltip._stateController;

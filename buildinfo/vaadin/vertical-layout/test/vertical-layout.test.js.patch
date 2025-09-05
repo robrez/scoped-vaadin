@@ -1,0 +1,82 @@
+Index: test/vertical-layout.test.js
+===================================================================
+--- test/vertical-layout.test.js
++++ test/vertical-layout.test.js
+@@ -1,22 +1,23 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextFrame } from '@vaadin/testing-helpers';
+ import '../src/vaadin-vertical-layout.js';
+ 
+-describe('vaadin-vertical-layout', () => {
++describe('vaadin24-vertical-layout', () => {
+   describe('basic features', () => {
+     let layout, tagName;
+ 
+     beforeEach(() => {
+-      layout = fixtureSync('<vaadin-vertical-layout></vaadin-vertical-layout>');
++      layout = fixtureSync('<vaadin24-vertical-layout></vaadin24-vertical-layout>');
+       tagName = layout.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+ 
+     it('should have a box-sizing set to border-box', () => {
+@@ -30,9 +31,9 @@
+     beforeEach(() => {
+       wrapper = fixtureSync(`
+         <div>
+-          <vaadin-vertical-layout>
++          <vaadin24-vertical-layout>
+             <div>Content</div>
+-          </vaadin-vertical-layout>
++          </vaadin24-vertical-layout>
+         </div>
+       `);
+       layout = wrapper.firstElementChild;
+@@ -52,10 +53,10 @@
+     describe('flex', () => {
+       beforeEach(async () => {
+         layout = fixtureSync(`
+-          <vaadin-vertical-layout>
++          <vaadin24-vertical-layout>
+             <div></div>
+             <div data-height-full></div>
+-          </vaadin-vertical-layout>
++          </vaadin24-vertical-layout>
+         `);
+         children = Array.from(layout.children);
+         await nextFrame();
+@@ -71,16 +72,16 @@
+     describe('min-height', () => {
+       beforeEach(async () => {
+         layout = fixtureSync(`
+-          <vaadin-vertical-layout>
++          <vaadin24-vertical-layout>
+             <div></div>
+             <div data-height-full></div>
+-            <vaadin-button></vaadin-button>
+-            <vaadin-button data-height-full></vaadin-button>
+-            <vaadin-horizontal-layout></vaadin-horizontal-layout>
+-            <vaadin-horizontal-layout data-height-full></vaadin-horizontal-layout>
+-            <vaadin-vertical-layout></vaadin-vertical-layout>
+-            <vaadin-vertical-layout data-height-full></vaadin-vertical-layout>
+-          </vaadin-vertical-layout>
++            <vaadin24-button></vaadin24-button>
++            <vaadin24-button data-height-full></vaadin24-button>
++            <vaadin24-horizontal-layout></vaadin24-horizontal-layout>
++            <vaadin24-horizontal-layout data-height-full></vaadin24-horizontal-layout>
++            <vaadin24-vertical-layout></vaadin24-vertical-layout>
++            <vaadin24-vertical-layout data-height-full></vaadin24-vertical-layout>
++          </vaadin24-vertical-layout>
+         `);
+         children = Array.from(layout.children);
+         await nextFrame();

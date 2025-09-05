@@ -1,0 +1,27 @@
+Index: test/i18n-mixin.test.js
+===================================================================
+--- test/i18n-mixin.test.js
++++ test/i18n-mixin.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { nextRender } from '@vaadin/testing-helpers';
+ import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+@@ -19,7 +20,7 @@
+   }
+ }
+ 
+-customElements.define(I18nMixinPolymerElement.is, I18nMixinPolymerElement);
++internalCustomElements.define(I18nMixinPolymerElement.is, I18nMixinPolymerElement);
+ 
+ class I18nMixinLitElement extends I18nMixin(DEFAULT_I18N, PolylitMixin(LitElement)) {
+   static get is() {
+@@ -27,7 +28,7 @@
+   }
+ }
+ 
+-customElements.define(I18nMixinLitElement.is, I18nMixinLitElement);
++internalCustomElements.define(I18nMixinLitElement.is, I18nMixinLitElement);
+ 
+ const runTests = (baseClass) => {
+   let element;

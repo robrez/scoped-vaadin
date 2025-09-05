@@ -1,0 +1,16 @@
+Index: test/context-menu-test-styles.js
+===================================================================
+--- test/context-menu-test-styles.js
++++ test/context-menu-test-styles.js
+@@ -1,9 +1,9 @@
+-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
++import { css, registerStyles } from '@scoped-vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+ 
+ // TODO: subset of Lumo needed for unit tests to pass.
+ // These should be eventually covered by base styles.
+ registerStyles(
+-  'vaadin-context-menu-overlay',
++  'vaadin24-context-menu-overlay',
+   css`
+     :host([phone]) {
+       align-items: stretch;

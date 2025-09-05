@@ -1,0 +1,57 @@
+Index: src/vaadin-form-layout-mixin.js
+===================================================================
+--- src/vaadin-form-layout-mixin.js
++++ src/vaadin-form-layout-mixin.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2017 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { SlotStylesMixin } from '@vaadin/component-base/src/slot-styles-mixin.js';
++import { SlotStylesMixin } from '@scoped-vaadin/component-base/src/slot-styles-mixin.js';
+ import { AutoResponsiveLayout } from './layouts/auto-responsive-layout.js';
+ import { ResponsiveStepsLayout } from './layouts/responsive-steps-layout.js';
+ import { formLayoutSlotStyles } from './vaadin-form-layout-styles.js';
+@@ -94,14 +94,14 @@
+          * By default, each field is placed on a new row. To organize fields into rows, there are
+          * two options:
+          *
+-         * 1. Use `<vaadin-form-row>` to explicitly group fields into rows.
++         * 1. Use `<vaadin24-form-row>` to explicitly group fields into rows.
+          *
+          * 2. Enable the `autoRows` property to automatically arrange fields in available columns,
+          *    wrapping to a new row when necessary. `<br>` elements can be used to force a new row.
+          *
+          * The auto-responsive mode is disabled by default. To enable it for an individual instance,
+          * use this property. Alternatively, if you want it to be enabled for all instances by default,
+-         * enable the `defaultAutoResponsiveFormLayout` feature flag before `<vaadin-form-layout>`
++         * enable the `defaultAutoResponsiveFormLayout` feature flag before `<vaadin24-form-layout>`
+          * elements are added to the DOM:
+          *
+          * ```js
+@@ -189,7 +189,7 @@
+         },
+ 
+         /**
+-         * When enabled with `autoResponsive`, `<vaadin-form-item>` prefers positioning
++         * When enabled with `autoResponsive`, `<vaadin24-form-item>` prefers positioning
+          * labels beside the fields. If the layout is too narrow to fit a single column
+          * with a side label, the component will automatically switch labels to their
+          * default position above the fields.
+@@ -229,7 +229,7 @@
+         /**
+          * When `autoResponsive` is enabled, specifies whether fields should stretch
+          * to take up all available space within columns. This setting also applies
+-         * to fields inside `<vaadin-form-item>` elements.
++         * to fields inside `<vaadin24-form-item>` elements.
+          *
+          * The default value is `false`.
+          *
+@@ -275,7 +275,7 @@
+ 
+     /** @override */
+     get slotStyles() {
+-      return [`${formLayoutSlotStyles}`.replace('vaadin-form-layout', this.localName)];
++      return [`${formLayoutSlotStyles}`.replace('vaadin24-form-layout', this.localName)];
+     }
+ 
+     /** @protected */

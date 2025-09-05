@@ -1,0 +1,20 @@
+Index: test/i18n.test.js
+===================================================================
+--- test/i18n.test.js
++++ test/i18n.test.js
+@@ -19,13 +19,13 @@
+   const files = [pendingFile, failedFile, completedFile];
+ 
+   beforeEach(async () => {
+-    upload = fixtureSync('<vaadin-upload></vaadin-upload>');
++    upload = fixtureSync('<vaadin24-upload></vaadin24-upload>');
+     upload.files = files;
+     await nextRender();
+     addButton = upload.querySelector('[slot="add-button"]');
+     dropLabel = upload.querySelector('[slot="drop-label"]');
+     const fileList = upload._fileList;
+-    fileItems = fileList.querySelectorAll('vaadin-upload-file');
++    fileItems = fileList.querySelectorAll('vaadin24-upload-file');
+   });
+ 
+   describe('default i18n', () => {

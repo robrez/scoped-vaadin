@@ -1,0 +1,42 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -4,8 +4,8 @@
+ import sinon from 'sinon';
+ import './not-animated-styles.js';
+ import '../src/vaadin-select.js';
+-import '@vaadin/item/src/vaadin-item.js';
+-import '@vaadin/list-box/src/vaadin-list-box.js';
++import '@scoped-vaadin/item/src/vaadin-item.js';
++import '@scoped-vaadin/list-box/src/vaadin-list-box.js';
+ 
+ describe('validation', () => {
+   let select, validateSpy, valueChangedSpy, changeSpy;
+@@ -14,7 +14,7 @@
+     beforeEach(async () => {
+       select = fixtureSync(
+         `<div>
+-          <vaadin-select></vaadin-select>
++          <vaadin24-select></vaadin24-select>
+           <input id="last-global-focusable" />
+         </div>`,
+       ).firstElementChild;
+@@ -146,7 +146,7 @@
+ 
+   describe('required', () => {
+     beforeEach(async () => {
+-      select = fixtureSync('<vaadin-select required></vaadin-select>');
++      select = fixtureSync('<vaadin24-select required></vaadin24-select>');
+       select.items = [
+         { label: '', value: '' },
+         { label: 'Option 1', value: 'option-1' },
+@@ -197,7 +197,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      select = document.createElement('vaadin-select');
++      select = document.createElement('vaadin24-select');
+       validateSpy = sinon.spy(select, 'validate');
+     });
+ 

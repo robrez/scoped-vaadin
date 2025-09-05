@@ -1,0 +1,99 @@
+Index: test/radio-button.test.js
+===================================================================
+--- test/radio-button.test.js
++++ test/radio-button.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { resetMouse, sendKeys, sendMouseToElement } from '@vaadin/test-runner-commands';
+ import { fire, fixtureSync, mousedown, mouseup, nextRender, nextUpdate } from '@vaadin/testing-helpers';
+@@ -11,22 +12,22 @@
+     let tagName;
+ 
+     beforeEach(() => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       tagName = radio.tagName.toLowerCase();
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 
+   describe('default', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button label="Label"></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button label="Label"></vaadin24-radio-button>');
+       await nextRender();
+       label = radio.querySelector('[slot=label]');
+     });
+@@ -46,7 +47,7 @@
+ 
+   describe('native input', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       await nextRender();
+       input = radio.querySelector('[slot=input]');
+       label = radio.querySelector('[slot=label]');
+@@ -110,7 +111,7 @@
+ 
+   describe('disabled attribute', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button disabled></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button disabled></vaadin24-radio-button>');
+       await nextRender();
+       input = radio.querySelector('[slot=input]');
+       label = radio.querySelector('[slot=label]');
+@@ -139,7 +140,7 @@
+   // TODO: A legacy suit. Replace with snapshot tests when possible.
+   describe('active attribute', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       await nextRender();
+       input = radio.querySelector('[slot=input]');
+     });
+@@ -169,7 +170,7 @@
+     let spy;
+ 
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       await nextRender();
+       label = radio.querySelector('[slot=label]');
+       input = radio.querySelector('[slot=input]');
+@@ -233,7 +234,7 @@
+   describe('delegation', () => {
+     describe('name attribute', () => {
+       beforeEach(async () => {
+-        radio = fixtureSync(`<vaadin-radio-button name="Name"></vaadin-radio-button>`);
++        radio = fixtureSync(`<vaadin24-radio-button name="Name"></vaadin24-radio-button>`);
+         await nextRender();
+         input = radio.querySelector('[slot=input]');
+       });
+@@ -250,7 +251,7 @@
+ 
+   describe('focus', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       await nextRender();
+       input = radio.querySelector('[slot=input]');
+     });
+@@ -275,7 +276,7 @@
+ 
+   describe('opacity', () => {
+     beforeEach(async () => {
+-      radio = fixtureSync('<vaadin-radio-button></vaadin-radio-button>');
++      radio = fixtureSync('<vaadin24-radio-button></vaadin24-radio-button>');
+       await nextRender();
+       input = radio.inputElement;
+     });

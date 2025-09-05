@@ -1,0 +1,9 @@
+Index: theme/material/vaadin-message-list.js
+===================================================================
+--- theme/material/vaadin-message-list.js
++++ theme/material/vaadin-message-list.js
+@@ -1,3 +1,3 @@
+-import '@vaadin/markdown/theme/material/vaadin-markdown-styles.js';
++import '@scoped-vaadin/markdown/theme/material/vaadin-markdown-styles.js';
+ import './vaadin-message-list-styles.js';
+ import '../../src/vaadin-message-list.js';

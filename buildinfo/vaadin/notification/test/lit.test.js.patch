@@ -1,0 +1,13 @@
+Index: test/lit.test.js
+===================================================================
+--- test/lit.test.js
++++ test/lit.test.js
+@@ -8,7 +8,7 @@
+     let notification;
+ 
+     beforeEach(async () => {
+-      notification = fixtureSync(`<vaadin-notification></vaadin-notification>`);
++      notification = fixtureSync(`<vaadin24-notification></vaadin24-notification>`);
+       await nextFrame();
+       notification.open();
+       notification.renderer = (root) => {

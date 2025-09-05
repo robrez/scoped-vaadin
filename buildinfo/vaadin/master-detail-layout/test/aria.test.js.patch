@@ -1,0 +1,17 @@
+Index: test/aria.test.js
+===================================================================
+--- test/aria.test.js
++++ test/aria.test.js
+@@ -13,10 +13,10 @@
+ 
+   beforeEach(async () => {
+     layout = fixtureSync(`
+-      <vaadin-master-detail-layout>
++      <vaadin24-master-detail-layout>
+         <master-content></master-content>
+         <detail-content slot="detail"></detail-content>
+-      </vaadin-master-detail-layout>
++      </vaadin24-master-detail-layout>
+     `);
+     await nextRender();
+     master = layout.shadowRoot.querySelector('[part="master"]');

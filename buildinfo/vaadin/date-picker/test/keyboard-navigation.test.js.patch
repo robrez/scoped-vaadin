@@ -1,0 +1,53 @@
+Index: test/keyboard-navigation.test.js
+===================================================================
+--- test/keyboard-navigation.test.js
++++ test/keyboard-navigation.test.js
+@@ -12,7 +12,7 @@
+ 
+     describe('default', () => {
+       beforeEach(async () => {
+-        datePicker = fixtureSync('<vaadin-date-picker></vaadin-date-picker>');
++        datePicker = fixtureSync('<vaadin24-date-picker></vaadin24-date-picker>');
+         await nextRender();
+         input = datePicker.inputElement;
+         input.focus();
+@@ -48,7 +48,7 @@
+ 
+     describe('value', () => {
+       beforeEach(async () => {
+-        datePicker = fixtureSync('<vaadin-date-picker value="2001-01-01"></vaadin-date-picker>');
++        datePicker = fixtureSync('<vaadin24-date-picker value="2001-01-01"></vaadin24-date-picker>');
+         await nextRender();
+         input = datePicker.inputElement;
+         input.focus();
+@@ -83,7 +83,7 @@
+ 
+     describe('initial position', () => {
+       beforeEach(async () => {
+-        datePicker = fixtureSync('<vaadin-date-picker initial-position="2001-01-01"></vaadin-date-picker>');
++        datePicker = fixtureSync('<vaadin24-date-picker initial-position="2001-01-01"></vaadin24-date-picker>');
+         await nextRender();
+         input = datePicker.inputElement;
+         input.focus();
+@@ -116,7 +116,7 @@
+ 
+     describe('disabled dates', () => {
+       beforeEach(async () => {
+-        datePicker = fixtureSync(`<vaadin-date-picker min="2010-01-01" max="2010-01-31"></vaadin-date-picker>`);
++        datePicker = fixtureSync(`<vaadin24-date-picker min="2010-01-01" max="2010-01-31"></vaadin24-date-picker>`);
+         datePicker.isDateDisabled = (date) => {
+           if (!date) {
+             return false;
+@@ -211,10 +211,10 @@
+ 
+     beforeEach(async () => {
+       overlay = fixtureSync(`
+-        <vaadin-date-picker-overlay-content
++        <vaadin24-date-picker-overlay-content
+           style="position: absolute; top: 0; width: 400px"
+           scroll-duration="0"
+-        ></vaadin-date-picker-overlay-content>
++        ></vaadin24-date-picker-overlay-content>
+       `);
+       overlay.i18n = getDefaultI18n();
+ 

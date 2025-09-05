@@ -1,0 +1,31 @@
+Index: src/layouts/auto-responsive-layout.js
+===================================================================
+--- src/layouts/auto-responsive-layout.js
++++ src/layouts/auto-responsive-layout.js
+@@ -3,7 +3,7 @@
+  * Copyright (c) 2021 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isElementHidden } from '@vaadin/a11y-base/src/focus-utils.js';
++import { isElementHidden } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ import { AbstractLayout } from './abstract-layout.js';
+ 
+ /**
+@@ -148,7 +148,7 @@
+       return (
+         target === this.host ||
+         target.parentElement === this.host ||
+-        target.parentElement.localName === 'vaadin-form-row'
++        target.parentElement.localName === 'vaadin24-form-row'
+       );
+     });
+     if (shouldUpdateLayout) {
+@@ -159,7 +159,7 @@
+   /** @private */
+   get __children() {
+     return [...this.host.children].flatMap((child) => {
+-      return child.localName === 'vaadin-form-row' ? [...child.children] : child;
++      return child.localName === 'vaadin24-form-row' ? [...child.children] : child;
+     });
+   }
+ 

@@ -1,0 +1,13 @@
+Index: test/dom-sync.test.js
+===================================================================
+--- test/dom-sync.test.js
++++ test/dom-sync.test.js
+@@ -6,7 +6,7 @@
+   let element;
+ 
+   beforeEach(async () => {
+-    element = fixtureSync('<vaadin-markdown></vaadin-markdown>');
++    element = fixtureSync('<vaadin24-markdown></vaadin24-markdown>');
+     await nextRender(element);
+   });
+ 

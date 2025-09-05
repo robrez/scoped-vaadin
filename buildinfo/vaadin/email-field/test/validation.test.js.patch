@@ -1,0 +1,31 @@
+Index: test/validation.test.js
+===================================================================
+--- test/validation.test.js
++++ test/validation.test.js
+@@ -38,7 +38,7 @@
+ 
+   describe('basic', () => {
+     beforeEach(async () => {
+-      emailField = fixtureSync('<vaadin-email-field></vaadin-email-field>');
++      emailField = fixtureSync('<vaadin24-email-field></vaadin24-email-field>');
+       await nextRender();
+     });
+ 
+@@ -89,7 +89,7 @@
+ 
+   describe('custom pattern', () => {
+     beforeEach(async () => {
+-      emailField = fixtureSync('<vaadin-email-field pattern=".+@example.com"></vaadin-email-field>');
++      emailField = fixtureSync('<vaadin24-email-field pattern=".+@example.com"></vaadin24-email-field>');
+       await nextRender();
+     });
+ 
+@@ -102,7 +102,7 @@
+     let validateSpy;
+ 
+     beforeEach(() => {
+-      emailField = document.createElement('vaadin-email-field');
++      emailField = document.createElement('vaadin24-email-field');
+       validateSpy = sinon.spy(emailField, 'validate');
+     });
+ 

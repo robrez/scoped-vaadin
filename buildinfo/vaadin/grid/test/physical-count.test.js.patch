@@ -1,0 +1,26 @@
+Index: test/physical-count.test.js
+===================================================================
+--- test/physical-count.test.js
++++ test/physical-count.test.js
+@@ -33,9 +33,9 @@
+ 
+   beforeEach(() => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 200px;" size="200" theme="no-border">
+-        <vaadin-grid-column></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid style="width: 200px; height: 200px;" size="200" theme="no-border">
++        <vaadin24-grid-column></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+     // Inject the test styles
+@@ -43,7 +43,7 @@
+     style.textContent = styles.cssText;
+     grid.shadowRoot.appendChild(style);
+ 
+-    grid.querySelector('vaadin-grid-column').renderer = (root, _, model) => {
++    grid.querySelector('vaadin24-grid-column').renderer = (root, _, model) => {
+       root.textContent = model.index;
+     };
+     grid.dataProvider = infiniteDataProvider;

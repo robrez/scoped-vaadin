@@ -1,0 +1,39 @@
+Index: test/side-nav.test.js
+===================================================================
+--- test/side-nav.test.js
++++ test/side-nav.test.js
+@@ -1,3 +1,4 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextRender } from '@vaadin/testing-helpers';
+ import sinon from 'sinon';
+@@ -8,11 +9,11 @@
+ 
+   beforeEach(async () => {
+     sideNav = fixtureSync(`
+-      <vaadin-side-nav collapsible>
++      <vaadin24-side-nav collapsible>
+         <span slot="label">Main menu</span>
+-        <vaadin-side-nav-item>Item 1</vaadin-side-nav-item>
+-        <vaadin-side-nav-item>Item 2</vaadin-side-nav-item>
+-      </vaadin-side-nav>
++        <vaadin24-side-nav-item>Item 1</vaadin24-side-nav-item>
++        <vaadin24-side-nav-item>Item 2</vaadin24-side-nav-item>
++      </vaadin24-side-nav>
+     `);
+     await nextRender();
+   });
+@@ -25,11 +26,11 @@
+     });
+ 
+     it('should be defined in custom element registry', () => {
+-      expect(customElements.get(tagName)).to.be.ok;
++      expect(internalCustomElements.get(tagName)).to.be.ok;
+     });
+ 
+     it('should have a valid static "is" getter', () => {
+-      expect(customElements.get(tagName).is).to.equal(tagName);
++      expect(internalCustomElements.get(tagName).is).to.equal(tagName);
+     });
+   });
+ 

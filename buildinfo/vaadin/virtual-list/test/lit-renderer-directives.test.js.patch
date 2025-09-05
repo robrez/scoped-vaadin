@@ -1,0 +1,37 @@
+Index: test/lit-renderer-directives.test.js
+===================================================================
+--- test/lit-renderer-directives.test.js
++++ test/lit-renderer-directives.test.js
+@@ -8,15 +8,15 @@
+ async function renderVirtualList(container, { items }) {
+   render(
+     html`
+-      <vaadin-virtual-list
++      <vaadin24-virtual-list
+         .items="${items}"
+         ${items ? virtualListRenderer((item) => html`${item}`, items) : null}
+-      ></vaadin-virtual-list>
++      ></vaadin24-virtual-list>
+     `,
+     container,
+   );
+   await nextFrame();
+-  return container.querySelector('vaadin-virtual-list');
++  return container.querySelector('vaadin24-virtual-list');
+ }
+ 
+ describe('lit renderer directive', () => {
+@@ -57,11 +57,11 @@
+       beforeEach(async () => {
+         rendererSpy = sinon.spy();
+         render(
+-          html`<vaadin-virtual-list .items="${['Item']}" ${virtualListRenderer(rendererSpy)}></vaadin-virtual-list>`,
++          html`<vaadin24-virtual-list .items="${['Item']}" ${virtualListRenderer(rendererSpy)}></vaadin24-virtual-list>`,
+           container,
+         );
+         await nextFrame();
+-        list = container.querySelector('vaadin-virtual-list');
++        list = container.querySelector('vaadin24-virtual-list');
+       });
+ 
+       it('should pass the item to the renderer', () => {

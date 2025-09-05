@@ -1,0 +1,42 @@
+Index: test/layout-improvements.test.js
+===================================================================
+--- test/layout-improvements.test.js
++++ test/layout-improvements.test.js
+@@ -9,10 +9,10 @@
+   describe('flex', () => {
+     beforeEach(async () => {
+       layout = fixtureSync(`
+-        <vaadin-vertical-layout>
++        <vaadin24-vertical-layout>
+           <div></div>
+           <div data-height-full></div>
+-        </vaadin-vertical-layout>
++        </vaadin24-vertical-layout>
+       `);
+       children = Array.from(layout.children);
+       await nextFrame();
+@@ -34,16 +34,16 @@
+   describe('min-height', () => {
+     beforeEach(async () => {
+       layout = fixtureSync(`
+-        <vaadin-vertical-layout>
++        <vaadin24-vertical-layout>
+           <div></div>
+           <div data-height-full></div>
+-          <vaadin-button></vaadin-button>
+-          <vaadin-button data-height-full></vaadin-button>
+-          <vaadin-horizontal-layout></vaadin-horizontal-layout>
+-          <vaadin-horizontal-layout data-height-full></vaadin-horizontal-layout>
+-          <vaadin-vertical-layout></vaadin-vertical-layout>
+-          <vaadin-vertical-layout data-height-full></vaadin-vertical-layout>
+-        </vaadin-vertical-layout>
++          <vaadin24-button></vaadin24-button>
++          <vaadin24-button data-height-full></vaadin24-button>
++          <vaadin24-horizontal-layout></vaadin24-horizontal-layout>
++          <vaadin24-horizontal-layout data-height-full></vaadin24-horizontal-layout>
++          <vaadin24-vertical-layout></vaadin24-vertical-layout>
++          <vaadin24-vertical-layout data-height-full></vaadin24-vertical-layout>
++        </vaadin24-vertical-layout>
+       `);
+       children = Array.from(layout.children);
+       await nextFrame();

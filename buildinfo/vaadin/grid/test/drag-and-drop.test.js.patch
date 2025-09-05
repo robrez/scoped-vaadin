@@ -1,0 +1,45 @@
+Index: test/drag-and-drop.test.js
+===================================================================
+--- test/drag-and-drop.test.js
++++ test/drag-and-drop.test.js
+@@ -109,10 +109,10 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid hidden>
+-        <vaadin-grid-column path="first" header="First name"></vaadin-grid-column>
+-        <vaadin-grid-column path="last" header="Last name"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid hidden>
++        <vaadin24-grid-column path="first" header="First name"></vaadin24-grid-column>
++        <vaadin24-grid-column path="last" header="Last name"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     await nextFrame();
+     grid.hidden = false;
+@@ -369,7 +369,7 @@
+ 
+       it('should auto generate data transfer text data in order', () => {
+         grid.selectedItems = grid.items;
+-        const columns = grid.querySelectorAll('vaadin-grid-column');
++        const columns = grid.querySelectorAll('vaadin24-grid-column');
+         grid._swapColumnOrders(columns[0], columns[1]);
+         fireDragStart();
+         fireDrop();
+@@ -1111,12 +1111,12 @@
+     beforeEach(async () => {
+       container = fixtureSync(`
+         <div style="width: 400px; height: 400px;">
+-          <vaadin-grid draggable="true" style="width: 300px; height: 300px;">
+-            <vaadin-grid-column path="value"></vaadin-grid-column>
+-          </vaadin-grid>
++          <vaadin24-grid draggable="true" style="width: 300px; height: 300px;">
++            <vaadin24-grid-column path="value"></vaadin24-grid-column>
++          </vaadin24-grid>
+         </div>
+       `);
+-      grid = container.querySelector('vaadin-grid');
++      grid = container.querySelector('vaadin24-grid');
+       document.body.appendChild(container);
+       flushGrid(grid);
+       await nextFrame();

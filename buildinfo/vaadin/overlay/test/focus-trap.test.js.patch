@@ -1,0 +1,74 @@
+Index: test/focus-trap.test.js
+===================================================================
+--- test/focus-trap.test.js
++++ test/focus-trap.test.js
+@@ -1,7 +1,7 @@
+ import { expect } from '@vaadin/chai-plugins';
+ import { fixtureSync, nextRender, oneEvent, tabKeyDown } from '@vaadin/testing-helpers';
+ import '../src/vaadin-overlay.js';
+-import { getFocusableElements, isElementFocused } from '@vaadin/a11y-base/src/focus-utils.js';
++import { getFocusableElements, isElementFocused } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ 
+ describe('focus-trap', () => {
+   let overlay, overlayPart, focusableElements;
+@@ -12,7 +12,7 @@
+ 
+   describe('focusable elements', () => {
+     beforeEach(async () => {
+-      overlay = fixtureSync('<vaadin-overlay focus-trap></vaadin-overlay>');
++      overlay = fixtureSync('<vaadin24-overlay focus-trap></vaadin24-overlay>');
+       overlay.renderer = (root) => {
+         if (!root.firstChild) {
+           root.innerHTML = `
+@@ -77,7 +77,7 @@
+ 
+   describe('empty', () => {
+     beforeEach(async () => {
+-      overlay = fixtureSync('<vaadin-overlay></vaadin-overlay>');
++      overlay = fixtureSync('<vaadin24-overlay></vaadin24-overlay>');
+       await nextRender();
+       overlayPart = overlay.$.overlay;
+     });
+@@ -104,14 +104,14 @@
+     let nested;
+ 
+     beforeEach(async () => {
+-      overlay = fixtureSync('<vaadin-overlay focus-trap></vaadin-overlay>');
++      overlay = fixtureSync('<vaadin24-overlay focus-trap></vaadin24-overlay>');
+       overlay.renderer = (root) => {
+         if (!root.firstChild) {
+           const button = document.createElement('button');
+           button.textContent = 'Button';
+           root.appendChild(button);
+ 
+-          const nested = document.createElement('vaadin-overlay');
++          const nested = document.createElement('vaadin24-overlay');
+           nested.renderer = (root) => {
+             root.textContent = 'Inner content';
+           };
+@@ -121,7 +121,7 @@
+       overlay.opened = true;
+       await oneEvent(overlay, 'vaadin-overlay-open');
+       focusableElements = getFocusableElements(overlay.$.overlay);
+-      nested = overlay.querySelector('vaadin-overlay');
++      nested = overlay.querySelector('vaadin24-overlay');
+     });
+ 
+     afterEach(() => {
+@@ -154,14 +154,14 @@
+         `
+         <div>
+           <button>Foo</button>
+-          <vaadin-overlay focus-trap></vaadin-overlay>
++          <vaadin24-overlay focus-trap></vaadin24-overlay>
+           <button>Bar</button>
+         </div>
+       `,
+         outer,
+       );
+ 
+-      overlay = inner.querySelector('vaadin-overlay');
++      overlay = inner.querySelector('vaadin24-overlay');
+       overlay.renderer = (root) => {
+         root.innerHTML = '<input placeholder="Input">';
+       };

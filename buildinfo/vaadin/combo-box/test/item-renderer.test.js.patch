@@ -1,0 +1,22 @@
+Index: test/item-renderer.test.js
+===================================================================
+--- test/item-renderer.test.js
++++ test/item-renderer.test.js
+@@ -8,7 +8,7 @@
+   let comboBox;
+ 
+   beforeEach(async () => {
+-    comboBox = fixtureSync('<vaadin-combo-box></vaadin-combo-box>');
++    comboBox = fixtureSync('<vaadin24-combo-box></vaadin24-combo-box>');
+     await nextRender();
+     comboBox.items = ['foo', 'bar', 'baz'];
+   });
+@@ -22,7 +22,7 @@
+     it(`should pass the 'root', 'owner', 'model' arguments to the renderer`, () => {
+       const [root, owner, model] = comboBox.renderer.args[0];
+ 
+-      expect(root.localName).to.equal('vaadin-combo-box-item');
++      expect(root.localName).to.equal('vaadin24-combo-box-item');
+       expect(owner).to.eql(comboBox);
+       expect(model).to.deep.equal({
+         item: 'foo',

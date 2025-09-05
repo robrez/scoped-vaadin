@@ -1,0 +1,27 @@
+Index: test/iconset.test.js
+===================================================================
+--- test/iconset.test.js
++++ test/iconset.test.js
+@@ -3,19 +3,19 @@
+ import { isValidSvg } from '../src/vaadin-icon-svg.js';
+ import { Iconset } from '../src/vaadin-iconset.js';
+ 
+-describe('vaadin-iconset', () => {
++describe('vaadin24-iconset', () => {
+   let iconset;
+ 
+   beforeEach(async () => {
+     iconset = fixtureSync(`
+-      <vaadin-iconset name="vaadin" size="16">
++      <vaadin24-iconset name="vaadin" size="16">
+         <svg xmlns="http://www.w3.org/2000/svg">
+           <defs>
+             <g id="vaadin:caret-down"><path d="M3 4h10l-5 7z"></path></g>
+             <g id="caret-up"><path d="M13 12h-10l5-7z"></path></g>
+           </defs>
+         </svg>
+-      </vaadin-iconset>
++      </vaadin24-iconset>
+     `);
+     await nextFrame();
+   });

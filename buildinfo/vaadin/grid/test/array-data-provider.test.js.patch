@@ -1,0 +1,104 @@
+Index: test/array-data-provider.test.js
+===================================================================
+--- test/array-data-provider.test.js
++++ test/array-data-provider.test.js
+@@ -10,10 +10,10 @@
+   describe('with items', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name.first" header="First"></vaadin-grid-column>
+-          <vaadin-grid-column path="name.last" header="Last"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="name.first" header="First"></vaadin24-grid-column>
++          <vaadin24-grid-column path="name.last" header="Last"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.items = [
+         {
+@@ -86,10 +86,10 @@
+   describe('without items', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid>
+-          <vaadin-grid-column path="name.first" header="First"></vaadin-grid-column>
+-          <vaadin-grid-column path="name.last" header="Last"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid>
++          <vaadin24-grid-column path="name.first" header="First"></vaadin24-grid-column>
++          <vaadin24-grid-column path="name.last" header="Last"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       flushGrid(grid);
+       await nextFrame();
+@@ -109,10 +109,10 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="name.first"></vaadin-grid-column>
+-        <vaadin-grid-column path="name.last"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column path="name.first"></vaadin24-grid-column>
++        <vaadin24-grid-column path="name.last"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.items = [
+@@ -123,19 +123,19 @@
+         },
+       },
+     ];
+-    const columns = grid.querySelectorAll('vaadin-grid-column');
++    const columns = grid.querySelectorAll('vaadin24-grid-column');
+     columns[0].headerRenderer = (root) => {
+       if (!root.firstChild) {
+         root.innerHTML = `
+-          <vaadin-grid-sorter>
++          <vaadin24-grid-sorter>
+             Sorter with invalid path
+-          </vaadin-grid-sorter>
++          </vaadin24-grid-sorter>
+         `;
+       }
+     };
+     columns[1].headerRenderer = (root) => {
+       if (!root.firstChild) {
+-        root.innerHTML = '<vaadin-grid-filter value="foo"></vaadin-grid-filter>';
++        root.innerHTML = '<vaadin24-grid-filter value="foo"></vaadin24-grid-filter>';
+       }
+     };
+     flushGrid(grid);
+@@ -154,7 +154,7 @@
+     let sorter;
+ 
+     beforeEach(() => {
+-      sorter = grid.querySelector('vaadin-grid-sorter');
++      sorter = grid.querySelector('vaadin24-grid-sorter');
+     });
+ 
+     it('should warn about invalid path with undefined parent property', () => {
+@@ -200,7 +200,7 @@
+     let filter;
+ 
+     beforeEach(() => {
+-      filter = grid.querySelector('vaadin-grid-filter');
++      filter = grid.querySelector('vaadin24-grid-filter');
+       filter.path = '';
+       filter._debouncerFilterChanged.flush();
+     });
+@@ -232,9 +232,9 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid>
+-        <vaadin-grid-column path="value"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid>
++        <vaadin24-grid-column path="value"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     await nextFrame();
+   });

@@ -1,0 +1,13 @@
+Index: test/accessible-disabled-buttons.test.js
+===================================================================
+--- test/accessible-disabled-buttons.test.js
++++ test/accessible-disabled-buttons.test.js
+@@ -16,7 +16,7 @@
+   });
+ 
+   beforeEach(async () => {
+-    menuBar = fixtureSync('<vaadin-menu-bar></vaadin-menu-bar>');
++    menuBar = fixtureSync('<vaadin24-menu-bar></vaadin24-menu-bar>');
+     menuBar.items = [
+       { text: 'Item 0' },
+       { text: 'Item 1', disabled: true, children: [{ text: 'SubItem 0' }] },

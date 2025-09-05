@@ -1,0 +1,149 @@
+Index: test/selection.test.js
+===================================================================
+--- test/selection.test.js
++++ test/selection.test.js
+@@ -32,10 +32,10 @@
+   describe('with renderer', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 200px;" size="10">
+-          <vaadin-grid-column></vaadin-grid-column>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 200px;" size="10">
++          <vaadin24-grid-column></vaadin24-grid-column>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+ 
+       const cols = grid.children;
+@@ -118,10 +118,10 @@
+   describe('renderer cells', () => {
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 200px;" size="10">
+-          <vaadin-grid-column></vaadin-grid-column>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 200px;" size="10">
++          <vaadin24-grid-column></vaadin24-grid-column>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+ 
+       const cols = grid.children;
+@@ -173,16 +173,16 @@
+ 
+   beforeEach(async () => {
+     grid = fixtureSync(`
+-      <vaadin-grid style="width: 200px; height: 200px;">
+-        <vaadin-grid-selection-column auto-select></vaadin-grid-selection-column>
+-        <vaadin-grid-selection-column header="header"></vaadin-grid-selection-column>
++      <vaadin24-grid style="width: 200px; height: 200px;">
++        <vaadin24-grid-selection-column auto-select></vaadin24-grid-selection-column>
++        <vaadin24-grid-selection-column header="header"></vaadin24-grid-selection-column>
+ 
+-        <vaadin-grid-column-group>
+-          <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-        </vaadin-grid-column-group>
++        <vaadin24-grid-column-group>
++          <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++        </vaadin24-grid-column-group>
+ 
+-        <vaadin-grid-filter-column path="value"></vaadin-grid-filter-column>
+-      </vaadin-grid>
++        <vaadin24-grid-filter-column path="value"></vaadin24-grid-filter-column>
++      </vaadin24-grid>
+     `);
+ 
+     grid.querySelector('[header="header"]').renderer = (root, _, { item }) => {
+@@ -215,7 +215,7 @@
+   });
+ 
+   it('should have a checkbox in the body cell', () => {
+-    expect(firstBodyCheckbox.localName).to.eql('vaadin-checkbox');
++    expect(firstBodyCheckbox.localName).to.eql('vaadin24-checkbox');
+   });
+ 
+   it('should have the checkbox unselected by default', () => {
+@@ -335,7 +335,7 @@
+   });
+ 
+   it('should have a select all checkbox in the header', () => {
+-    expect(selectAllCheckbox.localName).to.eql('vaadin-checkbox');
++    expect(selectAllCheckbox.localName).to.eql('vaadin24-checkbox');
+   });
+ 
+   it('should have class name for the select all checkbox', () => {
+@@ -517,10 +517,10 @@
+ 
+   it('should not clear pre-selected items', () => {
+     const grid = fixtureSync(`
+-      <vaadin-grid selected-items='[{"value": "foo"}]'>
+-        <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-        <vaadin-grid-column path="value"></vaadin-grid-column>
+-      </vaadin-grid>
++      <vaadin24-grid selected-items='[{"value": "foo"}]'>
++        <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++        <vaadin24-grid-column path="value"></vaadin24-grid-column>
++      </vaadin24-grid>
+     `);
+     expect(grid.selectedItems).to.have.length(1);
+   });
+@@ -571,7 +571,7 @@
+     firstBodyCheckbox.click();
+ 
+     await nextFrame();
+-    const filter = grid.querySelector('vaadin-grid-filter');
++    const filter = grid.querySelector('vaadin24-grid-filter');
+     filter.value = 'foo';
+     filter.dispatchEvent(new CustomEvent('input', { bubbles: true, composed: true }));
+ 
+@@ -649,10 +649,10 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 450px;">
+-          <vaadin-grid-selection-column drag-select></vaadin-grid-selection-column>
+-          <vaadin-grid-column></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 450px;">
++          <vaadin24-grid-selection-column drag-select></vaadin24-grid-selection-column>
++          <vaadin24-grid-column></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       await nextFrame();
+       grid.items = [...new Array(100)].map((_, i) => `${i}`);
+@@ -738,7 +738,7 @@
+ 
+     it('should not toggle checkbox after dragging on a single checkbox', () => {
+       const cell = getBodyCellContent(grid, 1, 0);
+-      const checkBox = cell.querySelector('vaadin-checkbox');
++      const checkBox = cell.querySelector('vaadin24-checkbox');
+       const input = checkBox.querySelector('input');
+ 
+       fireTrackEvent(input, input, 'start');
+@@ -907,10 +907,10 @@
+ 
+     beforeEach(async () => {
+       grid = fixtureSync(`
+-        <vaadin-grid style="width: 200px; height: 450px;">
+-          <vaadin-grid-selection-column></vaadin-grid-selection-column>
+-          <vaadin-grid-column path="name"></vaadin-grid-column>
+-        </vaadin-grid>
++        <vaadin24-grid style="width: 200px; height: 450px;">
++          <vaadin24-grid-selection-column></vaadin24-grid-selection-column>
++          <vaadin24-grid-column path="name"></vaadin24-grid-column>
++        </vaadin24-grid>
+       `);
+       grid.items = [{ name: 'Item 0' }, { name: 'Item 1' }, { name: 'Item 2' }];
+       await nextRender();
+@@ -984,7 +984,7 @@
+ 
+     describe('autoSelect', () => {
+       beforeEach(() => {
+-        const selectionColumn = grid.querySelector('vaadin-grid-selection-column');
++        const selectionColumn = grid.querySelector('vaadin24-grid-selection-column');
+         selectionColumn.autoSelect = true;
+       });
+ 

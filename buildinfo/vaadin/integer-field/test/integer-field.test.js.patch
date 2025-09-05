@@ -1,0 +1,26 @@
+Index: test/integer-field.test.js
+===================================================================
+--- test/integer-field.test.js
++++ test/integer-field.test.js
+@@ -7,7 +7,7 @@
+   let integerField, input;
+ 
+   beforeEach(async () => {
+-    integerField = fixtureSync('<vaadin-integer-field></vaadin-integer-field>');
++    integerField = fixtureSync('<vaadin24-integer-field></vaadin24-integer-field>');
+     await nextRender();
+     input = integerField.inputElement;
+   });
+@@ -293,9 +293,9 @@
+     expect(() =>
+       fixtureSync(`
+         <div>
+-          <vaadin-integer-field label="integer fld"></vaadin-integer-field>
+-          <vaadin-text-field label="text fld"></vaadin-text-field>
+-          <vaadin-number-field label="number fld"></vaadin-number-field>
++          <vaadin24-integer-field label="integer fld"></vaadin24-integer-field>
++          <vaadin24-text-field label="text fld"></vaadin24-text-field>
++          <vaadin24-number-field label="number fld"></vaadin24-number-field>
+         </div>
+       `),
+     ).to.not.throw(Error);

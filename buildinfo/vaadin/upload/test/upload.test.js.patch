@@ -1,0 +1,13 @@
+Index: test/upload.test.js
+===================================================================
+--- test/upload.test.js
++++ test/upload.test.js
+@@ -8,7 +8,7 @@
+   let upload, file;
+ 
+   beforeEach(async () => {
+-    upload = fixtureSync(`<vaadin-upload></vaadin-upload>`);
++    upload = fixtureSync(`<vaadin24-upload></vaadin24-upload>`);
+     upload.target = 'http://foo.com/bar';
+     file = createFile(100000, 'application/unknown');
+     await nextRender();

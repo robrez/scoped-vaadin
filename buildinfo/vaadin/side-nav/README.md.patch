@@ -1,0 +1,88 @@
+Index: README.md
+===================================================================
+--- README.md
++++ README.md
+@@ -1,30 +1,32 @@
+-# @vaadin/side-nav
++# @scoped-vaadin/side-nav
+ 
++This component is based on [@vaadin/side-nav](https://www.npmjs.com/package/@vaadin/side-nav)
++
+ A web component for navigation menus.
+ 
+ [Documentation + Live Demo ↗](https://vaadin.com/docs/latest/components/side-nav)
+ 
+-[![npm version](https://badgen.net/npm/v/@vaadin/side-nav)](https://www.npmjs.com/package/@vaadin/side-nav)
++[![npm version](https://badgen.net/npm/v/@scoped-vaadin/side-nav)](https://www.npmjs.com/package/@scoped-vaadin/side-nav)
+ 
+ ```html
+-<vaadin-side-nav collapsible>
++<vaadin24-side-nav collapsible>
+   <span slot="label">Main menu</span>
+ 
+-  <vaadin-side-nav-item path="/dashboard">
+-    <vaadin-icon icon="vaadin:chart" slot="prefix"></vaadin-icon>
++  <vaadin24-side-nav-item path="/dashboard">
++    <vaadin24-icon icon="vaadin:chart" slot="prefix"></vaadin24-icon>
+     Dashboard
+     <span theme="badge primary" slot="suffix" aria-label="(2 new items)">2</span>
+-  </vaadin-side-nav-item>
++  </vaadin24-side-nav-item>
+ 
+-  <vaadin-side-nav-item>
+-    <vaadin-icon icon="vaadin:folder-open" slot="prefix"></vaadin-icon>
++  <vaadin24-side-nav-item>
++    <vaadin24-icon icon="vaadin:folder-open" slot="prefix"></vaadin24-icon>
+     Parent
+ 
+-    <vaadin-side-nav-item path="/child1" slot="children"> Child 1 </vaadin-side-nav-item>
++    <vaadin24-side-nav-item path="/child1" slot="children"> Child 1 </vaadin24-side-nav-item>
+ 
+-    <vaadin-side-nav-item path="/child2" slot="children"> Child 2 </vaadin-side-nav-item>
+-  </vaadin-side-nav-item>
+-</vaadin-side-nav>
++    <vaadin24-side-nav-item path="/child2" slot="children"> Child 2 </vaadin24-side-nav-item>
++  </vaadin24-side-nav-item>
++</vaadin24-side-nav>
+ ```
+ 
+ ## Installation
+@@ -32,13 +34,13 @@
+ Install the component:
+ 
+ ```sh
+-npm i @vaadin/side-nav
++npm i @scoped-vaadin/side-nav
+ ```
+ 
+ Once installed, import the component in your application:
+ 
+ ```js
+-import '@vaadin/side-nav';
++import '@scoped-vaadin/side-nav';
+ ```
+ 
+ ## Themes
+@@ -49,19 +51,19 @@
+ To use the Material theme, import the component from the `theme/material` folder:
+ 
+ ```js
+-import '@vaadin/side-nav/theme/material/vaadin-side-nav.js';
++import '@scoped-vaadin/side-nav/theme/material/vaadin-side-nav.js';
+ ```
+ 
+ You can also import the Lumo version of the component explicitly:
+ 
+ ```js
+-import '@vaadin/side-nav/theme/lumo/vaadin-side-nav.js';
++import '@scoped-vaadin/side-nav/theme/lumo/vaadin-side-nav.js';
+ ```
+ 
+ Finally, you can import the un-themed component from the `src` folder to get a minimal starting point:
+ 
+ ```js
+-import '@vaadin/side-nav/src/vaadin-side-nav.js';
++import '@scoped-vaadin/side-nav/src/vaadin-side-nav.js';
+ ```
+ 
+ ## Contributing

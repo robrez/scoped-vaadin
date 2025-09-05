@@ -1,0 +1,13 @@
+Index: test/lit.test.js
+===================================================================
+--- test/lit.test.js
++++ test/lit.test.js
+@@ -8,7 +8,7 @@
+     let list;
+ 
+     beforeEach(async () => {
+-      list = fixtureSync(`<vaadin-virtual-list></vaadin-virtual-list>`);
++      list = fixtureSync(`<vaadin24-virtual-list></vaadin24-virtual-list>`);
+       await nextFrame();
+ 
+       const size = 100;

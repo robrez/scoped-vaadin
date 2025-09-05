@@ -1,0 +1,29 @@
+Index: src/vaadin-grid-column-auto-width-mixin.js
+===================================================================
+--- src/vaadin-grid-column-auto-width-mixin.js
++++ src/vaadin-grid-column-auto-width-mixin.js
+@@ -1,9 +1,10 @@
++import { internalCustomElements } from '@scoped-vaadin/internal-custom-elements-registry';
+ /**
+  * @license
+  * Copyright (c) 2016 - 2025 Vaadin Ltd.
+  * This program is available under Apache License Version 2.0, available at https://vaadin.com/license/
+  */
+-import { isElementHidden } from '@vaadin/a11y-base/src/focus-utils.js';
++import { isElementHidden } from '@scoped-vaadin/a11y-base/src/focus-utils.js';
+ 
+ /**
+  * A mixin providing grid column auto-width functionality.
+@@ -303,10 +304,10 @@
+         return false;
+       }
+ 
+-      const undefinedCols = this.__getAutoWidthColumns().filter((col) => !customElements.get(col.localName));
++      const undefinedCols = this.__getAutoWidthColumns().filter((col) => !internalCustomElements.get(col.localName));
+       if (undefinedCols.length) {
+         // Some of the columns are not defined yet, wait for them to be defined before measuring
+-        Promise.all(undefinedCols.map((col) => customElements.whenDefined(col.localName))).then(() => {
++        Promise.all(undefinedCols.map((col) => internalCustomElements.whenDefined(col.localName))).then(() => {
+           this.__tryToRecalculateColumnWidthsIfPending();
+         });
+         return false;
