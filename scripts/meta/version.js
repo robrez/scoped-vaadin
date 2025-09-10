@@ -1,5 +1,6 @@
 export const versionMeta = {
-  version: "24.8.7",
+  // This is the version we will publish... not the version we depend upon
+  version: "v25.0.0-alpha18",
   selector: "^",
   repository: {
     type: "git",
@@ -8,5 +9,5 @@ export const versionMeta = {
   bugs: {
     url: "https://github.com/robrez/scoped-vaadin/issues",
   },
-  vaadinVersion: "24",
+  vaadinVersion: "25",
 };

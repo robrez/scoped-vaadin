@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/field-base",
-  "version": "24.8.7",
+  "version": "v25.0.0-alpha18",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -22,7 +22,9 @@
   "files": [
     "index.d.ts",
     "index.js",
-    "src"
+    "src",
+    "!src/styles/*-base-styles.d.ts",
+    "!src/styles/*-base-styles.js"
   ],
   "keywords": [
     "Vaadin",
@@ -31,10 +33,9 @@
   ],
   "dependencies": {
     "@open-wc/dedupe-mixin": "^1.3.0",
-    "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/a11y-base": "^24.8.7",
-    "@scoped-vaadin/component-base": "^24.8.7",
+    "@scoped-vaadin/a11y-base": "^v25.0.0-alpha18",
+    "@scoped-vaadin/component-base": "^v25.0.0-alpha18",
     "lit": "^3.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.7"
+    "@scoped-vaadin/internal-custom-elements-registry": "^v25.0.0-alpha18"
   }
 }

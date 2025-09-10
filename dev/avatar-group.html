@@ -1,37 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Avatar group</title>
+    <title>Avatar Group</title>
     <script type="module" src="./common.js"></script>
 
     <script type="module">
       import '@scoped-vaadin/avatar-group';
 
-      const group = document.querySelector('vaadin24-avatar-group');
-      group.items = [{ name: 'AA' }, { name: 'BB' }, { name: 'CC' }];
+      const groups = document.querySelectorAll('vaadin25-avatar-group');
+      groups.forEach((group) => (group.items = [{ name: 'AA' }, { name: 'BB' }, { name: 'CC' }, { name: 'DD' }]));
 
       document.querySelector('#add').addEventListener('click', () => {
         const alphabet = 'abcdefghijklmnopqrstuvwxyz';
         const randomChar = alphabet[Math.floor(Math.random() * alphabet.length)];
-        group.items = [...group.items, { name: randomChar.toUpperCase().repeat(2) }];
+        groups.forEach((group) => (group.items = [...group.items, { name: randomChar.toUpperCase().repeat(2) }]));
       });
 
       document.querySelector('#remove').addEventListener('click', () => {
-        const items = [...group.items].splice(0, group.items.length - 1);
-        group.items = items;
+        groups.forEach((group) => (group.items = [...group.items].splice(0, group.items.length - 1)));
       });
     </script>
   </head>
 
   <body>
-    <vaadin24-avatar-group></vaadin24-avatar-group>
-
     <p>
       <button id="add">Add item</button>
       <button id="remove">Remove item</button>
     </p>
+
+    <section class="section">
+      <h2 class="heading">Default Stacking</h2>
+      <vaadin25-avatar-group></vaadin25-avatar-group>
+    </section>
+    <section class="section">
+      <h2 class="heading">Reverse Stacking</h2>
+      <vaadin25-avatar-group theme="reverse"></vaadin25-avatar-group>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">Max Items Visible</h2>
+      <vaadin25-avatar-group max-items-visible="3"></vaadin25-avatar-group>
+    </section>
   </body>
 </html>

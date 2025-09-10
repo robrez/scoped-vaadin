@@ -9,21 +9,16 @@
 
     <script type="module">
       import '@vaadin/card';
-      import { badge } from '@scoped-vaadin/vaadin-lumo-styles/badge.js';
       import '@scoped-vaadin/avatar';
       import '@scoped-vaadin/button';
       import '@scoped-vaadin/checkbox';
       import '@scoped-vaadin/checkbox-group';
       import '@scoped-vaadin/icon';
       import '@scoped-vaadin/icons';
-      import '@scoped-vaadin/vaadin-lumo-styles/icons.js';
       import '@scoped-vaadin/select';
       import '@scoped-vaadin/scroller';
-      import { utility } from '@scoped-vaadin/vaadin-lumo-styles/utility.js';
-      import { addGlobalThemeStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';
-
-      addGlobalThemeStyles('utility', utility);
-      addGlobalThemeStyles('badge', badge);
+      import '@scoped-vaadin/tooltip';
+      import '@scoped-vaadin/vaadin-lumo-styles/icons.js';
 
       const playground = document.querySelector('.playground');
       const codeExample = document.querySelector('.code-example');
@@ -114,8 +109,9 @@
             .replaceAll(/src=".+?"/g, 'src="..."')
             .replace(/Lapland is the[\s\S]+?.</, 'Lapland is the...<')
             .replace(/ fill="none"[\s\S]+?<\/svg>/, '>...</svg>')
-            .replace(/ overflow=".*?"/, ''),
-        ).replace('\n  </vaadin24-avatar>', '</vaadin24-avatar>');
+            .replace(/ overflow=".*?"/, '')
+            .replace(/ role="region"/, ''),
+        ).replace('\n  </vaadin25-avatar>', '</vaadin25-avatar>');
       }
 
       function format(html) {
@@ -140,12 +136,16 @@
     </script>
 
     <style>
-      html {
-        background-image: linear-gradient(var(--lumo-shade-5pct), var(--lumo-shade-5pct));
+      html:has([theme~='elevated']) {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
       }
 
-      body {
-        margin: var(--lumo-space-l);
+      [theme~='dark'] {
+        color-scheme: dark;
+      }
+
+      :where(body) {
+        margin: 2rem;
       }
 
       .playground:not(.resize-width),
@@ -178,9 +178,6 @@
       }
 
       .options {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0 2rem;
         margin-bottom: 3rem;
       }
 
@@ -190,10 +187,10 @@
         font-size: 13px;
         line-height: 1.4;
         padding: 1rem;
-        border: 1px solid var(--lumo-contrast-10pct);
-        background-color: var(--lumo-shade);
-        color: var(--lumo-tint-90pct);
-        border-radius: var(--lumo-border-radius-l);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 0.5em;
         width: fit-content;
       }
 
@@ -207,8 +204,8 @@
   </head>
 
   <body>
-    <div class="options">
-      <vaadin24-select label="Media" id="media"></vaadin24-select>
+    <section class="section options">
+      <vaadin25-select label="Media" id="media"></vaadin25-select>
       <template id="media-options">
         <img
           slot="media"
@@ -216,12 +213,12 @@
           src="https://images.unsplash.com/photo-1674572271917-ac95fbdbf76c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQzfHxsYXBsYW5kfGVufDB8fDB8fHww"
           alt=""
         />
-        <vaadin24-icon
+        <vaadin25-icon
           slot="media"
           icon="lumo:photo"
           style="background: var(--lumo-primary-color-10pct); color: var(--lumo-primary-color)"
-        ></vaadin24-icon>
-        <vaadin24-avatar slot="media" abbr="L" theme="large"></vaadin24-avatar>
+        ></vaadin25-icon>
+        <vaadin25-avatar slot="media" abbr="L" theme="large"></vaadin25-avatar>
         <svg
           slot="media"
           width="80"
@@ -297,17 +294,17 @@
         </svg>
       </template>
 
-      <vaadin24-select label="Content" id="content"></vaadin24-select>
+      <vaadin25-select label="Content" id="content"></vaadin25-select>
       <template id="content-options">
         <div>Lapland is the northern-most region of Finland and an active outdoor destination.</div>
-        <vaadin24-scroller theme="overflow-indicators" style="max-height: 100px; min-height: 100%">
+        <vaadin25-scroller theme="overflow-indicators" style="max-height: 100px; min-height: 100%">
           <div
             >Lapland is the northern-most region of Finland and an active outdoor destination that's known for its
             incredible, year-round light phenomena, vast arctic nature, and Santa Claus. The land of the indigenous Sámi
             people, known as Sámi homeland or Sápmi, also crosses the northern part of the region. Explore Finnish
             Lapland, Europe’s last great wilderness!</div
           >
-        </vaadin24-scroller>
+        </vaadin25-scroller>
         <div>
           <img
             width="800"
@@ -327,40 +324,46 @@
           <b class="uppercase text-xs text-secondary">The Exotic North</b>
           <h2>Lapland</h2>
         </div>
-        <vaadin24-avatar slot="header-prefix" abbr="L"></vaadin24-avatar>
+        <vaadin25-avatar slot="header-prefix" abbr="L"></vaadin25-avatar>
         <span slot="header-suffix" theme="badge success">Arctic</span>
         <div slot="title">Lapland</div>
         <div slot="subtitle">The Exotic North</div>
-        <vaadin24-button slot="footer">Book Vacation</vaadin24-button>
+        <vaadin25-button slot="footer">Book Vacation</vaadin25-button>
       </template>
 
-      <vaadin24-checkbox-group class="slot-options" label="Header & Footer">
-        <vaadin24-checkbox label="Header" value="header"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Header Prefix" value="header-prefix"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Header Suffix" value="header-suffix"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Title" value="title"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Subtitle" value="subtitle"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Footer" value="footer"></vaadin24-checkbox>
-      </vaadin24-checkbox-group>
+      <vaadin25-checkbox-group class="slot-options" theme="horizontal" label="Header & Footer">
+        <vaadin25-checkbox label="Header" value="header"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Header Prefix" value="header-prefix"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Header Suffix" value="header-suffix"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Title" value="title"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Subtitle" value="subtitle"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Footer" value="footer"></vaadin25-checkbox>
+      </vaadin25-checkbox-group>
 
-      <vaadin24-checkbox-group class="theme-variant" label="Theme Variant">
-        <vaadin24-checkbox label="Outlined" value="outlined"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Elevated" value="elevated"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Dark" value="dark"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Horizontal" value="horizontal"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Stretch Media" value="stretch-media"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Cover Media" value="cover-media"></vaadin24-checkbox>
-      </vaadin24-checkbox-group>
+      <vaadin25-checkbox-group class="theme-variant" theme="horizontal" label="Theme Variant">
+        <vaadin25-checkbox label="Outlined" value="outlined"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Elevated" value="elevated">
+          <vaadin25-tooltip
+            slot="tooltip"
+            text="Also sets the background color of the page to make the elevated style more apparent"
+          ></vaadin25-tooltip>
+          <label slot="label">Elevated <vaadin25-icon icon="lumo:error" style="scale: -1"></vaadin25-icon></label>
+        </vaadin25-checkbox>
+        <vaadin25-checkbox label="Dark" value="dark"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Horizontal" value="horizontal"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Stretch Media" value="stretch-media"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Cover Media" value="cover-media"></vaadin25-checkbox>
+      </vaadin25-checkbox-group>
 
-      <vaadin24-checkbox-group class="playground-resize" label="Resize">
-        <vaadin24-checkbox label="Width" value="width"></vaadin24-checkbox>
-        <vaadin24-checkbox label="Height" value="height"></vaadin24-checkbox>
-      </vaadin24-checkbox-group>
-    </div>
+      <vaadin25-checkbox-group class="playground-resize" theme="horizontal" label="Resize">
+        <vaadin25-checkbox label="Width" value="width"></vaadin25-checkbox>
+        <vaadin25-checkbox label="Height" value="height"></vaadin25-checkbox>
+      </vaadin25-checkbox-group>
+    </section>
 
-    <div class="output">
+    <section class="section output">
       <vaadin-card class="playground"></vaadin-card>
       <div class="code-example"></div>
-    </div>
+    </section>
   </body>
 </html>

@@ -15,64 +15,87 @@
     </script>
   </head>
   <body>
-    <section>
-      <h2>Plain</h2>
-      <vaadin24-select value="s"></vaadin24-select>
-      <vaadin24-select placeholder="Placeholder"></vaadin24-select>
+    <section class="section">
+      <h2 class="heading">Plain</h2>
+      <vaadin25-select value="s"></vaadin25-select>
+      <vaadin25-select placeholder="Placeholder"></vaadin25-select>
     </section>
 
-    <section>
-      <h2>Bells & Whistles</h2>
-      <vaadin24-select
+    <section class="section">
+      <h2 class="heading">Bells & Whistles</h2>
+      <vaadin25-select
         label="Label"
         helper-text="Description for this field."
         value="s"
-        clear-button-visible
         error-message="You need to write something in this field."
         required
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-select>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-select>
     </section>
 
-    <section>
-      <h2>States</h2>
-      <vaadin24-select
+    <section class="section">
+      <h2 class="heading">Custom Renderer</h2>
+      <vaadin25-select id="custom" value="s"></vaadin25-select>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">States</h2>
+      <vaadin25-select
         label="Read-only"
         helper-text="Description for this field."
         value="s"
-        clear-button-visible
         error-message="You need to write something in this field."
         required
         readonly
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-select>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-select>
 
-      <vaadin24-select
+      <vaadin25-select
         label="Disabled"
         helper-text="Description for this field."
         value="s"
-        clear-button-visible
         error-message="You need to write something in this field."
         required
         disabled
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-select>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-select>
     </section>
 
-    <script>
-      document.querySelectorAll('vaadin24-select').forEach((select) => {
-        select.items = items = [
-          { label: 'Show all', value: 'all' },
-          { component: 'hr' },
-          { label: 'XS (out of stock)', value: 'xs', disabled: true },
-          { label: 'S', value: 's' },
-          { label: 'M', value: 'm' },
-          { label: 'L', value: 'l' },
-          { label: 'XL', value: 'xl' },
-        ];
+    <script type="module">
+      import { html, render } from 'lit';
+
+      document.querySelectorAll('vaadin25-select').forEach((select) => {
+        if (select.id === 'custom') {
+          select.renderer = (root) => {
+            render(
+              html`
+                <vaadin25-select-list-box>
+                  <vaadin25-select-item value="all">Show all</vaadin25-select-item>
+                  <hr />
+                  <vaadin25-select-item value="xs" disabled>XS (out of stock)</vaadin25-select-item>
+                  <vaadin25-select-item value="s">S</vaadin25-select-item>
+                  <vaadin25-select-item value="m">M</vaadin25-select-item>
+                  <vaadin25-select-item value="l">L</vaadin25-select-item>
+                  <vaadin25-select-item value="xl">XL</vaadin25-select-item>
+                </vaadin25-select-list-box>
+              `,
+              root,
+            );
+          };
+        } else {
+          select.items = [
+            { label: 'Show all', value: 'all' },
+            { component: 'hr' },
+            { label: 'XS (out of stock)', value: 'xs', disabled: true },
+            { label: 'S', value: 's' },
+            { label: 'M', value: 'm' },
+            { label: 'L', value: 'l' },
+            { label: 'XL', value: 'xl' },
+          ];
+        }
       });
     </script>
   </body>

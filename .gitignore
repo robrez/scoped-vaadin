@@ -1,4 +1,4 @@
-buildinfo/
+buildinfo
 node_modules
 git_modules/
 packages/*/**

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Master Detail Layout</title>
+    <title>Master-Detail Layout</title>
     <script type="module" src="./common.js"></script>
   </head>
 
@@ -26,7 +26,7 @@
         overflow: hidden;
       }
 
-      body > mdl-view > vaadin-master-detail-layout {
+      body > mdl-view > vaadin25-master-detail-layout {
         border: 1px solid lightgray;
         resize: both;
       }
@@ -72,11 +72,11 @@
 
     <template id="static-detail">
       <div class="static-detail">
-        <vaadin24-button>Close</vaadin24-button><br />
-        <vaadin24-text-field label="First Name"></vaadin24-text-field>
-        <vaadin24-text-field label="Last Name"></vaadin24-text-field>
-        <vaadin24-text-field label="Email"></vaadin24-text-field>
-        <vaadin24-select label="Country"></vaadin24-select>
+        <vaadin25-button>Close</vaadin25-button><br />
+        <vaadin25-text-field label="First Name"></vaadin25-text-field>
+        <vaadin25-text-field label="Last Name"></vaadin25-text-field>
+        <vaadin25-text-field label="Email"></vaadin25-text-field>
+        <vaadin25-select label="Country"></vaadin25-select>
       </div>
     </template>
 
@@ -93,7 +93,7 @@
       import '@scoped-vaadin/text-field';
       import '@scoped-vaadin/radio-group';
       import '@scoped-vaadin/icon';
-      import '@vaadin/master-detail-layout';
+      import '@scoped-vaadin/master-detail-layout';
       import '@scoped-vaadin/tooltip';
       import '@scoped-vaadin/vaadin-lumo-styles/icons';
       import { html, LitElement, render } from 'lit';
@@ -121,8 +121,8 @@
         }
 
         firstUpdated() {
-          this._mdl = this.querySelector('vaadin-master-detail-layout');
-          this._parentMdl = this.closest('vaadin-master-detail-layout');
+          this._mdl = this.querySelector('vaadin25-master-detail-layout');
+          this._parentMdl = this.closest('vaadin25-master-detail-layout');
         }
 
         openDetail() {
@@ -132,8 +132,8 @@
 
         openStaticDetail() {
           const detail = document.querySelector('#static-detail').content.firstElementChild.cloneNode(true);
-          detail.querySelector('vaadin24-button').onclick = () => {
-            detail.closest('vaadin-master-detail-layout')._setDetail(null);
+          detail.querySelector('vaadin25-button').onclick = () => {
+            detail.closest('vaadin25-master-detail-layout')._setDetail(null);
           };
           this._mdl._setDetail(detail);
         }
@@ -160,104 +160,104 @@
 
         render() {
           return html`
-            <vaadin-master-detail-layout>
+            <vaadin25-master-detail-layout @backdrop-click=${this.closeDetail}>
               <div class="master">
                 <header>
-                  <vaadin24-button
+                  <vaadin25-button
                     aria-label="close detail view"
                     class="close-btn"
                     theme="tertiary contrast icon"
                     @click=${this.closeParentDetail}
                   >
-                    <vaadin24-icon icon="lumo:arrow-left"></vaadin24-icon>
-                  </vaadin24-button>
+                    <vaadin25-icon icon="lumo:arrow-left"></vaadin25-icon>
+                  </vaadin25-button>
                   <h3>View ${window.mdlCount}</h3>
-                  <vaadin24-button
+                  <vaadin25-button
                     aria-label="replace detail view"
                     class="replace-btn"
                     theme="tertiary icon"
                     @click=${this.replaceDetail}
                   >
-                    <vaadin24-icon icon="lumo:reload">
-                      <vaadin24-tooltip
+                    <vaadin25-icon icon="lumo:reload">
+                      <vaadin25-tooltip
                         slot="tooltip"
                         text="Replace with another detail view with different size"
-                      ></vaadin24-tooltip>
-                    </vaadin24-icon>
-                  </vaadin24-button>
+                      ></vaadin25-tooltip>
+                    </vaadin25-icon>
+                  </vaadin25-button>
                 </header>
-                <vaadin24-radio-group
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="orientation"
                   label="Orientation"
                   theme="vertical"
                   value="horizontal"
                 >
-                  <vaadin24-radio-button value="horizontal" label="Horizontal"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="vertical" label="Vertical"></vaadin24-radio-button>
-                </vaadin24-radio-group>
-                <vaadin24-radio-group
+                  <vaadin25-radio-button value="horizontal" label="Horizontal"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="vertical" label="Vertical"></vaadin25-radio-button>
+                </vaadin25-radio-group>
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="containment"
                   label="Containment"
                   theme="vertical"
                   value="layout"
                 >
-                  <vaadin24-radio-button value="layout" label="Layout"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="viewport" label="Viewport"></vaadin24-radio-button>
-                </vaadin24-radio-group>
+                  <vaadin25-radio-button value="layout" label="Layout"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="viewport" label="Viewport"></vaadin25-radio-button>
+                </vaadin25-radio-group>
                 <br />
-                <vaadin24-radio-group
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="masterSize"
                   label="Master Size"
                   theme="vertical"
                   value="auto"
                 >
-                  <vaadin24-radio-button value="auto" label="Auto"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="250px" label="250px"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="30%" label="30%"></vaadin24-radio-button>
-                </vaadin24-radio-group>
-                <vaadin24-radio-group
+                  <vaadin25-radio-button value="auto" label="Auto"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="250px" label="250px"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="30%" label="30%"></vaadin25-radio-button>
+                </vaadin25-radio-group>
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="masterMinSize"
                   label="Master Min Size"
                   theme="vertical"
                   value="none"
                 >
-                  <vaadin24-radio-button value="none" label="None"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="250px" label="250px"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="100%" label="100%"></vaadin24-radio-button>
-                </vaadin24-radio-group>
+                  <vaadin25-radio-button value="none" label="None"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="250px" label="250px"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="100%" label="100%"></vaadin25-radio-button>
+                </vaadin25-radio-group>
                 <br />
-                <vaadin24-button @click=${this.openStaticDetail}>Open Static Detail</vaadin24-button>
-                <vaadin24-button @click=${this.openDetail}>Open Nested Test View</vaadin24-button>
+                <vaadin25-button @click=${this.openStaticDetail}>Open Static Detail</vaadin25-button>
+                <vaadin25-button @click=${this.openDetail}>Open Nested Test View</vaadin25-button>
                 <br />
-                <vaadin24-radio-group
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="detailSize"
                   label="Detail Size"
                   theme="vertical"
                   value="auto"
                 >
-                  <vaadin24-radio-button value="auto" label="Auto"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="300px" label="300px"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="70%" label="70%"></vaadin24-radio-button>
-                </vaadin24-radio-group>
-                <vaadin24-radio-group
+                  <vaadin25-radio-button value="auto" label="Auto"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="300px" label="300px"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="70%" label="70%"></vaadin25-radio-button>
+                </vaadin25-radio-group>
+                <vaadin25-radio-group
                   @change=${this._configChange}
                   class="detailMinSize"
                   label="Detail Min Size"
                   theme="vertical"
                   value="none"
                 >
-                  <vaadin24-radio-button value="none" label="None"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="400px" label="400px"></vaadin24-radio-button>
-                  <vaadin24-radio-button value="100%" label="100%"></vaadin24-radio-button>
-                </vaadin24-radio-group>
+                  <vaadin25-radio-button value="none" label="None"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="400px" label="400px"></vaadin25-radio-button>
+                  <vaadin25-radio-button value="100%" label="100%"></vaadin25-radio-button>
+                </vaadin25-radio-group>
                 <p>${lorem}</p>
               </div>
-            </vaadin-master-detail-layout>
+            </vaadin25-master-detail-layout>
           `;
         }
 

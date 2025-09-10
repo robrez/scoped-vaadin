@@ -16,15 +16,15 @@
   </head>
 
   <body>
-    <section>
-      <h2>Plain</h2>
-      <vaadin24-text-field value="Value"></vaadin24-text-field>
-      <vaadin24-text-field placeholder="Placeholder"></vaadin24-text-field>
+    <section class="section">
+      <h2 class="heading">Plain</h2>
+      <vaadin25-text-field value="Value"></vaadin25-text-field>
+      <vaadin25-text-field placeholder="Placeholder"></vaadin25-text-field>
     </section>
 
-    <section>
-      <h2>Bells & Whistles</h2>
-      <vaadin24-text-field
+    <section class="section">
+      <h2 class="heading">Bells & Whistles</h2>
+      <vaadin25-text-field
         label="Label"
         helper-text="Description for this field."
         value="Value"
@@ -32,13 +32,13 @@
         error-message="You need to write something in this field."
         required
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-text-field>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
     </section>
 
-    <section>
-      <h2>States</h2>
-      <vaadin24-text-field
+    <section class="section">
+      <h2 class="heading">States</h2>
+      <vaadin25-text-field
         label="Read-only"
         helper-text="Description for this field."
         value="Value"
@@ -47,10 +47,10 @@
         required
         readonly
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-text-field>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
 
-      <vaadin24-text-field
+      <vaadin25-text-field
         label="Disabled"
         helper-text="Description for this field."
         value="Value"
@@ -59,13 +59,25 @@
         required
         disabled
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-text-field>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
+
+      <vaadin25-text-field
+        label="Invalid"
+        helper-text="Description for this field."
+        value=""
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        invalid
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
     </section>
 
-    <section>
-      <h2>Helper Above Field</h2>
-      <vaadin24-text-field
+    <section class="section">
+      <h2 class="heading">Helper Above Field</h2>
+      <vaadin25-text-field
         theme="helper-above-field"
         label="Label"
         helper-text="Description for this field."
@@ -74,14 +86,14 @@
         error-message="You need to write something in this field."
         required
       >
-        <vaadin24-icon icon="vaadin:search" slot="prefix"></vaadin24-icon>
-      </vaadin24-text-field>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
     </section>
 
-    <section>
-      <h2>Content &amp; Layout Variations</h2>
+    <section class="section">
+      <h2 class="heading">Content &amp; Layout Variations</h2>
       <p>Resize the field to test how content flows.</p>
-      <vaadin24-text-field
+      <vaadin25-text-field
         label="A very long label for this field"
         helper-text="If the label wasn't enough to tell what you should input here, then this long description should be."
         value="I’m not sure what I should write here"
@@ -91,8 +103,8 @@
         required
         style="resize: horizontal; overflow: hidden; padding: 1px"
       >
-        <vaadin24-icon icon="vaadin:envelope-o" slot="prefix"></vaadin24-icon>
-      </vaadin24-text-field>
+        <vaadin25-icon icon="vaadin:envelope-o" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-field>
     </section>
   </body>
 </html>

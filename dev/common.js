@@ -1,10 +1,34 @@
-import {
-  color,
-  typography,
-} from "@scoped-vaadin/vaadin-lumo-styles/all-imports.js";
+import { css } from 'lit';
+import { addGlobalThemeStyles } from '@scoped-vaadin/vaadin-themable-mixin/register-styles.js';
 
-const style = document.createElement("style");
-style.innerHTML = `${color.toString()} ${typography.toString()}`;
-document.head.appendChild(style);
+addGlobalThemeStyles(
+  'dev-common',
+  css`
+    :where(body) {
+      font-family: system-ui, sans-serif;
+      line-height: 1.25;
+      margin: 2rem;
+    }
 
-export * from "@scoped-vaadin/vaadin-lumo-styles/all-imports.js";
+    .heading {
+      font-weight: 600;
+      font-size: calc(18 / 16 * 1rem);
+      line-height: calc(20 / 16 * 1rem);
+      margin: 2em 0 1.25em;
+      text-box: cap alphabetic;
+    }
+
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1lh 1.5lh;
+      margin: 2lh 0;
+      align-items: baseline;
+    }
+
+    .section > :is(.heading, p) {
+      width: 100%;
+      margin: 0;
+    }
+  `,
+);

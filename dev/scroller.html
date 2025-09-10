@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,12 +9,12 @@
     <script type="module">
       import '@scoped-vaadin/scroller';
 
-      document.querySelectorAll('.content').forEach(content => {
+      document.querySelectorAll('.content').forEach((content) => {
         content.textContent = new Array(1000).fill('content').join(' ');
       });
     </script>
     <style>
-      vaadin24-scroller {
+      vaadin25-scroller {
         width: 200px;
         height: 200px;
       }
@@ -26,14 +26,14 @@
     </style>
   </head>
   <body>
-    <h2>Standard variant</h2>
-    <vaadin24-scroller>
+    <h2 class="heading">Standard variant</h2>
+    <vaadin25-scroller>
       <div class="content"></div>
-    </vaadin24-scroller>
+    </vaadin25-scroller>
 
-    <h2>Overflow indicators variant</h2>
-    <vaadin24-scroller theme="overflow-indicators">
+    <h2 class="heading">Overflow indicators variant</h2>
+    <vaadin25-scroller theme="overflow-indicators">
       <div class="content"></div>
-    </vaadin24-scroller>
+    </vaadin25-scroller>
   </body>
 </html>

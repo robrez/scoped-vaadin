@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,15 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu bar</title>
     <script type="module" src="./common.js"></script>
+    <style>
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+        font-size: 0.875rem;
+      }
+
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+    </style>
 
     <script type="module">
       import '@scoped-vaadin/menu-bar';
       import '@scoped-vaadin/tooltip';
+      import '@scoped-vaadin/checkbox';
+      import '@scoped-vaadin/checkbox-group';
+      import '@scoped-vaadin/icon';
+      import '@scoped-vaadin/radio-group';
+      import '@scoped-vaadin/split-layout';
+      import '@scoped-vaadin/vaadin-lumo-styles/vaadin-iconset.js';
 
-      const menuBar = document.querySelector('vaadin24-menu-bar');
+      function makeComponent(text) {
+        const item = document.createElement('vaadin25-menu-bar-item');
+        item.textContent = text;
+        return item;
+      }
+
+      function makeIcon(img) {
+        const item = document.createElement('vaadin25-menu-bar-item');
+        const icon = document.createElement('vaadin25-icon');
+        icon.setAttribute('icon', img);
+        item.appendChild(icon);
+        return item;
+      }
+
+      const menuBar = document.querySelector('vaadin25-menu-bar');
       menuBar.items = [
-        { text: 'View', tooltip: 'Options for how to view the content' },
-        { text: 'Edit' },
+        {
+          text: 'View',
+          tooltip: 'Options for how to view the content',
+          children: [
+            { text: 'Ruler', checked: false },
+            { text: 'Status bar', checked: true },
+          ],
+        },
+        { component: makeComponent('Edit') },
         {
           text: 'Share',
           children: [
@@ -22,7 +64,8 @@
               text: 'On social media',
               children: [{ text: 'Facebook' }, { text: 'Twitter' }, { text: 'Instagram' }],
             },
-            { text: 'By email' },
+            { text: 'By email', disabled: true },
+            { component: 'hr' },
             { text: 'Get link' },
           ],
         },
@@ -32,13 +75,78 @@
           children: [{ text: 'To folder' }, { text: 'To trash' }],
         },
         { text: 'Duplicate', tooltip: 'Create a duplicate' },
+        {
+          component: makeIcon('lumo:user'),
+          children: [{ text: 'Archive' }, { text: 'Configure' }],
+        },
       ];
+
+      ['dropdown-indicators', 'small', 'primary', 'tertiary', 'tertiary-inline', 'end-aligned'].forEach((variant) => {
+        document.querySelector(`#${variant}`).addEventListener('checked-changed', (e) => {
+          let theme = menuBar.getAttribute('theme') || '';
+          if (e.detail.value) {
+            theme += ` ${variant}`;
+          } else {
+            theme = theme.replace(variant, '');
+          }
+
+          menuBar.setAttribute('theme', theme.trim());
+        });
+      });
+
+      menuBar.addEventListener('item-selected', (e) => {
+        const item = e.detail.value;
+        if (item.checked != null) {
+          item.checked = !item.checked;
+        }
+      });
+
+      const enable = document.querySelector('#enable');
+      enable.addEventListener('value-changed', (e) => {
+        menuBar.toggleAttribute('disabled', e.detail.value == 'disabled');
+      });
+
+      const direction = document.querySelector('#direction');
+      direction.addEventListener('value-changed', (e) => menuBar.setAttribute('dir', e.detail.value));
     </script>
   </head>
 
   <body>
-    <vaadin24-menu-bar>
-      <vaadin24-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin24-tooltip>
-    </vaadin24-menu-bar>
+    <div class="controls">
+      <div class="control-group">
+        <vaadin25-checkbox-group label="Themes">
+          <vaadin25-checkbox
+            id="dropdown-indicators"
+            value="dropdown-indicators"
+            label="Dropdown indicators"
+          ></vaadin25-checkbox>
+          <vaadin25-checkbox id="small" value="small" label="Small"></vaadin25-checkbox>
+          <vaadin25-checkbox id="primary" value="primary" label="Primary"></vaadin25-checkbox>
+          <vaadin25-checkbox id="tertiary" value="tertiary" label="Tertiary"></vaadin25-checkbox>
+          <vaadin25-checkbox id="tertiary-inline" value="tertiary-inline" label="Tertiary inline"></vaadin25-checkbox>
+          <vaadin25-checkbox id="end-aligned" value="end-aligned" label="End aligned"></vaadin25-checkbox>
+        </vaadin25-checkbox-group>
+      </div>
+      <div class="control-group">
+        <vaadin25-radio-group label="State" id="enable">
+          <vaadin25-radio-button label="Enabled" value="enabled" checked></vaadin25-radio-button>
+          <vaadin25-radio-button label="Disabled" value="disabled"></vaadin25-radio-button>
+        </vaadin25-radio-group>
+      </div>
+      <div class="control-group">
+        <vaadin25-radio-group label="Direction" id="direction">
+          <vaadin25-radio-button label="LTR" value="ltr" checked></vaadin25-radio-button>
+          <vaadin25-radio-button label="RTL" value="rtl"></vaadin25-radio-button>
+        </vaadin25-radio-group>
+      </div>
+    </div>
+    <vaadin25-split-layout>
+      <div style="padding: 3px">
+        <vaadin25-menu-bar>
+          <vaadin25-tooltip slot="tooltip" hover-delay="500" hide-delay="500"></vaadin25-tooltip>
+        </vaadin25-menu-bar>
+      </div>
+      <span>Resize to show overflow button</span>
+    </vaadin25-split-layout>
   </body>
 </html>

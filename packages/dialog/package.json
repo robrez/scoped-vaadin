@@ -1,6 +1,6 @@
 {
   "name": "@scoped-vaadin/dialog",
-  "version": "24.8.7",
+  "version": "v25.0.0-alpha18",
   "repository": {
     "type": "git",
     "url": "https://github.com/robrez/scoped-vaadin.git",
@@ -23,6 +23,8 @@
     "lit.d.ts",
     "lit.js",
     "src",
+    "!src/styles/*-base-styles.d.ts",
+    "!src/styles/*-base-styles.js",
     "theme",
     "vaadin-*.d.ts",
     "vaadin-*.js",
@@ -33,8 +35,7 @@
     "Vaadin",
     "vaadin-dialog",
     "web-components",
-    "web-component",
-    "polymer"
+    "web-component"
   ],
   "web-types": [
     "web-types.json",
@@ -42,14 +43,12 @@
   ],
   "dependencies": {
     "@open-wc/dedupe-mixin": "^1.3.0",
-    "@polymer/polymer": "^3.0.0",
-    "@scoped-vaadin/component-base": "^24.8.7",
-    "@scoped-vaadin/lit-renderer": "^24.8.7",
-    "@scoped-vaadin/overlay": "^24.8.7",
-    "@scoped-vaadin/vaadin-lumo-styles": "^24.8.7",
-    "@scoped-vaadin/vaadin-material-styles": "^24.8.7",
-    "@scoped-vaadin/vaadin-themable-mixin": "^24.8.7",
+    "@scoped-vaadin/component-base": "^v25.0.0-alpha18",
+    "@scoped-vaadin/lit-renderer": "^v25.0.0-alpha18",
+    "@scoped-vaadin/overlay": "^v25.0.0-alpha18",
+    "@scoped-vaadin/vaadin-lumo-styles": "^v25.0.0-alpha18",
+    "@scoped-vaadin/vaadin-themable-mixin": "^v25.0.0-alpha18",
     "lit": "^3.0.0",
-    "@scoped-vaadin/internal-custom-elements-registry": "^24.8.7"
+    "@scoped-vaadin/internal-custom-elements-registry": "^v25.0.0-alpha18"
   }
 }

@@ -15,6 +15,7 @@ import {
 } from "./meta/index.js";
 import { createPatch } from "diff";
 import {
+  transformHtml,
   transformJs,
   transformPackageJson,
   transformReadmeMd,
@@ -26,6 +27,8 @@ const nodePackagesRoot = "node_modules/@vaadin";
 const clonePackagesRoot = "git_modules/@vaadin/web-components/packages";
 const localPackagesRoot = "packages";
 const localDiffsRoot = "buildinfo/vaadin";
+const cloneDemoRoot = "git_modules/@vaadin/web-components/dev";
+const localDemoRoot = "dev";
 
 function findPackages(dir) {
   const ignore = new Set(ignorePackages);
@@ -225,6 +228,39 @@ function processVendorPackageJsons() {
     fs.writeFileSync(inputFileName, content);
   });
 }
+
+async function processDemos() {
+  const files = [
+    ...glob.sync(`${cloneDemoRoot}/**/*.html`, { dot: false, posix: true }),
+  ];
+  const skipDirs = {
+    "git_modules/@vaadin/web-components/dev/charts": true,
+    "git_modules/@vaadin/web-components/dev/playground": true,
+  };
+  const paths = files
+    .filter((fileName) => fs.lstatSync(fileName).isFile())
+    .map((name) => posixify(name))
+    .sort()
+    .map((name) => Path.parse(name))
+    .filter((path) => !skipDirs[path?.dir])
+    .filter((path) => path.base !== "index.html");
+  for (let filePath of paths) {
+    const inputFileName = posixify(Path.format(filePath));
+    let content = fs.readFileSync(inputFileName, "utf-8");
+
+    if (filePath.ext.toLowerCase() === ".html") {
+      content = await transformHtml(content, filePath);
+    }
+
+    const outputFileName = posixify(
+      inputFileName.replace(cloneDemoRoot, localDemoRoot)
+    );
+
+    fs.writeFileSync(outputFileName, content);
+  }
+}
+
+processDemos();
 
 processVendorPackageJsons();
 

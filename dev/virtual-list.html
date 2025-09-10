@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,6 @@
 
     <script type="module">
       import '@scoped-vaadin/virtual-list';
-      // import '@vaadin/virtual-list/vaadin-lit-virtual-list.js';
 
       const items = Array.from({ length: 100000 }).map((_, i) => {
         return { label: `Item ${i}` };
@@ -19,13 +18,20 @@
         root.innerHTML = `<div>${item.label}</div>`;
       };
 
-      const list = document.querySelector('vaadin24-virtual-list');
-      list.items = items;
-      list.renderer = renderer;
+      document.querySelectorAll('vaadin25-virtual-list').forEach((list) => {
+        list.items = items;
+        list.renderer = renderer;
+      });
     </script>
   </head>
 
   <body>
-    <vaadin24-virtual-list style="height: 400px"></vaadin24-virtual-list>
+    <section>
+      <vaadin25-virtual-list style="height: 200px"></vaadin25-virtual-list>
+    </section>
+    <section>
+      <h2 class="heading">Overflow Indicators</h2>
+      <vaadin25-virtual-list style="height: 200px" theme="overflow-indicators"></vaadin25-virtual-list>
+    </section>
   </body>
 </html>

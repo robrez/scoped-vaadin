@@ -20,12 +20,12 @@
         height: 100%;
       }
 
-      vaadin24-scroller {
+      vaadin25-scroller {
         flex: 1;
         scroll-snap-type: y proximity;
       }
 
-      vaadin24-scroller::after {
+      vaadin25-scroller::after {
         display: block;
         content: '';
         scroll-snap-align: end;
@@ -119,8 +119,8 @@ Need anything else? Just let me know, and I'll jump right in! ✨`;
         };
       }
 
-      const list = document.querySelector('vaadin24-message-list');
-      const input = document.querySelector('vaadin24-message-input');
+      const list = document.querySelector('vaadin25-message-list');
+      const input = document.querySelector('vaadin25-message-input');
 
       // Set initial messages
       list.items = [
@@ -153,10 +153,10 @@ Need anything else? Just let me know, and I'll jump right in! ✨`;
 
   <body>
     <div id="chat">
-      <vaadin24-scroller>
-        <vaadin24-message-list markdown></vaadin24-message-list>
-      </vaadin24-scroller>
-      <vaadin24-message-input></vaadin24-message-input>
+      <vaadin25-scroller>
+        <vaadin25-message-list markdown></vaadin25-message-list>
+      </vaadin25-scroller>
+      <vaadin25-message-input></vaadin25-message-input>
     </div>
   </body>
 </html>

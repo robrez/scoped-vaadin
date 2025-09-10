@@ -1,5 +1,5 @@
 {
-  "version": "24.8.7",
+  "version": "v25.0.0-alpha18",
   "name": "@robrez/scoped-vaadin-web-components",
   "type": "module",
   "private": true,
@@ -9,12 +9,11 @@
     "build:clean": "rimraf ./git_modules && rimraf ./packages && rimraf ./buildinfo && npm run git_modules && npm run build",
     "build": "npm run build:meta && npm run build:packages",
     "build:packages": "node scripts/build.js",
-    "build:demos": "node scripts/build-demos.js",
     "build:meta": "node scripts/build-element-meta.js",
     "test": "web-test-runner",
     "test:watch": "web-test-runner --watch",
     "test:chrome": "web-test-runner --config web-test-runner-chrome.config.cjs",
-    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch v24.8.7 https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
+    "git_modules": "rimraf ./git_modules/ && git clone --single-branch --branch main https://github.com/vaadin/web-components.git ./git_modules/@vaadin/web-components"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -26,8 +25,8 @@
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4",
     "@polymer/iron-overlay-behavior": "^3.0.0",
-    "@vaadin/chai-plugins": "~24.8.7",
-    "@vaadin/test-runner-commands": "~24.8.7",
+    "@vaadin/chai-plugins": "~v25.0.0-alpha18",
+    "@vaadin/test-runner-commands": "~v25.0.0-alpha18",
     "@vaadin/testing-helpers": "^1.1.0",
     "@web/dev-server": "^0.4.3",
     "@web/dev-server-esbuild": "^1.0.2",

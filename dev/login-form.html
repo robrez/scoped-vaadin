@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,22 +8,94 @@
     <script type="module" src="./common.js"></script>
 
     <script type="module">
+      import '@scoped-vaadin/checkbox';
+      import '@scoped-vaadin/checkbox-group';
       import '@scoped-vaadin/login/vaadin-login-form.js';
+      import '@scoped-vaadin/radio-group';
+
+      const login = document.querySelector('vaadin25-login-form');
+
+      [
+        {
+          slot: 'footer',
+          elementFactory: () => {
+            const footer = document.createElement('p');
+            footer.textContent = 'Never share your password with anyone';
+            return footer;
+          },
+        },
+        {
+          slot: 'custom-form-area',
+          elementFactory: () => {
+            const remember = document.createElement('vaadin25-checkbox');
+            remember.label = 'Remember me';
+            return remember;
+          },
+        },
+      ].forEach(({ slot, elementFactory }) => {
+        document.getElementById(slot).addEventListener('checked-changed', (e) => {
+          if (e.detail.value) {
+            const elem = elementFactory();
+            elem.slot = slot;
+            login.appendChild(elem);
+          } else {
+            login.querySelector(`[slot=${slot}]`).remove();
+          }
+        });
+      });
+
+      ['error', 'noForgotPassword', 'disabled'].forEach((prop) => {
+        document.getElementById(prop).addEventListener('checked-changed', (e) => {
+          login[prop] = e.detail.value;
+        });
+      });
+
+      document.getElementById('direction').addEventListener('value-changed', (e) => {
+        login.setAttribute('dir', e.detail.value);
+      });
     </script>
   </head>
 
   <body>
     <style>
-      #wrapper {
-        background-color: var(--lumo-contrast-5pct);
-        justify-content: center;
-        padding: var(--lumo-space-l);
-        display: flex !important;
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
       }
     </style>
 
+    <div class="controls">
+      <div class="control-group">
+        <vaadin25-checkbox-group label="Custom content">
+          <vaadin25-checkbox id="footer" value="footer" label="Footer"></vaadin25-checkbox>
+          <vaadin25-checkbox id="custom-form-area" value="custom-form-area" label="Custom form element"></vaadin25-checkbox>
+        </vaadin25-checkbox-group>
+      </div>
+
+      <div class="control-group">
+        <vaadin25-checkbox-group label="State toggle">
+          <vaadin25-checkbox label="Error" id="error" value="error"></vaadin25-checkbox>
+          <vaadin25-checkbox label="No forgot password" id="noForgotPassword" value="noForgotPassword"></vaadin25-checkbox>
+          <vaadin25-checkbox label="Disabled" id="disabled" value="disabled"></vaadin25-checkbox>
+        </vaadin25-checkbox-group>
+      </div>
+      <div class="control-group">
+        <vaadin25-radio-group id="direction" label="Direction">
+          <vaadin25-radio-button label="LTR" value="ltr" checked></vaadin25-radio-button>
+          <vaadin25-radio-button label="RTL" value="rtl"></vaadin25-radio-button>
+        </vaadin25-radio-group>
+      </div>
+    </div>
     <div id="wrapper">
-      <vaadin24-login-form no-autofocus></vaadin24-login-form>
+      <vaadin25-login-form no-autofocus></vaadin25-login-form>
     </div>
   </body>
 </html>

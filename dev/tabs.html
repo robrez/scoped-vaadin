@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,33 +8,117 @@
     <script type="module" src="./common.js"></script>
 
     <script type="module">
+      import '@scoped-vaadin/checkbox-group';
+      import '@scoped-vaadin/checkbox';
+      import '@scoped-vaadin/icon';
+      import '@scoped-vaadin/icons';
       import '@scoped-vaadin/tabs';
-      import '@scoped-vaadin/tooltip';
+
+      const icons = [
+        'vaadin:home',
+        'vaadin:folder-open',
+        'vaadin:chart',
+        'vaadin:bed',
+        'vaadin:boat',
+        'vaadin:calendar',
+        'vaadin:chat',
+        'vaadin:cube',
+        'vaadin:file-o',
+        'vaadin:laptop',
+        'vaadin:picture',
+      ];
+
+      function addIcon(item) {
+        const icon = document.createElement('vaadin25-icon');
+        icon.icon = icons[Math.floor(Math.random() * icons.length)];
+        item.prepend(icon);
+      }
+
+      const tabs = document.querySelector('vaadin25-tabs');
+
+      document.querySelector('vaadin25-checkbox-group').addEventListener('change', (e) => {
+        if (e.target.value == 'vertical') {
+          tabs.orientation = e.target.checked ? 'vertical' : 'horizontal';
+        }
+
+        if (e.target.value == 'size') {
+          tabs.classList.toggle('size', e.target.checked);
+        }
+
+        if (e.target.value == 'hide-scroll-buttons') {
+          tabs.setAttribute('theme', e.target.checked ? 'hide-scroll-buttons' : '');
+        }
+
+        if (e.target.value == 'show-scroll-buttons') {
+          tabs.setAttribute('theme', e.target.checked ? 'show-scroll-buttons' : '');
+        }
+
+        if (e.target.value == 'icons') {
+          document.querySelectorAll('vaadin-tab vaadin-icon').forEach((icon) => icon.remove());
+          if (e.target.checked) {
+            document.querySelectorAll('vaadin-tab:not(:has(a)), vaadin-tab a').forEach((item) => addIcon(item));
+          }
+        }
+
+        if (e.target.value == 'anchors') {
+          if (e.target.checked) {
+            document.querySelectorAll('vaadin25-tab').forEach((tab) => {
+              const a = document.createElement('a');
+              a.href = '#';
+              a.innerHTML = tab.innerHTML;
+              tab.innerHTML = '';
+              tab.append(a);
+            });
+          } else {
+            document.querySelectorAll('vaadin-tab a').forEach((a) => {
+              a.parentElement.innerHTML = a.innerHTML;
+            });
+          }
+        }
+      });
     </script>
+
+    <style>
+      vaadin25-tabs[orientation='horizontal'].size {
+        width: 300px;
+      }
+
+      vaadin25-tabs[orientation='vertical'].size {
+        height: 100px;
+      }
+
+      @media (pointer: coarse) {
+        vaadin25-checkbox[value='hide-scroll-buttons'] {
+          opacity: 0.3;
+        }
+      }
+
+      @media (pointer: fine) {
+        vaadin25-checkbox[value='show-scroll-buttons'] {
+          opacity: 0.3;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <vaadin24-tabs style="max-width: 100%; width: 400px">
-      <vaadin24-tab>
-        Analytics
-        <vaadin24-tooltip slot="tooltip" text="Analytics tooltip"></vaadin24-tooltip>
-      </vaadin24-tab>
-      <vaadin24-tab>
-        Customers
-        <vaadin24-tooltip slot="tooltip" text="Customers tooltip"></vaadin24-tooltip>
-      </vaadin24-tab>
-      <vaadin24-tab>
-        Dashboards
-        <vaadin24-tooltip slot="tooltip" text="Dashboards tooltip"></vaadin24-tooltip>
-      </vaadin24-tab>
-      <vaadin24-tab>
-        Documents
-        <vaadin24-tooltip slot="tooltip" text="Documents tooltip"></vaadin24-tooltip>
-      </vaadin24-tab>
-      <vaadin24-tab>
-        Orders
-        <vaadin24-tooltip slot="tooltip" text="Orders tooltip"></vaadin24-tooltip>
-      </vaadin24-tab>
-    </vaadin24-tabs>
+    <vaadin25-checkbox-group label="Features">
+      <vaadin25-checkbox label="Vertical" value="vertical"></vaadin25-checkbox>
+      <vaadin25-checkbox label="Scrolling" value="size"></vaadin25-checkbox>
+      <vaadin25-checkbox label="Hide Scroll Buttons" value="hide-scroll-buttons"></vaadin25-checkbox>
+      <vaadin25-checkbox label="Show Scroll Buttons" value="show-scroll-buttons"></vaadin25-checkbox>
+      <vaadin25-checkbox label="Icons" value="icons"></vaadin25-checkbox>
+      <vaadin25-checkbox label="Anchors" value="anchors"></vaadin25-checkbox>
+    </vaadin25-checkbox-group>
+
+    <section class="section">
+      <vaadin25-tabs>
+        <vaadin25-tab>Analytics</vaadin25-tab>
+        <vaadin25-tab>Customers</vaadin25-tab>
+        <vaadin25-tab disabled>Dashboards</vaadin25-tab>
+        <vaadin25-tab>Documents</vaadin25-tab>
+        <vaadin25-tab>Orders</vaadin25-tab>
+      </vaadin25-tabs>
+    </section>
   </body>
 </html>

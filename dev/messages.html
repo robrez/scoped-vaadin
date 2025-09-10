@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
       import '@scoped-vaadin/message-list';
       import '@scoped-vaadin/tooltip';
 
-      const list = document.querySelector('vaadin24-message-list');
+      const list = document.querySelector('vaadin25-message-list');
       list.items = [
         {
           text: 'Nature does not hurry, yet everything gets accomplished.',
@@ -28,7 +28,7 @@
         },
       ];
 
-      const input = document.querySelector('vaadin24-message-input');
+      const input = document.querySelector('vaadin25-message-input');
       input.addEventListener('submit', (e) => {
         const message = e.detail.value;
         list.items = [
@@ -45,9 +45,12 @@
   </head>
 
   <body>
-    <vaadin24-message-list announce-messages></vaadin24-message-list>
-    <vaadin24-message-input>
-      <vaadin24-tooltip slot="tooltip" text="Press Enter to send"></vaadin24-tooltip>
-    </vaadin24-message-input>
+    <h2 class="heading">Default</h2>
+    <vaadin25-message-list announce-messages></vaadin25-message-list>
+    <vaadin25-message-input>
+      <vaadin25-tooltip slot="tooltip" text="Press Enter to send"></vaadin25-tooltip>
+    </vaadin25-message-input>
+    <h2 class="heading">Icon-Button Variant</h2>
+    <vaadin25-message-input theme="icon-button"></vaadin25-message-input>
   </body>
 </html>

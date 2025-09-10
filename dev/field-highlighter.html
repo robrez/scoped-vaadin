@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,38 +9,76 @@
   </head>
 
   <body>
-    <vaadin24-checkbox-group label="Language of contact">
-      <vaadin24-checkbox value="en" label="English"></vaadin24-checkbox>
-      <vaadin24-checkbox value="fr" label="Français"></vaadin24-checkbox>
-      <vaadin24-checkbox value="de" label="Deutsch"></vaadin24-checkbox>
-    </vaadin24-checkbox-group>
+    <section class="section">
+      <h2 class="heading">Fields</h2>
+      <vaadin25-text-field label="User name"></vaadin25-text-field>
+      <vaadin25-text-area
+        label="Comment"
+        value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam sunt repudiandae, fugit, voluptatum voluptate distinctio accusamus cum ducimus quia similique earum quis totam, quod aperiam! Sint nam neque officia! Delectus."
+        style="max-height: 150px"
+      ></vaadin25-text-area>
+    </section>
 
-    <!--
-    <vaadin24-date-time-picker></vaadin24-date-time-picker>
+    <section class="section">
+      <h2 class="heading">Pickers</h2>
+      <vaadin25-date-picker label="Date"></vaadin25-date-picker>
+      <vaadin25-date-time-picker label="Date and time"></vaadin25-date-time-picker>
+    </section>
 
-    <vaadin24-text-area></vaadin24-text-area>
-    -->
+    <section class="section" style="column-gap: 100px">
+      <h2 class="heading">Groups</h2>
+      <vaadin25-checkbox-group theme="vertical">
+        <vaadin25-checkbox name="user" value="1" label="Option 1"></vaadin25-checkbox>
+        <vaadin25-checkbox name="user" value="2" label="Option 2"></vaadin25-checkbox>
+        <vaadin25-checkbox name="user" value="3" label="Option 3"></vaadin25-checkbox>
+        <vaadin25-checkbox name="user" value="4" label="Option 4"></vaadin25-checkbox>
+      </vaadin25-checkbox-group>
+
+      <vaadin25-radio-group theme="vertical">
+        <vaadin25-radio-button name="user" value="1" label="Option 1"></vaadin25-radio-button>
+        <vaadin25-radio-button name="user" value="2" label="Option 2"></vaadin25-radio-button>
+        <vaadin25-radio-button name="user" value="3" label="Option 3"></vaadin25-radio-button>
+        <vaadin25-radio-button name="user" value="4" label="Option 4"></vaadin25-radio-button>
+      </vaadin25-radio-group>
+
+      <vaadin25-list-box>
+        <vaadin25-item>Option one</vaadin25-item>
+        <vaadin25-item>Option two</vaadin25-item>
+        <vaadin25-item>Option three</vaadin25-item>
+        <vaadin25-item>Option four</vaadin25-item>
+      </vaadin25-list-box>
+    </section>
 
     <script type="module">
       import '@scoped-vaadin/checkbox-group';
-      // import '@vaadin/date-time-picker';
-      // import '@vaadin/text-area';
+      import '@scoped-vaadin/date-picker';
+      import '@scoped-vaadin/date-time-picker';
+      import '@scoped-vaadin/item';
+      import '@scoped-vaadin/list-box';
+      import '@scoped-vaadin/radio-group';
+      import '@scoped-vaadin/text-area';
+      import '@scoped-vaadin/text-field';
       import { FieldHighlighter } from '@scoped-vaadin/field-highlighter';
 
-      const field = document.querySelector('vaadin24-checkbox-group');
-      FieldHighlighter.init(field);
+      const fields = [...document.querySelectorAll('.section')].reduce((acc, el) => {
+        return acc.concat([...el.children].filter((el) => el.localName.startsWith('vaadin')));
+      }, []);
 
-      window.requestAnimationFrame(() => {
-        const users = [
-          { id: 'a', name: 'User', colorIndex: 0, fieldIndex: 0 },
-          { id: 'b', name: 'Moderator', colorIndex: 1, fieldIndex: 1 },
-          { id: 'c', name: 'Admin', colorIndex: 2, fieldIndex: 1 },
-        ];
+      fields.forEach((field) => {
+        FieldHighlighter.init(field);
 
-        // Mimic focus to show highlight and badges
-        field.dispatchEvent(new CustomEvent('mouseenter'));
+        window.requestAnimationFrame(() => {
+          const users = [
+            { id: 'a', name: 'User', colorIndex: 0, fieldIndex: 0 },
+            { id: 'b', name: 'Moderator', colorIndex: 1, fieldIndex: 1 },
+            { id: 'c', name: 'Admin', colorIndex: 2, fieldIndex: 1 },
+          ];
 
-        FieldHighlighter.setUsers(field, users);
+          // Mimic focus to show highlight and badges
+          field.dispatchEvent(new CustomEvent('mouseenter'));
+
+          FieldHighlighter.setUsers(field, users);
+        });
       });
     </script>
   </body>

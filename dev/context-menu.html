@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,9 +9,9 @@
 
     <script type="module">
       import '@scoped-vaadin/context-menu';
-      // import '@vaadin/context-menu/theme/lumo/vaadin-lit-context-menu.js';
+      import '@scoped-vaadin/radio-group';
 
-      const menu = document.querySelector('vaadin24-context-menu');
+      const menu = document.querySelector('vaadin25-context-menu');
       menu.items = [
         { text: 'Menu Item 1' },
         { component: 'hr' },
@@ -32,12 +32,46 @@
         },
         { text: 'Menu Item 3', disabled: true },
       ];
+
+      menu.listenOn = menu.querySelector('#target');
+
+      const radioGroup = document.querySelector('#positionGroup');
+
+      radioGroup.addEventListener('change', (e) => {
+        if (e.target.value === '-') {
+          menu.position = null;
+        } else {
+          menu.position = e.target.value;
+        }
+      });
     </script>
   </head>
 
   <body>
-    <vaadin24-context-menu>
-      <div style="padding: 10px">Right click me</div>
-    </vaadin24-context-menu>
+
+    <vaadin25-radio-group id="positionGroup" label="Menu Position" theme="horizontal" value="-">
+      <vaadin25-radio-button value="-" label="None (mouse pointer)"></vaadin25-radio-button>
+      <vaadin25-radio-button value="bottom-start" label="Bottom Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="bottom" label="Bottom"></vaadin25-radio-button>
+      <vaadin25-radio-button value="bottom-end" label="Bottom End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start-top" label="Start Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start" label="Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start-bottom" label="Start Bottom"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top-start" label="Top Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top" label="Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top-end" label="Top End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end-top" label="End Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end" label="End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end-bottom" label="End Bottom"></vaadin25-radio-button>
+    </vaadin25-radio-group>
+
+    <div style="margin: 200px">
+      <vaadin25-context-menu>
+        <div id="target" style="border: 1px solid black; text-align: center; user-select: none;">
+          <h2>Right click this component</h2>
+          <p>(or long touch on mobile)</p>
+        </div>
+      </vaadin25-context-menu>
+    </div>
   </body>
 </html>

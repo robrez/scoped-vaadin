@@ -92,7 +92,6 @@ export const elementMeta = [
     "elementNames": [
       "vaadin-combo-box",
       "vaadin-combo-box-item",
-      "vaadin-combo-box-light",
       "vaadin-combo-box-overlay",
       "vaadin-combo-box-scroller"
     ],
@@ -128,7 +127,6 @@ export const elementMeta = [
     "package": "@vaadin/confirm-dialog",
     "elementNames": [
       "vaadin-confirm-dialog",
-      "vaadin-confirm-dialog-dialog",
       "vaadin-confirm-dialog-overlay"
     ],
     "eventNames": [
@@ -163,7 +161,6 @@ export const elementMeta = [
     ],
     "eventNames": [
       "change",
-      "internal-tab",
       "invalid-changed",
       "validated",
       "value-changed"
@@ -173,7 +170,6 @@ export const elementMeta = [
     "package": "@vaadin/date-picker",
     "elementNames": [
       "vaadin-date-picker",
-      "vaadin-date-picker-light",
       "vaadin-date-picker-month-scroller",
       "vaadin-date-picker-overlay",
       "vaadin-date-picker-overlay-content",
@@ -451,14 +447,12 @@ export const elementMeta = [
       "vaadin-multi-select-combo-box",
       "vaadin-multi-select-combo-box-chip",
       "vaadin-multi-select-combo-box-container",
-      "vaadin-multi-select-combo-box-internal",
       "vaadin-multi-select-combo-box-item",
       "vaadin-multi-select-combo-box-overlay",
       "vaadin-multi-select-combo-box-scroller"
     ],
     "eventNames": [
       "change",
-      "combo-box-item-selected",
       "custom-value-set",
       "filter-changed",
       "input",
@@ -522,14 +516,6 @@ export const elementMeta = [
       "validated",
       "value-changed"
     ]
-  },
-  {
-    "package": "@vaadin/polymer-legacy-adapter",
-    "elementNames": [
-      "vaadin-template-renderer-grid-templatizer",
-      "vaadin-template-renderer-templatizer"
-    ],
-    "eventNames": []
   },
   {
     "package": "@vaadin/popover",
@@ -669,7 +655,6 @@ export const elementMeta = [
     "package": "@vaadin/time-picker",
     "elementNames": [
       "vaadin-time-picker",
-      "vaadin-time-picker-combo-box",
       "vaadin-time-picker-item",
       "vaadin-time-picker-overlay",
       "vaadin-time-picker-scroller"
@@ -729,13 +714,6 @@ export const elementMeta = [
     "package": "@vaadin/vaadin-lumo-styles",
     "elementNames": [
       "vaadin-lumo-styles"
-    ],
-    "eventNames": []
-  },
-  {
-    "package": "@vaadin/vaadin-material-styles",
-    "elementNames": [
-      "vaadin-material-styles"
     ],
     "eventNames": []
   },

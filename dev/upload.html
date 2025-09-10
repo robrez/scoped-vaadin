@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,13 +8,13 @@
     <script type="module" src="./common.js"></script>
 
     <script type="module">
-      import '@scoped-vaadin/upload';
       import '@scoped-vaadin/radio-group';
-      import { xhrCreator, createFiles } from '@scoped-vaadin/upload/test/helpers.js';
+      import '@scoped-vaadin/upload';
+      import { createFiles, xhrCreator } from '@scoped-vaadin/upload/test/helpers.js';
 
       const nextUpload = document.querySelector('#next-upload');
 
-      const upload = document.querySelector('vaadin24-upload');
+      const upload = document.querySelector('vaadin25-upload');
       // Use a fake xhr for testing
       upload._createXhr = () => {
         if (nextUpload.value === 'successful') {
@@ -53,14 +53,14 @@
   </head>
 
   <body>
-    <vaadin24-upload target="/api/fileupload"></vaadin24-upload>
-
-    <br />
-
-    <vaadin24-radio-group label="Next file upload" theme="vertical" id="next-upload">
-      <vaadin24-radio-button value="successful" checked label="Successful"></vaadin24-radio-button>
-      <vaadin24-radio-button value="rejected" label="Rejected"></vaadin24-radio-button>
-      <vaadin24-radio-button value="error" label="Server error"></vaadin24-radio-button>
-    </vaadin24-radio-group>
+    <vaadin25-upload target="/api/fileupload"></vaadin25-upload>
+    <hr style="margin-block: 24px" />
+    <vaadin25-upload nodrop target="/api/fileupload"></vaadin25-upload>
+    <hr style="margin-block: 24px" />
+    <vaadin25-radio-group label="Next file upload" theme="vertical" id="next-upload">
+      <vaadin25-radio-button value="successful" checked label="Successful"></vaadin25-radio-button>
+      <vaadin25-radio-button value="rejected" label="Rejected"></vaadin25-radio-button>
+      <vaadin25-radio-button value="error" label="Server error"></vaadin25-radio-button>
+    </vaadin25-radio-group>
   </body>
 </html>

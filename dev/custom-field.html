@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,23 +9,23 @@
   </head>
 
   <body>
-    <vaadin24-custom-field
+    <vaadin25-custom-field
       label="Phone number"
       required
       error-message="This field is required"
       helper-text="Your public phone number"
     >
-      <vaadin24-select style="width: 6rem" value="+358" required></vaadin24-select>
-      <vaadin24-text-field
-        allowed-char-pattern="[0-9]*"
+      <vaadin25-select style="width: 6rem" value="+358" required></vaadin25-select>
+      <vaadin25-text-field
+        allowed-char-pattern="[0-9]"
         pattern="[0-9]*"
         maxlength="4"
         style="width: 5rem"
         required
-      ></vaadin24-text-field>
-      <vaadin24-number-field required></vaadin24-number-field>
-      <vaadin24-tooltip slot="tooltip" text="Other users will not see this"></vaadin24-tooltip>
-    </vaadin24-custom-field>
+      ></vaadin25-text-field>
+      <vaadin25-number-field required></vaadin25-number-field>
+      <vaadin25-tooltip slot="tooltip" text="Other users will not see this"></vaadin25-tooltip>
+    </vaadin25-custom-field>
 
     <script type="module">
       import '@scoped-vaadin/custom-field';
@@ -36,7 +36,7 @@
       import '@scoped-vaadin/select';
       import '@scoped-vaadin/tooltip';
 
-      const select = document.querySelector('vaadin24-select');
+      const select = document.querySelector('vaadin25-select');
       select.focusElement.setAttribute('aria-label', 'Country code');
       select.items = ['+358', '+46', '+34', '+380'].map((value) => {
         return {
@@ -44,9 +44,9 @@
         };
       });
 
-      document.querySelector('vaadin24-text-field').focusElement.setAttribute('aria-label', 'Area code');
+      document.querySelector('vaadin25-text-field').focusElement.setAttribute('aria-label', 'Area code');
 
-      document.querySelector('vaadin24-number-field').focusElement.setAttribute('aria-label', 'Number');
+      document.querySelector('vaadin25-number-field').focusElement.setAttribute('aria-label', 'Number');
     </script>
   </body>
 </html>

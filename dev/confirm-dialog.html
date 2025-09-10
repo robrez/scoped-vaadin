@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirm dialog</title>
+    <title>Confirm Dialog</title>
     <script type="module" src="./common.js"></script>
 
     <script type="module">
@@ -12,24 +12,33 @@
     </script>
   </head>
   <body>
-    <vaadin24-button id="open">Open</vaadin24-button>
+    <section>
+      <h3>Examples</h3>
+      <vaadin25-button class="short">Short Message</vaadin25-button>
+      <vaadin25-button class="long">Long Message</vaadin25-button>
+    </section>
 
-    <vaadin24-confirm-dialog
-      header="Unsaved changes"
+    <vaadin25-confirm-dialog class="short" header="Save Changes" confirm-text="Save" cancel-button-visible>
+      Save or not?
+    </vaadin25-confirm-dialog>
+
+    <vaadin25-confirm-dialog
+      class="long"
+      header="Unsaved Changes"
       confirm-text="Save"
       reject-text="Discard"
       cancel-button-visible
       reject-button-visible
     >
-      Do you want to save or discard the changes?
-    </vaadin24-confirm-dialog>
+      Do you want to save or discard the changes? That is the question. But whatever you choose, there will be no
+      consequences.
+    </vaadin25-confirm-dialog>
 
     <script>
-      const dialog = document.querySelector('vaadin24-confirm-dialog');
-      const button = document.querySelector('#open');
-
-      button.addEventListener('click', (event) => {
-        dialog.opened = true;
+      document.querySelectorAll('vaadin25-button').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          document.querySelector(`vaadin-confirm-dialog.${btn.className}`).opened = true;
+        });
       });
     </script>
   </body>

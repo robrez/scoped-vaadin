@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,7 +15,7 @@
         }
       }
 
-      vaadin24-grid-cell-content:not(:empty) {
+      vaadin25-grid-cell-content:not(:empty) {
         animation: content-ready 1s;
       }
     </style>
@@ -24,7 +24,7 @@
       import '@scoped-vaadin/grid/all-imports';
 
       // Set up the grid
-      const grid = document.querySelector('vaadin24-grid');
+      const grid = document.querySelector('vaadin25-grid');
 
       grid.dataProvider = ({ page, pageSize }, cb) => {
         const levelSize = 100;
@@ -38,7 +38,7 @@
       };
 
       for (let i = 0; i < 400; i++) {
-        const column = document.createElement('vaadin24-grid-column');
+        const column = document.createElement('vaadin25-grid-column');
         column.header = `Col ${i}`;
         column.width = '140px';
         column.flexShrink = 0;
@@ -98,16 +98,16 @@
       refreshLoop();
 
       // Controls
-      const lazyColumnRendering = document.querySelector('vaadin24-checkbox');
+      const lazyColumnRendering = document.querySelector('vaadin25-checkbox');
       lazyColumnRendering.addEventListener('checked-changed', (e) => {
         grid.columnRendering = e.detail.value ? 'lazy' : 'eager';
       });
       lazyColumnRendering.checked = grid.columnRendering === 'lazy';
     </script>
 
-    <vaadin24-grid item-id-path="name" column-rendering="lazy"></vaadin24-grid>
+    <vaadin25-grid item-id-path="name" column-rendering="lazy"></vaadin25-grid>
 
-    <vaadin24-checkbox label="Lazy column rendering" style="margin-top: 30px"></vaadin24-checkbox>
+    <vaadin25-checkbox label="Lazy column rendering" style="margin-top: 30px"></vaadin25-checkbox>
 
     <div id="render-time"></div>
 

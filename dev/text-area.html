@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,14 +8,106 @@
     <script type="module" src="./common.js"></script>
 
     <script type="module">
+      import '@scoped-vaadin/icon';
+      import '@scoped-vaadin/icons';
       import '@scoped-vaadin/text-area';
-      import '@scoped-vaadin/tooltip';
+      import '@scoped-vaadin/vaadin-lumo-styles/vaadin-iconset.js';
     </script>
   </head>
 
   <body>
-    <vaadin24-text-area label="Feedback" required>
-      <vaadin24-tooltip slot="tooltip" text="Help us improve"></vaadin24-tooltip>
-    </vaadin24-text-area>
+    <section class="section">
+      <h2 class="heading">Plain</h2>
+      <vaadin25-text-area value="Value"></vaadin25-text-area>
+      <vaadin25-text-area placeholder="Placeholder"></vaadin25-text-area>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">Min &amp; Max Rows</h2>
+      <vaadin25-text-area value="Value" min-rows="1" clear-button-visible>
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+
+      <vaadin25-text-area
+        value="I’m not sure what I should write here, but I know it should be something long because this is a multi-line text area."
+        max-rows="3"
+        clear-button-visible
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">Bells & Whistles</h2>
+      <vaadin25-text-area
+        label="Label"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">States</h2>
+      <vaadin25-text-area
+        label="Read-only"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        readonly
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+
+      <vaadin25-text-area
+        label="Disabled"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+        disabled
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">Helper Above Field</h2>
+      <vaadin25-text-area
+        theme="helper-above-field"
+        label="Label"
+        helper-text="Description for this field."
+        value="Value"
+        clear-button-visible
+        error-message="You need to write something in this field."
+        required
+      >
+        <vaadin25-icon icon="vaadin:search" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+    </section>
+
+    <section class="section">
+      <h2 class="heading">Content &amp; Layout Variations</h2>
+      <p>Resize the field to test how content flows.</p>
+      <vaadin25-text-area
+        label="A very long label for this field"
+        helper-text="If the label wasn't enough to tell what you should input here, then this long description should be."
+        value="I’m not sure what I should write here, but I know it should be something long because this is a multi-line text area."
+        placeholder="Perhaps this gives you an idea what to write?"
+        clear-button-visible
+        error-message="In case you didn't write anything in this required field, this error message is here to let you know that you really should write something in this field."
+        required
+        style="resize: both; overflow: hidden; padding: 1px; width: 50%"
+      >
+        <vaadin25-icon icon="vaadin:envelope-o" slot="prefix"></vaadin25-icon>
+      </vaadin25-text-area>
+    </section>
   </body>
 </html>

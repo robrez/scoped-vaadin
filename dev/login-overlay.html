@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,20 +10,24 @@
     <script type="module">
       import '@scoped-vaadin/login/vaadin-login-overlay.js';
 
-      const login = document.querySelector('vaadin24-login-overlay');
-      login.addEventListener('login', () => {
-        login.opened = false;
-      });
+      const login = document.querySelector('vaadin25-login-overlay');
 
       const button = document.querySelector('button');
       button.addEventListener('click', () => {
+        login.disabled = false;
         login.opened = true;
+      });
+
+      login.addEventListener('login', () => {
+        login.opened = false;
+        // Login does not restore focus
+        button.focus();
       });
     </script>
   </head>
 
   <body>
-    <vaadin24-login-overlay opened no-autofocus></vaadin24-login-overlay>
+    <vaadin25-login-overlay opened no-autofocus></vaadin25-login-overlay>
 
     <button>Open</button>
   </body>

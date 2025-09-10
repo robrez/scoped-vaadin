@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,41 +8,88 @@
     <script type="module" src="./common.js"></script>
 
     <script type="module">
-      import '@scoped-vaadin/button';
-      import '@scoped-vaadin/horizontal-layout';
+      import '@scoped-vaadin/checkbox-group';
       import '@scoped-vaadin/popover';
-      import '@scoped-vaadin/text-field';
+      import '@scoped-vaadin/radio-group';
     </script>
   </head>
 
   <body>
-    <vaadin24-button id="button">Discount</vaadin24-button>
+    <style>
+      #wrapper {
+        width: 100%;
+        min-width: 350px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        gap: 1rem;
+      }
+    </style>
 
-    <vaadin24-popover for="button" position="bottom-start"></vaadin24-popover>
+    <vaadin25-radio-group id="positionGroup" label="Tooltip Position" theme="horizontal" value="bottom">
+      <vaadin25-radio-button value="bottom-start" label="Bottom Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="bottom" label="Bottom"></vaadin25-radio-button>
+      <vaadin25-radio-button value="bottom-end" label="Bottom End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start-top" label="Start Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start" label="Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="start-bottom" label="Start Bottom"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top-start" label="Top Start"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top" label="Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="top-end" label="Top End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end-top" label="End Top"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end" label="End"></vaadin25-radio-button>
+      <vaadin25-radio-button value="end-bottom" label="End Bottom"></vaadin25-radio-button>
+    </vaadin25-radio-group>
+
+    <vaadin25-checkbox-group id="triggerGroup" label="Trigger" theme="horizontal">
+      <vaadin25-checkbox value="click" label="Click"></vaadin25-checkbox>
+      <vaadin25-checkbox value="focus" label="Focus"></vaadin25-checkbox>
+      <vaadin25-checkbox value="hover" label="Hover"></vaadin25-checkbox>
+    </vaadin25-checkbox-group>
+
+    <div id="wrapper">
+      <input placeholder="Before" />
+
+      <input id="target" placeholder="Target" />
+      <vaadin25-popover for="target" theme="arrow" id="popover"></vaadin25-popover>
+
+      <input placeholder="After" />
+    </div>
 
     <script type="module">
-      const popover = document.querySelector('vaadin24-popover');
+      const popover = document.querySelector('vaadin25-popover');
+      const radioGroup = document.querySelector('#positionGroup');
 
-      // popover.trigger = ['hover', 'focus'];
+      radioGroup.addEventListener('change', (e) => {
+        popover.position = e.target.value;
+      });
+
+      const checkboxGroup = document.querySelector('#triggerGroup');
+      checkboxGroup.value = ['click'];
+
+      checkboxGroup.addEventListener('change', (e) => {
+        popover.trigger = checkboxGroup.value;
+      });
 
       popover.renderer = (root) => {
         if (root.firstChild) {
           return;
         }
 
-        const layout = document.createElement('vaadin24-horizontal-layout');
-        layout.setAttribute('theme', 'spacing-s');
-        layout.style.alignItems = 'baseline';
+        const input = document.createElement('input');
 
-        const field = document.createElement('vaadin24-text-field');
-        field.label = 'Discount code';
+        const nested = document.createElement('vaadin25-popover');
+        nested.setAttribute('theme', 'arrow');
+        nested.trigger = ['click'];
+        nested.target = input;
 
-        const button = document.createElement('vaadin24-button');
-        button.textContent = 'Apply';
+        nested.renderer = (root2) => {
+          root2.innerHTML = '<input placeholder="Popover 2" />';
+        };
 
-        layout.append(field, button);
-
-        root.append(layout);
+        root.append(input, nested);
       };
     </script>
   </body>

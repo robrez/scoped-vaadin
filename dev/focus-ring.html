@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +18,7 @@
       import '@scoped-vaadin/list-box';
       import '@scoped-vaadin/radio-group';
       import '@scoped-vaadin/password-field';
-      // import '@vaadin/rich-text-editor';
+      import '@vaadin/rich-text-editor';
       import '@scoped-vaadin/tabs';
       import '@scoped-vaadin/text-field';
     </script>
@@ -29,49 +29,49 @@
         --vaadin-focus-ring-width: 1px;
       }
 
-      vaadin24-button {
+      vaadin25-button {
         --vaadin-focus-ring-color: green;
       }
     </style>
   </head>
 
   <body>
-    <vaadin24-avatar></vaadin24-avatar>
+    <vaadin25-avatar></vaadin25-avatar>
 
-    <vaadin24-button>Button</vaadin24-button>
+    <vaadin25-button>Button</vaadin25-button>
 
-    <vaadin24-checkbox label="Checkbox"></vaadin24-checkbox>
+    <vaadin25-checkbox label="Checkbox"></vaadin25-checkbox>
 
-    <vaadin24-radio-group label="Radio group">
-      <vaadin24-radio-button value="y" label="Yes"></vaadin24-radio-button>
-      <vaadin24-radio-button value="n" label="No"></vaadin24-radio-button>
-    </vaadin24-radio-group>
+    <vaadin25-radio-group label="Radio group">
+      <vaadin25-radio-button value="y" label="Yes"></vaadin25-radio-button>
+      <vaadin25-radio-button value="n" label="No"></vaadin25-radio-button>
+    </vaadin25-radio-group>
 
-    <vaadin24-details summary="Details">
+    <vaadin25-details summary="Details">
       <div>Toggle using mouse, Enter and Space keys.</div>
-    </vaadin24-details>
+    </vaadin25-details>
 
     <br />
 
-    <vaadin24-list-box>
-      <vaadin24-item>Foo</vaadin24-item>
-      <vaadin24-item>Bar</vaadin24-item>
-    </vaadin24-list-box>
+    <vaadin25-list-box>
+      <vaadin25-item>Foo</vaadin25-item>
+      <vaadin25-item>Bar</vaadin25-item>
+    </vaadin25-list-box>
 
     <br />
 
-    <vaadin24-combo-box label="Combo box" items='["Foo", "Bar", "Baz"]'></vaadin24-combo-box>
+    <vaadin25-combo-box label="Combo box" items='["Foo", "Bar", "Baz"]'></vaadin25-combo-box>
 
-    <vaadin24-text-field label="Text field"></vaadin24-text-field>
+    <vaadin25-text-field label="Text field"></vaadin25-text-field>
 
-    <vaadin24-password-field label="Password field"></vaadin24-password-field>
+    <vaadin25-password-field label="Password field"></vaadin25-password-field>
 
-    <vaadin24-date-picker label="Date picker"></vaadin24-date-picker>
+    <vaadin25-date-picker label="Date picker"></vaadin25-date-picker>
 
-    <vaadin24-tabs>
-      <vaadin24-tab>Foo</vaadin24-tab>
-      <vaadin24-tab>Bar</vaadin24-tab>
-    </vaadin24-tabs>
+    <vaadin25-tabs>
+      <vaadin25-tab>Foo</vaadin25-tab>
+      <vaadin25-tab>Bar</vaadin25-tab>
+    </vaadin25-tabs>
 
     <br />
 
