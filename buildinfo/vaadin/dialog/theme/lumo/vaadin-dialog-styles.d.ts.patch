@@ -1,9 +1,0 @@
-Index: theme/lumo/vaadin-dialog-styles.d.ts
-===================================================================
---- theme/lumo/vaadin-dialog-styles.d.ts
-+++ theme/lumo/vaadin-dialog-styles.d.ts
-@@ -1,3 +1,3 @@
--import '@vaadin/vaadin-lumo-styles/spacing.js';
-+import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';
- declare const dialogOverlay: import("lit").CSSResult;
- export { dialogOverlay };

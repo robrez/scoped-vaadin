@@ -1,8 +1,0 @@
-Index: theme/lumo/vaadin-grid-selection-column.d.ts
-===================================================================
---- theme/lumo/vaadin-grid-selection-column.d.ts
-+++ theme/lumo/vaadin-grid-selection-column.d.ts
-@@ -1,2 +1,2 @@
--import '@vaadin/checkbox/theme/lumo/vaadin-checkbox.js';
-+import '@scoped-vaadin/checkbox/theme/lumo/vaadin-checkbox.js';
- import '../../src/vaadin-grid-selection-column.js';

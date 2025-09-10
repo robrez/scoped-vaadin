@@ -1,7 +1,0 @@
-Index: theme/material/vaadin-date-picker-year-styles.d.ts
-===================================================================
---- theme/material/vaadin-date-picker-year-styles.d.ts
-+++ theme/material/vaadin-date-picker-year-styles.d.ts
-@@ -1,1 +1,1 @@
--import '@vaadin/vaadin-material-styles/typography.js';
-+import '@scoped-vaadin/vaadin-material-styles/typography.js';
