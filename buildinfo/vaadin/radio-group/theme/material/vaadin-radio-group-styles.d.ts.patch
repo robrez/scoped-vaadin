@@ -1,7 +1,0 @@
-Index: theme/material/vaadin-radio-group-styles.d.ts
-===================================================================
---- theme/material/vaadin-radio-group-styles.d.ts
-+++ theme/material/vaadin-radio-group-styles.d.ts
-@@ -1,1 +1,1 @@
--import '@vaadin/vaadin-material-styles/color.js';
-+import '@scoped-vaadin/vaadin-material-styles/color.js';

@@ -1,9 +1,0 @@
-Index: theme/material/vaadin-notification-styles.d.ts
-===================================================================
---- theme/material/vaadin-notification-styles.d.ts
-+++ theme/material/vaadin-notification-styles.d.ts
-@@ -1,2 +1,2 @@
--import '@vaadin/vaadin-material-styles/typography.js';
--import '@vaadin/vaadin-material-styles/shadow.js';
-+import '@scoped-vaadin/vaadin-material-styles/typography.js';
-+import '@scoped-vaadin/vaadin-material-styles/shadow.js';

@@ -1,9 +1,0 @@
-Index: theme/lumo/vaadin-date-picker-overlay-styles.d.ts
-===================================================================
---- theme/lumo/vaadin-date-picker-overlay-styles.d.ts
-+++ theme/lumo/vaadin-date-picker-overlay-styles.d.ts
-@@ -1,2 +1,2 @@
--import '@vaadin/vaadin-lumo-styles/sizing.js';
--import '@vaadin/vaadin-lumo-styles/spacing.js';
-+import '@scoped-vaadin/vaadin-lumo-styles/sizing.js';
-+import '@scoped-vaadin/vaadin-lumo-styles/spacing.js';

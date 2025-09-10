@@ -1,8 +1,0 @@
-Index: theme/material/vaadin-lit-integer-field.js
-===================================================================
---- theme/material/vaadin-lit-integer-field.js
-+++ theme/material/vaadin-lit-integer-field.js
-@@ -1,2 +1,2 @@
--import '@vaadin/number-field/theme/material/vaadin-lit-number-field.js';
-+import '@scoped-vaadin/number-field/theme/material/vaadin-lit-number-field.js';
- import '../../src/vaadin-lit-integer-field.js';
